@@ -10,6 +10,6 @@ All matched files use Prettier code style!
 
  Test Files  3 passed (3)
       Tests  15 passed (15)
-   Start at  12:48:52
-   Duration  972ms (transform 217ms, setup 512ms, import 211ms, tests 70ms, environment 1.71s)
+   Start at  13:00:26
+   Duration  951ms (transform 190ms, setup 558ms, import 173ms, tests 90ms, environment 1.60s)
 
