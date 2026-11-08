@@ -182,6 +182,27 @@ Level: OWASP ASVS 5.0 Level 2 for both components (security-requirements.md). Co
 | SR-12 | Error format without internals | `ApiExceptionHandler` | AC-018-11 |
 | SR-13 | Emulator only in tests and local development | test config | tests run offline |
 
+### Permission table
+
+`Action` enum of ADR-05; it mirrors the matrix of BR-02 (with the Roles of D-25). O = Owner, E = Editor, V = Viewer.
+
+| Action | Used by | O | E | V |
+|---|---|---|---|---|
+| `READ_CONTACTS` (also facets, search, filter, Group view) | US-002, US-003, US-007..US-010 | yes | yes | yes |
+| `EDIT_CONTACT` (create, edit, Attributes, Tags of a Contact) | US-003..US-005 | yes | yes | no |
+| `MANAGE_TAGS` (Tag list, rename, delete) | US-006 | yes | yes | no |
+| `DELETE_CONTACT`, `READ_TRASH`, `RESTORE_CONTACT` | US-012 | yes | yes | no |
+| `DELETE_CONTACT_FOREVER` | US-013 | yes | no | no |
+| `EXPORT` | US-011 | yes | yes | no |
+| `READ_HISTORY` (Contact History, Group activity list) | US-016, US-017 | yes | yes | no |
+| `READ_VERSIONS`, `RESTORE_VERSION` | US-022, US-023 | yes | yes | no |
+| `FIND_DUPLICATES`, `DISMISS_DUPLICATE`, `MERGE_CONTACTS` | US-024..US-026 | yes | yes | no |
+| `MANAGE_MEMBERS` (invite, cancel Invitation, change Role, remove) | US-014, US-015 | yes | no | no |
+| `READ_MEMBERS` | US-015 | yes | yes | yes |
+| `DELETE_GROUP` | US-020 | yes | no | no |
+
+Endpoints without a Group in the path need no Action: `GET /me`, `DELETE /me`, `GET /groups`, `POST /groups`, and the Owner-only `GET /group-trash` and `POST /group-trash/{g}/restore` (annotation `@OwnerOfGroupInTrash`).
+
 ## Threat model
 
 STRIDE per interface (S spoofing, T tampering, R repudiation, I information disclosure, D denial of service, E elevation of privilege) and per personal-data item. "New" controls are added by this specification; `[ASSUMPTION]` marks a residual risk accepted until the customer decides.
@@ -269,4 +290,45 @@ Navigation: header with product name (`brand.ts`), Group switcher (link to SC-05
 
 <!-- slice 5: traceability -->
 
-<!-- slice 5: traceability -->
+## Traceability
+
+Every requirement ID of the inputs maps to a section of this document (rows are generated and checked by `scripts/check-traceability.mjs`; a story row lists its rules, acceptance criteria and edge cases, implemented in the story entry of "Behaviour per story").
+
+| R / AC / EX / BR / SR / SB / NFR | Section |
+|---|---|
+| R-001-01..12, AC-001-01..11, EX-001-01..09 | Behaviour per story: US-001 |
+| R-002-01..07, AC-002-01..08, EX-002-01..07 | Behaviour per story: US-002 |
+| R-003-01..11, AC-003-01..10, EX-003-01..13 | Behaviour per story: US-003 |
+| R-004-01..09, AC-004-01..09, EX-004-01..09 | Behaviour per story: US-004 |
+| R-005-01..10, AC-005-01..08, EX-005-01..08 | Behaviour per story: US-005 |
+| R-006-01..08, AC-006-01..07, EX-006-01..06 | Behaviour per story: US-006 |
+| R-007-01..08, AC-007-01..08, EX-007-01..07 | Behaviour per story: US-007 |
+| R-008-01..07, AC-008-01..09, EX-008-01..07 | Behaviour per story: US-008 |
+| R-009-01..12, AC-009-01..12, EX-009-01..07 | Behaviour per story: US-009 |
+| R-010-01..10, AC-010-01..09, EX-010-01..05 | Behaviour per story: US-010 |
+| R-011-01..10, AC-011-01..11, EX-011-01..10 | Behaviour per story: US-011 |
+| R-012-01..09, AC-012-01..08, EX-012-01..07 | Behaviour per story: US-012 |
+| R-013-01..08, AC-013-01..08, EX-013-01..06 | Behaviour per story: US-013 |
+| R-014-01..12, AC-014-01..11, EX-014-01..09 | Behaviour per story: US-014 |
+| R-015-01..08, AC-015-01..09, EX-015-01..05 | Behaviour per story: US-015 |
+| R-016-01..08, AC-016-01..09, EX-016-01..07 | Behaviour per story: US-016 |
+| R-017-01..09, AC-017-01..09, EX-017-01..05 | Behaviour per story: US-017 |
+| R-018-01..16, AC-018-01..17, EX-018-01..09 | Behaviour per story: US-018 |
+| R-019-01..07, AC-019-01..07, EX-019-01..03 | Behaviour per story: US-019 |
+| R-020-01..08, AC-020-01..07, EX-020-01..07 | Behaviour per story: US-020 |
+| R-021-01..06, AC-021-01..07, EX-021-01..04 | Behaviour per story: US-021 |
+| R-022-01..07, AC-022-01..07, EX-022-01..05 | Behaviour per story: US-022 |
+| R-023-01..06, AC-023-01..07, EX-023-01..04 | Behaviour per story: US-023 |
+| R-024-01..10, AC-024-01..11, EX-024-01..06 | Behaviour per story: US-024 |
+| R-025-01..05, AC-025-01..05, EX-025-01..04 | Behaviour per story: US-025 |
+| R-026-01..12, AC-026-01..12, EX-026-01..09 | Behaviour per story: US-026 |
+| BR-01 | Security controls (SR-01); ADR-05; Behaviour per story: US-018 |
+| BR-02 | Permission table; ADR-05; Behaviour per story |
+| BR-03 | ADR-08; Behaviour per story: US-016, US-011 to US-017 |
+| BR-04 | ADR-09; Behaviour per story: US-012, US-013, US-020 |
+| BR-05 | ADR-06; Data model and validation |
+| BR-06 | Data model and validation; Behaviour per story: US-003 |
+| BR-07 | ADR-07; Behaviour per story: US-003 |
+| SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08, SR-09, SR-10, SR-11, SR-12, SR-13 | Security controls (table rows SR-01..SR-13); Threat model |
+| SB-01, SB-02, SB-03, SB-04, SB-05, SB-06, SB-07, SB-08, SB-09, SB-10, SB-11, SB-12, SB-13, SB-14 | Security controls (table rows SB-01..SB-14); Threat model |
+| NFR-01, NFR-02, NFR-03, NFR-04, NFR-05, NFR-06, NFR-07, NFR-08, NFR-09, NFR-10, NFR-11, NFR-12, NFR-13, NFR-14, NFR-15 | NFR checks (one row each) |
