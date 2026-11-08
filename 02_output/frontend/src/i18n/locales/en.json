@@ -181,5 +181,40 @@
     "server": {
       "error": "Something went wrong. Please try again."
     }
+  },
+  "contacts": {
+    "back": "← Contacts",
+    "newTitle": "New contact",
+    "save": "Save contact",
+    "saveChanges": "Save",
+    "saving": "Saving …",
+    "edit": "Edit",
+    "created": "Contact saved.",
+    "saved": "Changes saved.",
+    "version": "Version {{version}}",
+    "data": "Details",
+    "tags": "Tags",
+    "attributes": "Attributes",
+    "noTags": "This contact has no tags yet.",
+    "noAttributes": "This contact has no attributes yet.",
+    "untitled": "Contact without a name",
+    "noCountry": "— none —",
+    "notesHint": "Up to 5,000 characters.",
+    "oneOfFour": "Fill in at least one of first name, last name, e-mail or company.",
+    "fixFields": "Correct the marked fields. The values you entered are kept.",
+    "conflictBody": "The current contact is shown (version {{version}}). Your changes are not saved.",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "E-mail",
+      "phone": "Phone",
+      "company": "Company",
+      "jobTitle": "Job title",
+      "street": "Street and house number",
+      "postalCode": "Postal code",
+      "city": "City",
+      "country": "Country",
+      "notes": "Notes"
+    }
   }
 }

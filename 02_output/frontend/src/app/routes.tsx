@@ -4,6 +4,7 @@ import { RegisterPage } from '@/features/auth/RegisterPage';
 import { ResetPasswordPage } from '@/features/auth/ResetPasswordPage';
 import { SignInPage } from '@/features/auth/SignInPage';
 import { VerifyEmailPage } from '@/features/auth/VerifyEmailPage';
+import { NewContactPage } from '@/features/contacts/NewContactPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
 import { NotFoundPage } from '@/features/home/NotFoundPage';
 import { Layout } from './Layout';
@@ -19,7 +20,13 @@ export const routes: RouteObject[] = [
       { path: 'register', element: <RegisterPage /> },
       { path: 'reset-password', element: <ResetPasswordPage /> },
       { path: 'verify-email', element: <VerifyEmailPage /> },
-      { element: <RequireVerified />, children: [{ path: 'groups', element: <GroupListPage /> }] },
+      {
+        element: <RequireVerified />,
+        children: [
+          { path: 'groups', element: <GroupListPage /> },
+          { path: 'groups/:groupId/contacts/new', element: <NewContactPage /> },
+        ],
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

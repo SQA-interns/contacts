@@ -181,5 +181,40 @@
     "server": {
       "error": "Nekaj je šlo narobe. Poskusite znova."
     }
+  },
+  "contacts": {
+    "back": "← Kontakti",
+    "newTitle": "Nov kontakt",
+    "save": "Shrani kontakt",
+    "saveChanges": "Shrani",
+    "saving": "Shranjevanje …",
+    "edit": "Uredi",
+    "created": "Kontakt je shranjen.",
+    "saved": "Spremembe so shranjene.",
+    "version": "Različica {{version}}",
+    "data": "Podatki",
+    "tags": "Značke",
+    "attributes": "Atributi",
+    "noTags": "Kontakt še nima značk.",
+    "noAttributes": "Kontakt še nima atributov.",
+    "untitled": "Kontakt brez imena",
+    "noCountry": "— ni izbrano —",
+    "notesHint": "Do 5.000 znakov.",
+    "oneOfFour": "Izpolnite vsaj eno od polj ime, priimek, e-pošta ali podjetje.",
+    "fixFields": "Popravite označena polja. Vnesene vrednosti so ohranjene.",
+    "conflictBody": "Prikazan je trenutni kontakt (različica {{version}}). Vaše spremembe niso shranjene.",
+    "fields": {
+      "firstName": "Ime",
+      "lastName": "Priimek",
+      "email": "E-pošta",
+      "phone": "Telefon",
+      "company": "Podjetje",
+      "jobTitle": "Delovno mesto",
+      "street": "Ulica in hišna številka",
+      "postalCode": "Poštna številka",
+      "city": "Kraj",
+      "country": "Država",
+      "notes": "Opombe"
+    }
   }
 }
