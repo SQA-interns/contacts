@@ -1,0 +1,1 @@
+tasks 68 (story tasks) + 10 (NFR and operations tasks); stories 26; every rule, AC and EX of every story covered by a task (generator fails on a gap); every story in exactly one increment
