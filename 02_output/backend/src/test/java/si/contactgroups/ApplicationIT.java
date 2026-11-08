@@ -1,5 +1,7 @@
 package si.contactgroups;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -52,6 +54,28 @@ class ApplicationIT {
         .andExpect(status().isUnauthorized())
         .andExpect(jsonPath("$.code").value("auth.token_invalid"))
         .andExpect(jsonPath("$.stackTrace").doesNotExist());
+  }
+
+  @Test
+  void unknownPathWithAValidPrincipalIs404InTheErrorFormat() throws Exception {
+    mvc.perform(get("/api/v1/nothing").with(user("ana")))
+        .andExpect(status().isNotFound())
+        .andExpect(jsonPath("$.code").value("route.not_found"));
+  }
+
+  @Test
+  void aMethodThatDoesNotExistIs405InTheErrorFormat() throws Exception {
+    mvc.perform(delete("/api/v1/openapi.json").with(user("ana")))
+        .andExpect(status().isMethodNotAllowed())
+        .andExpect(jsonPath("$.code").value("request.method_not_allowed"));
+  }
+
+  @Test
+  void theOpenApiDescriptionIsPublishedToSignedInUsersOnly() throws Exception {
+    mvc.perform(get("/api/v1/openapi.json")).andExpect(status().isUnauthorized());
+    mvc.perform(get("/api/v1/openapi.json").with(user("ana")))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.openapi").exists());
   }
 
   @Test
