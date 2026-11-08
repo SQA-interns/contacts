@@ -315,3 +315,36 @@
 - Human response: see D-25, D-26, D-27.
 - Resolution: D-14 resolved by D-25 (option 1). D-15 resolved by D-26 (option 1). D-16 resolved by D-27 (A1, B1). Still "pending review" (non-blocking, nothing waits on them): D-01, D-02, D-08, D-17 to D-24.
 - Overrides: none
+
+## D-29: Configuration keys the design needs that `environments.md` does not list
+- Timestamp: 2026-11-08
+- Session: S3 /plan
+- Class: open
+- Type: non-blocking
+- Trigger: ADR-03 (two database roles, AR-09), ADR-11 (HTTPS only behind a TLS proxy, R-018-12) and ADR-15 (one image for every environment, AR-12). `environments.md` and `secrets.env.example` are inputs and cannot be edited from phase 2 on (`AGENTS.md`, "Never"). `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` exist.
+- Options: 1. Add these keys, all read from the environment (proposed default): `DB_MIGRATION_USER`, `DB_MIGRATION_PASSWORD` (Compose maps them from `POSTGRES_USER`, `POSTGRES_PASSWORD`; used by Flyway only); `DB_APP_USER` (default `contactgroups_app`), `DB_APP_PASSWORD` (the restricted application role created by migration V1; Compose defaults it to the value of `POSTGRES_PASSWORD` when it is unset, so no new secret is needed to start, and the operator should set a different one in production); `REQUIRE_HTTPS` (default `false`; `true` in `docker-compose.prod.yml`); `SPRING_PROFILES_ACTIVE` (`prod` in production: the backend refuses to start with `FIREBASE_AUTH_EMULATOR_HOST` set); the frontend container reads `VITE_API_BASE_URL`, `VITE_FIREBASE_*` at start and serves them as `/config.js`. 2. Keep one database user (rejected: AR-09 cannot be shown at the database level). 3. Ask the human to extend `secrets.env.example` first.
+- Human response: none
+- Resolution: 1. Pending review. `DB_APP_PASSWORD` is the only new secret; the human may add it to `secrets.env.example` and `.env` (an input change, not made by the agent).
+- Overrides: none
+
+## D-30: Development-only tools added to `tech-stack.md`
+- Timestamp: 2026-11-08
+- Session: S3 /plan
+- Class: allow
+- Type: non-blocking
+- Trigger: `tech-stack.md` rule "a dependency or tool not listed here may be added only with an exact version and a non-blocking decision record". Needed: contract validation (phase 2 gate), no floating Maven plugin versions (ES-04: Maven has no lock file), a Maven licence report (NFR-13), a CI syntax check (ES-14).
+- Options: 1. Add (proposed default), none ships in an image: `@seriousme/openapi-schema-validator` 2.11.0 (MIT), `ajv` 8.20.0 (MIT), `ajv-formats` 3.0.1 (MIT), `yaml` 2.9.1 (ISC), all in `02_output/tools` (`npm audit`: 0 vulnerabilities); `org.apache.maven.plugins:maven-enforcer-plugin` 3.6.1 (Apache-2.0, bans dynamic versions and checks upper bounds); `org.codehaus.mojo:license-maven-plugin` 2.7.1 (Apache-2.0); container `rhysd/actionlint` 1.7.7 (MIT). 2. Write the checks by hand without these tools.
+- Human response: none
+- Resolution: 1. Pending review. Each is scanned by the scanners of phase 6 like any other.
+- Overrides: none
+
+## D-31: Open readings fixed by the specification
+- Timestamp: 2026-11-08
+- Session: S3 /plan
+- Class: open
+- Type: non-blocking
+- Trigger: points the inputs leave to the design, each fixed in `docs/02_specification.md` with the conservative reading. (a) "Select all N results" sends the filter, not N ids; the server recomputes the ids (a Selection above 10,000 is refused, R-011-05). (b) The Group trash and its restore are Owner-only endpoints `/group-trash` (D-18a). (c) Invitations are accepted when the Group list is read (R-014-05), so `GET /groups` has this write effect. (d) Contacts in Trash are returned only by the Trash endpoints; the Contact endpoint answers 404. (e) The Merge preselection is computed in the browser; the server validates every chosen value against the merged Contacts (D-19d). (f) A merged-away Contact's History is linked to the Survivor through `details.mergedContactIds`. (g) The password-length rule is a client rule, because Firebase owns passwords (R-001-06). (h) The published OpenAPI description is `GET /api/v1/openapi.json` without a UI page (D-12).
+- Options: 1. Use each as written (proposed default). 2. Ask the human per item.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none

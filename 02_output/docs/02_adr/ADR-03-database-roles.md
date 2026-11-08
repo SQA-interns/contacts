@@ -15,10 +15,10 @@ The History must be append-only "at the code and the database level" (AR-09). Ex
 
 ## Decision
 
-Option 2 plus a check in tests. `DB_MIGRATION_USER` (owner, used only by Flyway at start-up) creates all objects. `DB_USER` (the application) gets `SELECT, INSERT, UPDATE, DELETE` on ordinary tables, but on `history_entry` only `SELECT, INSERT` and `UPDATE (details, user_email)`; no `DELETE`, no `CREATE` on the schema. `history_entry.group_id` references `contact_group` with `ON DELETE CASCADE`: referential-integrity actions run with the table owner's rights, so deleting a Group removes its History without a `DELETE` grant. `contact_version` and all child tables cascade the same way. A Testcontainers test connects as the application role and shows: UPDATE of `action` fails, DELETE fails, deleting a Group still removes its entries, `CREATE TABLE` fails.
+Option 2 plus a check in tests. `DB_MIGRATION_USER` (owner, used only by Flyway at start-up) creates all objects and, in migration V1, the application role `DB_APP_USER` (default `contactgroups_app`, password `DB_APP_PASSWORD` passed as a Flyway placeholder). The application role gets `SELECT, INSERT, UPDATE, DELETE` on ordinary tables, but on `history_entry` only `SELECT, INSERT` and `UPDATE (details, user_email)`; no `DELETE`, no `CREATE` on the schema. `history_entry.group_id` references `contact_group` with `ON DELETE CASCADE`: referential-integrity actions run with the table owner's rights, so deleting a Group removes its History without a `DELETE` grant. `contact_version` and all child tables cascade the same way. A Testcontainers test connects as the application role and shows: UPDATE of `action` fails, DELETE fails, deleting a Group still removes its entries, `CREATE TABLE` fails.
 
 ## Consequences
 
-- Two sets of credentials in configuration (new keys, decision D-29).
+- Two sets of credentials in configuration (new keys, decision D-29); Compose maps the owner from `POSTGRES_USER`/`POSTGRES_PASSWORD`.
 - Flyway must run as the owner; the application pool uses the restricted role.
 - The "removed" replacement can touch only `details` and `user_email`; a code error cannot rewrite time, action or user name.
