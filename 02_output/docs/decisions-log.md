@@ -128,3 +128,14 @@
 - Human response: none
 - Resolution: pending (blocking)
 - Overrides: tech-stack.md `firebase-admin` and `springdoc` entries, once answered
+
+## D-12: Answer to D-11: variant C
+- Timestamp: 2026-11-08
+- Session: S1 /preflight (re-run with the human's answer)
+- Class: block
+- Type: approval
+- Trigger: follow-up to D-11; D-11 itself is not rewritten.
+- Options: as D-11; option 1 (variant C) was chosen.
+- Human response: "Yes, variant C" (2026-11-08, in chat) = option 1 of D-11.
+- Resolution: Option 1. `com.google.firebase:firebase-admin` 9.5.0 is used with `com.google.cloud:google-cloud-storage` and `com.google.cloud:google-cloud-firestore` excluded; `org.springdoc:springdoc-openapi-starter-webmvc-ui` is replaced by `org.springdoc:springdoc-openapi-starter-webmvc-api` 3.2.0 (OpenAPI description, no Swagger UI page). The scan of this set (D-10 set plus these two changes) reports no vulnerability in 85 libraries (`out/logs/preflight-dependency-check-report-boot4-C.json`); it resolves with Maven 3.9.11 on JDK 21.0.8. Left to /implement: show by a test against the Firebase emulator that ID-token checking works without the two excluded libraries (a failure is a new decision); add a Swagger UI page only through a new decision. The Maven vulnerability check is now met; the phase 0 gate still waits on the Firebase values in `.env`.
+- Overrides: tech-stack.md `firebase-admin` (exclusions) and `springdoc` (artifact `-ui` to `-api`) entries
