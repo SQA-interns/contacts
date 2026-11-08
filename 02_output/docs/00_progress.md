@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: T /to-spec
-- Result: done
-- Gate: not applicable to intake (the phase 0 gate runs in /preflight); DoR-S and DoR-R self-checked, open items are in the review checklist
-- Notes for the next session: 26 stories written (US-001 to US-019 MVP, 71 points; US-020 to US-026 second increment, 29 points). The developer must review `01_input/01_project/00_intake/review-checklist.md` first (97 assumptions, 27 open items, 27 developer answers). Developer review on 2026-11-08 answered 18 open items, all story-level ones (merge undo, Group restore, History after permanent deletion, no Group rename, name-only History after account deletion, Owner tells invitees, SCM left open, 30-day Trash, contact fields, neObvescaj, invitations, roles, merge rules, no undo of "not a duplicate", no API keys, no SSO). Nine product-level items in intent.md (OQ-P01, P02, P04 to P10) need the customer, The developer confirmed all 97 assumptions in the same review (checklist rows ticked); the 27 developer-answer rows and the nine customer items remain for the customer. Block-topic answers are still "customer to confirm". Open items marked "OPEN — needs customer" concern rights, deletion, personal data, consent or destructive actions (US-005, US-012, US-013, US-014, US-015, US-020, US-021, US-026, intent OQ-P05). Not read by this session: general/rules/decisions.md, so Block topics were inferred from the interview's "customer to confirm" notes. tech-stack.md versions are all unverified assumptions for /preflight.
+- Session: S1 /preflight
+- Result: blocked
+- Gate: phase 0 gate not passed (platforms and tools: no JDK, Node 26 not 22.20.0, no gitleaks, no Playwright browsers; no `.env`; npm Critical/High findings; untracked `.agents/` and `.claude/`; input manifest not written)
+- Notes for the next session: Full results are in `docs/00_preflight-report.md`, evidence in `out/logs/preflight-*`. All 93 pinned versions resolve and the Boot 3.5.7 BOM matches the pins. Non-blocking, recorded: D-01 (Docker, Compose, npm newer than pins), D-02 (Maven pins to 3.5.16 and pgjdbc 42.7.14, pending review; `tech-stack.md` is not edited). Blocking: D-03 (npm: `react-router`, `zod`, `firebase` runtime; `vite`, `vitest`, `@stryker-mutator/*`, `shadcn`, `firebase-tools` tooling) and D-04 (host prerequisites, secrets, git state). The Maven transitive scan (`dependency-check-maven`) and the Playwright screenshot could not run and must be done next time, after the JDK, Node 22 and the browsers exist. Re-run only the failed checks. If D-03 is answered with new versions, check them resolve and re-audit. The input manifest is written only when every check passes.
 
 ## Next
-- Command: /preflight
-- Waiting for: nothing
+- Command: /preflight D-03: 1
+- Waiting for: D-03, D-04
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |

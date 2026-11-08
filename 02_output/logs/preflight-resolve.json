@@ -1,0 +1,748 @@
+[
+ {
+  "eco": "maven",
+  "id": "org.springframework.boot:spring-boot-starter-web",
+  "version": "3.5.7",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/3.5.7/spring-boot-starter-web-3.5.7.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springframework.boot:spring-boot-starter-security",
+  "version": "3.5.7",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-security/3.5.7/spring-boot-starter-security-3.5.7.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springframework.boot:spring-boot-starter-validation",
+  "version": "3.5.7",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.5.7/spring-boot-starter-validation-3.5.7.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springframework.boot:spring-boot-starter-jdbc",
+  "version": "3.5.7",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-jdbc/3.5.7/spring-boot-starter-jdbc-3.5.7.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springframework.boot:spring-boot-starter-actuator",
+  "version": "3.5.7",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.5.7/spring-boot-starter-actuator-3.5.7.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.postgresql:postgresql",
+  "version": "42.7.8",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/postgresql/postgresql/42.7.8/postgresql-42.7.8.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.flywaydb:flyway-core",
+  "version": "11.7.2",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/flywaydb/flyway-core/11.7.2/flyway-core-11.7.2.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.flywaydb:flyway-database-postgresql",
+  "version": "11.7.2",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/flywaydb/flyway-database-postgresql/11.7.2/flyway-database-postgresql-11.7.2.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.google.firebase:firebase-admin",
+  "version": "9.5.0",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/com/google/firebase/firebase-admin/9.5.0/firebase-admin-9.5.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.apache.poi:poi-ooxml",
+  "version": "5.4.1",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml/5.4.1/poi-ooxml-5.4.1.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springdoc:springdoc-openapi-starter-webmvc-ui",
+  "version": "2.8.13",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.8.13/springdoc-openapi-starter-webmvc-ui-2.8.13.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.bucket4j:bucket4j-core",
+  "version": "8.10.1",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/com/bucket4j/bucket4j-core/8.10.1/bucket4j-core-8.10.1.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springframework.boot:spring-boot-starter-test",
+  "version": "3.5.7",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-test/3.5.7/spring-boot-starter-test-3.5.7.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springframework.security:spring-security-test",
+  "version": "6.5.6",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-test/6.5.6/spring-security-test-6.5.6.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.junit.jupiter:junit-jupiter",
+  "version": "5.12.2",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.12.2/junit-jupiter-5.12.2.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.testcontainers:postgresql",
+  "version": "1.21.3",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/testcontainers/postgresql/1.21.3/postgresql-1.21.3.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.testcontainers:junit-jupiter",
+  "version": "1.21.3",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/testcontainers/junit-jupiter/1.21.3/junit-jupiter-1.21.3.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.springframework.boot:spring-boot-testcontainers",
+  "version": "3.5.7",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-testcontainers/3.5.7/spring-boot-testcontainers-3.5.7.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.tngtech.archunit:archunit-junit5",
+  "version": "1.4.1",
+  "from": "dependency",
+  "url": "https://repo.maven.apache.org/maven2/com/tngtech/archunit/archunit-junit5/1.4.1/archunit-junit5-1.4.1.pom",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "react",
+  "version": "19.2.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/react/19.2.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "react-dom",
+  "version": "19.2.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/react-dom/19.2.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "react-router",
+  "version": "7.9.4",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/react-router/7.9.4",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@tanstack/react-query",
+  "version": "5.90.5",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@tanstack%2Freact-query/5.90.5",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "firebase",
+  "version": "12.4.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/firebase/12.4.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "i18next",
+  "version": "25.6.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/i18next/25.6.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "react-i18next",
+  "version": "16.0.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/react-i18next/16.0.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "react-hook-form",
+  "version": "7.65.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/react-hook-form/7.65.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "zod",
+  "version": "4.1.12",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/zod/4.1.12",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@hookform/resolvers",
+  "version": "5.2.2",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@hookform%2Fresolvers/5.2.2",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "tailwindcss",
+  "version": "4.1.15",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/tailwindcss/4.1.15",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@tailwindcss/vite",
+  "version": "4.1.15",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@tailwindcss%2Fvite/4.1.15",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "lucide-react",
+  "version": "0.546.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/lucide-react/0.546.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@radix-ui/react-dialog",
+  "version": "1.1.15",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@radix-ui%2Freact-dialog/1.1.15",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@radix-ui/react-dropdown-menu",
+  "version": "2.1.16",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@radix-ui%2Freact-dropdown-menu/2.1.16",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@radix-ui/react-checkbox",
+  "version": "1.3.3",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@radix-ui%2Freact-checkbox/1.3.3",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@radix-ui/react-select",
+  "version": "2.2.6",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@radix-ui%2Freact-select/2.2.6",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@radix-ui/react-tabs",
+  "version": "1.1.13",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@radix-ui%2Freact-tabs/1.1.13",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@radix-ui/react-slot",
+  "version": "1.2.3",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@radix-ui%2Freact-slot/1.2.3",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "class-variance-authority",
+  "version": "0.7.1",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/class-variance-authority/0.7.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "clsx",
+  "version": "2.1.1",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/clsx/2.1.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "tailwind-merge",
+  "version": "3.3.1",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/tailwind-merge/3.3.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "sonner",
+  "version": "2.0.7",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/sonner/2.0.7",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "typescript",
+  "version": "5.9.3",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/typescript/5.9.3",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "vite",
+  "version": "7.1.10",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/vite/7.1.10",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@vitejs/plugin-react",
+  "version": "5.0.4",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@vitejs%2Fplugin-react/5.0.4",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "vitest",
+  "version": "3.2.4",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/vitest/3.2.4",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@vitest/coverage-v8",
+  "version": "3.2.4",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@vitest%2Fcoverage-v8/3.2.4",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@testing-library/react",
+  "version": "16.3.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@testing-library%2Freact/16.3.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@testing-library/user-event",
+  "version": "14.6.1",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@testing-library%2Fuser-event/14.6.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@testing-library/jest-dom",
+  "version": "6.9.1",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@testing-library%2Fjest-dom/6.9.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "jsdom",
+  "version": "27.0.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/jsdom/27.0.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "msw",
+  "version": "2.11.5",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/msw/2.11.5",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@playwright/test",
+  "version": "1.56.1",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@playwright%2Ftest/1.56.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@axe-core/playwright",
+  "version": "4.10.2",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@axe-core%2Fplaywright/4.10.2",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "exceljs",
+  "version": "4.4.0",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/exceljs/4.4.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@types/react",
+  "version": "19.2.2",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@types%2Freact/19.2.2",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@types/react-dom",
+  "version": "19.2.2",
+  "from": "dependency",
+  "url": "https://registry.npmjs.org/@types%2Freact-dom/19.2.2",
+  "status": 200
+ },
+ {
+  "eco": "container",
+  "id": "postgres",
+  "version": "17.6",
+  "from": "dependency",
+  "url": "https://hub.docker.com/v2/repositories/library/postgres/tags/17.6",
+  "status": 200
+ },
+ {
+  "eco": "container",
+  "id": "eclipse-temurin",
+  "version": "21.0.8_9-jre",
+  "from": "dependency",
+  "url": "https://hub.docker.com/v2/repositories/library/eclipse-temurin/tags/21.0.8_9-jre",
+  "status": 200
+ },
+ {
+  "eco": "container",
+  "id": "eclipse-temurin",
+  "version": "21.0.8_9-jdk",
+  "from": "dependency",
+  "url": "https://hub.docker.com/v2/repositories/library/eclipse-temurin/tags/21.0.8_9-jdk",
+  "status": 200
+ },
+ {
+  "eco": "container",
+  "id": "node",
+  "version": "22.20.0-bookworm-slim",
+  "from": "dependency",
+  "url": "https://hub.docker.com/v2/repositories/library/node/tags/22.20.0-bookworm-slim",
+  "status": 200
+ },
+ {
+  "eco": "container",
+  "id": "nginx",
+  "version": "1.29.2-alpine",
+  "from": "dependency",
+  "url": "https://hub.docker.com/v2/repositories/library/nginx/tags/1.29.2-alpine",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.apache.maven:apache-maven",
+  "ext": "pom",
+  "version": "3.9.11",
+  "from": "tooling:maven",
+  "url": "https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.11/apache-maven-3.9.11.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.apache.maven.plugins:maven-compiler-plugin",
+  "version": "3.14.0",
+  "from": "tooling:maven-compiler-plugin",
+  "url": "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.14.0/maven-compiler-plugin-3.14.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.diffplug.spotless:spotless-maven-plugin",
+  "version": "2.46.1",
+  "from": "tooling:spotless-maven-plugin",
+  "url": "https://repo.maven.apache.org/maven2/com/diffplug/spotless/spotless-maven-plugin/2.46.1/spotless-maven-plugin-2.46.1.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.apache.maven.plugins:maven-checkstyle-plugin",
+  "version": "3.6.0",
+  "from": "tooling:maven-checkstyle-plugin",
+  "url": "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-checkstyle-plugin/3.6.0/maven-checkstyle-plugin-3.6.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.apache.maven.plugins:maven-surefire-plugin",
+  "version": "3.5.4",
+  "from": "tooling:maven-surefire-plugin",
+  "url": "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.4/maven-surefire-plugin-3.5.4.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.apache.maven.plugins:maven-failsafe-plugin",
+  "version": "3.5.4",
+  "from": "tooling:maven-failsafe-plugin",
+  "url": "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-failsafe-plugin/3.5.4/maven-failsafe-plugin-3.5.4.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.jacoco:jacoco-maven-plugin",
+  "version": "0.8.13",
+  "from": "tooling:jacoco-maven-plugin",
+  "url": "https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.8.13/jacoco-maven-plugin-0.8.13.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.pitest:pitest-maven",
+  "version": "1.20.3",
+  "from": "tooling:pitest-maven",
+  "url": "https://repo.maven.apache.org/maven2/org/pitest/pitest-maven/1.20.3/pitest-maven-1.20.3.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.github.spotbugs:spotbugs-maven-plugin",
+  "version": "4.9.6.0",
+  "from": "tooling:spotbugs-maven-plugin",
+  "url": "https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.9.6.0/spotbugs-maven-plugin-4.9.6.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.apache.maven.plugins:maven-pmd-plugin",
+  "version": "3.28.0",
+  "from": "tooling:maven-pmd-plugin",
+  "url": "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-pmd-plugin/3.28.0/maven-pmd-plugin-3.28.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.owasp:dependency-check-maven",
+  "version": "12.1.6",
+  "from": "tooling:dependency-check-maven",
+  "url": "https://repo.maven.apache.org/maven2/org/owasp/dependency-check-maven/12.1.6/dependency-check-maven-12.1.6.pom",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "prettier",
+  "version": "3.6.2",
+  "from": "tooling:prettier",
+  "url": "https://registry.npmjs.org/prettier/3.6.2",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "eslint",
+  "version": "9.37.0",
+  "from": "tooling:eslint",
+  "url": "https://registry.npmjs.org/eslint/9.37.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@stryker-mutator/core",
+  "version": "9.2.0",
+  "from": "tooling:stryker",
+  "url": "https://registry.npmjs.org/@stryker-mutator%2Fcore/9.2.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "eslint-plugin-security",
+  "version": "3.0.1",
+  "from": "tooling:eslint-plugin-security",
+  "url": "https://registry.npmjs.org/eslint-plugin-security/3.0.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "npm",
+  "version": "10.9.3",
+  "from": "tooling:npm-audit",
+  "url": "https://registry.npmjs.org/npm/10.9.3",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "license-checker-rseidelsohn",
+  "version": "4.4.2",
+  "from": "tooling:license-checker-rseidelsohn",
+  "url": "https://registry.npmjs.org/license-checker-rseidelsohn/4.4.2",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "shadcn",
+  "version": "3.4.2",
+  "from": "tooling:shadcn-cli",
+  "url": "https://registry.npmjs.org/shadcn/3.4.2",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "firebase-tools",
+  "version": "14.22.0",
+  "from": "tooling:firebase-tools",
+  "url": "https://registry.npmjs.org/firebase-tools/14.22.0",
+  "status": 200
+ },
+ {
+  "eco": "container",
+  "id": "zricethezav/gitleaks",
+  "tagPrefix": "v",
+  "version": "8.28.0",
+  "from": "tooling:gitleaks",
+  "url": "https://hub.docker.com/v2/repositories/zricethezav/gitleaks/tags/v8.28.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "jscpd",
+  "version": "4.0.5",
+  "from": "tooling:jscpd",
+  "url": "https://registry.npmjs.org/jscpd/4.0.5",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.google.googlejavaformat:google-java-format",
+  "version": "1.28.0",
+  "from": "tooling option",
+  "url": "https://repo.maven.apache.org/maven2/com/google/googlejavaformat/google-java-format/1.28.0/google-java-format-1.28.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.puppycrawl.tools:checkstyle",
+  "version": "11.0.1",
+  "from": "tooling option",
+  "url": "https://repo.maven.apache.org/maven2/com/puppycrawl/tools/checkstyle/11.0.1/checkstyle-11.0.1.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "org.pitest:pitest-junit5-plugin",
+  "version": "1.2.3",
+  "from": "tooling option",
+  "url": "https://repo.maven.apache.org/maven2/org/pitest/pitest-junit5-plugin/1.2.3/pitest-junit5-plugin-1.2.3.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.github.spotbugs:spotbugs",
+  "version": "4.9.6",
+  "from": "tooling option",
+  "url": "https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/4.9.6/spotbugs-4.9.6.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "com.h3xstream.findsecbugs:findsecbugs-plugin",
+  "version": "1.14.0",
+  "from": "tooling option",
+  "url": "https://repo.maven.apache.org/maven2/com/h3xstream/findsecbugs/findsecbugs-plugin/1.14.0/findsecbugs-plugin-1.14.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "maven",
+  "id": "net.sourceforge.pmd:pmd-java",
+  "version": "7.17.0",
+  "from": "tooling option",
+  "url": "https://repo.maven.apache.org/maven2/net/sourceforge/pmd/pmd-java/7.17.0/pmd-java-7.17.0.pom",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "@stryker-mutator/vitest-runner",
+  "version": "9.2.0",
+  "from": "tooling option",
+  "url": "https://registry.npmjs.org/@stryker-mutator%2Fvitest-runner/9.2.0",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "typescript-eslint",
+  "version": "8.46.1",
+  "from": "tooling option",
+  "url": "https://registry.npmjs.org/typescript-eslint/8.46.1",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "eslint-plugin-jsx-a11y",
+  "version": "6.10.2",
+  "from": "tooling option",
+  "url": "https://registry.npmjs.org/eslint-plugin-jsx-a11y/6.10.2",
+  "status": 200
+ },
+ {
+  "eco": "npm",
+  "id": "eslint-plugin-react-hooks",
+  "version": "5.2.0",
+  "from": "tooling option",
+  "url": "https://registry.npmjs.org/eslint-plugin-react-hooks/5.2.0",
+  "status": 200
+ }
+]

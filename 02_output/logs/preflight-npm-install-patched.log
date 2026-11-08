@@ -1,0 +1,17 @@
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'superstatic@9.2.0',
+npm warn EBADENGINE   required: { node: '18 || 20 || 22' },
+npm warn EBADENGINE   current: { node: 'v26.11.1', npm: '11.20.0' }
+npm warn EBADENGINE }
+
+up to date, audited 1579 packages in 15s
+
+49 vulnerabilities (3 low, 27 moderate, 16 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
