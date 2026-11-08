@@ -1,0 +1,33 @@
+
+> contact-groups-frontend@1.0.0 check
+> prettier --check . && eslint . && tsc -b --noEmit && vitest run src/i18n
+
+Checking formatting...
+All matched files use Prettier code style!
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  15 passed (15)
+   Start at  19:51:57
+   Duration  966ms (transform 169ms, setup 532ms, import 155ms, tests 64ms, environment 1.62s)
+
+
+> contact-groups-frontend@1.0.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 1869 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.52 kB │ gzip:   0.31 kB
+dist/assets/index-Bvy05Bgj.css   38.98 kB │ gzip:   7.63 kB
+dist/assets/index-CUBU4vuN.js   644.89 kB │ gzip: 204.53 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.38s

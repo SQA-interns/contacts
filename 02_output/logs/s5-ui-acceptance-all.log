@@ -1,0 +1,2440 @@
+
+Running 95 tests using 4 workers
+
+  ✓   3 [chromium] › acceptance/us001-account.spec.ts:24:1 › AC-001-01 registering Ana Novak sends the verification e-mail and asks to verify; no Group opens (555ms)
+  ✓   1 [chromium] › acceptance/us001-account.spec.ts:39:1 › AC-001-02 a verified sign-in opens the Group list (637ms)
+  ✓   4 [chromium] › acceptance/us001-account.spec.ts:61:1 › AC-001-05 a wrong password shows "E-mail or password is wrong" and nobody is signed in (640ms)
+  ✓   2 [chromium] › acceptance/us001-account.spec.ts:47:1 › AC-001-04 an unverified User sees "Verify your e-mail to continue" and the resend button, no Group (645ms)
+  ✓   5 [chromium] › acceptance/us001-account.spec.ts:76:1 › AC-001-06 the password Abc1234 (7 characters) creates no account; the rule is shown at the field (230ms)
+  ✓   6 [chromium] › acceptance/us001-account.spec.ts:87:1 › AC-001-07 registering an address that exists offers Sign in and Reset password; no second account (411ms)
+  ✓   8 [chromium] › acceptance/us001-account.spec.ts:127:1 › AC-001-09 after a reload Ana is still signed in (423ms)
+  ✓   7 [chromium] › acceptance/us001-account.spec.ts:109:1 › AC-001-08 the reset confirmation is the same for nobody@acme.com and a registered address (523ms)
+  ✓   9 [chromium] › acceptance/us001-account.spec.ts:136:1 › AC-001-10 after signing out the sign-in page is shown and the Group list needs a sign-in (567ms)
+  ✓  11 [chromium] › acceptance/us001-account.spec.ts:168:1 › EX-001-01 a password of exactly 8 characters creates the account (311ms)
+  ✓  12 [chromium] › acceptance/us001-account.spec.ts:177:1 › EX-001-02 a password of 7 characters is refused (248ms)
+  ✓  10 [chromium] › acceptance/us001-account.spec.ts:151:1 › AC-001-11 an expired token (401 from the server) returns Ana to the sign-in page (562ms)
+  ✓  14 [chromium] › acceptance/us001-account.spec.ts:199:3 › EX-001-04 a display name that is 101 characters creates no account; the message is at the field (238ms)
+  ✓  15 [chromium] › acceptance/us001-account.spec.ts:199:3 › EX-001-04 a display name that is empty creates no account; the message is at the field (255ms)
+  ✓  13 [chromium] › acceptance/us001-account.spec.ts:186:1 › EX-001-03 a display name of 100 characters creates the account (340ms)
+  ✓  16 [chromium] › acceptance/us001-account.spec.ts:211:1 › EX-001-06 the e-mail ana@ creates no account; the message is at the field (244ms)
+  ✓  17 [chromium] › acceptance/us001-account.spec.ts:219:1 › EX-001-08 a reset for an unregistered address shows the confirmation and reveals nothing (274ms)
+  ✘  21 [chromium] › acceptance/us002-groups.spec.ts:38:1 › AC-002-03 creating ACME next to Acme shows "You already have a group with this name" (111ms)
+  ✓  18 [chromium] › acceptance/us001-account.spec.ts:232:1 › EX-001-09 after verifying the e-mail and reloading, the Group list opens (468ms)
+  ✘  22 [chromium] › acceptance/us003-005-contact.spec.ts:31:1 › AC-003-02 with only a phone the form says one of the four is needed and keeps the phone (72ms)
+  ✘  24 [chromium] › acceptance/us003-005-contact.spec.ts:45:1 › AC-003-03 the e-mail ana@ shows a message next to the e-mail field and stores nothing (111ms)
+  ✘  25 [chromium] › acceptance/us003-005-contact.spec.ts:60:1 › AC-003-06 a stale save shows "This contact was changed by someone else" and the current Contact (105ms)
+  ✘  26 [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action (103ms)
+  ✘  27 [chromium] › acceptance/us003-005-contact.spec.ts:95:1 › AC-003-08 the Contact shows all 11 predefined fields, the Tag and the Attribute (104ms)
+  ✘  28 [chromium] › acceptance/us003-005-contact.spec.ts:149:1 › EX-003-13 the last name <script>alert(1)</script> is shown as plain text and not run (103ms)
+  ✘  29 [chromium] › acceptance/us003-005-contact.spec.ts:166:1 › AC-004-04 typing komp suggests kompetenca of the Group; the new key kompetentnost can be saved (107ms)
+  ✘  30 [chromium] › acceptance/us003-005-contact.spec.ts:187:1 › AC-004-07 a Viewer sees the Attributes but no control to change them (107ms)
+  ✘  31 [chromium] › acceptance/us003-005-contact.spec.ts:205:1 › AC-004-08 the key projekt of another Group is not suggested in Acme (108ms)
+  ✘  32 [chromium] › acceptance/us003-005-contact.spec.ts:220:1 › AC-005-03 the Tag "udelezenec 2025" shows the rule and adds no Tag (109ms)
+  ✘  33 [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme (107ms)
+  ✘  34 [chromium] › acceptance/us003-005-contact.spec.ts:246:1 › AC-005-07 the Tags neObvescaj and udelezenec2025 are shown in the list and on the Contact (107ms)
+  ✘  35 [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay (105ms)
+  ✘  36 [chromium] › acceptance/us006-tags.spec.ts:43:1 › AC-006-05 cancelling the deletion changes nothing (107ms)
+  ✘  37 [chromium] › acceptance/us007-009-list.spec.ts:41:1 › AC-007-01 Acme with 60 Contacts shows 25 sorted by last name and "60 contacts" (103ms)
+  ✘  38 [chromium] › acceptance/us007-009-list.spec.ts:52:1 › AC-007-03 choosing the header Company twice sorts ascending, then descending (103ms)
+  ✘  39 [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" (107ms)
+  ✘  40 [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" (101ms)
+  ✘  41 [chromium] › acceptance/us007-009-list.spec.ts:100:1 › AC-007-07 choosing the row of Ana Novak opens the Contact (103ms)
+  ✘  42 [chromium] › acceptance/us007-009-list.spec.ts:117:1 › EX-007-07 a very long company name stays available in full in the list (119ms)
+  ✘  43 [chromium] › acceptance/us007-009-list.spec.ts:135:1 › AC-008-05 searching kompetenca (a key only) shows "No contacts match" and "Clear filters" (106ms)
+  ✘  19 [chromium] › acceptance/us002-groups.spec.ts:13:1 › AC-002-07 a User with no Group sees the empty state with "Create group" (10.4s)
+  ✘  44 [chromium] › acceptance/us007-009-list.spec.ts:153:1 › AC-008-09 typing a search on page 3 shows page 1 of 2 and "30 contacts" (115ms)
+  ✘  45 [chromium] › acceptance/us007-009-list.spec.ts:165:1 › EX-008-04 the search text <script> finds nothing and is shown as text (123ms)
+  ✘  46 [chromium] › acceptance/us007-009-list.spec.ts:183:1 › AC-009-09 changing a filter on page 2 shows page 1 and the new count (106ms)
+  ✘  47 [chromium] › acceptance/us007-009-list.spec.ts:195:1 › AC-009-10 "Clear filters" shows the full list again (123ms)
+  ✘  48 [chromium] › acceptance/us007-009-list.spec.ts:209:1 › AC-009-11 the Tag filter of Acme does not offer gost of Beta (112ms)
+  ✘  49 [chromium] › acceptance/us007-009-list.spec.ts:224:1 › AC-009-12 a filter that matches nothing shows "No contacts match" and "Clear filters" (117ms)
+  ✘  50 [chromium] › acceptance/us010-011-selection.spec.ts:45:1 › AC-010-01 ticking 2 rows shows "2 selected" (117ms)
+  ✘  51 [chromium] › acceptance/us010-011-selection.spec.ts:55:1 › AC-010-02 the 2 ticked rows stay ticked after going to page 2 and back (113ms)
+  ✘  52 [chromium] › acceptance/us010-011-selection.spec.ts:70:1 › AC-010-03 "select all on this page" of 60 shows "25 selected" and offers "select all 60 results" (116ms)
+  ✘  53 [chromium] › acceptance/us010-011-selection.spec.ts:82:1 › AC-010-04 "select all 60 results" shows "60 selected" (116ms)
+  ✘  54 [chromium] › acceptance/us010-011-selection.spec.ts:92:1 › AC-010-05 changing the search to 12 matches clears a Selection of 60 (113ms)
+  ✘  55 [chromium] › acceptance/us010-011-selection.spec.ts:106:1 › AC-010-06 unticking one of 2 rows shows "1 selected" (115ms)
+  ✘  56 [chromium] › acceptance/us010-011-selection.spec.ts:117:1 › AC-010-07 a Viewer sees no checkbox and no selection control (114ms)
+  ✘  57 [chromium] › acceptance/us010-011-selection.spec.ts:130:1 › AC-010-08 "Clear selection" of 60 shows "0 selected" and changes no Contact (109ms)
+  ✘  58 [chromium] › acceptance/us010-011-selection.spec.ts:144:1 › AC-010-09 changing the sort order keeps a Selection of 60 (106ms)
+  ✘  59 [chromium] › acceptance/us010-011-selection.spec.ts:155:1 › EX-010-01 with exactly 25 results the whole page selected offers no "select all N results" (112ms)
+  ✘  60 [chromium] › acceptance/us010-011-selection.spec.ts:167:1 › EX-010-02 with 26 results the whole page selected offers "select all 26 results" (109ms)
+  ✘  61 [chromium] › acceptance/us010-011-selection.spec.ts:176:1 › EX-010-03 after a reload the Selection is empty (112ms)
+  ✘  62 [chromium] › acceptance/us010-011-selection.spec.ts:189:1 › EX-010-04 changing the search back to the earlier text leaves the Selection cleared (114ms)
+  ✘  63 [chromium] › acceptance/us010-011-selection.spec.ts:208:1 › AC-011-01 with nothing selected the Export button is disabled (127ms)
+  ✘  64 [chromium] › acceptance/us010-011-selection.spec.ts:217:1 › AC-011-05 an export of more than 10,000 shows the message to narrow the Selection (113ms)
+  ✘  65 [chromium] › acceptance/us012-015-trash-members.spec.ts:6:1 › AC-012-01 Delete asks for confirmation and the Contact is still listed (118ms)
+  ✘  66 [chromium] › acceptance/us012-015-trash-members.spec.ts:20:1 › EX-012-03 cancelling the delete confirmation changes nothing (106ms)
+  ✘  67 [chromium] › acceptance/us012-015-trash-members.spec.ts:37:1 › AC-013-02 cancelling "Delete forever" keeps the Contact in Trash (121ms)
+  ✘  68 [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme (112ms)
+  ✘  69 [chromium] › acceptance/us012-015-trash-members.spec.ts:74:1 › AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls (120ms)
+  ✘  70 [chromium] › acceptance/us012-015-trash-members.spec.ts:101:1 › AC-015-04 the only Owner trying to become Editor sees "A group needs at least one owner" (106ms)
+  ✘  71 [chromium] › acceptance/us016-019-history-language.spec.ts:65:1 › AC-016-03 entries of 2026-01-15 10:00 and 2026-07-01 10:00 UTC read 15. 1. 2026 11:00 and 1. 7. 2026 12:00 (112ms)
+  ✘  72 [chromium] › acceptance/us016-019-history-language.spec.ts:77:1 › EX-016-04 2026-03-29 00:30 UTC reads 01:30 (CET) and 01:30 UTC reads 03:30 (CEST) (109ms)
+  ✘  73 [chromium] › acceptance/us016-019-history-language.spec.ts:89:1 › AC-017-06 a start date after the end date shows the message next to the dates and no list (124ms)
+  ✘  74 [chromium] › acceptance/us016-019-history-language.spec.ts:103:1 › AC-017-07 filters that match nothing show "No activity matches" and a clear button (113ms)
+  ✘  75 [chromium] › acceptance/us016-019-history-language.spec.ts:115:1 › AC-018-16 the last name <script>alert(1)</script> is listed and opened as typed; no script runs (184ms)
+  ✓  76 [chromium] › acceptance/us016-019-history-language.spec.ts:136:3 › in a browser whose language is English › AC-019-01 the product opens in Slovene (131ms)
+  ✓  77 [chromium] › acceptance/us016-019-history-language.spec.ts:162:1 › AC-019-03 the language chosen last is used when the product is opened again (343ms)
+  ✘  78 [chromium] › acceptance/us016-019-history-language.spec.ts:144:1 › AC-019-02 switching to English keeps the half-filled Contact form (125ms)
+  ✘  79 [chromium] › acceptance/us016-019-history-language.spec.ts:180:1 › AC-019-04 the entry of 2026-11-08 10:00 UTC reads 8. 11. 2026 11:00, then 2026-11-08 11:00 (94ms)
+  ✘  80 [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched (122ms)
+  ✘  81 [chromium] › acceptance/us016-019-history-language.spec.ts:194:1 › AC-019-05 the country SI reads Slovenija, then Slovenia (123ms)
+  ✘  82 [chromium] › acceptance/us016-019-history-language.spec.ts:220:1 › AC-019-07 the error "changed by someone else" is shown in Slovene, then in English (118ms)
+  ✓  83 [chromium] › acceptance/us016-019-history-language.spec.ts:241:1 › EX-019-01 with browser storage blocked Slovene is used at every visit and nothing fails (223ms)
+  ✘  84 [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list (96ms)
+  ✘  85 [chromium] › acceptance/us016-019-history-language.spec.ts:262:1 › EX-019-02 a result that arrives after the switch is shown in the new language (109ms)
+  ✘  86 [chromium] › acceptance/us020-026-increment2.spec.ts:40:1 › AC-020-02 typing acme keeps the delete button disabled; the Group stays (110ms)
+  ✘  87 [chromium] › acceptance/us020-026-increment2.spec.ts:53:1 › AC-021-02 the Sole Owner of Acme sees that the account cannot be deleted, with Acme listed (115ms)
+  ✘  89 [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason (110ms)
+  ✘  90 [chromium] › acceptance/us020-026-increment2.spec.ts:108:1 › AC-024-10 without duplicates "No duplicates found" is shown (111ms)
+  ✘  91 [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B (103ms)
+  ✘  92 [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge (104ms)
+  ✘  93 [chromium] › acceptance/us020-026-increment2.spec.ts:164:1 › AC-026-05 and AC-026-12 "Združi" asks for confirmation; without it nothing is merged (104ms)
+  ✘  94 [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice (103ms)
+  ✘  95 [chromium] › acceptance/us020-026-increment2.spec.ts:196:1 › EX-026-03 with equal creation times the Contact with the smaller id is the Survivor (107ms)
+  ✘  20 [chromium] › acceptance/us002-groups.spec.ts:22:1 › AC-002-01 creating Acme shows it in the Group list with Role Owner (1.0m)
+  ✘  23 [chromium] › acceptance/us002-groups.spec.ts:53:1 › AC-002-05 an empty name shows the rule next to the field and creates nothing (1.0m)
+  ✘  88 [chromium] › acceptance/us020-026-increment2.spec.ts:74:1 › EX-021-03 cancelling the account deletion changes nothing (1.0m)
+
+
+  1) [chromium] › acceptance/us002-groups.spec.ts:13:1 › AC-002-07 a User with no Group sees the empty state with "Create group" 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: 'Ustvari skupino' }).first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: 'Ustvari skupino' }).first()[22m
+
+
+      17 |
+      18 |   await expect(page.getByRole('heading', { name: 'Še nimate nobene skupine' })).toBeVisible();
+    > 19 |   await expect(page.getByRole('button', { name: 'Ustvari skupino' }).first()).toBeVisible();
+         |                                                                               ^
+      20 | });
+      21 |
+      22 | test('AC-002-01 creating Acme shows it in the Group list with Role Owner', async ({ page }) => {
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us002-groups.spec.ts:19:79
+
+    Error Context: test-results/acceptance/us002-groups-AC-002-07-a-U-223c2-ty-state-with-Create-group--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us002-groups-AC-002-07-a-U-223c2-ty-state-with-Create-group--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us002-groups-AC-002-07-a-U-223c2-ty-state-with-Create-group--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › acceptance/us002-groups.spec.ts:22:1 › AC-002-01 creating Acme shows it in the Group list with Role Owner 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Ustvari skupino' }).first()[22m
+
+
+       5 |
+       6 | async function openCreateDialog(page: Page) {
+    >  7 |   await page.getByRole('button', { name: 'Ustvari skupino' }).first().click();
+         |                                                                       ^
+       8 |   const dialog = page.getByRole('dialog', { name: 'Nova skupina' });
+       9 |   await expect(dialog).toBeVisible();
+      10 |   return dialog;
+        at openCreateDialog (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us002-groups.spec.ts:7:71)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us002-groups.spec.ts:26:24
+
+    Error Context: test-results/acceptance/us002-groups-AC-002-01-cre-a335e--Group-list-with-Role-Owner-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us002-groups-AC-002-01-cre-a335e--Group-list-with-Role-Owner-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us002-groups-AC-002-01-cre-a335e--Group-list-with-Role-Owner-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › acceptance/us002-groups.spec.ts:38:1 › AC-002-03 creating ACME next to Acme shows "You already have a group with this name" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us002-groups.spec.ts:42:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us002-groups-AC-002-03-cre-29051-ave-a-group-with-this-name--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us002-groups-AC-002-03-cre-29051-ave-a-group-with-this-name--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › acceptance/us002-groups.spec.ts:53:1 › AC-002-05 an empty name shows the rule next to the field and creates nothing 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Ustvari skupino' }).first()[22m
+
+
+       5 |
+       6 | async function openCreateDialog(page: Page) {
+    >  7 |   await page.getByRole('button', { name: 'Ustvari skupino' }).first().click();
+         |                                                                       ^
+       8 |   const dialog = page.getByRole('dialog', { name: 'Nova skupina' });
+       9 |   await expect(dialog).toBeVisible();
+      10 |   return dialog;
+        at openCreateDialog (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us002-groups.spec.ts:7:71)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us002-groups.spec.ts:57:24
+
+    Error Context: test-results/acceptance/us002-groups-AC-002-05-an--b6f33-e-field-and-creates-nothing-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us002-groups-AC-002-05-an--b6f33-e-field-and-creates-nothing-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us002-groups-AC-002-05-an--b6f33-e-field-and-creates-nothing-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › acceptance/us003-005-contact.spec.ts:31:1 › AC-003-02 with only a phone the form says one of the four is needed and keeps the phone 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:34:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-003-0-212e1--needed-and-keeps-the-phone-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-003-0-212e1--needed-and-keeps-the-phone-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › acceptance/us003-005-contact.spec.ts:45:1 › AC-003-03 the e-mail ana@ shows a message next to the e-mail field and stores nothing 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:48:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-003-0-41423-il-field-and-stores-nothing-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-003-0-41423-il-field-and-stores-nothing-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › acceptance/us003-005-contact.spec.ts:60:1 › AC-003-06 a stale save shows "This contact was changed by someone else" and the current Contact 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:63:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-003-0-2639e-lse-and-the-current-Contact-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-003-0-2639e-lse-and-the-current-Contact-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:82:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › acceptance/us003-005-contact.spec.ts:95:1 › AC-003-08 the Contact shows all 11 predefined fields, the Tag and the Attribute 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:96:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-003-0-0f657-s-the-Tag-and-the-Attribute-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-003-0-0f657-s-the-Tag-and-the-Attribute-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › acceptance/us003-005-contact.spec.ts:149:1 › EX-003-13 the last name <script>alert(1)</script> is shown as plain text and not run 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:152:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-EX-003-1-68b4b-n-as-plain-text-and-not-run-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-EX-003-1-68b4b-n-as-plain-text-and-not-run-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium] › acceptance/us003-005-contact.spec.ts:166:1 › AC-004-04 typing komp suggests kompetenca of the Group; the new key kompetentnost can be saved 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:169:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-004-0-10fe0--kompetentnost-can-be-saved-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-004-0-10fe0--kompetentnost-can-be-saved-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [chromium] › acceptance/us003-005-contact.spec.ts:187:1 › AC-004-07 a Viewer sees the Attributes but no control to change them 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:188:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-004-0-9063d-t-no-control-to-change-them-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-004-0-9063d-t-no-control-to-change-them-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [chromium] › acceptance/us003-005-contact.spec.ts:205:1 › AC-004-08 the key projekt of another Group is not suggested in Acme 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:206:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-004-0-8fd91-up-is-not-suggested-in-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-004-0-8fd91-up-is-not-suggested-in-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [chromium] › acceptance/us003-005-contact.spec.ts:220:1 › AC-005-03 the Tag "udelezenec 2025" shows the rule and adds no Tag 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:221:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-005-0-a1dad-ws-the-rule-and-adds-no-Tag-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-005-0-a1dad-ws-the-rule-and-adds-no-Tag-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:234:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [chromium] › acceptance/us003-005-contact.spec.ts:246:1 › AC-005-07 the Tags neObvescaj and udelezenec2025 are shown in the list and on the Contact 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at owned (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:20:23)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:249:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-005-0-3e6f6-the-list-and-on-the-Contact-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-005-0-3e6f6-the-list-and-on-the-Contact-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at gostOnFive (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us006-tags.spec.ts:17:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us006-tags.spec.ts:30:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [chromium] › acceptance/us006-tags.spec.ts:43:1 › AC-006-05 cancelling the deletion changes nothing 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at gostOnFive (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us006-tags.spec.ts:17:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us006-tags.spec.ts:44:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us006-tags-AC-006-05-cancelling-the-deletion-changes-nothing-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us006-tags-AC-006-05-cancelling-the-deletion-changes-nothing-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [chromium] › acceptance/us007-009-list.spec.ts:41:1 › AC-007-01 Acme with 60 Contacts shows 25 sorted by last name and "60 contacts" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:22:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:42:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-01-A-a20a2--last-name-and-60-contacts--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-01-A-a20a2--last-name-and-60-contacts--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [chromium] › acceptance/us007-009-list.spec.ts:52:1 › AC-007-03 choosing the header Company twice sorts ascending, then descending 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:54:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-03-c-1423f-s-ascending-then-descending-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-03-c-1423f-s-ascending-then-descending-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:71:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-04-a-70240-pty-state-with-Add-contact--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-04-a-70240-pty-state-with-Add-contact--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:89:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-05-a-243ad--state-without-Add-contact--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-05-a-243ad--state-without-Add-contact--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [chromium] › acceptance/us007-009-list.spec.ts:100:1 › AC-007-07 choosing the row of Ana Novak opens the Contact 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:102:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-07-c-f9eba-Ana-Novak-opens-the-Contact-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-07-c-f9eba-Ana-Novak-opens-the-Contact-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [chromium] › acceptance/us007-009-list.spec.ts:117:1 › EX-007-07 a very long company name stays available in full in the list 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:119:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-EX-007-07-a-d8f9e-ailable-in-full-in-the-list-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-EX-007-07-a-d8f9e-ailable-in-full-in-the-list-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [chromium] › acceptance/us007-009-list.spec.ts:135:1 › AC-008-05 searching kompetenca (a key only) shows "No contacts match" and "Clear filters" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:139:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-008-05-s-bba86-ts-match-and-Clear-filters--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-008-05-s-bba86-ts-match-and-Clear-filters--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [chromium] › acceptance/us007-009-list.spec.ts:153:1 › AC-008-09 typing a search on page 3 shows page 1 of 2 and "30 contacts" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:22:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:154:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-008-09-t-638fb-age-1-of-2-and-30-contacts--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-008-09-t-638fb-age-1-of-2-and-30-contacts--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [chromium] › acceptance/us007-009-list.spec.ts:165:1 › EX-008-04 the search text <script> finds nothing and is shown as text 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:167:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-EX-008-04-t-aaf2e-othing-and-is-shown-as-text-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-EX-008-04-t-aaf2e-othing-and-is-shown-as-text-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [chromium] › acceptance/us007-009-list.spec.ts:183:1 › AC-009-09 changing a filter on page 2 shows page 1 and the new count 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:22:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:184:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-09-c-cc3b7-ws-page-1-and-the-new-count-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-09-c-cc3b7-ws-page-1-and-the-new-count-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [chromium] › acceptance/us007-009-list.spec.ts:195:1 › AC-009-10 "Clear filters" shows the full list again 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:22:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:196:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-10-C-32312-s-shows-the-full-list-again-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-10-C-32312-s-shows-the-full-list-again-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [chromium] › acceptance/us007-009-list.spec.ts:209:1 › AC-009-11 the Tag filter of Acme does not offer gost of Beta 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:211:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-11-t-1a1d1-does-not-offer-gost-of-Beta-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-11-t-1a1d1-does-not-offer-gost-of-Beta-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [chromium] › acceptance/us007-009-list.spec.ts:224:1 › AC-009-12 a filter that matches nothing shows "No contacts match" and "Clear filters" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:22:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:227:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-12-a-db2d8-ts-match-and-Clear-filters--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-12-a-db2d8-ts-match-and-Clear-filters--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [chromium] › acceptance/us010-011-selection.spec.ts:45:1 › AC-010-01 ticking 2 rows shows "2 selected" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:46:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-f8984-ng-2-rows-shows-2-selected--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-f8984-ng-2-rows-shows-2-selected--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  33) [chromium] › acceptance/us010-011-selection.spec.ts:55:1 › AC-010-02 the 2 ticked rows stay ticked after going to page 2 and back 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:56:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-d35b6-er-going-to-page-2-and-back-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-d35b6-er-going-to-page-2-and-back-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  34) [chromium] › acceptance/us010-011-selection.spec.ts:70:1 › AC-010-03 "select all on this page" of 60 shows "25 selected" and offers "select all 60 results" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:73:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-203dd-fers-select-all-60-results--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-203dd-fers-select-all-60-results--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  35) [chromium] › acceptance/us010-011-selection.spec.ts:82:1 › AC-010-04 "select all 60 results" shows "60 selected" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:83:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-b4635--results-shows-60-selected--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-b4635--results-shows-60-selected--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36) [chromium] › acceptance/us010-011-selection.spec.ts:92:1 › AC-010-05 changing the search to 12 matches clears a Selection of 60 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:93:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-aa7b2-es-clears-a-Selection-of-60-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-aa7b2-es-clears-a-Selection-of-60-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  37) [chromium] › acceptance/us010-011-selection.spec.ts:106:1 › AC-010-06 unticking one of 2 rows shows "1 selected" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:107:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-bf487-of-2-rows-shows-1-selected--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-bf487-of-2-rows-shows-1-selected--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38) [chromium] › acceptance/us010-011-selection.spec.ts:117:1 › AC-010-07 a Viewer sees no checkbox and no selection control 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:118:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-8129c-ox-and-no-selection-control-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-8129c-ox-and-no-selection-control-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  39) [chromium] › acceptance/us010-011-selection.spec.ts:130:1 › AC-010-08 "Clear selection" of 60 shows "0 selected" and changes no Contact 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:131:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-cdd54-cted-and-changes-no-Contact-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-cdd54-cted-and-changes-no-Contact-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  40) [chromium] › acceptance/us010-011-selection.spec.ts:144:1 › AC-010-09 changing the sort order keeps a Selection of 60 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:145:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-f1784-der-keeps-a-Selection-of-60-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-f1784-der-keeps-a-Selection-of-60-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  41) [chromium] › acceptance/us010-011-selection.spec.ts:155:1 › EX-010-01 with exactly 25 results the whole page selected offers no "select all N results" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:158:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-75473-rs-no-select-all-N-results--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-75473-rs-no-select-all-N-results--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  42) [chromium] › acceptance/us010-011-selection.spec.ts:167:1 › EX-010-02 with 26 results the whole page selected offers "select all 26 results" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:168:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-ee927-fers-select-all-26-results--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-ee927-fers-select-all-26-results--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  43) [chromium] › acceptance/us010-011-selection.spec.ts:176:1 › EX-010-03 after a reload the Selection is empty 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:177:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-464ba-load-the-Selection-is-empty-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-464ba-load-the-Selection-is-empty-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  44) [chromium] › acceptance/us010-011-selection.spec.ts:189:1 › EX-010-04 changing the search back to the earlier text leaves the Selection cleared 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:192:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-e2989-eaves-the-Selection-cleared-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-e2989-eaves-the-Selection-cleared-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  45) [chromium] › acceptance/us010-011-selection.spec.ts:208:1 › AC-011-01 with nothing selected the Export button is disabled 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:209:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-011-89ba0-e-Export-button-is-disabled-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-011-89ba0-e-Export-button-is-disabled-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  46) [chromium] › acceptance/us010-011-selection.spec.ts:217:1 › AC-011-05 an export of more than 10,000 shows the message to narrow the Selection 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:20:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:220:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-011-87c98-age-to-narrow-the-Selection-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-011-87c98-age-to-narrow-the-Selection-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  47) [chromium] › acceptance/us012-015-trash-members.spec.ts:6:1 › AC-012-01 Delete asks for confirmation and the Contact is still listed 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:8:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-b293f-the-Contact-is-still-listed-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-b293f-the-Contact-is-still-listed-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  48) [chromium] › acceptance/us012-015-trash-members.spec.ts:20:1 › EX-012-03 cancelling the delete confirmation changes nothing 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:22:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-EX-09951-onfirmation-changes-nothing-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-EX-09951-onfirmation-changes-nothing-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  49) [chromium] › acceptance/us012-015-trash-members.spec.ts:37:1 › AC-013-02 cancelling "Delete forever" keeps the Contact in Trash 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:39:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-03d7e--keeps-the-Contact-in-Trash-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-03d7e--keeps-the-Contact-in-Trash-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  50) [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:60:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  51) [chromium] › acceptance/us012-015-trash-members.spec.ts:74:1 › AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:78:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-3cba1-oles-and-no-change-controls-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-3cba1-oles-and-no-change-controls-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  52) [chromium] › acceptance/us012-015-trash-members.spec.ts:101:1 › AC-015-04 the only Owner trying to become Editor sees "A group needs at least one owner" 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:105:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-c7fbf-p-needs-at-least-one-owner--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-c7fbf-p-needs-at-least-one-owner--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  53) [chromium] › acceptance/us016-019-history-language.spec.ts:65:1 › AC-016-03 entries of 2026-01-15 10:00 and 2026-07-01 10:00 UTC read 15. 1. 2026 11:00 and 1. 7. 2026 12:00 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWithContact (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:27:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:68:28
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-66685-26-11-00-and-1-7-2026-12-00-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-66685-26-11-00-and-1-7-2026-12-00-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  54) [chromium] › acceptance/us016-019-history-language.spec.ts:77:1 › EX-016-04 2026-03-29 00:30 UTC reads 01:30 (CET) and 01:30 UTC reads 03:30 (CEST) 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWithContact (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:27:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:80:28
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-28bc3-01-30-UTC-reads-03-30-CEST--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-28bc3-01-30-UTC-reads-03-30-CEST--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  55) [chromium] › acceptance/us016-019-history-language.spec.ts:89:1 › AC-017-06 a start date after the end date shows the message next to the dates and no list 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWithContact (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:27:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:92:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-83bfc-xt-to-the-dates-and-no-list-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-83bfc-xt-to-the-dates-and-no-list-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  56) [chromium] › acceptance/us016-019-history-language.spec.ts:103:1 › AC-017-07 filters that match nothing show "No activity matches" and a clear button 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWithContact (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:27:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:106:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-ed2fb--matches-and-a-clear-button-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-ed2fb--matches-and-a-clear-button-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  57) [chromium] › acceptance/us016-019-history-language.spec.ts:115:1 › AC-018-16 the last name <script>alert(1)</script> is listed and opened as typed; no script runs 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWithContact (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:27:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:118:28
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-b4b26-ned-as-typed-no-script-runs-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-b4b26-ned-as-typed-no-script-runs-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  58) [chromium] › acceptance/us016-019-history-language.spec.ts:144:1 › AC-019-02 switching to English keeps the half-filled Contact form 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:146:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-7706a-he-half-filled-Contact-form-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-7706a-he-half-filled-Contact-form-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  59) [chromium] › acceptance/us016-019-history-language.spec.ts:180:1 › AC-019-04 the entry of 2026-11-08 10:00 UTC reads 8. 11. 2026 11:00, then 2026-11-08 11:00 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWithContact (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:27:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:183:28
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-cf79a-11-00-then-2026-11-08-11-00-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-cf79a-11-00-then-2026-11-08-11-00-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  60) [chromium] › acceptance/us016-019-history-language.spec.ts:194:1 › AC-019-05 the country SI reads Slovenija, then Slovenia 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at acmeWithContact (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:27:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:195:28
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-eef2a-ads-Slovenija-then-Slovenia-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-eef2a-ads-Slovenija-then-Slovenia-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  61) [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:209:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  62) [chromium] › acceptance/us016-019-history-language.spec.ts:220:1 › AC-019-07 the error "changed by someone else" is shown in Slovene, then in English 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:224:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-e15a0--in-Slovene-then-in-English-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-e15a0--in-Slovene-then-in-English-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  63) [chromium] › acceptance/us016-019-history-language.spec.ts:262:1 › EX-019-02 a result that arrives after the switch is shown in the new language 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:264:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-0dc9f-s-shown-in-the-new-language-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-0dc9f-s-shown-in-the-new-language-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  64) [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:27:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-57d30--Acme-leaves-the-Group-list-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-57d30--Acme-leaves-the-Group-list-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  65) [chromium] › acceptance/us020-026-increment2.spec.ts:40:1 › AC-020-02 typing acme keeps the delete button disabled; the Group stays 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:42:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-a5fc2-on-disabled-the-Group-stays-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-a5fc2-on-disabled-the-Group-stays-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  66) [chromium] › acceptance/us020-026-increment2.spec.ts:53:1 › AC-021-02 the Sole Owner of Acme sees that the account cannot be deleted, with Acme listed 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:57:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-7a167-be-deleted-with-Acme-listed-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-7a167-be-deleted-with-Acme-listed-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  67) [chromium] › acceptance/us020-026-increment2.spec.ts:74:1 › EX-021-03 cancelling the account deletion changes nothing 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Izbriši račun' })[22m
+
+
+      76 |   await openAs(page, cene, '/account');
+      77 |
+    > 78 |   await page.getByRole('button', { name: 'Izbriši račun' }).click();
+         |                                                             ^
+      79 |   const dialog = page.getByRole('dialog', { name: 'Izbrišem račun?' });
+      80 |   await expect(dialog).toContainText('Tega ni mogoče razveljaviti.');
+      81 |   await dialog.getByRole('button', { name: 'Prekliči' }).click();
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:78:61
+
+    Error Context: test-results/acceptance/us020-026-increment2-EX-02-50e3f-nt-deletion-changes-nothing-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-EX-02-50e3f-nt-deletion-changes-nothing-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-EX-02-50e3f-nt-deletion-changes-nothing-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  68) [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:92:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-88682-certain-set-with-the-reason-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-88682-certain-set-with-the-reason-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  69) [chromium] › acceptance/us020-026-increment2.spec.ts:108:1 › AC-024-10 without duplicates "No duplicates found" is shown 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:110:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-a01e0-o-duplicates-found-is-shown-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-a01e0-o-duplicates-found-is-shown-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  70) [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at pair (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:123:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:138:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-e4b1b-elected-from-A-phone-from-B-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-e4b1b-elected-from-A-phone-from-B-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  71) [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at pair (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:123:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:148:35
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  72) [chromium] › acceptance/us020-026-increment2.spec.ts:164:1 › AC-026-05 and AC-026-12 "Združi" asks for confirmation; without it nothing is merged 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at pair (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:123:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:167:35
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-3e856-ithout-it-nothing-is-merged-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-3e856-ithout-it-nothing-is-merged-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  73) [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at pair (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:123:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:182:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  74) [chromium] › acceptance/us020-026-increment2.spec.ts:196:1 › EX-026-03 with equal creation times the Contact with the smaller id is the Survivor 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:200:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-EX-02-19468--smaller-id-is-the-Survivor-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-EX-02-19468--smaller-id-is-the-Survivor-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  74 failed
+    [chromium] › acceptance/us002-groups.spec.ts:13:1 › AC-002-07 a User with no Group sees the empty state with "Create group" 
+    [chromium] › acceptance/us002-groups.spec.ts:22:1 › AC-002-01 creating Acme shows it in the Group list with Role Owner 
+    [chromium] › acceptance/us002-groups.spec.ts:38:1 › AC-002-03 creating ACME next to Acme shows "You already have a group with this name" 
+    [chromium] › acceptance/us002-groups.spec.ts:53:1 › AC-002-05 an empty name shows the rule next to the field and creates nothing 
+    [chromium] › acceptance/us003-005-contact.spec.ts:31:1 › AC-003-02 with only a phone the form says one of the four is needed and keeps the phone 
+    [chromium] › acceptance/us003-005-contact.spec.ts:45:1 › AC-003-03 the e-mail ana@ shows a message next to the e-mail field and stores nothing 
+    [chromium] › acceptance/us003-005-contact.spec.ts:60:1 › AC-003-06 a stale save shows "This contact was changed by someone else" and the current Contact 
+    [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action 
+    [chromium] › acceptance/us003-005-contact.spec.ts:95:1 › AC-003-08 the Contact shows all 11 predefined fields, the Tag and the Attribute 
+    [chromium] › acceptance/us003-005-contact.spec.ts:149:1 › EX-003-13 the last name <script>alert(1)</script> is shown as plain text and not run 
+    [chromium] › acceptance/us003-005-contact.spec.ts:166:1 › AC-004-04 typing komp suggests kompetenca of the Group; the new key kompetentnost can be saved 
+    [chromium] › acceptance/us003-005-contact.spec.ts:187:1 › AC-004-07 a Viewer sees the Attributes but no control to change them 
+    [chromium] › acceptance/us003-005-contact.spec.ts:205:1 › AC-004-08 the key projekt of another Group is not suggested in Acme 
+    [chromium] › acceptance/us003-005-contact.spec.ts:220:1 › AC-005-03 the Tag "udelezenec 2025" shows the rule and adds no Tag 
+    [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme 
+    [chromium] › acceptance/us003-005-contact.spec.ts:246:1 › AC-005-07 the Tags neObvescaj and udelezenec2025 are shown in the list and on the Contact 
+    [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+    [chromium] › acceptance/us006-tags.spec.ts:43:1 › AC-006-05 cancelling the deletion changes nothing 
+    [chromium] › acceptance/us007-009-list.spec.ts:41:1 › AC-007-01 Acme with 60 Contacts shows 25 sorted by last name and "60 contacts" 
+    [chromium] › acceptance/us007-009-list.spec.ts:52:1 › AC-007-03 choosing the header Company twice sorts ascending, then descending 
+    [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" 
+    [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" 
+    [chromium] › acceptance/us007-009-list.spec.ts:100:1 › AC-007-07 choosing the row of Ana Novak opens the Contact 
+    [chromium] › acceptance/us007-009-list.spec.ts:117:1 › EX-007-07 a very long company name stays available in full in the list 
+    [chromium] › acceptance/us007-009-list.spec.ts:135:1 › AC-008-05 searching kompetenca (a key only) shows "No contacts match" and "Clear filters" 
+    [chromium] › acceptance/us007-009-list.spec.ts:153:1 › AC-008-09 typing a search on page 3 shows page 1 of 2 and "30 contacts" 
+    [chromium] › acceptance/us007-009-list.spec.ts:165:1 › EX-008-04 the search text <script> finds nothing and is shown as text 
+    [chromium] › acceptance/us007-009-list.spec.ts:183:1 › AC-009-09 changing a filter on page 2 shows page 1 and the new count 
+    [chromium] › acceptance/us007-009-list.spec.ts:195:1 › AC-009-10 "Clear filters" shows the full list again 
+    [chromium] › acceptance/us007-009-list.spec.ts:209:1 › AC-009-11 the Tag filter of Acme does not offer gost of Beta 
+    [chromium] › acceptance/us007-009-list.spec.ts:224:1 › AC-009-12 a filter that matches nothing shows "No contacts match" and "Clear filters" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:45:1 › AC-010-01 ticking 2 rows shows "2 selected" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:55:1 › AC-010-02 the 2 ticked rows stay ticked after going to page 2 and back 
+    [chromium] › acceptance/us010-011-selection.spec.ts:70:1 › AC-010-03 "select all on this page" of 60 shows "25 selected" and offers "select all 60 results" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:82:1 › AC-010-04 "select all 60 results" shows "60 selected" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:92:1 › AC-010-05 changing the search to 12 matches clears a Selection of 60 
+    [chromium] › acceptance/us010-011-selection.spec.ts:106:1 › AC-010-06 unticking one of 2 rows shows "1 selected" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:117:1 › AC-010-07 a Viewer sees no checkbox and no selection control 
+    [chromium] › acceptance/us010-011-selection.spec.ts:130:1 › AC-010-08 "Clear selection" of 60 shows "0 selected" and changes no Contact 
+    [chromium] › acceptance/us010-011-selection.spec.ts:144:1 › AC-010-09 changing the sort order keeps a Selection of 60 
+    [chromium] › acceptance/us010-011-selection.spec.ts:155:1 › EX-010-01 with exactly 25 results the whole page selected offers no "select all N results" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:167:1 › EX-010-02 with 26 results the whole page selected offers "select all 26 results" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:176:1 › EX-010-03 after a reload the Selection is empty 
+    [chromium] › acceptance/us010-011-selection.spec.ts:189:1 › EX-010-04 changing the search back to the earlier text leaves the Selection cleared 
+    [chromium] › acceptance/us010-011-selection.spec.ts:208:1 › AC-011-01 with nothing selected the Export button is disabled 
+    [chromium] › acceptance/us010-011-selection.spec.ts:217:1 › AC-011-05 an export of more than 10,000 shows the message to narrow the Selection 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:6:1 › AC-012-01 Delete asks for confirmation and the Contact is still listed 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:20:1 › EX-012-03 cancelling the delete confirmation changes nothing 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:37:1 › AC-013-02 cancelling "Delete forever" keeps the Contact in Trash 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:74:1 › AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:101:1 › AC-015-04 the only Owner trying to become Editor sees "A group needs at least one owner" 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:65:1 › AC-016-03 entries of 2026-01-15 10:00 and 2026-07-01 10:00 UTC read 15. 1. 2026 11:00 and 1. 7. 2026 12:00 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:77:1 › EX-016-04 2026-03-29 00:30 UTC reads 01:30 (CET) and 01:30 UTC reads 03:30 (CEST) 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:89:1 › AC-017-06 a start date after the end date shows the message next to the dates and no list 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:103:1 › AC-017-07 filters that match nothing show "No activity matches" and a clear button 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:115:1 › AC-018-16 the last name <script>alert(1)</script> is listed and opened as typed; no script runs 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:144:1 › AC-019-02 switching to English keeps the half-filled Contact form 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:180:1 › AC-019-04 the entry of 2026-11-08 10:00 UTC reads 8. 11. 2026 11:00, then 2026-11-08 11:00 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:194:1 › AC-019-05 the country SI reads Slovenija, then Slovenia 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:220:1 › AC-019-07 the error "changed by someone else" is shown in Slovene, then in English 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:262:1 › EX-019-02 a result that arrives after the switch is shown in the new language 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:40:1 › AC-020-02 typing acme keeps the delete button disabled; the Group stays 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:53:1 › AC-021-02 the Sole Owner of Acme sees that the account cannot be deleted, with Acme listed 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:74:1 › EX-021-03 cancelling the account deletion changes nothing 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:108:1 › AC-024-10 without duplicates "No duplicates found" is shown 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:164:1 › AC-026-05 and AC-026-12 "Združi" asks for confirmation; without it nothing is merged 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:196:1 › EX-026-03 with equal creation times the Contact with the smaller id is the Survivor 
+  21 passed (1.4m)

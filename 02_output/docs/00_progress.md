@@ -5,19 +5,19 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S4 /acceptance-tests
+- Session: S5 /implement US-001
 - Result: done
-- Gate: phase 3 gate passed, with D-39 pending review (EX-019-03 has no screen that shows a decimal number, so it has no frozen test)
-- Notes for the next session: Frozen tests (`docs/03_acceptance-manifest.sha256`, freeze commit): backend `backend/src/test/java/si/contactgroups/acceptance/` (371 executions), UI `frontend/acceptance/` (95), E2E `frontend/e2e/` (E2E-01..06). All fail on the skeleton for missing behaviour (`docs/03_test-strategy.md`). Harness readings D-38: the product must take every time from the `java.time.Clock` bean; acceptance contexts read `RATE_LIMIT_PER_MINUTE`, `REQUIRE_HTTPS`, `TRASH_PURGE_CRON` as properties; the product registers one named FirebaseApp per JVM, so own-environment classes run in failsafe execution `acceptance-own-context`. While implementing, run single classes with `-Dit.test=<Class>` or skip with `-DskipAcceptance=true`; browser tests need `scripts/test-stack.sh up`, and the backend tests need port 9099 free (stop the stack first). Hidden suite in `hidden-tests/` (ignored by git; the runner moves it to the vault; manifest `docs/03_hidden-manifest.sha256`). Two test commits of this session exceed 400 lines (494 and 466: the US-005 and US-009 commits that also carry multi-story UI specs); not rewritten (commits.md). D-38 and D-39 are pending review, as are D-29..D-35.
+- Gate: DoD-S of US-001 passed, except DoD-S-07 in part (two commit subjects are 76 characters, over 72: `eb3d93a`, `1aaa78c`; not rewritten, commits.md)
+- Notes for the next session: US-001 built the read-only slice of the Group list that its frozen tests need (D-40): `GroupController` GET only, `GroupService.listGroups`, `GroupRepository.findGroupsOfUser`, `features/groups/GroupListPage` without the create dialog, and the 403 `auth.email_not_verified` filter `security/EmailVerifiedFilter` for everything under `/groups` and `/group-trash` (US-018 T-07 places it in its filter order). US-002 extends these files. `FirebaseTokenFilter` now finds or creates the User (ADR-04); the principal is `AuthenticatedUser(userId, email, emailVerified)`. Spring integration tests outside `acceptance/` must extend `support/ApplicationContextSupport` (one FirebaseApp per JVM). Frontend: `AuthProvider` takes an `AuthClient` (fake in `src/test/fakeAuth.ts`, whole app in tests via `src/test/renderApp.tsx`); shared `FormField`, `Notice`. UI checks with axe and screenshots run on the stack: `E2E_BASE_URL=http://localhost:5173 npx playwright test ui-checks --project=chromium` (`*.stack.spec.ts` need the stack). Results: backend acceptance 8 of 366 pass (Us001 7 of 7), own-context 2 of 5; UI acceptance 21 of 95 (US-001 18 of 18, US-019 3); E2E-01 now stops at step 4 "Ustvari skupino" (US-002), `logs/s5-e2e-01.log`. D-41 (c): a Google name over 100 characters fails with 500, needs a human answer before the release. D-40, D-41 pending review.
 
 ## Next
-- Command: /implement US-001
+- Command: /implement US-002
 - Waiting for: nothing
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
 |---|---|---|---|
-| US-001 | 1 | ready | — |
+| US-001 | 1 | done | passed (DoD-S-07: two subjects over 72 characters) |
 | US-002 | 1 | ready | — |
 | US-003 | 1 | ready | — |
 | US-004 | 1 | ready | — |

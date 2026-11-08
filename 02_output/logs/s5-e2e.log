@@ -1,0 +1,199 @@
+
+Running 6 tests using 1 worker
+
+  ✘  1 [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (15.7s)
+  ✘  2 [chromium] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (72ms)
+  ✘  3 [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (3.0m)
+  ✘  4 [chromium] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (174ms)
+  ✘  5 [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (183ms)
+  ✘  6 [chromium] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (69ms)
+
+
+  1) [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Še nimate nobene skupine' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Še nimate nobene skupine' })[22m
+
+
+      39 |   }
+      40 |   await expect(page.getByRole('heading', { level: 1, name: 'Moje skupine' })).toBeVisible();
+    > 41 |   await expect(page.getByRole('heading', { name: 'Še nimate nobene skupine' })).toBeVisible();
+         |                                                                                 ^
+      42 |
+      43 |   // 4. create Acme: it opens as an empty contact list
+      44 |   await page.getByRole('button', { name: 'Ustvari skupino' }).first().click();
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-01-first-use.spec.ts:41:81
+
+    Error Context: test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at ../acceptance/support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-02-team-work.spec.ts:22:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-02-team-work-E2E-02-te-eae33-istory-and-makes-him-Viewer-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-02-team-work-E2E-02-te-eae33-istory-and-makes-him-Viewer-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+
+    [31mTest timeout of 180000ms exceeded.[39m
+
+    Error: locator.click: Test ended.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Ustvari skupino' }).first()[22m
+
+
+      17 |   // 1. Ana creates Acme with 3 Contacts
+      18 |   await signIn(anaPage, ana);
+    > 19 |   await anaPage.getByRole('button', { name: 'Ustvari skupino' }).first().click();
+         |                                                                          ^
+      20 |   const dialog = anaPage.getByRole('dialog', { name: 'Nova skupina' });
+      21 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      22 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-03-isolation.spec.ts:19:74
+
+    Error Context: test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at ../acceptance/support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-04-export.spec.ts:45:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-04-export-E2E-04-expor-a7efd-see-it-in-the-activity-list-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-04-export-E2E-04-expor-a7efd-see-it-in-the-activity-list-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at ../acceptance/support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-05-clean-up.spec.ts:21:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 
+
+    Error: {"code":"request.method_not_allowed","message":"Method not allowed"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m405[39m
+
+       at ../acceptance/support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at createGroup (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:128:16)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-06-mistake-recovery.spec.ts:20:16
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+    [chromium] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer 
+    [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+    [chromium] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list 
+    [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
+    [chromium] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 

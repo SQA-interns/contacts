@@ -1,0 +1,23 @@
+
+Running 18 tests using 4 workers
+
+  ✓   4 [chromium] › acceptance/us001-account.spec.ts:24:1 › AC-001-01 registering Ana Novak sends the verification e-mail and asks to verify; no Group opens (935ms)
+  ✓   3 [chromium] › acceptance/us001-account.spec.ts:47:1 › AC-001-04 an unverified User sees "Verify your e-mail to continue" and the resend button, no Group (1.1s)
+  ✓   5 [chromium] › acceptance/us001-account.spec.ts:76:1 › AC-001-06 the password Abc1234 (7 characters) creates no account; the rule is shown at the field (532ms)
+  ✓   2 [chromium] › acceptance/us001-account.spec.ts:61:1 › AC-001-05 a wrong password shows "E-mail or password is wrong" and nobody is signed in (1.6s)
+  ✓   1 [chromium] › acceptance/us001-account.spec.ts:39:1 › AC-001-02 a verified sign-in opens the Group list (1.7s)
+  ✓   6 [chromium] › acceptance/us001-account.spec.ts:87:1 › AC-001-07 registering an address that exists offers Sign in and Reset password; no second account (583ms)
+  ✓   7 [chromium] › acceptance/us001-account.spec.ts:109:1 › AC-001-08 the reset confirmation is the same for nobody@acme.com and a registered address (780ms)
+  ✓   8 [chromium] › acceptance/us001-account.spec.ts:127:1 › AC-001-09 after a reload Ana is still signed in (789ms)
+  ✓   9 [chromium] › acceptance/us001-account.spec.ts:136:1 › AC-001-10 after signing out the sign-in page is shown and the Group list needs a sign-in (917ms)
+  ✓  10 [chromium] › acceptance/us001-account.spec.ts:151:1 › AC-001-11 an expired token (401 from the server) returns Ana to the sign-in page (909ms)
+  ✓  11 [chromium] › acceptance/us001-account.spec.ts:168:1 › EX-001-01 a password of exactly 8 characters creates the account (607ms)
+  ✓  12 [chromium] › acceptance/us001-account.spec.ts:177:1 › EX-001-02 a password of 7 characters is refused (515ms)
+  ✓  14 [chromium] › acceptance/us001-account.spec.ts:199:3 › EX-001-04 a display name that is 101 characters creates no account; the message is at the field (489ms)
+  ✓  13 [chromium] › acceptance/us001-account.spec.ts:186:1 › EX-001-03 a display name of 100 characters creates the account (573ms)
+  ✓  15 [chromium] › acceptance/us001-account.spec.ts:199:3 › EX-001-04 a display name that is empty creates no account; the message is at the field (498ms)
+  ✓  16 [chromium] › acceptance/us001-account.spec.ts:211:1 › EX-001-06 the e-mail ana@ creates no account; the message is at the field (497ms)
+  ✓  17 [chromium] › acceptance/us001-account.spec.ts:219:1 › EX-001-08 a reset for an unregistered address shows the confirmation and reveals nothing (430ms)
+  ✓  18 [chromium] › acceptance/us001-account.spec.ts:232:1 › EX-001-09 after verifying the e-mail and reloading, the Group list opens (606ms)
+
+  18 passed (4.9s)

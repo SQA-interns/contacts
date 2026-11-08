@@ -1,0 +1,36 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (3.0m)
+
+
+  1) [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    [31mTest timeout of 180000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 180000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Ustvari skupino' }).first()[22m
+
+
+      42 |
+      43 |   // 4. create Acme: it opens as an empty contact list
+    > 44 |   await page.getByRole('button', { name: 'Ustvari skupino' }).first().click();
+         |                                                                       ^
+      45 |   const dialog = page.getByRole('dialog', { name: 'Nova skupina' });
+      46 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      47 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-01-first-use.spec.ts:44:71
+
+    Error Context: test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 

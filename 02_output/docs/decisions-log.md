@@ -447,3 +447,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-41: Readings of US-001 made while implementing
+- Timestamp: 2026-11-08
+- Session: S5 /implement US-001
+- Class: open
+- Type: non-blocking
+- Trigger: details the story and the specification leave open: (a) R-001-01 says "a display name of 1 to 100 characters" without saying whether spaces count; (b) the Group list slice of D-40 needs an order, and US-002 gives none; (c) R-001-02 takes the Google profile name, but the data model allows at most 100 characters and a Google name can be longer; (d) WF-01 draws the Google button with a "G" mark, which would be a brand logo or a text outside the message catalog.
+- Options: 1 (default) (a) the name is trimmed and must then have 1 to 100 characters, so a name of only spaces is refused like an empty one (EX-001-04), and the trimmed name is saved; (b) by name ignoring case, until US-002 fixes an order; (c) left as it is for now: a Google name over 100 characters makes the first request fail with 500 `server.error`; to be decided with the human (cut it to 100 characters, or use the e-mail as for a missing name); (d) a generic sign-in icon instead of the letter. 2 ask the human per item.
+- Human response: none
+- Resolution: pending review (option 1); (c) needs an answer before the release.
+- Overrides: none
