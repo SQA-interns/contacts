@@ -414,3 +414,25 @@
 - Human response: "D-36: 1 (with customer)" (2026-11-08, in chat) = option 1 of D-36.
 - Resolution: Option 1. WF-01..WF-19 (`docs/wireframes/`, commit `2994e88`) are approved with the customer, including the choices listed in D-36. They bind `/acceptance-tests`, `/implement` and `/design`; a later change to structure is a decision, not a styling choice. The phase 2 gate is passed.
 - Overrides: none
+
+## D-38: Readings of the test harness (phase 3)
+- Timestamp: 2026-11-08
+- Session: S4 /acceptance-tests
+- Class: open
+- Type: non-blocking
+- Trigger: the frozen tests need ways to set up time, bulk data and limits that the inputs do not spell out (`general/testing/writing-tests.md`, `environments.md`, ADR-09, ADR-16).
+- Options: 1 (default) the readings below; 2 leave the time-, bulk- and limit-dependent AC/EX without tests.
+- Human response: none
+- Resolution: pending review. Option 1: (a) time: the backend acceptance tests replace the `java.time.Clock` bean with a movable clock (ADR-09); the product must take every time (History, Trash, Invitations, Versions, export date) from that bean. (b) clean-up: `TRASH_PURGE_CRON` is `* * * * * *` in the acceptance context, so BR-04 runs within a test; nothing calls internals. (c) bulk fixtures of 10,000+ Contacts and one Version with content of an earlier rule (AC-023-04) are written with SQL through the schema (the persistence contract, AR-04), as `seed/generate-large.sql` does; purge results (AC-013-04, AC-020-04) are checked in the database. (d) `RATE_LIMIT_PER_MINUTE` is raised in every context except `Us018RateLimitOwnContextAcceptanceIT` (default 100); the Compose test overlay `docker-compose.test.yml` raises it for the browser tests. (e) tests with their own environment run in a JVM of their own (failsafe execution `acceptance-own-context`), because the product registers one named `FirebaseApp` per JVM. (f) `frontend/e2e/smoke.spec.ts` (skeleton UI check) moved to `frontend/ui-checks/` so that `e2e/` holds only E2E-01..06; `npm run e2e` still runs the UI checks for CI. (g) where a screen must show a time or a server answer that the stack cannot produce on demand (AC-016-03, EX-016-04, AC-019-04, AC-001-11, AC-011-05, EX-026-03), the browser test serves that answer in the format of the contract.
+- Overrides: none
+
+## D-39: EX-019-03 has no screen that shows a decimal number
+- Timestamp: 2026-11-08
+- Session: S4 /acceptance-tests
+- Class: open
+- Type: non-blocking
+- Trigger: EX-019-03 (`1234,5` / `1234.5`) has no observable surface: no screen of WF-01..WF-19 and no field of the contract shows a non-integer number (counts, days left, version numbers are integers; phone numbers are stored as typed, BR-06). A test with an invented surface would check an assumption, not the requirement (`general/rules/decisions.md`).
+- Options: 1 (default) no frozen acceptance test for EX-019-03; R-019-04 is covered by the date and time tests (AC-019-04, AC-016-03, EX-016-04); `/implement` covers the number format of the i18n module with a unit test; 2 add a screen element that shows a decimal number (input change, needs the human).
+- Human response: none
+- Resolution: pending review (option 1). This is the only AC/EX without a frozen test.
+- Overrides: none

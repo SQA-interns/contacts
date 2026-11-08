@@ -6,12 +6,12 @@ The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
 - Session: S4 /acceptance-tests
-- Result: failed (stopped by the usage limit; work in progress, nothing frozen)
-- Gate: phase 3 gate not passed (tests incomplete, no manifests)
-- Notes for the next session: resume /acceptance-tests at "write acceptance tests" for US-004. Done: measurement exclusions in `docs/03_test-strategy.md`; backend harness `backend/src/test/java/si/contactgroups/acceptance/support/` (Emulator on fixed port 9099 with retry, MutableClock replacing the `Clock` bean, per-test truncate + emulator wipe, Http/Resp/TestUser/Grp/Db/Xlsx); pom.xml failsafe split into `default` and `acceptance` executions (`-DskipAcceptance`, display names in JUnit XML); tests Us001 (backend part), Us002, Us003, compiling, not yet run. Forged expired tokens need `Emulator.setValidSince` (emulator checks revocation). Plan left: US-004..026 backend tests (US-018 in own classes with RATE_LIMIT 100 and REQUIRE_HTTPS=true contexts); Playwright UI acceptance in `frontend/acceptance/` + `playwright.acceptance.config.ts` against a Compose test stack (raised rate limit); move `frontend/e2e/smoke.spec.ts` to `frontend/ui-checks/` so `e2e/` holds only E2E-01..06; hidden suite in `02_output/hidden-tests/` (own pom compiling `../backend/src/main`, run.sh merging JUnit XML, hidden.json); non-blocking decision for EX-019-03 (no screen shows a decimal number) and the Google UI flow (manual); run, lint, commit per story, freeze commit.
+- Result: done
+- Gate: phase 3 gate passed, with D-39 pending review (EX-019-03 has no screen that shows a decimal number, so it has no frozen test)
+- Notes for the next session: Frozen tests (`docs/03_acceptance-manifest.sha256`, freeze commit): backend `backend/src/test/java/si/contactgroups/acceptance/` (371 executions), UI `frontend/acceptance/` (95), E2E `frontend/e2e/` (E2E-01..06). All fail on the skeleton for missing behaviour (`docs/03_test-strategy.md`). Harness readings D-38: the product must take every time from the `java.time.Clock` bean; acceptance contexts read `RATE_LIMIT_PER_MINUTE`, `REQUIRE_HTTPS`, `TRASH_PURGE_CRON` as properties; the product registers one named FirebaseApp per JVM, so own-environment classes run in failsafe execution `acceptance-own-context`. While implementing, run single classes with `-Dit.test=<Class>` or skip with `-DskipAcceptance=true`; browser tests need `scripts/test-stack.sh up`, and the backend tests need port 9099 free (stop the stack first). Hidden suite in `hidden-tests/` (ignored by git; the runner moves it to the vault; manifest `docs/03_hidden-manifest.sha256`). Two test commits of this session exceed 400 lines (494 and 466: the US-005 and US-009 commits that also carry multi-story UI specs); not rewritten (commits.md). D-38 and D-39 are pending review, as are D-29..D-35.
 
 ## Next
-- Command: /acceptance-tests
+- Command: /implement US-001
 - Waiting for: nothing
 
 ## Stories
