@@ -1,5 +1,7 @@
 package si.contactgroups.persistence;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -27,5 +29,16 @@ public class GroupRepository {
         .param("userId", userId)
         .query(GroupSummary.class)
         .list();
+  }
+
+  /** Stores a new Group and returns its id; the Group has no Member yet. */
+  @GlobalScope
+  public UUID insert(String name, Instant createdAt) {
+    return jdbc.sql(
+            "INSERT INTO contact_group (name, created_at) VALUES (:name, :createdAt) RETURNING id")
+        .param("name", name)
+        .param("createdAt", Timestamp.from(createdAt))
+        .query(UUID.class)
+        .single();
   }
 }
