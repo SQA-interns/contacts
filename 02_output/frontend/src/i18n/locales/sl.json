@@ -29,6 +29,7 @@
   "auth": {
     "email": "E-pošta",
     "password": "Geslo",
+    "displayName": "Prikazno ime",
     "signIn": {
       "title": "Prijava",
       "submit": "Prijava",
@@ -39,6 +40,17 @@
       "noAccount": "Nimate računa?",
       "register": "Registracija",
       "invalidCredentials": "E-pošta ali geslo ni pravilno."
+    },
+    "register": {
+      "title": "Registracija",
+      "displayNameHint": "Ime, ki ga drugi člani vidijo v zgodovini. Do 100 znakov.",
+      "passwordHint": "Vsaj 8 znakov.",
+      "passwordShort": "Geslo mora imeti vsaj 8 znakov.",
+      "submit": "Ustvari račun",
+      "busy": "Ustvarjanje računa …",
+      "haveAccount": "Že imate račun?",
+      "emailInUse": "Ta e-poštni naslov je že registriran.",
+      "resetPassword": "Ponastavi geslo"
     }
   },
   "groups": {

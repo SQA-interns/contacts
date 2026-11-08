@@ -1,5 +1,6 @@
 import { Navigate, type RouteObject } from 'react-router';
 import { RequireVerified } from '@/auth/RequireVerified';
+import { RegisterPage } from '@/features/auth/RegisterPage';
 import { SignInPage } from '@/features/auth/SignInPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
 import { NotFoundPage } from '@/features/home/NotFoundPage';
@@ -13,6 +14,7 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <Navigate to="/groups" replace /> },
       { path: 'sign-in', element: <SignInPage /> },
+      { path: 'register', element: <RegisterPage /> },
       { element: <RequireVerified />, children: [{ path: 'groups', element: <GroupListPage /> }] },
       { path: '*', element: <NotFoundPage /> },
     ],

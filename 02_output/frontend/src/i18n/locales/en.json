@@ -29,6 +29,7 @@
   "auth": {
     "email": "E-mail",
     "password": "Password",
+    "displayName": "Display name",
     "signIn": {
       "title": "Sign in",
       "submit": "Sign in",
@@ -39,6 +40,17 @@
       "noAccount": "No account yet?",
       "register": "Register",
       "invalidCredentials": "E-mail or password is wrong."
+    },
+    "register": {
+      "title": "Register",
+      "displayNameHint": "The name other members see in the history. Up to 100 characters.",
+      "passwordHint": "At least 8 characters.",
+      "passwordShort": "The password must have at least 8 characters.",
+      "submit": "Create account",
+      "busy": "Creating account …",
+      "haveAccount": "Already have an account?",
+      "emailInUse": "This e-mail address is already registered.",
+      "resetPassword": "Reset password"
     }
   },
   "groups": {
