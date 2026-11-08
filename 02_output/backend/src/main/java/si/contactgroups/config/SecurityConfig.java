@@ -1,5 +1,6 @@
 package si.contactgroups.config;
 
+import java.time.Clock;
 import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,10 @@ import org.springframework.web.filter.CorsFilter;
 import si.contactgroups.security.EmailVerifiedFilter;
 import si.contactgroups.security.ErrorWriter;
 import si.contactgroups.security.FirebaseTokenFilter;
+import si.contactgroups.security.HttpsFilter;
+import si.contactgroups.security.RateLimitFilter;
 import si.contactgroups.security.RequestSizeFilter;
+import si.contactgroups.security.SecurityLogger;
 import si.contactgroups.security.TokenVerifier;
 import si.contactgroups.service.UserService;
 
@@ -31,7 +35,11 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(
-      HttpSecurity http, TokenVerifier verifier, UserService users, AppProperties properties)
+      HttpSecurity http,
+      TokenVerifier verifier,
+      UserService users,
+      AppProperties properties,
+      Clock clock)
       throws Exception {
     http.csrf(AbstractHttpConfigurer::disable) // bearer token in a header, no cookie session
         .cors(Customizer.withDefaults())
@@ -39,10 +47,14 @@ public class SecurityConfig {
         .authorizeHttpRequests(
             a ->
                 a.requestMatchers("/health", "/health/**").permitAll().anyRequest().authenticated())
+        .addFilterBefore(new SecurityLogger(), CorsFilter.class)
         .addFilterBefore(new RequestSizeFilter(properties.maxRequestSize()), CorsFilter.class)
+        .addFilterBefore(new HttpsFilter(properties.requireHttps()), CorsFilter.class)
         .addFilterBefore(
             new FirebaseTokenFilter(verifier, users), UsernamePasswordAuthenticationFilter.class)
-        .addFilterAfter(new EmailVerifiedFilter(), FirebaseTokenFilter.class)
+        .addFilterAfter(
+            new RateLimitFilter(clock, properties.rateLimitPerMinute()), FirebaseTokenFilter.class)
+        .addFilterAfter(new EmailVerifiedFilter(), RateLimitFilter.class)
         .exceptionHandling(
             e ->
                 e.authenticationEntryPoint(

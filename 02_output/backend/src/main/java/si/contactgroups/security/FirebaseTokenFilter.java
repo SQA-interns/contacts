@@ -62,7 +62,6 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
               UsernamePasswordAuthenticationToken.authenticated(
                   user, null, List.of(new SimpleGrantedAuthority("ROLE_USER"))));
     } catch (InvalidTokenException e) {
-      LOG.info("401 invalid token on {} {}", request.getMethod(), request.getRequestURI());
       ErrorWriter.write(
           response,
           HttpStatus.UNAUTHORIZED.value(),
