@@ -6,8 +6,188 @@ Everything the developer must confirm or answer before the run. Edit the project
 
 | Done | File | ID | Kind (assumption, open, developer answer) | Question | Proposed answer |
 |---|---|---|---|---|---|
+| [ ] | `00_setup/environments.md` | `TRASH_PURGE_CRON` | assumption | Confirm: "…Yes: once per hour" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Time zone | assumption | Confirm: "…Q-44 (customer to confirm); calendar days:" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Date and time format | assumption | Confirm: "…e `8. 11. 2026`), time `HH:mm` (24 hours). English: date `yyyy-MM-dd` (for example `2026-11-08`), time `HH:mm`" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Number format | assumption | Confirm: "…Slovene: decimal comma. English: decimal point" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Other: countries | assumption | Confirm: "…A country is chosen from the ISO 3166-1 list of countries" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | BR-02 | assumption | Confirm: "…Q-08, Q-26, Q-27, Q-37, Q-38 and the stories; Roles for actions the interview does not give are marked" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | BR-06 | assumption | Confirm: "…s a valid format and is at most 255 characters, phone (when present) has only digits, spaces and `+ - ( ) . /`" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | BR-07 | assumption | Confirm: "…saved (fields, tags or attributes changed through the Contact), the system shall raise its version number by 1" Reason: a change to tags or attributes counts as a save; renaming or deleting a Tag for the whole Group does not. | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | permission matrix * | assumption | Confirm the Roles marked * in the permission matrix: Trash view, Versions, duplicate search, Member list. | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Attribute | assumption | Confirm: "…1 to 255 characters" Reason: not empty. | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Glossary | assumption | Confirm the glossary terms added by `/to-spec`: User, Invitation, Version, Selection, Duplicate set, Survivor, Group activity list. | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | User | assumption | Confirm: "…A signed-in person with a verified e-mail." (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Invitation | assumption | Confirm: "…An Owner's offer of a Role in a Group to an e-mail address." (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Version | assumption | Confirm: "…A numbered state of a Contact (v1, v2, …); each save makes a new one." Reason: Q-40 describes it, Q-43 does not name it. | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Selection | assumption | Confirm: "…The Contacts ticked in the contact list for export." (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Duplicate set | assumption | Confirm: "…Two or more Contacts of one Group that match as duplicates, certain or probable." (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Survivor | assumption | Confirm: "…The Contact that remains after a merge (the oldest of the merged Contacts)." (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/business-rules.md` | Group activity list | assumption | Confirm: "…The Group-wide, filterable view of History." (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/e2e-scenarios.md` | Steps marked in the table | assumption | Confirm the extra steps added to the six journeys so that every MVP story is in a scenario (language switch, role change, Tag rename, delete forever). | Confirm as written. |
+| [ ] | `01_requirements/e2e-scenarios.md` | E2E-01 | assumption | Confirm: "…1. Open the product: the UI is Slovene" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/e2e-scenarios.md` | E2E-02 | assumption | Confirm: "… of the Contact: one entry by Boris with company `Acme d.o.o.` → `Beta d.o.o.`. 5. Ana changes Boris to Viewer" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/e2e-scenarios.md` | E2E-04 | assumption | Confirm: "…. In `Acme`, the Editor finds the mistyped Tag `udelezenec205` in the Tag list and renames it `udelezenec2025`" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/e2e-scenarios.md` | E2E-06 | assumption | Confirm: "…te and the restore. 4. The Owner moves another Contact to Trash and chooses "Delete forever" with confirmation" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-001.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-001.md` | R-001-01 | assumption | Confirm: "…ion form with an e-mail address, a password of at least 8 characters and a display name of 1 to 100 characters" Reason: the interview does not say that a name is asked; History needs one. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-001.md` | R-001-02 | assumption | Confirm: "…ase and use the name of the Google profile as display name, or the e-mail address when the profile has no name" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-001.md` | R-001-05 | assumption | Confirm: "…then the system shall show the single message "E-mail or password is wrong" without saying which one was wrong" Reason: avoids revealing which addresses are registered. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-001.md` | R-001-08 | assumption | Confirm: "…all start Firebase's reset e-mail flow and show the same confirmation whether or not the address is registered" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-002.md` | EX-002-06 | assumption | Confirm: "…A new `Acme` is accepted" Reason: Groups in Trash do not count. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-003.md` | R-003-05 | assumption | Confirm: "…ystem shall trim leading and trailing spaces from every text field of a Contact before checking and storing it" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-003.md` | R-003-10 | assumption | Confirm: "…aves a Contact whose e-mail equals the e-mail of another Contact of the Group, the system shall still store it" Reason: duplicates are found later, US-024, not prevented. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-003.md` | R-003-11 | assumption | Confirm: "…ave changes no field, then the system shall store nothing, keep the version number and record no History entry" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-004.md` | R-004-02 | assumption | Confirm: "…If a key is empty or longer than 50 characters, or a value is empty" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-004.md` | EX-004-04 | assumption | Confirm: "…Empty value" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-005.md` | Tag name | assumption | Confirm: "…Text of 1 to 50 characters made of letters (of any alphabet" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-005.md` | R-005-06 | assumption | Confirm: "…ag from a Contact, the system shall remove only the link; the Tag stays in the Group even if no Contact has it" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-005.md` | R-005-07 | assumption | Confirm: "…While an Owner or Editor types a Tag name, the system shall suggest the existing Tags of the Group" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-006.md` | Tag list | assumption | Confirm: "…The screen that lists the Tags of the Group with the number of Contacts that have each" Reason: the interview gives the actions, not the screen. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-006.md` | R-006-05 | assumption | Confirm: "…confirms the deletion of a Tag, the system shall remove the Tag from all Contacts, including Contacts in Trash" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-007.md` | List columns | assumption | Confirm: "…Last name, first name, e-mail, company, city, country, Tags" Reason: the interview says "sortable columns" but not which. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-007.md` | R-007-02 | assumption | Confirm: "…default, placing Contacts without a last name after those with one and ordering equal last names by first name" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-007.md` | R-007-03 | assumption | Confirm: "…y that column, ascending, and descending on the next choice, comparing texts ignoring case and accents (BR-05)" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-007.md` | R-007-08 | assumption | Confirm: "…" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-008.md` | R-008-01 | assumption | Confirm: "…the search text is contained in at least one searched field, ignoring upper and lower case and accents (BR-05)" Reason: a word matches anywhere inside a field; all words must match. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-009.md` | R-009-05 | assumption | Confirm: "…n the Group, the system shall show only the Contacts whose company equals it ignoring case and accents (BR-05)" Reason: one company at a time, chosen from a list. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-009.md` | R-009-06 | assumption | Confirm: "…all show only the Contacts that have an Attribute with that key (ignoring case) and that value (ignoring case)" Reason: one Attribute filter at a time. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-010.md` | R-010-02 | assumption | Confirm: "…While the Member is a Viewer, the system shall show no checkbox and no selection control" Reason: Viewers cannot export, so a Selection has no use for them. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-010.md` | R-010-08 | assumption | Confirm: "…When the search text or a filter changes, the system shall clear the Selection" Reason: the search text counts as a filter. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-010.md` | EX-010-03 | assumption | Confirm: "…The Selection is empty" Reason: the Selection lives only on the open page. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-011.md` | R-011-03 | assumption | Confirm: "… order: the 11 predefined fields, `Tags` (the Tag names of the Contact, comma-separated, in alphabetical order" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-011.md` | R-011-04 | assumption | Confirm: "…e export day (project-wide facts, time zone), replacing characters that are not allowed in file names with `_`" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-011.md` | R-011-09 | assumption | Confirm: "…The system shall write the header texts and the country names in the language of the active UI language" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-012.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-013.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-013.md` | R-013-04 | assumption | Confirm: "…When a Contact has been in Trash for 30 days, the system shall delete it permanently within 24 hours" Reason: the interview gives no delay for the clean-up job. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-013.md` | R-013-06 | assumption | Confirm: "… entry that names the action, the user (or "system") and the time and contains no personal data of the Contact" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-014.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-014.md` | R-014-01 | assumption | Confirm: "…When an Owner enters a valid e-mail address and a Role (Owner, Editor or Viewer" Reason: all three may be offered. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-014.md` | R-014-04 | assumption | Confirm: "… the e-mail address already belongs to a Member of the Group, or already has a pending Invitation to the Group" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-014.md` | R-014-05 | assumption | Confirm: "…mark the Invitation accepted and show the Group in the Group list; the User does not have to accept or decline" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-014.md` | R-014-12 | assumption | Confirm: "…The system shall not send any e-mail itself about an Invitation" Reason: no mail sending exists in the product, Q-33; the Owner tells the person. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-015.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-015.md` | R-015-01 | assumption | Confirm: "…ns the Member list, the system shall show every Member of the Group with display name, e-mail address and Role" Reason: all Members may see it. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-016.md` | R-016-07 | assumption | Confirm: "…The system shall keep the History entries of a Group as long as the Group exists" Reason: subject to the open personal-data question OQ-013-01. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-017.md` | Group activity list | assumption | Confirm: "…All History entries of a Group, newest first, 25 per page" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-017.md` | EX-017-03 | assumption | Confirm: "…Still selectable as a user filter" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-019.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-019.md` | R-019-03 | assumption | Confirm: "…When a User opens the product again in the same browser, the system shall use the language the User chose last" Reason: remembered in the browser. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-019.md` | EX-019-03 | assumption | Confirm: "…`1234,5` / `1234.5`" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-020.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-021.md` | priority, mvp | assumption | Confirm the priority and MVP flag in the front matter: the interview gives none for this story. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-021.md` | EX-021-04 | assumption | Confirm: "…The Invitation stays pending for the e-mail address" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-022.md` | R-022-06 | assumption | Confirm: "…If a Viewer asks for a Version, then the system shall refuse (BR-02)" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-023.md` | R-023-05 | assumption | Confirm: "…Tag of the restored Version no longer exists in the Group, the system shall create it again with the same name" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-023.md` | R-023-06 | assumption | Confirm: "…If a Viewer asks to restore a Version, then the system shall refuse (BR-02)" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-024.md` | Same phone number | assumption | Confirm: "…Phone numbers equal after removing spaces and `- ( ) . /`" Reason: the interview says "the same phone number" only. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-024.md` | R-024-08 | assumption | Confirm: "… a Contact belongs to a certain and a probable Duplicate set, the system shall show it only in the certain one" Reason: avoids overlapping sets. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-024.md` | R-024-09 | assumption | Confirm: "…If a Viewer asks for the duplicate search, then the system shall refuse (BR-02)" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-024.md` | EX-024-06 | assumption | Confirm: "…Not matched (both names are required)" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-025.md` | R-025-03 | assumption | Confirm: "…If a Duplicate set contains a Contact that was not in the dismissed set, then the system shall show it" Reason: a bigger set is new information. | Confirm as written. |
+| [ ] | `01_requirements/stories/US-025.md` | R-025-04 | assumption | Confirm: "…If a Viewer tries to dismiss a set, then the system shall refuse (BR-02)" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-025.md` | Out of scope | assumption | Confirm that undoing "not a duplicate" is out of scope (see OQ-025-01). | Confirm as written. |
+| [ ] | `01_requirements/stories/US-026.md` | EX-026-03 | assumption | Confirm: "…The Contact with the smaller internal id is the Survivor" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-026.md` | EX-026-04 | assumption | Confirm: "…Merge refused with the limit (BR-06 style limit of US-005)" (the interview is silent on this) | Confirm as written. |
+| [ ] | `01_requirements/stories/US-026.md` | EX-026-09 | assumption | Confirm: "…The merged notes would exceed 5,000 characters, so refused" Reason: text is not joined; the user chooses one. | Confirm as written. |
+| [ ] | `02_design/architecture.md` | backend bootstrap | assumption | Confirm: "…ect with the Maven Wrapper, written by hand from the Spring Initializr layout; root package `si.contactgroups`" (the interview is silent on this) | Confirm as written. |
+| [ ] | `02_design/architecture.md` | AR-09 | assumption | Confirm: "…etes a History entry, and the database user of the application has no `UPDATE` or `DELETE` right on that table" (the interview is silent on this) | Confirm as written. |
+| [ ] | `02_design/architecture.md` | AR-13 | assumption | Confirm: "…The permanent deletion of Contacts and Groups from Trash (BR-04) runs as a scheduled job inside the backend" (the interview is silent on this) | Confirm as written. |
+| [ ] | `02_design/quality-requirements.md` | NFR-07 | assumption | Confirm: "…Playwright runs the E2E scenarios in Chromium, Firefox and WebKit; Edge is covered by Chromium" (the interview is silent on this) | Confirm as written. |
+| [ ] | `02_design/quality-requirements.md` | NFR-10 | assumption | Confirm: "…Wireframe review; E2E-01 passes with at most 12 user actions from the first page to the first Contact" (the interview is silent on this) | Confirm as written. |
+| [ ] | `02_design/security-requirements.md` | backend | assumption | Confirm: "…Level 2" (the interview is silent on this) | Confirm as written. |
+| [ ] | `02_design/security-requirements.md` | frontend | assumption | Confirm: "…Level 2" (the interview is silent on this) | Confirm as written. |
+| [ ] | `02_design/security-requirements.md` | Server log (request time, path, status, User identifier) | assumption | Confirm: "…" (the interview is silent on this) | Confirm as written. |
+| [ ] | `00_setup/tech-stack.md` | all entries | assumption | Every version, the project licence and the permitted non-permissive licences (EPL in test/Logback, MPL-2.0 axe-core in tests, GPL-with-classpath-exception JRE image) are proposals. Are they acceptable? Preflight verifies the versions. | Confirm; preflight replaces any version that does not resolve. |
+| [ ] | `00_setup/run-config.md` | Allowed commands | assumption | Is the proposed list of allowed commands right (./mvnw, mvn, java, npm run, vitest, playwright, eslint, prettier, tsc, stryker, jscpd, firebase, npm audit, docker compose, gitleaks)? | Confirm; no shell, curl, rm -rf or sudo. |
+| [ ] | `00_setup/run-config.md` | Run label, Pre-approved findings | assumption | Run label and pre-approved findings are left empty as the skill demands. Set a run label before the run if you want a named run folder. | Leave empty or give a short label. |
+| [ ] | `01_requirements/intent.md` | OQ-P01 (Q-01) | open | What does the current situation cost the customer? | Ask the customer; no change in scope. |
+| [ ] | `01_requirements/intent.md` | OQ-P02 (Q-06) | open | Which measurable success criteria does the customer accept? (four developer proposals in "Core outcome") | Accept the four; confirm with the customer. |
+| [ ] | `01_requirements/intent.md` | OQ-P03 (Q-05, Q-53) | open | What does the SCM example do and which of its screens does the customer like? The brief says to match or beat it; the specification cannot check that. | Developer reviews https://github.com/anzo26/SCM (without reusing its code) and lists its features and screens. |
+| [ ] | `01_requirements/intent.md` | OQ-P04 (Q-50, Q-35) | open | Do the quality numbers hold (100 users, 20 at once, 10,000 Contacts, speeds, 99 %, backups)? | Keep the numbers; the customer confirms. |
+| [ ] | `01_requirements/intent.md` | OQ-P05 (Q-46) | open | OPEN — needs customer (personal data). Controller or processor, EU residency, countries of Contacts, special categories of data. | Customer answers; until then the product stores no special-category data by design and legal matters stay outside the software. |
+| [ ] | `01_requirements/intent.md` | OQ-P06 (Q-49) | open | Does a production Firebase project exist and who owns it? | The customer creates and owns it before release. |
+| [ ] | `01_requirements/intent.md` | OQ-P07 (Q-44) | open | Do time zone, languages and formats match the customer? Countries of users and Contacts? | Keep Europe/Ljubljana, Slovene and English. |
+| [ ] | `01_requirements/intent.md` | OQ-P08 (Q-53) | open | Brand colour, logo, product name. | Neutral default now; brand later. |
+| [ ] | `01_requirements/intent.md` | OQ-P09 (Q-22) | open | Is Excel import wanted later? | Not in the MVP; ask later. |
+| [ ] | `01_requirements/intent.md` | OQ-P10 (Q-45, Q-55) | open | Are the out-of-scope list and the acceptance checks right? | Confirm. |
+| [ ] | `01_requirements/stories/US-001.md` | OQ-001-01 (Q-47) | open | Does the customer want company single sign-on later? | Not now. |
+| [ ] | `01_requirements/stories/US-002.md` | OQ-002-01 (—) | open | May an Owner rename a Group? The interview does not say. | Yes, as a small later story; not in this specification. |
+| [ ] | `01_requirements/stories/US-003.md` | OQ-003-01 (Q-29, Q-30) | open | Does the customer accept phone, job title and notes, one e-mail and one phone, and the "at least one of four" rule? | Confirm. |
+| [ ] | `01_requirements/stories/US-005.md` | OQ-005-01 (Q-32, Q-33) | open | OPEN — needs customer (consent). Is `neObvescaj` only a marker for other tools, and does the product notify nobody? | Confirm the reading of Q-32. |
+| [ ] | `01_requirements/stories/US-012.md` | OQ-012-01 (Q-38) | open | OPEN — needs customer (deletion). Is 30 days in Trash right; is there a legal retention or erasure deadline? | Keep 30 days until the customer answers. |
+| [ ] | `01_requirements/stories/US-013.md` | OQ-013-01 (Q-37, Q-38) | open | OPEN — needs customer (personal data). What happens to the old and new values in History entries after a Contact is deleted forever (History is append-only)? | Keep the entries and replace the personal values with "removed". |
+| [ ] | `01_requirements/stories/US-013.md` | OQ-013-02 (Q-38) | open | OPEN — needs customer (deletion). Same as OQ-012-01. | As OQ-012-01. |
+| [ ] | `01_requirements/stories/US-014.md` | OQ-014-01 (Q-25) | open | OPEN — needs customer (rights). Is invitation by e-mail with automatic joining the wanted way to add people? | Confirm. |
+| [ ] | `01_requirements/stories/US-014.md` | OQ-014-02 (Q-33) | open | Who tells the invited person, since the product sends no e-mail? | The Owner tells them. |
+| [ ] | `01_requirements/stories/US-015.md` | OQ-015-01 (Q-08, Q-27) | open | OPEN — needs customer (rights). Are the three Roles and "no in-app administrator" right? | Confirm. |
+| [ ] | `01_requirements/stories/US-018.md` | OQ-018-01 (Q-39) | open | Will other tools call the REST interface directly (API keys early)? | Not in the MVP. |
+| [ ] | `01_requirements/stories/US-020.md` | OQ-020-01 (Q-38) | open | OPEN — needs customer (destructive). May an Owner restore a Group from the Group Trash? | Yes, within 30 days, as a small addition. |
+| [ ] | `01_requirements/stories/US-020.md` | OQ-020-02 (Q-38) | open | OPEN — needs customer (deletion). Same as OQ-012-01. | As OQ-012-01. |
+| [ ] | `01_requirements/stories/US-021.md` | OQ-021-01 (Q-47) | open | OPEN — needs customer (personal data). After account deletion, does the e-mail stay in History next to the name? | Only the name stays. |
+| [ ] | `01_requirements/stories/US-025.md` | OQ-025-01 (Q-41) | open | May a user undo "not a duplicate"? | Not in the first version. |
+| [ ] | `01_requirements/stories/US-026.md` | OQ-026-01 (Q-42) | open | OPEN — needs customer (destructive). Are the merge rules right? | Confirm. |
+| [ ] | `01_requirements/stories/US-026.md` | OQ-026-02 (Q-42, Q-54) | open | OPEN — needs customer. Does restoring a merged-away Contact from Trash also revert the Survivor? Q-54 journey 5 says restoring "undoes the merge". | No; restoring brings the Contact back, the Survivor is reverted by restoring its earlier Version (US-023). |
+| [ ] | `01_requirements/intent.md` | Q-06 | developer answer | Is the developer answer right and does the customer accept it? Core outcome: four success checks | Confirm. |
+| [ ] | `01_requirements/business-rules.md` | Q-08, Q-26, Q-27 | developer answer | Is the developer answer right and does the customer accept it? Permission matrix BR-02: Owner / Editor / Viewer, no Viewer export, no in-app administrator (rights topic) | Confirm. |
+| [ ] | `01_requirements/stories/US-014.md` | Q-25, Q-48 | developer answer | Is the developer answer right and does the customer accept it? Invitations: by e-mail, 20 pending, 14 days, last Owner protected (rights topic) | Confirm. |
+| [ ] | `01_requirements/intent.md` | Q-09 to Q-19 | developer answer | Is the developer answer right and does the customer accept it? Priority and MVP of every feature (the customer named the features, the developer set priority and MVP) | Confirm. |
+| [ ] | `01_requirements/stories/US-003.md` | Q-29, Q-30 | developer answer | Is the developer answer right and does the customer accept it? 11 predefined fields; at least one of four required; one e-mail and one phone | Confirm. |
+| [ ] | `01_requirements/stories/US-005.md` | Q-31 | developer answer | Is the developer answer right and does the customer accept it? Tag rules: 1 to 50 characters, up to 50 per Contact, case-insensitive | Confirm. |
+| [ ] | `01_requirements/stories/US-005.md` | Q-32, Q-33 | developer answer | Is the developer answer right and does the customer accept it? `neObvescaj` is a marker for other tools; the product sends no notifications (consent topic) | Confirm. |
+| [ ] | `01_requirements/stories/US-004.md` | Q-34 | developer answer | Is the developer answer right and does the customer accept it? Attribute rules: up to 50 pairs, key 50, value 255 | Confirm. |
+| [ ] | `01_requirements/stories/US-007.md` | Q-35 | developer answer | Is the developer answer right and does the customer accept it? List, search and filter rules; 25 per page; 10,000 Contacts target | Confirm. |
+| [ ] | `01_requirements/stories/US-011.md` | Q-36 | developer answer | Is the developer answer right and does the customer accept it? Excel export rules, 10,000 limit, formula-injection protection | Confirm. |
+| [ ] | `01_requirements/stories/US-016.md` | Q-37 | developer answer | Is the developer answer right and does the customer accept it? What History records and who sees it | Confirm. |
+| [ ] | `01_requirements/stories/US-012.md` | Q-38 | developer answer | Is the developer answer right and does the customer accept it? Trash 30 days, concurrent edits refused, group deletion (deletion topic) | Confirm. |
+| [ ] | `01_requirements/stories/US-022.md` | Q-40 | developer answer | Is the developer answer right and does the customer accept it? Versions: numbered, compare, restore creates a new Version | Confirm. |
+| [ ] | `01_requirements/stories/US-024.md` | Q-41 | developer answer | Is the developer answer right and does the customer accept it? Duplicate rules: certain by e-mail, probable by name plus company or phone | Confirm. |
+| [ ] | `01_requirements/stories/US-026.md` | Q-42 | developer answer | Is the developer answer right and does the customer accept it? Merge rules (destructive topic) | Confirm. |
+| [ ] | `01_requirements/stories/US-002.md` | Q-28, Q-43 | developer answer | Is the developer answer right and does the customer accept it? Group name rules; glossary names | Confirm. |
+| [ ] | `01_requirements/business-rules.md` | Q-44 | developer answer | Is the developer answer right and does the customer accept it? Project-wide facts: time zone, languages, formats | Confirm. |
+| [ ] | `01_requirements/intent.md` | Q-45, Q-55 | developer answer | Is the developer answer right and does the customer accept it? Out-of-scope list, principles, project done criteria | Confirm. |
+| [ ] | `02_design/security-requirements.md` | Q-46 | developer answer | Is the developer answer right and does the customer accept it? Legal matters outside the software (personal-data topic) | Confirm. |
+| [ ] | `01_requirements/stories/US-001.md` | Q-47 | developer answer | Is the developer answer right and does the customer accept it? Sign-in methods, verified e-mail, account deletion | Confirm. |
+| [ ] | `01_requirements/stories/US-018.md` | Q-39, Q-48 | developer answer | Is the developer answer right and does the customer accept it? REST interface promises, rate limit, request size, logging | Confirm. |
+| [ ] | `00_setup/environments.md` | Q-49 | developer answer | Is the developer answer right and does the customer accept it? Firebase emulator for tests, one development project | Confirm. |
+| [ ] | `02_design/quality-requirements.md` | Q-50 | developer answer | Is the developer answer right and does the customer accept it? Load, speed, availability, backups, browsers, accessibility numbers | Confirm. |
+| [ ] | `00_setup/tech-stack.md` | Q-51 | developer answer | Is the developer answer right and does the customer accept it? Java 21, Spring Boot 3.x, Maven, Vite, PostgreSQL 16+, POI, test tools | Confirm. |
+| [ ] | `00_setup/environments.md` | Q-52 | developer answer | Is the developer answer right and does the customer accept it? Deployment: images, Compose, three environments | Confirm. |
+| [ ] | `02_design/ui-design.md` | Q-53 | developer answer | Is the developer answer right and does the customer accept it? Neutral default design; brand later | Confirm. |
+| [ ] | `01_requirements/e2e-scenarios.md` | Q-54 | developer answer | Is the developer answer right and does the customer accept it? The six journeys | Confirm. |
 
 ## Stories
 
 | Story | Title | Priority | MVP | Estimate | Depends on |
 |---|---|---|---|---|---|
+| US-001 | Register and sign in | must | true | 5 | — |
+| US-002 | Create a Group and see my Groups | must | true | 3 | US-001 |
+| US-003 | Create, view and edit a Contact | must | true | 5 | US-002 |
+| US-004 | Add and change Attributes of a Contact | should | true | 3 | US-003, US-016 |
+| US-005 | Tag a Contact | must | true | 3 | US-003, US-016 |
+| US-006 | Rename and delete a Tag | must | true | 2 | US-005, US-016 |
+| US-007 | Browse the contact list | must | true | 3 | US-003 |
+| US-008 | Search Contacts | must | true | 3 | US-007, US-004, US-005 |
+| US-009 | Filter Contacts | must | true | 5 | US-007, US-004, US-005 |
+| US-010 | Select Contacts in the list | must | true | 3 | US-007 |
+| US-011 | Export the Selection to Excel | must | true | 5 | US-010, US-016 |
+| US-012 | Delete a Contact and restore it from Trash | must | true | 5 | US-003, US-016 |
+| US-013 | Delete a Contact forever | must | true | 3 | US-012, US-016 |
+| US-014 | Invite a person to a Group | must | true | 5 | US-002, US-016 |
+| US-015 | Manage Members and Roles | must | true | 3 | US-014 |
+| US-016 | See the History of a Contact | should | true | 5 | US-003 |
+| US-017 | See the Group activity list | should | true | 3 | US-016 |
+| US-018 | Secured REST interface and Group isolation | must | true | 5 | US-001, US-002 |
+| US-019 | Switch between Slovene and English | should | true | 2 | US-001 |
+| US-020 | Delete a Group | should | false | 3 | US-002, US-015 |
+| US-021 | Delete my account | could | false | 3 | US-015, US-020 |
+| US-022 | View and compare earlier Versions of a Contact | should | false | 5 | US-003, US-004, US-005 |
+| US-023 | Restore an earlier Version of a Contact | should | false | 3 | US-022, US-016 |
+| US-024 | Find duplicate Contacts | should | false | 5 | US-003 |
+| US-025 | Mark a Duplicate set as "not a duplicate" | should | false | 2 | US-024 |
+| US-026 | Merge duplicate Contacts | should | false | 8 | US-024, US-012, US-016 |
+
+MVP: 71 points in 19 stories. Second increment: 29 points in 7 stories.
+
+The next step is the review: the developer answers the rows above (with `/run` the review asks the questions), edits the project file named in each row, and marks the row done. Rows of kind "open" marked "OPEN — needs customer" concern rights, deletion, personal data, consent or destructive actions and stay open until the customer answers.
