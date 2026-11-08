@@ -1,0 +1,41 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (15.8s)
+
+
+  1) [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Kontakti', level: 1 })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Kontakti', level: 1 })[22m
+
+
+      46 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      47 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+    > 48 |   await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+         |                                                                           ^
+      49 |   await expect(page.getByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeVisible();
+      50 |
+      51 |   // 5. add Ana Novak, Acme d.o.o., Tag udelezenec2025, Attribute kompetenca=spletnoProgramiranje
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-01-first-use.spec.ts:48:75
+
+    Error Context: test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 

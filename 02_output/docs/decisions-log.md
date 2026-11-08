@@ -458,3 +458,25 @@
 - Human response: none
 - Resolution: pending review (option 1); (c) needs an answer before the release.
 - Overrides: none
+
+## D-42: Two frozen tests of US-002 set up their data through endpoints of later stories
+- Timestamp: 2026-11-08
+- Session: S5 /implement US-002
+- Class: open
+- Type: non-blocking
+- Trigger: DoD-S-01 asks every frozen test of US-002 to pass. `Us002GroupAcceptanceIT` EX-002-06 moves a Group to the Group Trash through `POST /groups/{groupId}/trash` (US-020, increment 2, `x-required-action: DELETE_GROUP`, needs `GroupAccessInterceptor` of US-018 T-07) and EX-002-07 makes Ana an Editor through an Invitation (`POST /groups/{groupId}/invitations`, US-014 R-014-05). Both fail in their setup with 404 `route.not_found` before they reach the US-002 behaviour. The behaviour itself (Groups in Trash and Groups the User does not own do not count for R-002-03) is built in T-05 and covered by `GroupEndpointsIT` (`r_002_03_a_group_in_trash_does_not_count`, `r_002_03_a_group_of_which_the_user_is_not_owner_does_not_count`), which set up the data directly in the database.
+- Options: 1 (default) leave the two frozen tests red until US-014 (EX-002-07) and US-020 (EX-002-06) build the endpoints; mark US-002 done with DoD-S-01 open for these two, and let `/implement US-014` and `/implement US-020` confirm them. 2 build slices of the Invitation and Group Trash endpoints now, as D-40 did for the Group list; rejected as default because Group Trash belongs to increment 2 and both need the access check of US-018, which comes after US-002 in the plan.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
+
+## D-43: Readings of US-002 made while implementing
+- Timestamp: 2026-11-08
+- Session: S5 /implement US-002
+- Class: open
+- Type: non-blocking
+- Trigger: details the story, the specification and WF-05 leave open: (a) WF-05 draws a contact count on each Group tile, but the contract schema `GroupSummary` has no such field; (b) WF-05 draws "Koš skupin" and an Owner card menu, which belong to US-020; (c) texts the wireframe does not give: the busy label of the submit button and the English texts of the dialog; (d) R-002-02 counts characters, while the browser check counts UTF-16 code units, so a name of 100 characters outside the Basic Multilingual Plane (for example emoji) is refused in the browser and by the server (`String.length()`), although the column would hold it; (e) the order of the Group list (D-41 b) is not given by US-002 either; (f) a missing or `null` name is treated as an empty name (422 `validation.name_invalid`), not as a malformed request.
+- Options: 1 (default) (a) no count on the tile until a story and the contract add one; (b) left to US-020; (c) [ASSUMPTION] "Ustvarjanje …" / "Creating …" while the request runs, English "New group", "Group name", "Up to 100 characters.", "Create", "Group created." (the Slovene texts are those of WF-05); (d) kept: the stricter reading refuses only names the customer is unlikely to use; (e) kept: by name ignoring case; (f) as written. 2 ask the human per item.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

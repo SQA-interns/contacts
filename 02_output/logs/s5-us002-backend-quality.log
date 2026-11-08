@@ -1,0 +1,155 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< si.contactgroups:contact-groups-backend >---------------
+[INFO] Building Contact Groups backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.1:enforce (enforce) @ contact-groups-backend ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BanDynamicVersions passed
+[INFO] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ contact-groups-backend ---
+[INFO] argLine set to -javaagent:/Users/kyuhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ contact-groups-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ contact-groups-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 36 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ contact-groups-backend ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ contact-groups-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 63 source files with javac [debug parameters release 21] to target/test-classes
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/acceptance/support/Contract.java:[49,71] fields() in com.fasterxml.jackson.databind.JsonNode has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/acceptance/support/Contract.java:[52,68] fields() in com.fasterxml.jackson.databind.JsonNode has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/acceptance/Us018SecurityAcceptanceIT.java:[219,74] fields() in com.fasterxml.jackson.databind.JsonNode has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/web/GroupEndpointsIT.java:[74,28] isUnprocessableEntity() in org.springframework.test.web.servlet.result.StatusResultMatchers has been deprecated
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ contact-groups-backend ---
+[INFO] Building jar: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/contact-groups-backend.jar
+[INFO] 
+[INFO] --- spring-boot:4.0.9:repackage (repackage) @ contact-groups-backend ---
+[WARNING]  Parameter 'finalName' is read-only, must not be used in configuration
+[INFO] Replacing main artifact /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/contact-groups-backend.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/contact-groups-backend.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent-integration (prepare-agent-integration) @ contact-groups-backend ---
+[INFO] argLine set to -javaagent:/Users/kyuhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.4:integration-test (default) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:integration-test (acceptance) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:integration-test (acceptance-own-context) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:verify (default) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:verify (acceptance) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:verify (acceptance-own-context) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report) @ contact-groups-backend ---
+[INFO] Loading execution data file /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco.exec
+[INFO] Analyzed bundle 'Contact Groups backend' with 34 classes
+[INFO] 
+[INFO] --- jacoco:0.8.13:report-integration (report) @ contact-groups-backend ---
+[INFO] Loading execution data file /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'Contact Groups backend' with 34 classes
+[WARNING] Classes in bundle 'Contact Groups backend' do not match with execution data. For report generation the same class files must be used as at runtime.
+[WARNING] Execution data for class si/contactgroups/persistence/UserRepository does not match.
+[WARNING] Execution data for class si/contactgroups/persistence/GroupRepository does not match.
+[WARNING] Execution data for class si/contactgroups/web/GroupController does not match.
+[WARNING] Execution data for class si/contactgroups/web/ApiExceptionHandler does not match.
+[WARNING] Execution data for class si/contactgroups/service/GroupService does not match.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (default) @ contact-groups-backend ---
+[INFO] Spotless.Java is keeping 99 files clean - 0 needs changes to be clean, 2 were already clean, 97 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (default) @ contact-groups-backend ---
+[INFO] Starting audit...
+Audit done.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] >>> spotbugs:4.9.6.0:check (default) > :spotbugs @ contact-groups-backend >>>
+[INFO] 
+[INFO] --- spotbugs:4.9.6.0:spotbugs (spotbugs) @ contact-groups-backend ---
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] Skipping com.github.spotbugs:spotbugs-maven-plugin:4.9.6.0:spotbugs report goal
+[INFO] 
+[INFO] <<< spotbugs:4.9.6.0:check (default) < :spotbugs @ contact-groups-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs:4.9.6.0:check (default) @ contact-groups-backend ---
+[INFO] BugInstance size is 0
+[INFO] Error size is 0
+[INFO] No errors/warnings found
+[INFO] 
+[INFO] >>> pmd:3.28.0:check (default) > :pmd @ contact-groups-backend >>>
+[INFO] 
+[INFO] --- pmd:3.28.0:pmd (pmd) @ contact-groups-backend ---
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[INFO] PMD version: 7.17.0
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:9:5
+  7|     <exclude name="MissingSerialVersionUID"/>
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+         ^^^^^^^^ Exclude pattern 'BeanMembersShouldSerialize' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+ 11|     <exclude name="NullAssignment"/>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:10:5
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+         ^^^^^^^^ Exclude pattern 'DataflowAnomalyAnalysis' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 11|     <exclude name="NullAssignment"/>
+ 12|   </rule>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:9:5
+  7|     <exclude name="MissingSerialVersionUID"/>
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+         ^^^^^^^^ Exclude pattern 'BeanMembersShouldSerialize' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+ 11|     <exclude name="NullAssignment"/>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:10:5
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+         ^^^^^^^^ Exclude pattern 'DataflowAnomalyAnalysis' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 11|     <exclude name="NullAssignment"/>
+ 12|   </rule>
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] 
+[INFO] <<< pmd:3.28.0:check (default) < :pmd @ contact-groups-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.28.0:check (default) @ contact-groups-backend ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.031 s
+[INFO] Finished at: 2026-11-08T20:44:36+01:00
+[INFO] ------------------------------------------------------------------------

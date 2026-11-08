@@ -1,0 +1,574 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/groups/GroupListPage.test.tsx (11 tests | 7 failed) 6174ms
+     × R-002-06 the empty state offers "Ustvari skupino", which opens the dialog 12ms
+     × R-002-01 a valid name is sent, the dialog closes and the list shows the new Group 1006ms
+     × R-002-02 an empty name shows the rule next to the field and sends nothing 1009ms
+     × R-002-02 a name of 101 characters shows the rule and sends nothing 1009ms
+     × R-002-02 the rule from the server is shown next to the field 1011ms
+     × R-002-03 a name the User already owns shows the message and keeps the input 1009ms
+     × shows a general error without technical detail when the server fails 1006ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > R-002-06 the empty state offers "Ustvari skupino", which opens the dialog
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Ustvari skupino"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Še nimate nobene skupine":
+  [36m<h2[39m
+    [33mclass[39m=[32m"text-xl font-semibold"[39m
+  [36m/>[39m
+
+  --------------------------------------------------paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<section[39m
+  [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+[36m>[39m
+  [36m<h2[39m
+    [33mclass[39m=[32m"text-xl font-semibold"[39m
+  [36m>[39m
+    [0mŠe nimate nobene skupine[0m
+  [36m</h2>[39m
+  [36m<p[39m
+    [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+  [36m>[39m
+    [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+  [36m</p>[39m
+[36m</section>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/groups/GroupListPage.test.tsx:110:56
+    108|
+    109|     const empty = (await screen.findByRole('heading', { name: 'Še nima…
+    110|     await userEvent.click(within(empty as HTMLElement).getByRole('butt…
+       |                                                        ^
+    111|
+    112|     const dialog = await screen.findByRole('dialog', { name: 'Nova sku…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > R-002-01 a valid name is sent, the dialog closes and the list shows the new Group
+TestingLibraryElementError: Unable to find role="button" and name "Ustvari skupino"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openCreateDialog src/features/groups/GroupListPage.test.tsx:27:39
+     25|
+     26| async function openCreateDialog() {
+     27|   await userEvent.click((await screen.findAllByRole('button', { name: …
+       |                                       ^
+     28|   return screen.findByRole('dialog', { name: 'Nova skupina' });
+     29| }
+ ❯ submitName src/features/groups/GroupListPage.test.tsx:32:24
+ ❯ src/features/groups/GroupListPage.test.tsx:120:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > R-002-02 an empty name shows the rule next to the field and sends nothing
+TestingLibraryElementError: Unable to find role="button" and name "Ustvari skupino"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openCreateDialog src/features/groups/GroupListPage.test.tsx:27:39
+     25|
+     26| async function openCreateDialog() {
+     27|   await userEvent.click((await screen.findAllByRole('button', { name: …
+       |                                       ^
+     28|   return screen.findByRole('dialog', { name: 'Nova skupina' });
+     29| }
+ ❯ submitName src/features/groups/GroupListPage.test.tsx:32:24
+ ❯ src/features/groups/GroupListPage.test.tsx:131:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > R-002-02 a name of 101 characters shows the rule and sends nothing
+TestingLibraryElementError: Unable to find role="button" and name "Ustvari skupino"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openCreateDialog src/features/groups/GroupListPage.test.tsx:27:39
+     25|
+     26| async function openCreateDialog() {
+     27|   await userEvent.click((await screen.findAllByRole('button', { name: …
+       |                                       ^
+     28|   return screen.findByRole('dialog', { name: 'Nova skupina' });
+     29| }
+ ❯ submitName src/features/groups/GroupListPage.test.tsx:32:24
+ ❯ src/features/groups/GroupListPage.test.tsx:142:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > R-002-02 the rule from the server is shown next to the field
+TestingLibraryElementError: Unable to find role="button" and name "Ustvari skupino"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openCreateDialog src/features/groups/GroupListPage.test.tsx:27:39
+     25|
+     26| async function openCreateDialog() {
+     27|   await userEvent.click((await screen.findAllByRole('button', { name: …
+       |                                       ^
+     28|   return screen.findByRole('dialog', { name: 'Nova skupina' });
+     29| }
+ ❯ submitName src/features/groups/GroupListPage.test.tsx:32:24
+ ❯ src/features/groups/GroupListPage.test.tsx:161:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > R-002-03 a name the User already owns shows the message and keeps the input
+TestingLibraryElementError: Unable to find role="button" and name "Ustvari skupino"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openCreateDialog src/features/groups/GroupListPage.test.tsx:27:39
+     25|
+     26| async function openCreateDialog() {
+     27|   await userEvent.click((await screen.findAllByRole('button', { name: …
+       |                                       ^
+     28|   return screen.findByRole('dialog', { name: 'Nova skupina' });
+     29| }
+ ❯ submitName src/features/groups/GroupListPage.test.tsx:32:24
+ ❯ src/features/groups/GroupListPage.test.tsx:170:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > shows a general error without technical detail when the server fails
+TestingLibraryElementError: Unable to find role="button" and name "Ustvari skupino"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mMoje skupine[0m
+      [36m</h1>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mSkupine, v katerih ste član, z vašo vlogo.[0m
+    [36m</p>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"flex flex-col items-center gap-3 rounded-[12px] border bg-surface p-8 text-center"[39m
+    [36m>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"text-xl font-semibold"[39m
+      [36m>[39m
+        [0mŠe nimate nobene skupine[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"max-w-prose text-text-muted"[39m
+      [36m>[39m
+        [0mSkupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.[0m
+      [36m</p>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ openCreateDialog src/features/groups/GroupListPage.test.tsx:27:39
+     25|
+     26| async function openCreateDialog() {
+     27|   await userEvent.click((await screen.findAllByRole('button', { name: …
+       |                                       ^
+     28|   return screen.findByRole('dialog', { name: 'Nova skupina' });
+     29| }
+ ❯ submitName src/features/groups/GroupListPage.test.tsx:32:24
+ ❯ src/features/groups/GroupListPage.test.tsx:180:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 4 passed (11)
+   Start at  20:27:41
+   Duration  6.77s (transform 64ms, setup 107ms, import 117ms, tests 6.17s, environment 303ms)
+
