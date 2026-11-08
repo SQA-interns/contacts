@@ -150,3 +150,124 @@
 - Human response: see the records named below.
 - Resolution: D-03 resolved by D-05 (option 1). D-04 resolved: the installs by D-09, the Maven and `npx` checks by D-06 option 3, the `.env` values, the `.gitignore` and the committed `.agents/` and `.claude/` by the 2026-11-08 re-run (all six keys non-empty, `.env` ignored, clean tree). D-06 resolved by D-09 and the same re-run. D-07 resolved by D-10 (option 1). D-11 resolved by D-12 (option 1). Still "pending review" (non-blocking, nothing waits on them): D-01, D-02, D-08.
 - Overrides: none
+
+## D-14: Roles for actions the interview does not assign
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: block
+- Type: blocking
+- Trigger: `business-rules.md` permission matrix rows marked `*` and the story rules that depend on them: Editor may see Trash (US-012 R-012-03, R-012-08); Owner and Editor may see and restore Versions, Viewer refused (US-022 R-022-06, US-023 R-023-06); Owner and Editor may run the duplicate search and mark a set "not a duplicate", Viewer refused (US-024 R-024-09, US-025 R-025-04); every Member including a Viewer may see the Member list with display names and e-mail addresses (US-015 R-015-01); an Owner may invite with the Role Owner (US-014 R-014-01). The interview gives the Roles (Q-08) but none of these actions. The developer answer to OQ-015-01 ("yes, as written") is about the three Roles and the rule "no in-app administrator", not about these rows.
+- Options: 1. As written (proposed default): Owner and Editor see Trash, Versions and run the duplicate search and "not a duplicate"; Viewers do none of these; all Members, Viewers too, see the Member list; an Owner may invite with any of the three Roles. 2. As 1, but the Member list only for Owners and Editors (Viewers see no other person's e-mail address). 3. As 1, but an Invitation may carry only Editor or Viewer (an Owner is made by changing the Role of a Member). 4. Both 2 and 3. 5. Other.
+- Human response: none
+- Resolution: pending (blocking)
+- Overrides: none (the matrix rows stay as written unless an option other than 1 is chosen)
+
+## D-15: Deletion timing and retention not given by the interview
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: block
+- Type: blocking
+- Trigger: personal-data retention and deletion with no source in the interview. (a) US-013 R-013-04 [ASSUMPTION]: a Contact is deleted permanently within 24 hours after its 30 days in Trash; US-020 R-020-05 and BR-04 give no delay for a Group; one clean-up job is assumed for both. (b) US-016 R-016-07 [ASSUMPTION]: History entries are kept as long as the Group exists. (c) `security-requirements.md` ("Personal data") [ASSUMPTION]: server log kept 30 days, set by the operator. (d) US-013 R-013-06 [ASSUMPTION]: the History entry for permanent deletion holds no personal data of the Contact. The developer answers (OQ-012-01, OQ-013-02, OQ-020-02) settle only the 30 days.
+- Options: 1. Accept (a) to (d) as written: clean-up at most 24 hours late for Contacts and Groups, History kept while the Group exists, logs 30 days, no personal data in the deletion entry (proposed default). 2. As 1, but the clean-up runs so that nothing stays more than 1 hour after day 30. 3. As 1, but another log retention (state the days). 4. Other.
+- Human response: none
+- Resolution: pending (blocking)
+- Overrides: none
+
+## D-16: Account deletion when a Group is in Group Trash; Invitations after account deletion
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: block
+- Type: blocking
+- Trigger: US-021 R-021-02 refuses account deletion for a "Sole Owner of at least one Group" but does not say whether a Group in the Group Trash (US-020, 30 days, no earlier permanent deletion) counts. R-021-01 removes all Memberships; the data model and SR-10 require every Group to have an Owner. Without an answer the account cannot be deleted for up to 30 days, or a Group in Trash is left without an Owner. US-021 EX-021-04 [ASSUMPTION]: pending Invitations to the deleted account's e-mail address stay pending, so a person who registers again with that address and verifies it joins the Group (access).
+- Options: A1. A Group in the Group Trash counts: deletion is refused, the Group is listed with the days left and the instruction to restore it and hand it over, or wait for its permanent deletion (proposed default). A2. It does not count: the account is deleted and the Group stays in Trash without an Owner until day 30 (nobody can restore it). A3. The confirmation names such a Group and deletes it permanently with the account. B1. Pending Invitations to the address stay pending (proposed default). B2. They are cancelled when the account is deleted. Other: describe.
+- Human response: none
+- Resolution: pending (blocking)
+- Overrides: none
+
+## D-17: Developer answers recorded in the inputs are used; customer confirmation stays for the review
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: allow
+- Type: non-blocking
+- Trigger: these open questions are marked OPEN "needs customer" (rights, personal data, deletion, consent, destructive action) but carry a developer answer from the 2026-11-08 review in the story file: OQ-001-01, OQ-002-01, OQ-003-01, OQ-005-01, OQ-012-01, OQ-013-01, OQ-013-02, OQ-014-01, OQ-014-02, OQ-015-01, OQ-018-01, OQ-020-01, OQ-020-02, OQ-021-01, OQ-025-01, OQ-026-01, OQ-026-02, OQ-P03. The inputs settle them (`general/rules/decisions.md`, class Allow: written in the inputs). Product questions OQ-P01, OQ-P02, OQ-P04 to OQ-P10 have no answer; none changes behaviour: OQ-P05 (controller, EU, special data) is handled outside the software (Q-46, `security-requirements.md`), OQ-P06 is a deployment value read from the environment (SR-09, SR-13), OQ-P02 and OQ-P04 are the developer's proposals that DoD-P03 already allows the customer to replace, OQ-P01, OQ-P08 and OQ-P09 have no effect on the stories.
+- Options: 1. Use the developer answers as the written rule; the customer confirms at the review (`/run` asks, `intent.md` "Open questions") and a different customer answer becomes a new decision (proposed default). 2. Treat each as blocking until the customer answers.
+- Human response: the developer answers quoted above, in the input files (2026-11-08 review).
+- Resolution: 1. Pending review by the customer; nothing waits on it.
+- Overrides: none
+
+## D-18: Lifecycle and access-order gaps between stories
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: open
+- Type: non-blocking
+- Trigger: places where stories or rules read together leave more than one behaviour, none a `Block` topic beyond D-14 to D-16. (a) US-018 R-018-02 and EX-018-08 answer 404 for a Group in Trash, but US-020 R-020-04 and R-020-07 let an Owner list and restore it. (b) US-014 R-014-05 joins a person when the Group list opens; a Group in the Group Trash is not listed. (c) US-018 R-018-01, R-018-02, R-018-03, R-018-06 do not say in which order the checks apply to one request. (d) US-001 and `security-requirements.md` name e-mail with password and Google, but not what happens when both belong to one e-mail address (the User e-mail is unique, data model). (e) BR-03 lists the audited actions as a closed set; deleting or restoring a Group, and the end of a Membership by account deletion (US-021), are not in it. (f) US-012 shows "the user who deleted", US-022 R-022-02 shows the user of a Version, and US-021 R-021-03 only covers History entries.
+- Options: 1. (a) Group-scoped endpoints answer 404 for every caller while the Group is in Trash; the Group Trash list and restore are separate Owner-only endpoints that answer 404 to everyone else. (b) A Group in Trash gives no access through an Invitation; the Invitation stays pending until it expires or the Group is restored. (c) Order: token (401), verified e-mail (403), Membership (404), Role (403). (d) One account per e-mail address (Firebase default); if a sign-in arrives for an e-mail address held by another Firebase identifier, the system refuses and creates no second User. (e) No History entry for these; the closed set of BR-03 stays. (f) The user shown is the name; "deleted by" comes from the History entry of the deletion; after account deletion only the name is shown (proposed default for all). 2. Ask the human per item.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
+
+## D-19: Behaviour and data gaps inside stories
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: open
+- Type: non-blocking
+- Trigger: readings that change observable behaviour but no business outcome. (a) A single save that changes fields, Tags and Attributes: US-016 R-016-02, US-004 R-004-06 and US-005 R-005-08 each say "a History entry". (b) US-022 defines the current state as the highest Version, but a Tag rename or delete changes Tags without a new version number (US-006 R-006-07, BR-07). (c) US-024 R-024-03: Contacts A and B share a company, B and C share a phone, A and C neither: one set or two. (d) US-026 R-026-02 "choose any other value of that field": values only from the merged Contacts, or typed; EX-026-09 can then arise only through a direct request. (e) US-011 R-011-09 uses "the active UI language" but an export is a REST request. (f) US-018 R-018-10: fixed or sliding minute, and whether 4xx answers count; NFR-04 sends list, search, edit and export from 20 Users. (g) US-011 R-011-03 "alphabetical order" of Tags and of Attribute columns. (h) US-014 R-014-02 does not name the e-mail format rule or length. (i) `business-rules.md` data model gives ContactVersion no time and no user, which US-022 R-022-01 requires.
+- Options: 1. (a) One entry per audited action of BR-03 inside the same save (one "Contact edited" entry for fields, one per Tag change, one per Attribute change), all with the same time and user. (b) The comparison uses the live Contact (its fields, Tags and Attributes now) as "current"; stored Versions keep the names they had. (c) One set per group of Contacts with the same names, linked through company or phone (connected Contacts form one set); a Contact is in one set (R-024-08 extended). (d) The chosen value must be one of the values of the merged Contacts; any other value is refused. (e) The export request carries the language (`sl` or `en`); Slovene when absent. (f) Fixed window of one minute per User, every authenticated request counts, 429 from the 101st; the front end debounces typing and the load script of NFR-04 stays at or below 100 requests per User per minute. (g) Alphabetical ignoring upper and lower case and accents (as US-007 R-007-03). (h) As BR-06: valid format, at most 255 characters. (i) ContactVersion also stores time and user (R-022-01 is explicit). (proposed default for all) 2. Ask the human per item.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
+
+## D-20: Assumptions in project-wide facts, business rules, e2e scenarios and priorities
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: open
+- Type: non-blocking
+- Trigger: every `[ASSUMPTION]` in `business-rules.md`, `e2e-scenarios.md` and the priority and MVP lines of stories needs a decision (DoR-S-09). Project-wide facts: calendar days in Europe/Ljubljana; English time `HH:mm` and decimal point; ISO 3166-1 country list, stored as two letters. BR-06: phone characters `+ - ( ) . /` with spaces and digits, at most 30 characters. BR-07: a change of Tags or Attributes through the Contact counts as a save, a Tag rename or delete for the Group does not. Data model: Attribute value not empty. Glossary: User, Invitation, Version, Selection, Duplicate set, Survivor, Group activity list. Permission matrix and audited actions marked `*` other than the rows of D-14: "Contact deleted forever", "Tag renamed or deleted for the Group", "Invitation created or cancelled", "Contact version restored" (each only adds an audit entry). E2E steps marked `[ASSUMPTION]` (E2E-01 to E2E-06) are test steps and add no behaviour. Priority and MVP lines marked `[ASSUMPTION]` (US-001, US-012 to US-015, US-019 to US-021): the MVP split of `intent.md` agrees with the `mvp` flags of all 26 stories. NFR and DoD-P numbers (NFR-01 to NFR-09, DoD-P03) are the developer's proposals (OQ-P02, OQ-P04).
+- Options: 1. Use each as written (proposed default); the customer confirms at the review. 2. Ask the human per item.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
+
+## D-21: Story-level assumptions without business consequence
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: open
+- Type: non-blocking
+- Trigger: `[ASSUMPTION]` markers inside story rules and edge cases that only fix a screen, format or search detail, with the conservative reading in the text itself: US-001 R-001-01 (a display name is asked), R-001-02 (Google name, else e-mail), R-001-05 (one message for both errors), R-001-08 (same confirmation); US-002 EX-002-06 (Groups in Trash do not count); US-003 R-003-05 (trimming), R-003-10 (duplicate e-mail allowed), R-003-11 (no-change save); US-004 R-004-02 and EX-004-04 (empty value refused); US-005 Tag name letters of any alphabet, R-005-06 (Tag stays when unused), R-005-07 (suggestions); US-006 Tag list screen, R-006-05 (also Contacts in Trash); US-007 list columns, R-007-02, R-007-03, R-007-08; US-008 R-008-01; US-009 R-009-05 and R-009-06 (one at a time); US-010 R-010-02, R-010-08, EX-010-03; US-011 R-011-03, R-011-04, R-011-09; US-017 25 per page, EX-017-03; US-019 R-019-03, EX-019-03; US-023 R-023-05 (a deleted Tag is created again); US-024 phone comparison, R-024-08; US-025 R-025-03, undo not offered; US-026 EX-026-03, EX-026-04, EX-026-09; US-013 R-013-06 (see D-15).
+- Options: 1. Use each as written (proposed default). 2. Ask the human per item.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
+
+## D-22: Glossary gaps and synonyms
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: open
+- Type: non-blocking
+- Trigger: the glossary is "the one vocabulary" (`requirements-standard.md`), but stories use terms that are not in it or name one thing twice. Used in more than one story and defined only inside one: Group list (US-002; used in US-001, US-014, US-020), Contact list (US-007; used in US-008 to US-011), Verified e-mail and Display name (US-001; used in US-014, US-015, US-018), Predefined fields (US-003; used in US-011, e2e), Search text (US-008; used in US-009), Member list (US-015), History tab (US-016), Trash view (US-012). Not defined anywhere: Visitor (US-001), Operator (US-015 R-015-08; `intent.md` Users), Membership (US-021 R-021-01, a second word for "Member"), Group Trash (US-020; the glossary calls it Trash), Invited person (`intent.md`). "Version number" (the Contact's counter, BR-07) and "Version" (a stored state) are both used.
+- Options: 1. Keep the story definitions as the meaning everywhere; read Membership as Member of a Group, Group Trash as the Trash of a Group, Visitor as a person who is not signed in, Operator as in `intent.md`, Invited person as a User with a pending Invitation; the version number of a Contact equals the number of its highest Version. Code and tests use the glossary names and no new synonym (proposed default). 2. Add the terms to the glossary through a human change of `business-rules.md` (an input change, so a new decision).
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
+
+## D-23: Readings of the Definition of Ready and form findings
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: open
+- Type: non-blocking
+- Trigger: (a) DoR-S-05 asks for an edge-case row for every `If … then` rule, while `requirements-standard.md` ("Acceptance criteria") asks the acceptance criteria to cover every `If … then` rule and every boundary in the edge-case table. 21 stories have If-rules with no edge-case row (listed in `docs/01_requirements-check.md`); each is covered by an acceptance criterion that states the refusal and what stays unchanged, except R-004-02, R-007-08, R-008-05 and R-012-05, which only edge-case rows cover. All boundaries have rows. (b) US-018 (16 rules, estimate 5) and US-026 (12 rules, estimate 8) are the largest stories. (c) AC-018-04 and DoD-P02 test every endpoint, which only exists when the last endpoint does; E2E-03 lists AC-018-04 but tests one endpoint. (d) US-001, US-014 (Invitations screen), US-021 (where account deletion is offered) and US-024 (duplicate search screen) do not name every screen (DoR-S-10); `ui-design.md` is not on the reads list of `/clarify`. (e) Front matter `rules:` lacks BR-07 in US-006 and BR-04 in US-022 and lists BR-01 in 17 stories whose text does not repeat it; `business-rules.md` "Stories" columns omit US-007 and US-014 in BR-05 and US-022, US-026 in BR-07. (f) Cosmetic: R-018-15 and R-018-16 and AC-018-17 are out of numeric order; EX-013-06 stands before EX-013-05; E2E-01 step 2 gives no display name; EX-026-09 describes a case the Merge screen cannot produce; `P-4` says "a person" while `intent.md` says the product never contacts the people described by Contacts (Firebase's verification and reset e-mails in US-001 are started by the user). (g) Q ids cited by stories were not checked: `interview.md` is not on the reads list.
+- Options: 1. (a) An acceptance criterion with the refusal and "nothing stored or changed" counts as the row; the four rules above keep their edge-case rows as their test oracle. (b) Both stay one story each; `/plan` splits them into tasks. (c) AC-018-04 runs over every endpoint that exists at the end of each increment and fully at the release (DoD-P02); E2E-03 keeps one endpoint. (d) `/wireframes` draws the missing screens and checks all screens against `ui-design.md`. (e) and (f) are read as written, with no effect. (g) The Q ids are plausible (Q-01 to Q-55) and are checked in a later session that reads the interview (proposed default for all). 2. Fail DoR-S-05 for those stories and ask the human to change the inputs.
+- Human response: none
+- Resolution: 1. Pending review. If the human prefers 2, say so in the answer to this session.
+- Overrides: none
+
+## D-24: How each security requirement is checked (DoR-R-05)
+- Timestamp: 2026-11-08
+- Session: S2 /clarify
+- Class: open
+- Type: non-blocking
+- Trigger: the table of `security-requirements.md` has no "how it is checked" column. NFR-01 to NFR-15 and DoD-P01 to DoD-P07 have one. SR-03 and SR-09 are cited by no acceptance criterion.
+- Options: 1. Checks (proposed default): SR-01 AC-018-04, E2E-03, DoD-P02; SR-02 AC-018-01, AC-018-02, AC-018-08; SR-03 a test where the token carries a role claim or none and the database Role differs, plus AC-015-02 and AC-015-03; SR-04 the injection test named in SR-04 and EX-008-03; SR-05 AC-018-16, EX-003-13, EX-004-08; SR-06 AC-011-04, EX-011-03; SR-07 AC-018-15; SR-08 AC-018-12, AC-018-13, AC-018-14; SR-09 gitleaks scan and `.env` untracked (`general/rules/secrets.md`); SR-10 AC-015-04, AC-015-05, EX-015-01; SR-11 AC-014-03, AC-014-05, AC-014-08, EX-014-02; SR-12 AC-018-11; SR-13 tests run offline against the emulator with no real Firebase credential. 2. Ask the customer's security officer.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
