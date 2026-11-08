@@ -27,6 +27,24 @@
     "empty": "Ni podatkov",
     "page": "Stran {{page}} od {{pages}}"
   },
+  "form": {
+    "required": "(obvezno)"
+  },
+  "auth": {
+    "email": "E-pošta",
+    "password": "Geslo",
+    "signIn": {
+      "title": "Prijava",
+      "submit": "Prijava",
+      "busy": "Prijavljanje …",
+      "forgot": "Pozabljeno geslo?",
+      "or": "ali",
+      "google": "Prijava z Googlom",
+      "noAccount": "Nimate računa?",
+      "register": "Registracija",
+      "invalidCredentials": "E-pošta ali geslo ni pravilno."
+    }
+  },
   "groups": {
     "title": "Moje skupine",
     "intro": "Skupine, v katerih ste član, z vašo vlogo.",

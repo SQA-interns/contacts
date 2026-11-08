@@ -27,6 +27,24 @@
     "empty": "No data",
     "page": "Page {{page}} of {{pages}}"
   },
+  "form": {
+    "required": "(required)"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Password",
+    "signIn": {
+      "title": "Sign in",
+      "submit": "Sign in",
+      "busy": "Signing in …",
+      "forgot": "Forgot password?",
+      "or": "or",
+      "google": "Sign in with Google",
+      "noAccount": "No account yet?",
+      "register": "Register",
+      "invalidCredentials": "E-mail or password is wrong."
+    }
+  },
   "groups": {
     "title": "My groups",
     "intro": "The groups you are a member of, with your role.",

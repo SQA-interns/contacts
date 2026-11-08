@@ -1,5 +1,6 @@
 import type { RouteObject } from 'react-router';
 import { RequireVerified } from '@/auth/RequireVerified';
+import { SignInPage } from '@/features/auth/SignInPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
 import { HomePage } from '@/features/home/HomePage';
 import { NotFoundPage } from '@/features/home/NotFoundPage';
@@ -12,6 +13,7 @@ export const routes: RouteObject[] = [
     element: <Layout />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: 'sign-in', element: <SignInPage /> },
       { element: <RequireVerified />, children: [{ path: 'groups', element: <GroupListPage /> }] },
       { path: '*', element: <NotFoundPage /> },
     ],
