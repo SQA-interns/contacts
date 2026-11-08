@@ -1,0 +1,124 @@
+{
+  "app": {
+    "skipToContent": "Skip to content"
+  },
+  "nav": {
+    "main": "Main navigation",
+    "groups": "Groups",
+    "menu": "Menu",
+    "userMenu": "User menu"
+  },
+  "language": {
+    "label": "Language",
+    "sl": "Slovenščina",
+    "en": "English"
+  },
+  "home": {
+    "title": "Welcome",
+    "intro": "Contact Groups keeps the contacts of your project or company in one place.",
+    "action": "Open groups"
+  },
+  "common": {
+    "loading": "Loading …",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "empty": "No data",
+    "page": "Page {{page}} of {{pages}}"
+  },
+  "error": {
+    "generic": "Something went wrong. Please try again.",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page does not exist or you do not have access to it.",
+    "backHome": "Back to start"
+  },
+  "footer": {
+    "text": "Contact Groups"
+  },
+  "api": {
+    "request": {
+      "malformed": "The request is not valid.",
+      "unknown_property": "The request contains an unknown field.",
+      "too_large": "The request is too large."
+    },
+    "auth": {
+      "token_missing": "Sign in to continue.",
+      "token_invalid": "Your session has expired. Sign in again.",
+      "email_not_verified": "Verify your e-mail to continue.",
+      "role_forbidden": "You are not allowed to do this."
+    },
+    "https": {
+      "required": "The connection must be secure (HTTPS)."
+    },
+    "group": {
+      "not_found": "Group not found.",
+      "name_taken": "You already have a group with this name.",
+      "last_owner": "A group needs at least one owner.",
+      "name_mismatch": "The typed name does not match the group name."
+    },
+    "contact": {
+      "not_found": "Contact not found.",
+      "changed_by_someone_else": "This contact was changed by someone else.",
+      "in_trash": "The contact is in the trash and cannot be changed."
+    },
+    "tag": {
+      "not_found": "Tag not found.",
+      "name_taken": "A tag with this name already exists."
+    },
+    "invitation": {
+      "not_found": "Invitation not found.",
+      "exists": "This person is already a member or has a pending invitation.",
+      "limit": "The group already has 20 pending invitations."
+    },
+    "member": {
+      "not_found": "Member not found."
+    },
+    "version": {
+      "not_found": "Version not found."
+    },
+    "duplicate": {
+      "not_found": "Duplicate set not found."
+    },
+    "route": {
+      "not_found": "Page not found."
+    },
+    "user": {
+      "email_taken": "This e-mail address already belongs to another account."
+    },
+    "account": {
+      "sole_owner": "Your account cannot be deleted because you are the only owner of a group."
+    },
+    "validation": {
+      "failed": "The data is not valid.",
+      "required_any": "Fill in at least first name, last name, e-mail or company.",
+      "email_invalid": "The e-mail address is not valid.",
+      "too_long": "The value is too long.",
+      "phone_invalid": "The phone number may contain digits, spaces and + - ( ) . /.",
+      "country_invalid": "The country is not on the list.",
+      "attribute_key_invalid": "The attribute key must have 1 to 50 characters.",
+      "attribute_value_invalid": "The attribute value must have 1 to 255 characters.",
+      "attribute_duplicate_key": "The attribute key is used twice.",
+      "attribute_limit": "A contact can have at most 50 attributes.",
+      "tag_invalid": "A tag name may contain letters, digits, - and _ (up to 50 characters).",
+      "tag_limit": "A contact can have at most 50 tags.",
+      "name_invalid": "The name must have 1 to 100 characters."
+    },
+    "export": {
+      "too_many": "The selection has more than 10,000 contacts. Narrow it down."
+    },
+    "activity": {
+      "range_invalid": "The start date is after the end date."
+    },
+    "merge": {
+      "invalid_selection": "Choose at least two contacts of the same group to merge.",
+      "invalid_value": "The chosen value is not a value of the merged contacts."
+    },
+    "rate": {
+      "limited": "Too many requests. Try again in a minute."
+    },
+    "server": {
+      "error": "Something went wrong. Please try again."
+    }
+  }
+}

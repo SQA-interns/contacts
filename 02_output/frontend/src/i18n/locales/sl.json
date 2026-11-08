@@ -1,0 +1,124 @@
+{
+  "app": {
+    "skipToContent": "Preskoči na vsebino"
+  },
+  "nav": {
+    "main": "Glavna navigacija",
+    "groups": "Skupine",
+    "menu": "Meni",
+    "userMenu": "Uporabniški meni"
+  },
+  "language": {
+    "label": "Jezik",
+    "sl": "Slovenščina",
+    "en": "English"
+  },
+  "home": {
+    "title": "Dobrodošli",
+    "intro": "Skupine kontaktov hranijo kontakte vašega projekta ali podjetja na enem mestu.",
+    "action": "Odpri skupine"
+  },
+  "common": {
+    "loading": "Nalaganje …",
+    "retry": "Poskusi znova",
+    "cancel": "Prekliči",
+    "confirm": "Potrdi",
+    "close": "Zapri",
+    "empty": "Ni podatkov",
+    "page": "Stran {{page}} od {{pages}}"
+  },
+  "error": {
+    "generic": "Nekaj je šlo narobe. Poskusite znova.",
+    "notFoundTitle": "Strani ni mogoče najti",
+    "notFoundBody": "Stran ne obstaja ali do nje nimate dostopa.",
+    "backHome": "Nazaj na začetek"
+  },
+  "footer": {
+    "text": "Skupine kontaktov"
+  },
+  "api": {
+    "request": {
+      "malformed": "Zahteva ni veljavna.",
+      "unknown_property": "Zahteva vsebuje neznano polje.",
+      "too_large": "Zahteva je prevelika."
+    },
+    "auth": {
+      "token_missing": "Za nadaljevanje se prijavite.",
+      "token_invalid": "Seja je potekla. Prijavite se znova.",
+      "email_not_verified": "Potrdite svoj e-poštni naslov, da nadaljujete.",
+      "role_forbidden": "Za to dejanje nimate pravice."
+    },
+    "https": {
+      "required": "Povezava mora biti zavarovana (HTTPS)."
+    },
+    "group": {
+      "not_found": "Skupine ni mogoče najti.",
+      "name_taken": "Skupino s tem imenom že imate.",
+      "last_owner": "Skupina potrebuje vsaj enega lastnika.",
+      "name_mismatch": "Vpisano ime ni enako imenu skupine."
+    },
+    "contact": {
+      "not_found": "Kontakta ni mogoče najti.",
+      "changed_by_someone_else": "Kontakt je spremenil nekdo drug.",
+      "in_trash": "Kontakt je v košu in ga ni mogoče spreminjati."
+    },
+    "tag": {
+      "not_found": "Značke ni mogoče najti.",
+      "name_taken": "Značka s tem imenom že obstaja."
+    },
+    "invitation": {
+      "not_found": "Povabila ni mogoče najti.",
+      "exists": "Ta oseba je že članica ali že ima odprto povabilo.",
+      "limit": "Skupina ima že 20 odprtih povabil."
+    },
+    "member": {
+      "not_found": "Člana ni mogoče najti."
+    },
+    "version": {
+      "not_found": "Različice ni mogoče najti."
+    },
+    "duplicate": {
+      "not_found": "Množice podvojenih kontaktov ni mogoče najti."
+    },
+    "route": {
+      "not_found": "Strani ni mogoče najti."
+    },
+    "user": {
+      "email_taken": "Ta e-poštni naslov že pripada drugemu računu."
+    },
+    "account": {
+      "sole_owner": "Računa ni mogoče izbrisati, ker ste edini lastnik skupine."
+    },
+    "validation": {
+      "failed": "Podatki niso veljavni.",
+      "required_any": "Izpolnite vsaj ime, priimek, e-pošto ali podjetje.",
+      "email_invalid": "E-poštni naslov ni veljaven.",
+      "too_long": "Vrednost je predolga.",
+      "phone_invalid": "Telefon lahko vsebuje številke, presledke in znake + - ( ) . /.",
+      "country_invalid": "Država ni na seznamu.",
+      "attribute_key_invalid": "Ključ atributa mora imeti od 1 do 50 znakov.",
+      "attribute_value_invalid": "Vrednost atributa mora imeti od 1 do 255 znakov.",
+      "attribute_duplicate_key": "Ključ atributa se ponavlja.",
+      "attribute_limit": "Kontakt ima lahko največ 50 atributov.",
+      "tag_invalid": "Ime značke lahko vsebuje črke, števke, - in _ (do 50 znakov).",
+      "tag_limit": "Kontakt ima lahko največ 50 značk.",
+      "name_invalid": "Ime mora imeti od 1 do 100 znakov."
+    },
+    "export": {
+      "too_many": "Izbira ima več kot 10.000 kontaktov. Zožite jo."
+    },
+    "activity": {
+      "range_invalid": "Začetni datum je po končnem."
+    },
+    "merge": {
+      "invalid_selection": "Za združitev izberite vsaj dva kontakta iste skupine.",
+      "invalid_value": "Izbrana vrednost ni vrednost združenih kontaktov."
+    },
+    "rate": {
+      "limited": "Preveč zahtev. Poskusite čez minuto."
+    },
+    "server": {
+      "error": "Nekaj je šlo narobe. Poskusite znova."
+    }
+  }
+}
