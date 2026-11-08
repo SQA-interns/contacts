@@ -43,12 +43,16 @@ async function mapped<T>(call: Promise<T>, reasons: Reasons, accepted: string[] 
   }
 }
 
-/** A restored but unverified session is reloaded, so that a verification done elsewhere counts (EX-001-09). */
+/**
+ * A restored unverified session is reloaded, so that a verification done elsewhere counts; a verified account
+ * whose ID token still says unverified gets a new token, so that the server sees the verification (EX-001-09).
+ */
 async function current(user: User): Promise<User> {
-  if (user.emailVerified) return user;
   try {
-    await user.reload();
-    if (user.emailVerified) await user.getIdToken(true);
+    if (!user.emailVerified) await user.reload();
+    if (user.emailVerified && (await user.getIdTokenResult()).claims.email_verified !== true) {
+      await user.getIdToken(true);
+    }
   } catch {
     /* offline: keep what Firebase remembered */
   }

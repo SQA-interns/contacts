@@ -95,6 +95,7 @@ describe('Firebase auth client (US-001)', () => {
         user.emailVerified = true;
       }),
       getIdToken: vi.fn(async () => 'token'),
+      getIdTokenResult: vi.fn(async () => ({ claims: { email_verified: false } })),
     };
     sdk.onAuthStateChanged.mockImplementation((_auth, next: (u: unknown) => void) => {
       void next(user);
@@ -106,5 +107,46 @@ describe('Firebase auth client (US-001)', () => {
 
     await vi.waitFor(() => expect(seen).toHaveBeenCalledWith({ email: 'ana@acme.com', emailVerified: true }));
     expect(user.getIdToken).toHaveBeenCalledWith(true);
+  });
+
+  it('EX-001-09 a session Firebase restored as verified gets a new token when the old one says unverified', async () => {
+    const user = {
+      email: 'ana@acme.com',
+      emailVerified: true,
+      reload: vi.fn(),
+      getIdToken: vi.fn(async () => 'token'),
+      getIdTokenResult: vi.fn(async () => ({ claims: { email_verified: false } })),
+    };
+    sdk.onAuthStateChanged.mockImplementation((_auth, next: (u: unknown) => void) => {
+      void next(user);
+      return () => undefined;
+    });
+    const seen = vi.fn();
+
+    client.onChange(seen);
+
+    await vi.waitFor(() => expect(seen).toHaveBeenCalledWith({ email: 'ana@acme.com', emailVerified: true }));
+    expect(user.getIdToken).toHaveBeenCalledWith(true);
+  });
+
+  it('R-001-09 a verified session whose token says verified is kept as it is', async () => {
+    const user = {
+      email: 'ana@acme.com',
+      emailVerified: true,
+      reload: vi.fn(),
+      getIdToken: vi.fn(async () => 'token'),
+      getIdTokenResult: vi.fn(async () => ({ claims: { email_verified: true } })),
+    };
+    sdk.onAuthStateChanged.mockImplementation((_auth, next: (u: unknown) => void) => {
+      void next(user);
+      return () => undefined;
+    });
+    const seen = vi.fn();
+
+    client.onChange(seen);
+
+    await vi.waitFor(() => expect(seen).toHaveBeenCalled());
+    expect(user.getIdToken).not.toHaveBeenCalled();
+    expect(user.reload).not.toHaveBeenCalled();
   });
 });
