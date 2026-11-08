@@ -21,9 +21,9 @@ public final class Http {
   }
 
   /**
-   * Sends a request. {@code path} starting with {@code /api/} or {@code /health} is used as is,
-   * any other path is put under {@code /api/v1}. {@code body} is a JSON value, a raw {@code
-   * String} (sent as is) or a {@code byte[]}; {@code token} may be {@code null}.
+   * Sends a request. {@code path} starting with {@code /api/} or {@code /health} is used as is, any
+   * other path is put under {@code /api/v1}. {@code body} is a JSON value, a raw {@code String}
+   * (sent as is) or a {@code byte[]}; {@code token} may be {@code null}.
    */
   public Resp send(
       String method, String path, String token, Object body, Map<String, String> headers) {

@@ -85,6 +85,28 @@ public final class Db {
     }
   }
 
+  /**
+   * Replaces a text in the stored content of one Version, whatever its JSON layout (AC-023-04:
+   * content that an earlier rule accepted).
+   */
+  public static void replaceInVersion(String contactId, int number, String from, String to) {
+    String sql =
+        "update contact_version set snapshot = replace(snapshot::text, ?, ?)::jsonb"
+            + " where contact_id = ?::uuid and number = ?";
+    try (Connection c = connect();
+        PreparedStatement s = c.prepareStatement(sql)) {
+      s.setString(1, from);
+      s.setString(2, to);
+      s.setString(3, contactId);
+      s.setInt(4, number);
+      if (s.executeUpdate() != 1) {
+        throw new IllegalStateException("no Version " + number + " of " + contactId);
+      }
+    } catch (SQLException e) {
+      throw new IllegalStateException(e);
+    }
+  }
+
   public static String randomId() {
     return UUID.randomUUID().toString();
   }

@@ -21,6 +21,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.TestPropertySource;
 import si.contactgroups.support.PostgresSupport;
 
 /**
@@ -31,11 +32,12 @@ import si.contactgroups.support.PostgresSupport;
  *
  * <p>Environment of this context: the defaults of environments.md, except {@code
  * RATE_LIMIT_PER_MINUTE} (raised, so that a test that sets up 60 Contacts is not limited; the limit
- * itself is tested with the default in {@code Us018RateLimitAcceptanceIT}) and {@code
+ * itself is tested with the default in {@code Us018RateLimitOwnContextAcceptanceIT}) and {@code
  * TRASH_PURGE_CRON} (every second, so that the clean-up of BR-04 runs within a test).
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import(AcceptanceClockConfig.class)
+@TestPropertySource(properties = {"RATE_LIMIT_PER_MINUTE=1000000", "REQUIRE_HTTPS=false"})
 public abstract class AcceptanceTestBase {
 
   /** The 11 predefined fields of a Contact (R-003-02), in the order of the contract. */
@@ -64,9 +66,7 @@ public abstract class AcceptanceTestBase {
     registry.add("DB_APP_PASSWORD", () -> PostgresSupport.APP_PASSWORD);
     registry.add("FIREBASE_PROJECT_ID", () -> Emulator.PROJECT_ID);
     registry.add("CORS_ALLOWED_ORIGIN", () -> "http://localhost:5173");
-    registry.add("RATE_LIMIT_PER_MINUTE", () -> "1000000");
     registry.add("TRASH_PURGE_CRON", () -> "* * * * * *");
-    registry.add("REQUIRE_HTTPS", () -> "false");
   }
 
   @LocalServerPort private int port;
@@ -114,11 +114,14 @@ public abstract class AcceptanceTestBase {
   protected void addMember(Grp group, TestUser owner, TestUser user, String role) {
     owner.post(group.invitations(), Json.obj("email", user.email(), "role", role)).expect(201);
     JsonNode groups = user.get("/groups").expect(200).json();
-    assertThat(Json.field(groups, "id")).as("%s joined %s", user, group.name()).contains(group.id());
+    assertThat(Json.field(groups, "id"))
+        .as("%s joined %s", user, group.name())
+        .contains(group.id());
   }
 
   /** Creates a verified person and adds them to the Group with {@code role}. */
-  protected TestUser member(Grp group, TestUser owner, String displayName, String email, String role) {
+  protected TestUser member(
+      Grp group, TestUser owner, String displayName, String email, String role) {
     TestUser user = user(displayName, email);
     addMember(group, owner, user, role);
     return user;
@@ -241,7 +244,10 @@ public abstract class AcceptanceTestBase {
 
   /** Waits until the clean-up job (every second in this context) made {@code condition} true. */
   protected static void awaitCleanUp(Callable<Boolean> condition) {
-    Awaitility.await().atMost(Duration.ofSeconds(20)).pollInterval(Duration.ofMillis(250)).until(condition);
+    Awaitility.await()
+        .atMost(Duration.ofSeconds(20))
+        .pollInterval(Duration.ofMillis(250))
+        .until(condition);
   }
 
   /** Lets the clean-up job run several times (it runs every second in this context). */

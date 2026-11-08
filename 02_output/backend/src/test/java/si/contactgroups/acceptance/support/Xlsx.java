@@ -15,7 +15,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Read-back of an exported {@code .xlsx} (contract {@code xlsx-export.schema.json}): sheet count,
  * header, rows as text and whether any cell is not a text cell.
  */
-public record Xlsx(int sheetCount, List<String> header, List<List<String>> rows, List<String> nonText) {
+public record Xlsx(
+    int sheetCount, List<String> header, List<List<String>> rows, List<String> nonText) {
 
   public static Xlsx read(byte[] bytes) {
     try (XSSFWorkbook workbook = new XSSFWorkbook(new ByteArrayInputStream(bytes))) {
@@ -38,7 +39,9 @@ public record Xlsx(int sheetCount, List<String> header, List<List<String>> rows,
           } else {
             nonText.add(cell.getAddress().formatAsString() + ":" + cell.getCellType());
             values.add(
-                cell.getCellType() == CellType.FORMULA ? "=" + cell.getCellFormula() : cell.toString());
+                cell.getCellType() == CellType.FORMULA
+                    ? "=" + cell.getCellFormula()
+                    : cell.toString());
           }
         }
         all.add(values);

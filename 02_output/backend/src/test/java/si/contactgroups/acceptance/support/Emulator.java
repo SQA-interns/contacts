@@ -19,8 +19,8 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 
 /**
- * The Firebase Authentication emulator (environments.md, "test"): one container per test JVM on
- * the fixed port 9099, because the Admin SDK of the backend reads {@code
+ * The Firebase Authentication emulator (environments.md, "test"): one container per test JVM on the
+ * fixed port 9099, because the Admin SDK of the backend reads {@code
  * FIREBASE_AUTH_EMULATOR_HOST=localhost:9099} from the environment (pom.xml, failsafe). Accounts
  * are created and changed through the emulator's REST interface; all values are test values that
  * exist only in the emulator.
@@ -93,7 +93,11 @@ public final class Emulator {
       body.put("displayName", displayName);
     }
     JsonNode answer =
-        send("POST", "/identitytoolkit.googleapis.com/v1/projects/" + PROJECT_ID + "/accounts", body, true);
+        send(
+            "POST",
+            "/identitytoolkit.googleapis.com/v1/projects/" + PROJECT_ID + "/accounts",
+            body,
+            true);
     assertThat(answer.has("localId")).as("emulator account created: %s", answer).isTrue();
     return answer.get("localId").asText();
   }
@@ -177,7 +181,9 @@ public final class Emulator {
     return answer != null && answer.path("users").isArray() && !answer.path("users").isEmpty();
   }
 
-  /** The e-mails (verification, reset, …) the emulator recorded as sent, as {@code email} values. */
+  /**
+   * The e-mails (verification, reset, …) the emulator recorded as sent, as {@code email} values.
+   */
   public static List<String> sentEmails() {
     JsonNode answer = send("GET", "/emulator/v1/projects/" + PROJECT_ID + "/oobCodes", null, false);
     return Json.field(answer.path("oobCodes"), "email");
@@ -197,8 +203,8 @@ public final class Emulator {
 
   /**
    * An unsigned token in the emulator's format with chosen claims, for the cases that the emulator
-   * cannot issue (expired, other project). The account must be valid since before {@code
-   * issuedAt} ({@link #setValidSince}).
+   * cannot issue (expired, other project). The account must be valid since before {@code issuedAt}
+   * ({@link #setValidSince}).
    */
   public static String forgedToken(
       String audience, String uid, String email, Instant issuedAt, Instant expiresAt) {
@@ -247,7 +253,8 @@ public final class Emulator {
       request.method(method, HttpRequest.BodyPublishers.noBody());
     }
     try {
-      HttpResponse<String> response = HTTP.send(request.build(), HttpResponse.BodyHandlers.ofString());
+      HttpResponse<String> response =
+          HTTP.send(request.build(), HttpResponse.BodyHandlers.ofString());
       return Json.parse(response.body());
     } catch (java.io.IOException e) {
       throw new java.io.UncheckedIOException(e);

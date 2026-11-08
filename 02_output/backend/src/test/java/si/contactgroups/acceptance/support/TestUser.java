@@ -3,8 +3,8 @@ package si.contactgroups.acceptance.support;
 import java.util.Map;
 
 /**
- * A person with an account in the Firebase emulator who calls the REST interface with their own
- * ID token. The password is a test value that exists only in the emulator.
+ * A person with an account in the Firebase emulator who calls the REST interface with their own ID
+ * token. The password is a test value that exists only in the emulator.
  */
 public final class TestUser {
 
