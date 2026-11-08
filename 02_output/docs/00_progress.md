@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S3 /clarify D-14: 1 D-15: 1 D-16: A1 B1 ("Accept defaults")
+- Session: S3 /plan
 - Result: done
-- Gate: phase 1 gate passed
-- Notes for the next session: Report `docs/01_requirements-check.md`; all 26 stories are ready, the run meets DoR-R. D-14, D-15, D-16 are answered by D-25, D-26, D-27 and closed by D-28. Decisions D-17 to D-24 (Open or Allow, "pending review") fix the conservative readings; /plan should apply them: D-18 (Group in Trash is "not found" for Group-scoped endpoints, separate Owner-only Group Trash endpoints; check order 401, 403 unverified, 404 non-Member, 403 Role), D-19 (one History entry per audited action in a save; comparison against the live Contact; ContactVersion stores time and user; fixed one-minute rate window), D-23 (US-018 and US-026 are split into tasks; AC-018-04 runs per increment and fully at release; screens for sign-in/reset, Invitations, account deletion and duplicate search are drawn in /wireframes), D-24 (check of each SR). Not checked, outside /clarify reads: Q ids against `interview.md`, screens against `ui-design.md`. Stories US-020 to US-026 are increment 2.
+- Gate: phase 2 gate passed except the wireframes (they follow in /wireframes)
+- Notes for the next session: Specification `docs/02_specification.md` (screen inventory SC-01 to SC-19 in "User interface" is the start of /wireframes; the wireframe theme is active in `frontend/src/styles`), ADR-01 to ADR-16, four contracts in `docs/02_contracts/`, 78 tasks in `docs/02_tasks.md` (one `/implement` per story), skeletons of backend and frontend, CI, Dockerfiles, Compose files, seed (`scripts/seed-local.sh`). Decisions D-29 to D-34 are non-blocking and "pending review": config keys, dev tools, readings, Boot 4 and Firebase library changes (D-32 adds `google-http-client-jackson2`), frontend packages and `.npmrc` (D-33), scanner results (D-34). Verified: backend `./mvnw -B verify -Pquality` (24 unit and 19 integration tests), frontend `npm run check`, `npm test` (41), `npm run build`, Playwright smoke on Chromium and WebKit, three images built, production Compose healthy, seed loads, gitleaks, actionlint, contracts and traceability. Not verified: Firefox (crashes in the agent sandbox, D-09; CI runs it), the pipeline on GitHub itself (no runner), see D-32 for the dependency scan. Stop the Compose stack before `./mvnw verify` (port 9099); on macOS `mvnw` needs a GNU-style `sha256sum` (backend README). Commits `2d6047d` and `85ebaf5` hold an `openapi.yaml` that does not parse; the fix commit `86dd8d4` after them corrects it (history is not rewritten).
 
 ## Next
-- Command: /plan
+- Command: /wireframes
 - Waiting for: nothing
 
 ## Stories
