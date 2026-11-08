@@ -11,6 +11,7 @@ import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,6 +28,7 @@ class GroupEndpointsIT extends ApplicationContextSupport {
 
   @Autowired private MockMvc mvc;
   @Autowired private UserService users;
+  @Autowired private JdbcClient jdbc;
 
   private User newUser(String name) {
     String uid = "uid-" + UUID.randomUUID();
@@ -117,5 +119,54 @@ class GroupEndpointsIT extends ApplicationContextSupport {
     create(ana, "{\"name\":\"  " + name + "  \"}")
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.name").value(name));
+  }
+
+  private void expectNameTaken(User user, String name) throws Exception {
+    create(user, "{\"name\":\"" + name + "\"}")
+        .andExpect(status().isConflict())
+        .andExpect(jsonPath("$.code").value("group.name_taken"));
+  }
+
+  @Test
+  void r_002_03_an_owner_gets_no_second_group_with_the_same_name_ignoring_case() throws Exception {
+    User ana = newUser("Ana Novak");
+    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    create(ana, "{\"name\":\"Šola\"}").andExpect(status().isCreated());
+
+    expectNameTaken(ana, "ACME");
+    expectNameTaken(ana, " acme ");
+    expectNameTaken(ana, "ŠOLA");
+
+    mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(2));
+  }
+
+  @Test
+  void r_002_03_a_group_in_trash_does_not_count() throws Exception {
+    User ana = newUser("Ana Novak");
+    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    jdbc.sql(
+            "UPDATE contact_group SET deleted_at = now() WHERE id IN"
+                + " (SELECT group_id FROM member WHERE user_id = :u)")
+        .param("u", ana.id())
+        .update();
+
+    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+  }
+
+  @Test
+  void r_002_03_a_group_of_which_the_user_is_not_owner_does_not_count() throws Exception {
+    User ana = newUser("Ana Novak");
+    User boris = newUser("Boris Kos");
+    create(boris, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    jdbc.sql(
+            "INSERT INTO member (group_id, user_id, role) SELECT group_id, :ana, 'EDITOR'"
+                + " FROM member WHERE user_id = :boris")
+        .param("ana", ana.id())
+        .param("boris", boris.id())
+        .update();
+
+    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+
+    mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(2));
   }
 }

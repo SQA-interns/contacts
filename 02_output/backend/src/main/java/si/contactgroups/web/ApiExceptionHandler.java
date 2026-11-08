@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.contactgroups.error.ApiError;
+import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.ValidationException;
 
 /**
@@ -45,6 +46,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> malformed() {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
         .body(new ApiError("request.malformed", "Malformed request"));
+  }
+
+  @ExceptionHandler(GroupNameTakenException.class)
+  public ResponseEntity<ApiError> groupNameTaken(GroupNameTakenException e) {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(new ApiError("group.name_taken", e.getMessage()));
   }
 
   @ExceptionHandler(ValidationException.class)

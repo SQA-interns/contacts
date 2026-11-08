@@ -41,4 +41,17 @@ public class GroupRepository {
         .query(UUID.class)
         .single();
   }
+
+  /** Whether the User owns a Group not in Trash with this name, ignoring case (BR-05). */
+  @GlobalScope
+  public boolean ownerHasGroupNamed(UUID userId, String name) {
+    return jdbc.sql(
+            "SELECT EXISTS (SELECT 1 FROM contact_group g JOIN member m ON m.group_id = g.id"
+                + " WHERE m.user_id = :userId AND m.role = 'OWNER' AND g.deleted_at IS NULL"
+                + " AND lower(g.name) = lower(:name))")
+        .param("userId", userId)
+        .param("name", name)
+        .query(Boolean.class)
+        .single();
+  }
 }
