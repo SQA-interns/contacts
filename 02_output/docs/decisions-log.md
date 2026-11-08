@@ -105,3 +105,26 @@
 - Human response: "go ahead do these" (2026-11-08, in chat).
 - Resolution: 1. Still open from D-06: `FIREBASE_PROJECT_ID`, `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN` in `.env` (only the human has these values); Firefox crashed on launch inside the session's sandbox ("Operation not permitted"), so only Chromium and WebKit are verified.
 - Overrides: none
+
+## D-10: Answer to D-07 (Maven findings): move the backend to Spring Boot 4.0.9
+- Timestamp: 2026-11-08
+- Session: S1 /preflight (re-run with the human's answer)
+- Class: block
+- Type: approval
+- Trigger: follow-up to D-07; D-07 itself is not rewritten.
+- Options: as D-07; option 1 was chosen.
+- Human response: "Yes, Boot 4.0.9" (2026-11-08, in chat) = option 1 of D-07.
+- Resolution: Option 1. Effective Maven set for the build manifests (the Boot 4.0.9 BOM resolves them; `tech-stack.md` is not edited): all `org.springframework.boot:*` 4.0.9, with `spring-boot-starter-webmvc` in place of `spring-boot-starter-web` (the old name is deprecated in 4.0.9 in its favour); Spring Framework 7.0.10; Spring Security and `spring-security-test` 7.0.8; Tomcat 11.0.27; Netty 4.2.19.Final; springdoc 3.2.0; PostgreSQL driver 42.7.14. Overrides above the BOM, both needed by D-07 evidence: HttpClient5 5.6.5 and HttpCore5 5.4.4 (the BOM has 5.5.2 and 5.3.6, which the scan flags). Consequences of the Boot 4 BOM that the human did not list by name, so please review: Flyway 11.7.2 becomes 11.14.1 (`flyway-core`, `flyway-database-postgresql`); JUnit 5.12.2 becomes JUnit Jupiter 6.0.3 (a major change); Mockito 5.17.0 becomes 5.20.0; Testcontainers 1.21.3 becomes 2.0.5 and its artifacts are renamed (`org.testcontainers:testcontainers-postgresql` and `testcontainers-junit-jupiter` replace `postgresql` and `junit-jupiter`); Jackson 3 and Hibernate Validator 9 arrive. Not verified here and left to /implement (a conflict becomes a new decision): `archunit-junit5` 1.4.1 and `pitest-junit5-plugin` 1.2.3 with JUnit 6, `bucket4j-core` 8.10.1 and `poi-ooxml` 5.4.1 with Boot 4, `firebase-admin` 9.5.0 with Jackson 3. Evidence: the set resolves with Maven 3.9.11 on JDK 21.0.8 (`out/logs/preflight-mvn-resolve-boot4-*.log`); `dependency-check-maven` on it finds no Spring, Tomcat or Netty finding (`out/logs/preflight-dependency-check-report-boot4-9.5.0.json`). It leaves the findings of D-11.
+- Overrides: tech-stack.md Maven entries named in Resolution (version and, for Testcontainers and the web starter, artifact name)
+
+## D-11: Remaining Critical and High findings after the move to Boot 4.0.9
+- Timestamp: 2026-11-08
+- Session: S1 /preflight
+- Class: block
+- Type: blocking
+- Trigger: the scan of D-10's set with the listed `firebase-admin` 9.5.0 and `springdoc-openapi-starter-webmvc-ui` 3.2.0 (`out/logs/preflight-dependency-check-report-boot4-9.5.0.json`): 2 Critical and 8 High in four libraries. (1) Swagger UI bundle 5.34.0 (2 Critical, 2 High; the DOMPurify script in the bundle; CVE-2026-116803, CVE-2026-116804). (2) `opentelemetry-extension-incubator` 1.35.0-alpha (2 High) and `opentelemetry-gcp-resources` 1.37.0-alpha (3 High; CVE-2026-39883, CVE-2026-24051, CVE-2026-29181). (3) `protobuf-java` 3.25.5 (1 High, CVE-2026-0994). Libraries (2) and (3) come only through `firebase-admin` -> `google-cloud-storage` and `google-cloud-firestore`, which this product does not use (it only verifies ID tokens, AR-06). The newest `opentelemetry-extension-incubator` on Central is 1.36.0-alpha, below the advisory's fixed version, so a version change cannot clear it; the match is probably by name, not a real exposure, but that is my reading and not evidence. With `firebase-admin` 9.11.0 the same findings remain and two more High appear (`protobuf` 0.13.0, `protobuf-java` 4.33.6).
+  Tested variant C (`out/logs/preflight-dependency-check-report-boot4-C.json`): `firebase-admin` 9.5.0 with `google-cloud-storage` and `google-cloud-firestore` excluded in the Maven dependency, and `springdoc-openapi-starter-webmvc-api` 3.2.0 (OpenAPI description only, without Swagger UI) instead of the `-ui` starter. It resolves and the scan reports no vulnerability at all (85 libraries). Not verified: that Firebase token checking works without the two libraries (/implement must show it with a test against the emulator), and whether any story needs the Swagger UI page (R-018-08 says "OpenAPI description"; I did not read the requirements).
+- Options: 1. Use variant C: exclusions on `firebase-admin`, `springdoc-openapi-starter-webmvc-api` instead of the `-ui` starter; /implement shows by test that sign-in checking works without the two libraries and adds the Swagger UI later only through a new decision (proposed default). 2. Keep `firebase-admin` and the `-ui` starter and accept the 10 findings as lowered, on your written evidence (no Firestore, Storage or UI page in use). 3. Mix: exclusions only (fixes 5 High) and keep the UI starter with its 4 findings accepted. 4. Other.
+- Human response: none
+- Resolution: pending (blocking)
+- Overrides: tech-stack.md `firebase-admin` and `springdoc` entries, once answered
