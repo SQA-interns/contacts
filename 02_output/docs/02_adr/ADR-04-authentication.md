@@ -22,3 +22,4 @@ Option 2. `FirebaseTokenFilter` (package `security`) reads `Authorization: Beare
 - No Spring OAuth2 resource-server dependency.
 - Role is always read from the database on every request.
 - A short-lived cache of verified tokens is not added; the Admin SDK caches the public keys.
+- `FirebaseAuth` is not a Spring bean (the verifier creates it from the `FirebaseApp`): with `google-cloud-*` excluded (D-12) its class references `com.google.api.gax.paging.Page`, which Spring's bean introspection would try to load. `google-http-client-jackson2` is added for `FirebaseOptions` (D-32). Anything that calls `listUsers` would need `gax` and a new decision.

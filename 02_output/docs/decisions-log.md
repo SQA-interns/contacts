@@ -348,3 +348,14 @@
 - Human response: none
 - Resolution: 1. Pending review.
 - Overrides: none
+
+## D-32: Backend dependency set changes needed by Spring Boot 4 and by variant C (D-12)
+- Timestamp: 2026-11-08
+- Session: S3 /plan
+- Class: open
+- Type: non-blocking
+- Trigger: building and testing the backend skeleton on Boot 4.0.9 with Maven 3.9.11 and JDK 21.0.8. (a) Boot 4 moved the Flyway auto-configuration into `spring-boot-starter-flyway` (same group and version as every other Boot starter); the tech-stack entries `flyway-core` and `flyway-database-postgresql` alone start no migration. (b) `spring-boot-starter-webmvc-test` (test scope) holds `@AutoConfigureMockMvc` in Boot 4. (c) With `google-cloud-storage` and `google-cloud-firestore` excluded (D-12), `FirebaseOptions` fails with `NoClassDefFoundError: com.google.api.client.json.jackson2.JacksonFactory`; adding `com.google.http-client:google-http-client-jackson2` 1.46.3 (Apache-2.0, same version as `google-http-client`, depends on `jackson-core`) fixes it, proven by `FirebaseEmulatorIT` (a token issued by the Auth emulator is verified). (d) The `FirebaseAuth` class references `com.google.api.gax.paging.Page` (excluded `gax`); it is therefore not a Spring bean (ADR-04). (e) `maven-site-plugin` 3.12.1 is pinned (the default-lifecycle plugin that `requirePluginVersions` flagged). (f) The Maven Wrapper 3.3.2 check of `distributionSha256Sum` fails on this macOS because the system `sha256sum` rejects `-c`; the sum is correct (the Central SHA-512 and the SHA-256 were both checked). The work in this session used a `sha256sum` shim in the session scratch folder; nothing was changed on the host. Linux CI uses GNU `sha256sum`.
+- Options: 1. Keep (a), (b), (c), (e) as dependencies and pins; `dependency-check` of the final set is run in CI and in S3 (the result is in `out/logs/backend-dependency-check.log`); if it reports a Critical or High finding for (c), remove (c), keep `firebase-admin` with its default libraries and ask the human (D-11 options) (proposed default). 2. Ask the human first and stop. 3. Re-include the two excluded libraries (re-opens D-11).
+- Human response: none
+- Resolution: 1. Pending review and pending the scan result.
+- Overrides: tech-stack.md Maven entries (additions only)
