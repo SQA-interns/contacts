@@ -369,4 +369,214 @@ components:
         fields: { $ref: '#/components/schemas/ContactFields' }
         attributes: { type: array, items: { $ref: '#/components/schemas/AttributePair' } }
         tags: { type: array, items: { type: string } }
-paths: {}
+    GroupSummaryList: { type: array, items: { $ref: '#/components/schemas/GroupSummary' } }
+    GroupTrashItemList: { type: array, items: { $ref: '#/components/schemas/GroupTrashItem' } }
+    MemberList: { type: array, items: { $ref: '#/components/schemas/Member' } }
+    InvitationList: { type: array, items: { $ref: '#/components/schemas/Invitation' } }
+    TrashContactList: { type: array, items: { $ref: '#/components/schemas/TrashContact' } }
+    TagCountList: { type: array, items: { $ref: '#/components/schemas/TagCount' } }
+    VersionSummaryList: { type: array, items: { $ref: '#/components/schemas/VersionSummary' } }
+    DuplicateSetList: { type: array, items: { $ref: '#/components/schemas/DuplicateSet' } }
+paths:
+  /health:
+    servers: [{ url: / }]
+    get:
+      operationId: getHealth
+      tags: [account]
+      summary: Liveness and readiness; the only public operation, returns no other information.
+      security: []
+      responses:
+        '200': { description: Running., content: { application/json: { schema: { type: object, required: [status], properties: { status: { type: string, const: UP } } } } } }
+        '503': { description: Not ready., content: { application/json: { schema: { type: object, required: [status], properties: { status: { type: string, const: DOWN } } } } } }
+  /openapi.json:
+    get:
+      operationId: getOpenApi
+      tags: [account]
+      summary: The published OpenAPI description (R-018-08).
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: object } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /me:
+    get:
+      operationId: getMe
+      tags: [account]
+      summary: The signed-in User; creates the User on the first valid token (R-001-11).
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/User' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '409': { $ref: '#/components/responses/Conflict' }
+    delete:
+      operationId: deleteMe
+      tags: [account]
+      summary: Delete my account (US-021); 409 account.sole_owner lists the Groups to hand over or delete.
+      responses:
+        '204': { description: Deleted }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /groups:
+    get:
+      operationId: listGroups
+      tags: [groups]
+      summary: My Groups with my Role; accepts matching pending Invitations first (R-014-05); no Group in Trash.
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/GroupSummaryList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+    post:
+      operationId: createGroup
+      tags: [groups]
+      summary: Create a Group; the caller becomes Owner (R-002-01).
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/GroupCreate' } } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/GroupSummary' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/trash:
+    post:
+      operationId: trashGroup
+      tags: [groups]
+      summary: Move the Group to the Group Trash after typing its name (US-020).
+      x-required-action: DELETE_GROUP
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/GroupTrashRequest' } } } }
+      responses:
+        '204': { description: Moved to Trash }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /group-trash:
+    get:
+      operationId: listGroupTrash
+      tags: [groups]
+      summary: Groups in Trash of which the caller is Owner, with days left (R-020-04).
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/GroupTrashItemList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /group-trash/{groupId}/restore:
+    post:
+      operationId: restoreGroup
+      tags: [groups]
+      summary: Restore a Group within 30 days (Owner only; 404 for everyone else).
+      x-required-action: OWNER_OF_GROUP_IN_TRASH
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      responses:
+        '200': { description: Restored, content: { application/json: { schema: { $ref: '#/components/schemas/GroupSummary' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /groups/{groupId}/members:
+    get:
+      operationId: listMembers
+      tags: [members]
+      summary: Member list with display name, e-mail and Role (R-015-01).
+      x-required-action: READ_MEMBERS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/MemberList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/members/{userId}:
+    patch:
+      operationId: changeMemberRole
+      tags: [members]
+      summary: Change the Role of a Member; the last Owner cannot be demoted (SR-10).
+      x-required-action: MANAGE_MEMBERS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/UserId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/RoleChange' } } } }
+      responses:
+        '200': { description: Changed, content: { application/json: { schema: { $ref: '#/components/schemas/Member' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '409': { $ref: '#/components/responses/Conflict' }
+    delete:
+      operationId: removeMember
+      tags: [members]
+      summary: Remove a Member; the last Owner cannot be removed (SR-10).
+      x-required-action: MANAGE_MEMBERS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/UserId' }
+      responses:
+        '204': { description: Removed }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /groups/{groupId}/invitations:
+    get:
+      operationId: listInvitations
+      tags: [invitations]
+      summary: Pending Invitations (R-014-09).
+      x-required-action: MANAGE_MEMBERS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/InvitationList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    post:
+      operationId: createInvitation
+      tags: [invitations]
+      summary: Invite an e-mail address with a Role; no e-mail is sent (R-014-12).
+      x-required-action: MANAGE_MEMBERS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/InvitationCreate' } } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Invitation' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/invitations/{invitationId}/cancel:
+    post:
+      operationId: cancelInvitation
+      tags: [invitations]
+      summary: Cancel a pending Invitation (R-014-07).
+      x-required-action: MANAGE_MEMBERS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/InvitationId' }
+      responses:
+        '200': { description: Cancelled, content: { application/json: { schema: { $ref: '#/components/schemas/Invitation' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
