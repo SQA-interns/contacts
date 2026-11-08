@@ -50,6 +50,7 @@
     <enforcer-plugin.version>3.6.1</enforcer-plugin.version>
     <license-plugin.version>2.7.1</license-plugin.version>
     <skipAcceptance>false</skipAcceptance>
+    <ownContextAcceptanceTests>**/acceptance/Us018*Own*IT.java</ownContextAcceptanceTests>
   </properties>
 
   <dependencies>
@@ -260,8 +261,28 @@
               <includes>
                 <include>**/acceptance/**/*IT.java</include>
               </includes>
+              <excludes>
+                <exclude>${ownContextAcceptanceTests}</exclude>
+              </excludes>
               <skipITs>${skipAcceptance}</skipITs>
               <summaryFile>${project.build.directory}/failsafe-reports/acceptance-summary.xml</summaryFile>
+            </configuration>
+          </execution>
+          <!-- acceptance tests with their own environment (rate limit 100, HTTPS required): the product
+               registers one named FirebaseApp per JVM, so each of these runs in a JVM of its own -->
+          <execution>
+            <id>acceptance-own-context</id>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <includes>
+                <include>${ownContextAcceptanceTests}</include>
+              </includes>
+              <reuseForks>false</reuseForks>
+              <skipITs>${skipAcceptance}</skipITs>
+              <summaryFile>${project.build.directory}/failsafe-reports/acceptance-own-context-summary.xml</summaryFile>
             </configuration>
           </execution>
         </executions>

@@ -15,5 +15,14 @@
     "noUnusedParameters": true,
     "types": ["node"]
   },
-  "include": ["vite.config.ts", "playwright.config.ts", "e2e", "eslint.config.js"]
+  "include": [
+    "vite.config.ts",
+    "playwright.config.ts",
+    "playwright.acceptance.config.ts",
+    "playwright.e2e.config.ts",
+    "ui-checks",
+    "acceptance",
+    "e2e",
+    "eslint.config.js"
+  ]
 }

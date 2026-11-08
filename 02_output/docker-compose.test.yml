@@ -1,0 +1,8 @@
+# Test environment of the browser tests (environments.md, "test"): the local stack with the emulator overlay, an
+# empty database and test-only values. Started and removed by scripts/test-stack.sh; never used for production.
+# The rate limit is raised because one test User sets up many Contacts in a few seconds; the limit itself is
+# tested by the backend acceptance tests with the default of 100 (Us018RateLimitOwnContextAcceptanceIT).
+services:
+  backend:
+    environment:
+      RATE_LIMIT_PER_MINUTE: "100000"

@@ -15,7 +15,9 @@
     "test:watch": "vitest",
     "check": "prettier --check . && eslint . && tsc -b --noEmit && vitest run src/i18n",
     "format": "prettier --write .",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "acceptance": "playwright test -c playwright.acceptance.config.ts",
+    "e2e:scenarios": "playwright test -c playwright.e2e.config.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.2",

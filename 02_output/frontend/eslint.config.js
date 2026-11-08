@@ -61,7 +61,14 @@ export default tseslint.config(
   { files: ['src/auth/**'], rules: { 'no-restricted-imports': 'off' } },
   { files: ['src/api/**'], rules: { 'no-restricted-globals': 'off', 'no-restricted-properties': 'off' } },
   {
-    files: ['**/*.test.{ts,tsx}', 'src/test/**', 'e2e/**', '*.config.{ts,js}'],
+    files: [
+      '**/*.test.{ts,tsx}',
+      'src/test/**',
+      'e2e/**',
+      'acceptance/**',
+      'ui-checks/**',
+      '*.config.{ts,js}',
+    ],
     rules: {
       'no-restricted-syntax': 'off',
       'no-restricted-globals': 'off',
@@ -69,4 +76,6 @@ export default tseslint.config(
       'no-restricted-imports': 'off',
     },
   },
+  // JSON answers of the REST interface in the browser tests are read without a schema type
+  { files: ['acceptance/**', 'e2e/**'], rules: { '@typescript-eslint/no-explicit-any': 'off' } },
 );
