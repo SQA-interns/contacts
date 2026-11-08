@@ -1,53 +1,65 @@
-import { onAuthStateChanged, signOut as firebaseSignOut, type User } from 'firebase/auth';
+import { useQueryClient } from '@tanstack/react-query';
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { configureApi } from '@/api/client';
-import { firebaseAuth } from './firebase';
+import type { Account, AuthClient } from './client';
+import { createFirebaseClient } from './firebaseClient';
 
 export type AuthStatus = 'loading' | 'signedOut' | 'signedIn';
 
 interface AuthContextValue {
   status: AuthStatus;
-  user: User | null;
+  account: Account | null;
+  /** The server answered 401 and the session was ended (R-001-12). */
+  sessionExpired: boolean;
+  client: AuthClient;
   signOut: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextValue>({
-  status: 'loading',
-  user: null,
-  signOut: () => Promise.resolve(),
-});
+const AuthContext = createContext<AuthContextValue | null>(null);
 
-/** Keeps the Firebase session and gives the API client its token (R-001-09, R-001-12). */
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<{ status: AuthStatus; user: User | null }>({
+/**
+ * Keeps the Firebase session (R-001-09), gives the API client its token, ends the session on a 401
+ * (R-001-12) and forgets every cached answer when nobody is signed in (R-001-10).
+ */
+export function AuthProvider({ client: given, children }: { client?: AuthClient; children: ReactNode }) {
+  const [client] = useState(() => given ?? createFirebaseClient());
+  const queryClient = useQueryClient();
+  const [session, setSession] = useState<{ status: AuthStatus; account: Account | null }>({
     status: 'loading',
-    user: null,
+    account: null,
   });
+  const [sessionExpired, setSessionExpired] = useState(false);
 
   useEffect(() => {
-    let auth;
+    configureApi(
+      () => client.idToken(),
+      () => {
+        setSessionExpired(true);
+        void client.signOut();
+      },
+    );
     try {
-      auth = firebaseAuth();
+      return client.onChange((account) => {
+        if (account) setSessionExpired(false);
+        else queryClient.clear();
+        setSession({ status: account ? 'signedIn' : 'signedOut', account });
+      });
     } catch {
       // Firebase is not configured or cannot start: the shell still renders, signed out.
-      setState({ status: 'signedOut', user: null });
+      setSession({ status: 'signedOut', account: null });
       return undefined;
     }
-    const current = auth;
-    configureApi(
-      () => (current.currentUser ? current.currentUser.getIdToken() : Promise.resolve(null)),
-      () => void firebaseSignOut(current),
-    );
-    return onAuthStateChanged(current, (user) => setState({ status: user ? 'signedIn' : 'signedOut', user }));
-  }, []);
+  }, [client, queryClient]);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ ...state, signOut: () => firebaseSignOut(firebaseAuth()) }),
-    [state],
+    () => ({ ...session, sessionExpired, client, signOut: () => client.signOut() }),
+    [session, sessionExpired, client],
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth(): AuthContextValue {
-  return useContext(AuthContext);
+  const value = useContext(AuthContext);
+  if (!value) throw new Error('useAuth needs an AuthProvider');
+  return value;
 }
