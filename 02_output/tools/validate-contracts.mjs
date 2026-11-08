@@ -41,6 +41,7 @@ for (const file of readdirSync(dir).sort()) {
     const schema = JSON.parse(readFileSync(path, 'utf8'));
     const ajv = new Ajv2020({ strict: true, allErrors: true });
     addFormats(ajv);
+    ajv.addKeyword('x-invalid-examples');
     let validate;
     try { validate = ajv.compile(schema); } catch (e) { fail(`${file}: ${e.message}`); continue; }
     const examples = schema.examples ?? [];
