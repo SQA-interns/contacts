@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contact-groups.example/contracts/xlsx-export.schema.json",
+  "title": "Excel export file (logical content)",
+  "description": "Logical content of the .xlsx produced by POST /groups/{groupId}/exports (US-011). The file has exactly one sheet; the first row is the header; every cell is a text cell (never a formula, SR-06, R-011-06). Columns: the 11 predefined fields, Tags, then one column per Attribute key used in the exported Contacts, sorted ignoring case and accents, keys differing only in case in one column (R-011-03, D-19g). Header texts and country names follow `lang` (R-011-09, D-19e).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lang", "fileName", "sheetCount", "header", "rows"],
+  "properties": {
+    "lang": { "enum": ["sl", "en"] },
+    "fileName": { "type": "string", "pattern": "^[^\\\\/:*?\"<>|\\u0000-\\u001f]+_[0-9]{4}-[0-9]{2}-[0-9]{2}\\.xlsx$", "description": "<Group name>_<YYYY-MM-DD>.xlsx; characters not allowed in file names are replaced by _ (R-011-04); the date is the day in Europe/Ljubljana." },
+    "sheetCount": { "const": 1 },
+    "header": {
+      "type": "array",
+      "minItems": 12,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "11 field headers, Tags, then Attribute keys."
+    },
+    "rows": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "One string per header column (empty string when empty); cell type is always text."
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "lang": { "const": "en" } } },
+      "then": { "properties": { "header": { "type": "array", "minItems": 12, "items": { "type": "string" }, "prefixItems": [
+        { "const": "First name" }, { "const": "Last name" }, { "const": "E-mail" }, { "const": "Phone" },
+        { "const": "Company" }, { "const": "Job title" }, { "const": "Street and house number" },
+        { "const": "Postal code" }, { "const": "City" }, { "const": "Country" }, { "const": "Notes" }, { "const": "Tags" }
+      ] } } }
+    },
+    {
+      "if": { "properties": { "lang": { "const": "sl" } } },
+      "then": { "properties": { "header": { "type": "array", "minItems": 12, "items": { "type": "string" }, "prefixItems": [
+        { "const": "Ime" }, { "const": "Priimek" }, { "const": "E-pošta" }, { "const": "Telefon" },
+        { "const": "Podjetje" }, { "const": "Delovno mesto" }, { "const": "Ulica in hišna številka" },
+        { "const": "Poštna številka" }, { "const": "Kraj" }, { "const": "Država" }, { "const": "Opombe" }, { "const": "Značke" }
+      ] } } }
+    }
+  ],
+  "examples": [
+    {
+      "lang": "en",
+      "fileName": "Acme_2026-11-08.xlsx",
+      "sheetCount": 1,
+      "header": ["First name", "Last name", "E-mail", "Phone", "Company", "Job title", "Street and house number", "Postal code", "City", "Country", "Notes", "Tags", "kompetenca"],
+      "rows": [["Ana", "Novak", "ana@example.com", "+386 40 123 456", "Acme d.o.o.", "", "", "1000", "Ljubljana", "Slovenia", "=HYPERLINK(\"http://x\")", "neObvescaj, udelezenec2025", "python"]]
+    },
+    {
+      "lang": "sl",
+      "fileName": "Acme_2026-11-08.xlsx",
+      "sheetCount": 1,
+      "header": ["Ime", "Priimek", "E-pošta", "Telefon", "Podjetje", "Delovno mesto", "Ulica in hišna številka", "Poštna številka", "Kraj", "Država", "Opombe", "Značke"],
+      "rows": []
+    }
+  ],
+  "x-invalid-examples": [
+    { "lang": "en", "fileName": "Acme_2026-11-08.xlsx", "sheetCount": 2, "header": ["First name", "Last name", "E-mail", "Phone", "Company", "Job title", "Street and house number", "Postal code", "City", "Country", "Notes", "Tags"], "rows": [] },
+    { "lang": "en", "fileName": "Acme.xlsx", "sheetCount": 1, "header": ["First name", "Last name", "E-mail", "Phone", "Company", "Job title", "Street and house number", "Postal code", "City", "Country", "Notes", "Tags"], "rows": [] },
+    { "lang": "en", "fileName": "Acme_2026-11-08.xlsx", "sheetCount": 1, "header": ["Ime", "Priimek", "E-pošta", "Telefon", "Podjetje", "Delovno mesto", "Ulica in hišna številka", "Poštna številka", "Kraj", "Država", "Opombe", "Značke"], "rows": [] }
+  ]
+}
