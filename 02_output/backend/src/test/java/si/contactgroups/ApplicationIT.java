@@ -9,29 +9,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import si.contactgroups.support.PostgresSupport;
+import si.contactgroups.support.ApplicationContextSupport;
 
 /** The assembled skeleton: SR-02, R-018-01, R-018-07, SB-10, R-018-09. */
-@SpringBootTest
-@AutoConfigureMockMvc
-class ApplicationIT {
-
-  @DynamicPropertySource
-  static void environment(DynamicPropertyRegistry registry) {
-    registry.add("DB_URL", PostgresSupport::jdbcUrl);
-    registry.add("DB_MIGRATION_USER", PostgresSupport::ownerUser);
-    registry.add("DB_MIGRATION_PASSWORD", PostgresSupport::ownerPassword);
-    registry.add("DB_APP_PASSWORD", () -> PostgresSupport.APP_PASSWORD);
-    registry.add("FIREBASE_PROJECT_ID", () -> "demo-contact-groups");
-    registry.add("CORS_ALLOWED_ORIGIN", () -> "http://localhost:5173");
-  }
+class ApplicationIT extends ApplicationContextSupport {
 
   @Autowired private MockMvc mvc;
   @Autowired private UserDetailsService userDetailsService;
