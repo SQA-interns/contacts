@@ -480,3 +480,25 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-44: Frozen tests of US-018 set up their data through endpoints of later stories
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-018
+- Class: open
+- Type: non-blocking
+- Trigger: DoD-S-01 asks every frozen test of US-018 to pass. (a) `Us018SecurityAcceptanceIT` creates a Contact in its `@BeforeEach` (`POST /groups/{groupId}/contacts`, US-003), so all its 22 tests fail in the set-up with 404 `route.not_found` before they reach US-018 behaviour; AC-018-05 to AC-018-07, AC-018-13 and EX-018-04 also need Contact, export and Trash endpoints (US-003, US-011, US-012). (b) `Us018RateLimitOwnContextAcceptanceIT.ac_018_15_security_log` creates a Contact and an Invitation (US-003, US-014 `POST /groups/{groupId}/invitations`). (c) AC-018-10 compares the published description with every operation of the contract, which holds only when the last story is done (the specification says the contract-parity test covers the operations that exist, D-23c). Behaviour of US-018 that these tests check is covered meanwhile by own tests: `GroupAccessIT`, `IsolationIT`, `RequestLimitsIT`, `SecurityChainIT`, `ContractParityIT`, `RequestSizeFilterTest`, `RateLimitFilterTest`, `HttpsFilterTest`, `SecurityLoggerTest`, `ApiExceptionHandlerTest`. The own-context tests AC-018-12, AC-018-14 (HTTPS), EX-018-03 and EX-018-09 pass.
+- Options: 1 (default) leave these frozen tests red; mark US-018 done with DoD-S-01 open for them; `/implement US-003` confirms `Us018SecurityAcceptanceIT` (except AC-018-10, AC-018-04 in full, which wait for the last story of the increments), `/implement US-014` confirms AC-018-15, and R-018-05 / AC-018-06..07 get their own Contact tests there. 2 build slices of the Contact, Invitation and export endpoints now; rejected: they belong to other stories and would be written without their own rules.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
+
+## D-45: Readings of US-018 made while implementing
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-018
+- Class: open
+- Type: non-blocking
+- Trigger: points the story and ADR-05, ADR-10, ADR-11 leave open. (a) R-018-04 says "ignore or reject" a Group in the body; chosen: reject every unknown property with 400 `request.unknown_property` (ADR-05, ADR-10) through `fail-on-unknown-properties` in `application.yml`; this applies to every request body of the interface. (b) A body without `Content-Length` is counted while it is read and fails with 413 `request.too_large` (ADR-11). (c) [ASSUMPTION] `Retry-After` of the 429 answer is the whole seconds until the bucket refills, at least 1 (ADR-11 names the header, not the value). (d) [ASSUMPTION] The rate-limit buckets are kept in memory for every User who sent a request and are not removed; one bucket is small and the product runs one instance (ADR-11), so no eviction was built. (e) [ASSUMPTION] The security log line is `security: answered <status> to <method> <path>` for 401, 403, 404 and 429, written by `SecurityLogger` around the whole chain; the path is logged without query string; the 401 line of `FirebaseTokenFilter` was removed so that each event has one line. (f) HTTPS is judged by the scheme after the forwarded-header filter (`server.forward-headers-strategy: framework`), which reads `X-Forwarded-Proto`; `/health` is excluded (ADR-11). (g) Test-only endpoints (`GroupPathProbe`, profile `group-path-probe`, hidden from the OpenAPI description) stand in for Group endpoints until US-003 and later stories exist. (h) R-018-14 is protected in the frontend by a lint rule against `dangerouslySetInnerHTML` (no new package: `no-restricted-syntax`); the check that a Contact named `<script>` is listed and opened as text (AC-018-16) waits for the Contact screens of US-003 and US-007. (i) One commit subject is 73 characters (`feat: publish the OpenAPI description of the contract (R-018-08, DoD-P02)`); history is not rewritten (commits.md), DoD-S-07 in part.
+- Options: 1 (default) as written. 2 ask the human per item.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
