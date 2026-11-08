@@ -27,6 +27,17 @@
     "empty": "No data",
     "page": "Page {{page}} of {{pages}}"
   },
+  "groups": {
+    "title": "My groups",
+    "intro": "The groups you are a member of, with your role.",
+    "emptyTitle": "You have no group yet",
+    "emptyBody": "A group keeps the contacts of one project or company in one place. You can also invite others to it."
+  },
+  "role": {
+    "OWNER": "Owner",
+    "EDITOR": "Editor",
+    "VIEWER": "Viewer"
+  },
   "error": {
     "generic": "Something went wrong. Please try again.",
     "notFoundTitle": "Page not found",

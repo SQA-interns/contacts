@@ -27,6 +27,17 @@
     "empty": "Ni podatkov",
     "page": "Stran {{page}} od {{pages}}"
   },
+  "groups": {
+    "title": "Moje skupine",
+    "intro": "Skupine, v katerih ste član, z vašo vlogo.",
+    "emptyTitle": "Še nimate nobene skupine",
+    "emptyBody": "Skupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge."
+  },
+  "role": {
+    "OWNER": "Lastnik",
+    "EDITOR": "Urednik",
+    "VIEWER": "Ogledovalec"
+  },
   "error": {
     "generic": "Nekaj je šlo narobe. Poskusite znova.",
     "notFoundTitle": "Strani ni mogoče najti",
