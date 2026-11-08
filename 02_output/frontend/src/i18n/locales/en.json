@@ -57,6 +57,15 @@
       "resend": "Send again",
       "busy": "Sending …",
       "resent": "We sent the link again."
+    },
+    "reset": {
+      "title": "Reset password",
+      "intro": "Enter the e-mail address of your account. We will send you a link for a new password.",
+      "submit": "Send link",
+      "busy": "Sending …",
+      "back": "Back to sign-in",
+      "sentTitle": "Check your e-mail.",
+      "sentBody": "If the address is registered, we have sent it a link to reset the password."
     }
   },
   "groups": {

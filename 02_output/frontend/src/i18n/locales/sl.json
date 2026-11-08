@@ -57,6 +57,15 @@
       "resend": "Pošlji znova",
       "busy": "Pošiljanje …",
       "resent": "Povezavo smo poslali znova."
+    },
+    "reset": {
+      "title": "Ponastavitev gesla",
+      "intro": "Vpišite e-poštni naslov svojega računa. Poslali vam bomo povezavo za novo geslo.",
+      "submit": "Pošlji povezavo",
+      "busy": "Pošiljanje …",
+      "back": "Nazaj na prijavo",
+      "sentTitle": "Preverite svojo e-pošto.",
+      "sentBody": "Če je naslov registriran, smo nanj poslali povezavo za ponastavitev gesla."
     }
   },
   "groups": {
