@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S2 /clarify
-- Result: blocked
-- Gate: phase 1 gate not passed (DoR-S-07 and DoR-S-09 open for 11 stories; three Block decisions D-14, D-15, D-16 unanswered)
-- Notes for the next session: Report `docs/01_requirements-check.md` (per-story DoR, findings F-01 to F-37, rule → criterion map). All 26 stories were checked; 15 are ready (US-001 to US-011, US-017, US-018, US-019, US-026), 11 are not (US-012 to US-016, US-020 to US-025) because of D-14 (Roles for actions the interview does not assign), D-15 (deletion timing and retention) and D-16 (account deletion with a Group in Group Trash; Invitations after account deletion). Each has numbered options and a default; `/clarify D-14: 1 D-15: 1 D-16: A1 B1` accepts all defaults. Non-blocking decisions D-17 to D-24 (Open or Allow, "pending review") use the conservative reading; D-23 (a) reads DoR-S-05 as satisfied by an acceptance criterion that states the refusal (21 stories); the human may overrule it. Not checked, outside the reads list: Q ids against `interview.md`, screens against `ui-design.md` (D-23 d, g). After the answers: record each as `Human response`, re-check the 11 stories, then hand over with every story ready (next: `/plan`).
+- Session: S3 /clarify D-14: 1 D-15: 1 D-16: A1 B1 ("Accept defaults")
+- Result: done
+- Gate: phase 1 gate passed
+- Notes for the next session: Report `docs/01_requirements-check.md`; all 26 stories are ready, the run meets DoR-R. D-14, D-15, D-16 are answered by D-25, D-26, D-27 and closed by D-28. Decisions D-17 to D-24 (Open or Allow, "pending review") fix the conservative readings; /plan should apply them: D-18 (Group in Trash is "not found" for Group-scoped endpoints, separate Owner-only Group Trash endpoints; check order 401, 403 unverified, 404 non-Member, 403 Role), D-19 (one History entry per audited action in a save; comparison against the live Contact; ContactVersion stores time and user; fixed one-minute rate window), D-23 (US-018 and US-026 are split into tasks; AC-018-04 runs per increment and fully at release; screens for sign-in/reset, Invitations, account deletion and duplicate search are drawn in /wireframes), D-24 (check of each SR). Not checked, outside /clarify reads: Q ids against `interview.md`, screens against `ui-design.md`. Stories US-020 to US-026 are increment 2.
 
 ## Next
-- Command: /clarify
-- Waiting for: D-14, D-15, D-16
+- Command: /plan
+- Waiting for: nothing
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
@@ -28,18 +28,18 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-009 | 1 | ready | — |
 | US-010 | 1 | ready | — |
 | US-011 | 1 | ready | — |
-| US-012 | 1 | in progress (waits for D-14) | — |
-| US-013 | 1 | in progress (waits for D-15) | — |
-| US-014 | 1 | in progress (waits for D-14) | — |
-| US-015 | 1 | in progress (waits for D-14) | — |
-| US-016 | 1 | in progress (waits for D-15) | — |
+| US-012 | 1 | ready | — |
+| US-013 | 1 | ready | — |
+| US-014 | 1 | ready | — |
+| US-015 | 1 | ready | — |
+| US-016 | 1 | ready | — |
 | US-017 | 1 | ready | — |
 | US-018 | 1 | ready | — |
 | US-019 | 1 | ready | — |
-| US-020 | 2 | in progress (waits for D-15, D-16) | — |
-| US-021 | 2 | in progress (waits for D-16) | — |
-| US-022 | 2 | in progress (waits for D-14) | — |
-| US-023 | 2 | in progress (waits for D-14) | — |
-| US-024 | 2 | in progress (waits for D-14) | — |
-| US-025 | 2 | in progress (waits for D-14) | — |
+| US-020 | 2 | ready | — |
+| US-021 | 2 | ready | — |
+| US-022 | 2 | ready | — |
+| US-023 | 2 | ready | — |
+| US-024 | 2 | ready | — |
+| US-025 | 2 | ready | — |
 | US-026 | 2 | ready | — |

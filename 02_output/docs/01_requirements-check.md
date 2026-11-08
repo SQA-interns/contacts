@@ -2,7 +2,7 @@
 
 > For: agent (writes), human (reads) · Written in: phase 1 (`/clarify`) · Source: `project/01_requirements/*`, `general/requirements-standard.md`, `general/quality/definition-of-ready.md` · Agent: writes (results and gaps only; do not copy the requirements)
 
-Session S2 `/clarify`, 2026-11-08. Phase 1 gate: **not passed** — three `Block` decisions (D-14, D-15, D-16) wait for the human; 11 of 26 stories are not ready because of them. Everything else is classified (D-17 to D-24) and does not block.
+Session S2 `/clarify` (findings) and S3 `/clarify` (answers), 2026-11-08. Phase 1 gate: **passed** — the three `Block` decisions D-14, D-15, D-16 were answered "Accept defaults" (D-25, D-26, D-27; closed by D-28); all 26 stories are ready. Everything else is classified (D-17 to D-24) and does not block.
 
 How this check was made: all 26 stories, `intent.md`, `business-rules.md`, `e2e-scenarios.md`, `security-requirements.md` and `quality-requirements.md` were read; IDs, rule-to-criterion coverage, `If … then` rules, e2e coverage and front matter were checked by script (scratch scripts, nothing kept in `out/logs/`). Limits: `interview.md` and `ui-design.md` are not on the reads list of `/clarify`, so Q ids and the fit of screens to the UI baseline were not checked (F-33, F-34).
 
@@ -12,14 +12,14 @@ How this check was made: all 26 stories, `intent.md`, `business-rules.md`, `e2e-
 |---|---|---|
 | DoR-R-01 | Met | `intent.md` has problem, users, core outcome, MVP, non-goals, principles (P-1 to P-5) and DoD-P01 to DoD-P07. |
 | DoR-R-02 | Met with decisions | Project-wide facts exist for time zone, currency, tax, formats, languages, encoding, countries, phone, Trash period, page size, export limit. Four are `[ASSUMPTION]` (calendar-day zone, English time and number format, country list): D-20. |
-| DoR-R-03 | **Not met** | Every `must` and MVP story must be ready; MVP stories US-012, US-013, US-014, US-015, US-016 wait for D-14 or D-15. |
+| DoR-R-03 | Met | Every `must` and MVP story is ready; US-012 to US-016 became ready with D-25 and D-26. |
 | DoR-R-04 | Met | E2E-01 to E2E-06 each name stories and criteria; every cited AC exists; every MVP story (US-001 to US-019) is in at least one scenario (checked story by story). E2E-03 lists AC-018-04 but tests one endpoint: D-23. |
 | DoR-R-05 | Met with decision | All NFR (01 to 15), DoD-P and principles say how they are checked. The SR table has no such column; D-24 records the check of each SR. |
 | DoR-R-06 | Met | `docs/00_progress.md` and commit `4d4ddd9` record the phase 0 gate as passed. |
 
 ## Stories
 
-Ready = all `DoR-S` items met, counting D-17 to D-24 as the recorded decisions (DoR-S-05, -07, -09, -10, -11 are met through them). "Not ready" = a `Block` topic is still open (DoR-S-07, -09). The rules → criteria map is in the appendix.
+Ready = all `DoR-S` items met, counting D-17 to D-27 as the recorded decisions (DoR-S-05, -07, -09, -10, -11 are met through them). In S2 eleven stories were "not ready" because a `Block` topic was open (DoR-S-07, -09); S3 re-checked them against D-25 to D-27: each assumption on a Block topic is now a recorded, answered decision, no OPEN item remains on a Block topic, and no rule text changed. The rules → criteria map is in the appendix.
 
 | Story | Ready | Failing DoR-S items | Rules → criteria | Findings (decision ids) |
 |---|---|---|---|---|
@@ -34,23 +34,23 @@ Ready = all `DoR-S` items met, counting D-17 to D-24 as the recorded decisions (
 | US-009 | yes | none | 12, 12, 7 | F-25 (D-21), F-29 |
 | US-010 | yes | none | 10, 9, 5 | F-25 (D-21) |
 | US-011 | yes | none | 10, 11, 10 | F-19, F-21 (D-19), F-29 |
-| US-012 | **no** | DoR-S-07, -09 (R-012-03, R-012-08: Editor sees Trash) | 9, 8, 7 | F-01 (D-14), F-30 |
-| US-013 | **no** | DoR-S-07, -09 (R-013-04 delay, R-013-06) | 8, 8, 6 | F-02 (D-15), F-29 |
-| US-014 | **no** | DoR-S-07, -09 (R-014-01 Owner Role in an Invitation) | 12, 11, 9 | F-01 (D-14), F-10 (D-18), F-22 (D-19), F-29 |
-| US-015 | **no** | DoR-S-07, -09 (R-015-01 Viewers see the Member list) | 8, 9, 5 | F-01 (D-14), F-29 |
-| US-016 | **no** | DoR-S-07, -09 (R-016-07 retention) | 8, 9, 7 | F-02 (D-15), F-15 (D-19), F-29 |
+| US-012 | yes | none (D-25 to D-27) | 9, 8, 7 | F-01 (D-14), F-30 |
+| US-013 | yes | none (D-25 to D-27) | 8, 8, 6 | F-02 (D-15), F-29 |
+| US-014 | yes | none (D-25 to D-27) | 12, 11, 9 | F-01 (D-14), F-10 (D-18), F-22 (D-19), F-29 |
+| US-015 | yes | none (D-25 to D-27) | 8, 9, 5 | F-01 (D-14), F-29 |
+| US-016 | yes | none (D-25 to D-27) | 8, 9, 7 | F-02 (D-15), F-15 (D-19), F-29 |
 | US-017 | yes | none | 9, 9, 5 | F-13 (D-18), F-29 |
 | US-018 | yes | DoR-S-02 reading only (size) | 16, 17, 9 | F-09, F-11 (D-18), F-20 (D-19), F-31, F-32 (D-23) |
 | US-019 | yes | none | 7, 7, 3 | F-25 (D-21) |
-| US-020 | **no** | DoR-S-07, -09 (R-020-05 delay; interplay with US-021) | 8, 7, 7 | F-02 (D-15), F-03 (D-16), F-09, F-10 (D-18) |
-| US-021 | **no** | DoR-S-07, -09, -10 (R-021-02, EX-021-04; no screen named) | 6, 7, 4 | F-03 (D-16), F-13, F-14 (D-18), F-33 |
-| US-022 | **no** | DoR-S-07, -09 (R-022-06 Viewer refused) | 7, 7, 5 | F-01 (D-14), F-16, F-23 (D-19), F-37 |
-| US-023 | **no** | DoR-S-07, -09 (R-023-06 Viewer refused) | 6, 7, 4 | F-01 (D-14), F-29 |
-| US-024 | **no** | DoR-S-07, -09 (R-024-09), -10 (screen not named) | 10, 11, 6 | F-01 (D-14), F-17 (D-19), F-33 |
-| US-025 | **no** | DoR-S-07, -09 (R-025-04 Viewer refused) | 5, 5, 4 | F-01 (D-14), F-29 |
+| US-020 | yes | none (D-25 to D-27) | 8, 7, 7 | F-02 (D-15), F-03 (D-16), F-09, F-10 (D-18) |
+| US-021 | yes | none (D-25 to D-27) (screen: D-23 d) | 6, 7, 4 | F-03 (D-16), F-13, F-14 (D-18), F-33 |
+| US-022 | yes | none (D-25 to D-27) | 7, 7, 5 | F-01 (D-14), F-16, F-23 (D-19), F-37 |
+| US-023 | yes | none (D-25 to D-27) | 6, 7, 4 | F-01 (D-14), F-29 |
+| US-024 | yes | none (D-25 to D-27) (screen: D-23 d) | 10, 11, 6 | F-01 (D-14), F-17 (D-19), F-33 |
+| US-025 | yes | none (D-25 to D-27) | 5, 5, 4 | F-01 (D-14), F-29 |
 | US-026 | yes | none | 12, 12, 9 | F-18 (D-19), F-31 (D-23) |
 
-Ready: 15 (US-001 to US-011, US-017, US-018, US-019, US-026). Not ready: 11 (US-012 to US-016, US-020 to US-025).
+Ready: 26 of 26. Re-checked in S3 after the answers: US-012 to US-016 and US-020 to US-025 (11 stories).
 
 ## Findings
 
@@ -58,9 +58,9 @@ Class: Allow (the inputs settle it), Open (non-blocking decision with the most c
 
 | ID | Story or file | Property or DoR item | What is missing | Consequence of a wrong reading | Class | Decision |
 |---|---|---|---|---|---|---|
-| F-01 | BR-02 matrix `*` rows; US-012 R-012-03/-08, US-014 R-014-01, US-015 R-015-01, US-022 R-022-06, US-023 R-023-06, US-024 R-024-09, US-025 R-025-04 | DoR-S-07, -09; correct | Roles for actions the interview does not assign (Trash, Versions, duplicates, Member list, Owner Role in an Invitation). | Editors or Viewers see or do what the customer reserves: Viewers read colleagues' e-mails, an invited Owner can delete the Group. | Block | D-14 |
-| F-02 | US-013 R-013-04/-06, US-020 R-020-05, US-016 R-016-07, security log retention | DoR-S-07, -09; complete | Clean-up delay after day 30, History retention, log retention, content of the deletion entry. | Personal data stays longer than the customer expects. | Block | D-15 |
-| F-03 | US-021 R-021-02, EX-021-04 × US-020 | complete; consistent | Whether a Group in Group Trash makes the User a Sole Owner; what pending Invitations do after account deletion. | The account cannot be deleted for 30 days, or a Group sits in Trash without an Owner, or a re-registered person gets access. | Block | D-16 |
+| F-01 | BR-02 matrix `*` rows; US-012 R-012-03/-08, US-014 R-014-01, US-015 R-015-01, US-022 R-022-06, US-023 R-023-06, US-024 R-024-09, US-025 R-025-04 | DoR-S-07, -09; correct | Roles for actions the interview does not assign (Trash, Versions, duplicates, Member list, Owner Role in an Invitation). | Editors or Viewers see or do what the customer reserves: Viewers read colleagues' e-mails, an invited Owner can delete the Group. | Block, answered | D-14, D-25 |
+| F-02 | US-013 R-013-04/-06, US-020 R-020-05, US-016 R-016-07, security log retention | DoR-S-07, -09; complete | Clean-up delay after day 30, History retention, log retention, content of the deletion entry. | Personal data stays longer than the customer expects. | Block, answered | D-15, D-26 |
+| F-03 | US-021 R-021-02, EX-021-04 × US-020 | complete; consistent | Whether a Group in Group Trash makes the User a Sole Owner; what pending Invitations do after account deletion. | The account cannot be deleted for 30 days, or a Group sits in Trash without an Owner, or a re-registered person gets access. | Block, answered | D-16, D-27 |
 | F-04 | 18 `OPEN — needs customer` questions with a developer answer | DoR-S-07 | Customer confirmation of rights, personal data, deletion, consent, destructive-action answers. | A different customer answer changes the story later. | Allow | D-17 |
 | F-05 | `intent.md` OQ-P01, P02, P04 to P10 | DoR-R-01 | Customer answers; none changes a story. OQ-P05 (legal) is handled outside the software (Q-46). | NFR numbers or Level 3 security may change after the review. | Allow | D-17 |
 | F-06 | `intent.md` P-4 | unambiguous | "A person" vs Firebase's verification and reset e-mails (US-001). | None: those are started by the user; P-4 concerns the people described by Contacts. | Allow | D-23 (f) |

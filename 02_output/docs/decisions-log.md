@@ -271,3 +271,47 @@
 - Human response: none
 - Resolution: 1. Pending review.
 - Overrides: none
+
+## D-25: Answer to D-14 (Roles for actions the interview does not assign)
+- Timestamp: 2026-11-08
+- Session: S3 /clarify (re-run with the human's answer)
+- Class: block
+- Type: approval
+- Trigger: follow-up to D-14; D-14 itself is not rewritten.
+- Options: as D-14; option 1 (as written) was the proposed default.
+- Human response: "Accept defaults" (2026-11-08, in chat) = option 1 of D-14.
+- Resolution: Option 1. Owner and Editor see Trash, Versions and run the duplicate search and "not a duplicate"; Viewers do none of these; all Members, Viewers too, see the Member list; an Owner may invite with any of the three Roles. The `*` rows of the permission matrix (BR-02) and US-012 R-012-03, R-012-08, US-014 R-014-01, US-015 R-015-01, US-022 R-022-06, US-023 R-023-06, US-024 R-024-09, US-025 R-025-04 stand as written.
+- Overrides: none
+
+## D-26: Answer to D-15 (deletion timing and retention)
+- Timestamp: 2026-11-08
+- Session: S3 /clarify (re-run with the human's answer)
+- Class: block
+- Type: approval
+- Trigger: follow-up to D-15; D-15 itself is not rewritten.
+- Options: as D-15; option 1 was the proposed default.
+- Human response: "Accept defaults" (2026-11-08, in chat) = option 1 of D-15.
+- Resolution: Option 1. The clean-up deletes Contacts and Groups at most 24 hours after day 30 (US-013 R-013-04, US-020 R-020-05, BR-04); History is kept as long as the Group exists (US-016 R-016-07); server log retention is 30 days, set by the operator; the History entry for a permanent deletion holds no personal data of the Contact (US-013 R-013-06).
+- Overrides: none
+
+## D-27: Answer to D-16 (account deletion with a Group in Group Trash; Invitations)
+- Timestamp: 2026-11-08
+- Session: S3 /clarify (re-run with the human's answer)
+- Class: block
+- Type: approval
+- Trigger: follow-up to D-16; D-16 itself is not rewritten.
+- Options: as D-16; A1 and B1 were the proposed defaults.
+- Human response: "Accept defaults" (2026-11-08, in chat) = A1 and B1 of D-16.
+- Resolution: A1: a Group in the Group Trash counts as a Group the User solely owns (US-021 R-021-02); account deletion is refused and lists the Group with the days left and the instruction to restore it and hand it over, or wait for its permanent deletion. B1: pending Invitations to the deleted account's e-mail address stay pending (US-021 EX-021-04).
+- Overrides: none
+
+## D-28: Close the blocking records of the phase 1 run
+- Timestamp: 2026-11-08
+- Session: S3 /clarify
+- Class: allow
+- Type: non-blocking
+- Trigger: D-14, D-15 and D-16 end with "pending (blocking)" and are not rewritten, so that no record lacks a resolution.
+- Options: none.
+- Human response: see D-25, D-26, D-27.
+- Resolution: D-14 resolved by D-25 (option 1). D-15 resolved by D-26 (option 1). D-16 resolved by D-27 (A1, B1). Still "pending review" (non-blocking, nothing waits on them): D-01, D-02, D-08, D-17 to D-24.
+- Overrides: none
