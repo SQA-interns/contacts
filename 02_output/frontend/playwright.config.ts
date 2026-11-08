@@ -1,13 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * Browser tests (NFR-07, NFR-08, NFR-09). The smoke spec runs against `vite preview`; the E2E scenarios
- * of phase 3 run against the Compose stack (set E2E_BASE_URL).
+ * UI checks of the skeleton (NFR-07, NFR-08, NFR-09) against `vite preview`. The UI acceptance tests and the
+ * E2E scenarios have their own configurations (`playwright.acceptance.config.ts`, `playwright.e2e.config.ts`)
+ * and run against the test stack of `scripts/test-stack.sh`.
  */
 const baseURL = process.env.E2E_BASE_URL ?? 'http://127.0.0.1:4173';
 
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './ui-checks',
   outputDir: './test-results',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
