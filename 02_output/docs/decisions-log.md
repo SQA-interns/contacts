@@ -381,3 +381,14 @@
 - Human response: none
 - Resolution: 1. Pending review.
 - Overrides: none
+
+## D-35: Result of the backend dependency scan (closes the open condition of D-32)
+- Timestamp: 2026-11-08
+- Session: S3 /plan
+- Class: allow
+- Type: non-blocking
+- Trigger: `dependency-check-maven` 12.1.6 (`dependency-check:check`, fails on CVSS 7.0 or higher, NVD data without an API key, analysers as in D-08) on the final backend dependency set: 86 libraries, 0 vulnerabilities of any severity, build success (`out/logs/backend-dependency-check.log`). `google-http-client-jackson2` 1.46.3 added in D-32 is in the scanned set.
+- Options: none.
+- Human response: none
+- Resolution: D-32 option 1 stands (the added library is kept). The Maven vulnerability check of the skeleton is met. D-32 itself is not rewritten.
+- Overrides: none

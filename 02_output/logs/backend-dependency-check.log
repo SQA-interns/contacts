@@ -1,0 +1,330 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< si.contactgroups:contact-groups-backend >---------------
+[INFO] Building Contact Groups backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency-check:12.1.6:check (default-cli) @ contact-groups-backend ---
+[INFO] Checking for updates
+[WARNING] An NVD API Key was not provided - it is highly recommended to use an NVD API key as the update can take a VERY long time without an API Key
+[INFO] NVD API has 421,098 records in this update
+[INFO] Downloaded 10,000/421,098 (2%)
+[INFO] Downloaded 20,000/421,098 (5%)
+[INFO] Downloaded 30,000/421,098 (7%)
+[INFO] Downloaded 40,000/421,098 (9%)
+[INFO] Downloaded 50,000/421,098 (12%)
+[INFO] Downloaded 60,000/421,098 (14%)
+[INFO] Downloaded 70,000/421,098 (17%)
+[INFO] Downloaded 80,000/421,098 (19%)
+[INFO] Downloaded 90,000/421,098 (21%)
+[INFO] Downloaded 100,000/421,098 (24%)
+[INFO] Downloaded 110,000/421,098 (26%)
+[INFO] Downloaded 120,000/421,098 (28%)
+[INFO] Downloaded 130,000/421,098 (31%)
+[INFO] Downloaded 140,000/421,098 (33%)
+[INFO] Downloaded 150,000/421,098 (36%)
+[INFO] Downloaded 160,000/421,098 (38%)
+[INFO] Downloaded 170,000/421,098 (40%)
+[INFO] Downloaded 180,000/421,098 (43%)
+[INFO] Downloaded 190,000/421,098 (45%)
+[INFO] Downloaded 200,000/421,098 (47%)
+[INFO] Downloaded 210,000/421,098 (50%)
+[INFO] Downloaded 220,000/421,098 (52%)
+[INFO] Downloaded 230,000/421,098 (55%)
+[INFO] Downloaded 240,000/421,098 (57%)
+[INFO] Downloaded 250,000/421,098 (59%)
+[INFO] Downloaded 260,000/421,098 (62%)
+[INFO] Downloaded 270,000/421,098 (64%)
+[INFO] Downloaded 280,000/421,098 (66%)
+[INFO] Downloaded 290,000/421,098 (69%)
+[INFO] Downloaded 300,000/421,098 (71%)
+[INFO] Downloaded 310,000/421,098 (74%)
+[INFO] Downloaded 320,000/421,098 (76%)
+[INFO] Downloaded 330,000/421,098 (78%)
+[INFO] Downloaded 340,000/421,098 (81%)
+[ERROR] Failed to process CVE-2026-6785
+org.owasp.dependencycheck.data.nvdcve.DatabaseException: Error updating 'CVE-2026-6785'; Value too long for column "URL CHARACTER VARYING(1000)": "'https://bugzilla.mozilla.org/buglist.cgi?bug_id=1935995%2C1999158%2C2015952%2C2... (1585)"; SQL statement:
+INSERT INTO reference (cveid, name, url, source) VALUES (?, ?, ?, ?) [22001-232]
+    at org.owasp.dependencycheck.data.nvdcve.CveDB.updateVulnerability (CveDB.java:1104)
+    at org.owasp.dependencycheck.data.update.nvd.api.NvdApiProcessor.updateCveDb (NvdApiProcessor.java:119)
+    at org.owasp.dependencycheck.data.update.nvd.api.NvdApiProcessor.call (NvdApiProcessor.java:96)
+    at org.owasp.dependencycheck.data.update.nvd.api.NvdApiProcessor.call (NvdApiProcessor.java:40)
+    at java.util.concurrent.FutureTask.run (FutureTask.java:317)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1144)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:642)
+    at java.lang.Thread.run (Thread.java:1583)
+[ERROR] Failed to process CVE-2026-6786
+org.owasp.dependencycheck.data.nvdcve.DatabaseException: Error updating 'CVE-2026-6786'; Value too long for column "URL CHARACTER VARYING(1000)": "'https://bugzilla.mozilla.org/buglist.cgi?bug_id=2010727%2C2019004%2C2019224%2C2... (1115)"; SQL statement:
+INSERT INTO reference (cveid, name, url, source) VALUES (?, ?, ?, ?) [22001-232]
+    at org.owasp.dependencycheck.data.nvdcve.CveDB.updateVulnerability (CveDB.java:1104)
+    at org.owasp.dependencycheck.data.update.nvd.api.NvdApiProcessor.updateCveDb (NvdApiProcessor.java:119)
+    at org.owasp.dependencycheck.data.update.nvd.api.NvdApiProcessor.call (NvdApiProcessor.java:96)
+    at org.owasp.dependencycheck.data.update.nvd.api.NvdApiProcessor.call (NvdApiProcessor.java:40)
+    at java.util.concurrent.FutureTask.run (FutureTask.java:317)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1144)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:642)
+    at java.lang.Thread.run (Thread.java:1583)
+[INFO] Downloaded 350,000/421,098 (83%)
+[INFO] Downloaded 360,000/421,098 (85%)
+[INFO] Downloaded 370,000/421,098 (88%)
+[INFO] Downloaded 380,000/421,098 (90%)
+[INFO] Downloaded 390,000/421,098 (93%)
+[INFO] Downloaded 400,000/421,098 (95%)
+[INFO] Downloaded 410,000/421,098 (97%)
+[INFO] Downloaded 420,000/421,098 (100%)
+[INFO] Downloaded 421,098/421,098 (100%)
+[INFO] Completed processing batch 1/211 (0%) in 783ms
+[INFO] Completed processing batch 2/211 (1%) in 977ms
+[INFO] Completed processing batch 3/211 (1%) in 634ms
+[INFO] Completed processing batch 4/211 (2%) in 591ms
+[INFO] Completed processing batch 5/211 (2%) in 619ms
+[INFO] Completed processing batch 6/211 (3%) in 564ms
+[INFO] Completed processing batch 7/211 (3%) in 577ms
+[INFO] Completed processing batch 8/211 (4%) in 547ms
+[INFO] Completed processing batch 9/211 (4%) in 685ms
+[INFO] Completed processing batch 10/211 (5%) in 689ms
+[INFO] Completed processing batch 11/211 (5%) in 460ms
+[INFO] Completed processing batch 12/211 (6%) in 687ms
+[INFO] Completed processing batch 13/211 (6%) in 449ms
+[INFO] Completed processing batch 14/211 (7%) in 546ms
+[INFO] Completed processing batch 15/211 (7%) in 500ms
+[INFO] Completed processing batch 16/211 (8%) in 1,075ms
+[INFO] Completed processing batch 17/211 (8%) in 694ms
+[INFO] Completed processing batch 18/211 (9%) in 799ms
+[INFO] Completed processing batch 19/211 (9%) in 813ms
+[INFO] Completed processing batch 20/211 (9%) in 874ms
+[INFO] Completed processing batch 21/211 (10%) in 986ms
+[INFO] Completed processing batch 22/211 (10%) in 1,748ms
+[INFO] Completed processing batch 23/211 (11%) in 1,411ms
+[INFO] Completed processing batch 24/211 (11%) in 1,259ms
+[INFO] Completed processing batch 25/211 (12%) in 1,077ms
+[INFO] Completed processing batch 26/211 (12%) in 1,833ms
+[INFO] Completed processing batch 27/211 (13%) in 1,879ms
+[INFO] Completed processing batch 28/211 (13%) in 1,243ms
+[INFO] Completed processing batch 29/211 (14%) in 1,366ms
+[INFO] Completed processing batch 30/211 (14%) in 954ms
+[INFO] Completed processing batch 31/211 (15%) in 885ms
+[INFO] Completed processing batch 32/211 (15%) in 780ms
+[INFO] Completed processing batch 33/211 (16%) in 611ms
+[INFO] Completed processing batch 34/211 (16%) in 636ms
+[INFO] Completed processing batch 35/211 (17%) in 595ms
+[INFO] Completed processing batch 36/211 (17%) in 549ms
+[INFO] Completed processing batch 37/211 (18%) in 464ms
+[INFO] Completed processing batch 38/211 (18%) in 645ms
+[INFO] Completed processing batch 39/211 (18%) in 566ms
+[INFO] Completed processing batch 40/211 (19%) in 529ms
+[INFO] Completed processing batch 41/211 (19%) in 527ms
+[INFO] Completed processing batch 42/211 (20%) in 377ms
+[INFO] Completed processing batch 43/211 (20%) in 441ms
+[INFO] Completed processing batch 44/211 (21%) in 92ms
+[INFO] Completed processing batch 45/211 (21%) in 132ms
+[INFO] Completed processing batch 46/211 (22%) in 472ms
+[INFO] Completed processing batch 47/211 (22%) in 501ms
+[INFO] Completed processing batch 48/211 (23%) in 856ms
+[INFO] Completed processing batch 49/211 (23%) in 762ms
+[INFO] Completed processing batch 50/211 (24%) in 328ms
+[INFO] Completed processing batch 51/211 (24%) in 672ms
+[INFO] Completed processing batch 52/211 (25%) in 207ms
+[INFO] Completed processing batch 53/211 (25%) in 830ms
+[INFO] Completed processing batch 54/211 (26%) in 414ms
+[INFO] Completed processing batch 55/211 (26%) in 634ms
+[INFO] Completed processing batch 56/211 (27%) in 389ms
+[INFO] Completed processing batch 57/211 (27%) in 498ms
+[INFO] Completed processing batch 58/211 (27%) in 552ms
+[INFO] Completed processing batch 59/211 (28%) in 548ms
+[INFO] Completed processing batch 60/211 (28%) in 280ms
+[INFO] Completed processing batch 61/211 (29%) in 742ms
+[INFO] Completed processing batch 62/211 (29%) in 482ms
+[INFO] Completed processing batch 63/211 (30%) in 377ms
+[INFO] Completed processing batch 64/211 (30%) in 375ms
+[INFO] Completed processing batch 65/211 (31%) in 355ms
+[INFO] Completed processing batch 66/211 (31%) in 357ms
+[INFO] Completed processing batch 67/211 (32%) in 324ms
+[INFO] Completed processing batch 68/211 (32%) in 343ms
+[INFO] Completed processing batch 69/211 (33%) in 355ms
+[INFO] Completed processing batch 70/211 (33%) in 480ms
+[INFO] Completed processing batch 71/211 (34%) in 734ms
+[INFO] Completed processing batch 72/211 (34%) in 314ms
+[INFO] Completed processing batch 73/211 (35%) in 334ms
+[INFO] Completed processing batch 74/211 (35%) in 372ms
+[INFO] Completed processing batch 75/211 (36%) in 316ms
+[INFO] Completed processing batch 76/211 (36%) in 368ms
+[INFO] Completed processing batch 77/211 (36%) in 447ms
+[INFO] Completed processing batch 78/211 (37%) in 395ms
+[INFO] Completed processing batch 79/211 (37%) in 317ms
+[INFO] Completed processing batch 80/211 (38%) in 397ms
+[INFO] Completed processing batch 81/211 (38%) in 357ms
+[INFO] Completed processing batch 82/211 (39%) in 387ms
+[INFO] Completed processing batch 83/211 (39%) in 373ms
+[INFO] Completed processing batch 84/211 (40%) in 387ms
+[INFO] Completed processing batch 85/211 (40%) in 332ms
+[INFO] Completed processing batch 86/211 (41%) in 372ms
+[INFO] Completed processing batch 87/211 (41%) in 368ms
+[INFO] Completed processing batch 88/211 (42%) in 342ms
+[INFO] Completed processing batch 89/211 (42%) in 244ms
+[INFO] Completed processing batch 90/211 (43%) in 371ms
+[INFO] Completed processing batch 91/211 (43%) in 368ms
+[INFO] Completed processing batch 92/211 (44%) in 328ms
+[INFO] Completed processing batch 93/211 (44%) in 472ms
+[INFO] Completed processing batch 94/211 (45%) in 353ms
+[INFO] Completed processing batch 95/211 (45%) in 326ms
+[INFO] Completed processing batch 96/211 (45%) in 327ms
+[INFO] Completed processing batch 97/211 (46%) in 280ms
+[INFO] Completed processing batch 98/211 (46%) in 296ms
+[INFO] Completed processing batch 99/211 (47%) in 298ms
+[INFO] Completed processing batch 100/211 (47%) in 376ms
+[INFO] Completed processing batch 101/211 (48%) in 293ms
+[INFO] Completed processing batch 102/211 (48%) in 276ms
+[INFO] Completed processing batch 103/211 (49%) in 303ms
+[INFO] Completed processing batch 104/211 (49%) in 565ms
+[INFO] Completed processing batch 105/211 (50%) in 384ms
+[INFO] Completed processing batch 106/211 (50%) in 263ms
+[INFO] Completed processing batch 107/211 (51%) in 355ms
+[INFO] Completed processing batch 108/211 (51%) in 280ms
+[INFO] Completed processing batch 109/211 (52%) in 336ms
+[INFO] Completed processing batch 110/211 (52%) in 312ms
+[INFO] Completed processing batch 111/211 (53%) in 347ms
+[INFO] Completed processing batch 112/211 (53%) in 315ms
+[INFO] Completed processing batch 113/211 (54%) in 245ms
+[INFO] Completed processing batch 114/211 (54%) in 322ms
+[INFO] Completed processing batch 115/211 (55%) in 318ms
+[INFO] Completed processing batch 116/211 (55%) in 359ms
+[INFO] Completed processing batch 117/211 (55%) in 315ms
+[INFO] Completed processing batch 118/211 (56%) in 312ms
+[INFO] Completed processing batch 119/211 (56%) in 320ms
+[INFO] Completed processing batch 120/211 (57%) in 322ms
+[INFO] Completed processing batch 121/211 (57%) in 256ms
+[INFO] Completed processing batch 122/211 (58%) in 206ms
+[INFO] Completed processing batch 123/211 (58%) in 203ms
+[INFO] Completed processing batch 124/211 (59%) in 174ms
+[INFO] Completed processing batch 125/211 (59%) in 224ms
+[INFO] Completed processing batch 126/211 (60%) in 187ms
+[INFO] Completed processing batch 127/211 (60%) in 269ms
+[INFO] Completed processing batch 128/211 (61%) in 270ms
+[INFO] Completed processing batch 129/211 (61%) in 271ms
+[INFO] Completed processing batch 130/211 (62%) in 276ms
+[INFO] Completed processing batch 131/211 (62%) in 278ms
+[INFO] Completed processing batch 132/211 (63%) in 256ms
+[INFO] Completed processing batch 133/211 (63%) in 285ms
+[INFO] Completed processing batch 134/211 (64%) in 281ms
+[INFO] Completed processing batch 135/211 (64%) in 246ms
+[INFO] Completed processing batch 136/211 (64%) in 184ms
+[INFO] Completed processing batch 137/211 (65%) in 151ms
+[INFO] Completed processing batch 138/211 (65%) in 183ms
+[INFO] Completed processing batch 139/211 (66%) in 158ms
+[INFO] Completed processing batch 140/211 (66%) in 236ms
+[INFO] Completed processing batch 141/211 (67%) in 278ms
+[INFO] Completed processing batch 142/211 (67%) in 167ms
+[INFO] Completed processing batch 143/211 (68%) in 407ms
+[INFO] Completed processing batch 144/211 (68%) in 152ms
+[INFO] Completed processing batch 145/211 (69%) in 269ms
+[INFO] Completed processing batch 146/211 (69%) in 206ms
+[INFO] Completed processing batch 147/211 (70%) in 464ms
+[INFO] Completed processing batch 148/211 (70%) in 386ms
+[INFO] Completed processing batch 149/211 (71%) in 223ms
+[INFO] Completed processing batch 150/211 (71%) in 361ms
+[INFO] Completed processing batch 151/211 (72%) in 246ms
+[INFO] Completed processing batch 152/211 (72%) in 202ms
+[INFO] Completed processing batch 153/211 (73%) in 245ms
+[INFO] Completed processing batch 154/211 (73%) in 245ms
+[INFO] Completed processing batch 155/211 (73%) in 196ms
+[INFO] Completed processing batch 156/211 (74%) in 191ms
+[INFO] Completed processing batch 157/211 (74%) in 223ms
+[INFO] Completed processing batch 158/211 (75%) in 219ms
+[INFO] Completed processing batch 159/211 (75%) in 207ms
+[INFO] Completed processing batch 160/211 (76%) in 268ms
+[INFO] Completed processing batch 161/211 (76%) in 188ms
+[INFO] Completed processing batch 162/211 (77%) in 231ms
+[INFO] Completed processing batch 163/211 (77%) in 111ms
+[INFO] Completed processing batch 164/211 (78%) in 276ms
+[INFO] Completed processing batch 165/211 (78%) in 169ms
+[INFO] Completed processing batch 166/211 (79%) in 378ms
+[INFO] Completed processing batch 167/211 (79%) in 172ms
+[INFO] Completed processing batch 168/211 (80%) in 296ms
+[INFO] Completed processing batch 169/211 (80%) in 313ms
+[INFO] Completed processing batch 170/211 (81%) in 266ms
+[INFO] Completed processing batch 171/211 (81%) in 272ms
+[INFO] Completed processing batch 172/211 (82%) in 261ms
+[INFO] Completed processing batch 173/211 (82%) in 206ms
+[INFO] Completed processing batch 174/211 (82%) in 195ms
+[INFO] Completed processing batch 175/211 (83%) in 184ms
+[INFO] Completed processing batch 176/211 (83%) in 294ms
+[INFO] Completed processing batch 177/211 (84%) in 156ms
+[INFO] Completed processing batch 178/211 (84%) in 161ms
+[INFO] Completed processing batch 179/211 (85%) in 192ms
+[INFO] Completed processing batch 180/211 (85%) in 166ms
+[INFO] Completed processing batch 181/211 (86%) in 153ms
+[INFO] Completed processing batch 182/211 (86%) in 157ms
+[INFO] Completed processing batch 183/211 (87%) in 150ms
+[INFO] Completed processing batch 184/211 (87%) in 218ms
+[INFO] Completed processing batch 185/211 (88%) in 196ms
+[INFO] Completed processing batch 186/211 (88%) in 140ms
+[INFO] Completed processing batch 187/211 (89%) in 149ms
+[INFO] Completed processing batch 188/211 (89%) in 164ms
+[INFO] Completed processing batch 189/211 (90%) in 112ms
+[INFO] Completed processing batch 190/211 (90%) in 137ms
+[INFO] Completed processing batch 191/211 (91%) in 127ms
+[INFO] Completed processing batch 192/211 (91%) in 128ms
+[INFO] Completed processing batch 193/211 (91%) in 106ms
+[INFO] Completed processing batch 194/211 (92%) in 120ms
+[INFO] Completed processing batch 195/211 (92%) in 181ms
+[INFO] Completed processing batch 196/211 (93%) in 97ms
+[INFO] Completed processing batch 197/211 (93%) in 119ms
+[INFO] Completed processing batch 198/211 (94%) in 82ms
+[INFO] Completed processing batch 199/211 (94%) in 110ms
+[INFO] Completed processing batch 200/211 (95%) in 110ms
+[INFO] Completed processing batch 201/211 (95%) in 92ms
+[INFO] Completed processing batch 202/211 (96%) in 120ms
+[INFO] Completed processing batch 203/211 (96%) in 76ms
+[INFO] Completed processing batch 204/211 (97%) in 113ms
+[INFO] Completed processing batch 205/211 (97%) in 84ms
+[INFO] Completed processing batch 206/211 (98%) in 120ms
+[INFO] Completed processing batch 207/211 (98%) in 89ms
+[INFO] Completed processing batch 208/211 (99%) in 65ms
+[INFO] Completed processing batch 209/211 (99%) in 70ms
+[INFO] Completed processing batch 210/211 (100%) in 58ms
+[INFO] Completed processing batch 211/211 (100%) in 26ms
+[INFO] Updating CISA Known Exploited Vulnerability list: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+[INFO] Begin database defrag
+[INFO] End database defrag (4105 ms)
+[INFO] Check for updates complete (2170105 ms)
+[INFO] 
+
+Dependency-Check is an open source tool performing a best effort analysis of 3rd party dependencies; false positives and false negatives may exist in the analysis performed by the tool. Use of the tool and the reporting provided constitutes acceptance for use in an AS IS condition, and there are NO warranties, implied or otherwise, with regard to the analysis or its use. Any use of the tool and the reporting provided is at the user's risk. In no event shall the copyright holder or OWASP be held liable for any damages whatsoever arising out of or in connection with the use of this tool, the analysis performed, or the resulting report.
+
+
+   About ODC: https://dependency-check.github.io/DependencyCheck/general/internals.html
+   False Positives: https://dependency-check.github.io/DependencyCheck/general/suppression.html
+
+💖 Sponsor: https://github.com/sponsors/jeremylong
+
+
+[INFO] Analysis Started
+[INFO] Finished Archive Analyzer (0 seconds)
+[INFO] Finished File Name Analyzer (0 seconds)
+[INFO] Finished Jar Analyzer (0 seconds)
+[INFO] Finished Dependency Merging Analyzer (0 seconds)
+[INFO] Finished Hint Analyzer (0 seconds)
+[INFO] Finished Version Filter Analyzer (0 seconds)
+Nov 08, 2026 1:11:49 PM org.apache.lucene.store.MemorySegmentIndexInputProvider <init>
+INFO: Using MemorySegmentIndexInput and native madvise support with Java 21 or later; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+Nov 08, 2026 1:11:50 PM org.apache.lucene.internal.vectorization.VectorizationProvider lookup
+WARNING: Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+[INFO] Created CPE Index (1 seconds)
+[INFO] Finished CPE Analyzer (2 seconds)
+[INFO] Finished False Positive Analyzer (0 seconds)
+[INFO] Finished NVD CVE Analyzer (0 seconds)
+[INFO] Finished RetireJS Analyzer (0 seconds)
+[INFO] Finished Vulnerability Suppression Analyzer (0 seconds)
+[INFO] Finished Known Exploited Vulnerability Analyzer (0 seconds)
+[INFO] Finished Dependency Bundling Analyzer (0 seconds)
+[INFO] Finished Unused Suppression Rule Analyzer (0 seconds)
+[INFO] Analysis Complete (4 seconds)
+[INFO] Writing JSON report to: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/dependency-check-report.json
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  36:18 min
+[INFO] Finished at: 2026-11-08T13:11:53+01:00
+[INFO] ------------------------------------------------------------------------
