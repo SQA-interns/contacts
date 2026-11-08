@@ -392,3 +392,14 @@
 - Human response: none
 - Resolution: D-32 option 1 stands (the added library is kept). The Maven vulnerability check of the skeleton is met. D-32 itself is not rewritten.
 - Overrides: none
+
+## D-36: Approve wireframes
+- Timestamp: 2026-11-08
+- Session: W /wireframes
+- Class: open
+- Type: approval
+- Trigger: `/wireframes` drew every screen of the inventory in `docs/02_specification.md` ("User interface", SC-01..SC-19) as WF-01..WF-19 (`docs/wireframes/README.md`), each with its states (UI-14) at the three widths (UI-22). Images: `docs/wireframes/WF-nn_<slug>_mobile.png`, `…_tablet.png`, `…_desktop.png` for WF-01_sign-in, WF-02_register, WF-03_reset-password, WF-04_verify-email, WF-05_group-list, WF-06_contact-list, WF-07_contact, WF-08_new-contact, WF-09_tags, WF-10_trash, WF-11_members, WF-12_invitations, WF-13_group-activity, WF-14_delete-group, WF-15_group-trash, WF-16_account, WF-17_duplicates, WF-18_merge, WF-19_not-found (57 files). Choices made where the inputs leave room, each changeable with option 3: UI text drawn in Slovene, the default language (R-019-01), with "Ogledovalec" for Viewer, "Urednik" for Editor, "Lastnik" for Owner; Group navigation as a tab bar on desktop and tablet and a menu button on mobile (the spec allows tab bar or side bar); filters as a side panel on desktop, behind a "Filtri" button below 1024 px; tablet hides Kraj and Država in the contact list and Podjetje and Izbrisano in Trash; Group deletion is reached from the card menu of WF-05 and "Možnosti skupine" in the Group bar; WF-17 asks no confirmation for "Ni podvojeno" (no story asks for one); WF-18 confirms the merge in a dialog (R-026-05). No global search in the header, although UI-27 lists one: the spec's navigation has none and no story needs it.
+- Options: 1 approved with the customer (default); 2 approved by the developer only; 3 change (what, per `WF-nn`, for example `D-36: 3 WF-06 move filters above the list`)
+- Human response: none
+- Resolution: pending review
+- Overrides: none
