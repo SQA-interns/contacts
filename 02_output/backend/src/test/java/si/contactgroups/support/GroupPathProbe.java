@@ -1,5 +1,6 @@
 package si.contactgroups.support;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import si.contactgroups.security.RequiresAction;
  * part of the application: only the profile {@value #PROFILE}, switched on by {@link
  * ApplicationContextSupport}, loads it.
  */
+@Hidden // a test fixture, not an operation of the contract
 @Controller
 @Profile(GroupPathProbe.PROFILE)
 @RequestMapping("/api/v1/groups/{groupId}/probe")
