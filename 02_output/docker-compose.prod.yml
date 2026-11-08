@@ -1,0 +1,58 @@
+# Production (environments.md): the delivered images and PostgreSQL, configured only by environment variables.
+# TLS ends at the customer's reverse proxy (R-018-12). Start:
+#   docker compose -f docker-compose.prod.yml --env-file production.env up -d
+name: contact-groups
+services:
+  postgres:
+    image: postgres:17.6
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?}
+      POSTGRES_USER: ${POSTGRES_USER:?}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 10s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  backend:
+    image: ${BACKEND_IMAGE:-contact-groups-backend:1.0.0}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DB_MIGRATION_USER: ${POSTGRES_USER}
+      DB_MIGRATION_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_APP_USER: ${DB_APP_USER:-contactgroups_app}
+      DB_APP_PASSWORD: ${DB_APP_PASSWORD:?set a password different from POSTGRES_PASSWORD}
+      FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID:?}
+      CORS_ALLOWED_ORIGIN: ${CORS_ALLOWED_ORIGIN:?}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-100}
+      MAX_REQUEST_SIZE: ${MAX_REQUEST_SIZE:-1MB}
+      TRASH_PURGE_CRON: ${TRASH_PURGE_CRON:-0 0 * * * *}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REQUIRE_HTTPS: "true"
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
+  frontend:
+    image: ${FRONTEND_IMAGE:-contact-groups-frontend:1.0.0}
+    depends_on:
+      - backend
+    environment:
+      VITE_API_BASE_URL: ${VITE_API_BASE_URL:?}
+      VITE_FIREBASE_API_KEY: ${VITE_FIREBASE_API_KEY:?}
+      VITE_FIREBASE_AUTH_DOMAIN: ${VITE_FIREBASE_AUTH_DOMAIN:?}
+      VITE_FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID:?}
+    ports:
+      - "127.0.0.1:8081:8080"
+    restart: unless-stopped
+
+volumes:
+  pgdata:

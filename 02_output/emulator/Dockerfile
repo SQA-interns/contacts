@@ -12,4 +12,6 @@ ENV FIREBASE_TELEMETRY_COLLECTION_ENABLED=false \
     CI=true
 EXPOSE 9099
 USER node
-CMD ["firebase", "emulators:start", "--only", "auth", "--project", "demo-contact-groups"]
+# the project id must equal FIREBASE_PROJECT_ID of the backend (the token audience)
+ENV FIREBASE_PROJECT_ID=demo-contact-groups
+CMD ["sh", "-c", "firebase emulators:start --only auth --project \"$FIREBASE_PROJECT_ID\""]
