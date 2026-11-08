@@ -72,7 +72,14 @@
     "title": "My groups",
     "intro": "The groups you are a member of, with your role.",
     "emptyTitle": "You have no group yet",
-    "emptyBody": "A group keeps the contacts of one project or company in one place. You can also invite others to it."
+    "emptyBody": "A group keeps the contacts of one project or company in one place. You can also invite others to it.",
+    "create": "Create group",
+    "newTitle": "New group",
+    "nameLabel": "Group name",
+    "nameHint": "Up to 100 characters.",
+    "submit": "Create",
+    "busy": "Creating …",
+    "created": "Group created."
   },
   "role": {
     "OWNER": "Owner",

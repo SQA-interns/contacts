@@ -14,3 +14,8 @@ export interface GroupSummary {
 export function listGroups(): Promise<GroupSummary[]> {
   return apiRequest<GroupSummary[]>('/groups');
 }
+
+/** `POST /groups`: creates a Group of which the signed-in User is the Owner (R-002-01). */
+export function createGroup(name: string): Promise<GroupSummary> {
+  return apiRequest<GroupSummary>('/groups', { method: 'POST', body: { name } });
+}

@@ -72,7 +72,14 @@
     "title": "Moje skupine",
     "intro": "Skupine, v katerih ste član, z vašo vlogo.",
     "emptyTitle": "Še nimate nobene skupine",
-    "emptyBody": "Skupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge."
+    "emptyBody": "Skupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.",
+    "create": "Ustvari skupino",
+    "newTitle": "Nova skupina",
+    "nameLabel": "Ime skupine",
+    "nameHint": "Do 100 znakov.",
+    "submit": "Ustvari",
+    "busy": "Ustvarjanje …",
+    "created": "Skupina je ustvarjena."
   },
   "role": {
     "OWNER": "Lastnik",
