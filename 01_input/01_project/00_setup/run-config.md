@@ -54,8 +54,6 @@ The Codex reasoning-effort key (`model_reasoning_effort`) is not confirmed in th
 
 Findings the human already decided for this project, so the agent does not stop to ask. For an item below, record a **non-blocking** decision that cites this file, apply the action and continue. Apply an item only when the evidence matches the row exactly (same finding, same artifact); anything else is a normal decision (`general/rules/decisions.md`).
 
-<!-- One row per finding: ID PA-nn, the finding (CVE, scanner rule, version difference …), the evidence that must match exactly, and the action (classify, suppress for one artifact, accept, approve). -->
-
 | ID | Finding | Evidence that it matches | Action |
 |---|---|---|---|
 | PA-01 | | | |
@@ -66,4 +64,20 @@ Not pre-approved: any Critical finding, any finding on a different artifact, and
 
 Commands Claude Code sessions may run without asking, in permission-rule syntax, one per line; `system/run.mjs` adds the base set (git, node, npm, npx, docker, file listing and hashing). Add the build, test and scan commands of the stack. `/to-spec` proposes them; the developer confirms. Codex and other agents use their own sandbox instead.
 
-- `Bash(<command> *)`
+Proposed by `/to-spec` for the Java 21, Maven, Node, Playwright and Firebase emulator stack (listed in the review checklist). No shell, `curl`, `rm -rf` or `sudo`.
+
+- `Bash(./mvnw *)`
+- `Bash(mvn *)`
+- `Bash(java *)`
+- `Bash(npm run *)`
+- `Bash(npx vitest *)`
+- `Bash(npx playwright *)`
+- `Bash(npx eslint *)`
+- `Bash(npx prettier *)`
+- `Bash(npx tsc *)`
+- `Bash(npx stryker *)`
+- `Bash(npx jscpd *)`
+- `Bash(npx firebase *)`
+- `Bash(npm audit *)`
+- `Bash(docker compose *)`
+- `Bash(gitleaks *)`
