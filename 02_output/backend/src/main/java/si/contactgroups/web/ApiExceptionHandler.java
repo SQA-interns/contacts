@@ -48,9 +48,9 @@ public class ApiExceptionHandler {
 
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ResponseEntity<ApiError> malformed(HttpMessageNotReadableException e) {
-    if (e.getMostSpecificCause() instanceof RequestTooLargeException) {
+    if (e.getMostSpecificCause() instanceof RequestTooLargeException tooLarge) {
       return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE)
-          .body(new ApiError("request.too_large", "The request body is too large"));
+          .body(new ApiError(RequestTooLargeException.CODE, tooLarge.getMessage()));
     }
     if (e.getCause() instanceof UnrecognizedPropertyException) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)

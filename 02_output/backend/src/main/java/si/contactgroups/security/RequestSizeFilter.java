@@ -36,8 +36,8 @@ public class RequestSizeFilter extends OncePerRequestFilter {
       ErrorWriter.write(
           response,
           HttpStatus.PAYLOAD_TOO_LARGE.value(),
-          "request.too_large",
-          "The request body is too large");
+          RequestTooLargeException.CODE,
+          new RequestTooLargeException().getMessage());
       return;
     }
     chain.doFilter(
