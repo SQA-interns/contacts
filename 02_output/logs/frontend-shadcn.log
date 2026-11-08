@@ -1,0 +1,20 @@
+- Checking registry.
+✔ Checking registry.
+- Installing dependencies.
+- Installing dependencies.
+✔ Installing dependencies.
+- Updating files.
+✔ Created 13 files:
+  - @/components/ui/button.tsx
+  - @/components/ui/input.tsx
+  - @/components/ui/label.tsx
+  - @/components/ui/card.tsx
+  - @/components/ui/alert.tsx
+  - @/components/ui/skeleton.tsx
+  - @/components/ui/dialog.tsx
+  - @/components/ui/dropdown-menu.tsx
+  - @/components/ui/checkbox.tsx
+  - @/components/ui/select.tsx
+  - @/components/ui/tabs.tsx
+  - @/components/ui/sonner.tsx
+  - @/components/ui/textarea.tsx

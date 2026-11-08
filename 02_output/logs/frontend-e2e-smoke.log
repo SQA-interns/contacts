@@ -1,0 +1,29 @@
+[WebServer] [33m
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+
+Running 14 tests using 5 workers
+
+  ✓   1 [chromium] › e2e/smoke.spec.ts:32:5 › tablet (768 px) › language switch changes the UI at once (986ms)
+  ✓   3 [chromium] › e2e/smoke.spec.ts:32:5 › mobile (375 px) › language switch changes the UI at once (994ms)
+  ✓   6 [chromium] › e2e/smoke.spec.ts:43:1 › unknown route shows the not found page (476ms)
+  ✓   4 [chromium] › e2e/smoke.spec.ts:10:5 › tablet (768 px) › start page has no horizontal scroll, no serious accessibility violation, and a screenshot (1.6s)
+  ✓   5 [chromium] › e2e/smoke.spec.ts:10:5 › desktop (1440 px) › start page has no horizontal scroll, no serious accessibility violation, and a screenshot (1.6s)
+  ✓   2 [chromium] › e2e/smoke.spec.ts:10:5 › mobile (375 px) › start page has no horizontal scroll, no serious accessibility violation, and a screenshot (1.6s)
+  ✓   7 [chromium] › e2e/smoke.spec.ts:32:5 › desktop (1440 px) › language switch changes the UI at once (682ms)
+  ✓  11 [webkit] › e2e/smoke.spec.ts:32:5 › tablet (768 px) › language switch changes the UI at once (2.9s)
+  ✓   9 [webkit] › e2e/smoke.spec.ts:32:5 › mobile (375 px) › language switch changes the UI at once (3.1s)
+  ✓  10 [webkit] › e2e/smoke.spec.ts:10:5 › tablet (768 px) › start page has no horizontal scroll, no serious accessibility violation, and a screenshot (4.4s)
+  ✓   8 [webkit] › e2e/smoke.spec.ts:10:5 › mobile (375 px) › start page has no horizontal scroll, no serious accessibility violation, and a screenshot (4.4s)
+  ✓  14 [webkit] › e2e/smoke.spec.ts:43:1 › unknown route shows the not found page (1.2s)
+  ✓  12 [webkit] › e2e/smoke.spec.ts:10:5 › desktop (1440 px) › start page has no horizontal scroll, no serious accessibility violation, and a screenshot (4.5s)
+  ✓  13 [webkit] › e2e/smoke.spec.ts:32:5 › desktop (1440 px) › language switch changes the UI at once (1.8s)
+
+  14 passed (15.5s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

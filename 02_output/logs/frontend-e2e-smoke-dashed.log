@@ -1,0 +1,17 @@
+[WebServer] [33m
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+
+Running 2 tests using 2 workers
+
+  ✓  2 [chromium] › e2e/smoke.spec.ts:32:5 › desktop (1440 px) › language switch changes the UI at once (506ms)
+  ✓  1 [chromium] › e2e/smoke.spec.ts:10:5 › desktop (1440 px) › start page has no horizontal scroll, no serious accessibility violation, and a screenshot (884ms)
+
+  2 passed (7.7s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+
