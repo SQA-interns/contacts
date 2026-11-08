@@ -49,8 +49,7 @@ export function RegisterPage() {
   });
 
   return (
-    <AuthCard>
-      <h1 className="text-2xl font-semibold">{t('auth.register.title')}</h1>
+    <AuthCard title={t('auth.register.title')}>
       {failure === 'email_in_use' ? (
         <Notice tone="alert" title={t('auth.register.emailInUse')}>
           <div className="flex flex-wrap gap-2">

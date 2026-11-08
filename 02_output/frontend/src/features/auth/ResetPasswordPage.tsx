@@ -32,8 +32,7 @@ export function ResetPasswordPage() {
   );
 
   return (
-    <AuthCard>
-      <h1 className="text-2xl font-semibold">{t('auth.reset.title')}</h1>
+    <AuthCard title={t('auth.reset.title')}>
       {sent ? (
         <>
           <Notice tone="status" title={t('auth.reset.sentTitle')}>

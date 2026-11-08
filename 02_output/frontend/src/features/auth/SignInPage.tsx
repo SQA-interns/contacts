@@ -33,8 +33,7 @@ export function SignInPage() {
   }
 
   return (
-    <AuthCard>
-      <h1 className="text-2xl font-semibold">{t('auth.signIn.title')}</h1>
+    <AuthCard title={t('auth.signIn.title')}>
       {failure ? (
         <Notice
           tone="alert"
@@ -72,7 +71,7 @@ export function SignInPage() {
       </div>
       <Button
         type="button"
-        variant="secondary"
+        variant="outline"
         className="h-11 w-full"
         disabled={busy}
         onClick={() => void run(() => client.signInWithGoogle())}

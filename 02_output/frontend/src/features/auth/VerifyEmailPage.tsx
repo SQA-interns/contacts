@@ -36,8 +36,7 @@ export function VerifyEmailPage() {
   }
 
   return (
-    <AuthCard>
-      <h1 className="text-2xl font-semibold">{t('api.auth.email_not_verified')}</h1>
+    <AuthCard title={t('api.auth.email_not_verified')}>
       {failure ? <Notice tone="alert" title={t('error.generic')} /> : null}
       {resent ? <Notice tone="status" title={t('auth.verify.resent')} /> : null}
       <p className="text-text-muted">{t('auth.verify.body', { email: account.email })}</p>
