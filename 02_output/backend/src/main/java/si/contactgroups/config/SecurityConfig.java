@@ -17,6 +17,7 @@ import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWrite
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import si.contactgroups.security.EmailVerifiedFilter;
 import si.contactgroups.security.ErrorWriter;
 import si.contactgroups.security.FirebaseTokenFilter;
 import si.contactgroups.security.TokenVerifier;
@@ -37,6 +38,7 @@ public class SecurityConfig {
                 a.requestMatchers("/health", "/health/**").permitAll().anyRequest().authenticated())
         .addFilterBefore(
             new FirebaseTokenFilter(verifier, users), UsernamePasswordAuthenticationFilter.class)
+        .addFilterAfter(new EmailVerifiedFilter(), FirebaseTokenFilter.class)
         .exceptionHandling(
             e ->
                 e.authenticationEntryPoint(

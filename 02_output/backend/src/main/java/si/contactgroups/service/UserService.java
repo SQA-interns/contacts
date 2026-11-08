@@ -2,6 +2,7 @@ package si.contactgroups.service;
 
 import java.time.Clock;
 import java.util.Locale;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 import si.contactgroups.domain.User;
 import si.contactgroups.persistence.UserRepository;
@@ -34,6 +35,11 @@ public class UserService {
               users.insertIfAbsent(token.uid(), email, displayName(token, email), clock.instant());
               return users.findByFirebaseUid(token.uid()).orElseThrow(EmailTakenException::new);
             });
+  }
+
+  /** The stored User; the caller comes from a resolved token, so the User exists. */
+  public User get(UUID userId) {
+    return users.findById(userId).orElseThrow();
   }
 
   private static String displayName(VerifiedToken token, String email) {
