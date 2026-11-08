@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.contactgroups.error.ApiError;
+import si.contactgroups.security.RequestTooLargeException;
 import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
 import si.contactgroups.service.RoleForbiddenException;
@@ -47,6 +48,10 @@ public class ApiExceptionHandler {
 
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ResponseEntity<ApiError> malformed(HttpMessageNotReadableException e) {
+    if (e.getMostSpecificCause() instanceof RequestTooLargeException) {
+      return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE)
+          .body(new ApiError("request.too_large", "The request body is too large"));
+    }
     if (e.getCause() instanceof UnrecognizedPropertyException) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new ApiError("request.unknown_property", "Unknown property in the request body"));
