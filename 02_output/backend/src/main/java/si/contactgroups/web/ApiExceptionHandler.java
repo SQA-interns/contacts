@@ -57,7 +57,7 @@ public class ApiExceptionHandler {
   @ExceptionHandler(ValidationException.class)
   public ResponseEntity<ApiError> validationFailed(ValidationException e) {
     return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
-        .body(new ApiError("validation.failed", "Validation failed", e.fieldErrors()));
+        .body(new ApiError("validation.failed", "Validation failed", e.getFieldErrors()));
   }
 
   @ExceptionHandler(Exception.class)

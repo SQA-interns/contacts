@@ -15,7 +15,7 @@ public class ValidationException extends RuntimeException {
     this.fieldErrors = List.copyOf(fieldErrors);
   }
 
-  public List<FieldError> fieldErrors() {
+  public List<FieldError> getFieldErrors() {
     return fieldErrors;
   }
 }
