@@ -1,0 +1,372 @@
+openapi: 3.1.0
+info:
+  title: Contact Groups API
+  version: 1.0.0
+  description: |
+    REST interface of "Contact Groups" (Skupine kontaktov). JSON over HTTPS, base path `/api/v1`.
+    Every operation except `GET /health` needs `Authorization: Bearer <Firebase ID token>` and answers 401 without it.
+    Order of checks on a Group operation: token (401), verified e-mail (403), Membership of a Group that is not in
+    Trash (404), Role (403). `x-required-action` names the `Action` of the permission table in
+    `docs/02_specification.md`. Text entered by users is plain text.
+servers:
+  - url: /api/v1
+security:
+  - bearerAuth: []
+tags:
+  - { name: account }
+  - { name: groups }
+  - { name: members }
+  - { name: invitations }
+  - { name: contacts }
+  - { name: trash }
+  - { name: tags }
+  - { name: history }
+  - { name: export }
+  - { name: versions }
+  - { name: duplicates }
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: Firebase ID token }
+  parameters:
+    GroupId: { name: groupId, in: path, required: true, schema: { type: string, format: uuid } }
+    ContactId: { name: contactId, in: path, required: true, schema: { type: string, format: uuid } }
+    TagId: { name: tagId, in: path, required: true, schema: { type: string, format: uuid } }
+    UserId: { name: userId, in: path, required: true, schema: { type: string, format: uuid } }
+    InvitationId: { name: invitationId, in: path, required: true, schema: { type: string, format: uuid } }
+    VersionNumber: { name: number, in: path, required: true, schema: { type: integer, minimum: 1 } }
+    PageParam: { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+  responses:
+    BadRequest: { description: "Malformed JSON or unknown property.", content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+    Unauthorized: { description: "Missing, invalid or expired token.", content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+    Forbidden: { description: "E-mail not verified or Role not allowed.", content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+    NotFound: { description: "Not found, not a Member, Group in Trash, or object of another Group.", content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+    Conflict: { description: "State conflict.", content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+    PayloadTooLarge: { description: "Body larger than 1 MB.", content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+    Unprocessable: { description: "Validation failed.", content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+    TooManyRequests: { description: "More than 100 requests in the minute.", headers: { Retry-After: { schema: { type: integer } } }, content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+  schemas:
+    Role: { type: string, enum: [OWNER, EDITOR, VIEWER] }
+    FieldError:
+      type: object
+      required: [field, code]
+      properties:
+        field: { type: string, examples: [email] }
+        code: { type: string, examples: [validation.email_invalid] }
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code: { type: string, examples: [contact.not_found] }
+        message: { type: string, description: Short English text for developers; the UI translates `code`. }
+        fieldErrors: { type: array, items: { $ref: '#/components/schemas/FieldError' } }
+        current: { $ref: '#/components/schemas/Contact', description: Present only on 409 contact.changed_by_someone_else. }
+        groups: { type: array, items: { $ref: '#/components/schemas/SoleOwnerGroup' }, description: Present only on 409 account.sole_owner. }
+    SoleOwnerGroup:
+      type: object
+      required: [id, name, inTrash]
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        inTrash: { type: boolean }
+        daysLeft: { type: [integer, 'null'] }
+    User:
+      type: object
+      required: [id, email, displayName, emailVerified, createdAt]
+      properties:
+        id: { type: string, format: uuid }
+        email: { type: string, format: email }
+        displayName: { type: string, minLength: 1, maxLength: 100 }
+        emailVerified: { type: boolean }
+        createdAt: { type: string, format: date-time }
+    GroupSummary:
+      type: object
+      required: [id, name, role, createdAt]
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string, minLength: 1, maxLength: 100 }
+        role: { $ref: '#/components/schemas/Role' }
+        createdAt: { type: string, format: date-time }
+    GroupCreate:
+      type: object
+      additionalProperties: false
+      required: [name]
+      properties:
+        name: { type: string, minLength: 1, maxLength: 100 }
+    GroupTrashRequest:
+      type: object
+      additionalProperties: false
+      required: [name]
+      properties:
+        name: { type: string, description: The exact Group name, typed by the Owner. }
+    GroupTrashItem:
+      type: object
+      required: [id, name, deletedAt, daysLeft]
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        deletedAt: { type: string, format: date-time }
+        daysLeft: { type: integer, minimum: 0, maximum: 30 }
+    Member:
+      type: object
+      required: [userId, displayName, email, role, joinedAt]
+      properties:
+        userId: { type: string, format: uuid }
+        displayName: { type: string }
+        email: { type: string, format: email }
+        role: { $ref: '#/components/schemas/Role' }
+        joinedAt: { type: string, format: date-time }
+    RoleChange:
+      type: object
+      additionalProperties: false
+      required: [role]
+      properties:
+        role: { $ref: '#/components/schemas/Role' }
+    InvitationCreate:
+      type: object
+      additionalProperties: false
+      required: [email, role]
+      properties:
+        email: { type: string, format: email, maxLength: 255 }
+        role: { $ref: '#/components/schemas/Role' }
+    Invitation:
+      type: object
+      required: [id, email, role, status, createdAt, expiresAt]
+      properties:
+        id: { type: string, format: uuid }
+        email: { type: string, format: email }
+        role: { $ref: '#/components/schemas/Role' }
+        status: { type: string, enum: [PENDING, ACCEPTED, CANCELLED, EXPIRED] }
+        createdAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+    AttributePair:
+      type: object
+      additionalProperties: false
+      required: [key, value]
+      properties:
+        key: { type: string, minLength: 1, maxLength: 50 }
+        value: { type: string, minLength: 1, maxLength: 255 }
+    ContactFields:
+      type: object
+      properties:
+        firstName: { type: [string, 'null'], maxLength: 255 }
+        lastName: { type: [string, 'null'], maxLength: 255 }
+        email: { type: [string, 'null'], maxLength: 255 }
+        phone: { type: [string, 'null'], maxLength: 30 }
+        company: { type: [string, 'null'], maxLength: 255 }
+        jobTitle: { type: [string, 'null'], maxLength: 255 }
+        street: { type: [string, 'null'], maxLength: 255 }
+        postalCode: { type: [string, 'null'], maxLength: 255 }
+        city: { type: [string, 'null'], maxLength: 255 }
+        country: { type: [string, 'null'], pattern: '^[A-Z]{2}$', description: ISO 3166-1 alpha-2. }
+        notes: { type: [string, 'null'], maxLength: 5000 }
+    ContactInput:
+      description: Body of create and edit. `version` is required on edit and ignored on create.
+      allOf:
+        - $ref: '#/components/schemas/ContactFields'
+        - type: object
+          additionalProperties: false
+          properties:
+            firstName: {}
+            lastName: {}
+            email: {}
+            phone: {}
+            company: {}
+            jobTitle: {}
+            street: {}
+            postalCode: {}
+            city: {}
+            country: {}
+            notes: {}
+            tags: { type: array, maxItems: 50, items: { type: string, minLength: 1, maxLength: 50 } }
+            attributes: { type: array, maxItems: 50, items: { $ref: '#/components/schemas/AttributePair' } }
+            version: { type: integer, minimum: 1 }
+    Contact:
+      allOf:
+        - $ref: '#/components/schemas/ContactFields'
+        - type: object
+          required: [id, version, tags, attributes, createdAt, updatedAt]
+          properties:
+            id: { type: string, format: uuid }
+            version: { type: integer, minimum: 1 }
+            tags: { type: array, items: { type: string } }
+            attributes: { type: array, items: { $ref: '#/components/schemas/AttributePair' } }
+            createdAt: { type: string, format: date-time }
+            updatedAt: { type: string, format: date-time }
+    ContactListItem:
+      type: object
+      required: [id, tags]
+      properties:
+        id: { type: string, format: uuid }
+        firstName: { type: [string, 'null'] }
+        lastName: { type: [string, 'null'] }
+        email: { type: [string, 'null'] }
+        company: { type: [string, 'null'] }
+        city: { type: [string, 'null'] }
+        country: { type: [string, 'null'] }
+        tags: { type: array, items: { type: string } }
+        version: { type: integer }
+        createdAt: { type: string, format: date-time }
+    ContactPage:
+      type: object
+      required: [items, page, pageSize, total]
+      properties:
+        items: { type: array, items: { $ref: '#/components/schemas/ContactListItem' } }
+        page: { type: integer, minimum: 1 }
+        pageSize: { type: integer, const: 25 }
+        total: { type: integer, minimum: 0 }
+    ContactFilter:
+      type: object
+      additionalProperties: false
+      properties:
+        q: { type: string }
+        tags: { type: array, items: { type: string } }
+        tagMode: { type: string, enum: [all, any], default: all }
+        withoutTags: { type: array, items: { type: string } }
+        country: { type: string, pattern: '^[A-Z]{2}$' }
+        company: { type: string }
+        attrKey: { type: string }
+        attrValue: { type: string }
+        attrExists: { type: boolean }
+    TagCount:
+      type: object
+      required: [id, name, contactCount]
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        contactCount: { type: integer, minimum: 0 }
+    TagRename:
+      type: object
+      additionalProperties: false
+      required: [name]
+      properties:
+        name: { type: string, minLength: 1, maxLength: 50, pattern: '^[\p{L}\p{N}_-]+$' }
+    Facets:
+      type: object
+      required: [tags, companies, countries, attributeKeys]
+      properties:
+        tags: { type: array, items: { type: string } }
+        companies: { type: array, items: { type: string } }
+        countries: { type: array, items: { type: string } }
+        attributeKeys: { type: array, items: { type: string } }
+    TrashContact:
+      type: object
+      required: [id, deletedAt, daysLeft]
+      properties:
+        id: { type: string, format: uuid }
+        firstName: { type: [string, 'null'] }
+        lastName: { type: [string, 'null'] }
+        email: { type: [string, 'null'] }
+        company: { type: [string, 'null'] }
+        deletedAt: { type: string, format: date-time }
+        deletedBy: { type: [string, 'null'], description: Display name from the History entry of the deletion. }
+        daysLeft: { type: integer, minimum: 0, maximum: 30 }
+    HistoryAction:
+      type: string
+      enum: [CONTACT_CREATED, CONTACT_EDITED, CONTACT_DELETED, CONTACT_DELETED_FOREVER, CONTACT_RESTORED, TAG_ADDED, TAG_REMOVED, TAG_RENAMED, TAG_DELETED, ATTRIBUTE_ADDED, ATTRIBUTE_CHANGED, ATTRIBUTE_REMOVED, CONTACTS_MERGED, CONTACTS_EXPORTED, MEMBER_JOINED, ROLE_CHANGED, MEMBER_REMOVED, INVITATION_CREATED, INVITATION_CANCELLED, VERSION_RESTORED]
+    HistoryEntry:
+      type: object
+      required: [id, occurredAt, userName, action]
+      properties:
+        id: { type: string, format: uuid }
+        occurredAt: { type: string, format: date-time }
+        userName: { type: string }
+        userEmail: { type: [string, 'null'] }
+        action: { $ref: '#/components/schemas/HistoryAction' }
+        contactId: { type: [string, 'null'], format: uuid }
+        details: { type: object, additionalProperties: true }
+    HistoryPage:
+      type: object
+      required: [items, page, pageSize, total]
+      properties:
+        items: { type: array, items: { $ref: '#/components/schemas/HistoryEntry' } }
+        page: { type: integer }
+        pageSize: { type: integer, const: 25 }
+        total: { type: integer }
+    ExportRequest:
+      type: object
+      additionalProperties: false
+      required: [selection]
+      properties:
+        selection:
+          oneOf:
+            - type: object
+              additionalProperties: false
+              required: [contactIds]
+              properties:
+                contactIds: { type: array, items: { type: string, format: uuid } }
+            - type: object
+              additionalProperties: false
+              required: [filter]
+              properties:
+                filter: { $ref: '#/components/schemas/ContactFilter' }
+        lang: { type: string, enum: [sl, en], default: sl }
+    VersionSummary:
+      type: object
+      required: [number, createdAt, userName]
+      properties:
+        number: { type: integer, minimum: 1 }
+        createdAt: { type: string, format: date-time }
+        userName: { type: string }
+    VersionDetail:
+      allOf:
+        - $ref: '#/components/schemas/VersionSummary'
+        - type: object
+          required: [content]
+          properties:
+            content: { $ref: '#/components/schemas/Contact' }
+    VersionComparison:
+      type: object
+      required: [number, differences]
+      properties:
+        number: { type: integer }
+        differences:
+          type: array
+          items:
+            type: object
+            required: [kind, name]
+            properties:
+              kind: { type: string, enum: [field, tag, attribute] }
+              name: { type: string }
+              versionValue: { type: [string, 'null'] }
+              currentValue: { type: [string, 'null'] }
+    VersionRestoreRequest:
+      type: object
+      additionalProperties: false
+      required: [version]
+      properties:
+        version: { type: integer, minimum: 1, description: The current version number the user saw. }
+    DuplicateSet:
+      type: object
+      required: [key, mark, reasonCode, contacts]
+      properties:
+        key: { type: string, description: Stable key of the set (hash of the sorted Contact ids). }
+        mark: { type: string, enum: [certain, probable] }
+        reasonCode: { type: string, examples: [duplicate.same_email] }
+        reasonParams: { type: object, additionalProperties: { type: string } }
+        contacts: { type: array, minItems: 2, items: { $ref: '#/components/schemas/ContactListItem' } }
+    DuplicateDismissal:
+      type: object
+      additionalProperties: false
+      required: [contactIds]
+      properties:
+        contactIds: { type: array, minItems: 2, items: { type: string, format: uuid } }
+    MergeRequest:
+      type: object
+      additionalProperties: false
+      required: [survivorId, contacts, fields, attributes]
+      properties:
+        survivorId: { type: string, format: uuid }
+        contacts:
+          type: array
+          minItems: 2
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, version]
+            properties:
+              id: { type: string, format: uuid }
+              version: { type: integer, minimum: 1 }
+        fields: { $ref: '#/components/schemas/ContactFields' }
+        attributes: { type: array, items: { $ref: '#/components/schemas/AttributePair' } }
+        tags: { type: array, items: { type: string } }
+paths: {}
