@@ -90,7 +90,7 @@ Product-level questions; story-level questions are in the story. Every question 
 |---|---|---|---|---|
 | OQ-P01 | What does the current situation cost (lost time, duplicate mailings, contacting `neObvescaj` people)? (Q-01) | customer | review | OPEN |
 | OQ-P02 | Which measurable success criteria does the customer accept? The four above are a developer proposal. (Q-06) | customer | review | OPEN |
-| OQ-P03 | What does the SCM example solution (https://github.com/anzo26/SCM) do? The brief asks to match or beat it, but its features and screens are not known to this specification. Which of its screens does the customer like? (Q-05, Q-53) | customer | review | OPEN |
+| OQ-P03 | What does the SCM example solution (https://github.com/anzo26/SCM) do? The brief asks to match or beat it, but its features and screens are not known to this specification. Which of its screens does the customer like? (Q-05, Q-53) | customer | review | Developer, 2026-11-08 review: proceed without it; stays open for the customer. |
 | OQ-P04 | Do the quality numbers hold: up to 100 users, 20 at once, Groups up to 10,000 Contacts, speeds, availability 99 %, backups? (Q-50, Q-35) | customer | review | OPEN |
 | OQ-P05 | OPEN — needs customer (personal data). Who is the controller or processor, must data stay in the EU, which countries do the Contacts live in, are special categories of data (health, religion …) stored? The developer put legal matters outside the software. (Q-46) | customer | review | OPEN |
 | OQ-P06 | Does a production Firebase project exist and who owns it? (Q-49) | customer | review | OPEN |

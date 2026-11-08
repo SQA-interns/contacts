@@ -110,7 +110,7 @@ Types: `uuid`, `text(n)` = text of at most n characters, `timestamp` = UTC date 
 | Attribute | value | text(255) | yes | 1 to 255 characters [ASSUMPTION: not empty] | yes (may contain personal data) |
 | HistoryEntry | group | reference | yes | append-only | no |
 | HistoryEntry | occurredAt | timestamp | yes | | no |
-| HistoryEntry | userName, userEmail | text, copied at the time of the action | yes | stay when the User is deleted (US-021; whether the e-mail stays is open) | yes |
+| HistoryEntry | userName, userEmail | text, copied at the time of the action | yes | the name stays when the User is deleted; the e-mail is removed (US-021) | yes |
 | HistoryEntry | action | one of the audited actions | yes | | no |
 | HistoryEntry | contact | reference | no | empty for actions that do not concern one Contact | no |
 | HistoryEntry | details | structured text | no | old and new values, merged Contacts, export count | yes |
@@ -120,7 +120,7 @@ Types: `uuid`, `text(n)` = text of at most n characters, `timestamp` = UTC date 
 ### Lifecycles
 
 - **Contact:** active → in Trash (delete) → active (restore, within 30 days) or permanently deleted (delete forever by the Owner, or 30 days in Trash). A Contact in Trash cannot be edited.
-- **Group:** active → in Trash (delete by the Owner) → permanently deleted after 30 days. Restoring a Group is open (US-020).
+- **Group:** active → in Trash (delete by the Owner) → permanently deleted after 30 days. An Owner can restore a Group within 30 days (US-020).
 - **Invitation:** `PENDING` → `ACCEPTED` (the invited person signs in with the verified e-mail), `CANCELLED` (by an Owner) or `EXPIRED` (14 days).
 - **Member:** joins through an Invitation or by creating the Group; leaves when an Owner removes the Member or the User deletes the account.
 
