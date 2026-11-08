@@ -9,6 +9,8 @@ const baseURL = process.env.E2E_BASE_URL ?? 'http://127.0.0.1:4173';
 
 export default defineConfig({
   testDir: './ui-checks',
+  // `*.stack.spec.ts` need the test stack (scripts/test-stack.sh up) and run only with E2E_BASE_URL set.
+  testIgnore: process.env.E2E_BASE_URL ? [] : ['**/*.stack.spec.ts'],
   outputDir: './test-results',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
