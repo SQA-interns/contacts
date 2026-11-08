@@ -1,0 +1,66 @@
+# Every environment-specific value comes from an environment variable (ES-01, AR-07).
+# Placeholders without a default are secrets or per-environment values (docs/02_contracts/configuration.schema.json).
+spring:
+  application:
+    name: contact-groups-backend
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_APP_USER:contactgroups_app}
+    password: ${DB_APP_PASSWORD}
+  flyway:
+    url: ${DB_URL}
+    user: ${DB_MIGRATION_USER}
+    password: ${DB_MIGRATION_PASSWORD}
+    clean-disabled: true
+    placeholders:
+      app_user: ${DB_APP_USER:contactgroups_app}
+      app_password: ${DB_APP_PASSWORD}
+  jackson:
+    default-property-inclusion: non_null
+  mvc:
+    problemdetails:
+      enabled: false
+  web:
+    resources:
+      add-mappings: false
+
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: framework
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health
+      path-mapping:
+        health: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+      show-components: never
+
+springdoc:
+  api-docs:
+    path: /api/v1/openapi.json
+  swagger-ui:
+    enabled: false
+
+app:
+  firebase-project-id: ${FIREBASE_PROJECT_ID}
+  cors-allowed-origin: ${CORS_ALLOWED_ORIGIN}
+  rate-limit-per-minute: ${RATE_LIMIT_PER_MINUTE:100}
+  max-request-size: ${MAX_REQUEST_SIZE:1MB}
+  require-https: ${REQUIRE_HTTPS:false}
+  trash-purge-cron: ${TRASH_PURGE_CRON:0 0 * * * *}
