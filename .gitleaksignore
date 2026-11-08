@@ -1,0 +1,5 @@
+# Accepted gitleaks findings, each with its reason in docs/decisions-log.md (D-34).
+# Both are the throw-away password Spring Boot generated for its unused default user in a test run and logged
+# (the code now declares a UserDetailsService, so nothing is generated or logged any more). Not a credential.
+d6ac788bd6f06769d18cceeca948936ab98d7d52:02_output/logs/backend-verify.log:generic-api-key:118
+d6ac788bd6f06769d18cceeca948936ab98d7d52:02_output/logs/backend-check.log:generic-api-key:118

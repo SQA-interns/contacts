@@ -370,3 +370,14 @@
 - Human response: none
 - Resolution: 1. Pending review.
 - Overrides: tech-stack.md npm entries (additions only)
+
+## D-34: Scanner results of the skeleton (gitleaks, licence check)
+- Timestamp: 2026-11-08
+- Session: S3 /plan
+- Class: open
+- Type: non-blocking
+- Trigger: (a) gitleaks 8.28.0 over the history reported 2 `generic-api-key` findings in `out/logs/backend-verify.log` and `backend-check.log` (commit d6ac788, line 118): the line `Using generated security password: <uuid>`. Spring Boot creates a default in-memory user with a random password when the application has no `UserDetailsService`, and logs it at start; here the user is never used (stateless bearer tokens). Fixed in code: `SecurityConfig.noLocalUsers()` declares a `UserDetailsService` without users (test `ApplicationIT.thereIsNoLocalUserAndNoGeneratedPassword`); later logs contain no such line (checked). The two committed lines stay in history (no rewrite, `general/rules/commits.md`) and are accepted by fingerprint in `.gitleaksignore`. (b) `license-checker-rseidelsohn` on the frontend production tree: only `lightningcss` (MPL-2.0), the CSS transformer inside Tailwind and Vite, is outside the allowed list; `tech-stack.md` permits MPL-2.0 in build scope, and it is not part of the bundle or of the runtime image (nginx serves static files). The CI licence step excludes `lightningcss*` and the project's own `UNLICENSED` entry and fails on anything else. (c) `npm audit`: `scripts/npm-audit-gate.mjs` fails on any High or Critical package other than the four accepted in D-05.
+- Options: 1. Accept as described (proposed default). 2. Rewrite history to remove the two log lines (not allowed by the commit rules). 3. Ask the human.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
