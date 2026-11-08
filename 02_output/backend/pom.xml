@@ -49,6 +49,7 @@
     <dependency-check.version>12.1.6</dependency-check.version>
     <enforcer-plugin.version>3.6.1</enforcer-plugin.version>
     <license-plugin.version>2.7.1</license-plugin.version>
+    <skipAcceptance>false</skipAcceptance>
   </properties>
 
   <dependencies>
@@ -229,13 +230,39 @@
             <!-- the Firebase Admin SDK reads the emulator address from the environment (SR-13) -->
             <FIREBASE_AUTH_EMULATOR_HOST>localhost:9099</FIREBASE_AUTH_EMULATOR_HOST>
           </environmentVariables>
+          <!-- report the display names, which carry the AC/EX ids (general/testing/writing-tests.md) -->
+          <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+            <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
+          </statelessTestsetReporter>
         </configuration>
         <executions>
           <execution>
+            <id>default</id>
             <goals>
               <goal>integration-test</goal>
               <goal>verify</goal>
             </goals>
+            <configuration>
+              <excludes>
+                <exclude>**/acceptance/**</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+          <!-- frozen acceptance tests (phase 3), in their own JVM after the other integration tests;
+               -DskipAcceptance=true leaves them out while a story is being implemented -->
+          <execution>
+            <id>acceptance</id>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <includes>
+                <include>**/acceptance/**/*IT.java</include>
+              </includes>
+              <skipITs>${skipAcceptance}</skipITs>
+              <summaryFile>${project.build.directory}/failsafe-reports/acceptance-summary.xml</summaryFile>
+            </configuration>
           </execution>
         </executions>
       </plugin>
