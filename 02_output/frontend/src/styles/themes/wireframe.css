@@ -1,0 +1,23 @@
+/* Wireframe theme (UI-26): greys only, dashed borders, no colour, shadow, gradient or animation. */
+:root[data-theme='wireframe'] {
+  --background: #ffffff;
+  --surface: #f3f3f3;
+  --surface-raised: #fafafa;
+  --border: #9a9a9a;
+  --border-style: dashed;
+  --text: #2b2b2b;
+  --text-muted: #5f5f5f;
+  --primary: #4a4a4a;
+  --primary-foreground: #ffffff;
+  --success: #6a6a6a;
+  --warning: #6a6a6a;
+  --danger: #3a3a3a;
+  --focus-ring: #000000;
+  --shadow: none;
+}
+:root[data-theme='wireframe'] * {
+  box-shadow: none !important;
+  background-image: none !important;
+  animation: none !important;
+  transition: none !important;
+}

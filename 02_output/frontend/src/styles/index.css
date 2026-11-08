@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+@import './tokens.css';
+@import './themes/wireframe.css';
+@import './themes/final.css';
+@import './brand.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    color-scheme: light dark;
+  }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+  }
+  /* UI-26: the wireframe theme draws regions and controls with dashed borders, the final theme with solid ones.
+     Tailwind's `border` utility reads --tw-border-style. */
+  *,
+  ::before,
+  ::after {
+    --tw-border-style: var(--border-style);
+    border-color: var(--border);
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  /* UI-21: motion only for state changes and off when the user prefers reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

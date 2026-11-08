@@ -1,0 +1,47 @@
+/*
+ * Semantic design tokens (UI-04). Components use only these names; the values come from the active theme
+ * file (themes/wireframe.css or themes/final.css) and the brand file (brand.css). Switching the theme is
+ * the data-theme attribute on <html>; no component changes (UI-03).
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-ring: var(--focus-ring);
+
+  /* names used by the shadcn/ui components, mapped onto the tokens above */
+  --color-foreground: var(--text);
+  --color-muted: var(--surface);
+  --color-muted-foreground: var(--text-muted);
+  --color-card: var(--surface-raised);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--surface-raised);
+  --color-popover-foreground: var(--text);
+  --color-secondary: var(--surface);
+  --color-secondary-foreground: var(--text);
+  --color-accent: var(--surface);
+  --color-accent-foreground: var(--text);
+  --color-destructive: var(--danger);
+  --color-input: var(--border);
+
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+:root {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --content-max: 1200px;
+}

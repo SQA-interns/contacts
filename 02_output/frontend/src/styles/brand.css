@@ -1,0 +1,5 @@
+/* Brand colour in one place (ui-design.md, UI-03). The customer's colour replaces these two values later. */
+:root {
+  --brand-primary: #4f46e5; /* indigo-600, baseline default (UI-04) */
+  --brand-primary-foreground: #ffffff;
+}
