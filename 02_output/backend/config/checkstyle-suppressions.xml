@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+<suppressions>
+  <!-- Flyway discovers Java migrations by the name V<version>__<description>. -->
+  <suppress checks="TypeName" files="[\\/]db[\\/]migration[\\/]V\d+__.*\.java"/>
+  <!-- ArchUnit rules are static fields written in lowerCamelCase by convention. -->
+  <suppress checks="ConstantName" files="[\\/]architecture[\\/].*Test\.java"/>
+</suppressions>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Findings accepted with a reason. Keep this list short; each entry names the rule and why. -->
+<FindBugsFilter>
+  <!-- Records and Spring-managed beans expose or store references by design (EI_EXPOSE_REP/EI_EXPOSE_REP2). -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+  </Match>
+  <!-- The statement is composed by PostgreSQL itself with format('%I', ...) and format('%L', ...), so role name
+       and password are quoted by the server; the role name is also checked against a strict pattern first. -->
+  <Match>
+    <Class name="db.migration.V1__create_application_role"/>
+    <Bug pattern="SQL_INJECTION_JDBC"/>
+  </Match>
+  <!-- Flyway Java migrations are discovered by class name V<n>__<name>. -->
+  <Match>
+    <Class name="~db\.migration\..*"/>
+    <Bug pattern="NM_CLASS_NAMING_CONVENTION"/>
+  </Match>
+  <!-- Spring's @Configuration classes are generated as subclasses. -->
+  <Match>
+    <Bug pattern="SPRING_CSRF_PROTECTION_DISABLED"/>
+    <Class name="si.contactgroups.config.SecurityConfig"/>
+  </Match>
+</FindBugsFilter>
