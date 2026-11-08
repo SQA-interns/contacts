@@ -1,6 +1,6 @@
-import AxeBuilder from '@axe-core/playwright';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { newUser, signIn, unique } from '../acceptance/support/stack';
+import { check } from './check';
 import { VIEWPORTS } from './viewports';
 
 /**
@@ -9,19 +9,6 @@ import { VIEWPORTS } from './viewports';
  * `02_output/logs/screens/<screen>/`. Needs the test stack (`scripts/test-stack.sh up`, E2E_BASE_URL set); the
  * default UI-check run leaves `*.stack.spec.ts` out (playwright.config.ts).
  */
-async function check(page: Page, screen: string, state: string, width: string) {
-  const overflow = await page.evaluate(
-    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-  );
-  expect(overflow, `${screen} ${state} overflows`).toBeLessThanOrEqual(0);
-  const results = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-    .analyze();
-  const blocking = results.violations.filter((v) => v.impact === 'critical' || v.impact === 'serious');
-  expect(blocking, JSON.stringify(blocking.map((v) => [v.id, v.nodes.map((n) => n.target)]))).toEqual([]);
-  await page.screenshot({ path: `../logs/screens/${screen}/${state}-${width}.png`, fullPage: true });
-}
-
 for (const viewport of VIEWPORTS) {
   test.describe(`${viewport.name} (${viewport.width} px)`, () => {
     test.use({ viewport: { width: viewport.width, height: viewport.height } });
