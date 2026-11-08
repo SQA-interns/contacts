@@ -17,9 +17,11 @@ import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWrite
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import si.contactgroups.security.EmailVerifiedFilter;
 import si.contactgroups.security.ErrorWriter;
 import si.contactgroups.security.FirebaseTokenFilter;
+import si.contactgroups.security.RequestSizeFilter;
 import si.contactgroups.security.TokenVerifier;
 import si.contactgroups.service.UserService;
 
@@ -29,13 +31,15 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(
-      HttpSecurity http, TokenVerifier verifier, UserService users) throws Exception {
+      HttpSecurity http, TokenVerifier verifier, UserService users, AppProperties properties)
+      throws Exception {
     http.csrf(AbstractHttpConfigurer::disable) // bearer token in a header, no cookie session
         .cors(Customizer.withDefaults())
         .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(
             a ->
                 a.requestMatchers("/health", "/health/**").permitAll().anyRequest().authenticated())
+        .addFilterBefore(new RequestSizeFilter(properties.maxRequestSize()), CorsFilter.class)
         .addFilterBefore(
             new FirebaseTokenFilter(verifier, users), UsernamePasswordAuthenticationFilter.class)
         .addFilterAfter(new EmailVerifiedFilter(), FirebaseTokenFilter.class)

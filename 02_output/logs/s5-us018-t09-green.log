@@ -1,0 +1,252 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< si.contactgroups:contact-groups-backend >---------------
+[INFO] Building Contact Groups backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.1:enforce (enforce) @ contact-groups-backend ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BanDynamicVersions passed
+[INFO] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ contact-groups-backend ---
+[INFO] argLine set to -javaagent:/Users/kyuhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ contact-groups-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ contact-groups-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 42 source files with javac [debug parameters release 21] to target/classes
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/main/java/si/contactgroups/security/RequestSizeFilter.java:[31,21] PAYLOAD_TOO_LARGE in org.springframework.http.HttpStatus has been deprecated
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ contact-groups-backend ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ contact-groups-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 66 source files with javac [debug parameters release 21] to target/test-classes
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/acceptance/support/Contract.java:[49,71] fields() in com.fasterxml.jackson.databind.JsonNode has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/acceptance/support/Contract.java:[52,68] fields() in com.fasterxml.jackson.databind.JsonNode has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/acceptance/Us018SecurityAcceptanceIT.java:[219,74] fields() in com.fasterxml.jackson.databind.JsonNode has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/web/GroupAccessIT.java:[94,29] json(java.lang.String,boolean) in org.springframework.test.web.servlet.result.ContentResultMatchers has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/web/GroupEndpointsIT.java:[74,28] isUnprocessableEntity() in org.springframework.test.web.servlet.result.StatusResultMatchers has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/web/RequestLimitsIT.java:[46,28] isPayloadTooLarge() in org.springframework.test.web.servlet.result.StatusResultMatchers has been deprecated
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ contact-groups-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.contactgroups.config.StartupGuardTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.209 s -- in si.contactgroups.config.StartupGuardTest
+[INFO] Running si.contactgroups.config.ConfigurationPlaceholderTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s -- in si.contactgroups.config.ConfigurationPlaceholderTest
+[INFO] Running si.contactgroups.security.FirebaseTokenFilterTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+00:06:44.452 [main] INFO si.contactgroups.security.FirebaseTokenFilter -- 401 invalid token on GET /api/v1/me
+00:06:45.144 [main] INFO si.contactgroups.security.FirebaseTokenFilter -- 409 e-mail taken on GET /api/v1/me
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.520 s -- in si.contactgroups.security.FirebaseTokenFilterTest
+[INFO] Running si.contactgroups.architecture.LayerRulesTest
+00:06:45.173 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.8
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.214 s -- in si.contactgroups.architecture.LayerRulesTest
+[INFO] Running si.contactgroups.architecture.RepositoryScopeRuleTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.253 s -- in si.contactgroups.architecture.RepositoryScopeRuleTest
+[INFO] Running si.contactgroups.architecture.EndpointSecurityTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.117 s -- in si.contactgroups.architecture.EndpointSecurityTest
+[INFO] Running si.contactgroups.domain.ActionTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in si.contactgroups.domain.ActionTest
+[INFO] Running si.contactgroups.architecture.ArchitectureTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.907 s -- in si.contactgroups.architecture.ArchitectureTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ contact-groups-backend ---
+[INFO] Building jar: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/contact-groups-backend.jar
+[INFO] 
+[INFO] --- spring-boot:4.0.9:repackage (repackage) @ contact-groups-backend ---
+[WARNING]  Parameter 'finalName' is read-only, must not be used in configuration
+[INFO] Replacing main artifact /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/contact-groups-backend.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/contact-groups-backend.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent-integration (prepare-agent-integration) @ contact-groups-backend ---
+[INFO] argLine set to -javaagent:/Users/kyuhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco-it.exec
+[INFO] 
+[INFO] --- failsafe:3.5.4:integration-test (default) @ contact-groups-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.contactgroups.ApplicationIT
+00:06:49.938 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:06:50.097 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+00:06:50.210 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:06:50.211 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:06:50.219 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T00:06:50.720+01:00  INFO 28083 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Starting ApplicationIT using Java 21.0.8 with PID 28083 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T00:06:50.722+01:00  INFO 28083 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : The following 1 profile is active: "group-path-probe"
+2026-11-09T00:06:51.365+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T00:06:51.368+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T00:06:51.378+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T00:06:52.156+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T00:06:52.158+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T00:06:52.174+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T00:06:52.406+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T00:06:52.506+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T00:06:52.628+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 94381b98e5419892bc815c61126ffae8a092c2c51aa48280f1d5062060ebe53b
+2026-11-09T00:06:52.885+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.478863S
+2026-11-09T00:06:52.896+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T00:06:52.897+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T00:06:52.898+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T00:06:52.898+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T00:06:52.975+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: c6efa6964d83f00b18102302557b523238a6aabdc83ca4b245cce7a2ab8b151f
+2026-11-09T00:06:54.007+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.108952S
+2026-11-09T00:06:54.009+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:63047/test?loggerLevel=OFF)
+2026-11-09T00:06:55.009+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63047/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T00:06:55.042+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T00:06:55.044+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.013s)
+2026-11-09T00:06:55.057+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T00:06:55.113+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T00:06:55.116+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T00:06:55.148+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T00:06:55.186+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.040s)
+2026-11-09T00:06:55.536+01:00  INFO 28083 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T00:06:56.110+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-09T00:06:56.110+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-09T00:06:56.120+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T00:06:56.124+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 13 ms
+2026-11-09T00:06:56.226+01:00  INFO 28083 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Started ApplicationIT in 5.938 seconds (process running for 7.848)
+2026-11-09T00:06:56.275+01:00  WARN 28083 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T00:06:56.905+01:00  INFO 28083 --- [contact-groups-backend] [           main] s.c.security.FirebaseTokenFilter         : 401 invalid token on GET /api/v1/groups
+2026-11-09T00:06:57.211+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 179 ms
+2026-11-09T00:06:57.318+01:00  WARN 28083 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/nothing
+2026-11-09T00:06:57.340+01:00  INFO 28083 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T00:06:57.360+01:00  INFO 28083 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1a57231c
+2026-11-09T00:06:57.363+01:00  INFO 28083 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.613 s -- in si.contactgroups.ApplicationIT
+[INFO] Running si.contactgroups.DatabaseRolesIT
+2026-11-09T00:06:57.445+01:00  INFO 28083 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:63047/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T00:06:57.458+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.004s)
+2026-11-09T00:06:57.472+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 2
+2026-11-09T00:06:57.472+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.163 s -- in si.contactgroups.DatabaseRolesIT
+[INFO] Running si.contactgroups.web.GroupEndpointsIT
+2026-11-09T00:06:57.573+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.GroupEndpointsIT]: GroupEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:57.582+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.GroupEndpointsIT
+2026-11-09T00:06:57.583+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.GroupEndpointsIT]: GroupEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:57.583+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:57.583+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:57.586+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.GroupEndpointsIT
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.450 s -- in si.contactgroups.web.GroupEndpointsIT
+[INFO] Running si.contactgroups.web.AccountEndpointsIT
+2026-11-09T00:06:58.023+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.AccountEndpointsIT]: AccountEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.027+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AccountEndpointsIT
+2026-11-09T00:06:58.027+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.AccountEndpointsIT]: AccountEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.028+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.028+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.030+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AccountEndpointsIT
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in si.contactgroups.web.AccountEndpointsIT
+[INFO] Running si.contactgroups.web.RequestLimitsIT
+2026-11-09T00:06:58.088+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.RequestLimitsIT]: RequestLimitsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.091+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.RequestLimitsIT
+2026-11-09T00:06:58.091+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.RequestLimitsIT]: RequestLimitsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.091+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.092+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.094+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.RequestLimitsIT
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s -- in si.contactgroups.web.RequestLimitsIT
+[INFO] Running si.contactgroups.web.GroupAccessIT
+2026-11-09T00:06:58.162+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.GroupAccessIT]: GroupAccessIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.165+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.GroupAccessIT
+2026-11-09T00:06:58.166+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.web.GroupAccessIT]: GroupAccessIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.166+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.166+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.169+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.GroupAccessIT
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 s -- in si.contactgroups.web.GroupAccessIT
+[INFO] Running si.contactgroups.service.UserServiceIT
+2026-11-09T00:06:58.320+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.service.UserServiceIT]: UserServiceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.328+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.service.UserServiceIT
+2026-11-09T00:06:58.329+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.service.UserServiceIT]: UserServiceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.329+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.332+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.service.UserServiceIT
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in si.contactgroups.service.UserServiceIT
+[INFO] Running si.contactgroups.service.GroupServiceIT
+2026-11-09T00:06:58.371+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.service.GroupServiceIT]: GroupServiceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.374+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.service.GroupServiceIT
+2026-11-09T00:06:58.375+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.service.GroupServiceIT]: GroupServiceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.375+01:00  INFO 28083 --- [contact-groups-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-09T00:06:58.377+01:00  INFO 28083 --- [contact-groups-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.service.GroupServiceIT
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.048 s -- in si.contactgroups.service.GroupServiceIT
+[INFO] Running si.contactgroups.FirebaseEmulatorIT
+2026-11-09T00:07:00.518+01:00  INFO 28083 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T00:07:00.640+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T00:07:00.773+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: 606759af7905922cd9116b00fd5e4692b2a9bf273d927d2c808aa04e6b75ba87
+2026-11-09T00:07:06.015+01:00  INFO 28083 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT5.374957S
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.984 s -- in si.contactgroups.FirebaseEmulatorIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 52, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- failsafe:3.5.4:integration-test (acceptance) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:integration-test (acceptance-own-context) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:verify (default) @ contact-groups-backend ---
+[INFO] 
+[INFO] --- failsafe:3.5.4:verify (acceptance) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:3.5.4:verify (acceptance-own-context) @ contact-groups-backend ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report) @ contact-groups-backend ---
+[INFO] Loading execution data file /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco.exec
+[INFO] Analyzed bundle 'Contact Groups backend' with 40 classes
+[INFO] 
+[INFO] --- jacoco:0.8.13:report-integration (report) @ contact-groups-backend ---
+[INFO] Loading execution data file /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco-it.exec
+[INFO] Analyzed bundle 'Contact Groups backend' with 40 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  30.711 s
+[INFO] Finished at: 2026-11-09T00:07:07+01:00
+[INFO] ------------------------------------------------------------------------
