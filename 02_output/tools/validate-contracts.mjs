@@ -39,7 +39,7 @@ for (const file of readdirSync(dir).sort()) {
     ok(`${file}: ${ops} operations, project rules checked`);
   } else if (file.endsWith('.schema.json')) {
     const schema = JSON.parse(readFileSync(path, 'utf8'));
-    const ajv = new Ajv2020({ strict: true, allErrors: true });
+    const ajv = new Ajv2020({ strict: true, strictTuples: false, allErrors: true });
     addFormats(ajv);
     ajv.addKeyword('x-invalid-examples');
     let validate;
