@@ -1,0 +1,17 @@
+{
+  "name": "contact-groups-tools",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Development tools of the repository (contract validation). Not shipped.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "validate-contracts": "node validate-contracts.mjs"
+  },
+  "devDependencies": {
+    "@seriousme/openapi-schema-validator": "2.11.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "yaml": "2.9.1"
+  }
+}
