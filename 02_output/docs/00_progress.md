@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-018
+- Session: S5 /implement US-019
 - Result: done
-- Gate: DoD-S of US-018 passed, except DoD-S-01 in part (all of `Us018SecurityAcceptanceIT` and `ac_018_15_security_log` set up through Contact and Invitation endpoints of US-003 and US-014; AC-018-10 needs every operation of the contract; D-44) and DoD-S-07 in part (one subject of 73 characters; not rewritten, commits.md)
-- Notes for the next session: Group endpoints are secured by `@RequiresAction` + `GroupAccessInterceptor` (registered in `config/WebConfig`; `GroupAccessService.requireAllowed` gives 404 `group.not_found` or 403 `auth.role_forbidden`); a controller method with `{groupId}` in its path needs `@RequiresAction`, objects must be loaded with the Group id (R-018-05, add a test per object type). Filter chain in `SecurityConfig`: SecurityLogger, RequestSizeFilter, HttpsFilter, CORS, FirebaseTokenFilter, RateLimitFilter, EmailVerifiedFilter. Unknown body properties give 400 `request.unknown_property`. `IsolationIT` and `ContractParityIT` cover every new endpoint automatically; `ContractParityIT` fails when an operation id differs from the contract. Test-only `GroupPathProbe` (profile `group-path-probe`, `@Hidden`). Results: backend acceptance 20 of 366 (unchanged: Us001 7/7, Us002 13/15), own-context 4 of 5 (AC-018-12, AC-018-14, EX-018-03, EX-018-09 pass); unit 42, integration 60 and frontend 106 tests green; Checkstyle, SpotBugs, PMD, Spotless and gitleaks clean. Open for review: D-40..D-45.
+- Gate: DoD-S of US-019 passed in part: frozen acceptance tests AC-019-02..07 need screens of US-003, US-005 and US-016 and the backend stack, so they were not run (same pattern as D-44)
+- Notes for the next session: The language foundation (catalogs, formats, switch, storage fallback) already existed from earlier commits; this session added `errorMessage(t, error)` in `frontend/src/api/errors.ts` (server text never shown; unknown code gives `error.generic`) and tests for it and for `LanguageSwitch`. Screens must show API errors with `errorMessage`, dates/numbers/countries with `i18n/format`. Frontend unit tests 110 green; eslint, tsc, prettier clean. Frozen UI acceptance tests of US-019 to re-check after US-003/US-016. No new decisions.
 
 ## Next
-- Command: /implement US-019
+- Command: /implement US-003
 - Waiting for: nothing
 
 ## Stories
@@ -35,7 +35,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-016 | 1 | ready | — |
 | US-017 | 1 | ready | — |
 | US-018 | 1 | done | passed (DoD-S-01: frozen tests wait for US-003, US-014 and the last story, D-44; DoD-S-07: one subject over 72 characters) |
-| US-019 | 1 | ready | — |
+| US-019 | 1 | done | passed in part (frozen UI tests wait for US-003, US-005, US-016) |
 | US-020 | 2 | ready | — |
 | US-021 | 2 | ready | — |
 | US-022 | 2 | ready | — |
