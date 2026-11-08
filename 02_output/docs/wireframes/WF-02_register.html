@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-02 Registracija · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-02 · Registracija · /register · US-001 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><div class="header-end"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></div></div></header>
+<main id="main" class="container">
+
+
+<div class="narrow card stack">
+  <h1>Registracija</h1>
+  <div class="field"><label>Prikazno ime <span class="req">(obvezno)</span></label><span class="input"></span><p class="hint">Ime, ki ga drugi člani vidijo v zgodovini. Do 100 znakov.</p></div>
+  <div class="field"><label>E-pošta <span class="req">(obvezno)</span></label><span class="input">ime@podjetje.si</span></div>
+  <div class="field"><label>Geslo <span class="req">(obvezno)</span></label><span class="input"></span><p class="hint">Vsaj 8 znakov.</p></div>
+  <button type="button" class="btn primary block" >Ustvari račun</button>
+  <p class="small">Že imate račun? <a href="WF-01_sign-in.html">Prijava</a></p>
+</div>
+<section class="state" aria-label="field errors (R-001-06; values are kept)"><span class="anno">State: field errors (R-001-06; values are kept)</span><div class="narrow card stack"><div class="field error"><label>Prikazno ime <span class="req">(obvezno)</span></label><span class="input"></span><p class="err" role="alert">Ime mora imeti od 1 do 100 znakov.</p></div><div class="field"><label>E-pošta <span class="req">(obvezno)</span></label><span class="input filled"><span class="ph l" aria-hidden="true"></span></span></div><div class="field error"><label>Geslo <span class="req">(obvezno)</span></label><span class="input filled">•••••••</span><p class="err" role="alert">Geslo mora imeti vsaj 8 znakov.</p></div><button type="button" class="btn primary block" >Ustvari račun</button></div></section>
+<section class="state" aria-label="e-mail already registered (R-001-07)"><span class="anno">State: e-mail already registered (R-001-07)</span><div class="narrow card stack"><div class="alert " role="alert"><p class="strong">Ta e-poštni naslov je že registriran.</p><div><div class="row" style="margin-top:8px"><button type="button" class="btn " >Prijava</button><button type="button" class="btn " >Ponastavi geslo</button></div></div></div><div class="field"><label>E-pošta <span class="req">(obvezno)</span></label><span class="input filled"><span class="ph l" aria-hidden="true"></span></span></div></div></section>
+<section class="state" aria-label="busy"><span class="anno">State: busy</span><div class="narrow card"><button type="button" class="btn primary block" aria-busy="true"><span class="spin" aria-hidden="true"></span>Ustvarjanje računa …</button></div></section>
+<section class="state" aria-label="error"><span class="anno">State: error</span><div class="narrow"><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div></div></section>
+<p class="note">Loading and empty states: not applicable (no data is loaded). On success the user goes to WF-04 Verify e-mail.</p>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>

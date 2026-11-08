@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-01 Prijava · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-01 · Prijava · /sign-in · US-001, US-019 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><div class="header-end"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></div></div></header>
+<main id="main" class="container">
+
+
+<div class="narrow card stack">
+  <h1>Prijava</h1>
+  <div class="field"><label>E-pošta</label><span class="input">ime@podjetje.si</span></div>
+  <div class="field"><label>Geslo</label><span class="input">••••••••</span></div>
+  <div class="row end"><a href="WF-03_reset-password.html" class="small">Pozabljeno geslo?</a></div>
+  <button type="button" class="btn primary block" >Prijava</button>
+  <div class="divider">ali</div>
+  <button type="button" class="btn block" ><span class="icon" aria-hidden="true">G</span>Prijava z Googlom</button>
+  <p class="small">Nimate računa? <a href="WF-02_register.html">Registracija</a></p>
+</div>
+<section class="state" aria-label="busy (sign-in running)"><span class="anno">State: busy (sign-in running)</span><div class="narrow card stack"><div class="field"><label>E-pošta</label><span class="input filled"><span class="ph l" aria-hidden="true"></span></span></div><div class="field"><label>Geslo</label><span class="input filled">••••••••</span></div><button type="button" class="btn primary block" aria-busy="true"><span class="spin" aria-hidden="true"></span>Prijavljanje …</button></div></section>
+<section class="state" aria-label="wrong e-mail or password (R-001-05, one message for both)"><span class="anno">State: wrong e-mail or password (R-001-05, one message for both)</span><div class="narrow card stack"><div class="alert " role="alert"><p class="strong">E-pošta ali geslo ni pravilno.</p></div><div class="field"><label>E-pošta</label><span class="input filled"><span class="ph l" aria-hidden="true"></span></span></div><div class="field"><label>Geslo</label><span class="input">••••••••</span></div><button type="button" class="btn primary block" >Prijava</button></div></section>
+<section class="state" aria-label="session expired (R-001-12)"><span class="anno">State: session expired (R-001-12)</span><div class="narrow card stack"><div class="alert info" role="status"><p class="strong">Seja je potekla. Prijavite se znova.</p></div><div class="field"><label>E-pošta</label><span class="input">ime@podjetje.si</span></div><div class="field"><label>Geslo</label><span class="input">••••••••</span></div><button type="button" class="btn primary block" >Prijava</button></div></section>
+<section class="state" aria-label="loading (checking the saved session, R-001-09)"><span class="anno">State: loading (checking the saved session, R-001-09)</span><div class="narrow card"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span><span class="sk w40"></span></div></section>
+<section class="state" aria-label="error (Firebase not reachable)"><span class="anno">State: error (Firebase not reachable)</span><div class="narrow"><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div></div></section>
+<p class="note">Empty state: not applicable, the screen shows no data. After sign-in: verified e-mail opens WF-05, unverified opens WF-04.</p>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>

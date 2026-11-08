@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-16 Moj račun · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-16 · Moj račun · /account · US-021 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><nav class="main-nav" aria-label="Glavna navigacija"><a href="WF-05_group-list.html" >Skupine</a></nav><div class="header-end"><span class="collapse"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></span><button type="button" class="btn collapse" aria-label="Uporabniški meni" aria-haspopup="menu"><span class="ph s" aria-hidden="true"></span> ▾</button><button type="button" class="btn menu-btn" aria-label="Meni">☰ Meni</button></div></div></header>
+<main id="main" class="container">
+
+
+<div class="page-head"><div class="titles"><h1>Moj račun</h1></div></div>
+<div class="stack" style="max-width:720px">
+  <section class="card"><h2>Podatki</h2><dl class="fields"><dt>Prikazno ime</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>E-pošta</dt><dd><span class="ph l" aria-hidden="true"></span></dd></dl></section>
+  <section class="card"><h2>Izbris računa</h2>
+    <p style="margin-top:12px">Račun in vsa vaša članstva bodo izbrisani. Kontakti, ki ste jih ustvarili, ostanejo v skupinah; v zgodovini ostane vaše ime.</p>
+    <div style="margin-top:16px"><button type="button" class="btn danger" >Izbriši račun</button></div>
+  </section>
+</div>
+<section class="state" aria-label="confirmation (R-021-06)"><span class="anno">State: confirmation (R-021-06)</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Izbrišem račun?"><h2>Izbrišem račun?</h2><p>Tega ni mogoče razveljaviti. Izgubili boste dostop do vseh skupin.</p><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary danger" >Izbriši račun</button></div></div></div></section>
+<section class="state" aria-label="refused: sole Owner of Groups (R-021-02)"><span class="anno">State: refused: sole Owner of Groups (R-021-02)</span><div style="max-width:720px"><div class="alert " role="alert"><p class="strong">Računa ni mogoče izbrisati, ker ste edini lastnik skupine.</p><div><p>Vlogo lastnika predajte drugemu članu ali skupino izbrišite, nato poskusite znova.</p>
+<ul class="stack-s" style="margin-top:12px">
+  <li class="row between"><span><span class="ph m" aria-hidden="true"></span></span><span class="row"><button type="button" class="btn ghost" >Člani</button><button type="button" class="btn ghost" >Izbriši skupino</button></span></li>
+  <li class="row between"><span><span class="ph m" aria-hidden="true"></span> <span class="small muted">· v košu skupin, še 12 dni</span></span><span class="row"><button type="button" class="btn ghost" >Koš skupin</button></span></li>
+</ul></div></div></div></section>
+<section class="state" aria-label="busy"><span class="anno">State: busy</span><button type="button" class="btn danger" aria-busy="true"><span class="spin" aria-hidden="true"></span>Brisanje računa …</button></section>
+<section class="state" aria-label="loading"><span class="anno">State: loading</span><div class="card" style="max-width:720px"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span></div></section>
+<section class="state" aria-label="error"><span class="anno">State: error</span><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div></section>
+<p class="note">After deletion the user lands on WF-01. Empty state: not applicable.</p>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>

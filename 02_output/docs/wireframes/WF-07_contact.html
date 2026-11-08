@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-07 Kontakt · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-07 · Kontakt · /groups/:g/contacts/:c · US-003, US-004, US-005, US-012, US-016, US-022, US-023 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><nav class="main-nav" aria-label="Glavna navigacija"><a href="WF-05_group-list.html" aria-current="page">Skupine</a></nav><div class="header-end"><span class="collapse"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></span><button type="button" class="btn collapse" aria-label="Uporabniški meni" aria-haspopup="menu"><span class="ph s" aria-hidden="true"></span> ▾</button><button type="button" class="btn menu-btn" aria-label="Meni">☰ Meni</button></div></div></header>
+<main id="main" class="container">
+<div class="group-bar"><span class="gname"><span class="ph m" aria-hidden="true"></span></span><span class="badge ">Lastnik</span><span class="grow"></span><button type="button" class="btn ghost" aria-haspopup="menu">Možnosti skupine ▾</button></div>
+<nav class="group-tabs" aria-label="Navigacija skupine"><a href="#" aria-current="page">Kontakti</a><a href="#" >Značke</a><a href="#" >Koš</a><a href="#" >Podvojeni kontakti</a><a href="#" >Dejavnost</a><a href="#" >Člani</a><a href="#" >Povabila</a></nav>
+<button type="button" class="btn group-menu" aria-haspopup="menu" aria-label="Meni skupine">Meni skupine: Kontakti ▾</button>
+
+<div class="page-head">
+  <div class="titles"><a class="back" href="WF-06_contact-list.html">← Kontakti</a><h1><span class="ph h1"></span></h1><p class="muted small">Različica 3</p></div>
+  <div class="actions"><button type="button" class="btn " >Izbriši</button><button type="button" class="btn primary" >Uredi</button></div>
+</div>
+<nav class="group-tabs" aria-label="Zavihki kontakta" style="display:flex"><a href="#" aria-current="page">Podrobnosti</a><a href="#">Zgodovina</a><a href="#">Različice</a></nav>
+<div class="split wide-left">
+  <section class="card"><h2>Podatki</h2><dl class="fields"><dt>Ime</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Priimek</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>E-pošta</dt><dd><span class="ph l" aria-hidden="true"></span></dd><dt>Telefon</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Podjetje</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Delovno mesto</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Ulica in hišna številka</dt><dd><span class="ph l" aria-hidden="true"></span></dd><dt>Poštna številka</dt><dd><span class="ph xs" aria-hidden="true"></span></dd><dt>Kraj</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Država</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Opombe</dt><dd><span class="ph xl" aria-hidden="true"></span></dd></dl></section>
+  <div class="stack"><section class="card"><h2>Značke</h2><div class="chips"><span class="chip"><span class="ph m" aria-hidden="true"></span></span><span class="chip"><span class="ph s" aria-hidden="true"></span></span><span class="chip"><span class="ph m" aria-hidden="true"></span></span></div></section><section class="card"><h2>Atributi</h2><dl class="fields"><dt><span class="ph s" aria-hidden="true"></span></dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt><span class="ph s" aria-hidden="true"></span></dt><dd><span class="ph m" aria-hidden="true"></span></dd></dl></section></div>
+</div>
+<p class="note">Viewer: no "Uredi", no "Izbriši" and no tabs Zgodovina and Različice. Mobile: the bar Prekliči / Shrani of the edit form stays sticky at the bottom. Every Tag is shown, including neObvescaj (R-005-09). User text is shown as plain text (R-018-14).</p>
+<section class="state" aria-label="edit (button "Uredi"; sticky actions on mobile)"><span class="anno">State: edit (button "Uredi"; sticky actions on mobile)</span><div class="split wide-left">
+  <section class="card"><h2>Podatki</h2>
+    
+    <div class="form-grid" style="margin-top:16px">
+      <div class="field"><label>Ime</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Priimek</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span></div>
+      <div class="field"><label>E-pošta</label><span class="input filled"><span class="ph l" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Telefon</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Podjetje</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Delovno mesto</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div>
+      <div class="field span"><label>Ulica in hišna številka</label><span class="input filled"><span class="ph l" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Poštna številka</label><span class="input filled"><span class="ph xs" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Kraj</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span></div>
+      <div class="field span"><label>Država</label><span class="input filled select"><span class="ph s" aria-hidden="true"></span></span></div>
+      <div class="field span"><label>Opombe</label><span class="input filled area"><span class="ph xl" aria-hidden="true"></span></span><p class="hint">Do 5.000 znakov.</p></div>
+    </div>
+    <p class="xsmall muted" style="margin-top:12px">Izpolnite vsaj eno od polj ime, priimek, e-pošta ali podjetje.</p>
+  </section>
+  <div class="stack">
+    <section class="card"><h2>Značke</h2>
+      <div class="chips" style="margin-top:16px"><span class="chip"><span class="ph m" aria-hidden="true"></span> <span aria-label="Odstrani">×</span></span><span class="chip"><span class="ph s" aria-hidden="true"></span> <span aria-label="Odstrani">×</span></span></div>
+      <div class="field"><label>Dodaj značko</label><span class="input">Vpišite ime in pritisnite Enter</span><p class="hint">Do 50 značk na kontakt.</p><div class="suggest" role="listbox"><span class="hl"><span class="ph m" aria-hidden="true"></span></span><span><span class="ph s" aria-hidden="true"></span></span></div></div>
+    </section>
+    <section class="card"><h2>Atributi</h2>
+      <div class="stack-s" style="margin-top:16px">
+        <div class="attr-row"><div class="field"><label>Ključ</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span></div><div class="field"><label>Vrednost</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div><div class="field"><span class="label">&nbsp;</span><button type="button" class="btn ghost" >Odstrani</button></div></div>
+        <div class="attr-row"><div class="field"><label>Ključ</label><span class="input filled"><span class="ph xs" aria-hidden="true"></span></span><div class="suggest" role="listbox"><span class="hl"><span class="ph m" aria-hidden="true"></span></span></div></div><div class="field"><label>Vrednost</label><span class="input"></span></div><div class="field"><span class="label">&nbsp;</span><button type="button" class="btn ghost" >Odstrani</button></div></div>
+      </div>
+      <div style="margin-top:12px"><button type="button" class="btn " >Dodaj atribut</button></div>
+      <p class="xsmall muted" style="margin-top:8px">Do 50 atributov. Ključ do 50, vrednost do 255 znakov.</p>
+    </section>
+  </div>
+</div><div class="row end sticky-bar" style="margin-top:16px"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" >Shrani</button></div></section>
+<section class="state" aria-label="field errors (R-003-03, R-004-02/03, R-005-02; values kept)"><span class="anno">State: field errors (R-003-03, R-004-02/03, R-005-02; values kept)</span><div class="split wide-left">
+  <section class="card"><h2>Podatki</h2>
+    <div class="alert " role="alert"><p class="strong">Podatki niso veljavni.</p><div>Popravite označena polja. Vnesene vrednosti so ohranjene.</div></div>
+    <div class="form-grid" style="margin-top:16px">
+      <div class="field error"><label>Ime</label><span class="input"></span><p class="err" role="alert">Izpolnite vsaj ime, priimek, e-pošto ali podjetje.</p></div>
+      <div class="field error"><label>Priimek</label><span class="input"></span><p class="err" role="alert">Izpolnite vsaj ime, priimek, e-pošto ali podjetje.</p></div>
+      <div class="field error"><label>E-pošta</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span><p class="err" role="alert">E-poštni naslov ni veljaven.</p></div>
+      <div class="field error"><label>Telefon</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span><p class="err" role="alert">Telefon lahko vsebuje številke, presledke in znake + - ( ) . /.</p></div>
+      <div class="field"><label>Podjetje</label><span class="input filled"></span></div>
+      <div class="field"><label>Delovno mesto</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div>
+      <div class="field span"><label>Ulica in hišna številka</label><span class="input filled"><span class="ph l" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Poštna številka</label><span class="input filled"><span class="ph xs" aria-hidden="true"></span></span></div>
+      <div class="field"><label>Kraj</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span></div>
+      <div class="field span"><label>Država</label><span class="input filled select"><span class="ph s" aria-hidden="true"></span></span></div>
+      <div class="field span"><label>Opombe</label><span class="input filled area"><span class="ph xl" aria-hidden="true"></span></span><p class="hint">Do 5.000 znakov.</p></div>
+    </div>
+    <p class="xsmall muted" style="margin-top:12px">Izpolnite vsaj eno od polj ime, priimek, e-pošta ali podjetje.</p>
+  </section>
+  <div class="stack">
+    <section class="card"><h2>Značke</h2>
+      <div class="chips" style="margin-top:16px"><span class="chip"><span class="ph m" aria-hidden="true"></span> <span aria-label="Odstrani">×</span></span><span class="chip"><span class="ph s" aria-hidden="true"></span> <span aria-label="Odstrani">×</span></span></div>
+      <div class="field error"><label>Dodaj značko</label><span class="input filled">udelezenec 2025</span><p class="err" role="alert">Ime značke lahko vsebuje črke, števke, - in _ (do 50 znakov).</p></div>
+    </section>
+    <section class="card"><h2>Atributi</h2>
+      <div class="stack-s" style="margin-top:16px">
+        <div class="attr-row"><div class="field"><label>Ključ</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span></div><div class="field"><label>Vrednost</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div><div class="field"><span class="label">&nbsp;</span><button type="button" class="btn ghost" >Odstrani</button></div></div>
+        <div class="attr-row"><div class="field error"><label>Ključ</label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span><p class="err" role="alert">Ključ atributa se ponavlja.</p></div><div class="field"><label>Vrednost</label><span class="input"></span></div><div class="field"><span class="label">&nbsp;</span><button type="button" class="btn ghost" >Odstrani</button></div></div>
+      </div>
+      <div style="margin-top:12px"><button type="button" class="btn " >Dodaj atribut</button></div>
+      <p class="xsmall muted" style="margin-top:8px">Do 50 atributov. Ključ do 50, vrednost do 255 znakov.</p>
+    </section>
+  </div>
+</div><div class="row end" style="margin-top:16px"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" >Shrani</button></div></section>
+<section class="state" aria-label="changed by someone else (R-003-07, BR-07)"><span class="anno">State: changed by someone else (R-003-07, BR-07)</span><div class="alert " role="alert"><p class="strong">Kontakt je spremenil nekdo drug.</p><div>Prikazan je trenutni kontakt (različica 4). Vaše spremembe niso shranjene.</div></div><div style="margin-top:16px" class="card"><h2>Podatki</h2><dl class="fields"><dt>Ime</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Priimek</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>E-pošta</dt><dd><span class="ph l" aria-hidden="true"></span></dd><dt>Telefon</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Podjetje</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Delovno mesto</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Ulica in hišna številka</dt><dd><span class="ph l" aria-hidden="true"></span></dd><dt>Poštna številka</dt><dd><span class="ph xs" aria-hidden="true"></span></dd><dt>Kraj</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Država</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Opombe</dt><dd><span class="ph xl" aria-hidden="true"></span></dd></dl></div></section>
+<section class="state" aria-label="delete confirmation (R-012-01)"><span class="anno">State: delete confirmation (R-012-01)</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Premaknem kontakt v koš?"><h2>Premaknem kontakt v koš?</h2><p>Kontakt bo 30 dni v košu, kjer ga lahko obnovite. Nato bo trajno izbrisan.</p><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" >Premakni v koš</button></div></div></div></section>
+<section class="state" aria-label="moved to Trash"><span class="anno">State: moved to Trash</span><div class="toast" role="status">Kontakt je v košu. <button type="button" class="btn ghost" >Odpri koš</button></div></section>
+<section class="state" aria-label="edit refused, Contact is in Trash (R-012-06)"><span class="anno">State: edit refused, Contact is in Trash (R-012-06)</span><div class="alert " role="alert"><p class="strong">Kontakt je v košu in ga ni mogoče spreminjati.</p></div></section>
+<section class="state" aria-label="tab Zgodovina (Owner, Editor; newest first, R-016-03)"><span class="anno">State: tab Zgodovina (Owner, Editor; newest first, R-016-03)</span><section class="card"><h2>Zgodovina</h2><ul>
+  <li class="entry"><div class="row between"><span class="strong">Urejeno</span><span class="small muted">8. 11. 2026 11:00</span></div><p class="small"><span class="ph m" aria-hidden="true"></span> · <span class="ph l" aria-hidden="true"></span></p><p class="diff">Priimek: <s><span class="ph s" aria-hidden="true"></span></s> → <span class="ph s" aria-hidden="true"></span><br>Atribut <span class="ph s" aria-hidden="true"></span>: <s><span class="ph m" aria-hidden="true"></span></s> → <span class="ph s" aria-hidden="true"></span></p></li>
+  <li class="entry"><div class="row between"><span class="strong">Dodana značka</span><span class="small muted">8. 11. 2026 11:00</span></div><p class="small"><span class="ph m" aria-hidden="true"></span> · <span class="ph l" aria-hidden="true"></span></p><p class="diff"><span class="ph m" aria-hidden="true"></span></p></li>
+  <li class="entry"><div class="row between"><span class="strong">Obnovljeno iz koša</span><span class="small muted">8. 11. 2026 11:00</span></div><p class="small"><span class="ph m" aria-hidden="true"></span> · <span class="ph l" aria-hidden="true"></span></p></li>
+  <li class="entry"><div class="row between"><span class="strong">Premaknjeno v koš</span><span class="small muted">8. 11. 2026 11:00</span></div><p class="small"><span class="ph m" aria-hidden="true"></span> · <span class="ph l" aria-hidden="true"></span></p></li>
+  <li class="entry"><div class="row between"><span class="strong">Združeno</span><span class="small muted">8. 11. 2026 11:00</span></div><p class="small"><span class="ph m" aria-hidden="true"></span> · <span class="ph l" aria-hidden="true"></span></p><p class="diff">Združeni kontakti: <span class="ph m" aria-hidden="true"></span>, <span class="ph m" aria-hidden="true"></span></p></li>
+  <li class="entry"><div class="row between"><span class="strong">Ustvarjeno</span><span class="small muted">8. 11. 2026 11:00</span></div><p class="small"><span class="ph m" aria-hidden="true"></span> · <span class="ph l" aria-hidden="true"></span></p><p class="diff"><span class="ph xl" aria-hidden="true"></span></p></li>
+</ul><nav class="pager" aria-label="Strani"><span>Stran 1 od 2</span><div class="pages"><button type="button" class="btn " aria-disabled="true">Prejšnja</button><button type="button" class="btn " aria-current="page">1</button><button type="button" class="btn " >2</button><button type="button" class="btn " >Naslednja</button></div></nav></section><p class="note">Values of a Contact deleted forever read "odstranjeno"; after a User deleted the account only the name is shown (R-013-08, R-021-03). No control changes or deletes an entry.</p></section>
+<section class="state" aria-label="tab Zgodovina loading / error"><span class="anno">State: tab Zgodovina loading / error</span><div class="cols"><div class="card"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span><span class="sk w40"></span><span class="sk "></span></div><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div></div></section>
+<section class="state" aria-label="tab Različice (R-022-02)"><span class="anno">State: tab Različice (R-022-02)</span><div class="tablewrap"><table class="t"><thead><tr><th scope="col" class="">Različica</th><th scope="col" class="">Čas</th><th scope="col" class="">Uporabnik</th><th scope="col" class="act"></th></tr></thead><tbody><tr><td class="" data-label="Različica">v3 <span class="badge ">trenutna</span></td><td class="" data-label="Čas">8. 11. 2026 11:00</td><td class="" data-label="Uporabnik"><span class="ph m" aria-hidden="true"></span></td><td class="act" data-label=""><button type="button" class="btn ghost" >Odpri</button></td></tr><tr><td class="" data-label="Različica">v2</td><td class="" data-label="Čas">7. 11. 2026 09:12</td><td class="" data-label="Uporabnik"><span class="ph m" aria-hidden="true"></span></td><td class="act" data-label=""><button type="button" class="btn ghost" >Odpri</button><button type="button" class="btn ghost" >Primerjaj s trenutno</button><button type="button" class="btn " >Obnovi</button></td></tr><tr><td class="" data-label="Različica">v1</td><td class="" data-label="Čas">6. 11. 2026 15:40</td><td class="" data-label="Uporabnik"><span class="ph m" aria-hidden="true"></span></td><td class="act" data-label=""><button type="button" class="btn ghost" >Odpri</button><button type="button" class="btn ghost" >Primerjaj s trenutno</button><button type="button" class="btn " >Obnovi</button></td></tr></tbody></table></div></section>
+<section class="state" aria-label="earlier Version open (R-022-03)"><span class="anno">State: earlier Version open (R-022-03)</span><div class="card"><div class="row between"><h2>Različica 1</h2><button type="button" class="btn " >Obnovi to različico</button></div><dl class="fields"><dt>Ime</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Priimek</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>E-pošta</dt><dd><span class="ph l" aria-hidden="true"></span></dd><dt>Telefon</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Podjetje</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Delovno mesto</dt><dd><span class="ph m" aria-hidden="true"></span></dd><dt>Ulica in hišna številka</dt><dd><span class="ph l" aria-hidden="true"></span></dd><dt>Poštna številka</dt><dd><span class="ph xs" aria-hidden="true"></span></dd><dt>Kraj</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Država</dt><dd><span class="ph s" aria-hidden="true"></span></dd><dt>Opombe</dt><dd><span class="ph xl" aria-hidden="true"></span></dd></dl><div class="row" style="margin-top:16px"><span class="chip"><span class="ph m" aria-hidden="true"></span></span></div></div></section>
+<section class="state" aria-label="compare with the current Version (R-022-04)"><span class="anno">State: compare with the current Version (R-022-04)</span><div class="card"><h2>Razlike: različica 1 in trenutna (v3)</h2><div class="tablewrap"><table class="t"><thead><tr><th scope="col" class="">Polje</th><th scope="col" class="">Različica 1</th><th scope="col" class="">Trenutna</th></tr></thead><tbody><tr><td class="" data-label="Polje">Podjetje</td><td class="" data-label="Različica 1"><span class="ph m" aria-hidden="true"></span></td><td class="" data-label="Trenutna"><span class="ph m" aria-hidden="true"></span></td></tr><tr><td class="" data-label="Polje">Značka</td><td class="" data-label="Različica 1">—</td><td class="" data-label="Trenutna"><span class="ph s" aria-hidden="true"></span> (dodana)</td></tr></tbody></table></div></div></section>
+<section class="state" aria-label="restore a Version: confirmation (R-023-01)"><span class="anno">State: restore a Version: confirmation (R-023-01)</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Obnovim različico 1?"><h2>Obnovim različico 1?</h2><p>Vsebina različice 1 bo shranjena kot nova različica 4. Prejšnje različice ostanejo.</p><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" >Obnovi</button></div></div></div></section>
+<section class="state" aria-label="restore refused (R-023-03, R-023-04)"><span class="anno">State: restore refused (R-023-03, R-023-04)</span><div class="stack"><div class="alert " role="alert"><p class="strong">Kontakt je spremenil nekdo drug.</p><div>Prikazana je trenutna različica. Nič ni bilo obnovljeno.</div></div><div class="alert " role="alert"><p class="strong">Podatki niso veljavni.</p><div>Izpolnite vsaj ime, priimek, e-pošto ali podjetje.</div></div></div></section>
+<section class="state" aria-label="loading"><span class="anno">State: loading</span><div class="split wide-left"><div class="card"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span><span class="sk w40"></span><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span><span class="sk w40"></span></div><div class="card"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span></div></div></section>
+<section class="state" aria-label="error / not found"><span class="anno">State: error / not found</span><div class="cols"><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div><div class="empty"><h2>Kontakta ni mogoče najti.</h2><div><button type="button" class="btn " >Nazaj na kontakte</button></div></div></div></section>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>

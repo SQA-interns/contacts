@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-05 Moje skupine · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-05 · Moje skupine · /groups · US-002, US-014, US-020 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><nav class="main-nav" aria-label="Glavna navigacija"><a href="WF-05_group-list.html" aria-current="page">Skupine</a></nav><div class="header-end"><span class="collapse"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></span><button type="button" class="btn collapse" aria-label="Uporabniški meni" aria-haspopup="menu"><span class="ph s" aria-hidden="true"></span> ▾</button><button type="button" class="btn menu-btn" aria-label="Meni">☰ Meni</button></div></div></header>
+<main id="main" class="container">
+
+
+<div class="page-head">
+  <div class="titles"><h1>Moje skupine</h1><p class="muted">Skupine, v katerih ste član, z vašo vlogo.</p></div>
+  <div class="actions"><button type="button" class="btn ghost" >Koš skupin</button><button type="button" class="btn primary" >Ustvari skupino</button></div>
+</div>
+<div class="tiles">
+  <article class="tile"><div class="row between"><h2><span class="ph m" aria-hidden="true"></span></h2><button type="button" class="btn ghost" aria-label="Možnosti skupine" aria-haspopup="menu">⋯</button></div><div class="row"><span class="badge ">Lastnik</span></div><p class="small muted"><span class="ph s" aria-hidden="true"></span> kontaktov</p></article><article class="tile"><div class="row between"><h2><span class="ph m" aria-hidden="true"></span></h2></div><div class="row"><span class="badge ">Urednik</span></div><p class="small muted"><span class="ph s" aria-hidden="true"></span> kontaktov</p></article><article class="tile"><div class="row between"><h2><span class="ph m" aria-hidden="true"></span></h2></div><div class="row"><span class="badge ">Ogledovalec</span></div><p class="small muted"><span class="ph s" aria-hidden="true"></span> kontaktov</p></article><article class="tile"><div class="row between"><h2><span class="ph m" aria-hidden="true"></span></h2><button type="button" class="btn ghost" aria-label="Možnosti skupine" aria-haspopup="menu">⋯</button></div><div class="row"><span class="badge ">Lastnik</span></div><p class="small muted"><span class="ph s" aria-hidden="true"></span> kontaktov</p></article><article class="tile"><div class="row between"><h2><span class="ph m" aria-hidden="true"></span></h2></div><div class="row"><span class="badge ">Urednik</span></div><p class="small muted"><span class="ph s" aria-hidden="true"></span> kontaktov</p></article>
+</div>
+<p class="note">"Koš skupin" is shown only to a User who owns at least one Group. Accepted Invitations appear here as Groups without any extra step (R-014-05).</p>
+<section class="state" aria-label="loading"><span class="anno">State: loading</span><div class="tiles"><div class="tile"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span></div><div class="tile"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span></div><div class="tile"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span></div></div></section>
+<section class="state" aria-label="empty (R-002-06)"><span class="anno">State: empty (R-002-06)</span><div class="empty"><div class="box">Slika</div><h2>Še nimate nobene skupine</h2><p class="muted">Skupina hrani kontakte enega projekta ali podjetja na enem mestu. Vanjo lahko povabite tudi druge.</p><div><button type="button" class="btn primary" >Ustvari skupino</button></div></div></section>
+<section class="state" aria-label="error"><span class="anno">State: error</span><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div></section>
+<section class="state" aria-label="create dialog"><span class="anno">State: create dialog</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Nova skupina"><h2>Nova skupina</h2><div class="field"><label>Ime skupine <span class="req">(obvezno)</span></label><span class="input"></span><p class="hint">Do 100 znakov.</p></div><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" >Ustvari</button></div></div></div></section>
+<section class="state" aria-label="create dialog with errors (R-002-02, R-002-03)"><span class="anno">State: create dialog with errors (R-002-02, R-002-03)</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Nova skupina"><h2>Nova skupina</h2><div class="field error"><label>Ime skupine <span class="req">(obvezno)</span></label><span class="input"></span><p class="err" role="alert">Ime mora imeti od 1 do 100 znakov.</p></div><div class="field error"><label>Ime skupine <span class="req">(obvezno)</span></label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span><p class="err" role="alert">Skupino s tem imenom že imate.</p></div><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" >Ustvari</button></div></div></div></section>
+<section class="state" aria-label="created"><span class="anno">State: created</span><div class="toast" role="status">Skupina je ustvarjena.</div></section>
+<section class="state" aria-label="card menu of an Owner (opens WF-14)"><span class="anno">State: card menu of an Owner (opens WF-14)</span><div class="menu" role="menu"><span role="menuitem">Odpri</span><span class="sep"></span><span role="menuitem">Izbriši skupino</span></div></section>
+<section class="state" aria-label="user menu (header)"><span class="anno">State: user menu (header)</span><div class="menu" role="menu"><span class="small muted"><span class="ph l" aria-hidden="true"></span></span><span class="sep"></span><span role="menuitem">Moj račun</span><span role="menuitem">Odjava</span></div></section>
+<section class="state" aria-label="mobile menu open (&lt; 768 px)"><span class="anno">State: mobile menu open (&lt; 768 px)</span><div class="menu" role="menu" style="width:100%"><span role="menuitem">Skupine</span><span role="menuitem">Moj račun</span><span class="sep"></span><span><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></span><span class="sep"></span><span role="menuitem">Odjava</span></div></section>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>

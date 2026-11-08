@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-14 Izbris skupine (dialog) · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-14 · Izbris skupine (dialog) · dialog in WF-05 and WF-06 · US-020 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><nav class="main-nav" aria-label="Glavna navigacija"><a href="WF-05_group-list.html" aria-current="page">Skupine</a></nav><div class="header-end"><span class="collapse"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></span><button type="button" class="btn collapse" aria-label="Uporabniški meni" aria-haspopup="menu"><span class="ph s" aria-hidden="true"></span> ▾</button><button type="button" class="btn menu-btn" aria-label="Meni">☰ Meni</button></div></div></header>
+<main id="main" class="container">
+
+
+<p class="note">Background: WF-05 (or WF-06) with the dialog open; the page behind is dimmed.</p><div class="page-head"><div class="titles"><h1>Moje skupine</h1></div></div>
+<div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Izbrišem skupino ?"><h2>Izbrišem skupino <span class="ph m" aria-hidden="true"></span>?</h2><p>Skupina bo z vsemi kontakti 30 dni v košu skupin, kjer jo lahko obnovite. Nato bo trajno izbrisana. Članom bo takoj skrita.</p>
+   <div class="field"><label>Za potrditev vpišite ime skupine</label><span class="input"></span></div><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" aria-disabled="true">Izbriši skupino</button></div></div></div>
+<p class="note">Owner only, from the card menu of WF-05 or "Možnosti skupine" of WF-06. The button stays disabled until the typed name equals the Group name exactly (trimmed, same upper and lower case).</p>
+<section class="state" aria-label="name typed with other case: still disabled (AC-020-02)"><span class="anno">State: name typed with other case: still disabled (AC-020-02)</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Izbrišem skupino ?"><h2>Izbrišem skupino <span class="ph m" aria-hidden="true"></span>?</h2><p>Skupina bo z vsemi kontakti 30 dni v košu skupin, kjer jo lahko obnovite. Nato bo trajno izbrisana. Članom bo takoj skrita.</p>
+   <div class="field"><label>Za potrditev vpišite ime skupine</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" aria-disabled="true">Izbriši skupino</button></div></div></div></section>
+<section class="state" aria-label="exact name: enabled"><span class="anno">State: exact name: enabled</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Izbrišem skupino ?"><h2>Izbrišem skupino <span class="ph m" aria-hidden="true"></span>?</h2><p>Skupina bo z vsemi kontakti 30 dni v košu skupin, kjer jo lahko obnovite. Nato bo trajno izbrisana. Članom bo takoj skrita.</p>
+   <div class="field"><label>Za potrditev vpišite ime skupine</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary danger" >Izbriši skupino</button></div></div></div></section>
+<section class="state" aria-label="refused by the server (R-020-02)"><span class="anno">State: refused by the server (R-020-02)</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Izbrišem skupino ?"><h2>Izbrišem skupino <span class="ph m" aria-hidden="true"></span>?</h2><p>Skupina bo z vsemi kontakti 30 dni v košu skupin, kjer jo lahko obnovite. Nato bo trajno izbrisana. Članom bo takoj skrita.</p>
+   <div class="field error"><label>Za potrditev vpišite ime skupine</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span><p class="err" role="alert">Vpisano ime ni enako imenu skupine.</p></div><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" aria-disabled="true">Izbriši skupino</button></div></div></div></section>
+<section class="state" aria-label="busy"><span class="anno">State: busy</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Izbrišem skupino ?"><h2>Izbrišem skupino <span class="ph m" aria-hidden="true"></span>?</h2><p>Skupina bo z vsemi kontakti 30 dni v košu skupin, kjer jo lahko obnovite. Nato bo trajno izbrisana. Članom bo takoj skrita.</p>
+   <div class="field"><label>Za potrditev vpišite ime skupine</label><span class="input filled"><span class="ph m" aria-hidden="true"></span></span></div><div class="row end"><button type="button" class="btn " >Prekliči</button><button type="button" class="btn primary" aria-busy="true"><span class="spin" aria-hidden="true"></span>Brisanje …</button></div></div></div></section>
+<section class="state" aria-label="deleted (back on WF-05)"><span class="anno">State: deleted (back on WF-05)</span><div class="toast" role="status">Skupina je v košu skupin. <button type="button" class="btn ghost" >Odpri koš skupin</button></div></section>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>

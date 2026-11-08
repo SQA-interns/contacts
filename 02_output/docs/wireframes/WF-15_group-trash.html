@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-15 Koš skupin · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-15 · Koš skupin · /group-trash · US-020 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><nav class="main-nav" aria-label="Glavna navigacija"><a href="WF-05_group-list.html" aria-current="page">Skupine</a></nav><div class="header-end"><span class="collapse"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></span><button type="button" class="btn collapse" aria-label="Uporabniški meni" aria-haspopup="menu"><span class="ph s" aria-hidden="true"></span> ▾</button><button type="button" class="btn menu-btn" aria-label="Meni">☰ Meni</button></div></div></header>
+<main id="main" class="container">
+
+
+<div class="page-head"><div class="titles"><a class="back" href="WF-05_group-list.html">← Moje skupine</a><h1>Koš skupin</h1><p class="muted">Izbrisane skupine, katerih lastnik ste. Po 30 dneh se trajno izbrišejo z vsemi kontakti.</p></div></div>
+<div class="tablewrap"><table class="t"><caption class="skip">Koš skupin</caption><thead><tr><th scope="col" class="">Skupina</th><th scope="col" class="">Izbrisano</th><th scope="col" class="">Preostane</th><th scope="col" class="act">Dejanja</th></tr></thead><tbody><tr><td class="" data-label="Skupina"><span class="ph m" aria-hidden="true"></span></td><td class="" data-label="Izbrisano">8. 11. 2026</td><td class="" data-label="Preostane">30 dni</td><td class="act" data-label="Dejanja"><button type="button" class="btn " >Obnovi</button></td></tr><tr><td class="" data-label="Skupina"><span class="ph l" aria-hidden="true"></span></td><td class="" data-label="Izbrisano">30. 10. 2026</td><td class="" data-label="Preostane">21 dni</td><td class="act" data-label="Dejanja"><button type="button" class="btn " >Obnovi</button></td></tr></tbody></table></div>
+<section class="state" aria-label="restore refused, a Group with this name exists (R-020-08)"><span class="anno">State: restore refused, a Group with this name exists (R-020-08)</span><div class="alert " role="alert"><p class="strong">Skupino s tem imenom že imate.</p><div>Preimenujte ali izbrišite obstoječo skupino, nato poskusite znova.</div></div></section>
+<section class="state" aria-label="restored"><span class="anno">State: restored</span><div class="toast" role="status">Skupina je obnovljena. <button type="button" class="btn ghost" >Odpri skupino</button></div></section>
+<section class="state" aria-label="loading"><span class="anno">State: loading</span><div class="tablewrap" style="padding:16px"><span class="sk "></span><span class="sk w80"></span></div></section>
+<section class="state" aria-label="empty"><span class="anno">State: empty</span><div class="empty"><div class="box">Slika</div><h2>Koš skupin je prazen</h2><p class="muted">Izbrisane skupine ostanejo tu 30 dni.</p></div></section>
+<section class="state" aria-label="error"><span class="anno">State: error</span><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div></section>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>

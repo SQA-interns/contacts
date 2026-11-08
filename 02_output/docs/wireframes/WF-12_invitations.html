@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-12 Povabila · Skupine kontaktov (wireframe)</title>
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+<a class="skip" href="#main">Preskoči na vsebino</a>
+<div class="wf-meta">WF-12 · Povabila · /groups/:g/invitations · US-014 · wireframe, not the final design</div>
+<header class="wf-header"><div class="inner"><a class="brand" href="WF-05_group-list.html"><span class="logo box" aria-label="Logotip">Logo</span><span>Skupine kontaktov</span></a><nav class="main-nav" aria-label="Glavna navigacija"><a href="WF-05_group-list.html" aria-current="page">Skupine</a></nav><div class="header-end"><span class="collapse"><div class="lang" role="group" aria-label="Jezik"><span aria-current="true">SL</span><span>EN</span></div></span><button type="button" class="btn collapse" aria-label="Uporabniški meni" aria-haspopup="menu"><span class="ph s" aria-hidden="true"></span> ▾</button><button type="button" class="btn menu-btn" aria-label="Meni">☰ Meni</button></div></div></header>
+<main id="main" class="container">
+<div class="group-bar"><span class="gname"><span class="ph m" aria-hidden="true"></span></span><span class="badge ">Lastnik</span><span class="grow"></span><button type="button" class="btn ghost" aria-haspopup="menu">Možnosti skupine ▾</button></div>
+<nav class="group-tabs" aria-label="Navigacija skupine"><a href="#" >Kontakti</a><a href="#" >Značke</a><a href="#" >Koš</a><a href="#" >Podvojeni kontakti</a><a href="#" >Dejavnost</a><a href="#" >Člani</a><a href="#" aria-current="page">Povabila</a></nav>
+<button type="button" class="btn group-menu" aria-haspopup="menu" aria-label="Meni skupine">Meni skupine: Povabila ▾</button>
+
+<div class="page-head"><div class="titles"><h1>Povabila</h1><p class="muted">Odprta povabila: 3 od 20</p></div></div>
+<div class="split invite">
+  <section class="card"><h2>Povabi osebo</h2>
+  <div class="form-grid" style="margin-top:16px">
+    <div class="field"><label>E-pošta <span class="req">(obvezno)</span></label><span class="input">ime@podjetje.si</span></div>
+    <div class="field"><label>Vloga <span class="req">(obvezno)</span></label><span class="input filled select">Urednik</span></div>
+  </div>
+  <p class="small muted" style="margin-top:12px">Povabljena oseba dobi dostop, ko se prijavi s tem e-poštnim naslovom. Sporočila ne pošljemo, obvestite jo sami. Povabilo velja 14 dni.</p>
+  <div class="row end" style="margin-top:16px"><button type="button" class="btn primary" >Ustvari povabilo</button></div>
+</section>
+  <section><h2 style="margin-bottom:12px">Odprta povabila</h2>
+  <div class="tablewrap"><table class="t"><caption class="skip">Odprta povabila</caption><thead><tr><th scope="col" class="">E-pošta</th><th scope="col" class="">Vloga</th><th scope="col" class="">Poteče</th><th scope="col" class="act">Dejanja</th></tr></thead><tbody><tr><td class="" data-label="E-pošta"><span class="ph l" aria-hidden="true"></span></td><td class="" data-label="Vloga">Urednik</td><td class="" data-label="Poteče">22. 11. 2026</td><td class="act" data-label="Dejanja"><button type="button" class="btn ghost" >Prekliči povabilo</button></td></tr><tr><td class="" data-label="E-pošta"><span class="ph m" aria-hidden="true"></span></td><td class="" data-label="Vloga">Ogledovalec</td><td class="" data-label="Poteče">20. 11. 2026</td><td class="act" data-label="Dejanja"><button type="button" class="btn ghost" >Prekliči povabilo</button></td></tr><tr><td class="" data-label="E-pošta"><span class="ph l" aria-hidden="true"></span></td><td class="" data-label="Vloga">Lastnik</td><td class="" data-label="Poteče">15. 11. 2026</td><td class="act" data-label="Dejanja"><button type="button" class="btn ghost" >Prekliči povabilo</button></td></tr></tbody></table></div>
+  </section>
+</div>
+<p class="note">Owner only (the item is hidden for Editors and Viewers). Desktop: form and list side by side; tablet and mobile: form above the list.</p>
+<section class="state" aria-label="invalid e-mail (R-014-02)"><span class="anno">State: invalid e-mail (R-014-02)</span><section class="card"><h2>Povabi osebo</h2>
+  <div class="form-grid" style="margin-top:16px">
+    <div class="field error"><label>E-pošta <span class="req">(obvezno)</span></label><span class="input filled"><span class="ph s" aria-hidden="true"></span></span><p class="err" role="alert">E-poštni naslov ni veljaven.</p></div>
+    <div class="field"><label>Vloga <span class="req">(obvezno)</span></label><span class="input filled select">Urednik</span></div>
+  </div>
+  <p class="small muted" style="margin-top:12px">Povabljena oseba dobi dostop, ko se prijavi s tem e-poštnim naslovom. Sporočila ne pošljemo, obvestite jo sami. Povabilo velja 14 dni.</p>
+  <div class="row end" style="margin-top:16px"><button type="button" class="btn primary" >Ustvari povabilo</button></div>
+</section></section>
+<section class="state" aria-label="already a Member or already invited (R-014-04)"><span class="anno">State: already a Member or already invited (R-014-04)</span><div class="alert " role="alert"><p class="strong">Ta oseba je že članica ali že ima odprto povabilo.</p></div></section>
+<section class="state" aria-label="limit reached (R-014-03)"><span class="anno">State: limit reached (R-014-03)</span><div class="alert " role="alert"><p class="strong">Skupina ima že 20 odprtih povabil.</p><div>Prekličite katero od odprtih povabil ali počakajte, da poteče.</div></div></section>
+<section class="state" aria-label="cancel confirmation"><span class="anno">State: cancel confirmation</span><div class="dialog-demo"><div class="dialog" role="dialog" aria-modal="true" aria-label="Prekličem povabilo?"><h2>Prekličem povabilo?</h2><p>Oseba <span class="ph l" aria-hidden="true"></span> s tem povabilom ne bo dobila dostopa.</p><div class="row end"><button type="button" class="btn " >Ne</button><button type="button" class="btn primary" >Prekliči povabilo</button></div></div></div></section>
+<section class="state" aria-label="created"><span class="anno">State: created</span><div class="toast" role="status">Povabilo je ustvarjeno. Obvestite povabljeno osebo.</div></section>
+<section class="state" aria-label="loading"><span class="anno">State: loading</span><div class="tablewrap" style="padding:16px"><span class="sk "></span><span class="sk w80"></span><span class="sk w60"></span></div></section>
+<section class="state" aria-label="empty list"><span class="anno">State: empty list</span><div class="empty"><div class="box">Slika</div><h2>Ni odprtih povabil</h2><p class="muted">Povabite osebo z obrazcem zgoraj.</p></div></section>
+<section class="state" aria-label="error"><span class="anno">State: error</span><div class="empty"><h2>Nekaj je šlo narobe. Poskusite znova.</h2><div><button type="button" class="btn " >Poskusi znova</button></div></div></section>
+
+</main>
+<footer class="wf-footer"><div class="inner">Skupine kontaktov</div></footer>
+</body>
+</html>
