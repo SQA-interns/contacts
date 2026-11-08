@@ -383,7 +383,7 @@ paths:
     get:
       operationId: getHealth
       tags: [account]
-      summary: Liveness and readiness; the only public operation, returns no other information.
+      summary: 'Liveness and readiness; the only public operation, returns no other information.'
       security: []
       responses:
         '200': { description: Running., content: { application/json: { schema: { type: object, required: [status], properties: { status: { type: string, const: UP } } } } } }
@@ -392,7 +392,7 @@ paths:
     get:
       operationId: getOpenApi
       tags: [account]
-      summary: The published OpenAPI description (R-018-08).
+      summary: 'The published OpenAPI description (R-018-08).'
       responses:
         '200': { description: OK, content: { application/json: { schema: { type: object } } } }
         '401': { $ref: '#/components/responses/Unauthorized' }
@@ -402,7 +402,7 @@ paths:
     get:
       operationId: getMe
       tags: [account]
-      summary: The signed-in User; creates the User on the first valid token (R-001-11).
+      summary: 'The signed-in User; creates the User on the first valid token (R-001-11).'
       responses:
         '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/User' } } } }
         '401': { $ref: '#/components/responses/Unauthorized' }
@@ -411,7 +411,7 @@ paths:
     delete:
       operationId: deleteMe
       tags: [account]
-      summary: Delete my account (US-021); 409 account.sole_owner lists the Groups to hand over or delete.
+      summary: 'Delete my account (US-021); 409 account.sole_owner lists the Groups to hand over or delete.'
       responses:
         '204': { description: Deleted }
         '401': { $ref: '#/components/responses/Unauthorized' }
@@ -422,7 +422,7 @@ paths:
     get:
       operationId: listGroups
       tags: [groups]
-      summary: My Groups with my Role; accepts matching pending Invitations first (R-014-05); no Group in Trash.
+      summary: 'My Groups with my Role; accepts matching pending Invitations first (R-014-05); no Group in Trash.'
       responses:
         '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/GroupSummaryList' } } } }
         '401': { $ref: '#/components/responses/Unauthorized' }
@@ -431,7 +431,7 @@ paths:
     post:
       operationId: createGroup
       tags: [groups]
-      summary: Create a Group; the caller becomes Owner (R-002-01).
+      summary: 'Create a Group; the caller becomes Owner (R-002-01).'
       requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/GroupCreate' } } } }
       responses:
         '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/GroupSummary' } } } }
@@ -446,7 +446,7 @@ paths:
     post:
       operationId: trashGroup
       tags: [groups]
-      summary: Move the Group to the Group Trash after typing its name (US-020).
+      summary: 'Move the Group to the Group Trash after typing its name (US-020).'
       x-required-action: DELETE_GROUP
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -464,7 +464,7 @@ paths:
     get:
       operationId: listGroupTrash
       tags: [groups]
-      summary: Groups in Trash of which the caller is Owner, with days left (R-020-04).
+      summary: 'Groups in Trash of which the caller is Owner, with days left (R-020-04).'
       responses:
         '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/GroupTrashItemList' } } } }
         '401': { $ref: '#/components/responses/Unauthorized' }
@@ -474,7 +474,7 @@ paths:
     post:
       operationId: restoreGroup
       tags: [groups]
-      summary: Restore a Group within 30 days (Owner only; 404 for everyone else).
+      summary: 'Restore a Group within 30 days (Owner only; 404 for everyone else).'
       x-required-action: OWNER_OF_GROUP_IN_TRASH
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -489,7 +489,7 @@ paths:
     get:
       operationId: listMembers
       tags: [members]
-      summary: Member list with display name, e-mail and Role (R-015-01).
+      summary: 'Member list with display name, e-mail and Role (R-015-01).'
       x-required-action: READ_MEMBERS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -503,7 +503,7 @@ paths:
     patch:
       operationId: changeMemberRole
       tags: [members]
-      summary: Change the Role of a Member; the last Owner cannot be demoted (SR-10).
+      summary: 'Change the Role of a Member; the last Owner cannot be demoted (SR-10).'
       x-required-action: MANAGE_MEMBERS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -521,7 +521,7 @@ paths:
     delete:
       operationId: removeMember
       tags: [members]
-      summary: Remove a Member; the last Owner cannot be removed (SR-10).
+      summary: 'Remove a Member; the last Owner cannot be removed (SR-10).'
       x-required-action: MANAGE_MEMBERS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -537,7 +537,7 @@ paths:
     get:
       operationId: listInvitations
       tags: [invitations]
-      summary: Pending Invitations (R-014-09).
+      summary: 'Pending Invitations (R-014-09).'
       x-required-action: MANAGE_MEMBERS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -550,7 +550,7 @@ paths:
     post:
       operationId: createInvitation
       tags: [invitations]
-      summary: Invite an e-mail address with a Role; no e-mail is sent (R-014-12).
+      summary: 'Invite an e-mail address with a Role; no e-mail is sent (R-014-12).'
       x-required-action: MANAGE_MEMBERS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -569,7 +569,7 @@ paths:
     post:
       operationId: cancelInvitation
       tags: [invitations]
-      summary: Cancel a pending Invitation (R-014-07).
+      summary: 'Cancel a pending Invitation (R-014-07).'
       x-required-action: MANAGE_MEMBERS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -584,7 +584,7 @@ paths:
     get:
       operationId: listContacts
       tags: [contacts]
-      summary: Contacts not in Trash: search, filter, sort, 25 per page (US-007 to US-009).
+      summary: 'Contacts not in Trash: search, filter, sort, 25 per page (US-007 to US-009).'
       x-required-action: READ_CONTACTS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -609,7 +609,7 @@ paths:
     post:
       operationId: createContact
       tags: [contacts]
-      summary: Create a Contact with Tags and Attributes (US-003).
+      summary: 'Create a Contact with Tags and Attributes (US-003).'
       x-required-action: EDIT_CONTACT
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -627,7 +627,7 @@ paths:
     get:
       operationId: getContact
       tags: [contacts]
-      summary: One Contact with Tags and Attributes (R-003-08).
+      summary: 'One Contact with Tags and Attributes (R-003-08).'
       x-required-action: READ_CONTACTS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -641,7 +641,7 @@ paths:
     put:
       operationId: updateContact
       tags: [contacts]
-      summary: Save changes with the current version number; 409 contact.changed_by_someone_else returns the current Contact (BR-07).
+      summary: 'Save changes with the current version number; 409 contact.changed_by_someone_else returns the current Contact (BR-07).'
       x-required-action: EDIT_CONTACT
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -661,7 +661,7 @@ paths:
     post:
       operationId: trashContact
       tags: [trash]
-      summary: Move a Contact to Trash; repeating it changes nothing (R-012-09).
+      summary: 'Move a Contact to Trash; repeating it changes nothing (R-012-09).'
       x-required-action: DELETE_CONTACT
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -676,7 +676,7 @@ paths:
     get:
       operationId: listTrashContacts
       tags: [trash]
-      summary: Contacts in Trash with days left (R-012-03).
+      summary: 'Contacts in Trash with days left (R-012-03).'
       x-required-action: READ_TRASH
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -690,7 +690,7 @@ paths:
     post:
       operationId: restoreContact
       tags: [trash]
-      summary: Restore a Contact within 30 days (R-012-04); later it is 404.
+      summary: 'Restore a Contact within 30 days (R-012-04); later it is 404.'
       x-required-action: RESTORE_CONTACT
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -705,7 +705,7 @@ paths:
     delete:
       operationId: deleteContactForever
       tags: [trash]
-      summary: Delete a Contact in Trash permanently (Owner only, US-013).
+      summary: 'Delete a Contact in Trash permanently (Owner only, US-013).'
       x-required-action: DELETE_CONTACT_FOREVER
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -720,7 +720,7 @@ paths:
     get:
       operationId: listTags
       tags: [tags]
-      summary: Tags of the Group with the number of Contacts (R-006-01).
+      summary: 'Tags of the Group with the number of Contacts (R-006-01).'
       x-required-action: MANAGE_TAGS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -734,7 +734,7 @@ paths:
     patch:
       operationId: renameTag
       tags: [tags]
-      summary: Rename a Tag on all Contacts (R-006-02).
+      summary: 'Rename a Tag on all Contacts (R-006-02).'
       x-required-action: MANAGE_TAGS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -753,7 +753,7 @@ paths:
     delete:
       operationId: deleteTag
       tags: [tags]
-      summary: Delete a Tag from all Contacts (R-006-05).
+      summary: 'Delete a Tag from all Contacts (R-006-05).'
       x-required-action: MANAGE_TAGS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -768,7 +768,7 @@ paths:
     get:
       operationId: getFacets
       tags: [contacts]
-      summary: Tags, companies, countries and Attribute keys used in the Group (R-009-11, suggestions).
+      summary: 'Tags, companies, countries and Attribute keys used in the Group (R-009-11, suggestions).'
       x-required-action: READ_CONTACTS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -782,7 +782,7 @@ paths:
     get:
       operationId: getContactHistory
       tags: [history]
-      summary: History of a Contact, newest first (R-016-03).
+      summary: 'History of a Contact, newest first (R-016-03).'
       x-required-action: READ_HISTORY
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -798,7 +798,7 @@ paths:
     get:
       operationId: getGroupActivity
       tags: [history]
-      summary: Group activity list with filters (US-017).
+      summary: 'Group activity list with filters (US-017).'
       x-required-action: READ_HISTORY
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -818,7 +818,7 @@ paths:
     post:
       operationId: exportContacts
       tags: [export]
-      summary: Excel file of the Selection (at most 10,000 Contacts; US-011).
+      summary: 'Excel file of the Selection (at most 10,000 Contacts; US-011).'
       x-required-action: EXPORT
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -836,7 +836,7 @@ paths:
     get:
       operationId: listVersions
       tags: [versions]
-      summary: Versions of a Contact, newest first (R-022-02).
+      summary: 'Versions of a Contact, newest first (R-022-02).'
       x-required-action: READ_VERSIONS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -851,7 +851,7 @@ paths:
     get:
       operationId: getVersion
       tags: [versions]
-      summary: One earlier Version (R-022-03).
+      summary: 'One earlier Version (R-022-03).'
       x-required-action: READ_VERSIONS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -867,7 +867,7 @@ paths:
     get:
       operationId: compareVersion
       tags: [versions]
-      summary: Differences between a Version and the live Contact (R-022-04).
+      summary: 'Differences between a Version and the live Contact (R-022-04).'
       x-required-action: READ_VERSIONS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -883,7 +883,7 @@ paths:
     post:
       operationId: restoreVersion
       tags: [versions]
-      summary: Save the content of a Version as a new Version (US-023).
+      summary: 'Save the content of a Version as a new Version (US-023).'
       x-required-action: RESTORE_VERSION
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -904,7 +904,7 @@ paths:
     get:
       operationId: findDuplicates
       tags: [duplicates]
-      summary: Duplicate sets of the Group; changes nothing (US-024).
+      summary: 'Duplicate sets of the Group; changes nothing (US-024).'
       x-required-action: FIND_DUPLICATES
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -918,7 +918,7 @@ paths:
     post:
       operationId: dismissDuplicate
       tags: [duplicates]
-      summary: Mark a Duplicate set as "not a duplicate" (US-025).
+      summary: 'Mark a Duplicate set as "not a duplicate" (US-025).'
       x-required-action: DISMISS_DUPLICATE
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
@@ -936,7 +936,7 @@ paths:
     post:
       operationId: mergeContacts
       tags: [duplicates]
-      summary: Merge Contacts into the Survivor; the others go to Trash (US-026).
+      summary: 'Merge Contacts into the Survivor; the others go to Trash (US-026).'
       x-required-action: MERGE_CONTACTS
       parameters:
         - { $ref: '#/components/parameters/GroupId' }
