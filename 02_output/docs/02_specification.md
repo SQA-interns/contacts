@@ -114,10 +114,73 @@ Each entry names the endpoints (contract `openapi.yaml`), the module that implem
 
 **US-017 Group activity list** (`HistoryQueryService`). `GET /groups/{g}/activity?userId&action&from&to&page` (READ_HISTORY): AND of filters, `from`/`to` are calendar days in Europe/Ljubljana both included, converted to UTC bounds (R-017-04); `from > to` -> 422 `activity.range_invalid` and no list (R-017-06); `userId` filter options come from the entries' users.
 
-<!-- slice 3: behaviour INC-2, error model, security controls -->
-<!-- slice 4: threat model, NFR checks, user interface -->
-<!-- slice 5: traceability -->
+### Increment 2
 
-<!-- slice 3: behaviour INC-2, error model, security controls -->
+**US-020 Delete a Group** (`GroupService`). `POST /groups/{g}/trash {name}` (DELETE_GROUP, Owner): the typed name must equal the Group name after trimming, case-sensitive, else 422 `group.name_mismatch`, nothing stored (R-020-01/02); sets `deleted_at`. From then every Group-scoped endpoint answers 404 for every caller (D-18a, R-020-03); the Group leaves `GET /groups`. `GET /group-trash` lists the caller's Groups in Trash where the caller is Owner, with days left (R-020-04); `POST /group-trash/{g}/restore` (Owner of that Group, else 404) restores within 30 days, refuses with 409 `group.name_taken` when the caller already owns a Group not in Trash with an equal name (R-020-07/08). Pending Invitations do not give access to a Group in Trash (D-18b). The job deletes after 30 days with all children (R-020-05, ADR-03/09). Editor/Viewer 403 on the delete (R-020-06).
+
+**US-021 Delete my account** (`AccountService`). `DELETE /me` (any signed-in User, verified): if the User is the only Owner of a Group, including a Group in the Group Trash (D-27 A1), answer 409 `account.sole_owner` with `groups: [{id,name,inTrash,daysLeft}]` and delete nothing (R-021-02). Otherwise in one transaction: remove Memberships (no History entry, D-18e), set `user_email = NULL` in the User's History entries (name stays, R-021-03), keep Contacts (R-021-04), delete the `app_user` row, then delete the Firebase account through the Admin SDK (`FirebaseAuth.deleteUser`; a failure rolls the database back). Pending Invitations to the address stay pending (D-27 B1). A later registration with the same e-mail is a new User without Memberships (R-021-05). Confirmation dialog states irreversibility (R-021-06).
+
+**US-022 Versions** (`VersionService`). Every Contact save writes a Version (ADR-07). `GET /groups/{g}/contacts/{c}/versions` (READ_VERSIONS, Owner/Editor) newest first with number, time, user; `GET .../versions/{n}`; `GET .../versions/{n}/compare` compares Version n with the live Contact (fields, Tags, Attributes that differ, both values; D-19b). Viewer 403 (R-022-06). Versions are never changed (R-022-05) and are deleted with the Contact (R-022-07).
+
+**US-023 Restore a Version** (`VersionService` calling `ContactService.save`). `POST .../versions/{n}/restore {version}` (RESTORE_VERSION): the content of Version n is saved as a new Version with the usual validation (BR-06, R-023-03 -> 422), stale `version` -> 409 as BR-07 (R-023-04), missing Tags are created again (R-023-05, D-21), History `VERSION_RESTORED` with the restored number and changed fields (R-023-02). Viewer 403.
+
+**US-024 Find duplicates** (`DuplicateService`, read only). `GET /groups/{g}/duplicates` (FIND_DUPLICATES, Owner/Editor) loads the Group's Contacts not in Trash and builds sets in memory: certain = same `email_norm` (R-024-02); probable = same first and last name (both non-empty, normalised) and the same company (non-empty) or the same phone (digits only, non-empty) (R-024-03); connected Contacts form one set (D-19c); a Contact in a certain set appears only there (R-024-08); Contacts with no e-mail, no name pair and no company are skipped (R-024-04); sets that equal a dismissal are hidden (R-025-02). Each set carries mark and reason text code with parameters (R-024-05); empty result text (R-024-10). Nothing is changed (R-024-06); other Groups are never read (R-024-07).
+
+**US-025 Not a duplicate** (`DuplicateService`). `POST /groups/{g}/duplicates/dismissals {contactIds}` (DISMISS_DUPLICATE) stores the key and Contacts; a set that has any additional Contact is shown again (R-025-03). No Contact changes (R-025-05); undo not offered (D-21).
+
+**US-026 Merge** (`MergeService`). `POST /groups/{g}/merges {survivorId, contactIds, fields, attributes, tags?, versions}` (MERGE_CONTACTS): at least two distinct Contacts of this Group (R-026-09, else 422 `merge.invalid_selection`); survivor = the oldest by `created_at` unless sent otherwise but it must be one of them; every chosen value must equal a value of one of the merged Contacts, else 422 (D-19d); Tags are the union (R-026-03); Attributes the union with a chosen value for keys that clash (R-026-04); the result is validated by BR-06 (R-026-06); each Contact's sent `version` must be current and none in Trash, else 409 as BR-07 and nothing merged (R-026-08). In one transaction: survivor saved as a normal save (new version, Version, edit History entries), merged-away Contacts moved to Trash (R-026-05/11), one `CONTACTS_MERGED` entry listing the merged Contacts and chosen values; the History of a merged-away Contact is shown in the Survivor's History through `details.mergedContactIds` (R-026-07). Preselection (first non-empty value of the Survivor, then of the next oldest, R-026-02) is computed by the frontend from the Contacts it received and is only a default; there is no automatic merge endpoint (R-026-10). Viewer 403 (R-026-12).
+
+## Error model
+
+Format and status mapping: ADR-10. Codes are fixed here and appear in the OpenAPI error schema and in both message catalogs (NFR-11).
+
+| Status | Codes |
+|---|---|
+| 400 | `request.malformed`, `request.unknown_property` |
+| 401 | `auth.token_missing`, `auth.token_invalid` |
+| 403 | `auth.email_not_verified`, `auth.role_forbidden`, `https.required` |
+| 404 | `group.not_found`, `contact.not_found`, `tag.not_found`, `invitation.not_found`, `member.not_found`, `version.not_found`, `duplicate.not_found`, `route.not_found` |
+| 409 | `contact.changed_by_someone_else` (with `current`), `contact.in_trash`, `group.name_taken`, `group.last_owner`, `user.email_taken`, `invitation.exists`, `invitation.limit`, `account.sole_owner`, `tag.name_taken` |
+| 413 | `request.too_large` |
+| 422 | `validation.failed` with `fieldErrors[]` (`validation.required_any`, `validation.email_invalid`, `validation.too_long`, `validation.phone_invalid`, `validation.country_invalid`, `validation.attribute_key_invalid`, `validation.attribute_value_invalid`, `validation.attribute_duplicate_key`, `validation.attribute_limit`, `validation.tag_invalid`, `validation.tag_limit`, `validation.name_invalid`), `export.too_many`, `activity.range_invalid`, `group.name_mismatch`, `merge.invalid_selection`, `merge.invalid_value` |
+| 429 | `rate.limited` |
+| 500 | `server.error` (no detail) |
+
+Not found is used for a missing object, an object of another Group (R-018-05), a Group the caller is not a Member of, a Group in Trash, and a Contact past 30 days in Trash; the response never tells these apart (BR-01). The password-length rule (`validation.password_short`) exists only in the client, because Firebase owns passwords.
+
+## Security controls
+
+Level: OWASP ASVS 5.0 Level 2 for both components (security-requirements.md). Controls of `security-baseline.md` and the project requirements, with the module that provides them and the check:
+
+| ID | Control in this design | Where | Check |
+|---|---|---|---|
+| SB-01 | Server validation of every input (`ContactValidator`, Bean Validation on request records, unknown properties rejected) | `web`, `service`, `domain` | validation tests of US-003/004/005; frontend rules are convenience only |
+| SB-02 | `FirebaseTokenFilter` + `GroupAccessInterceptor`; handler-annotation reflection test | `security`, `web` | AR-06 test; AC-018-01..03 |
+| SB-03 | No passwords stored (Firebase holds them); secrets from environment | `config` | gitleaks, `application.yml` placeholder test (AR-07) |
+| SB-04 | TLS at the reverse proxy, `HttpsFilter` with `REQUIRE_HTTPS`, HSTS set by the proxy and by nginx for `https` | `security`, nginx | AC-018-12; install guide |
+| SB-05 | Parameterised SQL only; React escapes text; JSON responses | `persistence`, `frontend` | find-sec-bugs; injection test (SR-04); AC-018-14 |
+| SB-06 | Rate limit per User; the only unauthenticated endpoint is `/health` | `RateLimitFilter` | AC-018-10 |
+| SB-07 | `ApiExceptionHandler`, `SecurityLogger`; logs without bodies, tokens, query strings | `web`, `security` | AC-018-09, AC-018-13 |
+| SB-08 | `dependency-check-maven`, `npm audit` in CI | CI | scanner logs |
+| SB-09 | SpotBugs + find-sec-bugs, `eslint-plugin-security`, gitleaks | CI | scanner logs |
+| SB-10 | API headers (ADR-11); nginx CSP/frame/nosniff/referrer (ADR-15) | filter, nginx | header test on both |
+| SB-11 | Non-root containers, no secrets in images | Dockerfiles | `docker run --user` check, image scan |
+| SB-12 | Only fields the requirements name are collected (data model) | data model | review |
+| SB-13 | Purpose and retention per item: security-requirements.md "Personal data"; purge job and account deletion enforce them | `job`, `AccountService` | AC-013-04, AC-021-* |
+| SB-14 | No consent is collected in the product; there is no preselected consent box | UI | review |
+| SR-01 | Isolation by interceptor + repositories with `groupId`; isolation test over the contract | `web`, `persistence` | AC-018-04, E2E-03 (D-24) |
+| SR-02 | Filter order of US-018 | `security` | AC-018-01, 02, 08 |
+| SR-03 | Role read from `member` on every request; token claims ignored | `GroupAccessInterceptor` | test with a token carrying a `role` claim; AC-015-02/03 |
+| SR-04 | Named parameters; injection test sends `'; DROP TABLE contact; --` in every text field | `persistence` | SR-04 test, EX-008-03 |
+| SR-05 | No HTML rendering of user text | frontend | AC-018-16, EX-003-13 |
+| SR-06 | POI string cells | `ExportService` | AC-011-04, EX-011-03 |
+| SR-07 | `SecurityLogger` | `security` | AC-018-15 |
+| SR-08 | Rate limit, size filter, HTTPS filter, CORS | `security` | AC-018-12..14 |
+| SR-09 | Environment variables only; `.env` untracked; `secrets.env.example` lists names | repo | gitleaks scan |
+| SR-10 | Transactional last-Owner rule | `MembershipService` | AC-015-04/05, EX-015-01 |
+| SR-11 | Invitation limit, expiry, verified e-mail | `InvitationService` | AC-014-03/05/08, EX-014-02 |
+| SR-12 | Error format without internals | `ApiExceptionHandler` | AC-018-11 |
+| SR-13 | Emulator only in tests and local development | test config | tests run offline |
+
 <!-- slice 4: threat model, NFR checks, user interface -->
 <!-- slice 5: traceability -->
