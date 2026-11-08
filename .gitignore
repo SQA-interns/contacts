@@ -1,1 +1,30 @@
+# secrets (ES-02): names live in 01_input/01_project/00_setup/secrets.env.example
 .env
+.env.*
+!.env.example
+
+# held-out tests (never read, listed or run by the implementer)
+02_output/hidden-tests/
+
+# dependencies and build output (ES-03)
+node_modules/
+target/
+dist/
+build/
+coverage/
+.stryker-tmp/
+playwright-report/
+test-results/
+blob-report/
+*.tsbuildinfo
+.vite/
+
+# tool caches
+.dependency-check-data/
+.scannerwork/
+
+# editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.iml
