@@ -8,8 +8,18 @@
 
 <!-- Before any test is written: production code left out of coverage and mutation, one row per path with the reason (generated code, application entry point, style and token files, …). Rules: `general/testing/measurement.md`. Not extended later without a decision record. -->
 
+Decided in phase 3 (session S4 `/acceptance-tests`) before any test was written. Paths are relative to the component folder. Test code (`src/test/**`, `**/*.test.ts(x)`, `src/test/**`, `acceptance/`, `e2e/`, `ui-checks/`) never counts (`general/testing/measurement.md`) and is not listed.
+
 | Path | Reason |
 |---|---|
+| backend `src/main/java/si/contactgroups/ContactGroupsApplication.java` | Application entry point (`main` only). |
+| frontend `src/main.tsx` | Application entry point (mounts the React tree). |
+| frontend `src/components/ui/**` | Generated code: shadcn components copied by the `shadcn` generator (ADR-13); already excluded from ESLint for the same reason. |
+| frontend `src/styles/**/*.css` (`tokens.css`, `index.css`, `brand.css`, `themes/wireframe.css`, `themes/final.css`) | Style sheets and design-token files: presentation, no behaviour. |
+| frontend `src/brand.ts` | Brand token file (product name, logo placeholder, brand colour; UI-03 override in `ui-design.md`): constants only, no logic. |
+| frontend `src/i18n/locales/*.json`, `public/**` | Static assets (message catalogs, runtime `config.js` placeholder); their key parity is checked by the catalog test (NFR-11), not by coverage. |
+
+Everything else under `backend/src/main/java` and `frontend/src` is measured. Logic must not be moved into these files (`general/testing/measurement.md`).
 
 ## Hidden suite
 

@@ -5,10 +5,10 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: W /wireframes D-36: 1
-- Result: done
-- Gate: phase 2 gate passed
-- Notes for the next session: Wireframes WF-01..WF-19 (= SC-01..SC-19) approved with the customer (D-36 option 1, recorded in D-37); inventory with stories, AC, states and files in `docs/wireframes/README.md`, PNGs at the three widths beside each page. They bind `/acceptance-tests`, `/implement` and `/design`: UI wording, structure and states come from them; annotations (`State: …`, notes) are not UI. UI text in the wireframes is Slovene (default language); English comes from `en.json` with the same layout. Decisions D-29 to D-35 are still non-blocking and "pending review" (see the previous handover in git history, commit `3ee5811`).
+- Session: S4 /acceptance-tests
+- Result: failed (stopped by the usage limit; work in progress, nothing frozen)
+- Gate: phase 3 gate not passed (tests incomplete, no manifests)
+- Notes for the next session: resume /acceptance-tests at "write acceptance tests" for US-004. Done: measurement exclusions in `docs/03_test-strategy.md`; backend harness `backend/src/test/java/si/contactgroups/acceptance/support/` (Emulator on fixed port 9099 with retry, MutableClock replacing the `Clock` bean, per-test truncate + emulator wipe, Http/Resp/TestUser/Grp/Db/Xlsx); pom.xml failsafe split into `default` and `acceptance` executions (`-DskipAcceptance`, display names in JUnit XML); tests Us001 (backend part), Us002, Us003, compiling, not yet run. Forged expired tokens need `Emulator.setValidSince` (emulator checks revocation). Plan left: US-004..026 backend tests (US-018 in own classes with RATE_LIMIT 100 and REQUIRE_HTTPS=true contexts); Playwright UI acceptance in `frontend/acceptance/` + `playwright.acceptance.config.ts` against a Compose test stack (raised rate limit); move `frontend/e2e/smoke.spec.ts` to `frontend/ui-checks/` so `e2e/` holds only E2E-01..06; hidden suite in `02_output/hidden-tests/` (own pom compiling `../backend/src/main`, run.sh merging JUnit XML, hidden.json); non-blocking decision for EX-019-03 (no screen shows a decimal number) and the Google UI flow (manual); run, lint, commit per story, freeze commit.
 
 ## Next
 - Command: /acceptance-tests
