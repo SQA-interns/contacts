@@ -13,10 +13,13 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.contactgroups.error.ApiError;
 import si.contactgroups.security.RequestTooLargeException;
+import si.contactgroups.service.ContactChangedException;
+import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
 import si.contactgroups.service.RoleForbiddenException;
 import si.contactgroups.service.ValidationException;
+import si.contactgroups.service.VersionMissingException;
 import tools.jackson.databind.exc.UnrecognizedPropertyException;
 
 /**
@@ -82,6 +85,25 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> validationFailed(ValidationException e) {
     return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
         .body(new ApiError("validation.failed", "Validation failed", e.getFieldErrors()));
+  }
+
+  @ExceptionHandler(ContactNotFoundException.class)
+  public ResponseEntity<ApiError> contactNotFound(ContactNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ApiError("contact.not_found", e.getMessage()));
+  }
+
+  @ExceptionHandler(ContactChangedException.class)
+  public ResponseEntity<ContactConflict> contactChanged(ContactChangedException e) {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(
+            new ContactConflict("contact.changed_by_someone_else", e.getMessage(), e.getCurrent()));
+  }
+
+  @ExceptionHandler(VersionMissingException.class)
+  public ResponseEntity<ApiError> versionMissing(VersionMissingException e) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        .body(new ApiError("request.malformed", e.getMessage()));
   }
 
   @ExceptionHandler(Exception.class)
