@@ -1,0 +1,54 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/contacts/NewContactPage.test.tsx (0 test)
+ ❯ src/features/contacts/ContactPage.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/contacts/ContactPage.test.tsx [ src/features/contacts/ContactPage.test.tsx ]
+Error: Failed to resolve import "./ContactPage" from "src/features/contacts/ContactPage.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/src/features/contacts/ContactPage.test.tsx:7:28
+  6  |  import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+  7  |  import { setLanguage } from "@/i18n";
+  8  |  import { ContactPage } from "./ContactPage";
+     |                               ^
+  9  |  const answer = (body, status = 200) => new Response(JSON.stringify(body), { status });
+  10 |  const ana = {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/config.js:29250:43
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/config.js:29247:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/config.js:27370:18
+ ❯ node_modules/vite/dist/node/chunks/config.js:27428:32
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/config.js:27396:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/config.js:29048:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/config.js:22914:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/contacts/NewContactPage.test.tsx [ src/features/contacts/NewContactPage.test.tsx ]
+Error: Failed to resolve import "./NewContactPage" from "src/features/contacts/NewContactPage.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/src/features/contacts/NewContactPage.test.tsx:7:31
+  6  |  import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+  7  |  import { setLanguage } from "@/i18n";
+  8  |  import { NewContactPage } from "./NewContactPage";
+     |                                  ^
+  9  |  const answer = (body, status = 200) => new Response(JSON.stringify(body), { status });
+  10 |  const created = { id: "c1", version: 1, firstName: "Ana", tags: [], attributes: [] };
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/config.js:29250:43
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/config.js:29247:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/config.js:27370:18
+ ❯ node_modules/vite/dist/node/chunks/config.js:27428:32
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/config.js:27396:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/config.js:29048:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/config.js:22914:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  no tests
+   Start at  00:45:55
+   Duration  963ms (transform 53ms, setup 365ms, import 0ms, tests 0ms, environment 1.10s)
+

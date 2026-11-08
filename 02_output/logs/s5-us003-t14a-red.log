@@ -1,0 +1,101 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[10,31] cannot find symbol
+  symbol:   class ContactData
+  location: package si.contactgroups.domain
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[16,17] cannot find symbol
+  symbol:   class ContactValidator
+  location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[18,29] package ContactData does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[22,37] cannot find symbol
+  symbol:   class ContactData
+  location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[12,16] cannot find symbol
+  symbol:   variable CountryCodes
+  location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[17,16] cannot find symbol
+  symbol:   variable CountryCodes
+  location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[18,16] cannot find symbol
+  symbol:   variable CountryCodes
+  location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[19,16] cannot find symbol
+  symbol:   variable CountryCodes
+  location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/NormaliserTest.java:[15,16] cannot find symbol
+  symbol:   variable Normaliser
+  location: class si.contactgroups.domain.NormaliserTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/NormaliserTest.java:[20,16] cannot find symbol
+  symbol:   variable Normaliser
+  location: class si.contactgroups.domain.NormaliserTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/NormaliserTest.java:[25,16] cannot find symbol
+  symbol:   variable Normaliser
+  location: class si.contactgroups.domain.NormaliserTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[16,50] cannot find symbol
+  symbol:   class ContactValidator
+  location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[19,12] cannot find symbol
+  symbol:   variable ContactData
+  location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[40,5] cannot find symbol
+  symbol:   class ContactData
+  location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[49,5] cannot find symbol
+  symbol:   class ContactData
+  location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[122,5] cannot find symbol
+  symbol:   class ContactData
+  location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:testCompile (default-testCompile) on project contact-groups-backend: Compilation failure: Compilation failure: 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[10,31] cannot find symbol
+[ERROR]   symbol:   class ContactData
+[ERROR]   location: package si.contactgroups.domain
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[16,17] cannot find symbol
+[ERROR]   symbol:   class ContactValidator
+[ERROR]   location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[18,29] package ContactData does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[22,37] cannot find symbol
+[ERROR]   symbol:   class ContactData
+[ERROR]   location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[12,16] cannot find symbol
+[ERROR]   symbol:   variable CountryCodes
+[ERROR]   location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[17,16] cannot find symbol
+[ERROR]   symbol:   variable CountryCodes
+[ERROR]   location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[18,16] cannot find symbol
+[ERROR]   symbol:   variable CountryCodes
+[ERROR]   location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/CountryCodesTest.java:[19,16] cannot find symbol
+[ERROR]   symbol:   variable CountryCodes
+[ERROR]   location: class si.contactgroups.domain.CountryCodesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/NormaliserTest.java:[15,16] cannot find symbol
+[ERROR]   symbol:   variable Normaliser
+[ERROR]   location: class si.contactgroups.domain.NormaliserTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/NormaliserTest.java:[20,16] cannot find symbol
+[ERROR]   symbol:   variable Normaliser
+[ERROR]   location: class si.contactgroups.domain.NormaliserTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/NormaliserTest.java:[25,16] cannot find symbol
+[ERROR]   symbol:   variable Normaliser
+[ERROR]   location: class si.contactgroups.domain.NormaliserTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[16,50] cannot find symbol
+[ERROR]   symbol:   class ContactValidator
+[ERROR]   location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[19,12] cannot find symbol
+[ERROR]   symbol:   variable ContactData
+[ERROR]   location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[40,5] cannot find symbol
+[ERROR]   symbol:   class ContactData
+[ERROR]   location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[49,5] cannot find symbol
+[ERROR]   symbol:   class ContactData
+[ERROR]   location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ContactValidatorTest.java:[122,5] cannot find symbol
+[ERROR]   symbol:   class ContactData
+[ERROR]   location: class si.contactgroups.service.ContactValidatorTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

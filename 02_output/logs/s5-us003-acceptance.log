@@ -1,0 +1,1001 @@
+00:43:54.867 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us003ContactAcceptanceIT]: Us003ContactAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:43:55.096 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us003ContactAcceptanceIT
+00:43:55.210 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us003ContactAcceptanceIT]: Us003ContactAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:43:55.211 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:43:55.217 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us003ContactAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T00:43:56.035+01:00  INFO 39149 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T00:43:56.039+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T00:43:56.059+01:00  INFO 39149 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T00:43:56.865+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T00:43:56.867+01:00  INFO 39149 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T00:43:56.887+01:00  INFO 39149 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T00:43:57.119+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T00:43:57.205+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T00:43:57.318+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 4f2ccd1ab90fa51590e717c34ab67b1c6440aad92b41a51f67d3a973f7772447
+2026-11-09T00:43:57.581+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.461914S
+2026-11-09T00:43:57.591+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T00:43:57.592+01:00  INFO 39149 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T00:43:57.592+01:00  INFO 39149 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T00:43:57.644+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T00:43:57.824+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T00:43:57.909+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: b2e58fa1a94c5cc8cd72f08672ca54f81067441dc602ddbe57ce352f5d608b85
+2026-11-09T00:44:03.293+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT5.469444S
+2026-11-09T00:44:03.373+01:00  INFO 39149 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : Starting Us003ContactAcceptanceIT using Java 21.0.8 with PID 39149 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T00:44:03.374+01:00  INFO 39149 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T00:44:03.743+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T00:44:03.797+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: d8d622a306b8a93f818405cd3971ba5267ae9145e89d0a64a46e95787083ec35
+2026-11-09T00:44:04.757+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.013617S
+2026-11-09T00:44:04.758+01:00  INFO 39149 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:64348/test?loggerLevel=OFF)
+2026-11-09T00:44:05.559+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T00:44:05.574+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T00:44:05.575+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T00:44:05.611+01:00  INFO 39149 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2224 ms
+2026-11-09T00:44:06.074+01:00  INFO 39149 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:64348/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T00:44:06.109+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T00:44:06.112+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.015s)
+2026-11-09T00:44:06.125+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T00:44:06.166+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T00:44:06.170+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T00:44:06.202+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T00:44:06.242+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.042s)
+2026-11-09T00:44:06.583+01:00  INFO 39149 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T00:44:07.097+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T00:44:07.149+01:00  INFO 39149 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64351 (http) with context path '/'
+2026-11-09T00:44:07.160+01:00  INFO 39149 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : Started Us003ContactAcceptanceIT in 11.869 seconds (process running for 13.601)
+2026-11-09T00:44:07.217+01:00  WARN 39149 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T00:44:07.981+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T00:44:07.981+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T00:44:07.983+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-09T00:44:08.193+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T00:44:08.211+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@352bfbf2
+2026-11-09T00:44:08.213+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T00:44:09.622+01:00  WARN 39149 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/5eadcc15-520e-40fa-838b-84d52db130cc/invitations
+2026-11-09T00:44:09.623+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/5eadcc15-520e-40fa-838b-84d52db130cc/invitations
+2026-11-09T00:44:09.697+01:00  WARN 39149 --- [contact-groups-backend] [o-auto-1-exec-3] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/8b4766d1-a493-454f-9758-14f662bcaff9/invitations
+2026-11-09T00:44:09.698+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/8b4766d1-a493-454f-9758-14f662bcaff9/invitations
+2026-11-09T00:44:10.241+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/591eda76-1419-4603-aee1-f997824f1d0a/contacts/3021391f-7d97-46dc-a51a-6396d5823404
+2026-11-09T00:44:10.557+01:00  WARN 39149 --- [contact-groups-backend] [o-auto-1-exec-7] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/67fe7192-82b0-4841-9db5-3270c63eafaa/invitations
+2026-11-09T00:44:10.558+01:00  INFO 39149 --- [contact-groups-backend] [o-auto-1-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/67fe7192-82b0-4841-9db5-3270c63eafaa/invitations
+[ERROR] Tests run: 29, Failures: 19, Errors: 0, Skipped: 0, Time elapsed: 16.08 s <<< FAILURE! -- in si.contactgroups.acceptance.Us003ContactAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed -- Time elapsed: 1.332 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed(Us003ContactAcceptanceIT.java:207)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(String, boolean)[1] -- Time elapsed: 0.107 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(Us003ContactAcceptanceIT.java:310)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(String, boolean)[2] -- Time elapsed: 0.099 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(Us003ContactAcceptanceIT.java:310)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused -- Time elapsed: 0.082 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused(Us003ContactAcceptanceIT.java:79)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused -- Time elapsed: 0.068 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused(Us003ContactAcceptanceIT.java:282)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1 -- Time elapsed: 0.081 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1(Us003ContactAcceptanceIT.java:60)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[1] -- Time elapsed: 0.066 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[2] -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[3] -- Time elapsed: 0.063 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields -- Time elapsed: 0.066 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields(Us003ContactAcceptanceIT.java:149)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create -- Time elapsed: 0.072 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create(Us003ContactAcceptanceIT.java:137)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(int, boolean)[1] -- Time elapsed: 0.067 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(Us003ContactAcceptanceIT.java:272)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(int, boolean)[2] -- Time elapsed: 0.059 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(Us003ContactAcceptanceIT.java:272)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(int, boolean)[1] -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(Us003ContactAcceptanceIT.java:263)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(int, boolean)[2] -- Time elapsed: 0.058 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(Us003ContactAcceptanceIT.java:263)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_06_stale_version_refused -- Time elapsed: 0.069 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_06_stale_version_refused(Us003ContactAcceptanceIT.java:111)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required -- Time elapsed: 0.063 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required(Us003ContactAcceptanceIT.java:69)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(int, boolean)[1] -- Time elapsed: 0.061 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(Us003ContactAcceptanceIT.java:251)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(int, boolean)[2] -- Time elapsed: 0.062 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(Us003ContactAcceptanceIT.java:251)
+
+[ERROR] Failures: 
+[ERROR]   Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1:60->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required:69->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused:79->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_06_stale_version_refused:111->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create:137->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields:149->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed:207->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_04_first_name_length:251->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_04_first_name_length:251->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_05_notes_length:263->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_05_notes_length:263->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_06_email_length:272->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_06_email_length:272->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused:282->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_09_country_on_the_list:310->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_09_country_on_the_list:310->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR] Tests run: 29, Failures: 19, Errors: 0, Skipped: 0
+00:44:12.738 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us003ContactAcceptanceIT]: Us003ContactAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:12.899 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us003ContactAcceptanceIT
+00:44:13.015 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us003ContactAcceptanceIT]: Us003ContactAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:13.016 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:13.023 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us003ContactAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T00:44:13.867+01:00  INFO 39157 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T00:44:13.871+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T00:44:13.889+01:00  INFO 39157 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T00:44:14.723+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T00:44:14.724+01:00  INFO 39157 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T00:44:14.743+01:00  INFO 39157 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T00:44:14.935+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T00:44:14.985+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T00:44:15.098+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 53d7eddf0c446ff72f328134c1ab17f076d53c2136c1b4c45f9bc6e784fb9b80
+2026-11-09T00:44:15.426+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.490429S
+2026-11-09T00:44:15.437+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T00:44:15.438+01:00  INFO 39157 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T00:44:15.438+01:00  INFO 39157 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T00:44:15.483+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T00:44:15.610+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T00:44:15.700+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: 65c7e5b879a89710bbd5c017f933b5a38f9890621d63afabf7720101de1c9121
+2026-11-09T00:44:21.144+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT5.533521S
+2026-11-09T00:44:21.226+01:00  INFO 39157 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : Starting Us003ContactAcceptanceIT using Java 21.0.8 with PID 39157 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T00:44:21.227+01:00  INFO 39157 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T00:44:21.596+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T00:44:21.650+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: 5dd3c1980a9593a7b3ed7910f355b61e22818b56e5e05cabd855ef004b72574f
+2026-11-09T00:44:22.587+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT0.991557S
+2026-11-09T00:44:22.589+01:00  INFO 39157 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:64403/test?loggerLevel=OFF)
+2026-11-09T00:44:23.378+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T00:44:23.394+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T00:44:23.394+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T00:44:23.430+01:00  INFO 39157 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2189 ms
+2026-11-09T00:44:23.899+01:00  INFO 39157 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:64403/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T00:44:23.932+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T00:44:23.935+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.013s)
+2026-11-09T00:44:23.949+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T00:44:23.991+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T00:44:23.994+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T00:44:24.025+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T00:44:24.065+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.043s)
+2026-11-09T00:44:24.417+01:00  INFO 39157 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T00:44:24.897+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T00:44:24.941+01:00  INFO 39157 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64406 (http) with context path '/'
+2026-11-09T00:44:24.954+01:00  INFO 39157 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : Started Us003ContactAcceptanceIT in 11.854 seconds (process running for 13.208)
+2026-11-09T00:44:24.999+01:00  WARN 39157 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T00:44:25.731+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T00:44:25.731+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T00:44:25.732+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-09T00:44:25.939+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T00:44:25.956+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5159d153
+2026-11-09T00:44:25.958+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T00:44:27.384+01:00  WARN 39157 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/d36f0506-84e6-4eb2-a04f-5d115ddbf6d5/invitations
+2026-11-09T00:44:27.386+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/d36f0506-84e6-4eb2-a04f-5d115ddbf6d5/invitations
+2026-11-09T00:44:27.451+01:00  WARN 39157 --- [contact-groups-backend] [o-auto-1-exec-3] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/f5ae30bd-e748-48ce-ab92-0b65fcf18259/invitations
+2026-11-09T00:44:27.452+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/f5ae30bd-e748-48ce-ab92-0b65fcf18259/invitations
+2026-11-09T00:44:28.054+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/2d893fff-edad-4d8f-9700-559817a91fd3/contacts/d23ea9ef-06c4-48fc-aace-f19b684460b6
+2026-11-09T00:44:28.357+01:00  WARN 39157 --- [contact-groups-backend] [o-auto-1-exec-7] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/63f2e667-a81b-403a-84a5-a0ed4ed9a02f/invitations
+2026-11-09T00:44:28.358+01:00  INFO 39157 --- [contact-groups-backend] [o-auto-1-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/63f2e667-a81b-403a-84a5-a0ed4ed9a02f/invitations
+[ERROR] Tests run: 29, Failures: 19, Errors: 0, Skipped: 0, Time elapsed: 15.97 s <<< FAILURE! -- in si.contactgroups.acceptance.Us003ContactAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed -- Time elapsed: 1.297 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed(Us003ContactAcceptanceIT.java:207)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(String, boolean)[1] -- Time elapsed: 0.106 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(Us003ContactAcceptanceIT.java:310)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(String, boolean)[2] -- Time elapsed: 0.093 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(Us003ContactAcceptanceIT.java:310)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused -- Time elapsed: 0.082 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused(Us003ContactAcceptanceIT.java:79)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused -- Time elapsed: 0.080 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused(Us003ContactAcceptanceIT.java:282)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1 -- Time elapsed: 0.089 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1(Us003ContactAcceptanceIT.java:60)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[1] -- Time elapsed: 0.074 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[2] -- Time elapsed: 0.063 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[3] -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields -- Time elapsed: 0.064 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields(Us003ContactAcceptanceIT.java:149)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create(Us003ContactAcceptanceIT.java:137)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(int, boolean)[1] -- Time elapsed: 0.069 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(Us003ContactAcceptanceIT.java:272)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(int, boolean)[2] -- Time elapsed: 0.060 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(Us003ContactAcceptanceIT.java:272)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(int, boolean)[1] -- Time elapsed: 0.062 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(Us003ContactAcceptanceIT.java:263)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(int, boolean)[2] -- Time elapsed: 0.054 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(Us003ContactAcceptanceIT.java:263)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_06_stale_version_refused -- Time elapsed: 0.063 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_06_stale_version_refused(Us003ContactAcceptanceIT.java:111)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required -- Time elapsed: 0.073 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required(Us003ContactAcceptanceIT.java:69)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(int, boolean)[1] -- Time elapsed: 0.068 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(Us003ContactAcceptanceIT.java:251)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(int, boolean)[2] -- Time elapsed: 0.062 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(Us003ContactAcceptanceIT.java:251)
+
+[ERROR] Failures: 
+[ERROR]   Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1:60->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required:69->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused:79->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_06_stale_version_refused:111->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create:137->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields:149->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed:207->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_04_first_name_length:251->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_04_first_name_length:251->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_05_notes_length:263->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_05_notes_length:263->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_06_email_length:272->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_06_email_length:272->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused:282->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_09_country_on_the_list:310->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_09_country_on_the_list:310->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR] Tests run: 29, Failures: 19, Errors: 0, Skipped: 0
+00:44:30.828 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us003ContactAcceptanceIT]: Us003ContactAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:30.979 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us003ContactAcceptanceIT
+00:44:31.062 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us003ContactAcceptanceIT]: Us003ContactAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:31.063 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:31.068 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us003ContactAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T00:44:31.877+01:00  INFO 39170 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T00:44:31.880+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T00:44:31.899+01:00  INFO 39170 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T00:44:32.750+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T00:44:32.751+01:00  INFO 39170 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T00:44:32.771+01:00  INFO 39170 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T00:44:32.962+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T00:44:33.014+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T00:44:33.127+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 4024aa54effcc3c25d3542249a6c92fecbcb90a793a5557d79a88ef15e92ba5f
+2026-11-09T00:44:33.445+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.483061S
+2026-11-09T00:44:33.457+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T00:44:33.458+01:00  INFO 39170 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T00:44:33.458+01:00  INFO 39170 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T00:44:33.505+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T00:44:33.614+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T00:44:33.704+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: 89ccb62f3cda5f7413eb1e30da64def5fcd8e00675a689d27437a1ca2af8d2d3
+2026-11-09T00:44:39.159+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT5.544664S
+2026-11-09T00:44:39.242+01:00  INFO 39170 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : Starting Us003ContactAcceptanceIT using Java 21.0.8 with PID 39170 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T00:44:39.243+01:00  INFO 39170 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T00:44:39.617+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T00:44:39.679+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: cf0fd40c4a7d2f67fa9d8d702237dd69ae76a32a22aa40817bd6927b96fd0f53
+2026-11-09T00:44:40.595+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT0.978434S
+2026-11-09T00:44:40.597+01:00  INFO 39170 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:64458/test?loggerLevel=OFF)
+2026-11-09T00:44:41.398+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T00:44:41.413+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T00:44:41.414+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T00:44:41.449+01:00  INFO 39170 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2192 ms
+2026-11-09T00:44:41.915+01:00  INFO 39170 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:64458/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T00:44:41.947+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T00:44:41.950+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.013s)
+2026-11-09T00:44:41.964+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T00:44:42.021+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T00:44:42.025+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T00:44:42.061+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T00:44:42.103+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.045s)
+2026-11-09T00:44:42.461+01:00  INFO 39170 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T00:44:42.948+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T00:44:42.996+01:00  INFO 39170 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64461 (http) with context path '/'
+2026-11-09T00:44:43.005+01:00  INFO 39170 --- [contact-groups-backend] [           main] s.c.acceptance.Us003ContactAcceptanceIT  : Started Us003ContactAcceptanceIT in 11.868 seconds (process running for 13.148)
+2026-11-09T00:44:43.052+01:00  WARN 39170 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T00:44:43.762+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T00:44:43.762+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T00:44:43.763+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-09T00:44:43.970+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T00:44:43.987+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@41e5b867
+2026-11-09T00:44:43.990+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T00:44:45.395+01:00  WARN 39170 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/b26f506b-03a7-46a5-804a-d6f67c2e91b3/invitations
+2026-11-09T00:44:45.397+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/b26f506b-03a7-46a5-804a-d6f67c2e91b3/invitations
+2026-11-09T00:44:45.463+01:00  WARN 39170 --- [contact-groups-backend] [o-auto-1-exec-3] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/61f3dfb8-1637-4302-8ac1-49ac15f83f93/invitations
+2026-11-09T00:44:45.464+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/61f3dfb8-1637-4302-8ac1-49ac15f83f93/invitations
+2026-11-09T00:44:45.991+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/120877f1-3643-45d7-861a-b77d31f2a89a/contacts/406c3256-c15c-4a77-ae98-0fda8b5a741c
+2026-11-09T00:44:46.302+01:00  WARN 39170 --- [contact-groups-backend] [o-auto-1-exec-7] o.s.web.servlet.PageNotFound             : No mapping for POST /api/v1/groups/79985279-a17d-4b10-8a5f-2f2ea9501ae2/invitations
+2026-11-09T00:44:46.303+01:00  INFO 39170 --- [contact-groups-backend] [o-auto-1-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/79985279-a17d-4b10-8a5f-2f2ea9501ae2/invitations
+[ERROR] Tests run: 29, Failures: 19, Errors: 0, Skipped: 0, Time elapsed: 15.79 s <<< FAILURE! -- in si.contactgroups.acceptance.Us003ContactAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed -- Time elapsed: 1.280 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed(Us003ContactAcceptanceIT.java:207)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(String, boolean)[1] -- Time elapsed: 0.106 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(Us003ContactAcceptanceIT.java:310)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(String, boolean)[2] -- Time elapsed: 0.092 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_09_country_on_the_list(Us003ContactAcceptanceIT.java:310)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused -- Time elapsed: 0.078 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused(Us003ContactAcceptanceIT.java:79)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused -- Time elapsed: 0.072 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused(Us003ContactAcceptanceIT.java:282)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1 -- Time elapsed: 0.085 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1(Us003ContactAcceptanceIT.java:60)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[1] -- Time elapsed: 0.070 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[2] -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(String, boolean)[3] -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length(Us003ContactAcceptanceIT.java:298)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields -- Time elapsed: 0.067 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields(Us003ContactAcceptanceIT.java:149)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create(Us003ContactAcceptanceIT.java:137)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(int, boolean)[1] -- Time elapsed: 0.065 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(Us003ContactAcceptanceIT.java:272)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(int, boolean)[2] -- Time elapsed: 0.060 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_06_email_length(Us003ContactAcceptanceIT.java:272)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(int, boolean)[1] -- Time elapsed: 0.064 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(Us003ContactAcceptanceIT.java:263)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(int, boolean)[2] -- Time elapsed: 0.059 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_05_notes_length(Us003ContactAcceptanceIT.java:263)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_06_stale_version_refused -- Time elapsed: 0.066 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.addMember(AcceptanceTestBase.java:115)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.member(AcceptanceTestBase.java:126)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_06_stale_version_refused(Us003ContactAcceptanceIT.java:111)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required -- Time elapsed: 0.058 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required(Us003ContactAcceptanceIT.java:69)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(int, boolean)[1] -- Time elapsed: 0.063 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(Us003ContactAcceptanceIT.java:251)
+
+[ERROR] si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(int, boolean)[2] -- Time elapsed: 0.061 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.AcceptanceTestBase.contactPage(AcceptanceTestBase.java:198)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.total(Us003ContactAcceptanceIT.java:30)
+	at si.contactgroups.acceptance.Us003ContactAcceptanceIT.ex_003_04_first_name_length(Us003ContactAcceptanceIT.java:251)
+
+[ERROR] Failures: 
+[ERROR]   Us003ContactAcceptanceIT.ac_003_01_create_contact_version_1:60->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_02_one_of_four_fields_required:69->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_03_invalid_email_refused:79->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ac_003_06_stale_version_refused:111->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_07_viewer_cannot_create:137->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_08_member_sees_all_fields:149->AcceptanceTestBase.member:126->AcceptanceTestBase.addMember:115 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 201
+ but was: 404
+[ERROR]   Us003ContactAcceptanceIT.ac_003_09_duplicate_email_allowed:207->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_04_first_name_length:251->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_04_first_name_length:251->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_05_notes_length:263->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_05_notes_length:263->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_06_email_length:272->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_06_email_length:272->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_07_phone_letters_refused:282->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_08_phone_characters_and_length:298->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_09_country_on_the_list:310->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR]   Us003ContactAcceptanceIT.ex_003_09_country_on_the_list:310->total:30->AcceptanceTestBase.contactPage:198 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 200
+ but was: 405
+[ERROR] Tests run: 29, Failures: 19, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.4:verify (default) on project contact-groups-backend: There are test failures.
+[ERROR] 
+[ERROR] See /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

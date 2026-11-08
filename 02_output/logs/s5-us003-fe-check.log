@@ -1,0 +1,11 @@
+Checking formatting...
+All matched files use Prettier code style!
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+
+ Test Files  21 passed (21)
+      Tests  123 passed (123)
+   Start at  00:47:39
+   Duration  9.54s (transform 2.82s, setup 7.01s, import 11.79s, tests 36.06s, environment 21.99s)
+
