@@ -149,4 +149,15 @@ class GroupEndpointsIT extends WebTestSupport {
 
     mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(2));
   }
+
+  @Test
+  void r_018_04_a_body_with_an_unknown_property_is_refused_and_creates_no_group() throws Exception {
+    User ana = newUser("Ana Novak");
+
+    create(ana, "{\"name\":\"Acme\",\"group\":\"" + java.util.UUID.randomUUID() + "\"}")
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.code").value("request.unknown_property"));
+
+    mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(0));
+  }
 }

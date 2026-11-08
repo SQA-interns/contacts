@@ -17,6 +17,8 @@ spring:
       app_password: ${DB_APP_PASSWORD}
   jackson:
     default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: true # a body never names the Group (R-018-04, ADR-05)
   mvc:
     problemdetails:
       enabled: false

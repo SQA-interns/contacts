@@ -16,6 +16,7 @@ import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
 import si.contactgroups.service.RoleForbiddenException;
 import si.contactgroups.service.ValidationException;
+import tools.jackson.databind.exc.UnrecognizedPropertyException;
 
 /**
  * The only place that turns a failure into the error format (ADR-10, SR-12): no stack trace, no
@@ -45,7 +46,11 @@ public class ApiExceptionHandler {
   }
 
   @ExceptionHandler(HttpMessageNotReadableException.class)
-  public ResponseEntity<ApiError> malformed() {
+  public ResponseEntity<ApiError> malformed(HttpMessageNotReadableException e) {
+    if (e.getCause() instanceof UnrecognizedPropertyException) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new ApiError("request.unknown_property", "Unknown property in the request body"));
+    }
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
         .body(new ApiError("request.malformed", "Malformed request"));
   }
