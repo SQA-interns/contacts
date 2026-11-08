@@ -1,0 +1,33 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/lint-rules.test.ts (6 tests | 1 failed) 1099ms
+     × R-018-14, SR-05: HTML built from text is refused 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lint-rules.test.ts > architecture lint rules (AR-03, AR-08) > R-018-14, SR-05: HTML built from text is refused
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/lint-rules.test.ts:57:62
+     55|       'export const A = ({ text }: { text: string }) => <p dangerously…
+     56|     const out = await messages(code, 'src/features/x/A.tsx');
+     57|     expect(out.some((m) => m.startsWith('react/no-danger'))).toBe(true…
+       |                                                              ^
+     58|   });
+     59| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  00:19:33
+   Duration  2.18s (transform 46ms, setup 217ms, import 193ms, tests 1.10s, environment 547ms)
+

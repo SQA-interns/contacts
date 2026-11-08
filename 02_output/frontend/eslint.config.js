@@ -14,6 +14,11 @@ const literalAttribute = {
   message: 'UI text comes from the message catalogs (AR-08, UI-30); use t().',
 };
 
+const noHtmlFromText = {
+  selector: 'JSXAttribute[name.name=dangerouslySetInnerHTML]',
+  message: 'Text entered by users is shown as plain text, never as HTML (R-018-14, SR-05).',
+};
+
 export default tseslint.config(
   {
     ignores: [
@@ -36,7 +41,7 @@ export default tseslint.config(
     plugins: { 'react-hooks': reactHooks },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'no-restricted-syntax': ['error', literalText, literalAttribute],
+      'no-restricted-syntax': ['error', literalText, literalAttribute, noHtmlFromText],
       // AR-03: the browser reaches data only through src/api (REST) and src/auth (Firebase).
       'no-restricted-imports': [
         'error',

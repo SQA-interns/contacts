@@ -1,0 +1,9 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  00:19:44
+   Duration  1.62s (transform 41ms, setup 120ms, import 128ms, tests 843ms, environment 393ms)
+

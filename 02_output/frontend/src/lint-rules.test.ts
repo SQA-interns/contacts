@@ -49,4 +49,11 @@ describe('architecture lint rules (AR-03, AR-08)', () => {
       false,
     );
   });
+
+  it('R-018-14, SR-05: HTML built from text is refused', async () => {
+    const code =
+      'export const A = ({ text }: { text: string }) => <p dangerouslySetInnerHTML={{ __html: text }} />;\n';
+    const out = await messages(code, 'src/features/x/A.tsx');
+    expect(out.some((m) => m.startsWith('no-restricted-syntax') && m.includes('plain text'))).toBe(true);
+  });
 });

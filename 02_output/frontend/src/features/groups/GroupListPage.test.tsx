@@ -56,6 +56,17 @@ describe('GroupListPage WF-05 (R-001-03, R-002-05, R-002-06)', () => {
   });
   afterEach(() => vi.unstubAllGlobals());
 
+  it('R-018-14 shows a Group named like a script as the text it is', async () => {
+    const name = '<script>alert(1)</script>';
+    vi.mocked(fetch).mockResolvedValue(
+      answer([{ id: 'g1', name, role: 'OWNER', createdAt: '2026-11-08T08:00:00Z' }]),
+    );
+    renderPage();
+
+    expect(await screen.findByRole('heading', { level: 2, name })).toBeInTheDocument();
+    expect(document.querySelector('script[src], main script, h2 script')).toBeNull();
+  });
+
   it('R-001-03 shows every Group of the User with the Role', async () => {
     vi.mocked(fetch).mockResolvedValue(
       answer([
