@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
@@ -32,6 +34,14 @@ class ApplicationIT {
   }
 
   @Autowired private MockMvc mvc;
+  @Autowired private UserDetailsService userDetailsService;
+
+  @Test
+  void thereIsNoLocalUserAndNoGeneratedPassword() {
+    org.assertj.core.api.Assertions.assertThatThrownBy(
+            () -> userDetailsService.loadUserByUsername("user"))
+        .isInstanceOf(UsernameNotFoundException.class);
+  }
 
   @Test
   void healthIsPublicAndReturnsOnlyTheStatus() throws Exception {

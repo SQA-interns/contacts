@@ -9,6 +9,8 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter.ReferrerPolicy;
@@ -59,6 +61,18 @@ public class SecurityConfig {
                     .contentSecurityPolicy(
                         csp -> csp.policyDirectives("default-src 'none'; frame-ancestors 'none'")));
     return http.build();
+  }
+
+  /**
+   * The product has no local users: identities come from Firebase tokens only. Declaring this bean
+   * stops Spring Boot from creating a default user with a generated password and logging it (SB-03,
+   * SB-07).
+   */
+  @Bean
+  public UserDetailsService noLocalUsers() {
+    return username -> {
+      throw new UsernameNotFoundException("no local users");
+    };
   }
 
   @Bean
