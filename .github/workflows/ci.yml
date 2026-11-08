@@ -1,0 +1,173 @@
+# CI (ES-14): every component's build, test and check command (ES-05) and the scanners, on every push.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  JAVA_VERSION: "21.0.8"
+  NODE_VERSION: "22.20.0"
+
+jobs:
+  backend:
+    name: backend build, test, check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 02_output/backend
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-java@v4.7.1
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+          cache-dependency-path: 02_output/backend/pom.xml
+      - name: build
+        run: ./mvnw -B -DskipTests package
+      - name: test and check (unit, integration with Testcontainers and the Auth emulator, lint, static analysis)
+        run: ./mvnw -B verify -Pquality
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: backend-reports
+          path: |
+            02_output/backend/target/surefire-reports
+            02_output/backend/target/failsafe-reports
+            02_output/backend/target/site/jacoco
+
+  frontend:
+    name: frontend build, test, check, browser tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 02_output/frontend
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: 02_output/frontend/package-lock.json
+      - run: npm ci
+      - name: build
+        run: npm run build
+      - name: test
+        run: npm test
+      - name: check
+        run: npm run check
+      - name: browser tests (three browsers, three widths, accessibility)
+        run: |
+          npx playwright install --with-deps chromium firefox webkit
+          npm run e2e
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: frontend-reports
+          path: |
+            02_output/frontend/playwright-report
+            02_output/frontend/test-results
+
+  contracts:
+    name: contracts and traceability
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: validate every contract with a parser
+        working-directory: 02_output/tools
+        run: |
+          npm ci
+          npm run validate-contracts
+      - name: every requirement id is traceable to the specification
+        run: node 02_output/scripts/check-traceability.mjs
+
+  scanners:
+    name: secret scan, dependency scan, licences, duplication
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: gitleaks (secret scan of the whole history)
+        run: docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:v8.28.0 detect --source /repo --no-banner --redact
+      - name: npm audit gate (only the findings accepted in D-05 may remain)
+        run: |
+          (cd 02_output/frontend && npm ci)
+          (cd 02_output/tools && npm ci)
+          node 02_output/scripts/npm-audit-gate.mjs 02_output/frontend --omit=dev
+          node 02_output/scripts/npm-audit-gate.mjs 02_output/tools
+      - name: licences of the frontend production tree (lightningcss is build-only, D-34)
+        working-directory: 02_output/frontend
+        run: >
+          npx license-checker-rseidelsohn --production
+          --onlyAllow "MIT;ISC;BSD-2-Clause;BSD-3-Clause;Apache-2.0;0BSD;BlueOak-1.0.0;CC0-1.0;PostgreSQL"
+          --excludePackagesStartingWith lightningcss
+          --excludePackages "contact-groups-frontend@1.0.0" --summary
+      - name: duplication
+        working-directory: 02_output/frontend
+        run: >
+          npx jscpd --min-lines 10 --min-tokens 70 --threshold 3
+          --ignore "**/node_modules/**,**/components/ui/**,**/target/**,**/dist/**,**/test-results/**,**/*.json,**/*.md"
+          --reporters console ../backend/src src e2e
+
+  dependency-check:
+    name: backend dependency scan (OWASP dependency-check)
+    runs-on: ubuntu-latest
+    env:
+      NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-java@v4.7.1
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+          cache-dependency-path: 02_output/backend/pom.xml
+      - uses: actions/cache@v4.2.3
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: nvd-${{ github.run_id }}
+          restore-keys: nvd-
+      - name: scan (fails on CVSS 7.0 or higher; the key only makes the NVD download faster)
+        working-directory: 02_output/backend
+        run: ./mvnw -B dependency-check:check ${NVD_API_KEY:+-DnvdApiKey="$NVD_API_KEY"}
+
+  images:
+    name: container images and Compose files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: build the three images
+        run: |
+          docker build -t contact-groups-backend:1.0.0 02_output/backend
+          docker build -t contact-groups-frontend:1.0.0 02_output/frontend
+          docker build -t contact-groups-emulator:dev 02_output/emulator
+      - name: Compose files are valid (dummy values, no secrets)
+        env:
+          POSTGRES_DB: contactgroups
+          POSTGRES_USER: owner
+          POSTGRES_PASSWORD: ci-dummy
+          DB_APP_PASSWORD: ci-dummy-app
+          FIREBASE_PROJECT_ID: demo-ci
+          CORS_ALLOWED_ORIGIN: https://contacts.example.test
+          VITE_API_BASE_URL: https://api.example.test
+          VITE_FIREBASE_API_KEY: ci-dummy
+          VITE_FIREBASE_AUTH_DOMAIN: demo-ci.firebaseapp.com
+        run: |
+          docker compose -f 02_output/docker-compose.yml config -q
+          docker compose -f 02_output/docker-compose.yml -f 02_output/docker-compose.emulator.yml config -q
+          docker compose -f 02_output/docker-compose.prod.yml config -q
