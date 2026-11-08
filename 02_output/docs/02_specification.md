@@ -137,6 +137,8 @@ Format and status mapping: ADR-10. Codes are fixed here and appear in the OpenAP
 | Status | Codes |
 |---|---|
 | 400 | `request.malformed`, `request.unknown_property` |
+| 405 | `request.method_not_allowed` (also the answer to PUT, PATCH, DELETE on History, R-016-05) |
+| 415 | `request.unsupported_media_type` |
 | 401 | `auth.token_missing`, `auth.token_invalid` |
 | 403 | `auth.email_not_verified`, `auth.role_forbidden`, `https.required` |
 | 404 | `group.not_found`, `contact.not_found`, `tag.not_found`, `invitation.not_found`, `member.not_found`, `version.not_found`, `duplicate.not_found`, `route.not_found` |

@@ -13,6 +13,7 @@ Contact Groups is a multi-tenant web system. Users create Groups for a project o
 | backend | [`backend/`](backend/README.md) | Spring Boot REST service, PostgreSQL through Flyway migrations |
 | frontend | [`frontend/`](frontend/README.md) | React single-page application served by nginx |
 | emulator | `emulator/` | Firebase Authentication emulator image for development and tests only (never shipped) |
+| Compose | `docker-compose.yml`, `docker-compose.emulator.yml`, `docker-compose.prod.yml` | local stack, emulator overlay, production |
 | tools, scripts, seed, perf | `tools/`, `scripts/`, `seed/`, `perf/` | contract validation, helper scripts, local seed data, load script |
 
 ## Quick start (local)
@@ -20,9 +21,11 @@ Contact Groups is a multi-tenant web system. Users create Groups for a project o
 Prerequisites: Docker with Compose; for development JDK 21 and Node 22.20.0. Copy `01_input/01_project/00_setup/secrets.env.example` to `.env` at the repository root and fill the names (never commit it).
 
 ```bash
-docker compose -f 02_output/docker-compose.yml --profile emulator --env-file .env up --build
-./02_output/scripts/seed-local.sh      # fake users and Contacts, no real personal data
+docker compose -f 02_output/docker-compose.yml -f 02_output/docker-compose.emulator.yml --env-file .env up -d --build
+./02_output/scripts/seed-local.sh            # fake users in the emulator, fake Contacts (add --large for 10,000)
 ```
+
+Without the emulator overlay the stack talks to the real development Firebase project of `.env`. Stop and remove the data with `docker compose -f 02_output/docker-compose.yml -f 02_output/docker-compose.emulator.yml --env-file .env down -v`. The integration tests of the backend publish port 9099 for their own emulator, so stop the stack before `./mvnw verify`.
 
 The frontend is on `http://localhost:5173`, the backend on `http://localhost:8080` (`/health`), the Auth emulator on `localhost:9099`.
 
