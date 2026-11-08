@@ -15,7 +15,7 @@ Search, company filter, duplicate detection and unique names compare ignoring ca
 
 ## Decision
 
-Option 2. `Normaliser.normalise(String)` (package `domain`): trim, Unicode NFD, remove combining marks, map `đ`->`d`, `ß`->`ss`, lowercase with `Locale.ROOT`. The service writes `first_name_norm`, `last_name_norm`, `company_norm`, `email_norm` (lowercase only), `search_norm` (first name, last name, e-mail, company joined by a space) on every save. Search splits the normalised text into words and requires each word as `LIKE '%word%' ESCAPE '\'` against `search_norm`, with `%`, `_` and `\` escaped (R-008-06). Tag names, Attribute keys and Group names compare with `lower()` only (BR-05). Tests cover `Škerlj`, `Čosić`, `Đorđević`.
+Option 2. `Normaliser.normalise(String)` (package `domain`): trim, Unicode NFD, remove combining marks, map `đ`->`d`, `ß`->`ss`, lowercase with `Locale.ROOT`. The service writes `first_name_norm`, `last_name_norm`, `company_norm`, `email_norm` (lowercase only), `search_norm` (first name, last name, e-mail, company, city joined by a space) on every save, `tag.name_norm` and `attribute.value_norm` when a Tag or Attribute is written or renamed. The searched fields of US-008 are first name, last name, e-mail, company, city, Tag names and Attribute values; search splits the normalised text into words and requires each word to match in at least one of them as `LIKE '%word%' ESCAPE '\'` (`search_norm`, or an `EXISTS` over `tag.name_norm` / `attribute.value_norm`), with `%`, `_` and `\` escaped (R-008-06). Tag names, Attribute keys and Group names compare with `lower()` only (BR-05). Tests cover `Škerlj`, `Čosić`, `Đorđević`.
 
 ## Consequences
 
