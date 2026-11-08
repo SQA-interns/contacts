@@ -436,3 +436,14 @@
 - Human response: none
 - Resolution: pending review (option 1). This is the only AC/EX without a frozen test.
 - Overrides: none
+
+## D-40: US-001 frozen tests need the Group list, which the plan gives to US-002
+- Timestamp: 2026-11-08
+- Session: S5 /implement US-001
+- Class: open
+- Type: non-blocking
+- Trigger: DoD-S-01 asks every frozen test of US-001 to pass, but `Us001AccountAcceptanceIT` (AC-001-02, AC-001-03, AC-001-04, EX-001-09) calls `GET /groups` and expects 200 for a verified User and 403 `auth.email_not_verified` for `GET` and `POST /groups` otherwise, and `frontend/acceptance/us001-account.spec.ts` (AC-001-02, 04, 09, 10, EX-001-09) waits for the heading "Moje skupine" of the Group list. `docs/02_tasks.md` puts `GroupController` in T-05 and `GroupListPage` in T-06 (US-002), and the verified-e-mail check in T-07 (US-018, R-018-06); the story's own rule R-001-04 ("open no Group") is the same check.
+- Options: 1 (default) US-001 builds the smallest slice its tests need and leaves the rest to its tasks: the verified-e-mail check (403 `auth.email_not_verified` on every path under `/groups` and `/group-trash`, in the filter order of US-018 after the token check), `GET /groups` reading the Groups of the User with Role (no Invitation acceptance, no create), and a Group list page with its heading, list, loading, empty and error states (no create dialog). US-002 (T-05, T-06), US-014 (R-014-05) and US-018 (T-07) extend these files. 2 leave the nine frozen tests red until US-002 and mark US-001 done with DoD-S-01 open.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
