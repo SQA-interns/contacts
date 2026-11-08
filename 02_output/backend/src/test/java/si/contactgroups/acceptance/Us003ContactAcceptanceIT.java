@@ -38,7 +38,15 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
   @DisplayName("AC-003-01 a new Contact is stored with version 1 and shown")
   void ac_003_01_create_contact_version_1() {
     var created =
-        post("firstName", "Ana", "lastName", "Novak", "email", "ana@acme.com", "company", "Acme d.o.o.")
+        post(
+                "firstName",
+                "Ana",
+                "lastName",
+                "Novak",
+                "email",
+                "ana@acme.com",
+                "company",
+                "Acme d.o.o.")
             .expect(201)
             .json();
 
@@ -84,7 +92,8 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
   @Test
   @DisplayName("AC-003-05 changing the company to Beta d.o.o. gives version 2")
   void ac_003_05_edit_raises_version() {
-    var created = createContact(ana, acme, "firstName", "Ana", "lastName", "Novak", "company", "Acme d.o.o.");
+    var created =
+        createContact(ana, acme, "firstName", "Ana", "lastName", "Novak", "company", "Acme d.o.o.");
 
     var saved = edit(ana, acme, created.path("id").asText(), "company", "Beta d.o.o.");
 
@@ -96,10 +105,12 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
   }
 
   @Test
-  @DisplayName("AC-003-06 a save with a stale version is refused and the current Contact is returned")
+  @DisplayName(
+      "AC-003-06 a save with a stale version is refused and the current Contact is returned")
   void ac_003_06_stale_version_refused() {
     TestUser boris = member(acme, ana, "Boris Kos", "boris@acme.com", "EDITOR");
-    var created = createContact(ana, acme, "firstName", "Ana", "lastName", "Novak", "company", "Acme d.o.o.");
+    var created =
+        createContact(ana, acme, "firstName", "Ana", "lastName", "Novak", "company", "Acme d.o.o.");
     String id = created.path("id").asText();
     edit(ana, acme, id, "jobTitle", "Vodja");
     JsonNode anaSees = getContact(ana, acme, id);
@@ -107,7 +118,9 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
     assertThat(anaSees.path("version").asInt()).isEqualTo(2);
 
     save(boris, acme, borisSees, "city", "Maribor").expect(200);
-    var refused = save(ana, acme, anaSees, "company", "Beta d.o.o.").expectError(409, "contact.changed_by_someone_else");
+    var refused =
+        save(ana, acme, anaSees, "company", "Beta d.o.o.")
+            .expectError(409, "contact.changed_by_someone_else");
 
     JsonNode current = refused.json().path("current");
     assertThat(current.path("version").asInt()).isEqualTo(3);
@@ -123,7 +136,9 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
   void ac_003_07_viewer_cannot_create() {
     TestUser viola = member(acme, ana, "Viola Vidmar", "viola@acme.com", "VIEWER");
 
-    viola.post(acme.contacts(), contactBody("firstName", "Ana")).expectError(403, "auth.role_forbidden");
+    viola
+        .post(acme.contacts(), contactBody("firstName", "Ana"))
+        .expectError(403, "auth.role_forbidden");
 
     assertThat(total()).isZero();
   }
@@ -136,19 +151,32 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
         createContact(
             ana,
             acme,
-            "firstName", "Ana",
-            "lastName", "Novak",
-            "email", "ana@acme.com",
-            "phone", "040 123 456",
-            "company", "Acme d.o.o.",
-            "jobTitle", "Vodja",
-            "street", "Slovenska cesta 1",
-            "postalCode", "1000",
-            "city", "Ljubljana",
-            "country", "SI",
-            "notes", "Udeleženka",
-            "tags", Json.arr("udelezenec2025"),
-            "attributes", attrs("kompetenca", "spletnoProgramiranje"));
+            "firstName",
+            "Ana",
+            "lastName",
+            "Novak",
+            "email",
+            "ana@acme.com",
+            "phone",
+            "040 123 456",
+            "company",
+            "Acme d.o.o.",
+            "jobTitle",
+            "Vodja",
+            "street",
+            "Slovenska cesta 1",
+            "postalCode",
+            "1000",
+            "city",
+            "Ljubljana",
+            "country",
+            "SI",
+            "notes",
+            "Udeleženka",
+            "tags",
+            Json.arr("udelezenec2025"),
+            "attributes",
+            attrs("kompetenca", "spletnoProgramiranje"));
 
     JsonNode read = getContact(viola, acme, created.path("id").asText());
 
@@ -165,7 +193,8 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
     assertThat(read.path("notes").asText()).isEqualTo("Udeleženka");
     assertThat(Json.strings(read.path("tags"))).containsExactly("udelezenec2025");
     assertThat(Json.field(read.path("attributes"), "key")).containsExactly("kompetenca");
-    assertThat(Json.field(read.path("attributes"), "value")).containsExactly("spletnoProgramiranje");
+    assertThat(Json.field(read.path("attributes"), "value"))
+        .containsExactly("spletnoProgramiranje");
   }
 
   @Test
@@ -284,7 +313,8 @@ class Us003ContactAcceptanceIT extends AcceptanceTestBase {
   @Test
   @DisplayName("EX-003-10 the names Škerlj, Čeh and Žagar are stored unchanged")
   void ex_003_10_slovene_letters_unchanged() {
-    var created = post("firstName", "Čeh", "lastName", "Škerlj", "company", "Žagar").expect(201).json();
+    var created =
+        post("firstName", "Čeh", "lastName", "Škerlj", "company", "Žagar").expect(201).json();
 
     JsonNode read = getContact(ana, acme, created.path("id").asText());
     assertThat(read.path("firstName").asText()).isEqualTo("Čeh");
