@@ -51,6 +51,12 @@
       "haveAccount": "Že imate račun?",
       "emailInUse": "Ta e-poštni naslov je že registriran.",
       "resetPassword": "Ponastavi geslo"
+    },
+    "verify": {
+      "body": "Povezavo za potrditev smo poslali na {{email}}. Odprite jo, nato znova naložite to stran.",
+      "resend": "Pošlji znova",
+      "busy": "Pošiljanje …",
+      "resent": "Povezavo smo poslali znova."
     }
   },
   "groups": {

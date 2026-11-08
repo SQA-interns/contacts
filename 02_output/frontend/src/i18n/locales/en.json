@@ -51,6 +51,12 @@
       "haveAccount": "Already have an account?",
       "emailInUse": "This e-mail address is already registered.",
       "resetPassword": "Reset password"
+    },
+    "verify": {
+      "body": "We sent the confirmation link to {{email}}. Open it, then reload this page.",
+      "resend": "Send again",
+      "busy": "Sending …",
+      "resent": "We sent the link again."
     }
   },
   "groups": {
