@@ -46,7 +46,8 @@ class Us002GroupAcceptanceIT extends AcceptanceTestBase {
   }
 
   @Test
-  @DisplayName("AC-002-03 ACME is refused when Ana owns Acme: 'You already have a group with this name'")
+  @DisplayName(
+      "AC-002-03 ACME is refused when Ana owns Acme: 'You already have a group with this name'")
   void ac_002_03_same_name_other_case_refused() {
     TestUser ana = user("Ana Novak", "ana@acme.com");
     group(ana, "Acme");
@@ -66,7 +67,8 @@ class Us002GroupAcceptanceIT extends AcceptanceTestBase {
     Grp boriss = group(boris, "Acme");
 
     assertThat(Json.field(Json.MAPPER.valueToTree(groupsOf(ana)), "id")).containsExactly(anas.id());
-    assertThat(Json.field(Json.MAPPER.valueToTree(groupsOf(boris)), "id")).containsExactly(boriss.id());
+    assertThat(Json.field(Json.MAPPER.valueToTree(groupsOf(boris)), "id"))
+        .containsExactly(boriss.id());
     assertThat(anas.id()).isNotEqualTo(boriss.id());
   }
 
