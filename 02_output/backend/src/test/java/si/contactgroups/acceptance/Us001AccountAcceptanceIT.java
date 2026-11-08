@@ -58,7 +58,11 @@ class Us001AccountAcceptanceIT extends AcceptanceTestBase {
     Emulator.setValidSince(ana.uid(), now.minusSeconds(5 * 3600));
     String expired =
         Emulator.forgedToken(
-            Emulator.PROJECT_ID, ana.uid(), ana.email(), now.minusSeconds(3 * 3600), now.minusSeconds(2 * 3600));
+            Emulator.PROJECT_ID,
+            ana.uid(),
+            ana.email(),
+            now.minusSeconds(3 * 3600),
+            now.minusSeconds(2 * 3600));
 
     var answer = http.send("GET", "/groups", expired, null).expect(401);
 
