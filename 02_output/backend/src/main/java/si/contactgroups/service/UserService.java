@@ -20,8 +20,8 @@ public class UserService {
   }
 
   /**
-   * The User of a valid token, created on the first token with the e-mail in lowercase and the
-   * name of the profile, or the e-mail when the profile has no name (R-001-11, R-001-02).
+   * The User of a valid token, created on the first token with the e-mail in lowercase and the name
+   * of the profile, or the e-mail when the profile has no name (R-001-11, R-001-02).
    *
    * @throws EmailTakenException when another Firebase identifier holds the e-mail (D-18d)
    */

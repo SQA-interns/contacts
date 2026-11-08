@@ -20,14 +20,15 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import si.contactgroups.security.ErrorWriter;
 import si.contactgroups.security.FirebaseTokenFilter;
 import si.contactgroups.security.TokenVerifier;
+import si.contactgroups.service.UserService;
 
 /** Stateless bearer-token security: only the health check is public (SR-02, ADR-04, ADR-11). */
 @Configuration
 public class SecurityConfig {
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http, TokenVerifier verifier)
-      throws Exception {
+  public SecurityFilterChain securityFilterChain(
+      HttpSecurity http, TokenVerifier verifier, UserService users) throws Exception {
     http.csrf(AbstractHttpConfigurer::disable) // bearer token in a header, no cookie session
         .cors(Customizer.withDefaults())
         .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -35,7 +36,7 @@ public class SecurityConfig {
             a ->
                 a.requestMatchers("/health", "/health/**").permitAll().anyRequest().authenticated())
         .addFilterBefore(
-            new FirebaseTokenFilter(verifier), UsernamePasswordAuthenticationFilter.class)
+            new FirebaseTokenFilter(verifier, users), UsernamePasswordAuthenticationFilter.class)
         .exceptionHandling(
             e ->
                 e.authenticationEntryPoint(
