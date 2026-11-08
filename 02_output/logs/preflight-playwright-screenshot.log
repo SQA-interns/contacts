@@ -1,0 +1,18 @@
+chromium 141.0.7390.37 ok
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+browserType.launch: Timeout 180000ms exceeded.
+Call log:
+  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-mD7lS3 -juggler-pipe -silent
+  - <launched> pid=78750
+  - [pid=78750][err] *** You are running in headless mode.
+  - [pid=78750][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)
+  - [pid=78750][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=2.25) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+
+    at /private/tmp/claude-501/-Users-kyuhi--claude-spares-spare-X4nXdh/87ab3932-1de9-47a8-a9c1-6432d869cf70/scratchpad/pw/shot.mjs:4:21 {
+  name: 'TimeoutError'
+}
+
+Node.js v22.20.0

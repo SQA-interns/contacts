@@ -70,3 +70,38 @@
 - Human response: "Accept defaults" (2026-11-08, in chat) = option 1 and option 3 of D-04. This approves the plan; it does not do the installs, which only the human can do.
 - Resolution: Pending the human's actions. Decided: Node 22.20.0 is required (Node 26.11.1 is not approved); preflight accepts "the exact Maven and npm distributions resolve" for `./mvnw -v` and the `npx` checks, and /implement runs those checks in its first step. Still to do by the human: install JDK Temurin 21.0.8; install Node 22.20.0 (for example through `nvm` or `fnm`) and make it the Node used when `/preflight` runs; install gitleaks 8.28.0 (or pull `zricethezav/gitleaks:v8.28.0`); install the Playwright 1.56.1 browsers; create `.env` from `secrets.env.example` and fill the six keys; commit `.agents/` and `.claude/`; add a `.gitignore` containing `.env`.
 - Overrides: none
+
+## D-07: Critical and High findings in transitive Maven dependencies
+- Timestamp: 2026-11-08
+- Session: S1 /preflight
+- Class: block
+- Type: blocking
+- Trigger: `dependency-check-maven` 12.1.6 (NVD data without an API key, D-08) on the 19 Maven pins with D-02 applied (Spring Boot 3.5.16, pgjdbc 42.7.14, Spring Security 6.5.11, Testcontainers 1.21.4) and the Boot 3.5.16 BOM: 129 libraries, 25 Critical, 47 High, 81 Medium, 6 Low (`out/logs/preflight-dependency-check-report.json`). By library: Tomcat 10.1.55 (8 Critical, 6 High; fixed in 10.1.58, 10.1.61 exists), Netty 4.1.135 (2 Critical, 15 High; fixed in 4.1.137, 4.1.140 exists), HttpClient5 5.5.2 (1 Critical) and HttpCore5 5.3.6 (2 High) (fixed in 5.6.4 and 5.4.2+; 5.6.5 and 5.4.4 exist), Spring Framework 6.2.19 `spring-core` and `spring-web` (6 Critical, 6 High each), Spring Security 6.5.11 `core` and `web` (1 Critical, 2 High each), OpenTelemetry alpha 1.35/1.37 (5 High) and protobuf-java 3.25.5 (1 High) (both through `firebase-admin`), Swagger UI 5.28.1 bundle (2 High, DOMPurify, through springdoc). Matching is by CPE and can include false positives; per `severity-scale.md` the tool's levels are used as reported.
+  Test of overrides (explicit `dependencyManagement` versions, `out/logs/preflight-dependency-check-report-overrides.json`): Tomcat 10.1.61, `netty-bom` 4.1.140.Final, HttpClient5 5.6.5 and HttpCore5 5.4.4 remove all their findings. What remains: Spring Framework and Spring Security (the 6.x lines have no fixed release on Maven Central: the newest are 6.2.19 and 6.5.11, the advisories name 6.2.20 and 6.5.12; fixed releases exist in the 7.x line: Spring Framework 7.0.9 and 7.0.10, Spring Security 7.0.8, with Spring Boot 4.0.9 and springdoc 3.2.0), OpenTelemetry, protobuf and Swagger UI.
+  No row in "Pre-approved findings" matches. I did not analyse which of the Spring CVEs are reachable in this product, so I cannot offer written evidence to lower them.
+- Options: 1. Apply the four overrides above and move the backend to Spring Boot 4.0.9 (Spring Framework 7, Spring Security 7, springdoc 3.2.0; a different major version, so your approval replaces the Spring Boot, Spring Security, springdoc and Boot-starter pins); the next /preflight re-resolves and re-scans the new set, including the Firebase and Swagger findings, and anything left becomes a new decision (proposed default). 2. Apply the four overrides, stay on Spring Boot 3.5.16 and accept the Spring Framework and Spring Security findings as lowered; the run would continue with 12 Critical and High findings per library in the shipped web layer and needs per-CVE evidence from you. 3. Apply the four overrides, stay on 3.5.16 and wait for Spring Framework 6.2.20 and Spring Security 6.5.12 (not yet published; the date is unknown); the run stays blocked until then. 4. Other.
+- Human response: none
+- Resolution: pending (blocking)
+- Overrides: tech-stack.md Maven entries named in the Options, once answered
+
+## D-08: Dependency-scan analysers disabled
+- Timestamp: 2026-11-08
+- Session: S1 /preflight
+- Class: allow
+- Type: non-blocking
+- Trigger: `dependency-check-maven` stopped with "dotnet 8.0 runtime or sdk" missing. Disabled: `assemblyAnalyzerEnabled`, `nugetconfAnalyzerEnabled`, `nuspecAnalyzerEnabled` (.NET only; the project has no .NET code) and `ossindexAnalyzerEnabled` (needs credentials that `secrets.env.example` does not list). The NVD analyser ran without an API key (slow, about 30 minutes for the first download, then cached). At least one analyser completed. `general/rules/decisions.md` ("a scanner analyser disabled for lack of credentials").
+- Options: 1. Continue with these analysers disabled (proposed default). 2. Provide an NVD API key to speed up later runs (not required).
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: none
+
+## D-09: Host prerequisites installed at the human's request (follow-up to D-06)
+- Timestamp: 2026-11-08
+- Session: S1 /preflight
+- Class: allow
+- Type: approval
+- Trigger: the human wrote "go ahead do these" after D-06. `AGENTS.md` ("Never") forbids installing software on the host without the human; this record is that approval, limited to the items of D-06. Done, each download checked against the publisher's SHA-256: Temurin JDK 21.0.8+9 in `~/Library/Java/JavaVirtualMachines` (found by `java_home`); Node 22.20.0 (npm 10.9.3) in `~/.local/node-22.20.0` with links `node`, `npm`, `npx` in `~/.local/bin`, which comes first on `PATH` and so replaces Node 26.11.1 for new shells (remove those three links to undo); gitleaks 8.28.0 in `~/.local/bin`; Playwright 1.56.1 browsers (Chromium 141, Firefox, WebKit 26) in `~/Library/Caches/ms-playwright`. Maven 3.9.11 and the Playwright package live only in the session scratch folder, not on the host. `.gitignore` (`.env`), `.env` with the three PostgreSQL values (generated, never displayed) and the commit of `.agents/` and `.claude/` were done.
+- Options: 1. Keep as installed (proposed default). 2. Undo.
+- Human response: "go ahead do these" (2026-11-08, in chat).
+- Resolution: 1. Still open from D-06: `FIREBASE_PROJECT_ID`, `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN` in `.env` (only the human has these values); Firefox crashed on launch inside the session's sandbox ("Operation not permitted"), so only Chromium and WebKit are verified.
+- Overrides: none

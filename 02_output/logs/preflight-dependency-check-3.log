@@ -1,0 +1,136 @@
+[INFO] Scanning for projects...
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.140.Final/netty-bom-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.140.Final/netty-bom-4.1.140.Final.pom (15 kB at 52 kB/s)
+[INFO] 
+[INFO] --------------------------< x:preflight-scan >--------------------------
+[INFO] Building preflight-scan 0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.61/tomcat-embed-core-10.1.61.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.61/tomcat-embed-core-10.1.61.pom (1.7 kB at 26 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.61/tomcat-embed-el-10.1.61.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.61/tomcat-embed-el-10.1.61.pom (1.5 kB at 22 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.61/tomcat-embed-websocket-10.1.61.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.61/tomcat-embed-websocket-10.1.61.pom (1.7 kB at 28 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.140.Final/netty-codec-http-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.140.Final/netty-codec-http-4.1.140.Final.pom (5.0 kB at 78 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.140.Final/netty-parent-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.140.Final/netty-parent-4.1.140.Final.pom (110 kB at 1.5 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.140.Final/netty-common-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.140.Final/netty-common-4.1.140.Final.pom (10 kB at 162 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.140.Final/netty-buffer-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.140.Final/netty-buffer-4.1.140.Final.pom (2.2 kB at 36 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.140.Final/netty-transport-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.140.Final/netty-transport-4.1.140.Final.pom (2.9 kB at 48 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.140.Final/netty-resolver-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.140.Final/netty-resolver-4.1.140.Final.pom (2.2 kB at 37 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.140.Final/netty-codec-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.140.Final/netty-codec-4.1.140.Final.pom (6.1 kB at 97 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.140.Final/netty-handler-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.140.Final/netty-handler-4.1.140.Final.pom (5.4 kB at 117 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.140.Final/netty-transport-native-unix-common-4.1.140.Final.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.140.Final/netty-transport-native-unix-common-4.1.140.Final.pom (34 kB at 544 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.6.5/httpclient5-5.6.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.6.5/httpclient5-5.6.5.pom (6.7 kB at 217 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.6.5/httpclient5-parent-5.6.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.6.5/httpclient5-parent-5.6.5.pom (20 kB at 581 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.4.4/httpcore5-5.4.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.4.4/httpcore5-5.4.4.pom (3.9 kB at 107 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.4.4/httpcore5-parent-5.4.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.4.4/httpcore5-parent-5.4.4.pom (15 kB at 495 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.4.4/httpcore5-h2-5.4.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.4.4/httpcore5-h2-5.4.4.pom (3.6 kB at 110 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.61/tomcat-embed-core-10.1.61.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.61/tomcat-embed-core-10.1.61.jar (3.7 MB at 14 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.61/tomcat-embed-websocket-10.1.61.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.61/tomcat-embed-el-10.1.61.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.140.Final/netty-codec-http-4.1.140.Final.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.140.Final/netty-common-4.1.140.Final.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.140.Final/netty-buffer-4.1.140.Final.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.140.Final/netty-codec-http-4.1.140.Final.jar (700 kB at 8.5 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.140.Final/netty-codec-4.1.140.Final.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.61/tomcat-embed-websocket-10.1.61.jar (290 kB at 1.9 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.140.Final/netty-handler-4.1.140.Final.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.140.Final/netty-codec-4.1.140.Final.jar (364 kB at 2.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.140.Final/netty-resolver-4.1.140.Final.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.140.Final/netty-buffer-4.1.140.Final.jar (366 kB at 2.2 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.140.Final/netty-transport-native-unix-common-4.1.140.Final.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.61/tomcat-embed-el-10.1.61.jar (266 kB at 1.6 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.140.Final/netty-transport-4.1.140.Final.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.140.Final/netty-common-4.1.140.Final.jar (741 kB at 3.9 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.6.5/httpclient5-5.6.5.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.140.Final/netty-resolver-4.1.140.Final.jar (38 kB at 172 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.4.4/httpcore5-5.4.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.140.Final/netty-transport-native-unix-common-4.1.140.Final.jar (45 kB at 190 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.4.4/httpcore5-h2-5.4.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.140.Final/netty-handler-4.1.140.Final.jar (595 kB at 2.4 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.6.5/httpclient5-5.6.5.jar (1.1 MB at 4.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.4.4/httpcore5-5.4.4.jar (955 kB at 3.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.140.Final/netty-transport-4.1.140.Final.jar (524 kB at 2.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.4.4/httpcore5-h2-5.4.4.jar (264 kB at 945 kB/s)
+[INFO] 
+[INFO] --- dependency-check:12.1.6:check (default-cli) @ preflight-scan ---
+[INFO] 
+
+Dependency-Check is an open source tool performing a best effort analysis of 3rd party dependencies; false positives and false negatives may exist in the analysis performed by the tool. Use of the tool and the reporting provided constitutes acceptance for use in an AS IS condition, and there are NO warranties, implied or otherwise, with regard to the analysis or its use. Any use of the tool and the reporting provided is at the user's risk. In no event shall the copyright holder or OWASP be held liable for any damages whatsoever arising out of or in connection with the use of this tool, the analysis performed, or the resulting report.
+
+
+   About ODC: https://dependency-check.github.io/DependencyCheck/general/internals.html
+   False Positives: https://dependency-check.github.io/DependencyCheck/general/suppression.html
+
+💖 Sponsor: https://github.com/sponsors/jeremylong
+
+
+[INFO] Analysis Started
+[INFO] Finished Archive Analyzer (0 seconds)
+[INFO] Finished File Name Analyzer (0 seconds)
+[INFO] Finished Jar Analyzer (0 seconds)
+[INFO] Finished Dependency Merging Analyzer (0 seconds)
+[INFO] Finished Hint Analyzer (0 seconds)
+[INFO] Finished Version Filter Analyzer (0 seconds)
+Nov 08, 2026 3:28:04 AM org.apache.lucene.store.MemorySegmentIndexInputProvider <init>
+INFO: Using MemorySegmentIndexInput and native madvise support with Java 21 or later; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+Nov 08, 2026 3:28:04 AM org.apache.lucene.internal.vectorization.VectorizationProvider lookup
+WARNING: Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+[INFO] Created CPE Index (1 seconds)
+[INFO] Finished CPE Analyzer (3 seconds)
+[INFO] Finished False Positive Analyzer (0 seconds)
+[INFO] Finished NVD CVE Analyzer (0 seconds)
+[INFO] Finished RetireJS Analyzer (3 seconds)
+[INFO] Finished Vulnerability Suppression Analyzer (0 seconds)
+[INFO] Finished Known Exploited Vulnerability Analyzer (0 seconds)
+[INFO] Finished Dependency Bundling Analyzer (0 seconds)
+[INFO] Finished Unused Suppression Rule Analyzer (0 seconds)
+[INFO] Analysis Complete (9 seconds)
+[INFO] Writing JSON report to: /private/tmp/claude-501/-Users-kyuhi--claude-spares-spare-X4nXdh/87ab3932-1de9-47a8-a9c1-6432d869cf70/scratchpad/mvn/target/dependency-check-report.json
+[WARNING] 
+
+One or more dependencies were identified with known vulnerabilities in preflight-scan:
+
+commons-lang3-3.17.0.jar (pkg:maven/org.apache.commons/commons-lang3@3.17.0, cpe:2.3:a:apache:commons_lang:3.17.0:*:*:*:*:*:*:*) : CVE-2025-48924
+grpc-opentelemetry-1.70.0.jar (pkg:maven/io.grpc/grpc-opentelemetry@1.70.0, cpe:2.3:a:grpc:grpc:1.70.0:*:*:*:*:*:*:*, cpe:2.3:a:opentelemetry:opentelemetry:1.70.0:*:*:*:*:*:*:*) : CVE-2026-54285
+jackson-databind-2.21.4.jar (pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.4, cpe:2.3:a:fasterxml:jackson-core:2.21.4:*:*:*:*:*:*:*, cpe:2.3:a:fasterxml:jackson-databind:2.21.4:*:*:*:*:*:*:*, cpe:2.3:a:fasterxml:jackson-modules-java8:2.21.4:*:*:*:*:*:*:*) : CVE-2026-54515
+log4j-api-2.24.3.jar (pkg:maven/org.apache.logging.log4j/log4j-api@2.24.3, cpe:2.3:a:apache:log4j:2.24.3:*:*:*:*:*:*:*) : CVE-2026-34479, CVE-2026-34477, CVE-2026-49844
+opentelemetry-api-1.49.0.jar (pkg:maven/io.opentelemetry/opentelemetry-api@1.49.0, cpe:2.3:a:opentelemetry:opentelemetry:1.49.0:*:*:*:*:*:*:*) : CVE-2026-54285
+opentelemetry-extension-incubator-1.35.0-alpha.jar (pkg:maven/io.opentelemetry/opentelemetry-extension-incubator@1.35.0-alpha, cpe:2.3:a:opentelemetry:opentelemetry:1.35.0:alpha:*:*:*:*:*:*) : CVE-2026-39883, CVE-2026-24051, CVE-2026-39882, CVE-2026-41178, CVE-2026-54285
+opentelemetry-gcp-resources-1.37.0-alpha.jar (pkg:maven/io.opentelemetry.contrib/opentelemetry-gcp-resources@1.37.0-alpha, cpe:2.3:a:opentelemetry:opentelemetry:1.37.0:alpha:*:*:*:*:*:*) : CVE-2026-29181, CVE-2026-39883, CVE-2026-24051, CVE-2026-39882, CVE-2026-41178, CVE-2026-54285
+opentelemetry-grpc-1.6-2.1.0-alpha.jar (pkg:maven/io.opentelemetry.instrumentation/opentelemetry-grpc-1.6@2.1.0-alpha, cpe:2.3:a:opentelemetry:opentelemetry:2.1.0:alpha:*:*:*:*:*:*) : CVE-2026-54285
+opentelemetry-instrumentation-api-2.1.0.jar (pkg:maven/io.opentelemetry.instrumentation/opentelemetry-instrumentation-api@2.1.0, cpe:2.3:a:opentelemetry:opentelemetry:2.1.0:*:*:*:*:*:*:*) : CVE-2026-54285
+protobuf-java-3.25.5.jar (pkg:maven/com.google.protobuf/protobuf-java@3.25.5, cpe:2.3:a:google:protobuf:3.25.5:*:*:*:*:*:*:*, cpe:2.3:a:google:protobuf-java:3.25.5:*:*:*:*:*:*:*, cpe:2.3:a:protobuf:protobuf:3.25.5:*:*:*:*:*:*:*) : CVE-2026-0994
+spring-core-6.2.19.jar (pkg:maven/org.springframework/spring-core@6.2.19, cpe:2.3:a:pivotal_software:spring_framework:6.2.19:*:*:*:*:*:*:*, cpe:2.3:a:springsource:spring_framework:6.2.19:*:*:*:*:*:*:*, cpe:2.3:a:vmware:spring_framework:6.2.19:*:*:*:*:*:*:*) : CVE-2026-47884, CVE-2026-47890, CVE-2026-47891, CVE-2026-47892, CVE-2026-59313, CVE-2026-59283, CVE-2026-47885, CVE-2026-47886, CVE-2026-47888, CVE-2026-47889, CVE-2026-47893, CVE-2026-59282, CVE-2026-47883, CVE-2026-47887, CVE-2026-59281, CVE-2026-59280, CVE-2026-59314
+spring-security-core-6.5.11.jar (pkg:maven/org.springframework.security/spring-security-core@6.5.11, cpe:2.3:a:pivotal_software:spring_security:6.5.11:*:*:*:*:*:*:*, cpe:2.3:a:vmware:spring_security:6.5.11:*:*:*:*:*:*:*) : CVE-2026-59270, CVE-2026-41707, CVE-2026-47841, CVE-2026-47842, CVE-2026-59276
+spring-security-web-6.5.11.jar (pkg:maven/org.springframework.security/spring-security-web@6.5.11, cpe:2.3:a:pivotal_software:spring_security:6.5.11:*:*:*:*:*:*:*, cpe:2.3:a:vmware:spring_security:6.5.11:*:*:*:*:*:*:*, cpe:2.3:a:web_project:web:6.5.11:*:*:*:*:*:*:*) : CVE-2026-59270, CVE-2026-41707, CVE-2026-47841, CVE-2026-47842, CVE-2026-59276
+spring-web-6.2.19.jar (pkg:maven/org.springframework/spring-web@6.2.19, cpe:2.3:a:pivotal_software:spring_framework:6.2.19:*:*:*:*:*:*:*, cpe:2.3:a:springsource:spring_framework:6.2.19:*:*:*:*:*:*:*, cpe:2.3:a:vmware:spring_framework:6.2.19:*:*:*:*:*:*:*, cpe:2.3:a:web_project:web:6.2.19:*:*:*:*:*:*:*) : CVE-2026-47884, CVE-2026-47890, CVE-2026-47891, CVE-2026-47892, CVE-2026-59313, CVE-2026-59283, CVE-2026-47885, CVE-2026-47886, CVE-2026-47888, CVE-2026-47889, CVE-2026-47893, CVE-2026-59282, CVE-2026-47883, CVE-2026-47887, CVE-2026-59281, CVE-2026-59280, CVE-2026-59314
+swagger-ui-5.28.1.jar: swagger-ui-bundle.js (pkg:javascript/DOMPurify@3.2.4) : CVE-2026-116803, CVE-2026-49978, CVE-2026-49458, CVE-2026-49459, CVE-2026-41240, CVE-2026-0540, CVE-2026-65902, CVE-2026-65914, CVE-2025-15599, CVE-2026-65898, CVE-2026-65899, CVE-2026-65900, CVE-2026-65901, CVE-2026-65903, CVE-2026-65912, CVE-2026-65913, CVE-2026-66010, CVE-2026-41238, CVE-2026-41239, CVE-2026-75838, CVE-2026-109345, CVE-2026-116802
+swagger-ui-5.28.1.jar: swagger-ui-es-bundle.js (pkg:javascript/DOMPurify@3.2.4) : CVE-2026-116803, CVE-2026-49978, CVE-2026-49458, CVE-2026-49459, CVE-2026-41240, CVE-2026-0540, CVE-2026-65902, CVE-2026-65914, CVE-2025-15599, CVE-2026-65898, CVE-2026-65899, CVE-2026-65900, CVE-2026-65901, CVE-2026-65903, CVE-2026-65912, CVE-2026-65913, CVE-2026-66010, CVE-2026-41238, CVE-2026-41239, CVE-2026-75838, CVE-2026-109345, CVE-2026-116802
+
+
+See the dependency-check report for more details.
+
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.812 s
+[INFO] Finished at: 2026-11-08T03:28:12+01:00
+[INFO] ------------------------------------------------------------------------
