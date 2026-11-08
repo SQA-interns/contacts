@@ -13,6 +13,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.contactgroups.error.ApiError;
 import si.contactgroups.service.GroupNameTakenException;
+import si.contactgroups.service.GroupNotFoundException;
+import si.contactgroups.service.RoleForbiddenException;
 import si.contactgroups.service.ValidationException;
 
 /**
@@ -46,6 +48,18 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> malformed() {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
         .body(new ApiError("request.malformed", "Malformed request"));
+  }
+
+  @ExceptionHandler(GroupNotFoundException.class)
+  public ResponseEntity<ApiError> groupNotFound(GroupNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ApiError("group.not_found", e.getMessage()));
+  }
+
+  @ExceptionHandler(RoleForbiddenException.class)
+  public ResponseEntity<ApiError> roleForbidden(RoleForbiddenException e) {
+    return ResponseEntity.status(HttpStatus.FORBIDDEN)
+        .body(new ApiError("auth.role_forbidden", e.getMessage()));
   }
 
   @ExceptionHandler(GroupNameTakenException.class)
