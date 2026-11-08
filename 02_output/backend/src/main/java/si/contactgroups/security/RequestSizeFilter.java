@@ -67,7 +67,7 @@ public class RequestSizeFilter extends OncePerRequestFilter {
   private final class CountingStream extends ServletInputStream {
 
     private final ServletInputStream source;
-    private long read;
+    private long bytesRead;
 
     CountingStream(ServletInputStream source) {
       this.source = source;
@@ -92,8 +92,8 @@ public class RequestSizeFilter extends OncePerRequestFilter {
     }
 
     private void count(int bytes) throws IOException {
-      read += bytes;
-      if (read > maxBytes) {
+      bytesRead += bytes;
+      if (bytesRead > maxBytes) {
         throw new RequestTooLargeException();
       }
     }
