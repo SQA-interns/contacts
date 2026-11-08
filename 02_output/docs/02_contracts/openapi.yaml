@@ -778,3 +778,176 @@ paths:
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/TooManyRequests' }
         '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/contacts/{contactId}/history:
+    get:
+      operationId: getContactHistory
+      tags: [history]
+      summary: History of a Contact, newest first (R-016-03).
+      x-required-action: READ_HISTORY
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+        - { $ref: '#/components/parameters/PageParam' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/HistoryPage' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/activity:
+    get:
+      operationId: getGroupActivity
+      tags: [history]
+      summary: Group activity list with filters (US-017).
+      x-required-action: READ_HISTORY
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/PageParam' }
+        - { name: userId, in: query, schema: { type: string, format: uuid } }
+        - { name: action, in: query, schema: { $ref: '#/components/schemas/HistoryAction' } }
+        - { name: from, in: query, schema: { type: string, format: date }, description: 'First calendar day in Europe/Ljubljana' }
+        - { name: to, in: query, schema: { type: string, format: date }, description: 'Last calendar day in Europe/Ljubljana' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/HistoryPage' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/exports:
+    post:
+      operationId: exportContacts
+      tags: [export]
+      summary: Excel file of the Selection (at most 10,000 Contacts; US-011).
+      x-required-action: EXPORT
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ExportRequest' } } } }
+      responses:
+        '200': { description: xlsx file, content: { application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: { schema: { type: string, format: binary } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/contacts/{contactId}/versions:
+    get:
+      operationId: listVersions
+      tags: [versions]
+      summary: Versions of a Contact, newest first (R-022-02).
+      x-required-action: READ_VERSIONS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/VersionSummaryList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/contacts/{contactId}/versions/{number}:
+    get:
+      operationId: getVersion
+      tags: [versions]
+      summary: One earlier Version (R-022-03).
+      x-required-action: READ_VERSIONS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+        - { $ref: '#/components/parameters/VersionNumber' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/VersionDetail' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/contacts/{contactId}/versions/{number}/compare:
+    get:
+      operationId: compareVersion
+      tags: [versions]
+      summary: Differences between a Version and the live Contact (R-022-04).
+      x-required-action: READ_VERSIONS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+        - { $ref: '#/components/parameters/VersionNumber' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/VersionComparison' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/contacts/{contactId}/versions/{number}/restore:
+    post:
+      operationId: restoreVersion
+      tags: [versions]
+      summary: Save the content of a Version as a new Version (US-023).
+      x-required-action: RESTORE_VERSION
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+        - { $ref: '#/components/parameters/VersionNumber' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/VersionRestoreRequest' } } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Contact' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/duplicates:
+    get:
+      operationId: findDuplicates
+      tags: [duplicates]
+      summary: Duplicate sets of the Group; changes nothing (US-024).
+      x-required-action: FIND_DUPLICATES
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/DuplicateSetList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/duplicates/dismissals:
+    post:
+      operationId: dismissDuplicate
+      tags: [duplicates]
+      summary: Mark a Duplicate set as "not a duplicate" (US-025).
+      x-required-action: DISMISS_DUPLICATE
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/DuplicateDismissal' } } } }
+      responses:
+        '204': { description: Dismissed }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/merges:
+    post:
+      operationId: mergeContacts
+      tags: [duplicates]
+      summary: Merge Contacts into the Survivor; the others go to Trash (US-026).
+      x-required-action: MERGE_CONTACTS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/MergeRequest' } } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Contact' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
