@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -268,5 +269,169 @@ class Us026MergeAcceptanceIT extends AcceptanceTestBase {
         .expectError(403, "auth.role_forbidden");
 
     assertThat(trashIds()).isEmpty();
+  }
+
+  @Test
+  @DisplayName("EX-026-01 three Contacts merged: one Survivor, two in Trash, one History entry")
+  void ex_026_01_three_contacts() {
+    String a = contact("firstName", "Ana", "email", "ana.n@acme.com");
+    String b = contact("firstName", "Anica", "email", "ana.n@acme.com");
+    String c = contact("firstName", "Anja", "email", "ana.n@acme.com");
+
+    merge(
+            boris,
+            a,
+            List.of(a, b, c),
+            Json.obj("firstName", "Ana", "email", "ana.n@acme.com"),
+            List.of())
+        .expect(200);
+
+    assertThat(Json.field(contactPage(ana, acme, "").path("items"), "id")).containsExactly(a);
+    assertThat(trashIds()).containsExactlyInAnyOrder(b, c);
+    assertThat(activity(ana, acme, "action=CONTACTS_MERGED")).hasSize(1);
+  }
+
+  @Test
+  @DisplayName("EX-026-04 combined Tags over 50 refuse the merge with the limit")
+  void ex_026_04_tag_limit() {
+    List<String> tagsA = new ArrayList<>();
+    List<String> tagsB = new ArrayList<>();
+    for (int i = 1; i <= 30; i++) {
+      tagsA.add("a" + i);
+      tagsB.add("b" + i);
+    }
+    String a = contact("firstName", "Ana", "email", "ana.n@acme.com", "tags", tagsA);
+    String b = contact("firstName", "Anica", "email", "ana.n@acme.com", "tags", tagsB);
+
+    Resp answer =
+        merge(
+                boris,
+                a,
+                List.of(a, b),
+                Json.obj("firstName", "Ana", "email", "ana.n@acme.com"),
+                List.of())
+            .expect(422);
+
+    assertThat(answer.errorCodes()).contains("validation.tag_limit");
+    assertThat(trashIds()).isEmpty();
+  }
+
+  @Test
+  @DisplayName("EX-026-05 combined Attributes over 50 pairs refuse the merge with the limit")
+  void ex_026_05_attribute_limit() {
+    List<JsonNode> attrsA = new ArrayList<>();
+    List<JsonNode> attrsB = new ArrayList<>();
+    for (int i = 1; i <= 30; i++) {
+      attrsA.add(Json.obj("key", "a" + i, "value", "v"));
+      attrsB.add(Json.obj("key", "b" + i, "value", "v"));
+    }
+    String a = contact("firstName", "Ana", "email", "ana.n@acme.com", "attributes", attrsA);
+    String b = contact("firstName", "Anica", "email", "ana.n@acme.com", "attributes", attrsB);
+    List<JsonNode> all = new ArrayList<>(attrsA);
+    all.addAll(attrsB);
+
+    Resp answer =
+        merge(boris, a, List.of(a, b), Json.obj("firstName", "Ana", "email", "ana.n@acme.com"), all)
+            .expect(422);
+
+    assertThat(answer.errorCodes()).contains("validation.attribute_limit");
+    assertThat(trashIds()).isEmpty();
+  }
+
+  @Test
+  @DisplayName("EX-026-06 a Contact merged with itself is refused")
+  void ex_026_06_same_contact_twice() {
+    String a = contact("firstName", "Ana", "email", "ana.n@acme.com");
+
+    Resp answer =
+        merge(
+            boris,
+            a,
+            List.of(a, a),
+            Json.obj("firstName", "Ana", "email", "ana.n@acme.com"),
+            List.of());
+
+    assertThat(answer.status()).isIn(400, 422);
+    assertThat(getContact(ana, acme, a).path("version").asInt()).isEqualTo(1);
+    assertThat(trashIds()).isEmpty();
+  }
+
+  @Test
+  @DisplayName("EX-026-07 a merge with a Contact that is in Trash is refused")
+  void ex_026_07_contact_in_trash() {
+    String a = contact("firstName", "Ana", "email", "ana.n@acme.com");
+    String b = contact("firstName", "Anica", "email", "ana.n@acme.com");
+    ObjectNode opened =
+        request(
+            ana,
+            a,
+            List.of(a, b),
+            Json.obj("firstName", "Ana", "email", "ana.n@acme.com"),
+            List.of());
+    moveToTrash(boris, acme, b);
+
+    Resp answer = ana.post(acme.merges(), opened);
+
+    assertThat(answer.status()).isEqualTo(409);
+    assertThat(getContact(ana, acme, a).path("version").asInt()).isEqualTo(1);
+  }
+
+  @Test
+  @DisplayName("EX-026-08 the keys Kompetenca and kompetenca are one key; one value is kept")
+  void ex_026_08_keys_ignoring_case() {
+    String a =
+        contact(
+            "firstName",
+            "Ana",
+            "email",
+            "ana.n@acme.com",
+            "attributes",
+            attrs("Kompetenca", "java"));
+    String b =
+        contact(
+            "firstName",
+            "Anica",
+            "email",
+            "ana.n@acme.com",
+            "attributes",
+            attrs("kompetenca", "sql"));
+
+    merge(
+            boris,
+            a,
+            List.of(a, b),
+            Json.obj("firstName", "Ana", "email", "ana.n@acme.com"),
+            attrs("Kompetenca", "sql"))
+        .expect(200);
+
+    JsonNode attributes = getContact(ana, acme, a).path("attributes");
+    assertThat(attributes).hasSize(1);
+    assertThat(attributes.get(0).path("key").asText()).isEqualToIgnoringCase("kompetenca");
+    assertThat(attributes.get(0).path("value").asText()).isEqualTo("sql");
+  }
+
+  @Test
+  @DisplayName("EX-026-09 notes of A and B joined beyond 5,000 characters refuse the merge")
+  void ex_026_09_joined_notes_refused() {
+    String a = contact("firstName", "Ana", "email", "ana.n@acme.com", "notes", chars(5000, 'a'));
+    String b = contact("firstName", "Anica", "email", "ana.n@acme.com", "notes", chars(5000, 'b'));
+
+    Resp answer =
+        merge(
+            boris,
+            a,
+            List.of(a, b),
+            Json.obj(
+                "firstName",
+                "Ana",
+                "email",
+                "ana.n@acme.com",
+                "notes",
+                chars(5000, 'a') + chars(5000, 'b')),
+            List.of());
+
+    assertThat(answer.status()).isEqualTo(422);
+    assertThat(trashIds()).isEmpty();
+    assertThat(getContact(ana, acme, a).path("notes").asText()).isEqualTo(chars(5000, 'a'));
   }
 }
