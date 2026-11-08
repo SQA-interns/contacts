@@ -4,6 +4,7 @@ import { RegisterPage } from '@/features/auth/RegisterPage';
 import { ResetPasswordPage } from '@/features/auth/ResetPasswordPage';
 import { SignInPage } from '@/features/auth/SignInPage';
 import { VerifyEmailPage } from '@/features/auth/VerifyEmailPage';
+import { ContactPage } from '@/features/contacts/ContactPage';
 import { NewContactPage } from '@/features/contacts/NewContactPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
 import { NotFoundPage } from '@/features/home/NotFoundPage';
@@ -25,6 +26,7 @@ export const routes: RouteObject[] = [
         children: [
           { path: 'groups', element: <GroupListPage /> },
           { path: 'groups/:groupId/contacts/new', element: <NewContactPage /> },
+          { path: 'groups/:groupId/contacts/:contactId', element: <ContactPage /> },
         ],
       },
       { path: '*', element: <NotFoundPage /> },
