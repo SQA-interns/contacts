@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contact-groups.example/contracts/firebase-id-token.schema.json",
+  "title": "Firebase ID token claims used by the backend",
+  "description": "Claims of a verified Firebase ID token (Admin SDK `verifyIdToken`, ADR-04). The backend reads only uid (`sub`), `email`, `email_verified` and `name`. It never reads a role or group claim: a token that carries one is accepted and the claim is ignored, because the Role comes from the database on every request (SR-03). Other claims are allowed and ignored.",
+  "type": "object",
+  "required": ["iss", "aud", "sub", "iat", "exp", "email", "email_verified"],
+  "properties": {
+    "iss": { "type": "string", "pattern": "^https://securetoken\\.google\\.com/.+$|^https://securetoken\\.google\\.com$" },
+    "aud": { "type": "string", "minLength": 1, "description": "Equals FIREBASE_PROJECT_ID." },
+    "sub": { "type": "string", "minLength": 1, "maxLength": 128, "description": "Firebase UID; stored as app_user.firebase_uid." },
+    "iat": { "type": "integer", "minimum": 0 },
+    "exp": { "type": "integer", "minimum": 0 },
+    "email": { "type": "string", "format": "email", "maxLength": 255 },
+    "email_verified": { "type": "boolean", "description": "false: every Group endpoint answers 403 (R-018-06)." },
+    "name": { "type": "string", "maxLength": 100, "description": "Display name; the e-mail is used when absent (R-001-02)." },
+    "firebase": {
+      "type": "object",
+      "properties": { "sign_in_provider": { "enum": ["password", "google.com"] } }
+    }
+  },
+  "examples": [
+    { "iss": "https://securetoken.google.com/demo-contact-groups", "aud": "demo-contact-groups", "sub": "uid-ana", "iat": 1794000000, "exp": 1794003600, "email": "ana@example.com", "email_verified": true, "name": "Ana Novak", "firebase": { "sign_in_provider": "password" } },
+    { "iss": "https://securetoken.google.com/demo-contact-groups", "aud": "demo-contact-groups", "sub": "uid-boris", "iat": 1794000000, "exp": 1794003600, "email": "boris@example.com", "email_verified": false, "role": "OWNER" }
+  ],
+  "x-invalid-examples": [
+    { "iss": "https://securetoken.google.com/demo-contact-groups", "aud": "demo-contact-groups", "sub": "uid-ana", "iat": 1794000000, "exp": 1794003600, "email": "ana@example.com" },
+    { "iss": "https://example.org", "aud": "demo", "sub": "u", "iat": 1, "exp": 2, "email": "a@example.com", "email_verified": true }
+  ]
+}
