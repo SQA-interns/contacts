@@ -6,17 +6,13 @@
     "main": "Main navigation",
     "groups": "Groups",
     "menu": "Menu",
-    "userMenu": "User menu"
+    "userMenu": "User menu",
+    "signOut": "Sign out"
   },
   "language": {
     "label": "Language",
     "sl": "Slovenščina",
     "en": "English"
-  },
-  "home": {
-    "title": "Welcome",
-    "intro": "Contact Groups keeps the contacts of your project or company in one place.",
-    "action": "Open groups"
   },
   "common": {
     "loading": "Loading …",

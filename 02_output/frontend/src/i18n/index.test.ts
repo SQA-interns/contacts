@@ -29,9 +29,9 @@ describe('language choice (US-019)', () => {
   });
 
   it('changes every text at once and remembers the choice (R-019-02, R-019-03)', async () => {
-    expect(i18n.t('home.title')).toBe('Dobrodošli');
+    expect(i18n.t('auth.signIn.title')).toBe('Prijava');
     await setLanguage('en');
-    expect(i18n.t('home.title')).toBe('Welcome');
+    expect(i18n.t('auth.signIn.title')).toBe('Sign in');
     expect(window.localStorage.getItem('language')).toBe('en');
     expect(document.documentElement.lang).toBe('en');
     expect(storedLanguage()).toBe('en');

@@ -6,17 +6,13 @@
     "main": "Glavna navigacija",
     "groups": "Skupine",
     "menu": "Meni",
-    "userMenu": "Uporabniški meni"
+    "userMenu": "Uporabniški meni",
+    "signOut": "Odjava"
   },
   "language": {
     "label": "Jezik",
     "sl": "Slovenščina",
     "en": "English"
-  },
-  "home": {
-    "title": "Dobrodošli",
-    "intro": "Skupine kontaktov hranijo kontakte vašega projekta ali podjetja na enem mestu.",
-    "action": "Odpri skupine"
   },
   "common": {
     "loading": "Nalaganje …",
