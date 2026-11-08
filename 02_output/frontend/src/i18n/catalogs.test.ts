@@ -43,8 +43,8 @@ describe('message catalogs (NFR-11, UI-30)', () => {
     }
   });
 
-  it('lists exactly the error codes of the specification (45)', () => {
+  it('lists exactly the error codes of the specification (47)', () => {
     expect(new Set(ERROR_CODES).size).toBe(ERROR_CODES.length);
-    expect(ERROR_CODES).toHaveLength(45);
+    expect(ERROR_CODES).toHaveLength(47);
   });
 });

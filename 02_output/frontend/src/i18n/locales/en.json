@@ -40,7 +40,9 @@
     "request": {
       "malformed": "The request is not valid.",
       "unknown_property": "The request contains an unknown field.",
-      "too_large": "The request is too large."
+      "too_large": "The request is too large.",
+      "method_not_allowed": "Method not allowed.",
+      "unsupported_media_type": "Unsupported content type."
     },
     "auth": {
       "token_missing": "Sign in to continue.",

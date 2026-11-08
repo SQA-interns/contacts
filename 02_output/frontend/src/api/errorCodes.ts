@@ -3,6 +3,8 @@ export const ERROR_CODES = [
   'request.malformed',
   'request.unknown_property',
   'request.too_large',
+  'request.method_not_allowed',
+  'request.unsupported_media_type',
   'auth.token_missing',
   'auth.token_invalid',
   'auth.email_not_verified',

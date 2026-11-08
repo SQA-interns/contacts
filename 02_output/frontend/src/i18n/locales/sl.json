@@ -40,7 +40,9 @@
     "request": {
       "malformed": "Zahteva ni veljavna.",
       "unknown_property": "Zahteva vsebuje neznano polje.",
-      "too_large": "Zahteva je prevelika."
+      "too_large": "Zahteva je prevelika.",
+      "method_not_allowed": "Metoda ni dovoljena.",
+      "unsupported_media_type": "Vrsta vsebine ni podprta."
     },
     "auth": {
       "token_missing": "Za nadaljevanje se prijavite.",
