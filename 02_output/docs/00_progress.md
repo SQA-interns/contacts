@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: W /wireframes
+- Session: W /wireframes D-36: 1
 - Result: done
-- Gate: phase 2 gate not passed (wireframe approval D-36 open)
-- Notes for the next session: 19 wireframes WF-01..WF-19 (= SC-01..SC-19) in `docs/wireframes/`, inventory with stories, AC, states and files in its README; one shared `wireframe.css`; PNGs at 375, 768, 1440 rendered with the frontend's Playwright (Chromium, full page) and checked for page overflow and clipped tables, inputs and buttons (none left). UI text is Slovene; annotations (`State: …`, notes) are not UI. On approval (option 1 or 2) record the option in D-36 and hand over to `/acceptance-tests`; on option 3 apply only the listed changes to the named `WF-nn` pages, re-render their three PNGs and ask again. The HTML pages are static: a change to the shared header, Group bar or footer must be made in all 19 files.
+- Gate: phase 2 gate passed
+- Notes for the next session: Wireframes WF-01..WF-19 (= SC-01..SC-19) approved with the customer (D-36 option 1, recorded in D-37); inventory with stories, AC, states and files in `docs/wireframes/README.md`, PNGs at the three widths beside each page. They bind `/acceptance-tests`, `/implement` and `/design`: UI wording, structure and states come from them; annotations (`State: …`, notes) are not UI. UI text in the wireframes is Slovene (default language); English comes from `en.json` with the same layout. Decisions D-29 to D-35 are still non-blocking and "pending review" (see the previous handover in git history, commit `3ee5811`).
 
 ## Next
-- Command: /wireframes
-- Waiting for: D-36
+- Command: /acceptance-tests
+- Waiting for: nothing
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |

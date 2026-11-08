@@ -403,3 +403,14 @@
 - Human response: none
 - Resolution: pending review
 - Overrides: none
+
+## D-37: Answer to D-36 (wireframes approved with the customer)
+- Timestamp: 2026-11-08
+- Session: W /wireframes (re-run with the human's answer)
+- Class: open
+- Type: approval
+- Trigger: follow-up to D-36; D-36 itself is not rewritten.
+- Options: as D-36; the proposed default (option 1) was chosen.
+- Human response: "D-36: 1 (with customer)" (2026-11-08, in chat) = option 1 of D-36.
+- Resolution: Option 1. WF-01..WF-19 (`docs/wireframes/`, commit `2994e88`) are approved with the customer, including the choices listed in D-36. They bind `/acceptance-tests`, `/implement` and `/design`; a later change to structure is a decision, not a styling choice. The phase 2 gate is passed.
+- Overrides: none
