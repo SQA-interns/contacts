@@ -1,6 +1,5 @@
 package si.contactgroups.web;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -12,34 +11,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.simple.JdbcClient;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import si.contactgroups.domain.User;
-import si.contactgroups.security.AuthenticatedUser;
-import si.contactgroups.security.VerifiedToken;
-import si.contactgroups.service.UserService;
-import si.contactgroups.support.ApplicationContextSupport;
+import si.contactgroups.support.WebTestSupport;
 
 /** US-001: the User endpoint and the Group list behind the verified e-mail (D-40). */
-class AccountEndpointsIT extends ApplicationContextSupport {
+class AccountEndpointsIT extends WebTestSupport {
 
-  @Autowired private MockMvc mvc;
-  @Autowired private UserService users;
   @Autowired private JdbcClient jdbc;
-
-  private User newUser(String name) {
-    String uid = "uid-" + UUID.randomUUID();
-    return users.findOrCreate(new VerifiedToken(uid, uid + "@acme.com", true, name));
-  }
-
-  private static RequestPostProcessor as(User user, boolean verified) {
-    AuthenticatedUser principal = new AuthenticatedUser(user.id(), user.email(), verified);
-    return authentication(
-        UsernamePasswordAuthenticationToken.authenticated(
-            principal, null, List.of(new SimpleGrantedAuthority("ROLE_USER"))));
-  }
 
   private UUID groupOf(User user, String name, String role, boolean inTrash) {
     UUID group =

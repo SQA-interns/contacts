@@ -1,45 +1,25 @@
 package si.contactgroups.web;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.simple.JdbcClient;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import si.contactgroups.domain.User;
-import si.contactgroups.security.AuthenticatedUser;
-import si.contactgroups.security.VerifiedToken;
-import si.contactgroups.service.UserService;
-import si.contactgroups.support.ApplicationContextSupport;
+import si.contactgroups.support.WebTestSupport;
 
 /** US-002: creating a Group and the Group list ({@code POST} and {@code GET /groups}). */
-class GroupEndpointsIT extends ApplicationContextSupport {
+class GroupEndpointsIT extends WebTestSupport {
 
-  @Autowired private MockMvc mvc;
-  @Autowired private UserService users;
   @Autowired private JdbcClient jdbc;
 
-  private User newUser(String name) {
-    String uid = "uid-" + UUID.randomUUID();
-    return users.findOrCreate(new VerifiedToken(uid, uid + "@acme.com", true, name));
-  }
-
-  private static RequestPostProcessor as(User user) {
-    AuthenticatedUser principal = new AuthenticatedUser(user.id(), user.email(), true);
-    return authentication(
-        UsernamePasswordAuthenticationToken.authenticated(
-            principal, null, List.of(new SimpleGrantedAuthority("ROLE_USER"))));
+  private static String named(String name) {
+    return "{\"name\":\"" + name + "\"}";
   }
 
   private ResultActions create(User user, String body) throws Exception {
@@ -54,7 +34,7 @@ class GroupEndpointsIT extends ApplicationContextSupport {
   void r_002_01_the_creator_is_owner_of_the_group_with_the_trimmed_name() throws Exception {
     User ana = newUser("Ana Novak");
 
-    create(ana, "{\"name\":\"  Šola ČŽ  \"}")
+    create(ana, named("  Šola ČŽ  "))
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.id").exists())
         .andExpect(jsonPath("$.name").value("Šola ČŽ"))
@@ -72,8 +52,8 @@ class GroupEndpointsIT extends ApplicationContextSupport {
     User ana = newUser("Ana Novak");
     User boris = newUser("Boris Kos");
 
-    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
-    create(boris, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    create(ana, named("Acme")).andExpect(status().isCreated());
+    create(boris, named("Acme")).andExpect(status().isCreated());
 
     mvc.perform(get("/api/v1/groups").with(as(boris))).andExpect(jsonPath("$.length()").value(1));
   }
@@ -83,7 +63,7 @@ class GroupEndpointsIT extends ApplicationContextSupport {
     User ana = newUser("Ana Novak");
 
     for (int i = 1; i <= 30; i++) {
-      create(ana, "{\"name\":\"Skupina " + i + "\"}").andExpect(status().isCreated());
+      create(ana, named("Skupina " + i)).andExpect(status().isCreated());
     }
 
     mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(30));
@@ -102,9 +82,9 @@ class GroupEndpointsIT extends ApplicationContextSupport {
   void r_002_02_an_empty_blank_missing_or_too_long_name_creates_no_group() throws Exception {
     User ana = newUser("Ana Novak");
 
-    expectNameRefused(ana, "{\"name\":\"\"}");
-    expectNameRefused(ana, "{\"name\":\"     \"}");
-    expectNameRefused(ana, "{\"name\":\"" + "a".repeat(101) + "\"}");
+    expectNameRefused(ana, named(""));
+    expectNameRefused(ana, named("     "));
+    expectNameRefused(ana, named("a".repeat(101)));
     expectNameRefused(ana, "{\"name\":null}");
     expectNameRefused(ana, "{}");
 
@@ -116,13 +96,13 @@ class GroupEndpointsIT extends ApplicationContextSupport {
     User ana = newUser("Ana Novak");
     String name = "a".repeat(100);
 
-    create(ana, "{\"name\":\"  " + name + "  \"}")
+    create(ana, named("  " + name + "  "))
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.name").value(name));
   }
 
   private void expectNameTaken(User user, String name) throws Exception {
-    create(user, "{\"name\":\"" + name + "\"}")
+    create(user, named(name))
         .andExpect(status().isConflict())
         .andExpect(jsonPath("$.code").value("group.name_taken"));
   }
@@ -130,8 +110,8 @@ class GroupEndpointsIT extends ApplicationContextSupport {
   @Test
   void r_002_03_an_owner_gets_no_second_group_with_the_same_name_ignoring_case() throws Exception {
     User ana = newUser("Ana Novak");
-    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
-    create(ana, "{\"name\":\"Šola\"}").andExpect(status().isCreated());
+    create(ana, named("Acme")).andExpect(status().isCreated());
+    create(ana, named("Šola")).andExpect(status().isCreated());
 
     expectNameTaken(ana, "ACME");
     expectNameTaken(ana, " acme ");
@@ -143,21 +123,21 @@ class GroupEndpointsIT extends ApplicationContextSupport {
   @Test
   void r_002_03_a_group_in_trash_does_not_count() throws Exception {
     User ana = newUser("Ana Novak");
-    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    create(ana, named("Acme")).andExpect(status().isCreated());
     jdbc.sql(
             "UPDATE contact_group SET deleted_at = now() WHERE id IN"
                 + " (SELECT group_id FROM member WHERE user_id = :u)")
         .param("u", ana.id())
         .update();
 
-    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    create(ana, named("Acme")).andExpect(status().isCreated());
   }
 
   @Test
   void r_002_03_a_group_of_which_the_user_is_not_owner_does_not_count() throws Exception {
     User ana = newUser("Ana Novak");
     User boris = newUser("Boris Kos");
-    create(boris, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    create(boris, named("Acme")).andExpect(status().isCreated());
     jdbc.sql(
             "INSERT INTO member (group_id, user_id, role) SELECT group_id, :ana, 'EDITOR'"
                 + " FROM member WHERE user_id = :boris")
@@ -165,7 +145,7 @@ class GroupEndpointsIT extends ApplicationContextSupport {
         .param("boris", boris.id())
         .update();
 
-    create(ana, "{\"name\":\"Acme\"}").andExpect(status().isCreated());
+    create(ana, named("Acme")).andExpect(status().isCreated());
 
     mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(2));
   }
