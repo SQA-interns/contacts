@@ -580,3 +580,201 @@ paths:
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/TooManyRequests' }
         '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/contacts:
+    get:
+      operationId: listContacts
+      tags: [contacts]
+      summary: Contacts not in Trash: search, filter, sort, 25 per page (US-007 to US-009).
+      x-required-action: READ_CONTACTS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/PageParam' }
+        - { name: q, in: query, schema: { type: string }, description: 'Search text' }
+        - { name: sort, in: query, schema: { type: string, enum: [lastName, firstName, email, company, city, country, tags] } }
+        - { name: dir, in: query, schema: { type: string, enum: [asc, desc], default: asc } }
+        - { name: tags, in: query, schema: { type: array, items: { type: string } } }
+        - { name: tagMode, in: query, schema: { type: string, enum: [all, any], default: all } }
+        - { name: withoutTags, in: query, schema: { type: array, items: { type: string } } }
+        - { name: country, in: query, schema: { type: string, pattern: '^[A-Z]{2}$' } }
+        - { name: company, in: query, schema: { type: string } }
+        - { name: attrKey, in: query, schema: { type: string } }
+        - { name: attrValue, in: query, schema: { type: string } }
+        - { name: attrExists, in: query, schema: { type: boolean } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/ContactPage' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    post:
+      operationId: createContact
+      tags: [contacts]
+      summary: Create a Contact with Tags and Attributes (US-003).
+      x-required-action: EDIT_CONTACT
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ContactInput' } } } }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { $ref: '#/components/schemas/Contact' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/contacts/{contactId}:
+    get:
+      operationId: getContact
+      tags: [contacts]
+      summary: One Contact with Tags and Attributes (R-003-08).
+      x-required-action: READ_CONTACTS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Contact' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      operationId: updateContact
+      tags: [contacts]
+      summary: Save changes with the current version number; 409 contact.changed_by_someone_else returns the current Contact (BR-07).
+      x-required-action: EDIT_CONTACT
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ContactInput' } } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Contact' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+  /groups/{groupId}/contacts/{contactId}/trash:
+    post:
+      operationId: trashContact
+      tags: [trash]
+      summary: Move a Contact to Trash; repeating it changes nothing (R-012-09).
+      x-required-action: DELETE_CONTACT
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+      responses:
+        '204': { description: Moved to Trash }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/trash/contacts:
+    get:
+      operationId: listTrashContacts
+      tags: [trash]
+      summary: Contacts in Trash with days left (R-012-03).
+      x-required-action: READ_TRASH
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TrashContactList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/trash/contacts/{contactId}/restore:
+    post:
+      operationId: restoreContact
+      tags: [trash]
+      summary: Restore a Contact within 30 days (R-012-04); later it is 404.
+      x-required-action: RESTORE_CONTACT
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Contact' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/trash/contacts/{contactId}:
+    delete:
+      operationId: deleteContactForever
+      tags: [trash]
+      summary: Delete a Contact in Trash permanently (Owner only, US-013).
+      x-required-action: DELETE_CONTACT_FOREVER
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/ContactId' }
+      responses:
+        '204': { description: Deleted }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/tags:
+    get:
+      operationId: listTags
+      tags: [tags]
+      summary: Tags of the Group with the number of Contacts (R-006-01).
+      x-required-action: MANAGE_TAGS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TagCountList' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/tags/{tagId}:
+    patch:
+      operationId: renameTag
+      tags: [tags]
+      summary: Rename a Tag on all Contacts (R-006-02).
+      x-required-action: MANAGE_TAGS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/TagId' }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/TagRename' } } } }
+      responses:
+        '200': { description: Renamed, content: { application/json: { schema: { $ref: '#/components/schemas/TagCount' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '413': { $ref: '#/components/responses/PayloadTooLarge' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '422': { $ref: '#/components/responses/Unprocessable' }
+    delete:
+      operationId: deleteTag
+      tags: [tags]
+      summary: Delete a Tag from all Contacts (R-006-05).
+      x-required-action: MANAGE_TAGS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+        - { $ref: '#/components/parameters/TagId' }
+      responses:
+        '204': { description: Deleted }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /groups/{groupId}/facets:
+    get:
+      operationId: getFacets
+      tags: [contacts]
+      summary: Tags, companies, countries and Attribute keys used in the Group (R-009-11, suggestions).
+      x-required-action: READ_CONTACTS
+      parameters:
+        - { $ref: '#/components/parameters/GroupId' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Facets' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '404': { $ref: '#/components/responses/NotFound' }
