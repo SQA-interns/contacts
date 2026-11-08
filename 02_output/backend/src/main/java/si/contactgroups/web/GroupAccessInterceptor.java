@@ -3,8 +3,6 @@ package si.contactgroups.web;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.Map;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.HandlerMapping;
@@ -50,10 +48,9 @@ public class GroupAccessInterceptor implements HandlerInterceptor {
   }
 
   private static AuthenticatedUser caller() {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (authentication != null && authentication.getPrincipal() instanceof AuthenticatedUser user) {
-      return user;
-    }
-    throw new IllegalStateException("a Group endpoint was reached without a signed-in User");
+    return AuthenticatedUser.current()
+        .orElseThrow(
+            () ->
+                new IllegalStateException("a Group endpoint was reached without a signed-in User"));
   }
 }

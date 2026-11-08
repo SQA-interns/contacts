@@ -21,7 +21,7 @@ public class HttpsFilter extends OncePerRequestFilter {
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws ServletException, IOException {
-    if (required && !isSecure(request) && !isHealthCheck(request)) {
+    if (required && !isSecure(request) && !HealthCheckPath.matches(request)) {
       ErrorWriter.write(
           response, HttpStatus.FORBIDDEN.value(), "https.required", "HTTPS is required");
       return;
@@ -32,10 +32,5 @@ public class HttpsFilter extends OncePerRequestFilter {
   /** Behind the reverse proxy the forwarded protocol decides (the forwarded-header filter ran). */
   private static boolean isSecure(HttpServletRequest request) {
     return request.isSecure() || "https".equalsIgnoreCase(request.getScheme());
-  }
-
-  private static boolean isHealthCheck(HttpServletRequest request) {
-    String path = request.getRequestURI();
-    return path.equals("/health") || path.startsWith("/health/");
   }
 }

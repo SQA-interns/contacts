@@ -6,8 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
@@ -33,10 +31,7 @@ public class EmailVerifiedFilter extends OncePerRequestFilter {
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws ServletException, IOException {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (authentication != null
-        && authentication.getPrincipal() instanceof AuthenticatedUser caller
-        && !caller.emailVerified()) {
+    if (AuthenticatedUser.current().filter(caller -> !caller.emailVerified()).isPresent()) {
       ErrorWriter.write(
           response, HttpStatus.FORBIDDEN.value(), "auth.email_not_verified", "E-mail not verified");
       return;

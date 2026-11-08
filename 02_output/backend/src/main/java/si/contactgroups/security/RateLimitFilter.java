@@ -12,12 +12,11 @@ import java.io.IOException;
 import java.time.Clock;
 import java.time.Duration;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
@@ -40,10 +39,12 @@ public class RateLimitFilter extends OncePerRequestFilter {
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws ServletException, IOException {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (authentication != null && authentication.getPrincipal() instanceof AuthenticatedUser user) {
+    Optional<AuthenticatedUser> caller = AuthenticatedUser.current();
+    if (caller.isPresent()) {
       ConsumptionProbe probe =
-          buckets.computeIfAbsent(user.userId(), id -> newBucket()).tryConsumeAndReturnRemaining(1);
+          buckets
+              .computeIfAbsent(caller.get().userId(), id -> newBucket())
+              .tryConsumeAndReturnRemaining(1);
       if (!probe.isConsumed()) {
         long seconds = Math.max(1, TimeUnit.NANOSECONDS.toSeconds(probe.getNanosToWaitForRefill()));
         response.setHeader("Retry-After", Long.toString(seconds));

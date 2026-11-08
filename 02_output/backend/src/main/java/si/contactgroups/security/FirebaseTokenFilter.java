@@ -39,8 +39,7 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
 
   @Override
   protected boolean shouldNotFilter(HttpServletRequest request) {
-    String path = request.getRequestURI();
-    return path.equals("/health") || path.startsWith("/health/");
+    return HealthCheckPath.matches(request);
   }
 
   @Override
