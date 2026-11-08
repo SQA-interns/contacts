@@ -48,3 +48,25 @@
 - Human response: none
 - Resolution: pending (blocking)
 - Overrides: none
+
+## D-05: Answer to D-03 (npm Critical and High findings)
+- Timestamp: 2026-11-08
+- Session: S1 /preflight (re-run with the human's answer)
+- Class: block
+- Type: approval
+- Trigger: follow-up to D-03; D-03 itself is not rewritten.
+- Options: as D-03; the proposed default (option 1) was chosen.
+- Human response: "Accept defaults" (2026-11-08, in chat) = option 1 of D-03.
+- Resolution: Option 1. The version replacements apply to the build manifests: `react-router` 7.18.5, `zod` 4.6.7, `vite` 7.3.7, `vitest` 4.1.12, `@vitest/coverage-v8` 4.1.12, `@stryker-mutator/core` 9.6.1, `@stryker-mutator/vitest-runner` 9.6.1, `shadcn` 4.23.0 (all resolve; checked by a lockfile-only install and audit, see `out/logs/preflight-npm-audit-candidate.json`). `firebase` stays at 12.4.0 (the option allowed 12.4.0 or 12.19.0; both carry the same finding, so the smaller change was chosen; tell the human if 12.19.0 is wanted). The remaining `firebase` (transitive `@grpc/grpc-js`, `@firebase/firestore`) and `firebase-tools` 14.22.0 (`tar`, `basic-ftp`, `minimatch`, `proxy-agent`) findings are accepted as lowered by the human, on the stated evidence: Firestore and gRPC are not used (Authentication only), and `firebase-tools` runs only as the local test emulator on localhost without internet and is never shipped. Open for later phases: peer compatibility of vitest 4 with msw, jsdom and the Stryker vitest runner is unchecked (/implement verifies it, and any conflict is a new decision).
+- Overrides: tech-stack.md entries listed in Resolution (version only)
+
+## D-06: Answer to D-04 (host prerequisites)
+- Timestamp: 2026-11-08
+- Session: S1 /preflight (re-run with the human's answer)
+- Class: block
+- Type: blocking
+- Trigger: follow-up to D-04; re-check on 2026-11-08 found nothing changed on the host: no JDK, Node 26.11.1, no gitleaks (binary or image), no Playwright browsers, no `.env`, no `.gitignore`, untracked `.agents/` and `.claude/`.
+- Options: as D-04; the proposed defaults were chosen (option 1 for the installs and files, option 3 for the Maven and `npx` checks).
+- Human response: "Accept defaults" (2026-11-08, in chat) = option 1 and option 3 of D-04. This approves the plan; it does not do the installs, which only the human can do.
+- Resolution: Pending the human's actions. Decided: Node 22.20.0 is required (Node 26.11.1 is not approved); preflight accepts "the exact Maven and npm distributions resolve" for `./mvnw -v` and the `npx` checks, and /implement runs those checks in its first step. Still to do by the human: install JDK Temurin 21.0.8; install Node 22.20.0 (for example through `nvm` or `fnm`) and make it the Node used when `/preflight` runs; install gitleaks 8.28.0 (or pull `zricethezav/gitleaks:v8.28.0`); install the Playwright 1.56.1 browsers; create `.env` from `secrets.env.example` and fill the six keys; commit `.agents/` and `.claude/`; add a `.gitignore` containing `.env`.
+- Overrides: none

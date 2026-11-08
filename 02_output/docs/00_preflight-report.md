@@ -120,4 +120,5 @@ Resolves: yes = HTTP 200 on the registry. Vulnerability column: highest severity
 | When | What was missing | Answer | Re-check |
 |---|---|---|---|
 | 2026-11-08 | D-03 (npm Critical/High: choose upgrade or lowering with evidence), D-04 (JDK 21.0.8, Node 22.20.0, gitleaks 8.28.0, Playwright browsers, `.env`, commit `.agents/` and `.claude/`, `.gitignore`, how to check Maven/npx tools) | | The next `/preflight` re-runs only the failed checks: platforms and tools, Playwright screenshot, secrets, the vulnerability check (after the human's D-03 answer), working tree. |
+| 2026-11-08 | D-03 and D-04 answered "Accept defaults" (recorded as D-05, D-06). D-05 settles the npm findings. D-06 still waits for the human's installs and files. Re-check the same day: nothing on the host had changed. | D-05: option 1. D-06: options 1 and 3. | The next `/preflight` re-runs platforms and tools, the Playwright screenshot, secrets, working tree, then the Maven scan and the npm audit of the approved versions. |
 | 2026-11-08 | Recorded without a question: D-01 (newer Docker, Compose, npm), D-02 (Maven same-minor patches, pending review) | none needed | none |
