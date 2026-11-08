@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contact-groups.example/contracts/configuration.schema.json",
+  "title": "Environment configuration",
+  "description": "Environment variables of the backend and of the frontend container (ES-01, AR-07). All values are strings. Secrets have no default. Keys marked in decision D-29 are additions to environments.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["DB_URL", "DB_MIGRATION_USER", "DB_MIGRATION_PASSWORD", "DB_APP_PASSWORD", "FIREBASE_PROJECT_ID", "CORS_ALLOWED_ORIGIN"],
+  "properties": {
+    "DB_URL": { "type": "string", "pattern": "^jdbc:postgresql://[^/\\s]+/[^\\s]+$", "description": "JDBC address of PostgreSQL." },
+    "DB_MIGRATION_USER": { "type": "string", "minLength": 1, "description": "Owner role used by Flyway only (Compose: POSTGRES_USER)." },
+    "DB_MIGRATION_PASSWORD": { "type": "string", "minLength": 1, "description": "Secret (Compose: POSTGRES_PASSWORD)." },
+    "DB_APP_USER": { "type": "string", "minLength": 1, "default": "contactgroups_app" },
+    "DB_APP_PASSWORD": { "type": "string", "minLength": 1, "description": "Secret of the restricted application role (D-29)." },
+    "FIREBASE_PROJECT_ID": { "type": "string", "minLength": 1 },
+    "FIREBASE_AUTH_EMULATOR_HOST": { "type": "string", "pattern": "^$|^[A-Za-z0-9.-]+:[0-9]{2,5}$", "default": "", "description": "Empty means real Firebase. Must be empty when SPRING_PROFILES_ACTIVE is prod." },
+    "CORS_ALLOWED_ORIGIN": { "type": "string", "format": "uri", "description": "Origin of the frontend; http://localhost:5173 allowed for local only." },
+    "RATE_LIMIT_PER_MINUTE": { "type": "string", "pattern": "^[1-9][0-9]*$", "default": "100" },
+    "MAX_REQUEST_SIZE": { "type": "string", "pattern": "^[1-9][0-9]*(B|KB|MB)$", "default": "1MB" },
+    "TRASH_PURGE_CRON": { "type": "string", "pattern": "^(\\S+\\s+){5}\\S+$", "default": "0 0 * * * *", "description": "Six-field Spring cron; hourly by default (ADR-09)." },
+    "LOG_LEVEL": { "type": "string", "enum": ["ERROR", "WARN", "INFO", "DEBUG"], "default": "INFO" },
+    "SERVER_PORT": { "type": "string", "pattern": "^[0-9]{2,5}$", "default": "8080" },
+    "REQUIRE_HTTPS": { "type": "string", "enum": ["true", "false"], "default": "false", "description": "D-29; true in production behind the TLS proxy." },
+    "SPRING_PROFILES_ACTIVE": { "type": "string", "enum": ["", "local", "test", "prod"], "default": "" },
+    "VITE_API_BASE_URL": { "type": "string", "format": "uri" },
+    "VITE_FIREBASE_PROJECT_ID": { "type": "string", "minLength": 1 },
+    "VITE_FIREBASE_AUTH_DOMAIN": { "type": "string", "minLength": 1 },
+    "VITE_FIREBASE_API_KEY": { "type": "string", "minLength": 1 },
+    "VITE_FIREBASE_AUTH_EMULATOR_URL": { "type": "string", "pattern": "^$|^https?://[^\\s]+$", "default": "" }
+  },
+  "examples": [
+    {
+      "DB_URL": "jdbc:postgresql://postgres:5432/contactgroups",
+      "DB_MIGRATION_USER": "owner",
+      "DB_MIGRATION_PASSWORD": "example-not-a-secret",
+      "DB_APP_PASSWORD": "example-not-a-secret",
+      "FIREBASE_PROJECT_ID": "demo-contact-groups",
+      "FIREBASE_AUTH_EMULATOR_HOST": "emulator:9099",
+      "CORS_ALLOWED_ORIGIN": "http://localhost:5173",
+      "RATE_LIMIT_PER_MINUTE": "100",
+      "MAX_REQUEST_SIZE": "1MB",
+      "TRASH_PURGE_CRON": "0 0 * * * *",
+      "REQUIRE_HTTPS": "false",
+      "SPRING_PROFILES_ACTIVE": "local"
+    }
+  ],
+  "x-invalid-examples": [
+    { "DB_MIGRATION_USER": "owner", "DB_MIGRATION_PASSWORD": "x", "DB_APP_PASSWORD": "x", "FIREBASE_PROJECT_ID": "p", "CORS_ALLOWED_ORIGIN": "http://localhost:5173" },
+    { "DB_URL": "jdbc:postgresql://h/d", "DB_MIGRATION_USER": "o", "DB_MIGRATION_PASSWORD": "x", "DB_APP_PASSWORD": "x", "FIREBASE_PROJECT_ID": "p", "CORS_ALLOWED_ORIGIN": "http://localhost:5173", "RATE_LIMIT_PER_MINUTE": "abc" }
+  ]
+}

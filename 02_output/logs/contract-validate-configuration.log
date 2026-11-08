@@ -1,0 +1,4 @@
+ok   configuration.schema.json: schema compiles, 1 valid and 2 invalid examples checked
+ok   openapi.yaml: valid OpenAPI 3.1.0
+ok   openapi.yaml: 37 operations, project rules checked
+contracts: all valid
