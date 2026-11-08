@@ -15,8 +15,8 @@ class ContactValidatorTest {
 
   private final ContactValidator validator = new ContactValidator();
 
-  private static ContactData.Builder with() {
-    return ContactData.builder();
+  private static ContactDataBuilder with() {
+    return new ContactDataBuilder();
   }
 
   private List<FieldError> errorsOf(ContactData data) {

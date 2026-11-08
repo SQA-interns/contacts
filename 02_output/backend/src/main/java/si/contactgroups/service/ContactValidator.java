@@ -19,7 +19,6 @@ public class ContactValidator {
   private static final int MAX_TEXT = 255;
   private static final int MAX_PHONE = 30;
   private static final int MAX_NOTES = 5000;
-  private static final Pattern EMAIL = Pattern.compile("^[^@\\s]+@[^@\\s.]+(\\.[^@\\s.]+)+$");
   private static final Pattern PHONE = Pattern.compile("^[0-9 +\\-()./]*$");
 
   /**
@@ -90,9 +89,24 @@ public class ContactValidator {
     }
     if (email.length() > MAX_TEXT) {
       errors.add(new FieldError("email", "validation.too_long"));
-    } else if (!EMAIL.matcher(email).matches()) {
+    } else if (!isEmailFormat(email)) {
       errors.add(new FieldError("email", "validation.email_invalid"));
     }
+  }
+
+  /** One {@code @}, a local part, and a domain of at least two non-empty labels; no spaces. */
+  private static boolean isEmailFormat(String email) {
+    int at = email.indexOf('@');
+    if (at < 1 || at != email.lastIndexOf('@')) {
+      return false;
+    }
+    String domain = email.substring(at + 1);
+    boolean hasSpace = email.chars().anyMatch(Character::isWhitespace);
+    return !hasSpace
+        && domain.indexOf('.') > 0
+        && !domain.startsWith(".")
+        && !domain.endsWith(".")
+        && !domain.contains("..");
   }
 
   private static void checkPhone(String phone, List<FieldError> errors) {
