@@ -24,6 +24,20 @@ Two components (architecture.md): `backend` (`02_output/backend`, Spring Boot, r
 
 `app/` (router, providers, shell), `api/` (`client.ts`, one module per resource, `ApiError`), `auth/` (Firebase wrapper, `AuthProvider`, `RequireVerified`), `i18n/` (`index.ts`, `locales/sl.json`, `locales/en.json`, `format.ts`), `styles/` (`tokens.css`, `themes/wireframe.css`, `themes/final.css`, `brand.css`), `brand.ts`, `components/ui/` (shadcn), `components/` (`ResponsiveTable`, `PageHeader`, `EmptyState`, `ErrorState`, `ConfirmDialog`, `FormField`, `LanguageSwitch`), `features/<name>/`.
 
+## Interfaces and contracts
+
+Every interface of `architecture.md` has a contract in `docs/02_contracts/` or, where the interface belongs to a third party or to the schema itself, the artefact named below. `tools/validate-contracts.mjs` parses each contract (log in `out/logs/contract-validate-all.log`).
+
+| Interface (architecture.md) | Contract | Check |
+|---|---|---|
+| Application interface, frontend to backend (REST, JSON) | `openapi.yaml` (37 operations, one shared error schema, `x-required-action` on every Group operation) | OpenAPI validator; project rules (operationId, security, 401/404 responses); contract-parity test in `/implement` (T-11) |
+| Sign-in, frontend to Firebase Authentication | the Firebase client SDK (third-party protocol); the product's side is the token it receives, described by `firebase-id-token.schema.json` | `FirebaseEmulatorIT`; Playwright E2E against the emulator |
+| Token check, backend to Firebase | `firebase-id-token.schema.json` (claims read, claims ignored) | valid and invalid examples validated; `FirebaseEmulatorIT` |
+| Persistence, backend to PostgreSQL | the Flyway migrations `V1__create_application_role.java` and `V2__schema.sql` (the schema is the contract, AR-04) and the data model above | `DatabaseRolesIT` |
+| Excel export, backend to the user's browser | `xlsx-export.schema.json` (sheet count, header, language, file name) | valid and invalid examples validated; `exceljs` read-back in the export tests |
+| User interface | screen inventory below, wireframes of `/wireframes` | review, Playwright at three widths |
+| Configuration (environment variables) | `configuration.schema.json` | valid and invalid examples validated |
+
 ## Domain model (glossary → code)
 
 Glossary terms and "Name in code" are those of `business-rules.md`; no synonym is used (ES-13). The Selection exists only in the browser and in the export request.
