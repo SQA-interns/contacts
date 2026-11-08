@@ -359,3 +359,14 @@
 - Human response: none
 - Resolution: 1. Pending review and pending the scan result.
 - Overrides: tech-stack.md Maven entries (additions only)
+
+## D-33: Frontend dependency set changes needed by the skeleton
+- Timestamp: 2026-11-08
+- Session: S3 /plan
+- Class: open
+- Type: non-blocking
+- Trigger: installing and building the frontend with the D-05 versions on Node 22.20.0 / npm 10.9.3. (a) `@testing-library/react` 16.3.0 needs the peer `@testing-library/dom`; added `@testing-library/dom` 10.4.1 (MIT, test). (b) ESLint 9 flat config needs `@eslint/js` 9.37.0 (MIT) and `globals` 16.4.0 (MIT); `@types/node` 22.18.8 (MIT) types the Vite, Playwright and test files (all dev only). (c) npm 10.9.3 crashes while resolving the peer set of this list ("Cannot read properties of null (reading 'edgesOut')"; D-05's audit also used `--legacy-peer-deps`). `frontend/.npmrc` sets `legacy-peer-deps=true`; every peer is installed explicitly in `package.json`; `npm ls` shows no unmet peer (one transitive `picomatch` 2.3.2 against `fdir`'s `^3 || ^4` is reported as "invalid"; build, tests and the browser smoke test run without a problem). (d) The `shadcn` 4.23.0 CLI generates components that import the umbrella package `radix-ui` and `next-themes`; those packages are not in `tech-stack.md`, so the components were adapted by hand to the pinned `@radix-ui/react-*` packages and `Label` is a plain `<label>`. (e) The Lucide, Radix, Tailwind and Vitest 4 / msw / jsdom / Stryker versions install together; Vitest 4.1.12 runs the tests with msw 2.11.5 and jsdom 27.0.0. `@stryker-mutator/*` 9.6.1 installs; its run is configured in phase 5. (f) `npm audit`: runtime packages show only the `firebase` family (accepted in D-05); with dev packages 2 low and 17 moderate, no Critical or High besides the same family.
+- Options: 1. Keep as built (proposed default). 2. Replace `legacy-peer-deps` by a different npm version (host change, needs the human). 3. Ask the human before any addition.
+- Human response: none
+- Resolution: 1. Pending review.
+- Overrides: tech-stack.md npm entries (additions only)
