@@ -182,5 +182,91 @@ Level: OWASP ASVS 5.0 Level 2 for both components (security-requirements.md). Co
 | SR-12 | Error format without internals | `ApiExceptionHandler` | AC-018-11 |
 | SR-13 | Emulator only in tests and local development | test config | tests run offline |
 
-<!-- slice 4: threat model, NFR checks, user interface -->
+## Threat model
+
+STRIDE per interface (S spoofing, T tampering, R repudiation, I information disclosure, D denial of service, E elevation of privilege) and per personal-data item. "New" controls are added by this specification; `[ASSUMPTION]` marks a residual risk accepted until the customer decides.
+
+| Threat (STRIDE) | Interface or data | Control (SB, SR or new) |
+|---|---|---|
+| S: forged, stolen or replayed ID token | REST interface | Admin SDK checks signature, expiry, audience; `FirebaseTokenFilter` (SB-02, SR-02); tokens are short-lived (Firebase) |
+| S: emulator accepted in production | Token check | New: the backend refuses to start with profile `prod` when `FIREBASE_AUTH_EMULATOR_HOST` is set; `docker-compose.prod.yml` does not define it |
+| T: Group named in body or query to reach another tenant | REST interface | Group from path only, unknown properties rejected, repositories filter by `groupId` (SR-01, R-018-04, AR-02) |
+| T: ID of an object of another Group in a path | REST interface | Object loaded with the Group id, 404 otherwise (R-018-05) |
+| R: user denies a change | History, logs | History with user, time, action, old/new values, append-only at code and database level (BR-03, ADR-03); `SecurityLogger` (SR-07) |
+| I: existence of a Group or Contact revealed by 403 vs 404 | REST interface | Fixed check order, one 404 for "missing" and "not a Member" (D-18c, BR-01) |
+| I: stack trace, SQL, token in an error or log | REST interface, logs | `ApiExceptionHandler`, `SecurityLogger` never log bodies, query strings, tokens (SB-07, SR-12) |
+| D: request flood from one User | REST interface | 100 requests per User per minute, 1 MB bodies (SR-08, ADR-11) |
+| D: huge export or search | Export, search | 10,000 Contacts per export (R-011-05), pagination 25, bounded queries |
+| E: Editor/Viewer performs an Owner action | REST interface | One permission table, `@RequiresAction`, Role read from the database (SR-03, ADR-05) |
+| E: last Owner removed, Group without owner | Members | Transactional rule (SR-10) |
+| S: credential stuffing, account enumeration | Firebase sign-in | Firebase's protections; one error message and one reset confirmation (R-001-05, R-001-08) |
+| E: use before e-mail verification | Firebase sign-in, Invitations | 403 on every Group endpoint; Invitation joins only with a verified e-mail (R-018-06, SR-11) |
+| T: SQL injection through any text field | Database | Named parameters only, find-sec-bugs, injection test (SR-04, AR-05) |
+| T: application role alters History or schema | Database | Restricted role, column-level grants (ADR-03); test proves it |
+| I: personal data in backups kept longer than stated | Database backups | 14-day retention stated in the install guide (SB-13); `[ASSUMPTION]` restores of an old backup re-create purged data |
+| T: formula injection in Excel | Export | String cells only (SR-06) |
+| I: export contains another Group's Contacts | Export | `contactIds` resolved with `groupId`; filter selection runs the Group query (SR-01) |
+| T/I: stored XSS through Contact, Tag, Group names | User interface | React escaping, no raw HTML sink (lint rule), CSP `script-src 'self'` (SR-05, SB-10) |
+| E: clickjacking | User interface | `X-Frame-Options: DENY`, CSP `frame-ancestors 'none'` on nginx and API |
+| I: token theft by XSS from Firebase storage | User interface | CSP and escaping reduce XSS; the SDK keeps the session in IndexedDB; `[ASSUMPTION]` accepted for Level 2 |
+| T: CSRF | User interface | Bearer token in a header, no cookie session, CORS limited to one origin (R-018-16) |
+| I: open redirect after sign-in | User interface | Redirect target is an in-app route only; `react-router` 7.18.5 (D-05) |
+| Data item: Contact data (names, e-mail, phone, address, notes, Attributes) | Database, API, export | Group isolation, Roles; Trash 30 days then purge (BR-04); `removed` replacement in History (R-013-08); minimisation: only the 11 fields (SB-12) |
+| Data item: User account (UID, e-mail, name) | Database, Firebase | Deleted with the account (US-021); other Members see name and e-mail only within shared Groups |
+| Data item: History `details` | Database, API | Visible to Owner/Editor only; values replaced when the Contact is deleted forever; e-mail cleared when the account is deleted (R-021-03); retained while the Group exists (D-26) |
+| Data item: Invitation e-mail | Database | Visible to Owners; 14-day expiry; removed with the Group (D-27 B1: stays pending after account deletion) |
+| Data item: server log | Log files | No Contact data, no tokens; 30 days retention by the operator (D-26) |
+
+## NFR checks
+
+Checked in phase 6 by runtime demonstration unless stated; scripts are written by the tasks named in `docs/02_tasks.md`.
+
+| NFR | How it is checked | Pass value |
+|---|---|---|
+| NFR-01 | `02_output/perf/measure.mjs` (Node 22 `fetch`, no new dependency) on the Compose stack with the 10,000-Contact seed (`seed/generate-large.sql`): 50 requests each for list, search, filter; median and p95 recorded | median and p95 below 1 s |
+| NFR-02 | Same script, 50 opens of a Contact | below 500 ms (p95) |
+| NFR-03 | Same script, 5 exports of 1,000 Contacts | each below 10 s |
+| NFR-04 | Same script, 20 concurrent Users (list, search, edit, export) for 5 minutes, each below 100 requests per minute | zero errors and zero 429; NFR-01 still holds |
+| NFR-05 | Review of `docker-compose.prod.yml` (health checks, `restart: unless-stopped`) and the install guide | both present |
+| NFR-06 | `scripts/backup.sh` and `scripts/restore.sh`; one restore into an empty database, row counts compared | counts equal; recorded (DoD-P07) |
+| NFR-07 | Playwright runs E2E-01..06 in chromium, firefox, webkit; Edge covered by chromium [ASSUMPTION] | all pass |
+| NFR-08 | Playwright screenshots `mobile` 375, `tablet` 768, `desktop` 1440 for every screen; overflow check `scrollWidth <= clientWidth` | no horizontal scroll, no overlap |
+| NFR-09 | `@axe-core/playwright` with WCAG 2.2 AA tags on every screen; keyboard-only walkthrough of sign in, list, create/edit Contact, export | zero Critical/Serious violations; walkthrough passes |
+| NFR-10 | E2E-01 counts user actions from first page to first Contact | at most 12 [ASSUMPTION] |
+| NFR-11 | Catalog test: `sl.json` and `en.json` have identical key sets, every backend error code has a key; screenshots in both languages | identical sets |
+| NFR-12 | `docker compose -f docker-compose.prod.yml up` from the built images on a clean Docker host | all services healthy within 2 minutes |
+| NFR-13 | `license-checker-rseidelsohn` for npm and the Maven license report, compared with the allowed list of `tech-stack.md` | no other licence |
+| NFR-14 | AC-003-06, EX-003-* validation tests, concurrent-save integration test | a stale save stores nothing |
+| NFR-15 | Release checklist: `docs/openapi.json` export, install and backup guide, Slovene user guide | three files exist (DoD-P04) |
+
+## User interface
+
+Stack and tokens: ADR-13; language: ADR-14; structure: ADR-12. All screens follow `ui-baseline.md` (UI-01..30) with the two overrides of `ui-design.md` (UI-08 desktop first, UI-03 brand in one place). Every screen exists at the three widths (UI-22) and has loading, empty, error and success states (UI-14). `/wireframes` draws each screen as `WF-nn`; the screen ids below (`SC-nn`) are the inventory it starts from.
+
+| Screen | Route | Stories | Notes |
+|---|---|---|---|
+| SC-01 Sign in | `/sign-in` | US-001, US-019 | e-mail + password, Google button, links to register and reset; one error message (R-001-05) |
+| SC-02 Register | `/register` | US-001 | e-mail, display name, password with rule hint |
+| SC-03 Reset password | `/reset-password` | US-001 | same confirmation for any address |
+| SC-04 Verify e-mail | `/verify-email` | US-001 | message "Verify your e-mail to continue", resend button, sign out |
+| SC-05 Group list | `/groups` | US-002, US-014, US-020 | cards with Role; empty state "Create group"; create dialog; link to Group Trash for Owners |
+| SC-06 Contact list | `/groups/:g/contacts` | US-007..US-011, US-010, US-019 | search box, filter panel (Tags all/any, Without-Tags, country, company, Attribute), sortable columns, 25 per page, Selection bar, Export button, empty and no-match states |
+| SC-07 Contact | `/groups/:g/contacts/:c` | US-003, US-004, US-005, US-012, US-016, US-022, US-023 | tabs Details (view/edit form with Attributes and Tags), History, Versions; conflict banner with current Contact |
+| SC-08 New Contact | `/groups/:g/contacts/new` | US-003, US-004, US-005 | same form as SC-07 |
+| SC-09 Tag list | `/groups/:g/tags` | US-006 | counts, rename, delete with confirmation |
+| SC-10 Trash | `/groups/:g/trash` | US-012, US-013 | days left, Restore, Delete forever (Owner) |
+| SC-11 Members | `/groups/:g/members` | US-015 | list; Owner changes Role, removes |
+| SC-12 Invitations | `/groups/:g/invitations` | US-014 | create, pending list, cancel (screen added by D-23d) |
+| SC-13 Group activity | `/groups/:g/activity` | US-017 | filters user, action, dates; message states |
+| SC-14 Delete Group | dialog in SC-05/SC-06 | US-020 | type the Group name to confirm |
+| SC-15 Group Trash | `/group-trash` | US-020 | Owner-only list with days left, Restore |
+| SC-16 Account | `/account` | US-021 | delete account dialog; Sole-Owner Groups listed (D-23d) |
+| SC-17 Duplicates | `/groups/:g/duplicates` | US-024, US-025 | sets with mark and reason, pick Contacts, "not a duplicate", start merge (screen added by D-23d) |
+| SC-18 Merge | `/groups/:g/merge` | US-026 | side-by-side fields, choice per field and Attribute, confirm |
+| SC-19 Not found / error | any | US-018 | friendly message, no detail |
+
+Navigation: header with product name (`brand.ts`), Group switcher (link to SC-05), language switch and user menu (Account, Sign out); inside a Group a tab bar or side bar (desktop) / menu button (mobile) with Contacts, Tags, Trash, Duplicates, Activity, Members, Invitations; items the Role may not use are not shown, and the server still enforces (SB-02). One primary action per page (UI-10). Tokens: the semantic set of UI-04 in `styles/themes/{wireframe,final}.css`; type scale 12/14/16/20/24/32; 4 px spacing grid; radii 8/12. Components: button (primary, secondary, ghost, busy), input, label, form field with inline error, select, checkbox, dialog and confirm dialog, dropdown menu, tabs, `ResponsiveTable` (cards below 768 px), toast (sonner), skeleton, alert, empty and error state, language switch, pagination.
+
+<!-- slice 5: traceability -->
+
 <!-- slice 5: traceability -->
