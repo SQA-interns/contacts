@@ -86,4 +86,36 @@ class GroupEndpointsIT extends ApplicationContextSupport {
 
     mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(30));
   }
+
+  private void expectNameRefused(User user, String body) throws Exception {
+    create(user, body)
+        .andExpect(status().isUnprocessableEntity())
+        .andExpect(jsonPath("$.code").value("validation.failed"))
+        .andExpect(jsonPath("$.fieldErrors.length()").value(1))
+        .andExpect(jsonPath("$.fieldErrors[0].field").value("name"))
+        .andExpect(jsonPath("$.fieldErrors[0].code").value("validation.name_invalid"));
+  }
+
+  @Test
+  void r_002_02_an_empty_blank_missing_or_too_long_name_creates_no_group() throws Exception {
+    User ana = newUser("Ana Novak");
+
+    expectNameRefused(ana, "{\"name\":\"\"}");
+    expectNameRefused(ana, "{\"name\":\"     \"}");
+    expectNameRefused(ana, "{\"name\":\"" + "a".repeat(101) + "\"}");
+    expectNameRefused(ana, "{\"name\":null}");
+    expectNameRefused(ana, "{}");
+
+    mvc.perform(get("/api/v1/groups").with(as(ana))).andExpect(jsonPath("$.length()").value(0));
+  }
+
+  @Test
+  void r_002_02_a_name_of_100_characters_after_trimming_is_accepted() throws Exception {
+    User ana = newUser("Ana Novak");
+    String name = "a".repeat(100);
+
+    create(ana, "{\"name\":\"  " + name + "  \"}")
+        .andExpect(status().isCreated())
+        .andExpect(jsonPath("$.name").value(name));
+  }
 }

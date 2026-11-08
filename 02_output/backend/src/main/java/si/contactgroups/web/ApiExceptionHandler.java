@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.contactgroups.error.ApiError;
+import si.contactgroups.service.ValidationException;
 
 /**
  * The only place that turns a failure into the error format (ADR-10, SR-12): no stack trace, no
@@ -44,6 +45,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> malformed() {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
         .body(new ApiError("request.malformed", "Malformed request"));
+  }
+
+  @ExceptionHandler(ValidationException.class)
+  public ResponseEntity<ApiError> validationFailed(ValidationException e) {
+    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
+        .body(new ApiError("validation.failed", "Validation failed", e.fieldErrors()));
   }
 
   @ExceptionHandler(Exception.class)
