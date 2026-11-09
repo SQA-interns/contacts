@@ -161,8 +161,8 @@ public class GroupRepository {
   }
 
   /**
-   * The Groups of which the User is the only Owner, in Trash for less than 30 days or not (D-27 A1),
-   * ordered by name (R-021-02).
+   * The Groups of which the User is the only Owner, in Trash for less than 30 days or not (D-27
+   * A1), ordered by name (R-021-02).
    */
   @GlobalScope
   public List<SoleOwnerGroup> findSoleOwned(UUID userId, Instant cutoff, Instant now) {

@@ -105,6 +105,12 @@ public class MemberRepository {
         .update();
   }
 
+  /** Removes every Membership of the User, in all Groups (R-021-01). */
+  @GlobalScope
+  public void deleteAllOf(UUID userId) {
+    jdbc.sql("DELETE FROM member WHERE user_id = :userId").param(USER_ID, userId).update();
+  }
+
   public int countOwners(UUID groupId) {
     return jdbc.sql("SELECT count(*) FROM member WHERE group_id = :groupId AND role = 'OWNER'")
         .param(GROUP_ID, groupId)

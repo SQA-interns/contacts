@@ -50,6 +50,11 @@ public class UserRepository {
         .update();
   }
 
+  /** Deletes the User; the Memberships of the User must be gone (R-021-01). */
+  public void delete(UUID id) {
+    jdbc.sql("DELETE FROM app_user WHERE id = :id").param("id", id).update();
+  }
+
   /** Locks the row of the User until the end of the transaction (R-002-03, R-020-08). */
   public void lock(UUID id) {
     jdbc.sql("SELECT id FROM app_user WHERE id = :id FOR UPDATE").param("id", id).query().rowSet();

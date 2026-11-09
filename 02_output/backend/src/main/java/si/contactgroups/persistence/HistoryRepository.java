@@ -51,6 +51,14 @@ public class HistoryRepository {
         .update();
   }
 
+  /** Removes the e-mail address from the entries the User caused; the name stays (R-021-03). */
+  @GlobalScope
+  public void clearEmailOf(UUID userId) {
+    jdbc.sql("UPDATE history_entry SET user_email = NULL WHERE user_id = :userId")
+        .param("userId", userId)
+        .update();
+  }
+
   /** One page of the entries of a Contact, newest first. */
   public List<HistoryEntry> pageOfContact(UUID groupId, UUID contactId, int limit, int offset) {
     return jdbc.sql(
