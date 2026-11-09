@@ -1,0 +1,16 @@
+
+Running 6 tests using 5 workers
+
+  ✓  1 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (6.8s)
+  ✓  2 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (8.2s)
+  ✓  4 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (8.2s)
+  ✓  3 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (9.9s)
+  ✓  5 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (11.0s)
+  ✓  6 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (5.1s)
+
+  6 passed (16.1s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

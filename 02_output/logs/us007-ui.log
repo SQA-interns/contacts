@@ -1,0 +1,220 @@
+
+Running 20 tests using 4 workers
+
+  ✘   1 [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" (786ms)
+  ✘   2 [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" (786ms)
+  ✓   4 [chromium] › acceptance/us007-009-list.spec.ts:52:1 › AC-007-03 choosing the header Company twice sorts ascending, then descending (1.8s)
+  ✓   5 [chromium] › acceptance/us016-019-history-language.spec.ts:65:1 › AC-016-03 entries of 2026-01-15 10:00 and 2026-07-01 10:00 UTC read 15. 1. 2026 11:00 and 1. 7. 2026 12:00 (1.2s)
+  ✓   6 [chromium] › acceptance/us007-009-list.spec.ts:117:1 › EX-007-07 a very long company name stays available in full in the list (1.4s)
+  ✓   7 [chromium] › acceptance/us007-009-list.spec.ts:100:1 › AC-007-07 choosing the row of Ana Novak opens the Contact (1.7s)
+  ✓   3 [chromium] › acceptance/us007-009-list.spec.ts:41:1 › AC-007-01 Acme with 60 Contacts shows 25 sorted by last name and "60 contacts" (4.2s)
+  ✓   8 [chromium] › acceptance/us016-019-history-language.spec.ts:77:1 › EX-016-04 2026-03-29 00:30 UTC reads 01:30 (CET) and 01:30 UTC reads 03:30 (CEST) (1.4s)
+  ✓  12 [chromium] › acceptance/us016-019-history-language.spec.ts:136:3 › in a browser whose language is English › AC-019-01 the product opens in Slovene (426ms)
+  ✓  11 [chromium] › acceptance/us016-019-history-language.spec.ts:115:1 › AC-018-16 the last name <script>alert(1)</script> is listed and opened as typed; no script runs (1.2s)
+  ✓  13 [chromium] › acceptance/us016-019-history-language.spec.ts:144:1 › AC-019-02 switching to English keeps the half-filled Contact form (881ms)
+  ✓  14 [chromium] › acceptance/us016-019-history-language.spec.ts:162:1 › AC-019-03 the language chosen last is used when the product is opened again (760ms)
+  ✓  15 [chromium] › acceptance/us016-019-history-language.spec.ts:180:1 › AC-019-04 the entry of 2026-11-08 10:00 UTC reads 8. 11. 2026 11:00, then 2026-11-08 11:00 (911ms)
+  ✓  16 [chromium] › acceptance/us016-019-history-language.spec.ts:194:1 › AC-019-05 the country SI reads Slovenija, then Slovenia (814ms)
+  ✘  18 [chromium] › acceptance/us016-019-history-language.spec.ts:220:1 › AC-019-07 the error "changed by someone else" is shown in Slovene, then in English (200ms)
+  ✓  19 [chromium] › acceptance/us016-019-history-language.spec.ts:241:1 › EX-019-01 with browser storage blocked Slovene is used at every visit and nothing fails (357ms)
+  ✓  20 [chromium] › acceptance/us016-019-history-language.spec.ts:262:1 › EX-019-02 a result that arrives after the switch is shown in the new language (3.5s)
+  ✘   9 [chromium] › acceptance/us016-019-history-language.spec.ts:89:1 › AC-017-06 a start date after the end date shows the message next to the dates and no list (11.1s)
+  ✘  17 [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched (10.9s)
+  ✘  10 [chromium] › acceptance/us016-019-history-language.spec.ts:103:1 › AC-017-07 filters that match nothing show "No activity matches" and a clear button (1.0m)
+
+
+  1) [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:73:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-04-a-70240-pty-state-with-Add-contact--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-04-a-70240-pty-state-with-Add-contact--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:91:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-05-a-243ad--state-without-Add-contact--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-05-a-243ad--state-without-Add-contact--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › acceptance/us016-019-history-language.spec.ts:89:1 › AC-017-06 a start date after the end date shows the message next to the dates and no list 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('table', { name: 'Dejavnost skupine' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('table', { name: 'Dejavnost skupine' })[22m
+
+
+      92 |   const { ana, acme } = await acmeWithContact();
+      93 |   await openAs(page, ana, paths.activity(acme));
+    > 94 |   await expect(page.getByRole('table', { name: 'Dejavnost skupine' })).toBeVisible();
+         |                                                                        ^
+      95 |
+      96 |   await fillDate(page.getByLabel('Od', { exact: true }), '2026-11-10');
+      97 |   await fillDate(page.getByLabel('Do', { exact: true }), '2026-11-01');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:94:72
+
+    Error Context: test-results/acceptance/us016-019-history-language-83bfc-xt-to-the-dates-and-no-list-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-83bfc-xt-to-the-dates-and-no-list-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-83bfc-xt-to-the-dates-and-no-list-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › acceptance/us016-019-history-language.spec.ts:103:1 › AC-017-07 filters that match nothing show "No activity matches" and a clear button 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.evaluate: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('Dejanje', { exact: true })[22m
+
+
+       at support/stack.ts:207
+
+      205 | export async function choose(page: Page, label: string, option: string): Promise<void> {
+      206 |   const field = page.getByLabel(label, { exact: true });
+    > 207 |   const tag = await field.evaluate((el) => el.tagName.toLowerCase());
+          |                           ^
+      208 |   if (tag === 'select') {
+      209 |     await field.selectOption({ label: option });
+      210 |   } else {
+        at choose (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:207:27)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:109:9
+
+    Error Context: test-results/acceptance/us016-019-history-language-ed2fb--matches-and-a-clear-button-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-ed2fb--matches-and-a-clear-button-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-ed2fb--matches-and-a-clear-button-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasNot: getByRole('columnheader') }).first()
+    Expected substring: [32m"neObvescaj"[39m
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasNot: getByRole('columnheader') }).first()[22m
+
+
+      214 |   await switchTo(page, 'EN');
+      215 |
+    > 216 |   await expect(contactRows(page).first()).toContainText('neObvescaj');
+          |                                           ^
+      217 |   await expect(page.getByText('Šola').first()).toBeVisible();
+      218 | });
+      219 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:216:43
+
+    Error Context: test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › acceptance/us016-019-history-language.spec.ts:220:1 › AC-019-07 the error "changed by someone else" is shown in Slovene, then in English 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:226:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-e15a0--in-Slovene-then-in-English-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-e15a0--in-Slovene-then-in-English-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" 
+    [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:89:1 › AC-017-06 a start date after the end date shows the message next to the dates and no list 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:103:1 › AC-017-07 filters that match nothing show "No activity matches" and a clear button 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:220:1 › AC-019-07 the error "changed by someone else" is shown in Slovene, then in English 
+  14 passed (1.1m)
