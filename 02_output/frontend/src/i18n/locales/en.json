@@ -322,6 +322,19 @@
     "noMatchBody": "Change the search or the filters.",
     "clearFilters": "Clear filters"
   },
+  "selection": {
+    "region": "Selection",
+    "selected": {
+      "one": "{{count}} selected",
+      "two": "{{count}} selected",
+      "few": "{{count}} selected",
+      "other": "{{count}} selected"
+    },
+    "selectRow": "Select contact",
+    "selectPage": "Select all on this page",
+    "selectAllResults": "Select all {{count}} results",
+    "clear": "Clear selection"
+  },
   "filters": {
     "title": "Filters",
     "chooseTags": "Choose Tags",

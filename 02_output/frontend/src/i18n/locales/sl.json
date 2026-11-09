@@ -322,6 +322,19 @@
     "noMatchBody": "Spremenite iskanje ali filtre.",
     "clearFilters": "Počisti filtre"
   },
+  "selection": {
+    "region": "Izbira",
+    "selected": {
+      "one": "{{count}} izbran",
+      "two": "{{count}} izbrana",
+      "few": "{{count}} izbrani",
+      "other": "{{count}} izbranih"
+    },
+    "selectRow": "Izberi kontakt",
+    "selectPage": "Izberi vse na tej strani",
+    "selectAllResults": "Izberi vseh {{count}} zadetkov",
+    "clear": "Počisti izbiro"
+  },
   "filters": {
     "title": "Filtri",
     "chooseTags": "Izberite značke",
