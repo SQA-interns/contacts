@@ -1,0 +1,342 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/duplicates/preselect.test.ts (14 tests | 12 failed) 19ms
+     × puts the oldest Contact first, then the others oldest first 7ms
+     × EX-026-03 with equal creation times the smaller id comes first 1ms
+     × AC-026-01 preselects the first name of the Survivor and the phone of the next Contact 2ms
+     × EX-026-02 a value all Contacts share is preselected and needs no choice 1ms
+     × a field that is empty in all Contacts is empty and needs no choice 1ms
+     × treats empty text like no value 0ms
+     × AC-026-03 two values for one key need a choice and are not preselected 1ms
+     × EX-026-08 keys that differ in case are one key, shown in the first spelling 1ms
+     × a key with the same value everywhere, or on one Contact only, is kept without a choice 1ms
+     × lists the Tags of all Contacts once, ignoring case 0ms
+     × names the keys with several values and no chosen one 0ms
+     × builds the request with the Survivor, every version and the chosen values 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 12 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > orderForMerge (R-026-02, EX-026-03) > puts the oldest Contact first, then the others oldest first
+AssertionError: expected [ 'a', 'c', 'b' ] to deeply equal [ 'c', 'b', 'a' ]
+
+- Expected
++ Received
+
+  [
++   "a",
+    "c",
+    "b",
+-   "a",
+  ]
+
+ ❯ src/features/duplicates/preselect.test.ts:29:68
+     27|     const oldest = contact('c', '2026-11-05T10:00:00Z');
+     28|
+     29|     expect(orderForMerge([newer, oldest, older]).map((c) => c.id)).toE…
+       |                                                                    ^
+     30|   });
+     31|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > orderForMerge (R-026-02, EX-026-03) > EX-026-03 with equal creation times the smaller id comes first
+AssertionError: expected [ '00b', '00a' ] to deeply equal [ '00a', '00b' ]
+
+- Expected
++ Received
+
+  [
+-   "00a",
+    "00b",
++   "00a",
+  ]
+
+ ❯ src/features/duplicates/preselect.test.ts:37:38
+     35|     const ordered = orderForMerge([contact('00b', same), contact('00a'…
+     36|
+     37|     expect(ordered.map((c) => c.id)).toEqual(['00a', '00b']);
+       |                                      ^
+     38|   });
+     39|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > fieldRows (R-026-02) > AC-026-01 preselects the first name of the Survivor and the phone of the next Contact
+AssertionError: expected undefined to match object { values: [ 'Ana', 'ana' ], …(2) }
+
+- Expected:
+{
+  "needsChoice": true,
+  "preselected": "Ana",
+  "values": [
+    "Ana",
+    "ana",
+  ],
+}
+
++ Received:
+undefined
+
+ ❯ src/features/duplicates/preselect.test.ts:55:19
+     53|     const first = rows.find((r) => r.field === 'firstName');
+     54|     const phone = rows.find((r) => r.field === 'phone');
+     55|     expect(first).toMatchObject({ values: ['Ana', 'ana'], preselected:…
+       |                   ^
+     56|     expect(phone).toMatchObject({ values: [null, '040 123 456'], prese…
+     57|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > fieldRows (R-026-02) > EX-026-02 a value all Contacts share is preselected and needs no choice
+AssertionError: expected undefined to match object { preselected: 'Acme', …(1) }
+
+- Expected:
+{
+  "needsChoice": false,
+  "preselected": "Acme",
+}
+
++ Received:
+undefined
+
+ ❯ src/features/duplicates/preselect.test.ts:65:17
+     63|     const row = fieldRows([a, b]).find((r) => r.field === 'company');
+     64|
+     65|     expect(row).toMatchObject({ preselected: 'Acme', needsChoice: fals…
+       |                 ^
+     66|   });
+     67|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > fieldRows (R-026-02) > a field that is empty in all Contacts is empty and needs no choice
+AssertionError: expected undefined to match object { values: [ null, null ], …(2) }
+
+- Expected:
+{
+  "needsChoice": false,
+  "preselected": null,
+  "values": [
+    null,
+    null,
+  ],
+}
+
++ Received:
+undefined
+
+ ❯ src/features/duplicates/preselect.test.ts:71:17
+     69|     const row = fieldRows([older, newer]).find((r) => r.field === 'job…
+     70|
+     71|     expect(row).toMatchObject({ values: [null, null], preselected: nul…
+       |                 ^
+     72|   });
+     73|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > fieldRows (R-026-02) > treats empty text like no value
+AssertionError: expected undefined to match object { values: [ null, 'Celje' ], …(1) }
+
+- Expected:
+{
+  "preselected": "Celje",
+  "values": [
+    null,
+    "Celje",
+  ],
+}
+
++ Received:
+undefined
+
+ ❯ src/features/duplicates/preselect.test.ts:80:17
+     78|     const row = fieldRows([a, b]).find((r) => r.field === 'city');
+     79|
+     80|     expect(row).toMatchObject({ values: [null, 'Celje'], preselected: …
+       |                 ^
+     81|   });
+     82| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > attributeRows (R-026-04, EX-026-08) > AC-026-03 two values for one key need a choice and are not preselected
+AssertionError: expected [] to deeply equal [ { key: 'kompetenca', …(3) } ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "key": "kompetenca",
+-     "needsChoice": true,
+-     "preselected": null,
+-     "values": [
+-       "java",
+-       "spletnoProgramiranje",
+-     ],
+-   },
+- ]
++ []
+
+ ❯ src/features/duplicates/preselect.test.ts:94:18
+     92|     ]);
+     93|
+     94|     expect(rows).toEqual([
+       |                  ^
+     95|       {
+     96|         key: 'kompetenca',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > attributeRows (R-026-04, EX-026-08) > EX-026-08 keys that differ in case are one key, shown in the first spelling
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/duplicates/preselect.test.ts:110:18
+    108|     ]);
+    109|
+    110|     expect(rows).toHaveLength(1);
+       |                  ^
+    111|     expect(rows[0]).toMatchObject({ key: 'Kompetenca', values: ['java'…
+    112|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > attributeRows (R-026-04, EX-026-08) > a key with the same value everywhere, or on one Contact only, is kept without a choice
+AssertionError: expected [] to deeply equal [ { key: 'jezik', …(3) }, …(1) ]
+
+- Expected
++ Received
+
+- [
+-   {
+-     "key": "jezik",
+-     "needsChoice": false,
+-     "preselected": "sl",
+-     "values": [
+-       "sl",
+-       "sl",
+-     ],
+-   },
+-   {
+-     "key": "vloga",
+-     "needsChoice": false,
+-     "preselected": "vodja",
+-     "values": [
+-       "vodja",
+-       null,
+-     ],
+-   },
+- ]
++ []
+
+ ❯ src/features/duplicates/preselect.test.ts:125:18
+    123|     ]);
+    124|
+    125|     expect(rows).toEqual([
+       |                  ^
+    126|       { key: 'jezik', values: ['sl', 'sl'], needsChoice: false, presel…
+    127|       { key: 'vloga', values: ['vodja', null], needsChoice: false, pre…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > combinedTags (R-026-03) > lists the Tags of all Contacts once, ignoring case
+AssertionError: expected [] to deeply equal [ 'udelezenec2025', 'VIP', …(1) ]
+
+- Expected
++ Received
+
+- [
+-   "udelezenec2025",
+-   "VIP",
+-   "neObvescaj",
+- ]
++ []
+
+ ❯ src/features/duplicates/preselect.test.ts:137:34
+    135|     const b = contact('b', '2026-11-07T10:00:00Z', { tags: ['neObvesca…
+    136|
+    137|     expect(combinedTags([a, b])).toEqual(['udelezenec2025', 'VIP', 'ne…
+       |                                  ^
+    138|   });
+    139| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > missingChoices and mergeRequest (R-026-04, R-026-05) > names the keys with several values and no chosen one
+AssertionError: expected [ '?' ] to deeply equal [ 'kompetenca' ]
+
+- Expected
++ Received
+
+  [
+-   "kompetenca",
++   "?",
+  ]
+
+ ❯ src/features/duplicates/preselect.test.ts:157:38
+    155|     const rows = attributeRows(clash);
+    156|
+    157|     expect(missingChoices(rows, {})).toEqual(['kompetenca']);
+       |                                      ^
+    158|     expect(missingChoices(rows, { kompetenca: 'sql' })).toEqual([]);
+    159|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/12]⎯
+
+ FAIL  src/features/duplicates/preselect.test.ts > missingChoices and mergeRequest (R-026-04, R-026-05) > builds the request with the Survivor, every version and the chosen values
+AssertionError: expected { survivorId: '', contacts: [], …(2) } to deeply equal { survivorId: 'a', …(3) }
+
+- Expected
++ Received
+
+  {
+-   "attributes": [
+-     {
+-       "key": "kompetenca",
+-       "value": "sql",
+-     },
+-   ],
+-   "contacts": [
+-     {
+-       "id": "a",
+-       "version": 1,
+-     },
+-     {
+-       "id": "b",
+-       "version": 1,
+-     },
+-   ],
++   "attributes": [],
++   "contacts": [],
+    "fields": {
+      "firstName": "Ana",
+      "phone": "040 123 456",
+    },
+-   "survivorId": "a",
++   "survivorId": "",
+  }
+
+ ❯ src/features/duplicates/preselect.test.ts:169:21
+    167|     );
+    168|
+    169|     expect(request).toEqual({
+       |                     ^
+    170|       survivorId: 'a',
+    171|       contacts: [
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/12]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  12 failed | 2 passed (14)
+   Start at  18:33:16
+   Duration  915ms (transform 55ms, setup 171ms, import 29ms, tests 19ms, environment 548ms)
+
