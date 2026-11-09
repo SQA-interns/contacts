@@ -85,23 +85,27 @@ for (const viewport of VIEWPORTS) {
       const gate = new Promise<void>((resolve) => (release = resolve));
       await page.route('**/api/v1/groups/*/merges', async (route) => {
         await gate;
-        await route.abort();
+        await route.fulfill({ status: 500, json: { code: 'x', message: 'x' } });
       });
       await page.getByRole('button', { name: 'Združi', exact: true }).click();
       await page.getByRole('dialog').getByRole('button', { name: 'Združi', exact: true }).click();
       await expect(page.getByRole('button', { name: 'Združevanje …' })).toBeVisible();
       await check(page, 'WF-18_merge', 'busy', viewport.name);
       release();
+      await expect(page.getByRole('alert')).toBeVisible();
       await page.unroute('**/api/v1/groups/*/merges');
 
-      await page.reload();
+      let releaseContacts: () => void = () => undefined;
+      const contactsGate = new Promise<void>((resolve) => (releaseContacts = resolve));
       await page.route('**/api/v1/groups/*/contacts/*', async (route) => {
-        await new Promise((resolve) => setTimeout(resolve, 60_000));
-        await route.abort();
+        await contactsGate;
+        await route.continue();
       });
       await page.reload();
-      await expect(page.getByRole('status')).toBeVisible();
+      await expect(page.getByRole('status')).toBeAttached();
       await check(page, 'WF-18_merge', 'loading', viewport.name);
+      releaseContacts();
+      await expect(page.getByRole('radio', { name: 'Ana', exact: true })).toBeVisible();
       await page.unroute('**/api/v1/groups/*/contacts/*');
 
       await page.route('**/api/v1/groups/*/contacts/*', (route) =>
@@ -115,6 +119,14 @@ for (const viewport of VIEWPORTS) {
       await page.goto(`/groups/${acme.id}/merge`);
       await expect(page.getByRole('heading', { name: 'Ni kontaktov za združitev' })).toBeVisible();
       await check(page, 'WF-18_merge', 'nothing-to-merge', viewport.name);
+
+      await page.goto(paths.duplicates(acme));
+      await page.getByRole('button', { name: /Združi izbrane \(2\)/ }).click();
+      await page.getByRole('radio', { name: 'spletnoProgramiranje' }).check();
+      await page.getByRole('button', { name: 'Združi', exact: true }).click();
+      await page.getByRole('dialog').getByRole('button', { name: 'Združi', exact: true }).click();
+      await expect(page.getByRole('status').filter({ hasText: 'Kontakti so združeni.' })).toBeVisible();
+      await check(page, 'WF-18_merge', 'merged', viewport.name);
     });
   });
 }
