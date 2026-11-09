@@ -69,6 +69,38 @@ public class HistoryWriter {
     if (changes.isEmpty()) {
       return;
     }
+    write(
+        groupId,
+        userId,
+        HistoryAction.CONTACT_EDITED,
+        contactId,
+        Map.of("changes", pairs(changes)),
+        at);
+  }
+
+  /**
+   * Records a Version restored: its number and the old and new value of every changed field
+   * (R-023-02). It is written after the entries of the Tags and Attributes, so it is the latest.
+   */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void versionRestored(
+      UUID groupId,
+      UUID userId,
+      UUID contactId,
+      int restoredNumber,
+      ContactData before,
+      ContactData after,
+      Instant at) {
+    write(
+        groupId,
+        userId,
+        HistoryAction.VERSION_RESTORED,
+        contactId,
+        Map.of("restored", restoredNumber, "changes", pairs(ContactChanges.between(before, after))),
+        at);
+  }
+
+  private ObjectNode pairs(Map<String, ContactChanges.Change> changes) {
     ObjectNode pairs = json.createObjectNode();
     changes.forEach(
         (field, change) -> {
@@ -76,7 +108,7 @@ public class HistoryWriter {
           pair.put(OLD, change.oldValue());
           pair.put(NEW, change.newValue());
         });
-    write(groupId, userId, HistoryAction.CONTACT_EDITED, contactId, Map.of("changes", pairs), at);
+    return pairs;
   }
 
   /** Records an Attribute added, changed or removed: key, old and new value (R-004-06). */

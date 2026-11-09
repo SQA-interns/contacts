@@ -14,6 +14,7 @@ import si.contactgroups.domain.Contact;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.StoredContact;
 import si.contactgroups.domain.TagChanges;
+import si.contactgroups.domain.VersionContent;
 import si.contactgroups.error.ApiError.FieldError;
 import si.contactgroups.persistence.ContactRepository;
 import si.contactgroups.persistence.VersionRepository;
@@ -102,6 +103,47 @@ public class ContactService {
       ContactData input,
       List<AttributePair> pairs,
       List<String> tagNames) {
+    return save(groupId, userId, contactId, version, input, pairs, tagNames, null);
+  }
+
+  /**
+   * Saves the content of an earlier Version as a new Version (R-023-01): the same checks and the
+   * same save as {@link #update}, but the History records "restored version {@code restoredFrom}"
+   * instead of an edit (R-023-02). The Tags and Attributes are those of the Version; a Tag that is
+   * gone is created again (R-023-05).
+   *
+   * @throws VersionMissingException when {@code version} is {@code null}
+   * @throws ValidationException when the content breaks BR-06 (R-023-03)
+   * @throws ContactChangedException when {@code version} is not the current one (R-023-04)
+   */
+  @Transactional
+  public Contact restore(
+      UUID groupId,
+      UUID userId,
+      UUID contactId,
+      Integer version,
+      int restoredFrom,
+      VersionContent content) {
+    return save(
+        groupId,
+        userId,
+        contactId,
+        version,
+        content.data(),
+        content.attributes(),
+        content.tags(),
+        restoredFrom);
+  }
+
+  private Contact save(
+      UUID groupId,
+      UUID userId,
+      UUID contactId,
+      Integer version,
+      ContactData input,
+      List<AttributePair> pairs,
+      List<String> tagNames,
+      Integer restoredFrom) {
     if (version == null) {
       throw new VersionMissingException();
     }
@@ -128,9 +170,14 @@ public class ContactService {
           ? new ContactInTrashException()
           : new ContactChangedException(load(groupId, contactId));
     }
-    history.contactEdited(groupId, userId, contactId, stored.data(), data, now);
+    if (restoredFrom == null) {
+      history.contactEdited(groupId, userId, contactId, stored.data(), data, now);
+    }
     attributes.replace(groupId, userId, contactId, before, after, now);
     tags.replace(groupId, userId, contactId, tagsBefore, tagsAfter, now);
+    if (restoredFrom != null) {
+      history.versionRestored(groupId, userId, contactId, restoredFrom, stored.data(), data, now);
+    }
     versions.insertSnapshot(groupId, contactId, version + 1, userId, now);
     return load(groupId, contactId);
   }

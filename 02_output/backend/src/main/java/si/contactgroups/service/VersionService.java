@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.Contact;
 import si.contactgroups.domain.ContactData;
@@ -18,9 +19,10 @@ import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * Reads the Versions of a Contact (US-022). A Version is written by every save ({@code
- * ContactService}) and is never changed here (R-022-05); the Contact in Trash has none to read
- * (EX-022-04) and a Contact deleted forever takes its Versions with it (R-022-07, cascade).
+ * Reads the Versions of a Contact (US-022) and restores one (US-023). A Version is written by every
+ * save ({@code ContactService}) and is never changed here (R-022-05, R-023-01); the Contact in
+ * Trash has none to read (EX-022-04) and a Contact deleted forever takes its Versions with it
+ * (R-022-07, cascade).
  */
 @Service
 public class VersionService {
@@ -69,6 +71,22 @@ public class VersionService {
     VersionContent current = new VersionContent(live.data(), live.tags(), live.attributes());
     return new VersionComparison(
         stored.number(), VersionDiff.between(parse(stored.snapshot()), current));
+  }
+
+  /**
+   * Saves the content of Version {@code number} as a new Version of the Contact (R-023-01). Nothing
+   * changes when the Contact already has that content (EX-023-01).
+   *
+   * @param seenVersion the current version number the user saw (BR-07, R-023-04)
+   * @throws VersionNotFoundException when the Contact has no such Version (EX-023-03)
+   * @throws ContactInTrashException when the Contact is in Trash (EX-023-02)
+   */
+  @Transactional
+  public Contact restore(
+      UUID groupId, UUID userId, UUID contactId, String number, Integer seenVersion) {
+    StoredVersion stored = find(groupId, contactId, number);
+    return contacts.restore(
+        groupId, userId, contactId, seenVersion, stored.number(), parse(stored.snapshot()));
   }
 
   private StoredVersion find(UUID groupId, UUID contactId, String number) {
