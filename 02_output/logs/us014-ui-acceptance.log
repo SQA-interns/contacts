@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme (10.6s)
+
+
+  1) [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByText('Acme')
+    Expected: [32m0[39m
+    Received: [31m1[39m
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Acme')[22m
+    [2m    14 × locator resolved to 1 element[22m
+    [2m       - unexpected value "1"[22m
+
+
+      69 |     page.getByRole('heading', { level: 1, name: 'Potrdite svoj e-poštni naslov, da nadaljujete.' }),
+      70 |   ).toBeVisible();
+    > 71 |   await expect(page.getByText('Acme')).toHaveCount(0);
+         |                                        ^
+      72 | });
+      73 |
+      74 | test('AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls', async ({
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:71:40
+
+    Error Context: test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 

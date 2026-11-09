@@ -57,8 +57,12 @@ class InvitationEndpointsIT extends WebTestSupport {
   }
 
   private String inviteOk(String email, String role) throws Exception {
-    String json = invite(ana, email, role).andExpect(status().isCreated()).andReturn()
-        .getResponse().getContentAsString();
+    String json =
+        invite(ana, email, role)
+            .andExpect(status().isCreated())
+            .andReturn()
+            .getResponse()
+            .getContentAsString();
     return JsonPath.read(json, "$.id");
   }
 
@@ -79,7 +83,9 @@ class InvitationEndpointsIT extends WebTestSupport {
 
   private int groupCount(User user) throws Exception {
     String json =
-        mvc.perform(get("/api/v1/groups").with(as(user))).andReturn().getResponse()
+        mvc.perform(get("/api/v1/groups").with(as(user)))
+            .andReturn()
+            .getResponse()
             .getContentAsString();
     return JsonPath.<List<Object>>read(json, "$").size();
   }

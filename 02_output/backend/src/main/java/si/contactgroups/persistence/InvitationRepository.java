@@ -48,11 +48,7 @@ public class InvitationRepository {
   /** The pending Invitations that have not expired at {@code now}, oldest first (R-014-09). */
   public List<Invitation> findPending(UUID groupId, Instant now) {
     return jdbc.sql(
-            "SELECT "
-                + COLUMNS
-                + " FROM invitation WHERE"
-                + PENDING
-                + " ORDER BY created_at, id")
+            "SELECT " + COLUMNS + " FROM invitation WHERE" + PENDING + " ORDER BY created_at, id")
         .param(GROUP_ID, groupId)
         .param(NOW, Timestamp.from(now))
         .query(Invitation.class)
@@ -70,7 +66,9 @@ public class InvitationRepository {
   /** Whether a pending, unexpired Invitation of this lowercase address exists (R-014-04). */
   public boolean existsPending(UUID groupId, String email, Instant now) {
     return jdbc.sql(
-            "SELECT EXISTS (SELECT 1 FROM invitation WHERE" + PENDING + " AND lower(email) = :email)")
+            "SELECT EXISTS (SELECT 1 FROM invitation WHERE"
+                + PENDING
+                + " AND lower(email) = :email)")
         .param(GROUP_ID, groupId)
         .param(NOW, Timestamp.from(now))
         .param("email", email)

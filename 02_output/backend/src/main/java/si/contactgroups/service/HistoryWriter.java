@@ -158,8 +158,7 @@ public class HistoryWriter {
 
   /** Records an Invitation created: address and Role (R-014-11). */
   @Transactional(propagation = Propagation.MANDATORY)
-  public void invitationCreated(
-      UUID groupId, UUID userId, String email, String role, Instant at) {
+  public void invitationCreated(UUID groupId, UUID userId, String email, String role, Instant at) {
     write(
         groupId,
         userId,

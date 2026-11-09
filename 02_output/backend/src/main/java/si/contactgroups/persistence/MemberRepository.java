@@ -12,6 +12,8 @@ import si.contactgroups.domain.Role;
 @Repository
 public class MemberRepository {
 
+  private static final String GROUP_ID = "groupId";
+
   private final JdbcClient jdbc;
 
   public MemberRepository(JdbcClient jdbc) {
@@ -22,7 +24,7 @@ public class MemberRepository {
     jdbc.sql(
             "INSERT INTO member (group_id, user_id, role, joined_at)"
                 + " VALUES (:groupId, :userId, :role, :joinedAt)")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .param("userId", userId)
         .param("role", role.name())
         .param("joinedAt", Timestamp.from(joinedAt))
@@ -34,7 +36,7 @@ public class MemberRepository {
     return jdbc.sql(
             "SELECT m.role FROM member m JOIN contact_group g ON g.id = m.group_id"
                 + " WHERE m.group_id = :groupId AND m.user_id = :userId AND g.deleted_at IS NULL")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .param("userId", userId)
         .query(String.class)
         .optional()
@@ -46,7 +48,7 @@ public class MemberRepository {
     return jdbc.sql(
             "SELECT EXISTS (SELECT 1 FROM member m JOIN app_user u ON u.id = m.user_id"
                 + " WHERE m.group_id = :groupId AND lower(u.email) = lower(:email))")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .param("email", email)
         .query(Boolean.class)
         .single();
@@ -56,7 +58,7 @@ public class MemberRepository {
   public boolean exists(UUID groupId, UUID userId) {
     return jdbc.sql(
             "SELECT EXISTS (SELECT 1 FROM member WHERE group_id = :groupId AND user_id = :userId)")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .param("userId", userId)
         .query(Boolean.class)
         .single();

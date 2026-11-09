@@ -84,7 +84,9 @@ public class InvitationService {
   public Invitation cancel(UUID groupId, UUID ownerId, UUID invitationId) {
     Instant now = now();
     Invitation cancelled =
-        invitations.cancel(groupId, invitationId, now).orElseThrow(InvitationNotFoundException::new);
+        invitations
+            .cancel(groupId, invitationId, now)
+            .orElseThrow(InvitationNotFoundException::new);
     history.invitationCancelled(groupId, ownerId, cancelled.email(), now);
     return cancelled;
   }
