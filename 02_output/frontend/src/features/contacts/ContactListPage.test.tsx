@@ -112,6 +112,26 @@ describe('ContactListPage', () => {
     expect(await screen.findByText('Contact opened')).toBeInTheDocument();
   });
 
+  it('names the link of a Contact without a last name by its first name, e-mail or "(brez imena)" (R-007-05, F-13)', async () => {
+    backend('OWNER', () => ({
+      items: [
+        item(1, { lastName: undefined, firstName: 'Mojca' }),
+        item(2, { lastName: undefined, firstName: undefined, email: 'brez@priimka.si' }),
+        item(3, { lastName: undefined, firstName: undefined }),
+      ],
+      page: 1,
+      pageSize: 25,
+      total: 3,
+    }));
+    renderPage();
+    const table = await screen.findByRole('table', { name: 'Kontakti skupine' });
+
+    const links = within(table).getAllByRole('link');
+
+    expect(links.map((link) => link.textContent)).toEqual(['Mojca', 'brez@priimka.si', '(brez imena)']);
+    for (const link of links) expect(link).toHaveAccessibleName();
+  });
+
   it('offers "Add contact" in the empty state to an Editor only (R-007-06)', async () => {
     backend('EDITOR', () => ({ items: [], page: 1, pageSize: 25, total: 0 }));
     renderPage();

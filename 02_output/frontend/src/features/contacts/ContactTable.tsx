@@ -148,7 +148,7 @@ export function ContactTable({ groupId, rows, sorting, onSort, selection }: Cont
                       onClick={(e) => e.stopPropagation()}
                       className="underline-offset-4 hover:underline"
                     >
-                      {row.lastName || ''}
+                      {nameOf(row)}
                     </Link>
                   ) : c.key === 'tags' ? (
                     <Chips tags={row.tags} />
