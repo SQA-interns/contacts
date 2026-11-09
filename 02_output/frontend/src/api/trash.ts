@@ -33,3 +33,10 @@ export function restoreContact(groupId: string, contactId: string): Promise<Cont
     method: 'POST',
   });
 }
+
+/** `DELETE /groups/{g}/trash/contacts/{c}` (R-013-01, Owner only); 404 when it is already gone. */
+export function deleteContactForever(groupId: string, contactId: string): Promise<void> {
+  return apiRequest(`${group(groupId)}/trash/contacts/${encodeURIComponent(contactId)}`, {
+    method: 'DELETE',
+  });
+}

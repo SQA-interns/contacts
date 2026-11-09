@@ -33,6 +33,7 @@ function backend(role: string, trash: unknown[], restore?: () => Response): Sent
       return Promise.resolve(answer([{ id: 'g1', name: 'Acme', role, createdAt: ana.deletedAt }]));
     }
     sent.push({ url: path, method });
+    if (method === 'DELETE') return Promise.resolve(restore?.() ?? new Response(null, { status: 204 }));
     if (method === 'POST') return Promise.resolve(restore?.() ?? answer({ id: 'c1', version: 2 }));
     return Promise.resolve(answer(trash));
   });
@@ -116,5 +117,51 @@ describe('TrashPage WF-10 (R-012-03, R-012-04, R-012-08)', () => {
     expect(await screen.findByText(/nimate dovoljenja/i)).toBeInTheDocument();
     expect(within(document.body).queryByRole('button', { name: /Obnovi/ })).not.toBeInTheDocument();
     expect(sent).toHaveLength(0);
+  });
+
+  it('R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever', async () => {
+    const sent = backend('OWNER', [ana]);
+    renderPage();
+    await userEvent.click((await screen.findAllByRole('button', { name: /Izbriši za vedno/ }))[0]!);
+
+    const dialog = await screen.findByRole('dialog', { name: 'Trajno izbrišem kontakt?' });
+    expect(dialog).toHaveTextContent('Tega ni mogoče razveljaviti.');
+    expect(sent.filter((s) => s.method === 'DELETE')).toHaveLength(0);
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Izbriši za vedno' }));
+
+    await vi.waitFor(() =>
+      expect(sent.filter((s) => s.method === 'DELETE').map((s) => s.url)).toEqual([
+        expect.stringContaining('/groups/g1/trash/contacts/c1'),
+      ]),
+    );
+  });
+
+  it('R-013-02 keeps the Contact when the confirmation is cancelled', async () => {
+    const sent = backend('OWNER', [ana]);
+    renderPage();
+    await userEvent.click((await screen.findAllByRole('button', { name: /Izbriši za vedno/ }))[0]!);
+    const dialog = await screen.findByRole('dialog', { name: 'Trajno izbrišem kontakt?' });
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Prekliči' }));
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(sent.filter((s) => s.method === 'DELETE')).toHaveLength(0);
+  });
+
+  it('R-013-03 shows an Editor no "Izbriši za vedno"', async () => {
+    backend('EDITOR', [ana]);
+    renderPage();
+
+    expect((await screen.findAllByRole('button', { name: /Obnovi/ })).length).toBeGreaterThan(0);
+    expect(screen.queryByRole('button', { name: /Izbriši za vedno/ })).not.toBeInTheDocument();
+  });
+
+  it('R-013-05 shows "not found" when the Contact is already gone', async () => {
+    backend('OWNER', [ana], () => answer({ code: 'contact.not_found', message: 'x' }, 404));
+    renderPage();
+    await userEvent.click((await screen.findAllByRole('button', { name: /Izbriši za vedno/ }))[0]!);
+    const dialog = await screen.findByRole('dialog', { name: 'Trajno izbrišem kontakt?' });
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Izbriši za vedno' }));
+
+    expect(await screen.findByText('Kontakta ni mogoče najti.')).toBeInTheDocument();
   });
 });

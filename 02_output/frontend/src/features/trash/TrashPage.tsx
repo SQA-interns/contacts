@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router';
 import { toast } from 'sonner';
 import { errorMessage } from '@/api/errors';
-import { listTrash, restoreContact, type TrashContact } from '@/api/trash';
+import { deleteContactForever, listTrash, restoreContact, type TrashContact } from '@/api/trash';
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
@@ -13,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { formatDate } from '@/i18n/format';
 import type { Language } from '@/i18n';
 import { useGroupRole } from '@/features/groups/useGroupRole';
+import { DeleteForeverDialog } from './DeleteForeverDialog';
 
 function nameOf(contact: TrashContact, fallback: string): string {
   const name = [contact.firstName, contact.lastName].filter(Boolean).join(' ');
@@ -48,6 +50,16 @@ export function TrashPage() {
     },
   });
 
+  const [deleting, setDeleting] = useState<string | undefined>();
+  const forever = useMutation({
+    mutationFn: (contactId: string) => deleteContactForever(groupId, contactId),
+    onSettled: async () => {
+      setDeleting(undefined);
+      await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
+      await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
+    },
+  });
+
   if (role === undefined) return <LoadingState rows={4} />;
   if (!allowed) {
     return (
@@ -61,9 +73,9 @@ export function TrashPage() {
     <>
       <PageHeader title={t('trash.title')} />
       <p className="-mt-4 mb-6 text-text-muted">{t('trash.intro')}</p>
-      {restore.isError ? (
+      {restore.isError || forever.isError ? (
         <div className="mb-4">
-          <Notice tone="alert" title={errorMessage(t, restore.error)} />
+          <Notice tone="alert" title={errorMessage(t, restore.error ?? forever.error)} />
         </div>
       ) : null}
       {trash.isPending ? (
@@ -77,9 +89,16 @@ export function TrashPage() {
           contacts={trash.data}
           busyId={restore.isPending ? restore.variables : undefined}
           onRestore={(id) => restore.mutate(id)}
+          onDeleteForever={role === 'OWNER' ? setDeleting : undefined}
           groupId={groupId}
         />
       )}
+      <DeleteForeverDialog
+        open={deleting !== undefined}
+        busy={forever.isPending}
+        onConfirm={() => deleting !== undefined && forever.mutate(deleting)}
+        onCancel={() => setDeleting(undefined)}
+      />
       <p className="mt-6">
         <Link to={`/groups/${groupId}/contacts`} className="underline-offset-4 hover:underline">
           {t('contacts.back')}
@@ -93,6 +112,8 @@ interface TrashTableProps {
   contacts: TrashContact[];
   busyId: string | undefined;
   onRestore: (contactId: string) => void;
+  /** Only an Owner may delete forever (R-013-03); an Editor gets no button. */
+  onDeleteForever?: (contactId: string) => void;
   groupId: string;
 }
 
@@ -106,10 +127,25 @@ function useDaysText() {
   };
 }
 
-function TrashTable({ contacts, busyId, onRestore }: TrashTableProps) {
+function TrashTable({ contacts, busyId, onRestore, onDeleteForever }: TrashTableProps) {
   const { t, i18n } = useTranslation();
   const language = i18n.language as Language;
   const daysText = useDaysText();
+  const actionButtons = (c: TrashContact) => (
+    <>
+      {restoreButton(c)}
+      {onDeleteForever ? (
+        <Button
+          variant="ghost"
+          className="h-11"
+          aria-label={t('trash.foreverFor', { name: nameOf(c, t('contacts.untitled')) })}
+          onClick={() => onDeleteForever(c.id)}
+        >
+          {t('trash.forever')}
+        </Button>
+      ) : null}
+    </>
+  );
   const restoreButton = (c: TrashContact) => (
     <Button
       variant="secondary"
@@ -142,7 +178,7 @@ function TrashTable({ contacts, busyId, onRestore }: TrashTableProps) {
             <th scope="col" className="border-b p-3 font-semibold">
               {t('trash.daysLeftColumn')}
             </th>
-            <th scope="col" className="w-40 border-b p-3 text-right font-semibold">
+            <th scope="col" className="w-72 border-b p-3 text-right font-semibold">
               {t('trash.actionsColumn')}
             </th>
           </tr>
@@ -159,7 +195,7 @@ function TrashTable({ contacts, busyId, onRestore }: TrashTableProps) {
               <td className="truncate border-b p-3">{c.deletedBy ?? '—'}</td>
               <td className="hidden border-b p-3 lg:table-cell">{formatDate(c.deletedAt, language)}</td>
               <td className="border-b p-3">{daysText(c.daysLeft)}</td>
-              <td className="border-b p-3 text-right">{restoreButton(c)}</td>
+              <td className="border-b p-3 text-right">{actionButtons(c)}</td>
             </tr>
           ))}
         </tbody>
@@ -175,7 +211,7 @@ function TrashTable({ contacts, busyId, onRestore }: TrashTableProps) {
               })}
             </p>
             <p>{daysText(c.daysLeft)}</p>
-            {restoreButton(c)}
+            {actionButtons(c)}
           </li>
         ))}
       </ul>
