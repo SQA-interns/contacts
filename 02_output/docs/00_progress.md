@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-007
+- Session: S5 /implement US-008
 - Result: done
-- Gate: DoD-S of US-007 passed in part: DoD-S-01 (9 of 11 backend frozen tests pass: EX-007-05 contradicts R-007-03, AC-007-06 waits for US-012, AC-007-08 for US-014; UI AC-007-04, -05 wait for US-014), see D-51
-- Notes for the next session: Backend: `GET /groups/{g}/contacts` (`ContactController.listContacts`, `SearchService.list`, `ContactRepository.count/page`, sort by normalised columns, migration V3 `city_norm`), `InvalidQueryException` (400). Frontend: `features/contacts/ContactListPage`, `ContactTable`, `api/contacts.listContacts`, route `groups/:groupId/contacts`; Contact tabs are now links `?tab=`. Screens in `out/logs/screens/WF-06_contact-list/`. `q` and filters are ignored until US-008/US-009. The Group tab bar still does not exist. Re-check after US-009, US-012, US-014, US-017: `Us005TagAcceptanceIT`, `Us006TagListAcceptanceIT`, `Us007ContactListAcceptanceIT`, `us003-005-contact.spec.ts`, `us007-009-list.spec.ts`.
+- Gate: DoD-S of US-008 passed in part: DoD-S-01 (15 of 16 backend frozen tests pass: AC-008-07 waits for US-012; UI AC-008-05, -09, EX-008-04 pass), see D-52
+- Notes for the next session: Backend: `q` of `GET /groups/{g}/contacts` (`SearchWords.patterns`, `ContactRepository.count/page` take LIKE patterns, `SearchService.list(group, page, q, sort, dir)`). Frontend: `features/contacts/SearchBox` (label "Iskanje", `?q=`, 300 ms), no-match state with "Clear filters" in `ContactListPage` (clears `q` only; US-009 must clear its filters too and add the filter panel; AC-009-10 expects the first "Počisti filtre" button even with results). Screens `search` and `no-match` in `out/logs/screens/WF-06_contact-list/`. Re-check after US-009, US-012, US-014: `Us008SearchAcceptanceIT` (AC-008-07), `us007-009-list.spec.ts`.
 
 ## Next
-- Command: /implement US-008
+- Command: /implement US-009
 - Waiting for: nothing
 
 ## Stories
@@ -24,7 +24,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-005 | 1 | done | passed in part (DoD-S-01: AC-005-01..08 frozen tests wait for US-006, US-007, US-009, US-014; DoD-S-05 screens, D-49) |
 | US-006 | 1 | done | passed in part (DoD-S-01: 4 backend tests wait for US-007, US-012, US-014, US-017; UI AC-006-04 timing, D-50) |
 | US-007 | 1 | done | passed in part (DoD-S-01: EX-007-05 frozen test contradicts R-007-03, others wait for US-012, US-014; DoD-S-05 screens, D-51) |
-| US-008 | 1 | ready | — |
+| US-008 | 1 | done | passed in part (DoD-S-01: AC-008-07 waits for US-012; DoD-S-05 screens, D-52) |
 | US-009 | 1 | ready | — |
 | US-010 | 1 | ready | — |
 | US-011 | 1 | ready | — |
