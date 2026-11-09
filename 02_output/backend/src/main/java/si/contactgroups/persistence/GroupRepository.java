@@ -14,6 +14,10 @@ import si.contactgroups.domain.GroupTrashItem;
 @Repository
 public class GroupRepository {
 
+  private static final String GROUP_ID = "groupId";
+  private static final String USER_ID = "userId";
+  private static final String CUTOFF = "cutoff";
+
   private final JdbcClient jdbc;
 
   public GroupRepository(JdbcClient jdbc) {
@@ -28,7 +32,7 @@ public class GroupRepository {
                 + " JOIN member m ON m.group_id = g.id"
                 + " WHERE m.user_id = :userId AND g.deleted_at IS NULL"
                 + " ORDER BY lower(g.name), g.id")
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .query(GroupSummary.class)
         .list();
   }
@@ -36,7 +40,7 @@ public class GroupRepository {
   /** Locks the Group row until the end of the transaction: Invitation checks then do not race. */
   public void lock(UUID groupId) {
     jdbc.sql("SELECT id FROM contact_group WHERE id = :groupId FOR UPDATE")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .query()
         .rowSet();
   }
@@ -44,7 +48,7 @@ public class GroupRepository {
   /** The name of the Group. */
   public String name(UUID groupId) {
     return jdbc.sql("SELECT name FROM contact_group WHERE id = :groupId")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .query(String.class)
         .single();
   }
@@ -67,7 +71,7 @@ public class GroupRepository {
             "SELECT EXISTS (SELECT 1 FROM contact_group g JOIN member m ON m.group_id = g.id"
                 + " WHERE m.user_id = :userId AND m.role = 'OWNER' AND g.deleted_at IS NULL"
                 + " AND lower(g.name) = lower(:name))")
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .param("name", name)
         .query(Boolean.class)
         .single();
@@ -76,7 +80,7 @@ public class GroupRepository {
   /** The name of the Group when it is not in Trash. */
   public Optional<String> activeName(UUID groupId) {
     return jdbc.sql("SELECT name FROM contact_group WHERE id = :groupId AND deleted_at IS NULL")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .query(String.class)
         .optional();
   }
@@ -87,7 +91,7 @@ public class GroupRepository {
                 "UPDATE contact_group SET deleted_at = :now"
                     + " WHERE id = :groupId AND deleted_at IS NULL")
             .param("now", Timestamp.from(now))
-            .param("groupId", groupId)
+            .param(GROUP_ID, groupId)
             .update()
         > 0;
   }
@@ -103,8 +107,8 @@ public class GroupRepository {
                 + " JOIN member m ON m.group_id = g.id"
                 + " WHERE m.user_id = :userId AND m.role = 'OWNER' AND g.deleted_at > :cutoff"
                 + " ORDER BY g.deleted_at DESC, g.id")
-        .param("userId", userId)
-        .param("cutoff", Timestamp.from(cutoff))
+        .param(USER_ID, userId)
+        .param(CUTOFF, Timestamp.from(cutoff))
         .query(
             (rs, row) ->
                 GroupTrashItem.of(
@@ -126,9 +130,9 @@ public class GroupRepository {
                 + " JOIN member m ON m.group_id = g.id"
                 + " WHERE g.id = :groupId AND m.user_id = :userId AND m.role = 'OWNER'"
                 + " AND g.deleted_at > :cutoff")
-        .param("groupId", groupId)
-        .param("userId", userId)
-        .param("cutoff", Timestamp.from(cutoff))
+        .param(GROUP_ID, groupId)
+        .param(USER_ID, userId)
+        .param(CUTOFF, Timestamp.from(cutoff))
         .query(GroupSummary.class)
         .optional();
   }
@@ -136,7 +140,7 @@ public class GroupRepository {
   /** Takes the Group out of the Group Trash. */
   public void restore(UUID groupId) {
     jdbc.sql("UPDATE contact_group SET deleted_at = NULL WHERE id = :groupId")
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .update();
   }
 
@@ -144,7 +148,7 @@ public class GroupRepository {
   @GlobalScope
   public List<UUID> findExpired(Instant cutoff) {
     return jdbc.sql("SELECT id FROM contact_group WHERE deleted_at <= :cutoff")
-        .param("cutoff", Timestamp.from(cutoff))
+        .param(CUTOFF, Timestamp.from(cutoff))
         .query(UUID.class)
         .list();
   }
@@ -157,8 +161,8 @@ public class GroupRepository {
   @GlobalScope
   public boolean deleteExpired(UUID groupId, Instant cutoff) {
     return jdbc.sql("DELETE FROM contact_group WHERE id = :groupId AND deleted_at <= :cutoff")
-            .param("groupId", groupId)
-            .param("cutoff", Timestamp.from(cutoff))
+            .param(GROUP_ID, groupId)
+            .param(CUTOFF, Timestamp.from(cutoff))
             .update()
         > 0;
   }
