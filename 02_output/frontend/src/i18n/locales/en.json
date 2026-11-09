@@ -321,5 +321,24 @@
     "noMatchTitle": "No contacts match",
     "noMatchBody": "Change the search or the filters.",
     "clearFilters": "Clear filters"
+  },
+  "filters": {
+    "title": "Filters",
+    "chooseTags": "Choose Tags",
+    "tagMode": "Tag filter mode",
+    "tagMode_all": "has all of these Tags",
+    "tagMode_any": "has any of these Tags",
+    "withoutTags": "Without Tags",
+    "allCountries": "All countries",
+    "allCompanies": "All companies",
+    "attribute": "Attribute",
+    "attributeKey": "Key",
+    "attributeMode": "Attribute filter mode",
+    "attributeHasValue": "has value",
+    "attributeValue": "Value",
+    "attributeExists": "exists",
+    "offered": "Only the Tags, companies, countries and keys of this Group are offered.",
+    "toggle": "Filters ({{count}})",
+    "toggleNone": "Filters"
   }
 }

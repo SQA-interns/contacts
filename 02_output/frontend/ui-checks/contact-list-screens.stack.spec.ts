@@ -26,6 +26,12 @@ for (const viewport of VIEWPORTS) {
           tags: ['gost', 'vip'],
         });
       }
+      await createContact(ana, acme, {
+        firstName: 'Avstrijec',
+        lastName: 'Zupan',
+        company: 'Gama',
+        country: 'AT',
+      });
       await openAs(page, ana, paths.contacts(acme));
       await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
       await expect(page.getByText('Stran 1 od 2').first()).toBeVisible();
@@ -37,7 +43,22 @@ for (const viewport of VIEWPORTS) {
       await page.getByLabel('Iskanje').fill('kompetenca');
       await expect(page.getByRole('heading', { name: 'Noben kontakt ne ustreza' })).toBeVisible();
       await check(page, 'WF-06_contact-list', 'no-match', viewport.name);
-      await page.getByRole('button', { name: 'Počisti filtre' }).click();
+      await page.getByRole('button', { name: 'Počisti filtre' }).last().click();
+      await expect(page.getByText('Stran 1 od 2').first()).toBeVisible();
+
+      // US-009: the filter panel (always shown on desktop, behind "Filtri" below 1024 px)
+      if (viewport.width < 1024) await page.getByRole('button', { name: 'Filtri' }).click();
+      const filters = page.getByRole('complementary', { name: 'Filtri' });
+      await filters.getByText('Izberite značke').first().click();
+      await page.getByRole('option', { name: 'vip' }).click();
+      await filters.getByLabel('Država').selectOption({ label: 'Slovenija' });
+      await filters.getByLabel('Podjetje').selectOption({ label: 'Beta' });
+      await expect(page.getByText('15 kontaktov').first()).toBeVisible();
+      await check(page, 'WF-06_contact-list', 'filters', viewport.name);
+      await filters.getByLabel('Država').selectOption({ label: 'Avstrija' });
+      await expect(page.getByRole('heading', { name: 'Noben kontakt ne ustreza' })).toBeVisible();
+      await check(page, 'WF-06_contact-list', 'filters-no-match', viewport.name);
+      await page.getByRole('button', { name: 'Počisti filtre' }).last().click();
       await expect(page.getByText('Stran 1 od 2').first()).toBeVisible();
 
       if (viewport.width >= 768) {

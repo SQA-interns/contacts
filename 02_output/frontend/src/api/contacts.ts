@@ -99,12 +99,77 @@ export interface ContactPage {
   total: number;
 }
 
-/** `GET /groups/{g}/contacts` (R-007-01..04, R-008-01); an empty `q` is left out (R-008-05). */
+/** The filters of the Contact list (US-009), as the contract parameters of `listContacts`. */
+export interface ContactFilters {
+  tags: string[];
+  tagMode: 'all' | 'any';
+  withoutTags: string[];
+  country: string;
+  company: string;
+  attrKey: string;
+  attrValue: string;
+  attrExists: boolean;
+}
+
+export const NO_FILTERS: ContactFilters = {
+  tags: [],
+  tagMode: 'all',
+  withoutTags: [],
+  country: '',
+  company: '',
+  attrKey: '',
+  attrValue: '',
+  attrExists: false,
+};
+
+/** Adds the active filters to the query; an empty one is left out (R-009-01..07, EX-009-01). */
+export function filterParams(params: URLSearchParams, f: ContactFilters): void {
+  for (const tag of f.tags) params.append('tags', tag);
+  if (f.tags.length > 0) params.set('tagMode', f.tagMode);
+  for (const tag of f.withoutTags) params.append('withoutTags', tag);
+  if (f.country) params.set('country', f.country);
+  if (f.company) params.set('company', f.company);
+  if (f.attrKey && f.attrExists) {
+    params.set('attrKey', f.attrKey);
+    params.set('attrExists', 'true');
+  } else if (f.attrKey && f.attrValue.trim()) {
+    params.set('attrKey', f.attrKey);
+    params.set('attrValue', f.attrValue.trim());
+  }
+}
+
+/** `GET /groups/{g}/contacts` (R-007-01..04, R-008-01, R-009-01..09); an empty `q` is left out (R-008-05). */
 export function listContacts(
   groupId: string,
-  query: { page: number; sort: SortColumn; dir: 'asc' | 'desc'; q?: string },
+  query: {
+    page: number;
+    sort: SortColumn;
+    dir: 'asc' | 'desc';
+    q?: string;
+    filters?: ContactFilters;
+  },
 ): Promise<ContactPage> {
   const params = new URLSearchParams({ page: String(query.page), sort: query.sort, dir: query.dir });
   if (query.q?.trim()) params.set('q', query.q.trim());
+  if (query.filters) filterParams(params, query.filters);
   return apiRequest<ContactPage>(`${base(groupId)}?${params.toString()}`);
+}
+
+/** Contract schema `Facets`: what the filters offer in the Group (R-009-11). */
+export interface Facets {
+  tags: string[];
+  companies: string[];
+  countries: string[];
+  attributeKeys: string[];
+}
+
+/** `GET /groups/{g}/facets`; a missing list is empty. */
+export async function getFacets(groupId: string): Promise<Facets> {
+  const facets = await apiRequest<Partial<Facets>>(`/groups/${encodeURIComponent(groupId)}/facets`);
+  return {
+    tags: facets.tags ?? [],
+    companies: facets.companies ?? [],
+    countries: facets.countries ?? [],
+    attributeKeys: facets.attributeKeys ?? [],
+  };
 }

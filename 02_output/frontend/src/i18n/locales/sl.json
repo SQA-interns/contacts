@@ -321,5 +321,24 @@
     "noMatchTitle": "Noben kontakt ne ustreza",
     "noMatchBody": "Spremenite iskanje ali filtre.",
     "clearFilters": "Počisti filtre"
+  },
+  "filters": {
+    "title": "Filtri",
+    "chooseTags": "Izberite značke",
+    "tagMode": "Način filtra značk",
+    "tagMode_all": "ima vse te značke",
+    "tagMode_any": "ima katero koli od teh značk",
+    "withoutTags": "Brez značk",
+    "allCountries": "Vse države",
+    "allCompanies": "Vsa podjetja",
+    "attribute": "Atribut",
+    "attributeKey": "Ključ",
+    "attributeMode": "Način filtra atributa",
+    "attributeHasValue": "ima vrednost",
+    "attributeValue": "Vrednost",
+    "attributeExists": "obstaja",
+    "offered": "Ponujene so le značke, podjetja, države in ključi te skupine.",
+    "toggle": "Filtri ({{count}})",
+    "toggleNone": "Filtri"
   }
 }

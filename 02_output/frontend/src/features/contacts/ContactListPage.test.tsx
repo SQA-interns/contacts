@@ -18,12 +18,20 @@ const item = (n: number, extra: object = {}) => ({
 });
 
 /** The backend: the Group list and the Contact list; returns the requested list URLs. */
+const FACETS = {
+  tags: ['a', 'b', 'udelezenec2025'],
+  companies: ['Acme d.o.o.'],
+  countries: ['AT', 'SI'],
+  attributeKeys: ['kompetenca'],
+};
+
 function backend(role: string, page: (url: URL) => unknown) {
   const asked: URL[] = [];
   vi.mocked(fetch).mockImplementation((url) => {
     const text = String(url);
     if (text.endsWith('/groups')) return Promise.resolve(answer(group(role)));
     const parsed = new URL(text, 'http://localhost');
+    if (parsed.pathname.endsWith('/facets')) return Promise.resolve(answer(FACETS));
     asked.push(parsed);
     return Promise.resolve(answer(page(parsed)));
   });
@@ -166,7 +174,7 @@ describe('ContactListPage', () => {
     expect(screen.getByLabelText('Iskanje')).toHaveValue('<script>');
     expect(screen.queryByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeNull();
 
-    await userEvent.click(screen.getByRole('button', { name: 'Počisti filtre' }));
+    await userEvent.click(screen.getAllByRole('button', { name: 'Počisti filtre' }).at(-1)!);
 
     expect(await screen.findByRole('table', { name: 'Kontakti skupine' })).toBeInTheDocument();
     expect(screen.getByLabelText('Iskanje')).toHaveValue('');
@@ -180,5 +188,99 @@ describe('ContactListPage', () => {
     );
     renderPage();
     expect(await screen.findByRole('button', { name: 'Poskusi znova' })).toBeInTheDocument();
+  });
+
+  const lastList = (asked: URL[]) => asked.filter((u) => u.pathname.endsWith('/contacts')).slice(-1)[0];
+
+  it('offers the Tags, countries, companies and keys of the Group and sends the Tag filters (R-009-01..03, R-009-11)', async () => {
+    const asked = backend('OWNER', () => ({ items: [item(1)], page: 1, pageSize: 25, total: 1 }));
+    renderPage('/groups/g1/contacts?page=3');
+    await screen.findByRole('table', { name: 'Kontakti skupine' });
+    const panel = screen.getByRole('complementary', { name: 'Filtri' });
+
+    await userEvent.click(within(panel).getAllByText('Izberite značke')[0]!);
+    expect(screen.getByRole('option', { name: 'udelezenec2025' })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('option', { name: 'a' }));
+    await userEvent.click(screen.getByRole('option', { name: 'b' }));
+    await userEvent.click(within(panel).getByLabelText('ima katero koli od teh značk'));
+
+    await vi.waitFor(() => expect(lastList(asked)?.searchParams.getAll('tags')).toEqual(['a', 'b']));
+    expect(lastList(asked)?.searchParams.get('tagMode')).toBe('any');
+    expect(lastList(asked)?.searchParams.get('page')).toBe('1');
+  });
+
+  it('sends the Without-Tags filter, the country and the company (R-009-03..05)', async () => {
+    const asked = backend('OWNER', () => ({ items: [item(1)], page: 1, pageSize: 25, total: 1 }));
+    renderPage();
+    await screen.findByRole('table', { name: 'Kontakti skupine' });
+    const panel = screen.getByRole('complementary', { name: 'Filtri' });
+
+    await userEvent.click(within(panel).getByRole('button', { name: 'Brez značk' }));
+    await userEvent.click(screen.getByRole('option', { name: 'b' }));
+    await userEvent.selectOptions(within(panel).getByLabelText('Država'), 'Slovenija');
+    await userEvent.selectOptions(within(panel).getByLabelText('Podjetje'), 'Acme d.o.o.');
+
+    await vi.waitFor(() => expect(lastList(asked)?.searchParams.get('company')).toBe('Acme d.o.o.'));
+    expect(lastList(asked)?.searchParams.getAll('withoutTags')).toEqual(['b']);
+    expect(lastList(asked)?.searchParams.get('country')).toBe('SI');
+  });
+
+  it('sends the Attribute filter with a value, or with "exists" (R-009-06, R-009-07)', async () => {
+    const asked = backend('OWNER', () => ({ items: [item(1)], page: 1, pageSize: 25, total: 1 }));
+    renderPage();
+    await screen.findByRole('table', { name: 'Kontakti skupine' });
+    const panel = screen.getByRole('complementary', { name: 'Filtri' });
+
+    await userEvent.selectOptions(within(panel).getByLabelText('Atribut'), 'kompetenca');
+    await userEvent.type(within(panel).getByLabelText('Vrednost'), 'java');
+
+    await vi.waitFor(() => expect(lastList(asked)?.searchParams.get('attrValue')).toBe('java'));
+    expect(lastList(asked)?.searchParams.get('attrKey')).toBe('kompetenca');
+
+    await userEvent.click(within(panel).getByLabelText('obstaja'));
+
+    await vi.waitFor(() => expect(lastList(asked)?.searchParams.get('attrExists')).toBe('true'));
+    expect(lastList(asked)?.searchParams.has('attrValue')).toBe(false);
+  });
+
+  it('clears every filter and the search text with the first "Clear filters" (R-009-10)', async () => {
+    const asked = backend('OWNER', () => ({ items: [item(1)], page: 1, pageSize: 25, total: 1 }));
+    renderPage('/groups/g1/contacts?q=ana&country=SI&tags=a&tagMode=all');
+    await screen.findByRole('table', { name: 'Kontakti skupine' });
+    expect(screen.getByLabelText('Država')).toHaveValue('SI');
+
+    await userEvent.click(screen.getAllByRole('button', { name: 'Počisti filtre' })[0]!);
+
+    await vi.waitFor(() => expect(lastList(asked)?.searchParams.has('country')).toBe(false));
+    expect(lastList(asked)?.searchParams.has('q')).toBe(false);
+    expect(lastList(asked)?.searchParams.has('tags')).toBe(false);
+    expect(screen.getByLabelText('Iskanje')).toHaveValue('');
+  });
+
+  it('shows "No contacts match" when a filter matches nothing, and its button clears the filters (R-009-12)', async () => {
+    backend('OWNER', (url) =>
+      url.searchParams.has('country')
+        ? { items: [], page: 1, pageSize: 25, total: 0 }
+        : { items: [item(1)], page: 1, pageSize: 25, total: 1 },
+    );
+    renderPage('/groups/g1/contacts?country=AT');
+
+    expect(await screen.findByRole('heading', { name: 'Noben kontakt ne ustreza' })).toBeInTheDocument();
+    await userEvent.click(screen.getAllByRole('button', { name: 'Počisti filtre' }).at(-1)!);
+
+    expect(await screen.findByRole('table', { name: 'Kontakti skupine' })).toBeInTheDocument();
+  });
+
+  it('drops a search text that is still waiting to be sent when the filters are cleared (R-009-10)', async () => {
+    const asked = backend('OWNER', () => ({ items: [item(1)], page: 1, pageSize: 25, total: 1 }));
+    renderPage('/groups/g1/contacts?country=SI');
+    await screen.findByRole('table', { name: 'Kontakti skupine' });
+
+    await userEvent.type(screen.getByLabelText('Iskanje'), 'ana');
+    await userEvent.click(screen.getAllByRole('button', { name: 'Počisti filtre' })[0]!);
+
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    expect(screen.getByLabelText('Iskanje')).toHaveValue('');
+    expect(lastList(asked)?.searchParams.has('q')).toBe(false);
   });
 });
