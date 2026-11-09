@@ -110,6 +110,29 @@
       "other": "{{count}} dni"
     }
   },
+  "invitations": {
+    "title": "Povabila",
+    "count": "Odprta povabila: {{count}} od {{max}}",
+    "formTitle": "Povabi osebo",
+    "emailLabel": "E-pošta",
+    "roleLabel": "Vloga",
+    "hint": "Povabljena oseba dobi dostop, ko se prijavi s tem e-poštnim naslovom. Sporočila ne pošljemo, obvestite jo sami. Povabilo velja 14 dni.",
+    "submit": "Ustvari povabilo",
+    "created": "Povabilo je ustvarjeno. Obvestite povabljeno osebo.",
+    "listTitle": "Odprta povabila",
+    "emailColumn": "E-pošta",
+    "roleColumn": "Vloga",
+    "expiresColumn": "Poteče",
+    "actionsColumn": "Dejanja",
+    "cancel": "Prekliči povabilo",
+    "cancelFor": "Prekliči povabilo za {{email}}",
+    "cancelTitle": "Prekličem povabilo?",
+    "cancelBody": "Oseba {{email}} s tem povabilom ne bo dobila dostopa.",
+    "line": "{{role}}, poteče {{date}}",
+    "emptyTitle": "Ni odprtih povabil",
+    "emptyBody": "Povabite osebo z obrazcem zgoraj.",
+    "noPermission": "Za povabila nimate pravice. Povabite lahko samo lastniki."
+  },
   "tags": {
     "title": "Značke",
     "intro": "Značke te skupine in število kontaktov z vsako. Nove značke dodate na kontaktu.",

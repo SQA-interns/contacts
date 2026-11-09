@@ -110,6 +110,29 @@
       "other": "{{count}} days"
     }
   },
+  "invitations": {
+    "title": "Invitations",
+    "count": "Pending invitations: {{count}} of {{max}}",
+    "formTitle": "Invite a person",
+    "emailLabel": "E-mail",
+    "roleLabel": "Role",
+    "hint": "The invited person gets access after signing in with this e-mail address. We send no message, so tell them yourself. The invitation is valid for 14 days.",
+    "submit": "Create invitation",
+    "created": "Invitation created. Tell the invited person.",
+    "listTitle": "Pending invitations",
+    "emailColumn": "E-mail",
+    "roleColumn": "Role",
+    "expiresColumn": "Expires",
+    "actionsColumn": "Actions",
+    "cancel": "Cancel invitation",
+    "cancelFor": "Cancel invitation for {{email}}",
+    "cancelTitle": "Cancel the invitation?",
+    "cancelBody": "{{email}} will not get access with this invitation.",
+    "line": "{{role}}, expires {{date}}",
+    "emptyTitle": "No pending invitations",
+    "emptyBody": "Invite a person with the form above.",
+    "noPermission": "You may not manage invitations. Only owners can invite."
+  },
   "tags": {
     "title": "Tags",
     "intro": "The Tags of this Group and the number of Contacts with each. Add new Tags on a Contact.",

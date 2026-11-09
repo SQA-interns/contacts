@@ -8,6 +8,7 @@ import { ContactPage } from '@/features/contacts/ContactPage';
 import { NewContactPage } from '@/features/contacts/NewContactPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
 import { ContactListPage } from '@/features/contacts/ContactListPage';
+import { InvitationsPage } from '@/features/invitations/InvitationsPage';
 import { TrashPage } from '@/features/trash/TrashPage';
 import { TagListPage } from '@/features/tags/TagListPage';
 import { NotFoundPage } from '@/features/home/NotFoundPage';
@@ -31,6 +32,7 @@ export const routes: RouteObject[] = [
           { path: 'groups/:groupId/contacts', element: <ContactListPage /> },
           { path: 'groups/:groupId/tags', element: <TagListPage /> },
           { path: 'groups/:groupId/trash', element: <TrashPage /> },
+          { path: 'groups/:groupId/invitations', element: <InvitationsPage /> },
           { path: 'groups/:groupId/contacts/new', element: <NewContactPage /> },
           { path: 'groups/:groupId/contacts/:contactId', element: <ContactPage /> },
         ],

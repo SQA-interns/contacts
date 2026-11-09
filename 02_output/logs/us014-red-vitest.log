@@ -1,0 +1,33 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/invitations/InvitationsPage.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/invitations/InvitationsPage.test.tsx [ src/features/invitations/InvitationsPage.test.tsx ]
+Error: Failed to resolve import "./InvitationsPage" from "src/features/invitations/InvitationsPage.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/src/features/invitations/InvitationsPage.test.tsx:7:32
+  6  |  import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+  7  |  import { setLanguage } from "@/i18n";
+  8  |  import { InvitationsPage } from "./InvitationsPage";
+     |                                   ^
+  9  |  const answer = (body, status = 200) => new Response(JSON.stringify(body), { status });
+  10 |  const boris = {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/config.js:29250:43
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/config.js:29247:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/config.js:27370:18
+ ❯ node_modules/vite/dist/node/chunks/config.js:27428:32
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/config.js:27396:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/config.js:29048:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/config.js:22914:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  11:53:22
+   Duration  905ms (transform 32ms, setup 175ms, import 0ms, tests 0ms, environment 545ms)
+
