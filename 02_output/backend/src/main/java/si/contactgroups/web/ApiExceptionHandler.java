@@ -33,6 +33,7 @@ import si.contactgroups.service.TagNameTakenException;
 import si.contactgroups.service.TagNotFoundException;
 import si.contactgroups.service.ValidationException;
 import si.contactgroups.service.VersionMissingException;
+import si.contactgroups.service.VersionNotFoundException;
 import tools.jackson.databind.exc.UnrecognizedPropertyException;
 
 /**
@@ -162,6 +163,12 @@ public class ApiExceptionHandler {
     return ResponseEntity.status(HttpStatus.CONFLICT)
         .body(
             new ContactConflict("contact.changed_by_someone_else", e.getMessage(), e.getCurrent()));
+  }
+
+  @ExceptionHandler(VersionNotFoundException.class)
+  public ResponseEntity<ApiError> versionNotFound(VersionNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ApiError("version.not_found", e.getMessage()));
   }
 
   @ExceptionHandler(TagNotFoundException.class)
