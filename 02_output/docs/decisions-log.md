@@ -513,3 +513,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-47: Readings of US-016 made while implementing, and frozen tests that wait for later stories
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-016
+- Class: open
+- Type: non-blocking
+- Trigger: points the story, ADR-08 and the contract leave open, and DoD-S items not met. (a) `details` of `CONTACT_CREATED` is `{values: {field: text}}` (fields with a value only) and of `CONTACT_EDITED` is `{changes: {field: {old, new}}}` with `null` for an empty value (ADR-08 names the shape only in general). (b) [ASSUMPTION] A User without a display name is recorded under the e-mail address; names are cut at 100 characters (column limit). (c) `PUT`, `PATCH` and `DELETE` on `/history/{id}` have no controller method, so the contract stays free of them (`ContractParityIT`); `ApiExceptionHandler` turns the resulting "no route" of such a request into 405 `request.method_not_allowed` (R-016-05). The collection path answers 405 natively. (d) The History of a Contact in Trash is readable (R-016-08); after permanent deletion the Contact is gone and the answer is 404 (R-013-05). (e) Tabs "Podrobnosti" and "Zgodovina" are on the Contact screen for Owner and Editor; a Viewer sees no tabs and the History is never requested. The tab "Različice" comes with US-022. (f) DoD-S-01: the 15 frozen `Us016HistoryAcceptanceIT` tests fail in their set-up (`member(...)` needs Invitations, US-014); AC-016-07 also needs Trash (US-012); `us016-019-history-language.spec.ts` was not run, the Contact screen is not reachable from a list before US-007. Re-check them after US-014, US-012 and US-007. The same 200 frozen tests failed before and after this session; no previously passing test fails. (g) DoD-S-05: no screenshots or accessibility scan of the History tab, same reason as (f). (h) DoD-S-07: the backend `feat` commit has about 590 changed lines (limit 400); the entry model, writer, reader and the 405 rule are one behaviour covered by one test class and were not split.
+- Options: 1 (default) as written. 2 ask the human per item.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-003
+- Session: S5 /implement US-016
 - Result: done
-- Gate: DoD-S of US-003 passed in part: DoD-S-01 (10 of 29 frozen backend tests pass, the rest and the UI tests wait for US-007, US-014, US-004, US-005), DoD-S-05 (no screenshots or accessibility scan, screens not reachable before US-007) and DoD-S-07 (two commits over the size limit) are open, see D-46
-- Notes for the next session: Backend: `ContactController`, `ContactService`, `ContactValidator`, `ContactRepository`, `VersionRepository`, `Normaliser`, `CountryCodes`; create, get and edit with version check (409 `contact.changed_by_someone_else` with `current`), a `contact_version` row per save, no-change save keeps the version. `tags` and `attributes` are accepted and not stored (US-004/005 must replace the snapshot columns in `VersionRepository` and fill `ContactService.view`). `GET /groups/{g}/contacts` is US-007 (now 405). Frontend: `NewContactPage`, `ContactPage`, `ContactForm`, `ConflictBanner`, `useGroupRole`, routes `groups/:groupId/contacts/new` and `.../:contactId`. Backend quality (Spotless, Checkstyle, SpotBugs, PMD) and `verify` green; frontend prettier, eslint, tsc, 123 unit tests green; gitleaks clean. Re-check after US-007: `Us003ContactAcceptanceIT`, `Us018SecurityAcceptanceIT`, `us003-005-contact.spec.ts`, US-019 UI tests. Finding for US-018: `/health` also returns `groups` (AC-018-09).
+- Gate: DoD-S of US-016 passed in part: DoD-S-01 (the 15 frozen backend tests and the UI tests wait for US-014, US-012, US-007), DoD-S-05 (no screenshots or accessibility scan) and DoD-S-07 (one commit over the size limit) are open, see D-47
+- Notes for the next session: Backend: `HistoryWriter` (only way to write entries, joins the caller's transaction), `HistoryRepository`, `HistoryQueryService`, `HistoryController` (`GET .../contacts/{c}/history?page`, 25 per page), `ContactChanges`, `HistoryAction`; `ContactService` writes `CONTACT_CREATED` and `CONTACT_EDITED` (no entry when nothing changed). Later stories add their actions through `HistoryWriter.write` (make it package-visible methods per action; details shapes in D-47). `ApiExceptionHandler` answers 405 for writes on `/history/**`. Frontend: `api/history.ts`, `ContactHistoryTab` (shows `details.changes` and `details.values`; other actions show action, time and user only, so US-004/005/011..15 add their detail lines), tabs on `ContactPage` (Owner, Editor). Backend quality (`-Pquality`: Spotless, Checkstyle, SpotBugs, PMD) clean; frontend prettier, eslint, tsc and 135 unit tests green; gitleaks clean. Re-check after US-014, US-012, US-007: `Us016HistoryAcceptanceIT`, `us016-019-history-language.spec.ts`. Run `./mvnw -Pquality spotless:apply` before committing Java (plain `spotless:apply` does nothing).
 
 ## Next
-- Command: /implement US-016
+- Command: /implement US-004
 - Waiting for: nothing
 
 ## Stories
@@ -32,7 +32,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-013 | 1 | ready | — |
 | US-014 | 1 | ready | — |
 | US-015 | 1 | ready | — |
-| US-016 | 1 | ready | — |
+| US-016 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-014, US-012, US-007; DoD-S-05 screens; DoD-S-07: size, D-47) |
 | US-017 | 1 | ready | — |
 | US-018 | 1 | done | passed (DoD-S-01: frozen tests wait for US-003, US-014 and the last story, D-44; DoD-S-07: one subject over 72 characters) |
 | US-019 | 1 | done | passed in part (frozen UI tests wait for US-003, US-005, US-016) |
