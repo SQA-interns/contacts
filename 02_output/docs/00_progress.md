@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-021
+- Session: S5 /implement US-022
 - Result: done
-- Gate: DoD-S passed in part for US-021 (DoD-S-01: 10 backend and 2 UI frozen tests pass, the rest of the full run fails as before; DoD-S-07: one subject over 72 characters)
-- Notes for the next session: D-63 records the readings. `DELETE /me` is in `AccountService` (Sole Owner refusal with locked Groups, then Memberships, History e-mail, User, Firebase account in one transaction); `FirebaseTokenFilter` asks Firebase once when it has to create a User, so the token of a deleted account gets 401. HUMAN, BEFORE PRODUCTION: deleting and reading Firebase accounts needs Admin credentials; `FirebaseConfig` uses empty credentials (ADR-04), so it works with the emulator only (D-63 a). The My account screen is `/account` (`features/account/AccountPage`), linked from the user menu. `DeleteGroupDialog.onDeleted` now gets the Group id. Open from the review as before: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12; known failing frozen UI tests of INC-1: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h). A `mvnw verify -Dit.test=...` exits 1 on a stale failsafe summary; read `target/failsafe-reports/TEST-*.xml`. Backend acceptance runs need port 9099 free (stop `contact-groups-test-emulator-1`, then start it again). Screens: `logs/screens/WF-16_account`.
+- Gate: DoD-S passed in part for US-022 (DoD-S-01: the 12 frozen backend tests pass, no frozen UI test exists, the rest of the full run fails as before; DoD-S-07: one commit over 400 lines)
+- Notes for the next session: D-64 records the readings. `GET .../versions`, `.../versions/{n}` and `.../versions/{n}/compare` are in `VersionService` and `VersionController` (the Version is written by `ContactService`, unchanged); `VersionDiff` in `domain` builds the differences. The Versions tab is `features/versions/VersionsTab` (`?tab=versions`), `Fields` and `TagsAndAttributes` now live in `features/contacts/ContactView`. For US-023: `VersionService` is the place for the restore, the button "Obnovi" of WF-07 is not built, `api/versions.ts` has no `restoreVersion` yet, and the list and comparison queries use the keys `['contacts', g, c, 'versions', ...]` to invalidate after a restore. Open from the review as before: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12; HUMAN, BEFORE PRODUCTION: Firebase Admin credentials (D-63 a); known failing frozen UI tests of INC-1: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h). A `mvnw verify -Dit.test=...` exits 1 on a stale failsafe summary and two classes of different kinds in one `-Dit.test` clash on the Firebase app; read `target/failsafe-reports/TEST-*.xml`. Backend acceptance runs need port 9099 free (stop `contact-groups-test-emulator-1`, then start it again). Screens: `logs/screens/WF-07_versions`.
 
 ## Next
-- Command: /implement US-022
+- Command: /implement US-023
 - Waiting for: nothing
 
 ## Stories
@@ -38,7 +38,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-019 | 1 | done | passed in part (frozen UI tests wait for US-003, US-005, US-016) |
 | US-020 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-021..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, D-62) |
 | US-021 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-022..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one subject over 72 characters, D-63) |
-| US-022 | 2 | ready | — |
+| US-022 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-023..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one commit over 400 lines, D-64) |
 | US-023 | 2 | ready | — |
 | US-024 | 2 | ready | — |
 | US-025 | 2 | ready | — |
