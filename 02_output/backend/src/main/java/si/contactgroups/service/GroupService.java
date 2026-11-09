@@ -5,8 +5,12 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 import si.contactgroups.domain.GroupSummary;
 import si.contactgroups.domain.GroupTrashItem;
 import si.contactgroups.domain.Role;
@@ -19,6 +23,7 @@ import si.contactgroups.persistence.UserRepository;
 @Service
 public class GroupService {
 
+  private static final Logger LOG = LoggerFactory.getLogger(GroupService.class);
   private static final int MAX_NAME_LENGTH = 100;
 
   private final GroupRepository groups;
@@ -26,13 +31,16 @@ public class GroupService {
   private final MembershipService memberships;
   private final InvitationService invitations;
   private final Clock clock;
+  private final TransactionTemplate tx;
 
   public GroupService(
       GroupRepository groups,
       UserRepository users,
       MembershipService memberships,
       InvitationService invitations,
-      Clock clock) {
+      Clock clock,
+      PlatformTransactionManager transactions) {
+    this.tx = new TransactionTemplate(transactions);
     this.invitations = invitations;
     this.groups = groups;
     this.users = users;
@@ -115,6 +123,27 @@ public class GroupService {
     }
     groups.restore(groupId);
     return group;
+  }
+
+  /**
+   * Deletes every Group that has been in the Group Trash for 30 days with all its data, each in its
+   * own transaction so that one failure does not stop the others (R-020-05, ADR-09).
+   *
+   * @return the number of Groups deleted
+   */
+  public int purgeExpired() {
+    Instant cutoff = TrashPeriod.cutoff(now());
+    int deleted = 0;
+    for (UUID groupId : groups.findExpired(cutoff)) {
+      try {
+        if (Boolean.TRUE.equals(tx.execute(s -> groups.deleteExpired(groupId, cutoff)))) {
+          deleted++;
+        }
+      } catch (RuntimeException e) {
+        LOG.warn("Group Trash purge of one Group failed: {}", e.getClass().getSimpleName());
+      }
+    }
+    return deleted;
   }
 
   private Instant now() {

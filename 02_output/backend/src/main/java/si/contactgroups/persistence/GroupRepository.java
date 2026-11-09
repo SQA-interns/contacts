@@ -139,4 +139,27 @@ public class GroupRepository {
         .param("groupId", groupId)
         .update();
   }
+
+  /** The Groups that have been in the Group Trash since {@code cutoff} or before (R-020-05). */
+  @GlobalScope
+  public List<UUID> findExpired(Instant cutoff) {
+    return jdbc.sql("SELECT id FROM contact_group WHERE deleted_at <= :cutoff")
+        .param("cutoff", Timestamp.from(cutoff))
+        .query(UUID.class)
+        .list();
+  }
+
+  /**
+   * Deletes the Group in Trash since {@code cutoff} or before; its Contacts, Tags, Attributes,
+   * Versions, History, Members and Invitations go with it (ADR-03). False when it is gone or was
+   * restored meanwhile.
+   */
+  @GlobalScope
+  public boolean deleteExpired(UUID groupId, Instant cutoff) {
+    return jdbc.sql("DELETE FROM contact_group WHERE id = :groupId AND deleted_at <= :cutoff")
+            .param("groupId", groupId)
+            .param("cutoff", Timestamp.from(cutoff))
+            .update()
+        > 0;
+  }
 }
