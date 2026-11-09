@@ -15,6 +15,7 @@ import si.contactgroups.error.ApiError;
 import si.contactgroups.security.RequestTooLargeException;
 import si.contactgroups.service.ContactChangedException;
 import si.contactgroups.service.ContactNotFoundException;
+import si.contactgroups.service.ExportTooManyException;
 import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
 import si.contactgroups.service.InvalidQueryException;
@@ -122,6 +123,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> invalidQuery(InvalidQueryException e) {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
         .body(new ApiError("request.malformed", e.getMessage()));
+  }
+
+  @ExceptionHandler(ExportTooManyException.class)
+  public ResponseEntity<ApiError> exportTooMany(ExportTooManyException e) {
+    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
+        .body(new ApiError("export.too_many", e.getMessage()));
   }
 
   @ExceptionHandler(VersionMissingException.class)
