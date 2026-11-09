@@ -37,15 +37,15 @@ for (const viewport of VIEWPORTS) {
       await expect(page.getByText('Verjetno')).toHaveCount(2);
       await check(page, 'WF-17_duplicates', 'list', viewport.name);
 
-      await page.route('**/duplicates', (route) => route.fulfill({ json: [] }));
+      await page.route('**/api/v1/groups/*/duplicates', (route) => route.fulfill({ json: [] }));
       await page.getByRole('button', { name: 'Poišči znova' }).click();
       await expect(page.getByRole('heading', { name: 'Ni podvojenih kontaktov' })).toBeVisible();
       await check(page, 'WF-17_duplicates', 'empty', viewport.name);
-      await page.unroute('**/duplicates');
+      await page.unroute('**/api/v1/groups/*/duplicates');
 
       let release: () => void = () => undefined;
       const gate = new Promise<void>((resolve) => (release = resolve));
-      await page.route('**/duplicates', async (route) => {
+      await page.route('**/api/v1/groups/*/duplicates', async (route) => {
         await gate;
         await route.fulfill({ json: [] });
       });
@@ -53,9 +53,10 @@ for (const viewport of VIEWPORTS) {
       await expect(page.getByText('Iskanje podvojenih kontaktov …')).toBeVisible();
       await check(page, 'WF-17_duplicates', 'loading', viewport.name);
       release();
-      await page.unroute('**/duplicates');
+      await expect(page.getByRole('heading', { name: 'Ni podvojenih kontaktov' })).toBeVisible();
+      await page.unroute('**/api/v1/groups/*/duplicates');
 
-      await page.route('**/duplicates', (route) =>
+      await page.route('**/api/v1/groups/*/duplicates', (route) =>
         route.fulfill({ status: 500, json: { code: 'x', message: 'x' } }),
       );
       await page.reload();
