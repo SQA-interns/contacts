@@ -37,6 +37,17 @@ for (const viewport of VIEWPORTS) {
       await expect(page.getByText('Stran 1 od 2').first()).toBeVisible();
       await check(page, 'WF-06_contact-list', 'list', viewport.name);
 
+      // US-010: the Selection bar with two ticked rows, and with the whole page selected (the offer)
+      const rowBoxes = page.getByRole('checkbox', { name: 'Izberi kontakt' });
+      await rowBoxes.locator('visible=true').nth(0).check();
+      await rowBoxes.locator('visible=true').nth(1).check();
+      await expect(page.getByRole('region', { name: 'Izbira' })).toContainText('2 izbrana');
+      await check(page, 'WF-06_contact-list', 'selection', viewport.name);
+      await page.getByRole('checkbox', { name: 'Izberi vse na tej strani' }).locator('visible=true').check();
+      await expect(page.getByRole('button', { name: 'Izberi vseh 31 zadetkov' })).toBeVisible();
+      await check(page, 'WF-06_contact-list', 'selection-page', viewport.name);
+      await page.getByRole('button', { name: 'Počisti izbiro' }).click();
+
       await page.getByLabel('Iskanje').fill('Priimek07');
       await expect(page.getByText('1 kontakt').first()).toBeVisible();
       await check(page, 'WF-06_contact-list', 'search', viewport.name);

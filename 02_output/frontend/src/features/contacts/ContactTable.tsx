@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';
 import type { ContactListItem, SortColumn } from '@/api/contacts';
+import { Checkbox } from '@/components/ui/checkbox';
+import type { Selection } from './selection/useSelection';
 
 export interface Sorting {
   column: SortColumn;
@@ -53,14 +55,31 @@ interface ContactTableProps {
   rows: ContactListItem[];
   sorting: Sorting;
   onSort: (column: SortColumn) => void;
+  /** Set for an Owner or Editor: every row then has a checkbox (R-010-01, R-010-02). */
+  selection?: Selection;
 }
 
 /** SC-06 / WF-06: sortable columns from 768 px up, cards below; a row opens the Contact (R-007-03, 05). */
-export function ContactTable({ groupId, rows, sorting, onSort }: ContactTableProps) {
+export function ContactTable({ groupId, rows, sorting, onSort, selection }: ContactTableProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const country = useCountryName();
   const href = (row: ContactListItem) => `/groups/${encodeURIComponent(groupId)}/contacts/${row.id}`;
+  const ids = rows.map((r) => r.id);
+  const pageState = selection?.pageSelected(ids)
+    ? true
+    : ids.some((id) => selection?.isSelected(id))
+      ? 'indeterminate'
+      : false;
+  const rowBox = (row: ContactListItem) =>
+    selection ? (
+      <Checkbox
+        aria-label={t('selection.selectRow')}
+        checked={selection.isSelected(row.id)}
+        onCheckedChange={() => selection.toggle(row.id)}
+        onClick={(e) => e.stopPropagation()}
+      />
+    ) : null;
   const nameOf = (row: ContactListItem) =>
     row.lastName || row.firstName || row.email || t('contactList.noName');
   return (
@@ -69,6 +88,15 @@ export function ContactTable({ groupId, rows, sorting, onSort }: ContactTablePro
         <caption className="sr-only">{t('contactList.tableCaption')}</caption>
         <thead>
           <tr className="text-left">
+            {selection ? (
+              <th scope="col" className="w-12 border-b p-3">
+                <Checkbox
+                  aria-label={t('selection.selectPage')}
+                  checked={pageState}
+                  onCheckedChange={() => selection.togglePage(ids)}
+                />
+              </th>
+            ) : null}
             {COLUMNS.map((c) => (
               <th
                 key={c.key}
@@ -103,6 +131,11 @@ export function ContactTable({ groupId, rows, sorting, onSort }: ContactTablePro
               className="cursor-pointer hover:bg-surface"
               onClick={() => void navigate(href(row))}
             >
+              {selection ? (
+                <td className="border-b p-3" onClick={(e) => e.stopPropagation()}>
+                  {rowBox(row)}
+                </td>
+              ) : null}
               {COLUMNS.map((c) => (
                 <td
                   key={c.key}
@@ -128,12 +161,25 @@ export function ContactTable({ groupId, rows, sorting, onSort }: ContactTablePro
           ))}
         </tbody>
       </table>
+      {selection ? (
+        <label className="mb-3 flex min-h-11 items-center gap-3 md:hidden">
+          <Checkbox
+            aria-label={t('selection.selectPage')}
+            checked={pageState}
+            onCheckedChange={() => selection.togglePage(ids)}
+          />
+          {t('selection.selectPage')}
+        </label>
+      ) : null}
       <ul className="flex flex-col gap-3 md:hidden" aria-label={t('contactList.tableCaption')}>
         {rows.map((row) => (
           <li key={row.id} className="rounded-[12px] border bg-surface-raised p-4">
-            <Link to={href(row)} className="block min-w-0 truncate font-semibold" title={nameOf(row)}>
-              {[row.lastName, row.firstName].filter(Boolean).join(' ') || nameOf(row)}
-            </Link>
+            <div className="flex items-center gap-3">
+              {rowBox(row)}
+              <Link to={href(row)} className="block min-w-0 truncate font-semibold" title={nameOf(row)}>
+                {[row.lastName, row.firstName].filter(Boolean).join(' ') || nameOf(row)}
+              </Link>
+            </div>
             <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
               {COLUMNS.filter((c) => c.key !== 'lastName' && c.key !== 'firstName').map((c) => (
                 <div key={c.key} className="contents">

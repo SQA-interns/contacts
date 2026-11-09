@@ -12,6 +12,8 @@ import { useGroupRole } from '@/features/groups/useGroupRole';
 import { ContactTable, type Sorting } from './ContactTable';
 import { FilterPanel } from './FilterPanel';
 import { SearchBox } from './SearchBox';
+import { SelectionBar } from './selection/SelectionBar';
+import { useSelection } from './selection/useSelection';
 import { activeCount, filtersOf, withFilters } from './filters';
 
 const COLUMNS: SortColumn[] = ['lastName', 'firstName', 'email', 'company', 'city', 'country'];
@@ -53,6 +55,8 @@ export function ContactListPage() {
     queryFn: () => listContacts(groupId, { page, sort: sorting.column, dir: sorting.dir, q, filters }),
     placeholderData: (previous) => previous,
   });
+  /** Search text and filters end the Selection; page and sort order do not (R-010-07, R-010-08). */
+  const selection = useSelection(`${q}\n${filterKey}`);
   const facets = useQuery({ queryKey: ['facets', groupId], queryFn: () => getFacets(groupId) });
   const [filtersOpen, setFiltersOpen] = useState(false);
   /** Changes when the filters are cleared: the search box starts again and drops a text still waiting to be sent. */
@@ -132,6 +136,20 @@ export function ContactListPage() {
             </Button>
           </div>
           {data ? <p className="-mt-4 mb-6 text-text-muted">{totalText(data.total)}</p> : null}
+          {canAdd && data && data.total > 0 ? (
+            <SelectionBar
+              count={selection.count(data.total)}
+              offerAll={
+                !selection.allResults &&
+                data.total > data.items.length &&
+                selection.pageSelected(data.items.map((r) => r.id))
+                  ? data.total
+                  : undefined
+              }
+              onSelectAll={selection.selectAll}
+              onClear={selection.clear}
+            />
+          ) : null}
           {contacts.isPending ? (
             <LoadingState rows={6} />
           ) : contacts.isError ? (
@@ -150,7 +168,13 @@ export function ContactListPage() {
             />
           ) : data ? (
             <>
-              <ContactTable groupId={groupId} rows={data.items} sorting={sorting} onSort={chooseSort} />
+              <ContactTable
+                groupId={groupId}
+                rows={data.items}
+                sorting={sorting}
+                onSort={chooseSort}
+                selection={canAdd ? selection : undefined}
+              />
               <nav
                 className="mt-6 flex flex-wrap items-center justify-between gap-3"
                 aria-label={t('contactList.pagerLabel')}
