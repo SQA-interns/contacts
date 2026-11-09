@@ -32,7 +32,10 @@ public class ApiExceptionHandler {
   private static final Logger LOG = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
   @ExceptionHandler({NoResourceFoundException.class, NoHandlerFoundException.class})
-  public ResponseEntity<ApiError> notFound() {
+  public ResponseEntity<ApiError> notFound(jakarta.servlet.http.HttpServletRequest request) {
+    if (isWriteOnHistory(request)) {
+      return methodNotAllowed();
+    }
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(new ApiError("route.not_found", "Not found"));
   }
@@ -111,5 +114,14 @@ public class ApiExceptionHandler {
     LOG.error("unexpected error of type {}", e.getClass().getName());
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
         .body(new ApiError("server.error", "Unexpected error"));
+  }
+
+  /** No History entry can be changed or deleted, so such a request is a wrong method (R-016-05). */
+  private static boolean isWriteOnHistory(jakarta.servlet.http.HttpServletRequest request) {
+    String method = request.getMethod();
+    return !"GET".equals(method)
+        && !"HEAD".equals(method)
+        && !"OPTIONS".equals(method)
+        && request.getRequestURI().matches(".*/contacts/[^/]+/history/.*");
   }
 }

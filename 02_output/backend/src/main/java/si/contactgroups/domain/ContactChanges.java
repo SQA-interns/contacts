@@ -29,11 +29,13 @@ public final class ContactChanges {
   /** The fields that have a value, in field order. */
   public static Map<String, String> stored(ContactData data) {
     Map<String, String> values = new LinkedHashMap<>();
-    fields(data).forEach((name, value) -> {
-      if (value != null) {
-        values.put(name, value);
-      }
-    });
+    fields(data)
+        .forEach(
+            (name, value) -> {
+              if (value != null) {
+                values.put(name, value);
+              }
+            });
     return values;
   }
 

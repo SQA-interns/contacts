@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 class ContactChangesTest {
 
   private static ContactData ana(String lastName, String company) {
-    return new ContactData("Ana", lastName, null, null, company, null, null, null, null, null, null);
+    return new ContactData(
+        "Ana", lastName, null, null, company, null, null, null, null, null, null);
   }
 
   @Test
@@ -42,7 +43,18 @@ class ContactChangesTest {
   void ex_016_03_five_changed_fields_give_five_pairs() {
     var before = ana("Novak", "Acme");
     var after =
-        new ContactData("Ana", "Novak", null, "+38640555666", "Acme", "Vodja", "Ulica 1", "2000", "Maribor", null, null);
+        new ContactData(
+            "Ana",
+            "Novak",
+            null,
+            "+38640555666",
+            "Acme",
+            "Vodja",
+            "Ulica 1",
+            "2000",
+            "Maribor",
+            null,
+            null);
 
     assertThat(ContactChanges.between(before, after))
         .containsOnlyKeys("phone", "jobTitle", "street", "postalCode", "city");

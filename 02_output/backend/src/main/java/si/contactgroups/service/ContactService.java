@@ -19,16 +19,19 @@ public class ContactService {
 
   private final ContactRepository contacts;
   private final VersionRepository versions;
+  private final HistoryWriter history;
   private final ContactValidator validator;
   private final Clock clock;
 
   public ContactService(
       ContactRepository contacts,
       VersionRepository versions,
+      HistoryWriter history,
       ContactValidator validator,
       Clock clock) {
     this.contacts = contacts;
     this.versions = versions;
+    this.history = history;
     this.validator = validator;
     this.clock = clock;
   }
@@ -43,6 +46,7 @@ public class ContactService {
     ContactData data = validator.validate(input);
     Instant now = now();
     UUID id = contacts.insert(groupId, userId, data, now);
+    history.contactCreated(groupId, userId, id, data, now);
     versions.insertSnapshot(groupId, id, 1, userId, now);
     return load(groupId, id);
   }
@@ -81,6 +85,7 @@ public class ContactService {
     if (!contacts.update(groupId, contactId, version, data, now)) {
       throw new ContactChangedException(load(groupId, contactId));
     }
+    history.contactEdited(groupId, userId, contactId, stored.data(), data, now);
     versions.insertSnapshot(groupId, contactId, version + 1, userId, now);
     return load(groupId, contactId);
   }

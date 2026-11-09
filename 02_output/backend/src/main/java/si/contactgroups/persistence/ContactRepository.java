@@ -14,6 +14,7 @@ import si.contactgroups.domain.StoredContact;
 @Repository
 public class ContactRepository {
 
+  private static final String GROUP_ID = "groupId";
   private static final String COLUMNS =
       "id, version, first_name, last_name, email, phone, company, job_title, street,"
           + " postal_code, city, country, notes, created_at, updated_at";
@@ -36,10 +37,19 @@ public class ContactRepository {
                     + " :city, :country, :notes, :firstNameNorm, :lastNameNorm, :companyNorm,"
                     + " :emailNorm, :searchNorm) RETURNING id"),
             data)
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .param("createdBy", createdBy)
         .param("now", Timestamp.from(now))
         .query(UUID.class)
+        .single();
+  }
+
+  /** Whether the Group has the Contact, in Trash or not. */
+  public boolean existsIncludingTrash(UUID groupId, UUID contactId) {
+    return jdbc.sql("SELECT EXISTS (SELECT 1 FROM contact WHERE id = :id AND group_id = :groupId)")
+        .param("id", contactId)
+        .param(GROUP_ID, groupId)
+        .query(Boolean.class)
         .single();
   }
 
@@ -50,7 +60,7 @@ public class ContactRepository {
                 + COLUMNS
                 + " FROM contact WHERE id = :id AND group_id = :groupId AND deleted_at IS NULL")
         .param("id", contactId)
-        .param("groupId", groupId)
+        .param(GROUP_ID, groupId)
         .query(
             (rs, n) ->
                 new StoredContact(
@@ -93,7 +103,7 @@ public class ContactRepository {
                         + " AND version = :version AND deleted_at IS NULL"),
                 data)
             .param("id", contactId)
-            .param("groupId", groupId)
+            .param(GROUP_ID, groupId)
             .param("version", version)
             .param("now", Timestamp.from(now))
             .update()
