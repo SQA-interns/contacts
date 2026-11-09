@@ -5,11 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.auth.oauth2.ServiceAccountCredentials;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.KeyPairGenerator;
-import java.util.Base64;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.mock.env.MockEnvironment;
@@ -35,7 +32,7 @@ class FirebaseCredentialsTest {
 
   @Test
   void theServiceAccountFileIsRead() throws Exception {
-    Path file = serviceAccountFile();
+    Path file = ServiceAccountFiles.create(dir);
     MockEnvironment env =
         new MockEnvironment().withProperty("GOOGLE_APPLICATION_CREDENTIALS", file.toString());
 
@@ -68,24 +65,5 @@ class FirebaseCredentialsTest {
         .isInstanceOf(IllegalStateException.class)
         .hasMessageContaining("GOOGLE_APPLICATION_CREDENTIALS")
         .hasMessageNotContaining("do-not-print-this");
-  }
-
-  /** A throw-away key made here, so no key is ever written in the repository. */
-  private Path serviceAccountFile() throws Exception {
-    KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
-    generator.initialize(2048);
-    String der =
-        Base64.getMimeEncoder(64, "\n".getBytes(StandardCharsets.US_ASCII))
-            .encodeToString(generator.generateKeyPair().getPrivate().getEncoded());
-    String pem = "-----BEGIN PRIVATE KEY-----\n" + der + "\n-----END PRIVATE KEY-----\n";
-    String json =
-        "{\"type\":\"service_account\",\"project_id\":\"demo-contact-groups\","
-            + "\"private_key_id\":\"k1\",\"private_key\":\""
-            + pem.replace("\n", "\\n")
-            + "\",\"client_email\":\"admin@demo-contact-groups.iam.gserviceaccount.com\","
-            + "\"client_id\":\"1\",\"token_uri\":\"https://oauth2.googleapis.com/token\"}";
-    Path file = dir.resolve("service-account.json");
-    Files.writeString(file, json);
-    return file;
   }
 }
