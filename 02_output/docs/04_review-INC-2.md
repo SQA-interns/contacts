@@ -115,6 +115,26 @@ Not done: the replay of a token of a deleted account; the Firebase console; ever
 | F-26 | Critical | Closed (S12) | unchanged |
 | F-23, F-19..F-22, F-24, F-25 | Low | Open | not changed |
 
+## Approval of the human: F-14 lowered to Medium (session S13, 2026-11-09)
+
+The review of the fifth look offered two ways to close F-14: (A) replay a token of a throw-away account's deletion, or (B) accept the gap with a decision that lowers the finding. The human answered **"B"** in the chat of this session. Lowering a High is an approval of the human (`general/rules/decisions.md`, "Approval"; `severity-scale.md`), and this answer is it.
+
+| Item | Content |
+|---|---|
+| Finding | F-14, US-021 (also US-001): a new User could not sign in for the first time in production without Firebase Admin credentials |
+| Written evidence | against the real project `contacts-dev-7cbd1`: first sign-in of a new person works, `GET /groups` and `GET /me` 200, the Admin API accepted `getUser` (S12); `DELETE /me` 204 with the database emptied, the Admin API accepted `deleteUser` (S13). Open: that the token of a deleted account is answered with 401 and not 500. That case fails closed (`FirebaseAccountDirectory.exists` maps `USER_NOT_FOUND` to "no account"; any other code throws, no `app_user` row is written, no data is reached) and the emulator shows 401 (live in S6 and S9) |
+| New severity | **Medium**: a control not shown to work as required against the real service, with no access and no data at risk. It was High while a new person could not sign in at all; that part is shown working |
+| What stays | the check of the token of a deleted account against the real Firebase project goes to the release notes and to the first deployment (a person deletes an account, the old token is used once, the answer is 401). F-23 (Low) is the answer format if it is not |
+| Not done by the review | the decision record in `docs/decisions-log.md`: the Writes of `/review` do not include it, so the record is handed to the next session that may write it (`/design`, see the handover and `docs/00_progress.md`). Until it exists, this section is the only place of the approval |
+
+### Status after the approval
+
+| ID | Severity | Status | Evidence |
+|---|---|---|---|
+| F-14 | Medium (was High) | Open, carried to the release notes | approval "B" above; two of three real-project results shown |
+| F-26 | Critical | Closed (S12) | unchanged |
+| F-19..F-25 | Low | Open | not changed |
+
 ## Findings
 
 | ID | Severity | Story | Finding |
@@ -171,11 +191,13 @@ The first column of status is that of the first review (S6); the second is that 
 | DoD-I | Result | Evidence |
 |---|---|---|
 | DoD-I-01 | Met as far as it can be | every story of INC-2 is "passed" or "passed in part"; the open parts are the known frozen tests (F-08) and F-22 |
-| DoD-I-02 | **Not met** | F-26 (Critical) is closed (S12). F-14 (High) is open: against the real Firebase project the first sign-in works (S12) and `DELETE /me` answers 204 (S13); the refusal of the token of the deleted account is not shown |
+| DoD-I-02 | **Met since the approval of S13** | no Critical or High is open: F-26 closed (S12); F-14 lowered to Medium by the human's answer "B" (section "Approval of the human"; its decision record is still to be written by `/design`). Earlier text, S12 and S13 before the approval: F-14 (High) was open: against the real Firebase project the first sign-in works (S12) and `DELETE /me` answers 204 (S13); the refusal of the token of the deleted account is not shown |
 | DoD-I-03 | Met | the rebuilt stack runs; Group Trash, account deletion, Versions with restore, duplicate search, dismissal and merge work at runtime (two runs of the same probe script, 51 screenshots); since S12 a real person has also signed in against the production stack (`GET /groups` and `GET /me` 200); account deletion against real Firebase is still the open part of F-14 |
 | DoD-I-04 | Met with exceptions | 51 screenshots at 375, 768 and 1440 px, no overflow, one `h1` each, structure and wording as in the wireframes; deviations are F-20 and F-21 |
 
 ## Handover
+
+**S13 (after the answer "B"):** F-14 is Medium by the human's approval, no Critical or High finding is open, so **INC-2 meets `DoD-I`**. INC-2 is the last increment, so the next command is `/design`. The decision record of the approval is not written yet (the Writes of `/review` do not include `docs/decisions-log.md`); the text for the record is in `docs/00_progress.md` and `/design`, which writes the log, appends it first. Medium and Low findings go to the story's next session or the release notes: F-14 (check of the token of a deleted account at the first deployment), F-19..F-25 and the carried F-06..F-09, F-11, F-12.
 
 **S13 (fifth look):** the human deleted the real account (`DELETE /me` 204, `app_user` empty): second of the three results of D-70 (c). F-14 (High) stays open on the third: nobody replayed a token of the deleted account, and the only account is gone. Two ways to close it, the human chooses: (A) the steps of the S12 paragraph below with another throw-away account: register and sign in, copy one call as cURL **before** deleting, delete in "Moj račun", run the cURL in your own terminal within the hour of its token, tell `/review INC-2` "401" (or the status you got); the review checks the access log. (B) Accept the gap with a blocking decision that lowers F-14: the evidence is in the S13 section (first sign-in and deletion shown on the real project; the open case fails closed, no row is created, no data is reached, the emulator shows 401); that is the human's decision and the review does not make it. The next command stays `/review INC-2`; no code is waiting for `/implement`.
 

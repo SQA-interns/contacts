@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S13 /review INC-2
+- Session: S13 /review INC-2 (answer "B" on F-14)
 - Result: done
-- Gate: DoD-I not passed (F-14 High open: the refusal of a deleted account's token is not shown against the real Firebase project)
-- Notes for the next session: seen in the proxy and backend logs, not told: after S12 the human called `DELETE /api/v1/me` (204, 20:30:06) and `app_user` is empty, so the Admin API accepted `deleteUser`: second of the three results of D-70 (c). No call followed the deletion, so no token of the deleted account was replayed (third result). F-26 stays closed. The review's "Handover" (S13) gives the human two ways: (A) repeat with a throw-away account and replay a copied cURL (expect 401), or (B) a blocking decision that lowers F-14, with the evidence in the S13 section; the review does not make that decision. No code waits for `/implement`. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12. Evidence: `logs/review4-INC-2/`.
+- Gate: DoD-I passed (F-26 closed; F-14 lowered from High to Medium by the human's approval, no Critical or High open)
+- Notes for the next session: FIRST append this record to `docs/decisions-log.md` as D-79 (the review may not write the log): "D-79: F-14 lowered from High to Medium. Timestamp 2026-11-09. Session S13 /review INC-2. Class block, Type approval. Trigger: F-14 (`docs/04_review-INC-2.md`). Against the real project contacts-dev-7cbd1 the first sign-in (S12) and `DELETE /me` 204 (S13) work; the refusal of a deleted account's token is not shown, it fails closed (no row, no data) and the emulator shows 401. Options: 1 replay a token of a throw-away account, keep High (default); 2 lower to Medium and carry the check to the release notes and the first deployment. Human response: "B" (= option 2), 2026-11-09, chat. Resolution: option 2. Overrides: none." Then D-79 is the next free number after D-78. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12; release notes get F-14's deployment check. Evidence: `logs/review3-INC-2/`, `logs/review4-INC-2/`.
 
 ## Next
-- Command: /review INC-2
-- Waiting for: the human's choice (A) replay of a deleted account's token, or (B) a decision on F-14 (D-70 c); D-68 d (F-19)
+- Command: /design
+- Waiting for: D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
