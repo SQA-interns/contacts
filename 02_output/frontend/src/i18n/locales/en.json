@@ -215,6 +215,39 @@
       "city": "City",
       "country": "Country",
       "notes": "Notes"
+    },
+    "tabs": "Contact tabs",
+    "tabDetails": "Details",
+    "tabHistory": "History"
+  },
+  "history": {
+    "title": "History",
+    "empty": "This contact has no history yet.",
+    "pages": "Pages",
+    "page": "Page {{page}} of {{pages}}",
+    "previous": "Previous",
+    "next": "Next",
+    "actions": {
+      "CONTACT_CREATED": "Created",
+      "CONTACT_EDITED": "Edited",
+      "CONTACT_DELETED": "Moved to trash",
+      "CONTACT_DELETED_FOREVER": "Deleted forever",
+      "CONTACT_RESTORED": "Restored from trash",
+      "TAG_ADDED": "Tag added",
+      "TAG_REMOVED": "Tag removed",
+      "TAG_RENAMED": "Tag renamed",
+      "TAG_DELETED": "Tag deleted",
+      "ATTRIBUTE_ADDED": "Attribute added",
+      "ATTRIBUTE_CHANGED": "Attribute changed",
+      "ATTRIBUTE_REMOVED": "Attribute removed",
+      "CONTACTS_MERGED": "Merged",
+      "CONTACTS_EXPORTED": "Exported",
+      "MEMBER_JOINED": "Member joined",
+      "ROLE_CHANGED": "Role changed",
+      "MEMBER_REMOVED": "Member removed",
+      "INVITATION_CREATED": "Invitation created",
+      "INVITATION_CANCELLED": "Invitation cancelled",
+      "VERSION_RESTORED": "Version restored"
     }
   }
 }

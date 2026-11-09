@@ -215,6 +215,39 @@
       "city": "Kraj",
       "country": "Država",
       "notes": "Opombe"
+    },
+    "tabs": "Zavihki kontakta",
+    "tabDetails": "Podrobnosti",
+    "tabHistory": "Zgodovina"
+  },
+  "history": {
+    "title": "Zgodovina",
+    "empty": "Ta kontakt še nima zgodovine.",
+    "pages": "Strani",
+    "page": "Stran {{page}} od {{pages}}",
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "actions": {
+      "CONTACT_CREATED": "Ustvarjeno",
+      "CONTACT_EDITED": "Urejeno",
+      "CONTACT_DELETED": "Premaknjeno v koš",
+      "CONTACT_DELETED_FOREVER": "Trajno izbrisano",
+      "CONTACT_RESTORED": "Obnovljeno iz koša",
+      "TAG_ADDED": "Dodana značka",
+      "TAG_REMOVED": "Odstranjena značka",
+      "TAG_RENAMED": "Preimenovana značka",
+      "TAG_DELETED": "Izbrisana značka",
+      "ATTRIBUTE_ADDED": "Dodan atribut",
+      "ATTRIBUTE_CHANGED": "Spremenjen atribut",
+      "ATTRIBUTE_REMOVED": "Odstranjen atribut",
+      "CONTACTS_MERGED": "Združeno",
+      "CONTACTS_EXPORTED": "Izvoženo",
+      "MEMBER_JOINED": "Član se je pridružil",
+      "ROLE_CHANGED": "Spremenjena vloga",
+      "MEMBER_REMOVED": "Član odstranjen",
+      "INVITATION_CREATED": "Povabilo ustvarjeno",
+      "INVITATION_CANCELLED": "Povabilo preklicano",
+      "VERSION_RESTORED": "Obnovljena različica"
     }
   }
 }
