@@ -28,6 +28,8 @@ import si.contactgroups.service.InvitationLimitException;
 import si.contactgroups.service.InvitationNotFoundException;
 import si.contactgroups.service.LastOwnerException;
 import si.contactgroups.service.MemberNotFoundException;
+import si.contactgroups.service.MergeSelectionException;
+import si.contactgroups.service.MergeValueException;
 import si.contactgroups.service.RoleForbiddenException;
 import si.contactgroups.service.SoleOwnerException;
 import si.contactgroups.service.TagNameTakenException;
@@ -145,6 +147,18 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> validationFailed(ValidationException e) {
     return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
         .body(new ApiError("validation.failed", "Validation failed", e.getFieldErrors()));
+  }
+
+  @ExceptionHandler(MergeSelectionException.class)
+  public ResponseEntity<ApiError> mergeSelection(MergeSelectionException e) {
+    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
+        .body(new ApiError("merge.invalid_selection", e.getMessage()));
+  }
+
+  @ExceptionHandler(MergeValueException.class)
+  public ResponseEntity<ApiError> mergeValue(MergeValueException e) {
+    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
+        .body(new ApiError("merge.invalid_value", e.getMessage(), e.getFieldErrors()));
   }
 
   @ExceptionHandler(ContactNotFoundException.class)
