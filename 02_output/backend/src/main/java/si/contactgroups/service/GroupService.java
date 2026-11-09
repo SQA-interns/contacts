@@ -22,17 +22,29 @@ public class GroupService {
   private final GroupRepository groups;
   private final UserRepository users;
   private final MembershipService memberships;
+  private final InvitationService invitations;
   private final Clock clock;
 
   public GroupService(
-      GroupRepository groups, UserRepository users, MembershipService memberships, Clock clock) {
+      GroupRepository groups,
+      UserRepository users,
+      MembershipService memberships,
+      InvitationService invitations,
+      Clock clock) {
+    this.invitations = invitations;
     this.groups = groups;
     this.users = users;
     this.memberships = memberships;
     this.clock = clock;
   }
 
-  public List<GroupSummary> listGroups(UUID userId) {
+  /**
+   * The Groups of the User. Pending Invitations for the verified address of the User are accepted
+   * first (R-014-05).
+   */
+  @Transactional
+  public List<GroupSummary> listGroups(UUID userId, String email) {
+    invitations.acceptPendingFor(userId, email);
     return groups.findGroupsOfUser(userId);
   }
 

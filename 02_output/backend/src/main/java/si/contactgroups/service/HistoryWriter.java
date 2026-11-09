@@ -156,6 +156,31 @@ public class HistoryWriter {
     write(groupId, userId, HistoryAction.CONTACTS_EXPORTED, null, Map.of("count", count), at);
   }
 
+  /** Records an Invitation created: address and Role (R-014-11). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void invitationCreated(
+      UUID groupId, UUID userId, String email, String role, Instant at) {
+    write(
+        groupId,
+        userId,
+        HistoryAction.INVITATION_CREATED,
+        null,
+        Map.of("email", email, "role", role),
+        at);
+  }
+
+  /** Records an Invitation cancelled (R-014-11). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void invitationCancelled(UUID groupId, UUID userId, String email, Instant at) {
+    write(groupId, userId, HistoryAction.INVITATION_CANCELLED, null, Map.of("email", email), at);
+  }
+
+  /** Records a User joining through an Invitation, with the Role (R-014-11). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void memberJoined(UUID groupId, UUID userId, String role, Instant at) {
+    write(groupId, userId, HistoryAction.MEMBER_JOINED, null, Map.of("role", role), at);
+  }
+
   private void write(
       UUID groupId,
       UUID userId,

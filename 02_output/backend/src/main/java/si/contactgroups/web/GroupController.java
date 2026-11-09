@@ -28,7 +28,7 @@ public class GroupController {
   @GetMapping
   @AccountEndpoint
   public List<GroupSummary> listGroups(@AuthenticationPrincipal AuthenticatedUser caller) {
-    return groups.listGroups(caller.userId());
+    return groups.listGroups(caller.userId(), caller.email());
   }
 
   @PostMapping

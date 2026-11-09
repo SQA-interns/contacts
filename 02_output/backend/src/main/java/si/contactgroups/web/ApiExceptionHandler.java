@@ -20,6 +20,9 @@ import si.contactgroups.service.ExportTooManyException;
 import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
 import si.contactgroups.service.InvalidQueryException;
+import si.contactgroups.service.InvitationExistsException;
+import si.contactgroups.service.InvitationLimitException;
+import si.contactgroups.service.InvitationNotFoundException;
 import si.contactgroups.service.RoleForbiddenException;
 import si.contactgroups.service.TagNameTakenException;
 import si.contactgroups.service.TagNotFoundException;
@@ -87,6 +90,24 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> groupNameTaken(GroupNameTakenException e) {
     return ResponseEntity.status(HttpStatus.CONFLICT)
         .body(new ApiError("group.name_taken", e.getMessage()));
+  }
+
+  @ExceptionHandler(InvitationExistsException.class)
+  public ResponseEntity<ApiError> invitationExists(InvitationExistsException e) {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(new ApiError("invitation.exists", e.getMessage()));
+  }
+
+  @ExceptionHandler(InvitationLimitException.class)
+  public ResponseEntity<ApiError> invitationLimit(InvitationLimitException e) {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(new ApiError("invitation.limit", e.getMessage()));
+  }
+
+  @ExceptionHandler(InvitationNotFoundException.class)
+  public ResponseEntity<ApiError> invitationNotFound(InvitationNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ApiError("invitation.not_found", e.getMessage()));
   }
 
   @ExceptionHandler(ValidationException.class)

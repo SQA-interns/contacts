@@ -95,7 +95,7 @@ public class ContactValidator {
   }
 
   /** One {@code @}, a local part, and a domain of at least two non-empty labels; no spaces. */
-  private static boolean isEmailFormat(String email) {
+  static boolean isEmailFormat(String email) {
     int at = email.indexOf('@');
     if (at < 1 || at != email.lastIndexOf('@')) {
       return false;

@@ -31,6 +31,14 @@ public class GroupRepository {
         .list();
   }
 
+  /** Locks the Group row until the end of the transaction: Invitation checks then do not race. */
+  public void lock(UUID groupId) {
+    jdbc.sql("SELECT id FROM contact_group WHERE id = :groupId FOR UPDATE")
+        .param("groupId", groupId)
+        .query()
+        .rowSet();
+  }
+
   /** The name of the Group. */
   public String name(UUID groupId) {
     return jdbc.sql("SELECT name FROM contact_group WHERE id = :groupId")

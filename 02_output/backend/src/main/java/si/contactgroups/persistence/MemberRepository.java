@@ -40,4 +40,25 @@ public class MemberRepository {
         .optional()
         .map(Role::valueOf);
   }
+
+  /** Whether a Member of the Group has this e-mail address, ignoring case (R-014-04, BR-05). */
+  public boolean existsByEmail(UUID groupId, String email) {
+    return jdbc.sql(
+            "SELECT EXISTS (SELECT 1 FROM member m JOIN app_user u ON u.id = m.user_id"
+                + " WHERE m.group_id = :groupId AND lower(u.email) = lower(:email))")
+        .param("groupId", groupId)
+        .param("email", email)
+        .query(Boolean.class)
+        .single();
+  }
+
+  /** Whether the User is a Member of the Group. */
+  public boolean exists(UUID groupId, UUID userId) {
+    return jdbc.sql(
+            "SELECT EXISTS (SELECT 1 FROM member WHERE group_id = :groupId AND user_id = :userId)")
+        .param("groupId", groupId)
+        .param("userId", userId)
+        .query(Boolean.class)
+        .single();
+  }
 }
