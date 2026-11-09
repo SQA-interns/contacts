@@ -869,3 +869,25 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-79: F-14 lowered from High to Medium
+- Timestamp: 2026-11-09
+- Session: S13 /review INC-2 (recorded by S14 /design, because the review may not write the log)
+- Class: block
+- Type: approval
+- Trigger: F-14 (`docs/04_review-INC-2.md`). Against the real project contacts-dev-7cbd1 the first sign-in (S12) and `DELETE /me` 204 (S13) work; the refusal of a deleted account's token is not shown, it fails closed (no row, no data) and the emulator shows 401.
+- Options: 1 replay a token of a throw-away account, keep High (default); 2 lower to Medium and carry the check to the release notes and the first deployment.
+- Human response: "B" (= option 2), 2026-11-09, chat.
+- Resolution: option 2.
+- Overrides: none
+
+## D-80: Design: overall impression and colour (final theme)
+- Timestamp: 2026-11-09
+- Session: S14 /design (round 1)
+- Class: open
+- Type: non-blocking
+- Trigger: `/design` with "Design round: ask"; `ui-design.md` gives no brand, colour or reference product (Q-53, OQ-P08). (a) Topic 1, impression: calm and neutral (baseline). (b) Topic 2, colour: three variants shown as screenshots (A indigo #4f46e5, B teal #0f766e, C blue #1d4ed8, `logs/screens/design-1/variants/`); the developer picked A, the baseline accent (UI-04). Dark mode lightens only what needs it: focus ring indigo-400 (3:1 on the dark surfaces), a separate fill token `--danger-solid` (#b91c1c light, #dc2626 dark) so white text on a destructive button keeps 4.5:1 (it was 2.76:1 on the dark `--danger`). The brand colour stays in `brand.css` only. (c) Topics 3 to 11 (typeface, density, radius, borders, mobile, tablet, desktop, components, icons, motion, copy tone) follow the baseline (UI-06, UI-07, UI-23..25, UI-12, UI-17, UI-21) and the structure of the approved wireframes; the copy is unchanged. Changes in this round: the logo mark takes the primary colour, native radio buttons and check boxes take `accent-color` (UI-02), button colours fade in 150 ms and the Sonner toast (its own 400 ms fades) appears at full opacity and slides in 200 ms (UI-21; the fades left text at half contrast during the automated check, three runs failed on it). (d) `main.tsx` applies `FINAL_THEME`; `ACTIVE_THEME` stays `wireframe` because `theme.test.ts` pins it and `/design` may not change a test. Evidence: before `logs/screens/design-1/before/` (wireframe theme, one mode: it has no dark), after `after-light/` and `after-dark/`; 79 of 79 UI checks pass in light and in dark with no Critical or Serious axe violation; frontend unit tests 376 of 376; acceptance 88 passed and the same 7 known failures as before the change; E2E scenarios: E2E-01 and E2E-03 fail in Chromium both before (`logs/design-e2e-baseline.log`) and after the change (after creating a Group the page stays on the Group list), the others pass in Chromium; Firefox does not start in this sandbox.
+- Options: 1 (default) baseline indigo; 2 teal; 3 blue.
+- Human response: impression "Calm and neutral"; colour "A Indigo #4f46e5"; "Is it right?" "Yes, commit it", 2026-11-09, chat.
+- Resolution: option 1, commit 2a6906f.
+- Overrides: none (the baseline accent is kept; UI-04, UI-21 and UI-02 are applied, not changed)

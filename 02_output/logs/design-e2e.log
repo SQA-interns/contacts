@@ -1,0 +1,285 @@
+
+> contact-groups-frontend@1.0.0 e2e:scenarios
+> playwright test -c playwright.e2e.config.ts
+
+
+Running 18 tests using 1 worker
+
+  ✘   1 [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (16.2s)
+  ✓   2 [chromium] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (2.9s)
+  ✘   3 [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (15.6s)
+  ✓   4 [chromium] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (3.0s)
+  ✓   5 [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (1.8s)
+  ✓   6 [chromium] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (2.6s)
+  ✘   7 [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (2ms)
+  ✘   8 [firefox] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (2ms)
+  ✘   9 [firefox] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (2ms)
+  ✘  10 [firefox] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (2ms)
+  ✘  11 [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (2ms)
+  ✘  12 [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (2ms)
+  ✘  13 [webkit] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (22.3s)
+  ✓  14 [webkit] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (4.3s)
+  ✘  15 [webkit] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (16.3s)
+  ✓  16 [webkit] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (3.4s)
+  ✓  17 [webkit] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (2.6s)
+  ✓  18 [webkit] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (4.4s)
+
+
+  1) [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Kontakti', level: 1 })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Kontakti', level: 1 })[22m
+
+
+      46 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      47 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+    > 48 |   await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+         |                                                                           ^
+      49 |   await expect(page.getByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeVisible();
+      50 |
+      51 |   // 5. add Ana Novak, Acme d.o.o., Tag udelezenec2025, Attribute kompetenca=spletnoProgramiranje
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-01-first-use.spec.ts:48:75
+
+    Error Context: test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Kontakti', level: 1 })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Kontakti', level: 1 })[22m
+
+
+      21 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      22 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+    > 23 |   await expect(anaPage.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+         |                                                                              ^
+      24 |   const acmeId = anaPage.url().match(/groups\/([^/]+)\/contacts/)![1];
+      25 |   for (const lastName of ['Novakova', 'Kosova', 'Zupanova']) {
+      26 |     await anaPage.goto(paths.newContact({ id: acmeId, name: 'Acme' }));
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-03-isolation.spec.ts:23:78
+
+    Error Context: test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-VGQBfY -juggler-pipe -silent[22m
+    [2m  - <launched> pid=71059[22m
+    [2m  - [pid=71059][err] *** You are running in headless mode.[22m
+    [2m  - [pid=71059][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=71059][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.791667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [firefox] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-Oa6ckt -juggler-pipe -silent[22m
+    [2m  - <launched> pid=71181[22m
+    [2m  - [pid=71181][err] *** You are running in headless mode.[22m
+    [2m  - [pid=71181][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=71181][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.625) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-02-team-work-E2E-02-te-eae33-istory-and-makes-him-Viewer-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-02-team-work-E2E-02-te-eae33-istory-and-makes-him-Viewer-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [firefox] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-nKzyEV -juggler-pipe -silent[22m
+    [2m  - <launched> pid=71286[22m
+    [2m  - [pid=71286][err] *** You are running in headless mode.[22m
+    [2m  - [pid=71286][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=71286][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.666667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [firefox] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-6EX3L1 -juggler-pipe -silent[22m
+    [2m  - <launched> pid=71407[22m
+    [2m  - [pid=71407][err] *** You are running in headless mode.[22m
+    [2m  - [pid=71407][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=71407][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.666667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-04-export-E2E-04-expor-a7efd-see-it-in-the-activity-list-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-04-export-E2E-04-expor-a7efd-see-it-in-the-activity-list-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-O5MFZD -juggler-pipe -silent[22m
+    [2m  - <launched> pid=71695[22m
+    [2m  - [pid=71695][err] *** You are running in headless mode.[22m
+    [2m  - [pid=71695][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=71695][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.666667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-VPhTud -juggler-pipe -silent[22m
+    [2m  - <launched> pid=71888[22m
+    [2m  - [pid=71888][err] *** You are running in headless mode.[22m
+    [2m  - [pid=71888][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=71888][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.666667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [webkit] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Kontakti', level: 1 })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Kontakti', level: 1 })[22m
+
+
+      46 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      47 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+    > 48 |   await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+         |                                                                           ^
+      49 |   await expect(page.getByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeVisible();
+      50 |
+      51 |   // 5. add Ana Novak, Acme d.o.o., Tag udelezenec2025, Attribute kompetenca=spletnoProgramiranje
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-01-first-use.spec.ts:48:75
+
+    Error Context: test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [webkit] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Kontakti', level: 1 })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Kontakti', level: 1 })[22m
+
+
+      21 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      22 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+    > 23 |   await expect(anaPage.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+         |                                                                              ^
+      24 |   const acmeId = anaPage.url().match(/groups\/([^/]+)\/contacts/)![1];
+      25 |   for (const lastName of ['Novakova', 'Kosova', 'Zupanova']) {
+      26 |     await anaPage.goto(paths.newContact({ id: acmeId, name: 'Acme' }));
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-03-isolation.spec.ts:23:78
+
+    Error Context: test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10 failed
+    [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+    [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+    [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+    [firefox] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer 
+    [firefox] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+    [firefox] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list 
+    [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
+    [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 
+    [webkit] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+    [webkit] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+  8 passed (19.9m)

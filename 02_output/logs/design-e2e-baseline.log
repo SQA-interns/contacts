@@ -1,0 +1,76 @@
+
+Running 2 tests using 1 worker
+
+[1A[2K[1/2] [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno
+[1A[2K  1) [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Kontakti', level: 1 })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Kontakti', level: 1 })[22m
+
+
+      46 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      47 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+    > 48 |   await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+         |                                                                           ^
+      49 |   await expect(page.getByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeVisible();
+      50 |
+      51 |   // 5. add Ana Novak, Acme d.o.o., Tag udelezenec2025, Attribute kompetenca=spletnoProgramiranje
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-01-first-use.spec.ts:48:75
+
+    Error Context: test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[2/2] [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data
+[1A[2K  2) [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Kontakti', level: 1 })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Kontakti', level: 1 })[22m
+
+
+      21 |   await dialog.getByLabel('Ime skupine').fill('Acme');
+      22 |   await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
+    > 23 |   await expect(anaPage.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+         |                                                                              ^
+      24 |   const acmeId = anaPage.url().match(/groups\/([^/]+)\/contacts/)![1];
+      25 |   for (const lastName of ['Novakova', 'Kosova', 'Zupanova']) {
+      26 |     await anaPage.goto(paths.newContact({ id: acmeId, name: 'Acme' }));
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-03-isolation.spec.ts:23:78
+
+    Error Context: test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  2 failed
+    [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+    [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 

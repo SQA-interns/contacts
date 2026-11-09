@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S13 /review INC-2 (answer "B" on F-14)
+- Session: S14 /design (round 1, with the developer)
 - Result: done
-- Gate: DoD-I passed (F-26 closed; F-14 lowered from High to Medium by the human's approval, no Critical or High open)
-- Notes for the next session: FIRST append this record to `docs/decisions-log.md` as D-79 (the review may not write the log): "D-79: F-14 lowered from High to Medium. Timestamp 2026-11-09. Session S13 /review INC-2. Class block, Type approval. Trigger: F-14 (`docs/04_review-INC-2.md`). Against the real project contacts-dev-7cbd1 the first sign-in (S12) and `DELETE /me` 204 (S13) work; the refusal of a deleted account's token is not shown, it fails closed (no row, no data) and the emulator shows 401. Options: 1 replay a token of a throw-away account, keep High (default); 2 lower to Medium and carry the check to the release notes and the first deployment. Human response: "B" (= option 2), 2026-11-09, chat. Resolution: option 2. Overrides: none." Then D-79 is the next free number after D-78. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12; release notes get F-14's deployment check. Evidence: `logs/review3-INC-2/`, `logs/review4-INC-2/`.
+- Gate: design exit met: final theme applied (commit 2a6906f), every topic decided (D-80), UI checks 79 of 79 in light and dark, unit tests 376 of 376, acceptance 88 passed with the same 7 known failures as before the change, E2E chromium: E2E-02, -04, -05, -06 pass, E2E-01 and E2E-03 fail the same way on the code before the design (`logs/design-e2e-baseline.log`: after creating a Group the page stays on the Group list), firefox does not start in this sandbox, webkit fails the same two
+- Notes for the next session: D-79 (F-14 to Medium) is now in `docs/decisions-log.md`; D-80 records the design. The final theme is switched on in `main.tsx` (`FINAL_THEME`); `ACTIVE_THEME` stays `wireframe` because `theme.test.ts` pins it. Screens: `logs/screens/design-1/{before,after-light,after-dark,variants}`. The dev stack (contact-groups, real Firebase project) was stopped for the screens and is running again; the test stack is removed. The dev frontend image is still the old one: rebuild it (README command) to see the final theme there. Not caused by the design and not yet a finding: E2E-01 and E2E-03 (Chromium, WebKit) fail before and after; `/quality-gate` or `/verify` should judge them. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12; release notes get F-14's deployment check.
 
 ## Next
-- Command: /design
+- Command: /quality-gate
 - Waiting for: D-68 d (F-19)
 
 ## Stories
