@@ -5,19 +5,19 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S11 /implement US-001 (F-26)
+- Session: S12 /review INC-2 (the human reports a successful sign-in)
 - Result: done
-- Gate: DoD-S for F-26 passed in code (`./mvnw verify -Pquality`: 366 tests, only the known EX-007-05 fails; format, Checkstyle, SpotBugs, PMD, gitleaks clean); the real sign-in is not shown, it needs the human
-- Notes for the next session: F-26 fixed in commit `b296248` and recorded as D-78. The cause was NOT the mixed Google libraries of the review (tried, no effect): the SDK's default `ApacheHttp2Transport` (HttpClient 5) inflates the gzip body of Google's keys and the Google client inflates it again. `FirebaseConfig.options` now sets `NetHttpTransport`; `pom.xml` unchanged. New `FirebaseKeyFetchTest` covers the key-fetch path; `FirebaseTokenFilter` logs the class chain of a rejected token. NEXT: the human rebuilds both images (`docker build`), restarts `docker-compose.prod.yml` and signs in again at `https://localhost:8443`; then `/review INC-2` closes F-26 and, with the three results of D-70 (c) (first sign-in `GET /me` 200, `DELETE /me`, refused token of the deleted account), F-14. The text of S10 about the TLS proxy, CORS and `X-Forwarded-Proto` still holds. Low and for the release notes: F-19..F-25, F-06..F-09, F-11, F-12. Evidence: `logs/f26-*.log`.
+- Gate: DoD-I not passed (F-14 High open: `DELETE /me` and the refusal of a deleted account's token are not shown against the real Firebase project)
+- Notes for the next session: F-26 (Critical) is CLOSED. Seen on the machine, not taken from the statement: after the rebuild the human's real calls `GET /groups` and `GET /me` answered 200, `app_user` holds one row created in the same second as the first 200, no rejected-token line in the backend log. That also shows `getUser` accepted the service account (first of the three results of D-70 c). F-14 stays open on two results: `DELETE /me` and the 401 of the deleted account's token; `docs/04_review-INC-2.md` ("Handover", S12) says step by step what the human does with a throw-away account (copy one call as cURL before deleting, delete in "Moj račun", replay the cURL, expect 401). If the deletion fails, look at the role of the service account (D-70 b) and run `/implement US-021`. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12. Evidence: `logs/review3-INC-2/`.
 
 ## Next
 - Command: /review INC-2
-- Waiting for: the human's rebuild and real sign-in (D-70 c); D-68 d (F-19)
+- Waiting for: the human's account deletion and replay of the token (D-70 c, "Handover" of the review); D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
 |---|---|---|---|
-| US-001 | 1 | done | passed (DoD-S-07: two subjects over 72 characters; F-26 fixed, D-78, real sign-in waits for the human) |
+| US-001 | 1 | done | passed (DoD-S-07: two subjects over 72 characters; F-26 fixed, D-78, real sign-in shown in S12) |
 | US-002 | 1 | done | passed (DoD-S-01: EX-002-06/07 wait for US-020/US-014, D-42; DoD-S-07: one subject over 72 characters) |
 | US-003 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-007, US-014, US-004, US-005; DoD-S-05 screens; DoD-S-07: size, D-46) |
 | US-004 | 1 | done | passed in part (DoD-S-01: AC-004-04/07/08/09 wait for US-009, US-014; DoD-S-05 screens, D-48) |
