@@ -1,0 +1,53 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[17,26] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[18,9] cannot find symbol
+  symbol:   variable AttributeChanges
+  location: class si.contactgroups.domain.AttributeChangesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[24,33] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[25,33] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[26,33] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[32,13] cannot find symbol
+  symbol:   variable AttributeChanges
+  location: class si.contactgroups.domain.AttributeChangesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[22,5] cannot find symbol
+  symbol:   variable AttributeCheck
+  location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[30,16] cannot find symbol
+  symbol:   variable AttributeCheck
+  location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[32,16] cannot find symbol
+  symbol:   variable AttributeCheck
+  location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[71,5] cannot find symbol
+  symbol:   variable AttributeCheck
+  location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:testCompile (default-testCompile) on project contact-groups-backend: Compilation failure: Compilation failure: 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[17,26] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[18,9] cannot find symbol
+[ERROR]   symbol:   variable AttributeChanges
+[ERROR]   location: class si.contactgroups.domain.AttributeChangesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[24,33] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[25,33] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[26,33] package AttributeChanges does not exist
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/AttributeChangesTest.java:[32,13] cannot find symbol
+[ERROR]   symbol:   variable AttributeChanges
+[ERROR]   location: class si.contactgroups.domain.AttributeChangesTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[22,5] cannot find symbol
+[ERROR]   symbol:   variable AttributeCheck
+[ERROR]   location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[30,16] cannot find symbol
+[ERROR]   symbol:   variable AttributeCheck
+[ERROR]   location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[32,16] cannot find symbol
+[ERROR]   symbol:   variable AttributeCheck
+[ERROR]   location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/AttributeCheckTest.java:[71,5] cannot find symbol
+[ERROR]   symbol:   variable AttributeCheck
+[ERROR]   location: class si.contactgroups.service.AttributeCheckTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

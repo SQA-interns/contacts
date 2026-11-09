@@ -1,0 +1,3782 @@
+08:34:12.880 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.AttributeEndpointsIT]: AttributeEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:13.053 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AttributeEndpointsIT
+08:34:13.138 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.AttributeEndpointsIT]: AttributeEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:13.139 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:13.139 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:13.145 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AttributeEndpointsIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T08:34:13.552+01:00  INFO 46145 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : Starting AttributeEndpointsIT using Java 21.0.8 with PID 46145 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T08:34:13.553+01:00  INFO 46145 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : The following 1 profile is active: "group-path-probe"
+2026-11-09T08:34:14.166+01:00  INFO 46145 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T08:34:14.170+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T08:34:14.183+01:00  INFO 46145 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T08:34:17.033+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T08:34:17.035+01:00  INFO 46145 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T08:34:17.057+01:00  INFO 46145 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T08:34:17.271+01:00  INFO 46145 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T08:34:17.370+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T08:34:17.500+01:00  INFO 46145 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 8b237e0d511d9619e10953cddd8f3ab0e1d642f62c490f6926441c06c1511245
+2026-11-09T08:34:17.921+01:00  INFO 46145 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.650303S
+2026-11-09T08:34:17.940+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T08:34:17.940+01:00  INFO 46145 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T08:34:17.942+01:00  INFO 46145 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T08:34:17.943+01:00  INFO 46145 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T08:34:18.065+01:00  INFO 46145 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: cd9baeecf74093969b1348848405577a19feebcf91d29275f90da1e7bc207be6
+2026-11-09T08:34:19.282+01:00  INFO 46145 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.338611S
+2026-11-09T08:34:19.284+01:00  INFO 46145 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:52202/test?loggerLevel=OFF)
+2026-11-09T08:34:20.338+01:00  INFO 46145 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:52202/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T08:34:20.374+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T08:34:20.378+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.015s)
+2026-11-09T08:34:20.392+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T08:34:20.449+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T08:34:20.452+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T08:34:20.484+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T08:34:20.525+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.043s)
+2026-11-09T08:34:20.925+01:00  INFO 46145 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T08:34:21.529+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-09T08:34:21.529+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-09T08:34:21.538+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T08:34:21.543+01:00  INFO 46145 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
+2026-11-09T08:34:21.647+01:00  INFO 46145 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : Started AttributeEndpointsIT in 8.442 seconds (process running for 9.775)
+2026-11-09T08:34:21.701+01:00  WARN 46145 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T08:34:22.270+01:00  INFO 46145 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T08:34:22.292+01:00  INFO 46145 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@48d14084
+2026-11-09T08:34:22.295+01:00  INFO 46145 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"d512b8b5-d0d0-4209-bb75-5a2cb64e43dd","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.496436Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/d512b8b5-d0d0-4209-bb75-5a2cb64e43dd/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"71793e95-0b92-44b2-807c-3bf3d04e117e","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.554829Z","updatedAt":"2026-11-09T07:34:22.554829Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/d512b8b5-d0d0-4209-bb75-5a2cb64e43dd/contacts/71793e95-0b92-44b2-807c-3bf3d04e117e
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"77"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"starost","value":"42"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"71793e95-0b92-44b2-807c-3bf3d04e117e","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.554829Z","updatedAt":"2026-11-09T07:34:22.554829Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"f56a870b-3702-4af0-ab52-a1719b01e91b","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.672806Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/f56a870b-3702-4af0-ab52-a1719b01e91b/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"dc0332bc-09c0-4477-b839-1b03bba6770c","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.680597Z","updatedAt":"2026-11-09T07:34:22.680597Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/f56a870b-3702-4af0-ab52-a1719b01e91b/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"72"]
+             Body = {"firstName":"Boris","attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"d9968ef4-77de-4087-9185-9881c00bead4","version":1,"firstName":"Boris","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.691910Z","updatedAt":"2026-11-09T07:34:22.691910Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"c47a07fa-9603-4356-ae15-a6c43368d104","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.713242Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/c47a07fa-9603-4356-ae15-a6c43368d104/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"e619cef9-4b29-49e9-a698-8e0619623184","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.720213Z","updatedAt":"2026-11-09T07:34:22.720213Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/c47a07fa-9603-4356-ae15-a6c43368d104/contacts/e619cef9-4b29-49e9-a698-8e0619623184
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"e619cef9-4b29-49e9-a698-8e0619623184","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.720213Z","updatedAt":"2026-11-09T07:34:22.720213Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/c47a07fa-9603-4356-ae15-a6c43368d104/contacts/e619cef9-4b29-49e9-a698-8e0619623184
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"31"]
+             Body = {"firstName":"Ana","version":2}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"e619cef9-4b29-49e9-a698-8e0619623184","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.720213Z","updatedAt":"2026-11-09T07:34:22.720213Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"831cf08a-ef1f-4a06-8b2b-d9f5da6d7fa2","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.757967Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/831cf08a-ef1f-4a06-8b2b-d9f5da6d7fa2/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9836c988-47d4-4d77-9af3-4b48b185c2ed","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.765025Z","updatedAt":"2026-11-09T07:34:22.765025Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/831cf08a-ef1f-4a06-8b2b-d9f5da6d7fa2/contacts/9836c988-47d4-4d77-9af3-4b48b185c2ed
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9836c988-47d4-4d77-9af3-4b48b185c2ed","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.765025Z","updatedAt":"2026-11-09T07:34:22.765025Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"293bb3ea-11a1-48fc-ab63-eedc7b05c7c0","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.790132Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/293bb3ea-11a1-48fc-ab63-eedc7b05c7c0/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"16ee6274-4dfb-411b-9563-a54674e1e9c7","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.796859Z","updatedAt":"2026-11-09T07:34:22.796859Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/293bb3ea-11a1-48fc-ab63-eedc7b05c7c0/contacts/16ee6274-4dfb-411b-9563-a54674e1e9c7
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"117"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"},{"key":"Kompetenca","value":"sql"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"16ee6274-4dfb-411b-9563-a54674e1e9c7","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.796859Z","updatedAt":"2026-11-09T07:34:22.796859Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"45ecdd67-bd80-48f3-ab59-0413cd055fee","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.819852Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/45ecdd67-bd80-48f3-ab59-0413cd055fee/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"925eb82f-a469-408d-badf-d7ffd37e92d8","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.825858Z","updatedAt":"2026-11-09T07:34:22.825858Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/45ecdd67-bd80-48f3-ab59-0413cd055fee/contacts/925eb82f-a469-408d-badf-d7ffd37e92d8
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"925eb82f-a469-408d-badf-d7ffd37e92d8","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.825858Z","updatedAt":"2026-11-09T07:34:22.825858Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/45ecdd67-bd80-48f3-ab59-0413cd055fee/contacts/925eb82f-a469-408d-badf-d7ffd37e92d8
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"81"]
+             Body = {"firstName":"Ana","version":2,"attributes":[{"key":"kompetenca","value":"sql"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"925eb82f-a469-408d-badf-d7ffd37e92d8","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.825858Z","updatedAt":"2026-11-09T07:34:22.825858Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/45ecdd67-bd80-48f3-ab59-0413cd055fee/contacts/925eb82f-a469-408d-badf-d7ffd37e92d8
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"47"]
+             Body = {"firstName":"Ana","version":3,"attributes":[]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"925eb82f-a469-408d-badf-d7ffd37e92d8","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.825858Z","updatedAt":"2026-11-09T07:34:22.825858Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T08:34:22.899+01:00  INFO 46145 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 403 to PUT /api/v1/groups/65b7a225-d13e-4323-b9d0-53e98fbd0414/contacts/7af8b341-a4bf-4e5c-9e6a-a5d8e3473a92
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"65b7a225-d13e-4323-b9d0-53e98fbd0414","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.872175Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/65b7a225-d13e-4323-b9d0-53e98fbd0414/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7af8b341-a4bf-4e5c-9e6a-a5d8e3473a92","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.879353Z","updatedAt":"2026-11-09T07:34:22.879353Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/65b7a225-d13e-4323-b9d0-53e98fbd0414/contacts/7af8b341-a4bf-4e5c-9e6a-a5d8e3473a92
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7af8b341-a4bf-4e5c-9e6a-a5d8e3473a92","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.879353Z","updatedAt":"2026-11-09T07:34:22.879353Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/65b7a225-d13e-4323-b9d0-53e98fbd0414/contacts/7af8b341-a4bf-4e5c-9e6a-a5d8e3473a92
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"47"]
+             Body = {"firstName":"Ana","version":2,"attributes":[]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.RoleForbiddenException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/65b7a225-d13e-4323-b9d0-53e98fbd0414/contacts/7af8b341-a4bf-4e5c-9e6a-a5d8e3473a92
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#getContact(UUID, String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7af8b341-a4bf-4e5c-9e6a-a5d8e3473a92","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.879353Z","updatedAt":"2026-11-09T07:34:22.879353Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"b08c4216-f0a1-49f8-9458-34a73715a0cd","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:22.915974Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/b08c4216-f0a1-49f8-9458-34a73715a0cd/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7fecbd99-66ed-4fc0-9468-5b4663f02a98","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.921272Z","updatedAt":"2026-11-09T07:34:22.921272Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/b08c4216-f0a1-49f8-9458-34a73715a0cd/contacts/7fecbd99-66ed-4fc0-9468-5b4663f02a98
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7fecbd99-66ed-4fc0-9468-5b4663f02a98","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.921272Z","updatedAt":"2026-11-09T07:34:22.921272Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/b08c4216-f0a1-49f8-9458-34a73715a0cd/contacts/7fecbd99-66ed-4fc0-9468-5b4663f02a98
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"70"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"x","value":"y"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7fecbd99-66ed-4fc0-9468-5b4663f02a98","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:22.921272Z","updatedAt":"2026-11-09T07:34:22.921272Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 10.22 s <<< FAILURE! -- in si.contactgroups.web.AttributeEndpointsIT
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_09_every_value_is_text -- Time elapsed: 0.950 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].value"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_09_every_value_is_text(AttributeEndpointsIT.java:160)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['value']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs -- Time elapsed: 0.039 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].key"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs(AttributeEndpointsIT.java:92)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['key']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs -- Time elapsed: 0.044 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.version"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs(AttributeEndpointsIT.java:117)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['version']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed -- Time elapsed: 0.031 s <<< FAILURE!
+java.lang.AssertionError: JSON path "$.version" expected:<2> but was:<1>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:172)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed(AttributeEndpointsIT.java:80)
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair -- Time elapsed: 0.029 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<422> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair(AttributeEndpointsIT.java:124)
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value -- Time elapsed: 0.046 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes.length()"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value(AttributeEndpointsIT.java:99)
+Caused by: com.jayway.jsonpath.PathNotFoundException: Missing property in path $['attributes']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs -- Time elapsed: 0.049 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].value"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs(AttributeEndpointsIT.java:154)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['value']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent -- Time elapsed: 0.029 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<409> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent(AttributeEndpointsIT.java:138)
+
+[ERROR] Failures: 
+[ERROR]   AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs:117 No value at JSON path "$.version"
+[ERROR]   AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed:80 JSON path "$.version" expected:<2> but was:<1>
+[ERROR]   AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs:92 No value at JSON path "$.attributes[0].key"
+[ERROR]   AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair:124 Status expected:<422> but was:<200>
+[ERROR]   AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value:99 No value at JSON path "$.attributes.length()"
+[ERROR]   AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent:138 Status expected:<409> but was:<200>
+[ERROR]   AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs:154 No value at JSON path "$.attributes[0].value"
+[ERROR]   AttributeEndpointsIT.r_004_09_every_value_is_text:160 No value at JSON path "$.attributes[0].value"
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0
+08:34:24.648 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.AttributeEndpointsIT]: AttributeEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:24.808 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AttributeEndpointsIT
+08:34:24.886 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.AttributeEndpointsIT]: AttributeEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:24.887 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:24.887 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:24.893 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AttributeEndpointsIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T08:34:25.278+01:00  INFO 46158 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : Starting AttributeEndpointsIT using Java 21.0.8 with PID 46158 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T08:34:25.279+01:00  INFO 46158 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : The following 1 profile is active: "group-path-probe"
+2026-11-09T08:34:25.742+01:00  INFO 46158 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T08:34:25.744+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T08:34:25.757+01:00  INFO 46158 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T08:34:26.726+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T08:34:26.728+01:00  INFO 46158 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T08:34:26.750+01:00  INFO 46158 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T08:34:27.003+01:00  INFO 46158 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T08:34:27.059+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T08:34:27.189+01:00  INFO 46158 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: e4e77700c3dbe120fcd946a6baa5a5cf6197488a91410c8cfea23800a9a89265
+2026-11-09T08:34:27.544+01:00  INFO 46158 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.54089S
+2026-11-09T08:34:27.555+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T08:34:27.556+01:00  INFO 46158 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T08:34:27.557+01:00  INFO 46158 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T08:34:27.558+01:00  INFO 46158 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T08:34:27.621+01:00  INFO 46158 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: db61e6cce53118dac14f01204fc1bc4478e9b95f9a67c4067f7930bd45974893
+2026-11-09T08:34:28.758+01:00  INFO 46158 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.199967S
+2026-11-09T08:34:28.761+01:00  INFO 46158 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:52217/test?loggerLevel=OFF)
+2026-11-09T08:34:29.805+01:00  INFO 46158 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:52217/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T08:34:29.843+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T08:34:29.846+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.015s)
+2026-11-09T08:34:29.860+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T08:34:29.919+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T08:34:29.923+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T08:34:29.956+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T08:34:29.996+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.044s)
+2026-11-09T08:34:30.389+01:00  INFO 46158 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T08:34:30.976+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-09T08:34:30.976+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-09T08:34:30.985+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T08:34:30.990+01:00  INFO 46158 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
+2026-11-09T08:34:31.092+01:00  INFO 46158 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : Started AttributeEndpointsIT in 6.144 seconds (process running for 7.374)
+2026-11-09T08:34:31.139+01:00  WARN 46158 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T08:34:31.692+01:00  INFO 46158 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T08:34:31.713+01:00  INFO 46158 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@48d14084
+2026-11-09T08:34:31.716+01:00  INFO 46158 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"8d9e894e-56d4-4251-a4c0-9ac5995e0be6","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:31.919490Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/8d9e894e-56d4-4251-a4c0-9ac5995e0be6/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"d116df5a-82f7-4805-b52b-15a08b49401a","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:31.978961Z","updatedAt":"2026-11-09T07:34:31.978961Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/8d9e894e-56d4-4251-a4c0-9ac5995e0be6/contacts/d116df5a-82f7-4805-b52b-15a08b49401a
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"77"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"starost","value":"42"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"d116df5a-82f7-4805-b52b-15a08b49401a","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:31.978961Z","updatedAt":"2026-11-09T07:34:31.978961Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"f0726d8c-869b-4ac0-a501-7277ea591ffe","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:32.092152Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/f0726d8c-869b-4ac0-a501-7277ea591ffe/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"07a6fed5-8cf5-410d-a690-1bf36a58215d","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.099066Z","updatedAt":"2026-11-09T07:34:32.099066Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/f0726d8c-869b-4ac0-a501-7277ea591ffe/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"72"]
+             Body = {"firstName":"Boris","attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"f2bc9597-fffc-4ea3-b26c-39af45f19fc2","version":1,"firstName":"Boris","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.110051Z","updatedAt":"2026-11-09T07:34:32.110051Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"914b78e0-aad8-481f-b42a-27edb1ad5e26","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:32.130649Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/914b78e0-aad8-481f-b42a-27edb1ad5e26/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7e87814b-a5dc-474c-ad4b-6c50e27c652c","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.137363Z","updatedAt":"2026-11-09T07:34:32.137363Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/914b78e0-aad8-481f-b42a-27edb1ad5e26/contacts/7e87814b-a5dc-474c-ad4b-6c50e27c652c
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7e87814b-a5dc-474c-ad4b-6c50e27c652c","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.137363Z","updatedAt":"2026-11-09T07:34:32.137363Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/914b78e0-aad8-481f-b42a-27edb1ad5e26/contacts/7e87814b-a5dc-474c-ad4b-6c50e27c652c
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"31"]
+             Body = {"firstName":"Ana","version":2}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"7e87814b-a5dc-474c-ad4b-6c50e27c652c","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.137363Z","updatedAt":"2026-11-09T07:34:32.137363Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"eda88eb4-10e1-4a37-83a2-8fe7e9ba47a3","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:32.177598Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/eda88eb4-10e1-4a37-83a2-8fe7e9ba47a3/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7852361b-c411-4fc4-a5ad-dd184fd5124a","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.184721Z","updatedAt":"2026-11-09T07:34:32.184721Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/eda88eb4-10e1-4a37-83a2-8fe7e9ba47a3/contacts/7852361b-c411-4fc4-a5ad-dd184fd5124a
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7852361b-c411-4fc4-a5ad-dd184fd5124a","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.184721Z","updatedAt":"2026-11-09T07:34:32.184721Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"d1ade5aa-96ba-4fd0-86ac-24c708fbeea6","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:32.208603Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/d1ade5aa-96ba-4fd0-86ac-24c708fbeea6/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"a45aa6b9-0782-44cc-8a27-c1ccfb4f8cde","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.214962Z","updatedAt":"2026-11-09T07:34:32.214962Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/d1ade5aa-96ba-4fd0-86ac-24c708fbeea6/contacts/a45aa6b9-0782-44cc-8a27-c1ccfb4f8cde
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"117"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"},{"key":"Kompetenca","value":"sql"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"a45aa6b9-0782-44cc-8a27-c1ccfb4f8cde","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.214962Z","updatedAt":"2026-11-09T07:34:32.214962Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"c6f831ef-39e2-4b42-bb6a-08705c5aa73c","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:32.235344Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/c6f831ef-39e2-4b42-bb6a-08705c5aa73c/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"108c9094-39b2-467d-a3c3-aa588cc44248","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.241054Z","updatedAt":"2026-11-09T07:34:32.241054Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/c6f831ef-39e2-4b42-bb6a-08705c5aa73c/contacts/108c9094-39b2-467d-a3c3-aa588cc44248
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"108c9094-39b2-467d-a3c3-aa588cc44248","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.241054Z","updatedAt":"2026-11-09T07:34:32.241054Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/c6f831ef-39e2-4b42-bb6a-08705c5aa73c/contacts/108c9094-39b2-467d-a3c3-aa588cc44248
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"81"]
+             Body = {"firstName":"Ana","version":2,"attributes":[{"key":"kompetenca","value":"sql"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"108c9094-39b2-467d-a3c3-aa588cc44248","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.241054Z","updatedAt":"2026-11-09T07:34:32.241054Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/c6f831ef-39e2-4b42-bb6a-08705c5aa73c/contacts/108c9094-39b2-467d-a3c3-aa588cc44248
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"47"]
+             Body = {"firstName":"Ana","version":3,"attributes":[]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"108c9094-39b2-467d-a3c3-aa588cc44248","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.241054Z","updatedAt":"2026-11-09T07:34:32.241054Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T08:34:32.296+01:00  INFO 46158 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 403 to PUT /api/v1/groups/d5414cab-6070-4b4d-b6b0-cda07788f9a7/contacts/8534dd12-f0ff-413b-9d3e-64dc5bd78a6d
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"d5414cab-6070-4b4d-b6b0-cda07788f9a7","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:32.270734Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/d5414cab-6070-4b4d-b6b0-cda07788f9a7/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"8534dd12-f0ff-413b-9d3e-64dc5bd78a6d","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.277067Z","updatedAt":"2026-11-09T07:34:32.277067Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/d5414cab-6070-4b4d-b6b0-cda07788f9a7/contacts/8534dd12-f0ff-413b-9d3e-64dc5bd78a6d
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"8534dd12-f0ff-413b-9d3e-64dc5bd78a6d","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.277067Z","updatedAt":"2026-11-09T07:34:32.277067Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/d5414cab-6070-4b4d-b6b0-cda07788f9a7/contacts/8534dd12-f0ff-413b-9d3e-64dc5bd78a6d
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"47"]
+             Body = {"firstName":"Ana","version":2,"attributes":[]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.RoleForbiddenException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/d5414cab-6070-4b4d-b6b0-cda07788f9a7/contacts/8534dd12-f0ff-413b-9d3e-64dc5bd78a6d
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#getContact(UUID, String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"8534dd12-f0ff-413b-9d3e-64dc5bd78a6d","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.277067Z","updatedAt":"2026-11-09T07:34:32.277067Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"7a39ef36-6a50-46d2-a5e5-7ed9e3459255","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:32.311797Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/7a39ef36-6a50-46d2-a5e5-7ed9e3459255/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"cf4542f1-3c1f-4049-bb89-67276e5beeb1","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.316996Z","updatedAt":"2026-11-09T07:34:32.316996Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/7a39ef36-6a50-46d2-a5e5-7ed9e3459255/contacts/cf4542f1-3c1f-4049-bb89-67276e5beeb1
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"cf4542f1-3c1f-4049-bb89-67276e5beeb1","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.316996Z","updatedAt":"2026-11-09T07:34:32.316996Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/7a39ef36-6a50-46d2-a5e5-7ed9e3459255/contacts/cf4542f1-3c1f-4049-bb89-67276e5beeb1
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"70"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"x","value":"y"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"cf4542f1-3c1f-4049-bb89-67276e5beeb1","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:32.316996Z","updatedAt":"2026-11-09T07:34:32.316996Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 7.816 s <<< FAILURE! -- in si.contactgroups.web.AttributeEndpointsIT
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_09_every_value_is_text -- Time elapsed: 0.932 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].value"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_09_every_value_is_text(AttributeEndpointsIT.java:160)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['value']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs -- Time elapsed: 0.037 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].key"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs(AttributeEndpointsIT.java:92)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['key']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs -- Time elapsed: 0.045 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.version"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs(AttributeEndpointsIT.java:117)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['version']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed -- Time elapsed: 0.032 s <<< FAILURE!
+java.lang.AssertionError: JSON path "$.version" expected:<2> but was:<1>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:172)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed(AttributeEndpointsIT.java:80)
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair -- Time elapsed: 0.026 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<422> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair(AttributeEndpointsIT.java:124)
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value -- Time elapsed: 0.035 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes.length()"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value(AttributeEndpointsIT.java:99)
+Caused by: com.jayway.jsonpath.PathNotFoundException: Missing property in path $['attributes']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs -- Time elapsed: 0.039 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].value"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs(AttributeEndpointsIT.java:154)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['value']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent -- Time elapsed: 0.028 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<409> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent(AttributeEndpointsIT.java:138)
+
+[ERROR] Failures: 
+[ERROR]   AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs:117 No value at JSON path "$.version"
+[ERROR]   AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed:80 JSON path "$.version" expected:<2> but was:<1>
+[ERROR]   AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs:92 No value at JSON path "$.attributes[0].key"
+[ERROR]   AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair:124 Status expected:<422> but was:<200>
+[ERROR]   AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value:99 No value at JSON path "$.attributes.length()"
+[ERROR]   AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent:138 Status expected:<409> but was:<200>
+[ERROR]   AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs:154 No value at JSON path "$.attributes[0].value"
+[ERROR]   AttributeEndpointsIT.r_004_09_every_value_is_text:160 No value at JSON path "$.attributes[0].value"
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0
+08:34:34.449 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.AttributeEndpointsIT]: AttributeEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:34.697 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AttributeEndpointsIT
+08:34:34.877 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.AttributeEndpointsIT]: AttributeEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:34.878 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:34.879 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:34.886 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.AttributeEndpointsIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T08:34:35.827+01:00  INFO 46178 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : Starting AttributeEndpointsIT using Java 21.0.8 with PID 46178 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T08:34:35.829+01:00  INFO 46178 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : The following 1 profile is active: "group-path-probe"
+2026-11-09T08:34:36.519+01:00  INFO 46178 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T08:34:36.521+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T08:34:36.533+01:00  INFO 46178 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T08:34:37.497+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T08:34:37.498+01:00  INFO 46178 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T08:34:37.515+01:00  INFO 46178 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T08:34:37.729+01:00  INFO 46178 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T08:34:37.801+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T08:34:37.998+01:00  INFO 46178 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 3a8f62c58704aa011b2f3768126039e925a45aee12b963276b5fdd1860a0aa1a
+2026-11-09T08:34:38.373+01:00  INFO 46178 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.643772S
+2026-11-09T08:34:38.386+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T08:34:38.387+01:00  INFO 46178 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T08:34:38.388+01:00  INFO 46178 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T08:34:38.389+01:00  INFO 46178 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T08:34:38.451+01:00  INFO 46178 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: e2e10ae79d4a5d714be89452a57172072f23e7e87cfa0750b9768d07a4ca56c1
+2026-11-09T08:34:39.501+01:00  INFO 46178 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.112592S
+2026-11-09T08:34:39.503+01:00  INFO 46178 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:52234/test?loggerLevel=OFF)
+2026-11-09T08:34:40.516+01:00  INFO 46178 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:52234/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T08:34:40.555+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T08:34:40.558+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.016s)
+2026-11-09T08:34:40.575+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T08:34:40.640+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T08:34:40.643+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T08:34:40.671+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T08:34:40.702+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.031s)
+2026-11-09T08:34:41.117+01:00  INFO 46178 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T08:34:41.701+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-09T08:34:41.702+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-09T08:34:41.712+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T08:34:41.716+01:00  INFO 46178 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
+2026-11-09T08:34:41.821+01:00  INFO 46178 --- [contact-groups-backend] [           main] s.c.web.AttributeEndpointsIT             : Started AttributeEndpointsIT in 6.836 seconds (process running for 8.441)
+2026-11-09T08:34:41.867+01:00  WARN 46178 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T08:34:42.421+01:00  INFO 46178 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T08:34:42.444+01:00  INFO 46178 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2d1ace67
+2026-11-09T08:34:42.447+01:00  INFO 46178 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"67e0b0a4-80cf-463f-b001-46dd7bf53d14","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:42.645353Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/67e0b0a4-80cf-463f-b001-46dd7bf53d14/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"dd428332-6d01-4617-8ea9-a1725b07845a","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.703942Z","updatedAt":"2026-11-09T07:34:42.703942Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/67e0b0a4-80cf-463f-b001-46dd7bf53d14/contacts/dd428332-6d01-4617-8ea9-a1725b07845a
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"77"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"starost","value":"42"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"dd428332-6d01-4617-8ea9-a1725b07845a","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.703942Z","updatedAt":"2026-11-09T07:34:42.703942Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"b7cbe1e6-9ca4-4344-9984-0b94e76702c7","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:42.818301Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/b7cbe1e6-9ca4-4344-9984-0b94e76702c7/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"2df049af-cb26-4e75-96d6-f7c591a09400","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.825973Z","updatedAt":"2026-11-09T07:34:42.825973Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/b7cbe1e6-9ca4-4344-9984-0b94e76702c7/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"72"]
+             Body = {"firstName":"Boris","attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"b5841ef1-a464-4a06-a038-80b92cef5bfc","version":1,"firstName":"Boris","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.835734Z","updatedAt":"2026-11-09T07:34:42.835734Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"630bb5bd-57ac-4cdd-aaaa-860626309270","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:42.854679Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/630bb5bd-57ac-4cdd-aaaa-860626309270/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"afb2f0e4-551e-4888-8118-8c78690b06d2","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.861909Z","updatedAt":"2026-11-09T07:34:42.861909Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/630bb5bd-57ac-4cdd-aaaa-860626309270/contacts/afb2f0e4-551e-4888-8118-8c78690b06d2
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"afb2f0e4-551e-4888-8118-8c78690b06d2","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.861909Z","updatedAt":"2026-11-09T07:34:42.861909Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/630bb5bd-57ac-4cdd-aaaa-860626309270/contacts/afb2f0e4-551e-4888-8118-8c78690b06d2
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"31"]
+             Body = {"firstName":"Ana","version":2}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"afb2f0e4-551e-4888-8118-8c78690b06d2","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.861909Z","updatedAt":"2026-11-09T07:34:42.861909Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9ee905c8-269e-436c-9269-d49221838442","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:42.896530Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/9ee905c8-269e-436c-9269-d49221838442/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"e20f42bb-db59-4a2e-a786-7a83b9a46db5","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.902813Z","updatedAt":"2026-11-09T07:34:42.902813Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/9ee905c8-269e-436c-9269-d49221838442/contacts/e20f42bb-db59-4a2e-a786-7a83b9a46db5
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"e20f42bb-db59-4a2e-a786-7a83b9a46db5","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.902813Z","updatedAt":"2026-11-09T07:34:42.902813Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"c03e9406-9c68-452e-a9f3-75d56a9da3bf","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:42.927129Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/c03e9406-9c68-452e-a9f3-75d56a9da3bf/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9c452966-6d1a-4db0-adbf-2276f56df85b","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.934125Z","updatedAt":"2026-11-09T07:34:42.934125Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/c03e9406-9c68-452e-a9f3-75d56a9da3bf/contacts/9c452966-6d1a-4db0-adbf-2276f56df85b
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"117"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"},{"key":"Kompetenca","value":"sql"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9c452966-6d1a-4db0-adbf-2276f56df85b","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.934125Z","updatedAt":"2026-11-09T07:34:42.934125Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"2a4e1d23-405e-4427-b06f-eb132c943d3d","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:42.956421Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/2a4e1d23-405e-4427-b06f-eb132c943d3d/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"57f290ef-0d93-4b78-b226-cb47594ab486","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.962462Z","updatedAt":"2026-11-09T07:34:42.962462Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/2a4e1d23-405e-4427-b06f-eb132c943d3d/contacts/57f290ef-0d93-4b78-b226-cb47594ab486
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"57f290ef-0d93-4b78-b226-cb47594ab486","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.962462Z","updatedAt":"2026-11-09T07:34:42.962462Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/2a4e1d23-405e-4427-b06f-eb132c943d3d/contacts/57f290ef-0d93-4b78-b226-cb47594ab486
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"81"]
+             Body = {"firstName":"Ana","version":2,"attributes":[{"key":"kompetenca","value":"sql"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"57f290ef-0d93-4b78-b226-cb47594ab486","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.962462Z","updatedAt":"2026-11-09T07:34:42.962462Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/2a4e1d23-405e-4427-b06f-eb132c943d3d/contacts/57f290ef-0d93-4b78-b226-cb47594ab486
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"47"]
+             Body = {"firstName":"Ana","version":3,"attributes":[]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.ContactChangedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 409
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"57f290ef-0d93-4b78-b226-cb47594ab486","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.962462Z","updatedAt":"2026-11-09T07:34:42.962462Z"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T08:34:43.018+01:00  INFO 46178 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 403 to PUT /api/v1/groups/b0c6620c-5207-4472-a27b-18b1384c0261/contacts/601c87df-2c83-4dd8-b445-6a8c44b5e7f7
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"b0c6620c-5207-4472-a27b-18b1384c0261","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:42.991297Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/b0c6620c-5207-4472-a27b-18b1384c0261/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"601c87df-2c83-4dd8-b445-6a8c44b5e7f7","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.997379Z","updatedAt":"2026-11-09T07:34:42.997379Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/b0c6620c-5207-4472-a27b-18b1384c0261/contacts/601c87df-2c83-4dd8-b445-6a8c44b5e7f7
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"601c87df-2c83-4dd8-b445-6a8c44b5e7f7","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.997379Z","updatedAt":"2026-11-09T07:34:42.997379Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/b0c6620c-5207-4472-a27b-18b1384c0261/contacts/601c87df-2c83-4dd8-b445-6a8c44b5e7f7
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"47"]
+             Body = {"firstName":"Ana","version":2,"attributes":[]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.contactgroups.service.RoleForbiddenException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/b0c6620c-5207-4472-a27b-18b1384c0261/contacts/601c87df-2c83-4dd8-b445-6a8c44b5e7f7
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#getContact(UUID, String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"601c87df-2c83-4dd8-b445-6a8c44b5e7f7","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:42.997379Z","updatedAt":"2026-11-09T07:34:42.997379Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"3901b7a5-b499-4562-b107-b50074a7f27d","name":"Acme","role":"OWNER","createdAt":"2026-11-09T07:34:43.035075Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/3901b7a5-b499-4562-b107-b50074a7f27d/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"19"]
+             Body = {"firstName":"Ana"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9dd5049c-ba2e-40fb-8bcb-ccbc978f69e5","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:43.040743Z","updatedAt":"2026-11-09T07:34:43.040743Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/3901b7a5-b499-4562-b107-b50074a7f27d/contacts/9dd5049c-ba2e-40fb-8bcb-ccbc978f69e5
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"82"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"kompetenca","value":"java"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9dd5049c-ba2e-40fb-8bcb-ccbc978f69e5","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:43.040743Z","updatedAt":"2026-11-09T07:34:43.040743Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /api/v1/groups/3901b7a5-b499-4562-b107-b50074a7f27d/contacts/9dd5049c-ba2e-40fb-8bcb-ccbc978f69e5
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"70"]
+             Body = {"firstName":"Ana","version":1,"attributes":[{"key":"x","value":"y"}]}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#updateContact(AuthenticatedUser, UUID, String, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9dd5049c-ba2e-40fb-8bcb-ccbc978f69e5","version":1,"firstName":"Ana","tags":[],"attributes":[],"createdAt":"2026-11-09T07:34:43.040743Z","updatedAt":"2026-11-09T07:34:43.040743Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 8.790 s <<< FAILURE! -- in si.contactgroups.web.AttributeEndpointsIT
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_09_every_value_is_text -- Time elapsed: 0.928 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].value"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_09_every_value_is_text(AttributeEndpointsIT.java:160)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['value']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs -- Time elapsed: 0.036 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].key"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs(AttributeEndpointsIT.java:92)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['key']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs -- Time elapsed: 0.041 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.version"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs(AttributeEndpointsIT.java:117)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['version']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed -- Time elapsed: 0.030 s <<< FAILURE!
+java.lang.AssertionError: JSON path "$.version" expected:<2> but was:<1>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:172)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed(AttributeEndpointsIT.java:80)
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair -- Time elapsed: 0.028 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<422> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair(AttributeEndpointsIT.java:124)
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value -- Time elapsed: 0.034 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes.length()"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value(AttributeEndpointsIT.java:99)
+Caused by: com.jayway.jsonpath.PathNotFoundException: Missing property in path $['attributes']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs -- Time elapsed: 0.042 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.attributes[0].value"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs(AttributeEndpointsIT.java:154)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['attributes'][0]['value']
+
+[ERROR] si.contactgroups.web.AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent -- Time elapsed: 0.028 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<409> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent(AttributeEndpointsIT.java:138)
+
+[ERROR] Failures: 
+[ERROR]   AttributeEndpointsIT.an_edit_without_the_attributes_property_keeps_the_stored_pairs:117 No value at JSON path "$.version"
+[ERROR]   AttributeEndpointsIT.r_004_01_07_a_new_pair_is_stored_and_raises_the_version_even_when_no_field_changed:80 JSON path "$.version" expected:<2> but was:<1>
+[ERROR]   AttributeEndpointsIT.r_004_01_a_Contact_can_be_created_with_pairs:92 No value at JSON path "$.attributes[0].key"
+[ERROR]   AttributeEndpointsIT.r_004_03_a_refused_pair_stores_nothing_and_names_the_second_pair:124 Status expected:<422> but was:<200>
+[ERROR]   AttributeEndpointsIT.r_004_06_add_change_and_remove_are_recorded_with_key_old_and_new_value:99 No value at JSON path "$.attributes.length()"
+[ERROR]   AttributeEndpointsIT.r_004_07_a_stale_version_is_refused_and_the_current_contact_is_sent:138 Status expected:<409> but was:<200>
+[ERROR]   AttributeEndpointsIT.r_004_08_a_viewer_is_refused_and_sees_the_pairs:154 No value at JSON path "$.attributes[0].value"
+[ERROR]   AttributeEndpointsIT.r_004_09_every_value_is_text:160 No value at JSON path "$.attributes[0].value"
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.4:verify (default) on project contact-groups-backend: There are test failures.
+[ERROR] 
+[ERROR] See /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
