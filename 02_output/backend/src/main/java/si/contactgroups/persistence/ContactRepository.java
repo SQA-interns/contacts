@@ -29,6 +29,8 @@ public class ContactRepository {
 
   private static final String GROUP_ID = "groupId";
   private static final String IDS = "ids";
+  private static final String NOW = "now";
+  private static final String VERSION = "version";
   private static final String FIRST_NAME = "first_name";
   private static final String LAST_NAME = "last_name";
   private static final String EMAIL = "email";
@@ -91,7 +93,7 @@ public class ContactRepository {
             data)
         .param(GROUP_ID, groupId)
         .param("createdBy", createdBy)
-        .param("now", Timestamp.from(now))
+        .param(NOW, Timestamp.from(now))
         .query(UUID.class)
         .single();
   }
@@ -231,7 +233,7 @@ public class ContactRepository {
         rs.getString(CITY),
         rs.getString(COUNTRY),
         List.of((String[]) rs.getArray("tags").getArray()),
-        rs.getInt("version"),
+        rs.getInt(VERSION),
         rs.getTimestamp("created_at").toInstant());
   }
 
@@ -359,7 +361,7 @@ public class ContactRepository {
                     + " AND deleted_at IS NULL")
             .param("id", contactId)
             .param(GROUP_ID, groupId)
-            .param("now", Timestamp.from(now))
+            .param(NOW, Timestamp.from(now))
             .update()
         == 1;
   }
@@ -376,8 +378,8 @@ public class ContactRepository {
                     + " AND version = :version AND deleted_at IS NULL")
             .param("id", contactId)
             .param(GROUP_ID, groupId)
-            .param("version", version)
-            .param("now", Timestamp.from(now))
+            .param(VERSION, version)
+            .param(NOW, Timestamp.from(now))
             .update()
         == 1;
   }
@@ -478,7 +480,7 @@ public class ContactRepository {
             (rs, n) ->
                 new StoredContact(
                     rs.getObject("id", UUID.class),
-                    rs.getInt("version"),
+                    rs.getInt(VERSION),
                     new ContactData(
                         rs.getString(FIRST_NAME),
                         rs.getString(LAST_NAME),
@@ -517,8 +519,8 @@ public class ContactRepository {
                 data)
             .param("id", contactId)
             .param(GROUP_ID, groupId)
-            .param("version", version)
-            .param("now", Timestamp.from(now))
+            .param(VERSION, version)
+            .param(NOW, Timestamp.from(now))
             .update()
         == 1;
   }
