@@ -83,6 +83,20 @@ class HistoryEndpointsIT extends WebTestSupport {
   }
 
   @Test
+  void a_malformed_page_is_400_as_in_the_contact_list() throws Exception {
+    String id = create("{\"firstName\":\"Ana\"}");
+
+    for (String page : new String[] {"abc", "0", "-1", "1.5", "", "99999999999"}) {
+      mvc.perform(
+              get("/api/v1/groups/" + acme + "/contacts/" + id + "/history?page=" + page)
+                  .with(as(ana)))
+          .andExpect(status().isBadRequest())
+          .andExpect(jsonPath("$.code").value("request.malformed"));
+    }
+    history(ana, id, 1).andExpect(status().isOk());
+  }
+
+  @Test
   void ac_016_01_creating_a_contact_records_one_created_entry_with_the_stored_values()
       throws Exception {
     String id = create("{\"firstName\":\"Ana\",\"lastName\":\"Novak\",\"company\":\"Acme\"}");

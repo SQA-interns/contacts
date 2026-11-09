@@ -10,6 +10,7 @@ import si.contactgroups.domain.Action;
 import si.contactgroups.security.RequiresAction;
 import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.HistoryQueryService;
+import si.contactgroups.service.PageNumber;
 
 /**
  * The History of a Contact (contract {@code getContactHistory}). There is no way to change or
@@ -30,11 +31,14 @@ public class HistoryController {
   public HistoryQueryService.Page getContactHistory(
       @PathVariable UUID groupId,
       @PathVariable String contactId,
-      @RequestParam(defaultValue = "1") int page) {
+      @RequestParam(required = false) String page) {
+    int number = PageNumber.parse(page);
+    UUID contact;
     try {
-      return history.contactHistory(groupId, UUID.fromString(contactId), page);
+      contact = UUID.fromString(contactId);
     } catch (IllegalArgumentException e) {
       throw new ContactNotFoundException();
     }
+    return history.contactHistory(groupId, contact, number);
   }
 }

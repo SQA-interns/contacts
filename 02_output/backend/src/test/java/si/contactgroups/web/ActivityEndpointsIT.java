@@ -108,6 +108,16 @@ class ActivityEndpointsIT extends WebTestSupport {
   }
 
   @Test
+  void a_malformed_page_is_400_as_in_the_contact_list() throws Exception {
+    for (String page : new String[] {"abc", "0", "-1", "1.5", "", "99999999999"}) {
+      activity(ana, "?page=" + page)
+          .andExpect(status().isBadRequest())
+          .andExpect(jsonPath("$.code").value("request.malformed"));
+    }
+    activity(ana, "?page=1").andExpect(status().isOk());
+  }
+
+  @Test
   void a_viewer_is_refused_and_a_foreign_group_is_not_found() throws Exception {
     activity(viola, "").andExpect(status().isForbidden());
     mvc.perform(get("/api/v1/groups/" + UUID.randomUUID() + "/activity").with(as(ana)))

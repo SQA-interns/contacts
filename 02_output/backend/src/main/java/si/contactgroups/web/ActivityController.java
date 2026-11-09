@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import si.contactgroups.domain.Action;
 import si.contactgroups.security.RequiresAction;
 import si.contactgroups.service.HistoryQueryService;
+import si.contactgroups.service.PageNumber;
 
 /** The Group activity list (contract {@code getGroupActivity}, US-017). */
 @RestController
@@ -29,7 +30,7 @@ public class ActivityController {
       @RequestParam(required = false) String action,
       @RequestParam(required = false) String from,
       @RequestParam(required = false) String to,
-      @RequestParam(defaultValue = "1") int page) {
-    return history.groupActivity(groupId, userId, action, from, to, page);
+      @RequestParam(required = false) String page) {
+    return history.groupActivity(groupId, userId, action, from, to, PageNumber.parse(page));
   }
 }

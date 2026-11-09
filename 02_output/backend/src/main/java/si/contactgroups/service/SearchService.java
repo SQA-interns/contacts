@@ -29,7 +29,7 @@ public class SearchService {
    */
   public ContactPage list(
       UUID groupId, String page, ContactFilter filter, String sort, String dir) {
-    int number = pageNumber(page);
+    int number = PageNumber.parse(page);
     boolean descending = descending(dir);
     String column = sort == null ? "lastName" : sort;
     if (!ContactRepository.SORT_COLUMNS.contains(column)) {
@@ -47,17 +47,6 @@ public class SearchService {
   /** The Tags, companies, countries and Attribute keys used in the Group (R-009-11). */
   public Facets facets(UUID groupId) {
     return contacts.facets(groupId);
-  }
-
-  private static int pageNumber(String page) {
-    if (page == null) {
-      return 1;
-    }
-    int number = page.matches("[0-9]{1,9}") ? Integer.parseInt(page) : 0;
-    if (number < 1) {
-      throw new InvalidQueryException("Page must be a whole number of at least 1");
-    }
-    return number;
   }
 
   private static boolean descending(String dir) {
