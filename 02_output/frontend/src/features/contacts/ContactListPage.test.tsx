@@ -30,11 +30,11 @@ function backend(role: string, page: (url: URL) => unknown) {
   return asked;
 }
 
-function renderPage() {
+function renderPage(entry = '/groups/g1/contacts') {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   render(
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter initialEntries={['/groups/g1/contacts']}>
+      <MemoryRouter initialEntries={[entry]}>
         <Routes>
           <Route path="/groups/:groupId/contacts" element={<ContactListPage />} />
           <Route path="/groups/:groupId/contacts/:contactId" element={<p>Contact opened</p>} />
@@ -123,6 +123,55 @@ describe('ContactListPage', () => {
     renderPage();
     expect((await screen.findAllByText('60 kontaktov')).length).toBeGreaterThan(0);
     expect(screen.queryByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeNull();
+  });
+
+  it('asks for page 1 with the search text, trimmed of nothing, and shows the count (R-008-01, R-008-03)', async () => {
+    const asked = backend('OWNER', (url) => ({
+      items: [item(1)],
+      page: Number(url.searchParams.get('page')),
+      pageSize: 25,
+      total: url.searchParams.get('q') ? 30 : 60,
+    }));
+    renderPage('/groups/g1/contacts?page=3');
+    await screen.findAllByText('60 kontaktov');
+
+    await userEvent.type(screen.getByLabelText('Iskanje'), 'ana nov');
+
+    expect((await screen.findAllByText('30 kontaktov')).length).toBeGreaterThan(0);
+    const last = asked.filter((u) => u.pathname.endsWith('/contacts')).slice(-1)[0];
+    expect(last?.searchParams.get('q')).toBe('ana nov');
+    expect(last?.searchParams.get('page')).toBe('1');
+  });
+
+  it('treats a search text of spaces as no search (R-008-05)', async () => {
+    const asked = backend('OWNER', () => ({ items: [item(1)], page: 1, pageSize: 25, total: 1 }));
+    renderPage();
+    await screen.findByRole('table', { name: 'Kontakti skupine' });
+
+    await userEvent.type(screen.getByLabelText('Iskanje'), '   ');
+
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    expect(asked.some((u) => u.searchParams.has('q'))).toBe(false);
+  });
+
+  it('shows "No contacts match" and "Clear filters" that empties the search (R-008-04)', async () => {
+    const asked = backend('OWNER', (url) =>
+      url.searchParams.get('q')
+        ? { items: [], page: 1, pageSize: 25, total: 0 }
+        : { items: [item(1)], page: 1, pageSize: 25, total: 1 },
+    );
+    renderPage('/groups/g1/contacts?q=%3Cscript%3E');
+
+    expect(await screen.findByRole('heading', { name: 'Noben kontakt ne ustreza' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Iskanje')).toHaveValue('<script>');
+    expect(screen.queryByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeNull();
+
+    await userEvent.click(screen.getByRole('button', { name: 'Počisti filtre' }));
+
+    expect(await screen.findByRole('table', { name: 'Kontakti skupine' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Iskanje')).toHaveValue('');
+    const last = asked.filter((u) => u.pathname.endsWith('/contacts')).slice(-1)[0];
+    expect(last?.searchParams.has('q')).toBe(false);
   });
 
   it('shows the error state with a retry when the request fails', async () => {

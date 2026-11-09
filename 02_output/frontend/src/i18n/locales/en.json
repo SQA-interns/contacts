@@ -315,6 +315,11 @@
     "emptyBody": "A Contact is a person or an organisation you keep in the Group.",
     "add": "Add contact",
     "noName": "(no name)",
-    "pageSummary": "{{position}} · {{total}}"
+    "pageSummary": "{{position}} · {{total}}",
+    "search": "Search",
+    "searchHint": "Name, e-mail, company, city, Tag or Attribute value",
+    "noMatchTitle": "No contacts match",
+    "noMatchBody": "Change the search or the filters.",
+    "clearFilters": "Clear filters"
   }
 }

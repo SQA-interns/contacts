@@ -315,6 +315,11 @@
     "emptyBody": "Kontakt je oseba ali organizacija, ki jo hranite v skupini.",
     "add": "Dodaj kontakt",
     "noName": "(brez imena)",
-    "pageSummary": "{{position}} · {{total}}"
+    "pageSummary": "{{position}} · {{total}}",
+    "search": "Iskanje",
+    "searchHint": "Ime, e-pošta, podjetje, kraj, značka ali vrednost lastnosti",
+    "noMatchTitle": "Noben kontakt ne ustreza",
+    "noMatchBody": "Spremenite iskanje ali filtre.",
+    "clearFilters": "Počisti filtre"
   }
 }

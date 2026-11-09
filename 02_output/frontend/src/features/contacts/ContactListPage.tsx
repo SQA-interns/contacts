@@ -9,6 +9,7 @@ import { PageHeader } from '@/components/PageHeader';
 import { Button } from '@/components/ui/button';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import { ContactTable, type Sorting } from './ContactTable';
+import { SearchBox } from './SearchBox';
 
 const COLUMNS: SortColumn[] = ['lastName', 'firstName', 'email', 'company', 'city', 'country'];
 
@@ -28,7 +29,7 @@ function pageNumbers(current: number, pages: number): number[] {
   return [...wanted].filter((n) => n >= 1 && n <= pages).sort((a, b) => a - b);
 }
 
-/** SC-06 / WF-06: the Contacts of the Group, sorted and paged (US-007; search and filters follow). */
+/** SC-06 / WF-06: the Contacts of the Group, sorted and paged (US-007) and searched (US-008). */
 export function ContactListPage() {
   const { t } = useTranslation();
   const { groupId = '' } = useParams();
@@ -41,9 +42,10 @@ export function ContactListPage() {
     dir: params.get('dir') === 'desc' ? 'desc' : 'asc',
   };
   const page = Math.max(1, Number.parseInt(params.get('page') ?? '1', 10) || 1);
+  const q = params.get('q')?.trim() ?? '';
   const contacts = useQuery({
-    queryKey: ['contacts', groupId, page, sorting.column, sorting.dir],
-    queryFn: () => listContacts(groupId, { page, sort: sorting.column, dir: sorting.dir }),
+    queryKey: ['contacts', groupId, page, sorting.column, sorting.dir, q],
+    queryFn: () => listContacts(groupId, { page, sort: sorting.column, dir: sorting.dir, q }),
     placeholderData: (previous) => previous,
   });
   const canAdd = role === 'OWNER' || role === 'EDITOR';
@@ -57,6 +59,15 @@ export function ContactListPage() {
     setParams((old) => {
       const copy = new URLSearchParams(old);
       copy.set('page', String(next));
+      return copy;
+    });
+  /** A new search text shows page 1 of its result (R-008-03); an empty one is no search. */
+  const chooseSearch = (text: string) =>
+    setParams((old) => {
+      const copy = new URLSearchParams(old);
+      if (text) copy.set('q', text);
+      else copy.delete('q');
+      copy.set('page', '1');
       return copy;
     });
   const chooseSort = (column: SortColumn) =>
@@ -76,11 +87,18 @@ export function ContactListPage() {
         title={t('contactList.title')}
         action={canAdd && data && data.total > 0 ? addLink : undefined}
       />
+      <SearchBox value={q} onSearch={chooseSearch} />
       {data ? <p className="-mt-4 mb-6 text-text-muted">{totalText(data.total)}</p> : null}
       {contacts.isPending ? (
         <LoadingState rows={6} />
       ) : contacts.isError ? (
         <ErrorState onRetry={() => void contacts.refetch()} />
+      ) : data && data.total === 0 && q ? (
+        <EmptyState
+          title={t('contactList.noMatchTitle')}
+          body={t('contactList.noMatchBody')}
+          action={<Button onClick={() => chooseSearch('')}>{t('contactList.clearFilters')}</Button>}
+        />
       ) : data && data.total === 0 ? (
         <EmptyState
           title={t('contactList.emptyTitle')}

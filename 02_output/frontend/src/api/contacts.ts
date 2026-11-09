@@ -99,11 +99,12 @@ export interface ContactPage {
   total: number;
 }
 
-/** `GET /groups/{g}/contacts` (R-007-01..04). */
+/** `GET /groups/{g}/contacts` (R-007-01..04, R-008-01); an empty `q` is left out (R-008-05). */
 export function listContacts(
   groupId: string,
-  query: { page: number; sort: SortColumn; dir: 'asc' | 'desc' },
+  query: { page: number; sort: SortColumn; dir: 'asc' | 'desc'; q?: string },
 ): Promise<ContactPage> {
   const params = new URLSearchParams({ page: String(query.page), sort: query.sort, dir: query.dir });
+  if (query.q?.trim()) params.set('q', query.q.trim());
   return apiRequest<ContactPage>(`${base(groupId)}?${params.toString()}`);
 }
