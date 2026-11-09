@@ -836,3 +836,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-76: F-04 fixed (`GET /health` listed the probe groups)
+- Timestamp: 2026-11-09
+- Session: S8 /fix F-04
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-04 (`docs/04_review-INC-1.md`, carried in `docs/04_review-INC-2.md`; frozen test `AC-018-09`, R-018-07). (a) With `management.endpoint.health.probes.enabled: true` Spring Boot adds the names of its groups to the root answer, so `GET /health` returned `{"groups":["liveness","readiness"],"status":"UP"}`; there is no property that hides the group names while the groups exist. Probes are now `enabled: false` in `application.yml`, so the body is `{"status":"UP"}` only. (b) Consequence: `/health/liveness` and `/health/readiness` no longer exist. The only user was the `HEALTHCHECK` of `backend/Dockerfile` (`/health/readiness`); it now calls `/health`. That check also reflects the database (readiness alone did not), so a backend that lost its database shows as unhealthy; the compose files have no other use of the paths and `restart: unless-stopped` only restarts a stopped container, not an unhealthy one. (c) Red: `healthNamesNoOtherKeyNotEvenTheProbeGroups` in `ApplicationIT` failed with keys `["groups","status"]` (`logs/f04-red.log`); the existing `healthIsPublicAndReturnsOnlyTheStatus` did not catch it because it only checked `components`. `theContainerHealthCheckCallsAnAddressThatAnswers` reads the address from the Dockerfile and calls it; it was green before the change and guards the Dockerfile against pointing at a path that answers 404. Full backend `verify`: 366 tests, 1 failure, the known frozen `EX-007-05` (F-08, D-68 i); `AC-018-09` now passes (`logs/f04-full.log`). The change of the Dockerfile was not run in a real container build. (d) Not touched: F-13, F-19, and F-14 (waits for the human, D-70 b, c). D-77 is the next free number.
+- Options: 1 (default) switch the probes off and check `/health`. 2 keep the probes and filter the `groups` key from the answer in a servlet filter (more code on a public path, keeps `/health/readiness`).
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
