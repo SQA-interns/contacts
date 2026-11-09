@@ -39,7 +39,8 @@ public final class ContactChanges {
     return values;
   }
 
-  private static Map<String, String> fields(ContactData d) {
+  /** All 11 fields by name in field order; an empty field is {@code null}. */
+  public static Map<String, String> fields(ContactData d) {
     Map<String, String> m = new LinkedHashMap<>();
     m.put("firstName", d.firstName());
     m.put("lastName", d.lastName());
