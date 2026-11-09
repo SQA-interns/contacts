@@ -73,3 +73,37 @@ export async function getTagNames(groupId: string): Promise<string[]> {
   const facets = await apiRequest<{ tags?: string[] }>(`/groups/${encodeURIComponent(groupId)}/facets`);
   return facets.tags ?? [];
 }
+
+/** The columns the Contact list sorts by (contract parameter `sort`). */
+export type SortColumn = 'lastName' | 'firstName' | 'email' | 'company' | 'city' | 'country' | 'tags';
+
+/** Contract schema `ContactListItem`. */
+export interface ContactListItem {
+  id: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
+  company?: string | null;
+  city?: string | null;
+  country?: string | null;
+  tags: string[];
+  version?: number;
+  createdAt?: string;
+}
+
+/** Contract schema `ContactPage`. */
+export interface ContactPage {
+  items: ContactListItem[];
+  page: number;
+  pageSize: number;
+  total: number;
+}
+
+/** `GET /groups/{g}/contacts` (R-007-01..04). */
+export function listContacts(
+  groupId: string,
+  query: { page: number; sort: SortColumn; dir: 'asc' | 'desc' },
+): Promise<ContactPage> {
+  const params = new URLSearchParams({ page: String(query.page), sort: query.sort, dir: query.dir });
+  return apiRequest<ContactPage>(`${base(groupId)}?${params.toString()}`);
+}

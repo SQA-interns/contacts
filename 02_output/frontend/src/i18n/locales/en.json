@@ -290,5 +290,31 @@
       "INVITATION_CANCELLED": "Invitation cancelled",
       "VERSION_RESTORED": "Version restored"
     }
+  },
+  "contactList": {
+    "title": "Contacts",
+    "tableCaption": "Group contacts",
+    "total": {
+      "one": "{{count}} contact",
+      "two": "{{count}} contacts",
+      "few": "{{count}} contacts",
+      "other": "{{count}} contacts"
+    },
+    "lastName": "Last name",
+    "firstName": "First name",
+    "email": "E-mail",
+    "company": "Company",
+    "city": "City",
+    "country": "Country",
+    "tags": "Tags",
+    "pagerLabel": "Pages",
+    "pageOf": "Page {{page}} of {{pages}}",
+    "previous": "Previous",
+    "next": "Next",
+    "emptyTitle": "This Group has no Contacts yet",
+    "emptyBody": "A Contact is a person or an organisation you keep in the Group.",
+    "add": "Add contact",
+    "noName": "(no name)",
+    "pageSummary": "{{position}} · {{total}}"
   }
 }

@@ -290,5 +290,31 @@
       "INVITATION_CANCELLED": "Povabilo preklicano",
       "VERSION_RESTORED": "Obnovljena različica"
     }
+  },
+  "contactList": {
+    "title": "Kontakti",
+    "tableCaption": "Kontakti skupine",
+    "total": {
+      "one": "{{count}} kontakt",
+      "two": "{{count}} kontakta",
+      "few": "{{count}} kontakti",
+      "other": "{{count}} kontaktov"
+    },
+    "lastName": "Priimek",
+    "firstName": "Ime",
+    "email": "E-pošta",
+    "company": "Podjetje",
+    "city": "Kraj",
+    "country": "Država",
+    "tags": "Značke",
+    "pagerLabel": "Strani",
+    "pageOf": "Stran {{page}} od {{pages}}",
+    "previous": "Prejšnja",
+    "next": "Naslednja",
+    "emptyTitle": "V skupini še ni kontaktov",
+    "emptyBody": "Kontakt je oseba ali organizacija, ki jo hranite v skupini.",
+    "add": "Dodaj kontakt",
+    "noName": "(brez imena)",
+    "pageSummary": "{{position}} · {{total}}"
   }
 }
