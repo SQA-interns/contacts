@@ -88,6 +88,23 @@ describe('ContactHistoryTab WF-07 (R-016-03, AC-016-01..03, EX-016-04)', () => {
     expect(screen.getByText(/ana@acme\.com/)).toBeInTheDocument();
   });
 
+  it('R-023-02 and AC-023-02 an entry of a restore names the Version and shows company Cezar → Acme', async () => {
+    vi.mocked(fetch).mockResolvedValue(
+      answer(
+        page([
+          entry({
+            action: 'VERSION_RESTORED',
+            details: { restored: 1, changes: { company: { old: 'Cezar', new: 'Acme' } } },
+          }),
+        ]),
+      ),
+    );
+    renderTab();
+
+    expect(await screen.findByText('Obnovljena različica 1')).toBeInTheDocument();
+    expect(screen.getByText('Podjetje: Cezar → Acme')).toBeInTheDocument();
+  });
+
   it('AC-016-02 and EX-016-02 show old and new value per changed field, empty as a dash', async () => {
     vi.mocked(fetch).mockResolvedValue(
       answer(

@@ -413,6 +413,7 @@
     "page": "Stran {{page}} od {{pages}}",
     "previous": "Prejšnja",
     "next": "Naslednja",
+    "restoredVersion": "Obnovljena različica {{number}}",
     "actions": {
       "CONTACT_CREATED": "Ustvarjeno",
       "CONTACT_EDITED": "Urejeno",

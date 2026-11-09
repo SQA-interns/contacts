@@ -77,6 +77,23 @@ describe('ActivityPage WF-13 (R-017-01..07)', () => {
     expect(rows[3]).toHaveTextContent('Ogledovalec');
   });
 
+  it('R-023-02 an entry of a restore shows the Version number and the changed field', async () => {
+    backend('OWNER', [
+      entry(
+        'e4',
+        'VERSION_RESTORED',
+        { restored: 1, changes: { company: { old: 'Cezar', new: 'Acme' } } },
+        'Boris Kos',
+        'c1',
+      ),
+    ]);
+    renderPage();
+
+    const rows = within(await screen.findByRole('table', { name: 'Dejavnost skupine' })).getAllByRole('row');
+    expect(rows[1]).toHaveTextContent('Obnovljena različica 1');
+    expect(rows[1]).toHaveTextContent('Podjetje: Cezar → Acme');
+  });
+
   it('R-017-02, R-017-03, R-017-04, R-017-05 the chosen filters are sent together', async () => {
     const urls = backend('OWNER');
     const user = userEvent.setup();

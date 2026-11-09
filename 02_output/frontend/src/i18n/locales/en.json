@@ -413,6 +413,7 @@
     "page": "Page {{page}} of {{pages}}",
     "previous": "Previous",
     "next": "Next",
+    "restoredVersion": "Restored version {{number}}",
     "actions": {
       "CONTACT_CREATED": "Created",
       "CONTACT_EDITED": "Edited",

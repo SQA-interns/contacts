@@ -24,7 +24,11 @@ function useLines(entry: HistoryEntry): string[] {
   const values = Object.entries(entry.details?.values ?? {})
     .filter(([, value]) => value)
     .map(([name, value]) => `${label(name)}: ${value}`);
-  return [...changes, ...values];
+  const restored =
+    typeof entry.details?.restored === 'number'
+      ? [t('history.restoredVersion', { number: entry.details.restored })]
+      : [];
+  return [...restored, ...changes, ...values];
 }
 
 function Entry({ entry }: { entry: HistoryEntry }) {

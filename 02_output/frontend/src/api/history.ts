@@ -48,6 +48,8 @@ export interface HistoryEntry {
     key?: string;
     name?: string;
     changes?: Record<string, FieldChange>;
+    /** The number of the Version a `VERSION_RESTORED` entry restored (R-023-02); "removed" after a deletion forever. */
+    restored?: number | string;
   };
 }
 

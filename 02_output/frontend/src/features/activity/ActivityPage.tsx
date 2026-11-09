@@ -52,6 +52,7 @@ function detailsText(entry: HistoryEntry, t: Translate): string {
   const role = (r?: string) => (r ? t(`role.${r}`, { defaultValue: r }) : '');
   const field = (name: string) => (isField(name) ? t(`contacts.fields.${name}`) : name);
   const parts: string[] = [];
+  if (typeof d.restored === 'number') parts.push(t('history.restoredVersion', { number: d.restored }));
   if (d.changes) {
     for (const [name, c] of Object.entries(d.changes)) {
       parts.push(`${field(name)}: ${c.old ?? '—'} → ${c.new ?? '—'}`);
