@@ -159,7 +159,7 @@ class DatabaseRolesIT {
   }
 
   @Test
-  void flywayRecordedBothMigrations() throws Exception {
+  void flywayRecordedAllMigrations() throws Exception {
     try (Connection c =
             DriverManager.getConnection(
                 PostgresSupport.jdbcUrl(),
@@ -168,7 +168,7 @@ class DatabaseRolesIT {
         Statement s = c.createStatement();
         var rs = s.executeQuery("SELECT count(*) FROM flyway_schema_history WHERE success")) {
       rs.next();
-      assertThat(rs.getInt(1)).isEqualTo(2);
+      assertThat(rs.getInt(1)).isEqualTo(3);
     }
   }
 }

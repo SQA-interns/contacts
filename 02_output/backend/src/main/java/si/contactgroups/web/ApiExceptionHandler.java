@@ -17,6 +17,7 @@ import si.contactgroups.service.ContactChangedException;
 import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
+import si.contactgroups.service.InvalidQueryException;
 import si.contactgroups.service.RoleForbiddenException;
 import si.contactgroups.service.TagNameTakenException;
 import si.contactgroups.service.TagNotFoundException;
@@ -115,6 +116,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> tagNameTaken(TagNameTakenException e) {
     return ResponseEntity.status(HttpStatus.CONFLICT)
         .body(new ApiError("tag.name_taken", e.getMessage()));
+  }
+
+  @ExceptionHandler(InvalidQueryException.class)
+  public ResponseEntity<ApiError> invalidQuery(InvalidQueryException e) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        .body(new ApiError("request.malformed", e.getMessage()));
   }
 
   @ExceptionHandler(VersionMissingException.class)

@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import si.contactgroups.domain.Action;
 import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.Contact;
 import si.contactgroups.domain.ContactData;
+import si.contactgroups.domain.ContactPage;
 import si.contactgroups.security.AuthenticatedUser;
 import si.contactgroups.security.RequiresAction;
 import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.ContactService;
+import si.contactgroups.service.SearchService;
 
 /**
  * Create, read and edit a Contact (contract {@code createContact}, {@code getContact}, {@code
@@ -30,9 +33,21 @@ import si.contactgroups.service.ContactService;
 public class ContactController {
 
   private final ContactService contacts;
+  private final SearchService search;
 
-  public ContactController(ContactService contacts) {
+  public ContactController(ContactService contacts, SearchService search) {
     this.contacts = contacts;
+    this.search = search;
+  }
+
+  @GetMapping
+  @RequiresAction(Action.READ_CONTACTS)
+  public ContactPage listContacts(
+      @PathVariable UUID groupId,
+      @RequestParam(required = false) String page,
+      @RequestParam(required = false) String sort,
+      @RequestParam(required = false) String dir) {
+    return search.list(groupId, page, sort, dir);
   }
 
   @PostMapping
