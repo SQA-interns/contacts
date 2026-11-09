@@ -243,7 +243,7 @@ describe('MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-02
     await userEvent.click(merge());
     await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Združi' }));
 
-    expect(await screen.findByText('Kontakti so združeni.')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent('Kontakti so združeni.');
     expect(screen.getByRole('button', { name: 'Odpri kontakt' })).toBeInTheDocument();
     expect(posts(sent)).toHaveLength(1);
     expect(posts(sent)[0]).toMatchObject({
@@ -258,6 +258,28 @@ describe('MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-02
         attributes: [],
       },
     });
+    expect(screen.queryByRole('radio')).not.toBeInTheDocument();
+  });
+
+  it('after a merge "Odpri kontakt" opens the Survivor and the link goes back to the Duplicates screen', async () => {
+    backend();
+    renderPage();
+    await screen.findByRole('radio', { name: 'Ana' });
+    await userEvent.click(merge());
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Združi' }));
+    await userEvent.click(await screen.findByRole('button', { name: 'Odpri kontakt' }));
+
+    expect(await screen.findByText('at /groups/g1/contacts/a')).toBeInTheDocument();
+  });
+
+  it('after a merge the link "Podvojeni kontakti" goes back to the Duplicates screen', async () => {
+    backend();
+    renderPage();
+    await screen.findByRole('radio', { name: 'Ana' });
+    await userEvent.click(merge());
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Združi' }));
+    await userEvent.click(await screen.findByRole('link', { name: 'Podvojeni kontakti' }));
+
     expect(await screen.findByText('at /groups/g1/duplicates')).toBeInTheDocument();
   });
 

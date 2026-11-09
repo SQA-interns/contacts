@@ -632,7 +632,7 @@
   "merge": {
     "title": "Merge contacts",
     "back": "Duplicates",
-    "intro": "Choose a value for each field. The kept contact is the oldest; the others are moved to Trash.",
+    "intro": "For each field, decide which value to keep. The kept contact is the oldest; the others are moved to Trash.",
     "caption": "Values to merge",
     "field": "Field",
     "survivor": "Kept contact",

@@ -632,7 +632,7 @@
   "merge": {
     "title": "Združi kontakte",
     "back": "Podvojeni kontakti",
-    "intro": "Za vsako polje izberite vrednost. Ohranjeni kontakt je najstarejši; ostali bodo premaknjeni v koš.",
+    "intro": "Za vsako polje določite, katero vrednost obdržite. Ohranjeni kontakt je najstarejši; ostali bodo premaknjeni v koš.",
     "caption": "Vrednosti za združitev",
     "field": "Polje",
     "survivor": "Ohranjeni kontakt",

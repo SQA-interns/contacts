@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
-import { toast } from 'sonner';
+import { Link, useNavigate } from 'react-router';
 import type { Contact, ContactField } from '@/api/contacts';
 import { mergeContacts } from '@/api/duplicates';
 import { ApiError, errorKey, errorMessage } from '@/api/errors';
@@ -35,26 +34,17 @@ export function MergeForm({ groupId, contacts }: { groupId: string; contacts: Co
   const [missing, setMissing] = useState<string[]>([]);
   const [confirming, setConfirming] = useState(false);
   const duplicatesPath = `/groups/${encodeURIComponent(groupId)}/duplicates`;
+  const contactsPath = `/groups/${encodeURIComponent(groupId)}/contacts`;
 
   const merge = useMutation({
     mutationFn: () =>
       mergeContacts(groupId, mergeRequest(ordered, choices.fields, attributes, choices.attributes)),
-    onSuccess: async (survivor) => {
-      toast.success(t('merge.merged'), {
-        action: {
-          label: t('merge.openContact'),
-          onClick: () =>
-            void navigate(
-              `/groups/${encodeURIComponent(groupId)}/contacts/${encodeURIComponent(survivor.id)}`,
-            ),
-        },
-      });
+    onSuccess: async () => {
       await Promise.all(
         ['duplicates', 'contacts', 'trash', 'tags', 'facets'].map((key) =>
           queryClient.invalidateQueries({ queryKey: [key, groupId] }),
         ),
       );
-      void navigate(duplicatesPath);
     },
     onError: () => setConfirming(false),
   });
@@ -70,6 +60,23 @@ export function MergeForm({ groupId, contacts }: { groupId: string; contacts: Co
     setChoices((before) => ({ ...before, attributes: { ...before.attributes, [key.toLowerCase()]: value } }));
     setMissing((before) => before.filter((open) => open !== key));
   };
+  if (merge.isSuccess) {
+    return (
+      <Notice tone="status" title={t('merge.merged')}>
+        <div className="flex flex-wrap gap-3">
+          <Button
+            className="h-11"
+            onClick={() => void navigate(`${contactsPath}/${encodeURIComponent(merge.data.id)}`)}
+          >
+            {t('merge.openContact')}
+          </Button>
+          <Link to={duplicatesPath} className="inline-flex min-h-11 items-center rounded-[8px] border px-4">
+            {t('merge.back')}
+          </Link>
+        </div>
+      </Notice>
+    );
+  }
   const count = ordered.length;
   const form = new Intl.PluralRules(active.language).select(count);
   const plural = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
