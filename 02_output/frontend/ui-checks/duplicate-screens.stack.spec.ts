@@ -4,8 +4,8 @@ import { check } from './check';
 import { VIEWPORTS } from './viewports';
 
 /**
- * build-ui checks of WF-17 (UI-14, UI-19, UI-22): the list of Duplicate sets, "No duplicates found", the search
- * running and the error state, at the three widths. Needs the test stack, like `tag-screens.stack.spec.ts`.
+ * build-ui checks of WF-17 (UI-14, UI-19, UI-22): the list of Duplicate sets, "not a duplicate" done, "No duplicates
+ * found", the search running and the error state, at the three widths. Needs the test stack, like `tag-screens.stack.spec.ts`.
  */
 for (const viewport of VIEWPORTS) {
   test.describe(`${viewport.name} (${viewport.width} px)`, () => {
@@ -36,6 +36,13 @@ for (const viewport of VIEWPORTS) {
       await expect(page.getByText('Zanesljivo')).toHaveCount(1);
       await expect(page.getByText('Verjetno')).toHaveCount(2);
       await check(page, 'WF-17_duplicates', 'list', viewport.name);
+
+      await page.getByRole('button', { name: 'Ni podvojeno' }).first().click();
+      await expect(
+        page.getByText('Množica je označena kot »ni podvojeno« in ni več prikazana.'),
+      ).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Ni podvojeno' })).toHaveCount(2);
+      await check(page, 'WF-17_duplicates', 'dismissed', viewport.name);
 
       await page.route('**/api/v1/groups/*/duplicates', (route) => route.fulfill({ json: [] }));
       await page.getByRole('button', { name: 'Poišči znova' }).click();
