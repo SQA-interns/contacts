@@ -1,0 +1,1925 @@
+12:36:36.824 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.ActivityEndpointsIT]: ActivityEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:37.005 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.ActivityEndpointsIT
+12:36:37.098 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.ActivityEndpointsIT]: ActivityEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:37.099 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:37.100 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:37.107 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.ActivityEndpointsIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T12:36:37.675+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : Starting ActivityEndpointsIT using Java 21.0.8 with PID 88169 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T12:36:37.676+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : The following 1 profile is active: "group-path-probe"
+2026-11-09T12:36:38.322+01:00  INFO 88169 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T12:36:38.324+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T12:36:38.335+01:00  INFO 88169 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T12:36:39.116+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T12:36:39.118+01:00  INFO 88169 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T12:36:39.137+01:00  INFO 88169 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T12:36:39.342+01:00  INFO 88169 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T12:36:39.462+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T12:36:39.602+01:00  INFO 88169 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 5792350eaa4abd1dc84163e7a979cc9cde765933613e06618cb3f30225e73752
+2026-11-09T12:36:40.092+01:00  INFO 88169 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.749441S
+2026-11-09T12:36:40.109+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T12:36:40.110+01:00  INFO 88169 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T12:36:40.111+01:00  INFO 88169 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T12:36:40.112+01:00  INFO 88169 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T12:36:40.192+01:00  INFO 88169 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: cc6d8755e56a49245aed0a017da5b2080f204aef1e3fe4f7ddf777de0146faff
+2026-11-09T12:36:41.541+01:00  INFO 88169 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.429174S
+2026-11-09T12:36:41.543+01:00  INFO 88169 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:49430/test?loggerLevel=OFF)
+2026-11-09T12:36:42.621+01:00  INFO 88169 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:49430/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T12:36:42.659+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T12:36:42.661+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.015s)
+2026-11-09T12:36:42.680+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T12:36:42.747+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T12:36:42.751+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T12:36:42.785+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T12:36:42.826+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T12:36:42.838+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.049s)
+2026-11-09T12:36:43.332+01:00  INFO 88169 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T12:36:43.941+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-09T12:36:43.941+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-09T12:36:43.950+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T12:36:43.955+01:00  INFO 88169 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
+2026-11-09T12:36:44.058+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : Started ActivityEndpointsIT in 6.867 seconds (process running for 8.382)
+2026-11-09T12:36:44.111+01:00  WARN 88169 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T12:36:44.703+01:00  INFO 88169 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T12:36:44.728+01:00  INFO 88169 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5b6ce87b
+2026-11-09T12:36:44.730+01:00  INFO 88169 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T12:36:45.070+01:00  WARN 88169 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/8b3aa242-d996-4e82-bd65-d20042d9019a/activity
+2026-11-09T12:36:45.077+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/8b3aa242-d996-4e82-bd65-d20042d9019a/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"8b3aa242-d996-4e82-bd65-d20042d9019a","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:44.941369Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/8b3aa242-d996-4e82-bd65-d20042d9019a/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"20"]
+             Body = {"firstName":"Prva"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"5254a985-56ca-4ff8-9c83-fe7f5eb1bbc4","version":1,"firstName":"Prva","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:45.012498Z","updatedAt":"2026-11-09T11:36:45.012498Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/8b3aa242-d996-4e82-bd65-d20042d9019a/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"21"]
+             Body = {"firstName":"Druga"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"f37e6e7d-619e-4b11-b28d-6e61495f734d","version":1,"firstName":"Druga","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:45.057896Z","updatedAt":"2026-11-09T11:36:45.057896Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/8b3aa242-d996-4e82-bd65-d20042d9019a/activity
+       Parameters = {userId=[d322ebe9-280a-4a4e-b78e-cae0f61bad73], action=[CONTACT_CREATED]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:45.182+01:00  WARN 88169 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/48ac2bea-277b-4060-842a-e3c9368e1932/activity
+2026-11-09T12:36:45.184+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/48ac2bea-277b-4060-842a-e3c9368e1932/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"48ac2bea-277b-4060-842a-e3c9368e1932","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:45.145487Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/48ac2bea-277b-4060-842a-e3c9368e1932/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"20"]
+             Body = {"firstName":"Prva"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"df8a1c98-7a33-475c-9d86-fa58e876f07e","version":1,"firstName":"Prva","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:45.160574Z","updatedAt":"2026-11-09T11:36:45.160574Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/48ac2bea-277b-4060-842a-e3c9368e1932/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"21"]
+             Body = {"firstName":"Druga"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"15520f3f-c02b-461a-b709-832b2a72b7e2","version":1,"firstName":"Druga","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:45.172814Z","updatedAt":"2026-11-09T11:36:45.172814Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/48ac2bea-277b-4060-842a-e3c9368e1932/activity
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:45.209+01:00  WARN 88169 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/e04cb5dc-f231-4c28-bacb-d198d1a5ffaa/activity
+2026-11-09T12:36:45.210+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/e04cb5dc-f231-4c28-bacb-d198d1a5ffaa/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"e04cb5dc-f231-4c28-bacb-d198d1a5ffaa","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:45.201825Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/e04cb5dc-f231-4c28-bacb-d198d1a5ffaa/activity
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:45.235+01:00  WARN 88169 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/6b53de39-bfdb-4ff2-8f54-cf955f11df1d/activity
+2026-11-09T12:36:45.236+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/6b53de39-bfdb-4ff2-8f54-cf955f11df1d/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"6b53de39-bfdb-4ff2-8f54-cf955f11df1d","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:45.227417Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/6b53de39-bfdb-4ff2-8f54-cf955f11df1d/activity
+       Parameters = {from=[2026-11-10], to=[2026-11-01]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:45.257+01:00  WARN 88169 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/6a98a3a1-3d6f-49b6-bcb7-c72bc956901f/activity
+2026-11-09T12:36:45.258+01:00  INFO 88169 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/6a98a3a1-3d6f-49b6-bcb7-c72bc956901f/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"6a98a3a1-3d6f-49b6-bcb7-c72bc956901f","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:45.250626Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/6a98a3a1-3d6f-49b6-bcb7-c72bc956901f/activity
+       Parameters = {from=[yesterday]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 8.663 s <<< FAILURE! -- in si.contactgroups.web.ActivityEndpointsIT
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.the_filters_user_and_action_are_combined -- Time elapsed: 1.006 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.total"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.the_filters_user_and_action_are_combined(ActivityEndpointsIT.java:89)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['total']
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields -- Time elapsed: 0.056 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields(ActivityEndpointsIT.java:76)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found -- Time elapsed: 0.023 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<403> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found(ActivityEndpointsIT.java:112)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list -- Time elapsed: 0.024 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<422> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list(ActivityEndpointsIT.java:98)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_malformed_filter_value_is_400 -- Time elapsed: 0.021 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<400> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_malformed_filter_value_is_400(ActivityEndpointsIT.java:105)
+
+[ERROR] Failures: 
+[ERROR]   ActivityEndpointsIT.a_malformed_filter_value_is_400:105 Status expected:<400> but was:<404>
+[ERROR]   ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list:98 Status expected:<422> but was:<404>
+[ERROR]   ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found:112 Status expected:<403> but was:<404>
+[ERROR]   ActivityEndpointsIT.the_filters_user_and_action_are_combined:89 No value at JSON path "$.total"
+[ERROR]   ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields:76 Status expected:<200> but was:<404>
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0
+12:36:47.032 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.ActivityEndpointsIT]: ActivityEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:47.203 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.ActivityEndpointsIT
+12:36:47.287 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.ActivityEndpointsIT]: ActivityEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:47.288 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:47.288 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:47.294 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.ActivityEndpointsIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T12:36:47.676+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : Starting ActivityEndpointsIT using Java 21.0.8 with PID 88189 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T12:36:47.677+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : The following 1 profile is active: "group-path-probe"
+2026-11-09T12:36:49.016+01:00  INFO 88189 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T12:36:49.022+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T12:36:49.041+01:00  INFO 88189 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T12:36:49.932+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T12:36:49.934+01:00  INFO 88189 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T12:36:49.955+01:00  INFO 88189 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T12:36:50.260+01:00  INFO 88189 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T12:36:50.345+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T12:36:50.485+01:00  INFO 88189 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 6d39e4fc3212fcf02d8c527a80d41555b0c6be154f648cdd309b10a5d69b8186
+2026-11-09T12:36:50.930+01:00  INFO 88189 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.669909S
+2026-11-09T12:36:50.943+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T12:36:50.944+01:00  INFO 88189 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T12:36:50.945+01:00  INFO 88189 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T12:36:50.946+01:00  INFO 88189 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T12:36:51.006+01:00  INFO 88189 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: eddeaa933626a338e7225bdb30a79d5f6dfc55660b050053d166f7dbdf3ebd7f
+2026-11-09T12:36:52.216+01:00  INFO 88189 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.270069S
+2026-11-09T12:36:52.218+01:00  INFO 88189 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:49445/test?loggerLevel=OFF)
+2026-11-09T12:36:53.296+01:00  INFO 88189 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:49445/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T12:36:53.334+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T12:36:53.337+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.016s)
+2026-11-09T12:36:53.353+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T12:36:53.412+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T12:36:53.416+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T12:36:53.451+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T12:36:53.484+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T12:36:53.495+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.041s)
+2026-11-09T12:36:53.978+01:00  INFO 88189 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T12:36:54.576+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-09T12:36:54.576+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-09T12:36:54.586+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T12:36:54.591+01:00  INFO 88189 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 15 ms
+2026-11-09T12:36:54.692+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : Started ActivityEndpointsIT in 7.34 seconds (process running for 8.63)
+2026-11-09T12:36:54.742+01:00  WARN 88189 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-11-09T12:36:55.313+01:00  INFO 88189 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T12:36:55.336+01:00  INFO 88189 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4bd47cb5
+2026-11-09T12:36:55.339+01:00  INFO 88189 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T12:36:55.678+01:00  WARN 88189 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/75a819db-1be9-402b-9ce8-ee9b6fbb4e6d/activity
+2026-11-09T12:36:55.686+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/75a819db-1be9-402b-9ce8-ee9b6fbb4e6d/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"75a819db-1be9-402b-9ce8-ee9b6fbb4e6d","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:55.551222Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/75a819db-1be9-402b-9ce8-ee9b6fbb4e6d/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"20"]
+             Body = {"firstName":"Prva"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"5f9b80ef-5cbf-4f41-9fea-bf25446c1974","version":1,"firstName":"Prva","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:55.621238Z","updatedAt":"2026-11-09T11:36:55.621238Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/75a819db-1be9-402b-9ce8-ee9b6fbb4e6d/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"21"]
+             Body = {"firstName":"Druga"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"08a26d4e-1aa8-4a9a-abd6-05c3e0211f66","version":1,"firstName":"Druga","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:55.666247Z","updatedAt":"2026-11-09T11:36:55.666247Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/75a819db-1be9-402b-9ce8-ee9b6fbb4e6d/activity
+       Parameters = {userId=[94b1ad56-fb83-4566-a804-4fb5e932bbce], action=[CONTACT_CREATED]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:55.796+01:00  WARN 88189 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/645be21d-fe48-42e9-ac00-8fbfffba1e26/activity
+2026-11-09T12:36:55.798+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/645be21d-fe48-42e9-ac00-8fbfffba1e26/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"645be21d-fe48-42e9-ac00-8fbfffba1e26","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:55.761422Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/645be21d-fe48-42e9-ac00-8fbfffba1e26/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"20"]
+             Body = {"firstName":"Prva"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"a37ed883-cde0-4c16-86d3-4264010d82c4","version":1,"firstName":"Prva","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:55.772773Z","updatedAt":"2026-11-09T11:36:55.772773Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/645be21d-fe48-42e9-ac00-8fbfffba1e26/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"21"]
+             Body = {"firstName":"Druga"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"517102e0-fb40-4f69-9ff9-3997383f7353","version":1,"firstName":"Druga","tags":[],"attributes":[],"createdAt":"2026-11-09T11:36:55.786492Z","updatedAt":"2026-11-09T11:36:55.786492Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/645be21d-fe48-42e9-ac00-8fbfffba1e26/activity
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:55.822+01:00  WARN 88189 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5de095ee-445c-48e1-aaba-f128e5a0bcb7/activity
+2026-11-09T12:36:55.823+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5de095ee-445c-48e1-aaba-f128e5a0bcb7/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"5de095ee-445c-48e1-aaba-f128e5a0bcb7","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:55.815244Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/5de095ee-445c-48e1-aaba-f128e5a0bcb7/activity
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:55.846+01:00  WARN 88189 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5e449190-c89b-4e70-9ade-825f28fd2223/activity
+2026-11-09T12:36:55.847+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5e449190-c89b-4e70-9ade-825f28fd2223/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"5e449190-c89b-4e70-9ade-825f28fd2223","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:55.839450Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/5e449190-c89b-4e70-9ade-825f28fd2223/activity
+       Parameters = {from=[2026-11-10], to=[2026-11-01]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:36:55.869+01:00  WARN 88189 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5c68d4a7-b0ab-42cf-89fc-5967292c14dc/activity
+2026-11-09T12:36:55.870+01:00  INFO 88189 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5c68d4a7-b0ab-42cf-89fc-5967292c14dc/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"5c68d4a7-b0ab-42cf-89fc-5967292c14dc","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:36:55.862661Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/5c68d4a7-b0ab-42cf-89fc-5967292c14dc/activity
+       Parameters = {from=[yesterday]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 8.972 s <<< FAILURE! -- in si.contactgroups.web.ActivityEndpointsIT
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.the_filters_user_and_action_are_combined -- Time elapsed: 0.985 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.total"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.the_filters_user_and_action_are_combined(ActivityEndpointsIT.java:89)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['total']
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields -- Time elapsed: 0.062 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields(ActivityEndpointsIT.java:76)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found -- Time elapsed: 0.023 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<403> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found(ActivityEndpointsIT.java:112)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list -- Time elapsed: 0.022 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<422> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list(ActivityEndpointsIT.java:98)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_malformed_filter_value_is_400 -- Time elapsed: 0.022 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<400> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_malformed_filter_value_is_400(ActivityEndpointsIT.java:105)
+
+[ERROR] Failures: 
+[ERROR]   ActivityEndpointsIT.a_malformed_filter_value_is_400:105 Status expected:<400> but was:<404>
+[ERROR]   ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list:98 Status expected:<422> but was:<404>
+[ERROR]   ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found:112 Status expected:<403> but was:<404>
+[ERROR]   ActivityEndpointsIT.the_filters_user_and_action_are_combined:89 No value at JSON path "$.total"
+[ERROR]   ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields:76 Status expected:<200> but was:<404>
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0
+12:36:58.438 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.ActivityEndpointsIT]: ActivityEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:58.658 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.ActivityEndpointsIT
+12:36:58.766 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.web.ActivityEndpointsIT]: ActivityEndpointsIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:58.767 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.WebTestSupport]: WebTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:58.767 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:36:58.775 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.web.ActivityEndpointsIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T12:36:59.339+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : Starting ActivityEndpointsIT using Java 21.0.8 with PID 88201 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T12:36:59.341+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : The following 1 profile is active: "group-path-probe"
+2026-11-09T12:37:00.074+01:00  INFO 88201 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T12:37:00.077+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T12:37:00.089+01:00  INFO 88201 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T12:37:00.946+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T12:37:00.947+01:00  INFO 88201 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T12:37:00.967+01:00  INFO 88201 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T12:37:01.237+01:00  INFO 88201 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T12:37:01.339+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T12:37:01.456+01:00  INFO 88201 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: b075ed6d6981405ca4c3b638f5f5a802f3535d750f32c2cc027442dc2c5c441d
+2026-11-09T12:37:01.822+01:00  INFO 88201 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.584142S
+2026-11-09T12:37:01.839+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T12:37:01.840+01:00  INFO 88201 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T12:37:01.841+01:00  INFO 88201 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T12:37:01.842+01:00  INFO 88201 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T12:37:01.930+01:00  INFO 88201 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: c109bbc418ddd5f497896b18a2114067c58aa98b8ee74194cb49fed942299609
+2026-11-09T12:37:03.160+01:00  INFO 88201 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.317741S
+2026-11-09T12:37:03.162+01:00  INFO 88201 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:49460/test?loggerLevel=OFF)
+2026-11-09T12:37:04.176+01:00  INFO 88201 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:49460/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T12:37:04.213+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T12:37:04.217+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.015s)
+2026-11-09T12:37:04.231+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T12:37:04.289+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T12:37:04.292+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T12:37:04.325+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T12:37:04.362+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T12:37:04.373+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.044s)
+2026-11-09T12:37:04.848+01:00  INFO 88201 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T12:37:05.441+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-09T12:37:05.442+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-09T12:37:05.450+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T12:37:05.455+01:00  INFO 88201 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 13 ms
+2026-11-09T12:37:05.554+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.web.ActivityEndpointsIT  : Started ActivityEndpointsIT in 6.706 seconds (process running for 8.319)
+2026-11-09T12:37:05.602+01:00  WARN 88201 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T12:37:06.145+01:00  INFO 88201 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T12:37:06.165+01:00  INFO 88201 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@38cc8baa
+2026-11-09T12:37:06.168+01:00  INFO 88201 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T12:37:06.492+01:00  WARN 88201 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/3234490d-8850-48a4-9378-b19241c687b9/activity
+2026-11-09T12:37:06.499+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/3234490d-8850-48a4-9378-b19241c687b9/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"3234490d-8850-48a4-9378-b19241c687b9","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:37:06.373765Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/3234490d-8850-48a4-9378-b19241c687b9/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"20"]
+             Body = {"firstName":"Prva"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"8b72bbc7-52ed-426d-9587-47737b89cfac","version":1,"firstName":"Prva","tags":[],"attributes":[],"createdAt":"2026-11-09T11:37:06.438184Z","updatedAt":"2026-11-09T11:37:06.438184Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/3234490d-8850-48a4-9378-b19241c687b9/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"21"]
+             Body = {"firstName":"Druga"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"3f60a769-a407-474d-8a02-7279adc8f616","version":1,"firstName":"Druga","tags":[],"attributes":[],"createdAt":"2026-11-09T11:37:06.481603Z","updatedAt":"2026-11-09T11:37:06.481603Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/3234490d-8850-48a4-9378-b19241c687b9/activity
+       Parameters = {userId=[bf3ca57c-8246-42ec-b3f7-e43da0aed4d3], action=[CONTACT_CREATED]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:37:06.602+01:00  WARN 88201 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/f3ed6dbe-7939-4550-a5d4-96940c7e306b/activity
+2026-11-09T12:37:06.605+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f3ed6dbe-7939-4550-a5d4-96940c7e306b/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"f3ed6dbe-7939-4550-a5d4-96940c7e306b","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:37:06.559153Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/f3ed6dbe-7939-4550-a5d4-96940c7e306b/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"20"]
+             Body = {"firstName":"Prva"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"3d8d1743-7e4e-4fe6-bf98-d4e1806b03e6","version":1,"firstName":"Prva","tags":[],"attributes":[],"createdAt":"2026-11-09T11:37:06.570457Z","updatedAt":"2026-11-09T11:37:06.570457Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups/f3ed6dbe-7939-4550-a5d4-96940c7e306b/contacts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"21"]
+             Body = {"firstName":"Druga"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.ContactController
+           Method = si.contactgroups.web.ContactController#createContact(AuthenticatedUser, UUID, ContactInput)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"fc0be3dd-572d-4ad4-a866-7d168c5a719d","version":1,"firstName":"Druga","tags":[],"attributes":[],"createdAt":"2026-11-09T11:37:06.585867Z","updatedAt":"2026-11-09T11:37:06.585867Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/f3ed6dbe-7939-4550-a5d4-96940c7e306b/activity
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:37:06.669+01:00  WARN 88201 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/355288ce-fa80-4d09-a653-b086aa55490f/activity
+2026-11-09T12:37:06.670+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/355288ce-fa80-4d09-a653-b086aa55490f/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"355288ce-fa80-4d09-a653-b086aa55490f","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:37:06.645549Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/355288ce-fa80-4d09-a653-b086aa55490f/activity
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:37:06.702+01:00  WARN 88201 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/9c23f485-c879-4ce9-9b25-2c5b8564fee9/activity
+2026-11-09T12:37:06.703+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/9c23f485-c879-4ce9-9b25-2c5b8564fee9/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"9c23f485-c879-4ce9-9b25-2c5b8564fee9","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:37:06.694376Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/9c23f485-c879-4ce9-9b25-2c5b8564fee9/activity
+       Parameters = {from=[2026-11-10], to=[2026-11-01]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-09T12:37:06.727+01:00  WARN 88201 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/16e49057-7356-416d-9914-7df507211496/activity
+2026-11-09T12:37:06.728+01:00  INFO 88201 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/16e49057-7356-416d-9914-7df507211496/activity
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/v1/groups
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"15"]
+             Body = {"name":"Acme"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.contactgroups.web.GroupController
+           Method = si.contactgroups.web.GroupController#createGroup(AuthenticatedUser, GroupCreate)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"id":"16e49057-7356-416d-9914-7df507211496","name":"Acme","role":"OWNER","createdAt":"2026-11-09T11:37:06.720121Z"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/groups/16e49057-7356-416d-9914-7df507211496/activity
+       Parameters = {from=[yesterday]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/json
+             Body = {"code":"route.not_found","message":"Not found"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 8.461 s <<< FAILURE! -- in si.contactgroups.web.ActivityEndpointsIT
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.the_filters_user_and_action_are_combined -- Time elapsed: 0.929 s <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.total"
+	at org.springframework.test.util.JsonPathExpectationsHelper.evaluateJsonPath(JsonPathExpectationsHelper.java:350)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:148)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers.lambda$value$2(JsonPathResultMatchers.java:111)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.the_filters_user_and_action_are_combined(ActivityEndpointsIT.java:89)
+Caused by: com.jayway.jsonpath.PathNotFoundException: No results for path: $['total']
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields -- Time elapsed: 0.068 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields(ActivityEndpointsIT.java:76)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found -- Time elapsed: 0.065 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<403> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found(ActivityEndpointsIT.java:112)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list -- Time elapsed: 0.027 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<422> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list(ActivityEndpointsIT.java:98)
+
+[ERROR] si.contactgroups.web.ActivityEndpointsIT.a_malformed_filter_value_is_400 -- Time elapsed: 0.023 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<400> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.contactgroups.web.ActivityEndpointsIT.a_malformed_filter_value_is_400(ActivityEndpointsIT.java:105)
+
+[ERROR] Failures: 
+[ERROR]   ActivityEndpointsIT.a_malformed_filter_value_is_400:105 Status expected:<400> but was:<404>
+[ERROR]   ActivityEndpointsIT.a_start_after_the_end_is_422_without_a_list:98 Status expected:<422> but was:<404>
+[ERROR]   ActivityEndpointsIT.a_viewer_is_refused_and_a_foreign_group_is_not_found:112 Status expected:<403> but was:<404>
+[ERROR]   ActivityEndpointsIT.the_filters_user_and_action_are_combined:89 No value at JSON path "$.total"
+[ERROR]   ActivityEndpointsIT.the_list_has_the_entries_of_all_users_newest_first_with_the_page_fields:76 Status expected:<200> but was:<404>
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.4:verify (default) on project contact-groups-backend: There are test failures.
+[ERROR] 
+[ERROR] See /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

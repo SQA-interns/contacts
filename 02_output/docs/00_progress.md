@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-015
+- Session: S5 /implement US-017
 - Result: done
-- Gate: DoD-S of US-015 passed in part: DoD-S-01 (12 of 14 frozen `Us015MemberAcceptanceIT` pass, AC-015-07 and EX-015-02 wait for US-017 `/activity`; UI AC-015-01.. pass; `e2e-02` waits for US-017), see D-59
-- Notes for the next session: Backend `MemberController` (`/groups/{g}/members`, GET for all Members, PATCH and DELETE Owner only), `MembershipService` (`list`, `changeRole`, `remove`, locks the Group row for the last-Owner rule), `MemberRepository.findAll/find/updateRole/delete/countOwners`; History writers `roleChanged`, `memberRemoved`. Frontend `features/members/MembersPage` (route `/groups/:g/members`, link on the Contact list). Next is US-017 (activity); then re-check `Us014InvitationAcceptanceIT` AC-014-10, `Us015MemberAcceptanceIT` (ac_015_07, ex_015_02), `e2e-02`. Backend ITs need port 9099 free: `docker stop contact-groups-test-emulator-1` before Maven (it is stopped now); `docker start contact-groups-test-emulator-1` for UI tests. The test stack runs the US-015 build. Firefox does not start in this host's sandbox.
+- Gate: DoD-S of US-017 passed in part: DoD-S-01 (14 of 14 frozen `Us017ActivityAcceptanceIT`, UI AC-017-06/07, E2E-02 and E2E-04 pass; the earlier waiting tests of US-006, US-011, US-014, US-015 pass; AC-013 tests wait for US-020, US-026; UI AC-014-03 waits for D-58 item g), see D-60
+- Notes for the next session: Backend `ActivityController` (`GET /groups/{g}/activity`, READ_HISTORY), `HistoryQueryService.groupActivity`, `HistoryRepository.pageOfGroup/countOfGroup`, `ActivityRange` (days in Europe/Ljubljana), `ActivityFilter`. Frontend `features/activity/ActivityPage` (route `/groups/:g/activity`, link on the Contact list); user filter uses the Members list (D-60 d). INC-1 has no story left: next is `/review INC-1`. Backend ITs need port 9099 free: `docker stop contact-groups-test-emulator-1` before Maven; `docker start contact-groups-test-emulator-1` for UI tests (the test stack is up and runs the US-017 build). Firefox does not start in this host's sandbox. `rm -rf backend/target/failsafe-reports` before a partial acceptance run, else old failures fail the build.
 
 ## Next
-- Command: /implement US-017
+- Command: /review INC-1
 - Waiting for: nothing
 
 ## Stories
@@ -33,7 +33,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-014 | 1 | done | passed in part (DoD-S-01: 2 backend and the UI AC-014-03 frozen tests wait for US-015, US-017 and D-58 item g; DoD-S-05 screens, D-58) |
 | US-015 | 1 | done | passed in part (DoD-S-01: 2 backend and `e2e-02` frozen tests wait for US-017; DoD-S-05 screens, D-59) |
 | US-016 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-014, US-012, US-007; DoD-S-05 screens; DoD-S-07: size, D-47) |
-| US-017 | 1 | ready | — |
+| US-017 | 1 | done | passed in part (DoD-S-01: UI AC-014-03 waits for D-58 item g; DoD-S-05 screens, D-60) |
 | US-018 | 1 | done | passed (DoD-S-01: frozen tests wait for US-003, US-014 and the last story, D-44; DoD-S-07: one subject over 72 characters) |
 | US-019 | 1 | done | passed in part (frozen UI tests wait for US-003, US-005, US-016) |
 | US-020 | 2 | ready | — |

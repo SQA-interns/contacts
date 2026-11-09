@@ -1,0 +1,7 @@
+
+Running 2 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (2.7s)
+  ✓  2 [chromium] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (2.5s)
+
+  2 passed (6.4s)

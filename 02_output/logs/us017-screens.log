@@ -1,0 +1,16 @@
+
+Running 6 tests using 5 workers
+
+  ✓  4 [chromium] › ui-checks/activity-screens.stack.spec.ts:23:5 › tablet (768 px) › WF-13 list, filtered, no match, range message, viewer refused (10.3s)
+  ✓  3 [chromium] › ui-checks/activity-screens.stack.spec.ts:23:5 › mobile (375 px) › WF-13 list, filtered, no match, range message, viewer refused (10.4s)
+  ✓  5 [chromium] › ui-checks/activity-screens.stack.spec.ts:23:5 › desktop (1440 px) › WF-13 list, filtered, no match, range message, viewer refused (10.4s)
+  ✓  2 [webkit] › ui-checks/activity-screens.stack.spec.ts:23:5 › tablet (768 px) › WF-13 list, filtered, no match, range message, viewer refused (14.9s)
+  ✓  1 [webkit] › ui-checks/activity-screens.stack.spec.ts:23:5 › mobile (375 px) › WF-13 list, filtered, no match, range message, viewer refused (15.0s)
+  ✓  6 [webkit] › ui-checks/activity-screens.stack.spec.ts:23:5 › desktop (1440 px) › WF-13 list, filtered, no match, range message, viewer refused (8.0s)
+
+  6 passed (21.9s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+
