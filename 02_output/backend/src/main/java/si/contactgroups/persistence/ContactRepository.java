@@ -27,6 +27,8 @@ public class ContactRepository {
 
   private static final String GROUP_ID = "groupId";
   private static final String IDS = "ids";
+  private static final String FIRST_NAME = "first_name";
+  private static final String LAST_NAME = "last_name";
   private static final String EMAIL = "email";
   private static final String COMPANY = "company";
   private static final String CITY = "city";
@@ -198,8 +200,8 @@ public class ContactRepository {
             (rs, n) ->
                 new ContactListItem(
                     rs.getObject("id", UUID.class),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
+                    rs.getString(FIRST_NAME),
+                    rs.getString(LAST_NAME),
                     rs.getString(EMAIL),
                     rs.getString(COMPANY),
                     rs.getString(CITY),
@@ -268,8 +270,8 @@ public class ContactRepository {
 
   private static ContactData dataOf(java.sql.ResultSet rs) throws java.sql.SQLException {
     return new ContactData(
-        rs.getString("first_name"),
-        rs.getString("last_name"),
+        rs.getString(FIRST_NAME),
+        rs.getString(LAST_NAME),
         rs.getString(EMAIL),
         rs.getString("phone"),
         rs.getString(COMPANY),
@@ -374,8 +376,8 @@ public class ContactRepository {
             (rs, n) ->
                 new TrashedContact(
                     rs.getObject("id", UUID.class),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
+                    rs.getString(FIRST_NAME),
+                    rs.getString(LAST_NAME),
                     rs.getString(EMAIL),
                     rs.getString(COMPANY),
                     rs.getTimestamp("deleted_at").toInstant(),
@@ -408,8 +410,8 @@ public class ContactRepository {
                     rs.getObject("id", UUID.class),
                     rs.getInt("version"),
                     new ContactData(
-                        rs.getString("first_name"),
-                        rs.getString("last_name"),
+                        rs.getString(FIRST_NAME),
+                        rs.getString(LAST_NAME),
                         rs.getString(EMAIL),
                         rs.getString("phone"),
                         rs.getString(COMPANY),
