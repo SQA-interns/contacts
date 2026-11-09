@@ -39,6 +39,14 @@ export interface HistoryEntry {
   contactId?: string | null;
   details?: {
     values?: Record<string, string | null>;
+    count?: number;
+    member?: string;
+    email?: string;
+    role?: string;
+    old?: string;
+    new?: string;
+    key?: string;
+    name?: string;
     changes?: Record<string, FieldChange>;
   };
 }
@@ -57,4 +65,29 @@ export function getContactHistory(groupId: string, contactId: string, page: numb
     `/groups/${encodeURIComponent(groupId)}/contacts/${encodeURIComponent(contactId)}/history`,
     { query: { page } },
   );
+}
+
+/** The filters of the Group activity list (R-017-02..05); an empty value does not filter. */
+export interface ActivityFilters {
+  userId: string;
+  action: HistoryAction | '';
+  from: string;
+  to: string;
+}
+
+/** `GET /groups/{g}/activity?userId&action&from&to&page` (R-017-01), newest first. */
+export function getGroupActivity(
+  groupId: string,
+  filters: ActivityFilters,
+  page: number,
+): Promise<HistoryPage> {
+  return apiRequest<HistoryPage>(`/groups/${encodeURIComponent(groupId)}/activity`, {
+    query: {
+      page,
+      userId: filters.userId || undefined,
+      action: filters.action || undefined,
+      from: filters.from || undefined,
+      to: filters.to || undefined,
+    },
+  });
 }
