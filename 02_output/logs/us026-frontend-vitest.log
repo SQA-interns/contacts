@@ -1,0 +1,27 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/contacts/selection/ContactListSelection.test.tsx (10 tests | 1 failed) 22499ms
+     × clears the Selection when the search text changes, also back to the earlier text (AC-010-05, EX-010-04) 5041ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/contacts/selection/ContactListSelection.test.tsx > Selection on the contact list (US-010) > clears the Selection when the search text changes, also back to the earlier text (AC-010-05, EX-010-04)
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/features/contacts/selection/ContactListSelection.test.tsx:150:3
+    148|   });
+    149|
+    150|   it('clears the Selection when the search text changes, also back to …
+       |   ^
+    151|     backend('EDITOR', 60, (q) => (q === 'Kranj' ? 12 : 60));
+    152|     renderPage();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 43 passed (44)
+      Tests  1 failed | 371 passed (372)
+   Start at  18:40:42
+   Duration  36.08s (transform 5.57s, setup 20.86s, import 33.73s, tests 172.18s, environment 74.81s)
+

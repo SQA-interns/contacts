@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-025
-- Result: done
-- Gate: DoD-S passed in part for US-025 (DoD-S-01: the 9 frozen backend tests pass, there is no frozen UI test; the rest of the full run fails as before; DoD-S-05 screens)
-- Notes for the next session: D-67 records the readings. `POST /groups/{g}/duplicates/dismissals` is in `DuplicateController` and `DuplicateService.dismiss`; `find` hides sets through `domain.DismissedSets` (a set is hidden when all its Contacts are in one dismissed set, D-67 a) fed by `DismissalRepository`; an unknown set answers 404 `duplicate.not_found`. UI: `features/duplicates/DismissButton` on every set card of `DuplicatesPage`, `api/duplicates.ts` `dismissDuplicate`. For US-026 (last story of INC-2): the page still has no pick boxes and no "Združi izbrane (n)" button; `DuplicateSet.contacts` come oldest first; the merge route, `MergeController`, `MergeService` and the frozen `Us026`, `e2e-05` and five US-026 UI tests are still failing for the missing endpoint. Open from the review as before: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12; HUMAN, BEFORE PRODUCTION: Firebase Admin credentials (D-63 a); known failing frozen UI tests of INC-1: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h). Spotless needs `./mvnw -B -Pquality spotless:apply` (without `-Pquality` the goal is not found). A `mvnw verify -Dit.test=...` exits 1 on a stale failsafe summary and two classes of different kinds in one `-Dit.test` clash on the Firebase app; read `target/failsafe-reports/TEST-*.xml`. Backend acceptance runs need port 9099 free (stop `contact-groups-test-emulator-1`, then start it again; it runs now). Run gitleaks at the repository root. Screens: `logs/screens/WF-17_duplicates`. Commit subjects: count the hash too, the subject alone must stay at 72 characters.
+- Session: S5 /implement US-026
+- Result: blocked
+- Gate: DoD-S not passed for US-026 (DoD-S-01: the frozen `Us026MergeAcceptanceIT`, the frozen UI tests of US-026 and `e2e-05` not run; DoD-S-05: WF-18 screenshots missing; DoD-S-07: one commit of about 1,000 lines)
+- Notes for the next session: D-68 records the readings and what could not run. Done and committed: `MergeValues`, `MergeService`, `MergeController` (`POST /groups/{g}/merges`), the survivor History with the merged-away entries (`HistoryRepository.contactAndMergedIds`), `ContactRepository.moveToTrashAtVersion`; UI: pick boxes and "Združi izbrane (n)" on `DuplicatesPage`, `MergePage`, `MergeForm`, `MergeTable`, `preselect.ts`, `api/duplicates.ts` `mergeContacts`. Own tests pass: `MergeValuesTest`, `MergeServiceIT`, `MergeEndpointsIT`, frontend `preselect.test.ts`, `DuplicatesPage.test.tsx`, `MergePage.test.tsx`; the full backend build without acceptance tests has 418 of 419 passing (the failure is `FirebaseEmulatorIT`, port 9099 taken by `contact-groups-test-emulator-1`), the frontend check and vitest pass (one US-010 selection test failed once under load and passes alone). Gitleaks clean. NOT RUN: stopping `contact-groups-test-emulator-1` for the acceptance IT was refused in the session, and the test stack was not rebuilt, so the frozen backend IT, the frozen UI tests (`acceptance/us020-026-increment2.spec.ts`, `e2e/e2e-05-clean-up.spec.ts`) and `ui-checks/merge-screens.stack.spec.ts` (written, linted, uncommitted logs in `logs/screens/WF-18_merge`) have not run. Then run `/review INC-2` after fixing what they find. Open from the review as before: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12; HUMAN, BEFORE PRODUCTION: Firebase Admin credentials (D-63 a); known failing frozen UI tests of INC-1: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h). Spotless: `./mvnw -B -Pquality spotless:apply`. Commit subjects: count the hash too, at most 72 characters.
 
 ## Next
 - Command: /implement US-026
-- Waiting for: nothing
+- Waiting for: human: free port 9099 (stop `contact-groups-test-emulator-1`) for the backend acceptance run and let `scripts/test-stack.sh up` rebuild the test stack (D-68 i)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
@@ -42,4 +42,4 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-023 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-024..US-026 and the known ones; DoD-S-05 screens, D-65) |
 | US-024 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-025..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, one commit over 400 lines, D-66) |
 | US-025 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-026 and the known ones; DoD-S-05 screens, D-67) |
-| US-026 | 2 | ready | — |
+| US-026 | 2 | in progress | not passed (frozen tests and WF-18 screens not run, D-68) |
