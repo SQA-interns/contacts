@@ -16,6 +16,7 @@ import { MembersPage } from '@/features/members/MembersPage';
 import { InvitationsPage } from '@/features/invitations/InvitationsPage';
 import { TrashPage } from '@/features/trash/TrashPage';
 import { DuplicatesPage } from '@/features/duplicates/DuplicatesPage';
+import { MergePage } from '@/features/duplicates/MergePage';
 import { TagListPage } from '@/features/tags/TagListPage';
 import { NotFoundPage } from '@/features/home/NotFoundPage';
 import { Layout } from './Layout';
@@ -45,6 +46,7 @@ export const routes: RouteObject[] = [
               { path: 'tags', element: <TagListPage /> },
               { path: 'trash', element: <TrashPage /> },
               { path: 'duplicates', element: <DuplicatesPage /> },
+              { path: 'merge', element: <MergePage /> },
               { path: 'invitations', element: <InvitationsPage /> },
               { path: 'members', element: <MembersPage /> },
               { path: 'activity', element: <ActivityPage /> },

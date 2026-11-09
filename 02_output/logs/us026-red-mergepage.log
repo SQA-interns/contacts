@@ -1,0 +1,915 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/duplicates/MergePage.test.tsx (22 tests | 22 failed) 22284ms
+     × R-026-01 loads every picked Contact and shows them side by side, the oldest as Survivor 1080ms
+     × AC-026-01 preselects the first name of the Survivor and the phone of the next Contact 1017ms
+     × EX-026-02 a value all Contacts share is shown without a choice 1013ms
+     × R-026-02 lets the user choose another value of a field and an empty one 1012ms
+     × EX-026-03 with equal creation times the Contact with the smaller id is the Survivor 1017ms
+     × R-026-03 shows the Tags of each Contact and says the Survivor gets all of them 1009ms
+     × AC-026-03 two values of one key need a choice before the merge 1008ms
+     × R-026-04 sends the chosen value of the key once the user has chosen 1007ms
+     × R-026-04 an Attribute only one Contact has is kept and needs no choice 1014ms
+     × R-026-10 and AC-026-12 nothing is merged until the user confirms in the dialog 1009ms
+     × R-026-05 a confirmed merge sends the Survivor, the versions and the chosen values and says so 1007ms
+     × shows "Združevanje …" while the merge runs and cannot be started twice 1008ms
+     × R-026-08 a Contact changed by someone else: refused, nothing merged, the reason is shown 1008ms
+     × R-026-06 a result that breaks BR-06 is refused and the reason is shown 1005ms
+     × any other refusal is shown with its own text 1007ms
+     × "Prekliči" leaves for the Duplicates screen and merges nothing 1008ms
+     × opened with fewer than two Contacts it says there is nothing to merge and asks for nothing 1009ms
+     × the same Contact twice counts once 1008ms
+     × R-026-12 a Viewer is told it is not allowed and nothing is loaded 1007ms
+     × shows the loading state while the Contacts load 1008ms
+     × shows an error with a retry when a Contact cannot be loaded 1008ms
+     × shows the texts in English 1011ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 22 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage WF-18 (R-026-01, R-026-02) > R-026-01 loads every picked Contact and shows them side by side, the oldest as Survivor
+TestingLibraryElementError: Unable to find role="columnheader" and name `/Ohranjeni kontakt/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:96:35
+     94|     renderPage();
+     95|
+     96|     const survivor = await screen.findByRole('columnheader', { name: /…
+       |                                   ^
+     97|     expect(survivor).toHaveTextContent('Ana');
+     98|     expect(survivor).toHaveTextContent('ustvarjen 6. 11. 2026');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage WF-18 (R-026-01, R-026-02) > AC-026-01 preselects the first name of the Survivor and the phone of the next Contact
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:113:25
+    111|     renderPage();
+    112|
+    113|     expect(await screen.findByRole('radio', { name: 'Ana', exact: true…
+       |                         ^
+    114|     expect(screen.getByRole('radio', { name: 'ana', exact: true })).no…
+    115|     expect(screen.getByRole('radio', { name: '040 123 456' })).toBeChe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage WF-18 (R-026-01, R-026-02) > EX-026-02 a value all Contacts share is shown without a choice
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:122:18
+    120|     renderPage();
+    121|
+    122|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    123|     const row = screen.getByRole('row', { name: /E-pošta/ });
+    124|     expect(within(row).getAllByText('skupna@acme.com')).toHaveLength(2…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage WF-18 (R-026-01, R-026-02) > R-026-02 lets the user choose another value of a field and an empty one
+TestingLibraryElementError: Unable to find role="radio" and name "ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:131:40
+    129|     const sent = backend();
+    130|     renderPage();
+    131|     await userEvent.click(await screen.findByRole('radio', { name: 'an…
+       |                                        ^
+    132|     const phone = screen.getByRole('row', { name: /Telefon/ });
+    133|     await userEvent.click(within(phone).getByRole('radio', { name: '(p…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage WF-18 (R-026-01, R-026-02) > EX-026-03 with equal creation times the Contact with the smaller id is the Survivor
+TestingLibraryElementError: Unable to find role="columnheader" and name `/Ohranjeni kontakt/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:147:25
+    145|     renderPage();
+    146|
+    147|     expect(await screen.findByRole('columnheader', { name: /Ohranjeni …
+       |                         ^
+    148|   });
+    149| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage Tags and Attributes (R-026-03, R-026-04) > R-026-03 shows the Tags of each Contact and says the Survivor gets all of them
+TestingLibraryElementError: Unable to find role="row" and name `/Značke/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:167:30
+    165|     renderPage();
+    166|
+    167|     const row = await screen.findByRole('row', { name: /Značke/ });
+       |                              ^
+    168|     expect(within(row).getByText('udelezenec2025')).toBeInTheDocument(…
+    169|     expect(within(row).getByText('neObvescaj')).toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage Tags and Attributes (R-026-03, R-026-04) > AC-026-03 two values of one key need a choice before the merge
+TestingLibraryElementError: Unable to find role="radio" and name "java"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:181:25
+    179|     const sent = backend({ contacts: clash });
+    180|     renderPage();
+    181|     expect(await screen.findByRole('radio', { name: 'java' })).not.toB…
+       |                         ^
+    182|     expect(screen.getByRole('radio', { name: 'spletnoProgramiranje' })…
+    183|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage Tags and Attributes (R-026-03, R-026-04) > R-026-04 sends the chosen value of the key once the user has chosen
+TestingLibraryElementError: Unable to find role="radio" and name "spletnoProgramiranje"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:194:40
+    192|     const sent = backend({ contacts: clash });
+    193|     renderPage();
+    194|     await userEvent.click(await screen.findByRole('radio', { name: 'sp…
+       |                                        ^
+    195|
+    196|     await userEvent.click(merge());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage Tags and Attributes (R-026-03, R-026-04) > R-026-04 an Attribute only one Contact has is kept and needs no choice
+TestingLibraryElementError: Unable to find role="row" and name `/Atribut jezik/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:209:30
+    207|     renderPage();
+    208|
+    209|     const row = await screen.findByRole('row', { name: /Atribut jezik/…
+       |                              ^
+    210|     expect(within(row).getByText('sl')).toBeInTheDocument();
+    211|     expect(within(row).getByText('(le pri tem kontaktu, ohranjen)')).t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-026-10) > R-026-10 and AC-026-12 nothing is merged until the user confirms in the dialog
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:226:18
+    224|     const sent = backend();
+    225|     renderPage();
+    226|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    227|     expect(posts(sent)).toHaveLength(0);
+    228|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-026-10) > R-026-05 a confirmed merge sends the Survivor, the versions and the chosen values and says so
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:241:18
+    239|     const sent = backend();
+    240|     renderPage();
+    241|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    242|
+    243|     await userEvent.click(merge());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-026-10) > shows "Združevanje …" while the merge runs and cannot be started twice
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:279:18
+    277|     });
+    278|     renderPage();
+    279|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    280|     await userEvent.click(merge());
+    281|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-026-10) > R-026-08 a Contact changed by someone else: refused, nothing merged, the reason is shown
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:299:18
+    297|     });
+    298|     renderPage();
+    299|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    300|
+    301|     await userEvent.click(merge());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-026-10) > R-026-06 a result that breaks BR-06 is refused and the reason is shown
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:324:18
+    322|     });
+    323|     renderPage();
+    324|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    325|
+    326|     await userEvent.click(merge());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-026-10) > any other refusal is shown with its own text
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:337:18
+    335|     backend({ merge: () => answer({ code: 'contact.in_trash', message:…
+    336|     renderPage();
+    337|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    338|
+    339|     await userEvent.click(merge());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage confirmation and answers (R-026-05, R-026-06, R-026-08, R-026-10) > "Prekliči" leaves for the Duplicates screen and merges nothing
+TestingLibraryElementError: Unable to find role="radio" and name "Ana"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:348:18
+    346|     const sent = backend();
+    347|     renderPage();
+    348|     await screen.findByRole('radio', { name: 'Ana', exact: true });
+       |                  ^
+    349|
+    350|     await userEvent.click(screen.getByRole('button', { name: 'Prekliči…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage states and roles (UI-14, R-026-09, R-026-12) > opened with fewer than two Contacts it says there is nothing to merge and asks for nothing
+TestingLibraryElementError: Unable to find role="heading" and name "Ni kontaktov za združitev"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:368:25
+    366|     renderPage('?contact=a');
+    367|
+    368|     expect(await screen.findByRole('heading', { name: 'Ni kontaktov za…
+       |                         ^
+    369|     expect(screen.getByRole('link', { name: 'Podvojeni kontakti' })).t…
+    370|     expect(sent).toHaveLength(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage states and roles (UI-14, R-026-09, R-026-12) > the same Contact twice counts once
+TestingLibraryElementError: Unable to find role="heading" and name "Ni kontaktov za združitev"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:377:25
+    375|     renderPage('?contact=a&contact=a');
+    376|
+    377|     expect(await screen.findByRole('heading', { name: 'Ni kontaktov za…
+       |                         ^
+    378|   });
+    379|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage states and roles (UI-14, R-026-09, R-026-12) > R-026-12 a Viewer is told it is not allowed and nothing is loaded
+TestingLibraryElementError: Unable to find an element with the text: Za združevanje kontaktov nimate pravice.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:384:25
+    382|     renderPage();
+    383|
+    384|     expect(await screen.findByText('Za združevanje kontaktov nimate pr…
+       |                         ^
+    385|     expect(sent).toHaveLength(0);
+    386|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage states and roles (UI-14, R-026-09, R-026-12) > shows the loading state while the Contacts load
+TestingLibraryElementError: Unable to find an element with the text: Nalaganje …. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:396:25
+    394|     renderPage();
+    395|
+    396|     expect(await screen.findByText('Nalaganje …')).toBeInTheDocument();
+       |                         ^
+    397|   });
+    398|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage states and roles (UI-14, R-026-09, R-026-12) > shows an error with a retry when a Contact cannot be loaded
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:412:18
+    410|     renderPage();
+    411|
+    412|     await screen.findByRole('alert');
+       |                  ^
+    413|     missing = false;
+    414|     await userEvent.click(screen.getByRole('button', { name: 'Poskusi …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/22]⎯
+
+ FAIL  src/features/duplicates/MergePage.test.tsx > MergePage states and roles (UI-14, R-026-09, R-026-12) > shows the texts in English
+TestingLibraryElementError: Unable to find role="heading" and name "Merge contacts"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-atomic[39m=[32m"false"[39m
+      [33maria-label[39m=[32m"Notifications alt+T"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33maria-relevant[39m=[32m"additions text"[39m
+      [33mtabindex[39m=[32m"-1"[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/MergePage.test.tsx:423:25
+    421|     renderPage();
+    422|
+    423|     expect(await screen.findByRole('heading', { level: 1, name: 'Merge…
+       |                         ^
+    424|     await userEvent.click(screen.getByRole('button', { name: 'Merge', …
+    425|     expect(screen.getByRole('dialog', { name: 'Merge 2 contacts?' })).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/22]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  22 failed (22)
+   Start at  18:36:40
+   Duration  23.37s (transform 105ms, setup 173ms, import 254ms, tests 22.28s, environment 527ms)
+

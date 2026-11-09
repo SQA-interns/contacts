@@ -1,5 +1,5 @@
 import { apiRequest } from './client';
-import type { ContactListItem } from './contacts';
+import type { Contact, ContactFields, ContactListItem } from './contacts';
 
 /** Contract schema `DuplicateSet`: Contacts that probably describe one person. */
 export interface DuplicateSet {
@@ -24,5 +24,24 @@ export function dismissDuplicate(groupId: string, contactIds: string[]): Promise
   return apiRequest<void>(`/groups/${encodeURIComponent(groupId)}/duplicates/dismissals`, {
     method: 'POST',
     body: { contactIds },
+  });
+}
+
+/** Contract schema `MergeRequest` (US-026); the Survivor gets the Tags of all merged Contacts (R-026-03). */
+export interface MergeRequest {
+  survivorId: string;
+  contacts: { id: string; version: number }[];
+  fields: ContactFields;
+  attributes: { key: string; value: string }[];
+}
+
+/**
+ * `POST /groups/{g}/merges` (R-026-05): gives the Survivor the chosen values and moves the others to
+ * Trash; nothing is merged unless every Contact still has the version sent (R-026-08).
+ */
+export function mergeContacts(groupId: string, request: MergeRequest): Promise<Contact> {
+  return apiRequest<Contact>(`/groups/${encodeURIComponent(groupId)}/merges`, {
+    method: 'POST',
+    body: request,
   });
 }

@@ -628,5 +628,44 @@
         "other": "{{count}} kontaktov ima enako ime ter podjetje ali telefon: {{name}}"
       }
     }
+  },
+  "merge": {
+    "title": "Združi kontakte",
+    "back": "Podvojeni kontakti",
+    "intro": "Za vsako polje izberite vrednost. Ohranjeni kontakt je najstarejši; ostali bodo premaknjeni v koš.",
+    "caption": "Vrednosti za združitev",
+    "field": "Polje",
+    "survivor": "Ohranjeni kontakt",
+    "other": "Kontakt {{n}}",
+    "createdOn": "ustvarjen {{date}}",
+    "empty": "(prazno)",
+    "tags": "Značke",
+    "attribute": "Atribut {{key}}",
+    "onlyHere": "(le pri tem kontaktu, ohranjen)",
+    "note": "Ohranjeni kontakt dobi vse značke obeh kontaktov. Pri atributu z istim ključem in različnima vrednostma izberite eno.",
+    "chooseValue": "Izberite vrednost.",
+    "submit": "Združi",
+    "busy": "Združevanje …",
+    "confirmTitle": {
+      "one": "Združim {{count}} kontakt?",
+      "two": "Združim {{count}} kontakta?",
+      "few": "Združim {{count}} kontakte?",
+      "other": "Združim {{count}} kontaktov?"
+    },
+    "confirmBody": {
+      "one": "Ohranjeni kontakt dobi izbrane vrednosti in novo različico.",
+      "two": "Ohranjeni kontakt dobi izbrane vrednosti in novo različico. Drugi kontakt bo premaknjen v koš, kjer ga lahko 30 dni obnovite.",
+      "few": "Ohranjeni kontakt dobi izbrane vrednosti in novo različico. Ostali kontakti bodo premaknjeni v koš, kjer jih lahko 30 dni obnovite.",
+      "other": "Ohranjeni kontakt dobi izbrane vrednosti in novo različico. Ostali kontakti bodo premaknjeni v koš, kjer jih lahko 30 dni obnovite."
+    },
+    "merged": "Kontakti so združeni.",
+    "openContact": "Odpri kontakt",
+    "noPermission": "Za združevanje kontaktov nimate pravice.",
+    "nothingTitle": "Ni kontaktov za združitev",
+    "nothingBody": "Za združitev izberite vsaj dva kontakta iste skupine.",
+    "invalidTitle": "Podatki niso veljavni.",
+    "changedNote": "Nič ni bilo združeno. Odprite združevanje znova.",
+    "backLink": "← Podvojeni kontakti",
+    "none": "—"
   }
 }

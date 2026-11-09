@@ -628,5 +628,44 @@
         "other": "{{count}} contacts have the same name and company or phone: {{name}}"
       }
     }
+  },
+  "merge": {
+    "title": "Merge contacts",
+    "back": "Duplicates",
+    "intro": "Choose a value for each field. The kept contact is the oldest; the others are moved to Trash.",
+    "caption": "Values to merge",
+    "field": "Field",
+    "survivor": "Kept contact",
+    "other": "Contact {{n}}",
+    "createdOn": "created {{date}}",
+    "empty": "(empty)",
+    "tags": "Tags",
+    "attribute": "Attribute {{key}}",
+    "onlyHere": "(only on this contact, kept)",
+    "note": "The kept contact gets all Tags of the merged contacts. Where an Attribute has the same key and different values, choose one.",
+    "chooseValue": "Choose a value.",
+    "submit": "Merge",
+    "busy": "Merging …",
+    "confirmTitle": {
+      "one": "Merge {{count}} contact?",
+      "two": "Merge {{count}} contacts?",
+      "few": "Merge {{count}} contacts?",
+      "other": "Merge {{count}} contacts?"
+    },
+    "confirmBody": {
+      "one": "The kept contact gets the chosen values and a new version. The other contacts are moved to Trash, where you can restore them for 30 days.",
+      "two": "The kept contact gets the chosen values and a new version. The other contacts are moved to Trash, where you can restore them for 30 days.",
+      "few": "The kept contact gets the chosen values and a new version. The other contacts are moved to Trash, where you can restore them for 30 days.",
+      "other": "The kept contact gets the chosen values and a new version. The other contacts are moved to Trash, where you can restore them for 30 days."
+    },
+    "merged": "Contacts merged.",
+    "openContact": "Open contact",
+    "noPermission": "You have no permission to merge contacts.",
+    "nothingTitle": "No contacts to merge",
+    "nothingBody": "To merge, pick at least two contacts of the same Group.",
+    "invalidTitle": "The data is not valid.",
+    "changedNote": "Nothing was merged. Open the merge again.",
+    "backLink": "← Duplicates",
+    "none": "—"
   }
 }

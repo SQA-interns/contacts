@@ -1,4 +1,5 @@
 import { CONTACT_FIELDS, type Contact, type ContactField, type ContactFields } from '@/api/contacts';
+import type { MergeRequest } from '@/api/duplicates';
 
 /** One field of the Merge screen: the value of each Contact (`null` when empty) and the default. */
 export interface FieldRow {
@@ -17,14 +18,6 @@ export interface AttributeRow {
   needsChoice: boolean;
   /** `null` while the user has to choose. */
   preselected: string | null;
-}
-
-/** Contract schema `MergeRequest` (`tags` is not sent: the Survivor gets all Tags, R-026-03). */
-export interface MergeRequestBody {
-  survivorId: string;
-  contacts: { id: string; version: number }[];
-  fields: ContactFields;
-  attributes: { key: string; value: string }[];
 }
 
 type Chosen = Record<string, string | undefined>;
@@ -97,7 +90,7 @@ export function mergeRequest(
   fields: ContactFields,
   rows: AttributeRow[],
   chosen: Chosen,
-): MergeRequestBody {
+): MergeRequest {
   const [survivor] = ordered;
   if (!survivor) throw new Error('A merge needs Contacts');
   return {
