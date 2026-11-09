@@ -1,0 +1,30 @@
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasNot: getByRole('columnheader') }).first()[22m
+
+
+      214 |   await switchTo(page, 'EN');
+      215 |
+    > 216 |   await expect(contactRows(page).first()).toContainText('neObvescaj');
+          |                                           ^
+      217 |   await expect(page.getByText('Šola').first()).toBeVisible();
+      218 | });
+      219 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:216:43
+
+    Error Context: test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+  19 passed (19.1s)

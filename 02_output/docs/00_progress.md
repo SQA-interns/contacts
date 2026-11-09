@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: R /review INC-1
+- Session: S5 /implement US-006 resume
 - Result: done
-- Gate: DoD-I not passed (DoD-I-02: F-01, F-02 High; DoD-I-04: F-01, F-05, F-06), see `docs/04_review-INC-1.md`
-- Notes for the next session: F-01 the Group tab bar and Group bar of the wireframes are missing; F-02 no link to the Tags page. Build one Group shell (header, name, Role badge, tabs, mobile menu) for all Group screens; add the missing screens WF-07, WF-08, WF-19 (F-05). Medium: F-03 `page=abc` on History endpoints answers 500, F-04 `/health` has an extra `groups` field (AC-018-09), F-06 date format in WF-13. The test stack now holds the seed and one test Contact (`<script>…`) in Acme.
+- Gate: DoD-S passed in part (frozen tests AC-006-04, AC-014-03, AC-019-06 fail unchanged, D-61 item g; DoD-S-05 shell screens done)
+- Notes for the next session: F-01 and F-02 fixed by one `GroupShell` (Group bar, tab bar, phone menu) for all Group screens, D-61. "Podvojeni kontakti" tab and "Možnosti skupine" menu wait for US-024 and US-020. Open from the review: F-03 (`page=abc` answers 500 on History endpoints), F-04 (`/health` extra `groups` field), F-05 (screens WF-07, WF-08, WF-19), F-06 (date format in WF-13), F-07..F-09. New: empty link for a Contact with no last name (D-61 item f); frozen AC-019-06 needs an approval decision (D-61 item g). The test stack runs with the data of the screen checks.
 
 ## Next
-- Command: /implement US-006
+- Command: /review INC-1
 - Waiting for: nothing
 
 ## Stories
@@ -22,7 +22,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-003 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-007, US-014, US-004, US-005; DoD-S-05 screens; DoD-S-07: size, D-46) |
 | US-004 | 1 | done | passed in part (DoD-S-01: AC-004-04/07/08/09 wait for US-009, US-014; DoD-S-05 screens, D-48) |
 | US-005 | 1 | done | passed in part (DoD-S-01: AC-005-01..08 frozen tests wait for US-006, US-007, US-009, US-014; DoD-S-05 screens, D-49) |
-| US-006 | 1 | done | passed in part (DoD-S-01: 4 backend tests wait for US-007, US-012, US-014, US-017; UI AC-006-04 timing, D-50) |
+| US-006 | 1 | done | passed in part (DoD-S-01: UI AC-006-04 timing, D-50; Group navigation F-01, F-02 fixed, D-61) |
 | US-007 | 1 | done | passed in part (DoD-S-01: EX-007-05 frozen test contradicts R-007-03, others wait for US-012, US-014; DoD-S-05 screens, D-51) |
 | US-008 | 1 | done | passed in part (DoD-S-01: AC-008-07 waits for US-012; DoD-S-05 screens, D-52) |
 | US-009 | 1 | done | passed in part (DoD-S-01: EX-009-06 waits for US-012; DoD-S-05 screens, D-53) |
