@@ -94,6 +94,24 @@ public class HistoryWriter {
     write(groupId, userId, action, contactId, Map.of("name", name), at);
   }
 
+  /** Records a Tag renamed or deleted on a Contact (R-006-07): old and new name. */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void tagRenamed(
+      UUID groupId, UUID userId, UUID contactId, String oldName, String newName, Instant at) {
+    write(
+        groupId,
+        userId,
+        HistoryAction.TAG_RENAMED,
+        contactId,
+        Map.of("old", oldName, "new", newName, "name", newName),
+        at);
+  }
+
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void tagDeleted(UUID groupId, UUID userId, UUID contactId, String name, Instant at) {
+    write(groupId, userId, HistoryAction.TAG_DELETED, contactId, Map.of("name", name), at);
+  }
+
   private void write(
       UUID groupId,
       UUID userId,

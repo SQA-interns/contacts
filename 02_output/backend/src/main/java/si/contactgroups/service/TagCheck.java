@@ -38,4 +38,13 @@ final class TagCheck {
     }
     return cleaned;
   }
+
+  /** R-006-03: the new name of a rename; a broken rule is reported as field {@code name}. */
+  static String cleanName(String name, List<FieldError> errors) {
+    String trimmed = name == null ? "" : name.strip();
+    if (!NAME.matcher(trimmed).matches()) {
+      errors.add(new FieldError("name", "validation.tag_invalid"));
+    }
+    return trimmed;
+  }
 }

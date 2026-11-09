@@ -18,6 +18,8 @@ import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
 import si.contactgroups.service.RoleForbiddenException;
+import si.contactgroups.service.TagNameTakenException;
+import si.contactgroups.service.TagNotFoundException;
 import si.contactgroups.service.ValidationException;
 import si.contactgroups.service.VersionMissingException;
 import tools.jackson.databind.exc.UnrecognizedPropertyException;
@@ -101,6 +103,18 @@ public class ApiExceptionHandler {
     return ResponseEntity.status(HttpStatus.CONFLICT)
         .body(
             new ContactConflict("contact.changed_by_someone_else", e.getMessage(), e.getCurrent()));
+  }
+
+  @ExceptionHandler(TagNotFoundException.class)
+  public ResponseEntity<ApiError> tagNotFound(TagNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ApiError("tag.not_found", e.getMessage()));
+  }
+
+  @ExceptionHandler(TagNameTakenException.class)
+  public ResponseEntity<ApiError> tagNameTaken(TagNameTakenException e) {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(new ApiError("tag.name_taken", e.getMessage()));
   }
 
   @ExceptionHandler(VersionMissingException.class)

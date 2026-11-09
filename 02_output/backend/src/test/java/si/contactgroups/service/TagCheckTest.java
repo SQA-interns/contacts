@@ -57,4 +57,18 @@ class TagCheckTest {
     fifty.add("t51");
     assertThat(errors(fifty)).containsExactly(new FieldError("tags", "validation.tag_limit"));
   }
+
+  @Test
+  void a_new_name_for_a_rename_is_trimmed_and_checked_as_field_name() {
+    List<FieldError> errors = new ArrayList<>();
+
+    assertThat(TagCheck.cleanName("  gost  ", errors)).isEqualTo("gost");
+    assertThat(errors).isEmpty();
+    assertThat(TagCheck.cleanName("a b", errors)).isEqualTo("a b");
+    assertThat(TagCheck.cleanName(null, errors)).isEmpty();
+    assertThat(errors)
+        .containsExactly(
+            new FieldError("name", "validation.tag_invalid"),
+            new FieldError("name", "validation.tag_invalid"));
+  }
 }
