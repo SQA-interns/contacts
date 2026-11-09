@@ -20,6 +20,7 @@ public class HistoryRepository {
   private static final String CONTACT_ID = "contactId";
   private static final String DETAILS = "details";
   private static final String ACTION = "action";
+  private static final String USER_ID = "userId";
 
   private static final String ACTIVITY_WHERE =
       "group_id = :groupId AND (CAST(:userId AS uuid) IS NULL OR user_id = CAST(:userId AS uuid))"
@@ -42,7 +43,7 @@ public class HistoryRepository {
                 + " :action, :contactId, CAST(:details AS jsonb))")
         .param(GROUP_ID, groupId)
         .param("at", Timestamp.from(actor.at()))
-        .param("userId", actor.userId())
+        .param(USER_ID, actor.userId())
         .param("name", actor.name())
         .param("email", actor.email())
         .param(ACTION, action.name())
@@ -55,7 +56,7 @@ public class HistoryRepository {
   @GlobalScope
   public void clearEmailOf(UUID userId) {
     jdbc.sql("UPDATE history_entry SET user_email = NULL WHERE user_id = :userId")
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .update();
   }
 
@@ -93,7 +94,7 @@ public class HistoryRepository {
                 + ACTIVITY_WHERE
                 + " ORDER BY occurred_at DESC, id DESC LIMIT :limit OFFSET :offset")
         .param(GROUP_ID, groupId)
-        .param("userId", filter.userId())
+        .param(USER_ID, filter.userId())
         .param(ACTION, filter.action() == null ? null : filter.action().name())
         .param("from", toTimestamp(filter.fromInclusive()))
         .param("to", toTimestamp(filter.toExclusive()))
@@ -106,7 +107,7 @@ public class HistoryRepository {
   public long countOfGroup(UUID groupId, ActivityFilter filter) {
     return jdbc.sql("SELECT count(*) FROM history_entry WHERE " + ACTIVITY_WHERE)
         .param(GROUP_ID, groupId)
-        .param("userId", filter.userId())
+        .param(USER_ID, filter.userId())
         .param(ACTION, filter.action() == null ? null : filter.action().name())
         .param("from", toTimestamp(filter.fromInclusive()))
         .param("to", toTimestamp(filter.toExclusive()))

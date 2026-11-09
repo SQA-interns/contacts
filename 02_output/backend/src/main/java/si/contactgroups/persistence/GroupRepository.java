@@ -2,6 +2,7 @@ package si.contactgroups.persistence;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -19,6 +20,8 @@ public class GroupRepository {
   private static final String GROUP_ID = "groupId";
   private static final String USER_ID = "userId";
   private static final String CUTOFF = "cutoff";
+  private static final String NAME_KEY = "name";
+  private static final String MEMBER_JOIN = " JOIN member m ON m.group_id = g.id";
 
   private final JdbcClient jdbc;
 
@@ -31,7 +34,7 @@ public class GroupRepository {
   public List<GroupSummary> findGroupsOfUser(UUID userId) {
     return jdbc.sql(
             "SELECT g.id, g.name, m.role, g.created_at FROM contact_group g"
-                + " JOIN member m ON m.group_id = g.id"
+                + MEMBER_JOIN
                 + " WHERE m.user_id = :userId AND g.deleted_at IS NULL"
                 + " ORDER BY lower(g.name), g.id")
         .param(USER_ID, userId)
@@ -60,7 +63,7 @@ public class GroupRepository {
   public UUID insert(String name, Instant createdAt) {
     return jdbc.sql(
             "INSERT INTO contact_group (name, created_at) VALUES (:name, :createdAt) RETURNING id")
-        .param("name", name)
+        .param(NAME_KEY, name)
         .param("createdAt", Timestamp.from(createdAt))
         .query(UUID.class)
         .single();
@@ -74,7 +77,7 @@ public class GroupRepository {
                 + " WHERE m.user_id = :userId AND m.role = 'OWNER' AND g.deleted_at IS NULL"
                 + " AND lower(g.name) = lower(:name))")
         .param(USER_ID, userId)
-        .param("name", name)
+        .param(NAME_KEY, name)
         .query(Boolean.class)
         .single();
   }
@@ -106,7 +109,7 @@ public class GroupRepository {
   public List<GroupTrashItem> findTrashOfOwner(UUID userId, Instant cutoff, Instant now) {
     return jdbc.sql(
             "SELECT g.id, g.name, g.deleted_at FROM contact_group g"
-                + " JOIN member m ON m.group_id = g.id"
+                + MEMBER_JOIN
                 + " WHERE m.user_id = :userId AND m.role = 'OWNER' AND g.deleted_at > :cutoff"
                 + " ORDER BY g.deleted_at DESC, g.id")
         .param(USER_ID, userId)
@@ -115,7 +118,7 @@ public class GroupRepository {
             (rs, row) ->
                 GroupTrashItem.of(
                     rs.getObject("id", UUID.class),
-                    rs.getString("name"),
+                    rs.getString(NAME_KEY),
                     rs.getTimestamp("deleted_at").toInstant(),
                     now))
         .list();
@@ -129,7 +132,7 @@ public class GroupRepository {
   public Optional<GroupSummary> findRestorable(UUID groupId, UUID userId, Instant cutoff) {
     return jdbc.sql(
             "SELECT g.id, g.name, m.role, g.created_at FROM contact_group g"
-                + " JOIN member m ON m.group_id = g.id"
+                + MEMBER_JOIN
                 + " WHERE g.id = :groupId AND m.user_id = :userId AND m.role = 'OWNER'"
                 + " AND g.deleted_at > :cutoff")
         .param(GROUP_ID, groupId)
@@ -168,7 +171,7 @@ public class GroupRepository {
   public List<SoleOwnerGroup> findSoleOwned(UUID userId, Instant cutoff, Instant now) {
     return jdbc.sql(
             "SELECT g.id, g.name, g.deleted_at FROM contact_group g"
-                + " JOIN member m ON m.group_id = g.id"
+                + MEMBER_JOIN
                 + " WHERE m.user_id = :userId AND m.role = 'OWNER'"
                 + " AND (g.deleted_at IS NULL OR g.deleted_at > :cutoff)"
                 + " AND NOT EXISTS (SELECT 1 FROM member o WHERE o.group_id = g.id"
@@ -178,10 +181,10 @@ public class GroupRepository {
         .param(CUTOFF, Timestamp.from(cutoff))
         .query(
             (rs, row) -> {
-              Timestamp deletedAt = rs.getTimestamp("deleted_at");
+              OffsetDateTime deletedAt = rs.getObject("deleted_at", OffsetDateTime.class);
               return new SoleOwnerGroup(
                   rs.getObject("id", UUID.class),
-                  rs.getString("name"),
+                  rs.getString(NAME_KEY),
                   deletedAt != null,
                   deletedAt == null ? null : TrashPeriod.daysLeft(deletedAt.toInstant(), now));
             })

@@ -8,15 +8,15 @@ public class SoleOwnerException extends RuntimeException {
 
   private static final long serialVersionUID = 1L;
 
-  private final transient List<SoleOwnerGroup> groups;
+  private final transient List<SoleOwnerGroup> soleOwned;
 
   public SoleOwnerException(List<SoleOwnerGroup> groups) {
     super("The user is the only owner of a group");
-    this.groups = List.copyOf(groups);
+    this.soleOwned = List.copyOf(groups);
   }
 
   /** The Groups to hand over or delete first. */
   public List<SoleOwnerGroup> groups() {
-    return groups;
+    return soleOwned;
   }
 }
