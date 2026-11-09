@@ -22,6 +22,7 @@ import si.contactgroups.security.AuthenticatedUser;
 import si.contactgroups.security.RequiresAction;
 import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.ContactService;
+import si.contactgroups.service.FilterParams;
 import si.contactgroups.service.SearchService;
 
 /**
@@ -45,10 +46,10 @@ public class ContactController {
   public ContactPage listContacts(
       @PathVariable UUID groupId,
       @RequestParam(required = false) String page,
-      @RequestParam(required = false) String q,
       @RequestParam(required = false) String sort,
-      @RequestParam(required = false) String dir) {
-    return search.list(groupId, page, q, sort, dir);
+      @RequestParam(required = false) String dir,
+      FilterParams filter) {
+    return search.list(groupId, page, filter.toFilter(), sort, dir);
   }
 
   @PostMapping

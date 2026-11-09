@@ -10,7 +10,9 @@ import java.util.UUID;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 import si.contactgroups.domain.ContactData;
+import si.contactgroups.domain.ContactFilter;
 import si.contactgroups.domain.ContactListItem;
+import si.contactgroups.domain.Facets;
 import si.contactgroups.domain.Normaliser;
 import si.contactgroups.domain.StoredContact;
 
@@ -19,26 +21,36 @@ import si.contactgroups.domain.StoredContact;
 public class ContactRepository {
 
   private static final String GROUP_ID = "groupId";
+  private static final String EMAIL = "email";
+  private static final String COMPANY = "company";
+  private static final String CITY = "city";
+  private static final String COUNTRY = "country";
   private static final String COLUMNS =
       "id, version, first_name, last_name, email, phone, company, job_title, street,"
           + " postal_code, city, country, notes, created_at, updated_at";
 
   /** The columns the Contact list can be sorted by (contract parameter {@code sort}). */
   public static final Set<String> SORT_COLUMNS =
-      Set.of("lastName", "firstName", "email", "company", "city", "country", "tags");
+      Set.of("lastName", "firstName", EMAIL, COMPANY, CITY, COUNTRY, "tags");
 
   /** Sort expression of each column: normalised text, so case and accents do not count. */
   private static final Map<String, String> SORT_KEY =
       Map.of(
-          "lastName", "c.last_name_norm",
-          "firstName", "c.first_name_norm",
-          "email", "c.email_norm",
-          "company", "c.company_norm",
-          "city", "c.city_norm",
-          "country", "c.country",
+          "lastName",
+          "c.last_name_norm",
+          "firstName",
+          "c.first_name_norm",
+          EMAIL,
+          "c.email_norm",
+          COMPANY,
+          "c.company_norm",
+          CITY,
+          "c.city_norm",
+          COUNTRY,
+          "c.country",
           "tags",
-              "(SELECT min(lower(t.name)) FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
-                  + " WHERE ct.contact_id = c.id)");
+          "(SELECT min(lower(t.name)) FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
+              + " WHERE ct.contact_id = c.id)");
 
   private final JdbcClient jdbc;
 
@@ -65,27 +77,28 @@ public class ContactRepository {
         .single();
   }
 
-  /**
-   * The number of Contacts of the Group that are not in Trash and match every word.
-   *
-   * @param patterns LIKE patterns from {@code SearchWords}; empty means no search
-   */
-  public int count(UUID groupId, List<String> patterns) {
-    return bindWords(
+  /** The number of Contacts of the Group that are not in Trash and match the search and filters. */
+  public int count(UUID groupId, ContactFilter filter) {
+    return FilterSql.bind(
             jdbc.sql(
                 "SELECT count(*) FROM contact c WHERE c.group_id = :groupId"
                     + " AND c.deleted_at IS NULL"
-                    + wordConditions(patterns)),
-            patterns)
+                    + conditions(filter)),
+            filter)
         .param(GROUP_ID, groupId)
         .query(Integer.class)
         .single();
   }
 
   /**
-   * Every word must be in the search text of the Contact, in a Tag name or in an Attribute value
-   * (R-008-01, R-008-02); the patterns are bound, never joined into the SQL (R-008-06).
+   * Search and filters joined by AND (R-009-08). Every word must be in the search text of the
+   * Contact, in a Tag name or in an Attribute value (R-008-01, R-008-02). All values are bound,
+   * never joined into the SQL (R-008-06); only the numbers of the parameters are.
    */
+  private static String conditions(ContactFilter filter) {
+    return wordConditions(filter.words()) + FilterSql.conditions(filter);
+  }
+
   private static String wordConditions(List<String> patterns) {
     StringBuilder sql = new StringBuilder();
     for (int i = 0; i < patterns.size(); i++) {
@@ -105,12 +118,36 @@ public class ContactRepository {
     return sql.toString();
   }
 
-  private static JdbcClient.StatementSpec bindWords(
-      JdbcClient.StatementSpec sql, List<String> patterns) {
-    for (int i = 0; i < patterns.size(); i++) {
-      sql = sql.param("word" + i, patterns.get(i));
-    }
-    return sql;
+  /**
+   * The values the filters offer for the Group (R-009-11): Tags of Contacts not in Trash, and the
+   * companies, countries and Attribute keys of those Contacts, sorted without case and accents.
+   */
+  public Facets facets(UUID groupId) {
+    return new Facets(
+        facetValues(
+            "SELECT min(t.name) FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
+                + " JOIN contact c ON c.id = ct.contact_id"
+                + " WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
+                + " GROUP BY t.name_norm ORDER BY t.name_norm",
+            groupId),
+        facetValues(
+            "SELECT min(c.company) FROM contact c WHERE c.group_id = :groupId"
+                + " AND c.deleted_at IS NULL AND c.company_norm IS NOT NULL AND c.company_norm <> ''"
+                + " GROUP BY c.company_norm ORDER BY c.company_norm",
+            groupId),
+        facetValues(
+            "SELECT DISTINCT c.country FROM contact c WHERE c.group_id = :groupId"
+                + " AND c.deleted_at IS NULL AND c.country IS NOT NULL ORDER BY c.country",
+            groupId),
+        facetValues(
+            "SELECT min(a.key) FROM attribute a JOIN contact c ON c.id = a.contact_id"
+                + " WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
+                + " GROUP BY lower(a.key) ORDER BY lower(a.key)",
+            groupId));
+  }
+
+  private List<String> facetValues(String sql, UUID groupId) {
+    return jdbc.sql(sql).param(GROUP_ID, groupId).query(String.class).list();
   }
 
   /**
@@ -121,33 +158,33 @@ public class ContactRepository {
    */
   public List<ContactListItem> page(
       UUID groupId,
-      List<String> patterns,
+      ContactFilter filter,
       String column,
       boolean descending,
       int offset,
       int limit) {
     String key = SORT_KEY.get(column);
     String dir = descending ? "DESC" : "ASC";
-    return bindWords(
+    return FilterSql.bind(
             jdbc.sql(
-            "SELECT c.id, c.first_name, c.last_name, c.email, c.company, c.city, c.country,"
-                + " c.version, c.created_at,"
-                + " COALESCE((SELECT array_agg(t.name ORDER BY lower(t.name), t.name)"
-                + " FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
-                + " WHERE ct.contact_id = c.id), '{}') AS tags"
-                + " FROM contact c WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
-                + wordConditions(patterns)
-                + " ORDER BY ("
-                + key
-                + " IS NULL OR "
-                + key
-                + " = '') ASC, "
-                + key
-                + " "
-                + dir
-                + ", c.last_name_norm ASC NULLS LAST, c.first_name_norm ASC NULLS LAST, c.id"
-                + " LIMIT :limit OFFSET :offset"),
-            patterns)
+                "SELECT c.id, c.first_name, c.last_name, c.email, c.company, c.city, c.country,"
+                    + " c.version, c.created_at,"
+                    + " COALESCE((SELECT array_agg(t.name ORDER BY lower(t.name), t.name)"
+                    + " FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
+                    + " WHERE ct.contact_id = c.id), '{}') AS tags"
+                    + " FROM contact c WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
+                    + conditions(filter)
+                    + " ORDER BY ("
+                    + key
+                    + " IS NULL OR "
+                    + key
+                    + " = '') ASC, "
+                    + key
+                    + " "
+                    + dir
+                    + ", c.last_name_norm ASC NULLS LAST, c.first_name_norm ASC NULLS LAST, c.id"
+                    + " LIMIT :limit OFFSET :offset"),
+            filter)
         .param(GROUP_ID, groupId)
         .param("limit", limit)
         .param("offset", offset)
@@ -157,10 +194,10 @@ public class ContactRepository {
                     rs.getObject("id", UUID.class),
                     rs.getString("first_name"),
                     rs.getString("last_name"),
-                    rs.getString("email"),
-                    rs.getString("company"),
-                    rs.getString("city"),
-                    rs.getString("country"),
+                    rs.getString(EMAIL),
+                    rs.getString(COMPANY),
+                    rs.getString(CITY),
+                    rs.getString(COUNTRY),
                     List.of((String[]) rs.getArray("tags").getArray()),
                     rs.getInt("version"),
                     rs.getTimestamp("created_at").toInstant()))
@@ -192,14 +229,14 @@ public class ContactRepository {
                     new ContactData(
                         rs.getString("first_name"),
                         rs.getString("last_name"),
-                        rs.getString("email"),
+                        rs.getString(EMAIL),
                         rs.getString("phone"),
-                        rs.getString("company"),
+                        rs.getString(COMPANY),
                         rs.getString("job_title"),
                         rs.getString("street"),
                         rs.getString("postal_code"),
-                        rs.getString("city"),
-                        rs.getString("country"),
+                        rs.getString(CITY),
+                        rs.getString(COUNTRY),
                         rs.getString("notes")),
                     rs.getTimestamp("created_at").toInstant(),
                     rs.getTimestamp("updated_at").toInstant()))
@@ -236,14 +273,14 @@ public class ContactRepository {
   private static JdbcClient.StatementSpec bind(JdbcClient.StatementSpec sql, ContactData d) {
     return sql.param("firstName", d.firstName())
         .param("lastName", d.lastName())
-        .param("email", d.email())
+        .param(EMAIL, d.email())
         .param("phone", d.phone())
-        .param("company", d.company())
+        .param(COMPANY, d.company())
         .param("jobTitle", d.jobTitle())
         .param("street", d.street())
         .param("postalCode", d.postalCode())
-        .param("city", d.city())
-        .param("country", d.country())
+        .param(CITY, d.city())
+        .param(COUNTRY, d.country())
         .param("notes", d.notes())
         .param("firstNameNorm", Normaliser.normalise(d.firstName()))
         .param("lastNameNorm", Normaliser.normalise(d.lastName()))

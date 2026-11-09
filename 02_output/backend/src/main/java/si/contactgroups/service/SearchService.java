@@ -2,11 +2,12 @@ package si.contactgroups.service;
 
 import java.util.UUID;
 import org.springframework.stereotype.Service;
+import si.contactgroups.domain.ContactFilter;
 import si.contactgroups.domain.ContactPage;
-import si.contactgroups.domain.SearchWords;
+import si.contactgroups.domain.Facets;
 import si.contactgroups.persistence.ContactRepository;
 
-/** The Contact list of a Group: searched, sorted and paged, never Trash (US-007, US-008). */
+/** The Contact list of a Group: searched, sorted and paged, never Trash (US-007 to US-009). */
 @Service
 public class SearchService {
 
@@ -23,39 +24,40 @@ public class SearchService {
    * @param page the 1-based page number as sent; {@code null} means 1
    * @param sort a column of the list; {@code null} means last name
    * @param dir {@code asc} or {@code desc}; {@code null} means {@code asc}
-   * @param q the search text; {@code null}, empty or only spaces means no search (US-008)
+   * @param filter the search text and the filters ({@link FilterParams#toFilter()})
    * @throws InvalidQueryException when a parameter is not allowed by the contract
    */
-  public ContactPage list(UUID groupId, String page, String q, String sort, String dir) {
+  public ContactPage list(
+      UUID groupId, String page, ContactFilter filter, String sort, String dir) {
     int number = pageNumber(page);
     boolean descending = descending(dir);
     String column = sort == null ? "lastName" : sort;
     if (!ContactRepository.SORT_COLUMNS.contains(column)) {
       throw new InvalidQueryException("Unknown sort column");
     }
-    var words = SearchWords.patterns(q);
-    int total = contacts.count(groupId, words);
+    int total = contacts.count(groupId, filter);
     long offset = (long) (number - 1) * PAGE_SIZE;
     var items =
         offset >= total
             ? java.util.List.<si.contactgroups.domain.ContactListItem>of()
-            : contacts.page(groupId, words, column, descending, (int) offset, PAGE_SIZE);
+            : contacts.page(groupId, filter, column, descending, (int) offset, PAGE_SIZE);
     return new ContactPage(items, number, PAGE_SIZE, total);
+  }
+
+  /** The Tags, companies, countries and Attribute keys used in the Group (R-009-11). */
+  public Facets facets(UUID groupId) {
+    return contacts.facets(groupId);
   }
 
   private static int pageNumber(String page) {
     if (page == null) {
       return 1;
     }
-    try {
-      int number = Integer.parseInt(page);
-      if (number >= 1) {
-        return number;
-      }
-    } catch (NumberFormatException e) {
-      // falls through to the refusal below
+    int number = page.matches("[0-9]{1,9}") ? Integer.parseInt(page) : 0;
+    if (number < 1) {
+      throw new InvalidQueryException("Page must be a whole number of at least 1");
     }
-    throw new InvalidQueryException("Page must be a whole number of at least 1");
+    return number;
   }
 
   private static boolean descending(String dir) {
