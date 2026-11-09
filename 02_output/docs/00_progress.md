@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-020
+- Session: S5 /implement US-021
 - Result: done
-- Gate: DoD-S passed in part for US-020 (DoD-S-01: 14 backend and 2 UI frozen tests pass, the rest of the full run fails as before; DoD-S-07: three subjects over 72 characters)
-- Notes for the next session: D-62 records the readings. The delete dialog closes on confirm and shows progress and result in a toast, because the frozen AC-020-01 raced with a dialog that stays open (D-62 g). Group Trash list and restore are in `GroupService`; `TrashPurgeJob` purges Groups too. GroupShell has the "Možnosti skupine" menu; the tab "Podvojeni kontakti" is still missing (US-024). Four frozen UI tests of INC-1 fail on the base commit as well: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h; not in review F-08), for `/fix` or the release gate. Open from the review: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12. The test stack was rebuilt and the small seed reloaded; backend acceptance runs need port 9099 free (stop the emulator container, then start it again). Screens: `logs/screens/WF-14_delete-group`, `WF-15_group-trash`, `WF-05_group-list/card-menu-*`, `WF-06_contact-list/group-options-menu-*`.
+- Gate: DoD-S passed in part for US-021 (DoD-S-01: 10 backend and 2 UI frozen tests pass, the rest of the full run fails as before; DoD-S-07: one subject over 72 characters)
+- Notes for the next session: D-63 records the readings. `DELETE /me` is in `AccountService` (Sole Owner refusal with locked Groups, then Memberships, History e-mail, User, Firebase account in one transaction); `FirebaseTokenFilter` asks Firebase once when it has to create a User, so the token of a deleted account gets 401. HUMAN, BEFORE PRODUCTION: deleting and reading Firebase accounts needs Admin credentials; `FirebaseConfig` uses empty credentials (ADR-04), so it works with the emulator only (D-63 a). The My account screen is `/account` (`features/account/AccountPage`), linked from the user menu. `DeleteGroupDialog.onDeleted` now gets the Group id. Open from the review as before: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12; known failing frozen UI tests of INC-1: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h). A `mvnw verify -Dit.test=...` exits 1 on a stale failsafe summary; read `target/failsafe-reports/TEST-*.xml`. Backend acceptance runs need port 9099 free (stop `contact-groups-test-emulator-1`, then start it again). Screens: `logs/screens/WF-16_account`.
 
 ## Next
-- Command: /implement US-021
+- Command: /implement US-022
 - Waiting for: nothing
 
 ## Stories
@@ -37,7 +37,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-018 | 1 | done | passed (DoD-S-01: frozen tests wait for US-003, US-014 and the last story, D-44; DoD-S-07: one subject over 72 characters) |
 | US-019 | 1 | done | passed in part (frozen UI tests wait for US-003, US-005, US-016) |
 | US-020 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-021..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, D-62) |
-| US-021 | 2 | ready | — |
+| US-021 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-022..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one subject over 72 characters, D-63) |
 | US-022 | 2 | ready | — |
 | US-023 | 2 | ready | — |
 | US-024 | 2 | ready | — |
