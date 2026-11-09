@@ -42,10 +42,11 @@ export function ContactPage() {
     queryFn: () => getContact(groupId, contactId),
   });
   const save = useMutation({
-    mutationFn: (input: { values: ContactValues; attributes: AttributePair[] }) =>
+    mutationFn: (input: { values: ContactValues; attributes: AttributePair[]; tags: string[] }) =>
       updateContact(groupId, contactId, {
         ...input.values,
         attributes: input.attributes,
+        tags: input.tags,
         version: query.data?.version,
       }),
     onSuccess: async (contact) => {
@@ -115,7 +116,7 @@ export function ContactPage() {
                 busyLabel={t('contacts.saving')}
                 busy={save.isPending}
                 error={error}
-                onSubmit={(values, attributes) => save.mutate({ values, attributes })}
+                onSubmit={(values, attributes, tags) => save.mutate({ values, attributes, tags })}
                 onCancel={() => setEditing(false)}
               />
             ) : (

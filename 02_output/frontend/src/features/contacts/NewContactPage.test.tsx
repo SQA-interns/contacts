@@ -51,7 +51,8 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
     ]) {
       expect(field(label)).toBeInTheDocument();
     }
-    expect(screen.getAllByRole('textbox').length + screen.getAllByRole('combobox').length).toBe(11);
+    // the 11 fields and the field that adds a Tag
+    expect(screen.getAllByRole('textbox').length + screen.getAllByRole('combobox').length).toBe(12);
   });
 
   it('R-003-01 sends the typed fields to the Group and opens the new Contact', async () => {
@@ -184,5 +185,57 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
     expect(await screen.findByText('Ključ atributa se ponavlja.')).toBeInTheDocument();
     expect(field('Ključ 2')).toHaveAttribute('aria-invalid', 'true');
     expect(field('Ključ 2')).toHaveValue('A');
+  });
+  it('R-005-01 sends the typed Tags with the Contact', async () => {
+    vi.mocked(fetch).mockImplementation((url) =>
+      Promise.resolve(String(url).includes('/facets') ? answer({ tags: [] }) : answer(created, 201)),
+    );
+    renderPage();
+
+    await userEvent.type(field('Ime'), 'Ana');
+    await userEvent.type(field('Dodaj značko'), 'udelezenec2025{Enter}');
+    await save();
+
+    expect(await screen.findByText('Contact page')).toBeInTheDocument();
+    const post = vi.mocked(fetch).mock.calls.find(([, init]) => init?.method === 'POST');
+    expect(JSON.parse(String(post?.[1]?.body)).tags).toEqual(['udelezenec2025']);
+  });
+
+  it('R-005-07 suggests the Tags of the Group while typing', async () => {
+    vi.mocked(fetch).mockResolvedValue(answer({ tags: ['gospodar'] }));
+    renderPage();
+
+    await userEvent.type(field('Dodaj značko'), 'go');
+
+    const list = field('Dodaj značko').getAttribute('list');
+    await vi.waitFor(() =>
+      expect(document.querySelectorAll(`datalist[id="${list}"] option`)).toHaveLength(1),
+    );
+    expect(String(vi.mocked(fetch).mock.calls[0]?.[0])).toContain('/api/v1/groups/g1/facets');
+  });
+
+  it('R-005-02 shows the rule of the server next to the Tags and keeps them', async () => {
+    vi.mocked(fetch).mockImplementation((url) =>
+      Promise.resolve(
+        String(url).includes('/facets')
+          ? answer({ tags: [] })
+          : answer(
+              {
+                code: 'validation.failed',
+                message: 'x',
+                fieldErrors: [{ field: 'tags[0]', code: 'validation.tag_limit' }],
+              },
+              422,
+            ),
+      ),
+    );
+    renderPage();
+
+    await userEvent.type(field('Ime'), 'Ana');
+    await userEvent.type(field('Dodaj značko'), 'gost{Enter}');
+    await save();
+
+    expect(await screen.findByText('Kontakt ima lahko največ 50 značk.')).toBeInTheDocument();
+    expect(screen.getByText('gost')).toBeInTheDocument();
   });
 });

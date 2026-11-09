@@ -67,3 +67,9 @@ export async function getAttributeKeys(groupId: string): Promise<string[]> {
   );
   return facets.attributeKeys ?? [];
 }
+
+/** The Tag names of the Group, for suggestions (R-005-07): `GET /groups/{g}/facets`. */
+export async function getTagNames(groupId: string): Promise<string[]> {
+  const facets = await apiRequest<{ tags?: string[] }>(`/groups/${encodeURIComponent(groupId)}/facets`);
+  return facets.tags ?? [];
+}

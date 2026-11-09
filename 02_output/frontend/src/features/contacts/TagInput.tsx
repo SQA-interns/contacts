@@ -1,4 +1,5 @@
 import { useId, useState, type KeyboardEvent } from 'react';
+import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -65,7 +66,7 @@ export function TagInput({ tags, onChange, error, suggestions, onType }: TagInpu
                 aria-label={t('contacts.removeTag', { tag })}
                 onClick={() => onChange(tags.filter((other) => other !== tag))}
               >
-                ×
+                <X aria-hidden="true" className="size-4" />
               </Button>
             </li>
           ))}

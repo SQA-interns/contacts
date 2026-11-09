@@ -14,8 +14,8 @@ export function NewContactPage() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const create = useMutation({
-    mutationFn: (input: { values: ContactValues; attributes: AttributePair[] }) =>
-      createContact(groupId, { ...input.values, attributes: input.attributes }),
+    mutationFn: (input: { values: ContactValues; attributes: AttributePair[]; tags: string[] }) =>
+      createContact(groupId, { ...input.values, attributes: input.attributes, tags: input.tags }),
     onSuccess: async (contact) => {
       toast.success(t('contacts.created'));
       await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
@@ -44,7 +44,7 @@ export function NewContactPage() {
         busyLabel={t('contacts.saving')}
         busy={create.isPending}
         error={error}
-        onSubmit={(values, attributes) => create.mutate({ values, attributes })}
+        onSubmit={(values, attributes, tags) => create.mutate({ values, attributes, tags })}
         onCancel={() => void navigate(`/groups/${groupId}/contacts`)}
       />
     </>

@@ -6,6 +6,7 @@ import { errorKey } from '@/api/errors';
 import {
   CONTACT_FIELDS,
   getAttributeKeys,
+  getTagNames,
   type AttributePair,
   type ContactField,
   type ContactFields,
@@ -18,6 +19,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { countryName } from '@/i18n/format';
 import type { Language } from '@/i18n';
 import { AttributeEditor } from './AttributeEditor';
+import { TagInput } from './TagInput';
 import { COUNTRY_CODES } from './countries';
 
 export type ContactValues = Record<ContactField, string>;
@@ -39,12 +41,12 @@ function errorCodes(error: ApiError | null): Partial<Record<string, string>> {
 
 interface ContactFormProps {
   groupId: string;
-  initial?: ContactFields & { attributes?: AttributePair[] };
+  initial?: ContactFields & { attributes?: AttributePair[]; tags?: string[] };
   submitLabel: string;
   busyLabel: string;
   busy: boolean;
   error: ApiError | null;
-  onSubmit: (values: ContactValues, attributes: AttributePair[]) => void;
+  onSubmit: (values: ContactValues, attributes: AttributePair[], tags: string[]) => void;
   onCancel?: () => void;
 }
 
@@ -62,6 +64,14 @@ export function ContactForm({
   const { t, i18n } = useTranslation();
   const [values, setValues] = useState(() => valuesOf(initial));
   const [pairs, setPairs] = useState<AttributePair[]>(() => initial?.attributes ?? []);
+  const [tags, setTags] = useState<string[]>(() => initial?.tags ?? []);
+  const [typedTag, setTypedTag] = useState('');
+  const tagSuggestions = useQuery({
+    queryKey: ['facets', groupId, 'tags'],
+    queryFn: () => getTagNames(groupId),
+    enabled: typedTag.length > 0,
+    retry: false,
+  });
   const keys = useQuery({
     queryKey: ['facets', groupId, 'attributeKeys'],
     queryFn: () => getAttributeKeys(groupId),
@@ -78,12 +88,13 @@ export function ContactForm({
   const set = (field: ContactField, value: string) => setValues((v) => ({ ...v, [field]: value }));
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    onSubmit(values, pairs);
+    onSubmit(values, pairs, tags);
   };
   const attributeErrors: Record<string, string | undefined> = {};
   for (const [field, code] of Object.entries(codes)) {
     if (field.startsWith('attributes') && code) attributeErrors[field] = t(errorKey(code));
   }
+  const tagError = Object.entries(codes).find(([field, code]) => field.startsWith('tags') && code);
   const messageOf = (field: ContactField) => (codes[field] ? t(errorKey(codes[field])) : undefined);
 
   return (
@@ -168,6 +179,13 @@ export function ContactForm({
         onChange={setPairs}
         errors={attributeErrors}
         suggestions={keys.data ?? []}
+      />
+      <TagInput
+        tags={tags}
+        onChange={setTags}
+        onType={setTypedTag}
+        error={tagError?.[1] ? t(errorKey(tagError[1])) : undefined}
+        suggestions={tagSuggestions.data ?? []}
       />
       <div className="sticky bottom-0 flex justify-end gap-3 bg-surface py-3 sm:static">
         {onCancel ? (

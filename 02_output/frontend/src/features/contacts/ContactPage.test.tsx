@@ -276,4 +276,26 @@ describe('ContactPage tabs (R-016-03, R-016-04)', () => {
 
     expect(screen.queryByRole('button', { name: /atribut/i })).not.toBeInTheDocument();
   });
+
+  it('R-005-01, R-005-06 saves a Tag put on and a Tag taken off with the version', async () => {
+    backend('EDITOR', { ...ana, tags: ['udelezenec2025', 'stara'] });
+    renderPage();
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Uredi' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Odstrani značko stara' }));
+    await userEvent.type(screen.getByLabelText('Dodaj značko'), 'neObvescaj{Enter}');
+    await userEvent.click(screen.getByRole('button', { name: 'Shrani' }));
+
+    await vi.waitFor(() => expect(putBody().version).toBe(2));
+    expect(putBody().tags).toEqual(['udelezenec2025', 'neObvescaj']);
+  });
+
+  it('R-005-10 gives a Viewer no control to change a Tag', async () => {
+    backend('VIEWER', ana);
+    renderPage();
+
+    await screen.findByText('udelezenec2025');
+
+    expect(screen.queryByRole('button', { name: /značk/i })).not.toBeInTheDocument();
+  });
 });
