@@ -109,6 +109,15 @@
     "emptyBody": "Deleted groups stay here for 30 days.",
     "deletedLine": "Deleted: {{date}}"
   },
+  "deleteGroup": {
+    "title": "Delete group {{name}}?",
+    "body": "The group and all its contacts stay in the group trash for 30 days, where you can restore it. Then it is deleted permanently. It is hidden from its members at once.",
+    "nameLabel": "Type the group name to confirm",
+    "submit": "Delete group",
+    "busy": "Deleting …",
+    "done": "The group is in the group trash.",
+    "openTrash": "Open group trash"
+  },
   "trash": {
     "title": "Trash",
     "intro": "Contacts in the trash are deleted permanently after 30 days. Until then you can restore them.",

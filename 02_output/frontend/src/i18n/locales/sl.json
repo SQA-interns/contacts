@@ -109,6 +109,15 @@
     "emptyBody": "Izbrisane skupine ostanejo tu 30 dni.",
     "deletedLine": "Izbrisano: {{date}}"
   },
+  "deleteGroup": {
+    "title": "Izbrišem skupino {{name}}?",
+    "body": "Skupina bo z vsemi kontakti 30 dni v košu skupin, kjer jo lahko obnovite. Nato bo trajno izbrisana. Članom bo takoj skrita.",
+    "nameLabel": "Za potrditev vpišite ime skupine",
+    "submit": "Izbriši skupino",
+    "busy": "Brisanje …",
+    "done": "Skupina je v košu skupin.",
+    "openTrash": "Odpri koš skupin"
+  },
   "trash": {
     "title": "Koš",
     "intro": "Kontakti v košu se po 30 dneh trajno izbrišejo. Do takrat jih lahko obnovite.",

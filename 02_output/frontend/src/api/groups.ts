@@ -20,6 +20,11 @@ export function createGroup(name: string): Promise<GroupSummary> {
   return apiRequest<GroupSummary>('/groups', { method: 'POST', body: { name } });
 }
 
+/** `POST /groups/{g}/trash`: moves the Group to the Group Trash after the Owner typed its name (R-020-01). */
+export function trashGroup(groupId: string, name: string): Promise<void> {
+  return apiRequest(`/groups/${encodeURIComponent(groupId)}/trash`, { method: 'POST', body: { name } });
+}
+
 /** Contract schema `GroupTrashItem`: a Group in the Group Trash. */
 export interface GroupTrashItem {
   id: string;
