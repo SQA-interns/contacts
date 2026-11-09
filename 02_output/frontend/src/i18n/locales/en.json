@@ -18,7 +18,8 @@
     "trash": "Trash",
     "activity": "Activity",
     "members": "Members",
-    "invitations": "Invitations"
+    "invitations": "Invitations",
+    "duplicates": "Duplicates"
   },
   "language": {
     "label": "Language",
@@ -581,5 +582,45 @@
     "restored": "Version {{number}} is restored as v{{version}}.",
     "refusedStale": "The current version is shown. Nothing was restored.",
     "refusedNothing": "Nothing was restored."
+  },
+  "duplicates": {
+    "title": "Duplicates",
+    "intro": "Contacts that are probably the same person. Nothing changes until you merge Contacts.",
+    "searchAgain": "Search again",
+    "searching": "Searching for duplicate Contacts …",
+    "noPermission": "You have no permission to search for duplicate Contacts.",
+    "emptyTitle": "No duplicates found",
+    "emptyBody": "We found no Contacts in this Group that are the same person.",
+    "createdOn": "created {{date}}",
+    "mark": {
+      "certain": "Certain",
+      "probable": "Probable"
+    },
+    "reason": {
+      "same_email": {
+        "one": "{{count}} contacts share the e-mail {{email}}",
+        "two": "{{count}} contacts share the e-mail {{email}}",
+        "few": "{{count}} contacts share the e-mail {{email}}",
+        "other": "{{count}} contacts share the e-mail {{email}}"
+      },
+      "same_name_company": {
+        "one": "{{count}} contacts have the same name and company: {{name}}",
+        "two": "{{count}} contacts have the same name and company: {{name}}",
+        "few": "{{count}} contacts have the same name and company: {{name}}",
+        "other": "{{count}} contacts have the same name and company: {{name}}"
+      },
+      "same_name_phone": {
+        "one": "{{count}} contacts have the same name and phone: {{name}}",
+        "two": "{{count}} contacts have the same name and phone: {{name}}",
+        "few": "{{count}} contacts have the same name and phone: {{name}}",
+        "other": "{{count}} contacts have the same name and phone: {{name}}"
+      },
+      "same_name_company_or_phone": {
+        "one": "{{count}} contacts have the same name and company or phone: {{name}}",
+        "two": "{{count}} contacts have the same name and company or phone: {{name}}",
+        "few": "{{count}} contacts have the same name and company or phone: {{name}}",
+        "other": "{{count}} contacts have the same name and company or phone: {{name}}"
+      }
+    }
   }
 }

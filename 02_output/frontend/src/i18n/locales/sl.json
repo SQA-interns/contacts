@@ -18,7 +18,8 @@
     "trash": "Koš",
     "activity": "Dejavnost",
     "members": "Člani",
-    "invitations": "Povabila"
+    "invitations": "Povabila",
+    "duplicates": "Podvojeni kontakti"
   },
   "language": {
     "label": "Jezik",
@@ -581,5 +582,45 @@
     "restored": "Različica {{number}} je obnovljena kot v{{version}}.",
     "refusedStale": "Prikazana je trenutna različica. Nič ni bilo obnovljeno.",
     "refusedNothing": "Nič ni bilo obnovljeno."
+  },
+  "duplicates": {
+    "title": "Podvojeni kontakti",
+    "intro": "Kontakti, ki so verjetno ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.",
+    "searchAgain": "Poišči znova",
+    "searching": "Iskanje podvojenih kontaktov …",
+    "noPermission": "Za iskanje podvojenih kontaktov nimate pravice.",
+    "emptyTitle": "Ni podvojenih kontaktov",
+    "emptyBody": "V tej skupini nismo našli kontaktov, ki bi bili ista oseba.",
+    "createdOn": "ustvarjen {{date}}",
+    "mark": {
+      "certain": "Zanesljivo",
+      "probable": "Verjetno"
+    },
+    "reason": {
+      "same_email": {
+        "one": "{{count}} kontakt ima e-pošto {{email}}",
+        "two": "{{count}} kontakta imata e-pošto {{email}}",
+        "few": "{{count}} kontakti imajo e-pošto {{email}}",
+        "other": "{{count}} kontaktov ima e-pošto {{email}}"
+      },
+      "same_name_company": {
+        "one": "{{count}} kontakt ima enako ime in podjetje: {{name}}",
+        "two": "{{count}} kontakta imata enako ime in podjetje: {{name}}",
+        "few": "{{count}} kontakti imajo enako ime in podjetje: {{name}}",
+        "other": "{{count}} kontaktov ima enako ime in podjetje: {{name}}"
+      },
+      "same_name_phone": {
+        "one": "{{count}} kontakt ima enako ime in telefon: {{name}}",
+        "two": "{{count}} kontakta imata enako ime in telefon: {{name}}",
+        "few": "{{count}} kontakti imajo enako ime in telefon: {{name}}",
+        "other": "{{count}} kontaktov ima enako ime in telefon: {{name}}"
+      },
+      "same_name_company_or_phone": {
+        "one": "{{count}} kontakt ima enako ime ter podjetje ali telefon: {{name}}",
+        "two": "{{count}} kontakta imata enako ime ter podjetje ali telefon: {{name}}",
+        "few": "{{count}} kontakti imajo enako ime ter podjetje ali telefon: {{name}}",
+        "other": "{{count}} kontaktov ima enako ime ter podjetje ali telefon: {{name}}"
+      }
+    }
   }
 }

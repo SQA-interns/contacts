@@ -65,6 +65,7 @@ describe('GroupShell: Group bar and Group navigation (WF-06..WF-13, F-01, F-02)'
       'Kontakti',
       'Značke',
       'Koš',
+      'Podvojeni kontakti',
       'Dejavnost',
       'Člani',
       'Povabila',
@@ -79,10 +80,11 @@ describe('GroupShell: Group bar and Group navigation (WF-06..WF-13, F-01, F-02)'
     const tabs = await tabBar();
 
     expect(tabs.getByRole('link', { name: 'Koš' })).toBeInTheDocument();
+    expect(tabs.getByRole('link', { name: 'Podvojeni kontakti' })).toBeInTheDocument();
     expect(tabs.queryByRole('link', { name: 'Povabila' })).not.toBeInTheDocument();
   });
 
-  it('shows a Viewer only the screens a Viewer may open (R-006-01, R-012-08, R-017-08, R-015-01)', async () => {
+  it('shows a Viewer only the screens a Viewer may open (R-006-01, R-012-08, R-017-08, R-015-01, R-024-09)', async () => {
     renderShell('VIEWER');
 
     const tabs = await tabBar();
@@ -104,7 +106,7 @@ describe('GroupShell: Group bar and Group navigation (WF-06..WF-13, F-01, F-02)'
 
     const menu = await screen.findByRole('menu');
     expect(within(menu).getByRole('menuitem', { name: 'Značke' })).toHaveAttribute('href', '/groups/g1/tags');
-    expect(within(menu).getAllByRole('menuitem')).toHaveLength(6);
+    expect(within(menu).getAllByRole('menuitem')).toHaveLength(7);
   });
 
   it('shows the page of the route inside the shell', async () => {

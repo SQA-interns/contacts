@@ -17,7 +17,7 @@ interface GroupTab {
   path: string;
   /** Key below `groupNav` in the message catalog. */
   key: string;
-  /** Roles that may open the screen (R-006-01, R-012-08, R-014-10, R-015-01, R-017-08). */
+  /** Roles that may open the screen (R-006-01, R-012-08, R-014-10, R-015-01, R-017-08, R-024-09). */
   roles: Role[];
 }
 
@@ -25,6 +25,7 @@ const TABS: GroupTab[] = [
   { path: 'contacts', key: 'contacts', roles: ['OWNER', 'EDITOR', 'VIEWER'] },
   { path: 'tags', key: 'tags', roles: ['OWNER', 'EDITOR'] },
   { path: 'trash', key: 'trash', roles: ['OWNER', 'EDITOR'] },
+  { path: 'duplicates', key: 'duplicates', roles: ['OWNER', 'EDITOR'] },
   { path: 'activity', key: 'activity', roles: ['OWNER', 'EDITOR'] },
   { path: 'members', key: 'members', roles: ['OWNER', 'EDITOR', 'VIEWER'] },
   { path: 'invitations', key: 'invitations', roles: ['OWNER'] },
