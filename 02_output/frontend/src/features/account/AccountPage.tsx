@@ -45,6 +45,14 @@ export function AccountPage() {
     },
   });
 
+  /** A Group the User deleted from the list is no longer in the way; with none left the refusal goes. */
+  function dropGroup(id: string) {
+    setRefusal((current) => {
+      const groups = current?.groups.filter((g) => g.id !== id) ?? [];
+      return groups.length > 0 && current ? { ...current, groups } : undefined;
+    });
+  }
+
   return (
     <>
       <PageHeader title={t('account.title')} />
@@ -77,7 +85,7 @@ export function AccountPage() {
               {t('account.deleteButton')}
             </Button>
           </section>
-          {refusal ? <RefusalNotice refusal={refusal} onGroupDeleted={(id) => dropGroup(id)} /> : null}
+          {refusal ? <RefusalNotice refusal={refusal} onGroupDeleted={dropGroup} /> : null}
         </div>
       )}
       <ConfirmDialog
@@ -92,14 +100,6 @@ export function AccountPage() {
       />
     </>
   );
-
-  /** A Group the User deleted from the list is no longer in the way; with none left the refusal goes. */
-  function dropGroup(id: string) {
-    setRefusal((current) => {
-      const groups = current?.groups.filter((g) => g.id !== id) ?? [];
-      return groups.length > 0 && current ? { ...current, groups } : undefined;
-    });
-  }
 }
 
 /** The refusal of R-021-02: the Groups with what to do for each (hand over, delete, or wait in the Group Trash). */
@@ -161,13 +161,7 @@ function RefusalNotice({
           </ul>
         </>
       ) : null}
-      <DeleteGroupDialog
-        group={deleting}
-        onClose={() => setDeleting(undefined)}
-        onDeleted={() => {
-          if (deleting) onGroupDeleted(deleting.id);
-        }}
-      />
+      <DeleteGroupDialog group={deleting} onClose={() => setDeleting(undefined)} onDeleted={onGroupDeleted} />
     </Notice>
   );
 }

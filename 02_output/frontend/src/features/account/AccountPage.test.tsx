@@ -153,6 +153,37 @@ describe('AccountPage WF-16 (US-021)', () => {
     expect(client.signOut).not.toHaveBeenCalled();
   });
 
+  it('R-021-02 a Group deleted from the refusal leaves the list; with none left the refusal goes', async () => {
+    const sent = backend(() =>
+      soleOwner([
+        { id: 'g1', name: 'Acme', inTrash: false, daysLeft: null },
+        { id: 'g2', name: 'Beta', inTrash: false, daysLeft: null },
+      ]),
+    );
+    renderPage();
+    const dialog = await openDialog();
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Izbriši račun' }));
+    const alert = await screen.findByRole('alert');
+
+    for (const name of ['Acme', 'Beta']) {
+      await userEvent.click(within(alert).getByRole('button', { name: `Izbriši skupino ${name}` }));
+      const groupDialog = await screen.findByRole('dialog', { name: `Izbrišem skupino ${name}?` });
+      await userEvent.type(within(groupDialog).getByLabelText('Za potrditev vpišite ime skupine'), name);
+      await userEvent.click(within(groupDialog).getByRole('button', { name: 'Izbriši skupino' }));
+      await vi.waitFor(() =>
+        expect(sent.some((s) => s.method === 'POST' && s.url.includes(name === 'Acme' ? 'g1' : 'g2'))).toBe(
+          true,
+        ),
+      );
+      if (name === 'Acme') {
+        await vi.waitFor(() => expect(within(alert).queryByText('Acme')).not.toBeInTheDocument());
+        expect(within(alert).getByText('Beta')).toBeInTheDocument();
+      }
+    }
+
+    await vi.waitFor(() => expect(screen.queryByRole('alert')).not.toBeInTheDocument());
+  });
+
   it('R-021-02 any other failure shows a plain message and keeps the User signed in', async () => {
     backend(() => answer({ code: 'server.error', message: 'x' }, 500));
     const client = renderPage();

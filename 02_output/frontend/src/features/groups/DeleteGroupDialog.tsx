@@ -20,8 +20,8 @@ interface DeleteGroupDialogProps {
   /** The Group to delete; the dialog is open while there is one. */
   group: { id: string; name: string } | undefined;
   onClose: () => void;
-  /** Called after the Group went to the Group Trash. */
-  onDeleted?: () => void;
+  /** Called with the id of the Group after it went to the Group Trash. */
+  onDeleted?: (groupId: string) => void;
 }
 
 interface Deletion {
@@ -41,12 +41,12 @@ export function DeleteGroupDialog({ group, onClose, onDeleted }: DeleteGroupDial
   const navigate = useNavigate();
   const remove = useMutation({
     mutationFn: ({ id, name }: Deletion) => trashGroup(id, name),
-    onSuccess: async (_none, { toastId }) => {
+    onSuccess: async (_none, { id, toastId }) => {
       toast.success(t('deleteGroup.done'), {
         id: toastId,
         action: { label: t('deleteGroup.openTrash'), onClick: () => void navigate('/group-trash') },
       });
-      onDeleted?.();
+      onDeleted?.(id);
       await queryClient.invalidateQueries({ queryKey: ['groups'] });
       await queryClient.invalidateQueries({ queryKey: ['group-trash'] });
     },
