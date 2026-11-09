@@ -3,6 +3,7 @@ package si.contactgroups.persistence;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -60,27 +61,56 @@ public class HistoryRepository {
         .update();
   }
 
-  /** One page of the entries of a Contact, newest first. */
-  public List<HistoryEntry> pageOfContact(UUID groupId, UUID contactId, int limit, int offset) {
+  /**
+   * The Contact and every Contact merged into it, directly or through an earlier merge of those
+   * (R-026-07). The ids are read as text so that an entry whose ids were replaced by "removed"
+   * (R-013-08) is skipped and never breaks the query.
+   */
+  public List<UUID> contactAndMergedIds(UUID groupId, UUID contactId) {
+    List<String> found =
+        jdbc.sql(
+                "WITH RECURSIVE related(id) AS (SELECT CAST(:contactId AS text) UNION"
+                    + " SELECT m.id FROM related r JOIN history_entry h ON h.group_id = :groupId"
+                    + " AND h.action = 'CONTACTS_MERGED' AND CAST(h.contact_id AS text) = r.id"
+                    + " CROSS JOIN LATERAL jsonb_array_elements_text(h.details -> 'mergedContactIds')"
+                    + " AS m(id)) SELECT id FROM related")
+            .param(GROUP_ID, groupId)
+            .param(CONTACT_ID, contactId)
+            .query(String.class)
+            .list();
+    return found.stream().map(HistoryRepository::uuidOrNull).filter(Objects::nonNull).toList();
+  }
+
+  private static UUID uuidOrNull(String text) {
+    try {
+      return UUID.fromString(text);
+    } catch (IllegalArgumentException e) {
+      return null;
+    }
+  }
+
+  /** One page of the entries of the Contacts {@code contactIds}, newest first. */
+  public List<HistoryEntry> pageOfContacts(
+      UUID groupId, List<UUID> contactIds, int limit, int offset) {
     return jdbc.sql(
             "SELECT id, occurred_at, user_name, user_email, action, contact_id,"
                 + " CAST(details AS text) AS details FROM history_entry"
-                + " WHERE group_id = :groupId AND contact_id = :contactId"
+                + " WHERE group_id = :groupId AND contact_id IN (:contactIds)"
                 + " ORDER BY occurred_at DESC, id DESC LIMIT :limit OFFSET :offset")
         .param(GROUP_ID, groupId)
-        .param(CONTACT_ID, contactId)
+        .param("contactIds", contactIds)
         .param("limit", limit)
         .param("offset", offset)
         .query(HistoryRepository::entry)
         .list();
   }
 
-  public long countOfContact(UUID groupId, UUID contactId) {
+  public long countOfContacts(UUID groupId, List<UUID> contactIds) {
     return jdbc.sql(
             "SELECT count(*) FROM history_entry WHERE group_id = :groupId"
-                + " AND contact_id = :contactId")
+                + " AND contact_id IN (:contactIds)")
         .param(GROUP_ID, groupId)
-        .param(CONTACT_ID, contactId)
+        .param("contactIds", contactIds)
         .query(Long.class)
         .single();
   }

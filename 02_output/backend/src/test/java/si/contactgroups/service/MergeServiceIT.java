@@ -113,4 +113,41 @@ class MergeServiceIT extends GroupTrashTestSupport {
     assertThat(historyOf(a).stream().filter(e -> e.action() == HistoryAction.CONTACTS_MERGED))
         .hasSize(1);
   }
+
+  @Test
+  void r_026_07_one_entry_lists_the_contacts_and_values_and_the_survivor_shows_the_earlier_ones() {
+    Contact a = contact("Ana", null);
+    Contact b = contact("Anica", "040 123 456");
+    contacts.update(acme, ana.id(), b.id(), b.version(), data("Anica", "041 999 888"), null, null);
+    Contact bNow = contacts.get(acme, b.id());
+
+    merges.merge(acme, ana.id(), command(a, List.of(a, bNow), data("Anica", "041 999 888")));
+
+    List<HistoryEntry> entries = historyOf(a);
+    HistoryEntry merge =
+        entries.stream()
+            .filter(e -> e.action() == HistoryAction.CONTACTS_MERGED)
+            .findFirst()
+            .orElseThrow();
+    assertThat(merge.details())
+        .contains(a.id().toString(), b.id().toString(), "Anica", "041 999 888");
+    assertThat(entries.stream().filter(e -> b.id().equals(e.contactId())).map(HistoryEntry::action))
+        .contains(HistoryAction.CONTACT_CREATED, HistoryAction.CONTACT_EDITED);
+    assertThat(history.contactHistory(acme, a.id(), 1).total()).isEqualTo(entries.size());
+  }
+
+  @Test
+  void r_026_07_a_survivor_merged_again_also_shows_the_history_of_the_earlier_merge() {
+    Contact a = contact("Ana", null);
+    Contact b = contact("Anica", null);
+    Contact c = contact("Anja", null);
+    merges.merge(acme, ana.id(), command(b, List.of(b, c), data("Anica", null)));
+    Contact bNow = contacts.get(acme, b.id());
+    Contact aNow = contacts.get(acme, a.id());
+
+    merges.merge(acme, ana.id(), command(aNow, List.of(aNow, bNow), data("Ana", null)));
+
+    assertThat(historyOf(a).stream().map(HistoryEntry::contactId)).contains(a.id(), b.id(), c.id());
+    assertThat(historyOf(b).stream().map(HistoryEntry::contactId)).doesNotContain(a.id());
+  }
 }

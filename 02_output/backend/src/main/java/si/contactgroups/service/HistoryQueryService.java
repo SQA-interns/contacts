@@ -27,15 +27,19 @@ public class HistoryQueryService {
     this.contacts = contacts;
   }
 
-  /** One page of a Contact's History, newest first; the Contact may be in Trash (R-016-08). */
+  /**
+   * One page of a Contact's History, newest first, with the History of the Contacts merged into it
+   * (R-026-07); the Contact may be in Trash (R-016-08).
+   */
   public Page contactHistory(UUID groupId, UUID contactId, int page) {
     if (!contacts.existsIncludingTrash(groupId, contactId)) {
       throw new ContactNotFoundException();
     }
+    List<UUID> related = history.contactAndMergedIds(groupId, contactId);
     int number = Math.max(page, 1);
     List<HistoryEntry> items =
-        history.pageOfContact(groupId, contactId, PAGE_SIZE, (number - 1) * PAGE_SIZE);
-    return new Page(items, number, PAGE_SIZE, history.countOfContact(groupId, contactId));
+        history.pageOfContacts(groupId, related, PAGE_SIZE, (number - 1) * PAGE_SIZE);
+    return new Page(items, number, PAGE_SIZE, history.countOfContacts(groupId, related));
   }
 
   /**
