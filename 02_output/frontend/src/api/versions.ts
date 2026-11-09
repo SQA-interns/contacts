@@ -48,3 +48,19 @@ export function compareVersion(
 ): Promise<VersionComparison> {
   return apiRequest<VersionComparison>(`${base(groupId, contactId)}/${number}/compare`);
 }
+
+/**
+ * `POST /groups/{g}/contacts/{c}/versions/{n}/restore` (R-023-01): saves the content of Version `number`
+ * as a new Version; `version` is the current version number the user saw (R-023-04).
+ */
+export function restoreVersion(
+  groupId: string,
+  contactId: string,
+  number: number,
+  version: number,
+): Promise<Contact> {
+  return apiRequest<Contact>(`${base(groupId, contactId)}/${number}/restore`, {
+    method: 'POST',
+    body: { version },
+  });
+}
