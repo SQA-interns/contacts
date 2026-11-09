@@ -1,0 +1,25 @@
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.299 s <<< FAILURE! -- in si.contactgroups.security.FirebaseKeyFetchTest
+[ERROR] si.contactgroups.security.FirebaseKeyFetchTest.theDefaultTransportReadsAGzipResponseLikeGoogleKeyEndpoint -- Time elapsed: 0.289 s <<< ERROR!
+java.util.zip.ZipException: Not in GZIP format
+	at java.base/java.util.zip.GZIPInputStream.readHeader(GZIPInputStream.java:197)
+	at java.base/java.util.zip.GZIPInputStream.<init>(GZIPInputStream.java:81)
+	at java.base/java.util.zip.GZIPInputStream.<init>(GZIPInputStream.java:112)
+	at com.google.api.client.http.GzipSupport.newGzipInputStream(GzipSupport.java:13)
+	at com.google.api.client.http.HttpResponse.getContent(HttpResponse.java:364)
+	at com.google.api.client.http.HttpResponse.parseAsString(HttpResponse.java:508)
+	at si.contactgroups.security.FirebaseKeyFetchTest.theDefaultTransportReadsAGzipResponseLikeGoogleKeyEndpoint(FirebaseKeyFetchTest.java:56)
+
+[ERROR] Errors: 
+[ERROR]   FirebaseKeyFetchTest.theDefaultTransportReadsAGzipResponseLikeGoogleKeyEndpoint:56 » Zip Not in GZIP format
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.4:test (default-test) on project contact-groups-backend: 
+[ERROR] 
+[ERROR] See /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

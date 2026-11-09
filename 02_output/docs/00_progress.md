@@ -5,19 +5,19 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S10 /review INC-2 (third look: the human's production stack with the key and a real sign-in; no code changed)
+- Session: S11 /implement US-001 (F-26)
 - Result: done
-- Gate: DoD-I not met: new **F-26 (Critical)**: a real Firebase token is refused (401 `auth.token_invalid`) because the Admin SDK fails with `Error while fetching public key certificates: Not in GZIP format` (mixed google-http-client 1.46.3 / apache-v2 1.45.2 is the likely cause); F-14 (High) cannot be shown until F-26 is fixed; new Low F-25
-- Notes for the next session: NEXT IS `/implement US-001` FOR F-26 (not `/review`): fix the verifier or the dependency set, add a test of the real key-fetch path (emulator tokens never run it) and a log line with the class of the cause. The reproduction needs no token: load the libraries of `app.jar` and verify a forged RS256 token (see the "Third look" table of `docs/04_review-INC-2.md`). After the fix the human signs in again at `https://localhost:8443` (rebuild both images with `docker build`, then `/review INC-2`). S10 only changed `docs/04_review-INC-2.md` and this file. The human runs `docker-compose.prod.yml` on this machine (`02_output/production.env`, git-excluded; key outside the repo). Plain HTTP answers 403 `https.required`, so a browser sign-in needs a TLS proxy or the header `X-Forwarded-Proto: https`; use `localhost` or add `127.0.0.1` to the Firebase authorised domains, and keep `CORS_ALLOWED_ORIGIN` equal to the browser origin. The text below is that of S9 and still holds. Notes of S9: the next command is `/review INC-2`, not `/implement US-021` as the skill's rule says, because the code of F-14 is done and there is nothing for `/implement` to change; the human may still ask for D-70 option 2 or the 503 of F-23 with `/implement US-021`. WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account (role "Firebase Authentication Admin"), put the key on the server readable by uid 10001, set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, show a first sign-in (`GET /me` 200), `DELETE /me` and a refused token of a deleted account against the real project; the next review closes F-14 only with that. F-19 needs the human's answer (D-68 d). Low and for the release notes: F-20..F-24, F-06..F-09, F-11, F-12 (F-24: ADR-04, `secrets.env.example`, `configuration.schema.json` and README still say no service account is needed). Review evidence: `logs/review2-INC-2/`, `logs/screens/review2-INC-2/`. UI runs need `scripts/test-stack.sh up` (it is down now). Commit subjects: count the hash too, at most 72 characters.
+- Gate: DoD-S for F-26 passed in code (`./mvnw verify -Pquality`: 366 tests, only the known EX-007-05 fails; format, Checkstyle, SpotBugs, PMD, gitleaks clean); the real sign-in is not shown, it needs the human
+- Notes for the next session: F-26 fixed in commit `b296248` and recorded as D-78. The cause was NOT the mixed Google libraries of the review (tried, no effect): the SDK's default `ApacheHttp2Transport` (HttpClient 5) inflates the gzip body of Google's keys and the Google client inflates it again. `FirebaseConfig.options` now sets `NetHttpTransport`; `pom.xml` unchanged. New `FirebaseKeyFetchTest` covers the key-fetch path; `FirebaseTokenFilter` logs the class chain of a rejected token. NEXT: the human rebuilds both images (`docker build`), restarts `docker-compose.prod.yml` and signs in again at `https://localhost:8443`; then `/review INC-2` closes F-26 and, with the three results of D-70 (c) (first sign-in `GET /me` 200, `DELETE /me`, refused token of the deleted account), F-14. The text of S10 about the TLS proxy, CORS and `X-Forwarded-Proto` still holds. Low and for the release notes: F-19..F-25, F-06..F-09, F-11, F-12. Evidence: `logs/f26-*.log`.
 
 ## Next
-- Command: /implement US-001
-- Waiting for: D-68 d (F-19); D-70 c (sign-in, `DELETE /me`, refused token) after F-26 is fixed
+- Command: /review INC-2
+- Waiting for: the human's rebuild and real sign-in (D-70 c); D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
 |---|---|---|---|
-| US-001 | 1 | done | passed (DoD-S-07: two subjects over 72 characters) |
+| US-001 | 1 | done | passed (DoD-S-07: two subjects over 72 characters; F-26 fixed, D-78, real sign-in waits for the human) |
 | US-002 | 1 | done | passed (DoD-S-01: EX-002-06/07 wait for US-020/US-014, D-42; DoD-S-07: one subject over 72 characters) |
 | US-003 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-007, US-014, US-004, US-005; DoD-S-05 screens; DoD-S-07: size, D-46) |
 | US-004 | 1 | done | passed in part (DoD-S-01: AC-004-04/07/08/09 wait for US-009, US-014; DoD-S-05 screens, D-48) |

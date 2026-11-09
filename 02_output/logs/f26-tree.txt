@@ -1,0 +1,24 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< si.contactgroups:contact-groups-backend >---------------
+[INFO] Building Contact Groups backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.9.0:tree (default-cli) @ contact-groups-backend ---
+[INFO] si.contactgroups:contact-groups-backend:jar:1.0.0
+[INFO] +- com.google.firebase:firebase-admin:jar:9.5.0:compile
+[INFO] |  +- com.google.auth:google-auth-library-oauth2-http:jar:1.33.1:compile
+[INFO] |  |  \- com.google.http-client:google-http-client-gson:jar:1.46.2:compile
+[INFO] |  +- com.google.api-client:google-api-client:jar:2.7.2:compile
+[INFO] |  |  +- com.google.http-client:google-http-client-apache-v2:jar:1.45.2:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpcore:jar:4.4.16:compile
+[INFO] |  |  \- org.apache.httpcomponents:httpclient:jar:4.5.14:compile
+[INFO] |  \- com.google.http-client:google-http-client:jar:1.46.3:compile
+[INFO] \- com.google.http-client:google-http-client-jackson2:jar:1.46.3:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.620 s
+[INFO] Finished at: 2026-11-09T21:18:53+01:00
+[INFO] ------------------------------------------------------------------------

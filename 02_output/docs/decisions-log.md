@@ -858,3 +858,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-78: F-26 fixed (real Firebase tokens were refused: "Not in GZIP format")
+- Timestamp: 2026-11-09
+- Session: S11 /implement US-001 (F-26)
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-26 (`docs/04_review-INC-2.md`, Critical). (a) The cause named in the review (mixed `google-http-client` 1.46.3, `-apache-v2` 1.45.2, `-gson` 1.46.2) is **not** the cause: with all three at 1.46.3 the failure stayed (tried, reverted). The real cause: `FirebaseOptions` without a transport uses the SDK's own `ApacheHttp2Transport` (Apache HttpClient 5, here 5.6.5 from D-02/D-10), which inflates a gzip response by itself; `google-http-client` then sees `Content-Encoding: gzip` and inflates the already plain body, so `GZIPInputStream` throws. A call to Google's key endpoint (`/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com`) with the default options fails the same way from a scratch program; with `NetHttpTransport` it returns the keys. (b) Fix: `FirebaseConfig.options(...)` sets `NetHttpTransport` (already part of `google-http-client`, no new dependency, no version change, `pom.xml` unchanged). The Admin API calls (`getUser`, `deleteUser`) go through the same options; the OAuth token exchange of the service account uses the credentials' own default transport (not changed, not exercised here). (c) `FirebaseKeyFetchTest` serves a gzip response from a local socket and reads it with the transport of `FirebaseConfig`: it fails with the SDK default and passes with the fix, so the real key-fetch path is now covered without a token. (d) `FirebaseTokenFilter` logs `token rejected on <method> <path>: <class chain>` (class names only, no message, no token), so a failure such as this one is visible in the backend log (second defect of F-26). (e) Full run `./mvnw verify -Pquality`: 366 tests, 1 failure, the known `Us007ContactListAcceptanceIT.ex_007_05_sort_ignores_accents` (frozen test contradicts R-007-03, D-51); Spotless, Checkstyle (it refused a `com.sun` import in the first version of the test: replaced by a `ServerSocket`), SpotBugs, PMD pass with the tests skipped; gitleaks over the staged change finds nothing. (f) Not shown here: a real sign-in (needs the human's Firebase project): the images must be rebuilt with `docker build` and the human signs in again; F-14 stays open until then (D-70 c).
+- Options: 1 (default) `NetHttpTransport` in `FirebaseConfig`. 2 keep the SDK transport and exclude or pin `httpclient5` to a version that does not inflate (changes D-02/D-10 pins, needs the human). 3 a custom `HttpTransport` wrapper that disables content compression (more code to own).
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
