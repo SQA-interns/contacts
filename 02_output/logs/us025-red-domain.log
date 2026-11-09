@@ -1,0 +1,51 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[28,24] incompatible types: inference variable E has incompatible bounds
+    equality constraints: si.contactgroups.domain.ContactListItem
+    lower bounds: java.util.UUID
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[37,32] cannot find symbol
+  symbol:   variable DismissedSets
+  location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[44,32] cannot find symbol
+  symbol:   variable DismissedSets
+  location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[51,32] cannot find symbol
+  symbol:   variable DismissedSets
+  location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[58,32] cannot find symbol
+  symbol:   variable DismissedSets
+  location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[66,9] cannot find symbol
+  symbol:   variable DismissedSets
+  location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[75,16] cannot find symbol
+  symbol:   variable DismissedSets
+  location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:testCompile (default-testCompile) on project contact-groups-backend: Compilation failure: Compilation failure: 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[28,24] incompatible types: inference variable E has incompatible bounds
+[ERROR]     equality constraints: si.contactgroups.domain.ContactListItem
+[ERROR]     lower bounds: java.util.UUID
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[37,32] cannot find symbol
+[ERROR]   symbol:   variable DismissedSets
+[ERROR]   location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[44,32] cannot find symbol
+[ERROR]   symbol:   variable DismissedSets
+[ERROR]   location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[51,32] cannot find symbol
+[ERROR]   symbol:   variable DismissedSets
+[ERROR]   location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[58,32] cannot find symbol
+[ERROR]   symbol:   variable DismissedSets
+[ERROR]   location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[66,9] cannot find symbol
+[ERROR]   symbol:   variable DismissedSets
+[ERROR]   location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/DismissedSetsTest.java:[75,16] cannot find symbol
+[ERROR]   symbol:   variable DismissedSets
+[ERROR]   location: class si.contactgroups.domain.DismissedSetsTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

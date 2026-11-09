@@ -1,0 +1,69 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[37,15] cannot find symbol
+  symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+  location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[38,15] cannot find symbol
+  symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+  location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[59,15] cannot find symbol
+  symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+  location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[79,23] cannot find symbol
+  symbol:   class DuplicateSetNotFoundException
+  location: class si.contactgroups.service.DuplicateServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[78,40] cannot find symbol
+  symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+  location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[81,23] cannot find symbol
+  symbol:   class DuplicateSetNotFoundException
+  location: class si.contactgroups.service.DuplicateServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[80,40] cannot find symbol
+  symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+  location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[83,23] cannot find symbol
+  symbol:   class DuplicateSetNotFoundException
+  location: class si.contactgroups.service.DuplicateServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[82,40] cannot find symbol
+  symbol:   method dismiss(java.util.UUID,java.util.UUID,<nulltype>)
+  location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[96,15] cannot find symbol
+  symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+  location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:testCompile (default-testCompile) on project contact-groups-backend: Compilation failure: Compilation failure: 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[37,15] cannot find symbol
+[ERROR]   symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+[ERROR]   location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[38,15] cannot find symbol
+[ERROR]   symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+[ERROR]   location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[59,15] cannot find symbol
+[ERROR]   symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+[ERROR]   location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[79,23] cannot find symbol
+[ERROR]   symbol:   class DuplicateSetNotFoundException
+[ERROR]   location: class si.contactgroups.service.DuplicateServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[78,40] cannot find symbol
+[ERROR]   symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+[ERROR]   location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[81,23] cannot find symbol
+[ERROR]   symbol:   class DuplicateSetNotFoundException
+[ERROR]   location: class si.contactgroups.service.DuplicateServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[80,40] cannot find symbol
+[ERROR]   symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+[ERROR]   location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[83,23] cannot find symbol
+[ERROR]   symbol:   class DuplicateSetNotFoundException
+[ERROR]   location: class si.contactgroups.service.DuplicateServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[82,40] cannot find symbol
+[ERROR]   symbol:   method dismiss(java.util.UUID,java.util.UUID,<nulltype>)
+[ERROR]   location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/DuplicateServiceIT.java:[96,15] cannot find symbol
+[ERROR]   symbol:   method dismiss(java.util.UUID,java.util.UUID,java.util.List<java.util.UUID>)
+[ERROR]   location: variable duplicates of type si.contactgroups.service.DuplicateService
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
