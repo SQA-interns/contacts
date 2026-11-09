@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 import si.contactgroups.domain.GroupSummary;
 import si.contactgroups.domain.GroupTrashItem;
+import si.contactgroups.domain.SoleOwnerGroup;
+import si.contactgroups.domain.TrashPeriod;
 
 /** Groups (glossary: Group, table {@code contact_group}). */
 @Repository
@@ -142,6 +144,48 @@ public class GroupRepository {
     jdbc.sql("UPDATE contact_group SET deleted_at = NULL WHERE id = :groupId")
         .param(GROUP_ID, groupId)
         .update();
+  }
+
+  /**
+   * Locks the Groups of which the User is an Owner, in the order of their ids, until the end of the
+   * transaction: the check of the Owners then cannot race with a change of Roles (R-021-02).
+   */
+  @GlobalScope
+  public void lockGroupsOwnedBy(UUID userId) {
+    jdbc.sql(
+            "SELECT g.id FROM contact_group g JOIN member m ON m.group_id = g.id"
+                + " WHERE m.user_id = :userId AND m.role = 'OWNER' ORDER BY g.id FOR UPDATE OF g")
+        .param(USER_ID, userId)
+        .query()
+        .rowSet();
+  }
+
+  /**
+   * The Groups of which the User is the only Owner, in Trash for less than 30 days or not (D-27 A1),
+   * ordered by name (R-021-02).
+   */
+  @GlobalScope
+  public List<SoleOwnerGroup> findSoleOwned(UUID userId, Instant cutoff, Instant now) {
+    return jdbc.sql(
+            "SELECT g.id, g.name, g.deleted_at FROM contact_group g"
+                + " JOIN member m ON m.group_id = g.id"
+                + " WHERE m.user_id = :userId AND m.role = 'OWNER'"
+                + " AND (g.deleted_at IS NULL OR g.deleted_at > :cutoff)"
+                + " AND NOT EXISTS (SELECT 1 FROM member o WHERE o.group_id = g.id"
+                + " AND o.role = 'OWNER' AND o.user_id <> :userId)"
+                + " ORDER BY lower(g.name), g.id")
+        .param(USER_ID, userId)
+        .param(CUTOFF, Timestamp.from(cutoff))
+        .query(
+            (rs, row) -> {
+              Timestamp deletedAt = rs.getTimestamp("deleted_at");
+              return new SoleOwnerGroup(
+                  rs.getObject("id", UUID.class),
+                  rs.getString("name"),
+                  deletedAt != null,
+                  deletedAt == null ? null : TrashPeriod.daysLeft(deletedAt.toInstant(), now));
+            })
+        .list();
   }
 
   /** The Groups that have been in the Group Trash since {@code cutoff} or before (R-020-05). */
