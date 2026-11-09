@@ -12,7 +12,10 @@ import java.util.UUID;
 import java.util.function.Predicate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -22,6 +25,7 @@ import si.contactgroups.service.EmailTakenException;
 import si.contactgroups.service.UserService;
 
 /** US-001 and ADR-04: the filter checks the token and resolves the User of the request. */
+@ExtendWith(OutputCaptureExtension.class)
 class FirebaseTokenFilterTest {
 
   private static final VerifiedToken ANA =
@@ -113,5 +117,27 @@ class FirebaseTokenFilterTest {
     verify(users).findOrCreate(eq(ANA), exists.capture());
     assertThat(exists.getValue().test("uid-ana")).isFalse();
     verify(directory).exists("uid-ana");
+  }
+
+  @Test
+  void f_26_a_rejected_token_logs_the_class_of_the_cause_and_nothing_of_the_token(
+      CapturedOutput output) throws Exception {
+    TokenVerifier failing =
+        token -> {
+          throw new InvalidTokenException(
+              "token rejected",
+              new IllegalStateException("keys", new java.util.zip.ZipException("secret-detail")));
+        };
+    FirebaseTokenFilter rejecting = new FirebaseTokenFilter(failing, users, directory);
+    MockHttpServletRequest request = new MockHttpServletRequest("GET", "/api/v1/me");
+    request.addHeader("Authorization", "Bearer eyJ.secret.token");
+
+    rejecting.doFilter(request, new MockHttpServletResponse(), new MockFilterChain());
+
+    assertThat(output.getAll())
+        .contains("IllegalStateException")
+        .contains("ZipException")
+        .doesNotContain("eyJ.secret.token")
+        .doesNotContain("secret-detail");
   }
 }

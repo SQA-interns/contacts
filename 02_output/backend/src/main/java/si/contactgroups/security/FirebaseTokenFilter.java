@@ -65,6 +65,8 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
               UsernamePasswordAuthenticationToken.authenticated(
                   user, null, List.of(new SimpleGrantedAuthority("ROLE_USER"))));
     } catch (InvalidTokenException e) {
+      LOG.info(
+          "token rejected on {} {}: {}", request.getMethod(), request.getRequestURI(), causes(e));
       ErrorWriter.write(
           response,
           HttpStatus.UNAUTHORIZED.value(),
@@ -81,5 +83,16 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
       return;
     }
     chain.doFilter(request, response);
+  }
+
+  /**
+   * The class names of the cause chain: enough to tell an expired token from a failed key fetch.
+   */
+  private static String causes(Throwable e) {
+    StringBuilder names = new StringBuilder();
+    for (Throwable t = e.getCause(); t != null && names.length() < 300; t = t.getCause()) {
+      names.append(names.length() == 0 ? "" : " <- ").append(t.getClass().getSimpleName());
+    }
+    return names.length() == 0 ? "no cause" : names.toString();
   }
 }
