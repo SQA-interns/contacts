@@ -803,3 +803,14 @@
 - Human response: none
 - Resolution: pending review (option 1); (b) and (c) wait for the human.
 - Overrides: D-69 for `project/00_setup/secrets.env.example` entry `GOOGLE_APPLICATION_CREDENTIALS` ("not needed") and ADR-04 ("no service account")
+
+## D-71: F-16 fixed (null id in a dismissal) and the PMD findings of Contacts
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-025 resume
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-16 (`docs/04_review-INC-2.md`) and the PMD findings carried in D-70. (a) `POST /groups/{g}/duplicates/dismissals` with a null id in `contactIds` now answers 422 `validation.failed` with the field error `contactIds` / `validation.required`, as a null in the merge request does (SB-01). `{}`, `[]`, a foreign id and a non-UUID answer as before (404, 404, 404, 400). [ASSUMPTION] 422 and not 404, because a null is a malformed body, not an unknown set; the code `validation.required` already exists, so no new catalog entry. Test `f_16_a_null_id_in_the_list_answers_422_and_not_500` (commit `94718fd`). (b) `ContactRepository`: the literals `"now"` and `"version"` are constants (no behaviour change). The third finding (`MergeService:98`, complexity 15 of `distinctTargets`) is US-026 code and stays for the session on US-026. (c) Full backend run `verify`: 601 tests, the two known failures only (`ex_007_05`, `ac_018_09`); format, Checkstyle and SpotBugs clean, PMD reports only `MergeService:98`; secret scan clean. (d) The test stack on port 9099 (project `contact-groups-test`) blocked the backend tests; it was removed with `scripts/test-stack.sh down`. UI runs need `scripts/test-stack.sh up` again.
+- Options: 1 (default) 422 as written. 2 404 `duplicate.not_found` for a null id.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

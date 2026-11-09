@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-021 D-69: 1 (review finding F-14)
+- Session: S5 /implement US-025 resume (review finding F-16)
 - Result: done
-- Gate: DoD-I-02 not met until F-14 is shown against the real Firebase project (code fixed, D-70); no new Critical or High
-- Notes for the next session: F-14 is fixed in code (D-69 option 1, D-70): `FirebaseCredentials`, `StartupGuard` (prod refuses to start without the service-account file), `docker-compose.prod.yml` mount. WAITS FOR THE HUMAN (D-70 b, c): create the service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Inputs, ADR-04, the contract and README still say "no service account" (D-70 d). Full backend run: 2 known failures (`ex_007_05`, `ac_018_09`); PMD reports 3 findings in other stories' code (`ContactRepository:94`, `:234`, `MergeService:98`): fix them in the sessions on US-025/US-026. Still open from `docs/04_review-INC-2.md`: F-16 (US-025, next), F-15 (US-026, after it), F-17 and F-18 (`/fix`), carried F-03, F-04, F-13; then `/review INC-2`. Spotless: `./mvnw -B -Pquality spotless:apply`; backend runs need port 9099 free; UI runs need `scripts/test-stack.sh up`. Commit subjects: count the hash too, at most 72 characters.
+- Gate: F-16 fixed (D-71); DoD-I-02 still not met until F-14 is shown against the real Firebase project (D-70 b, c); no new Critical or High
+- Notes for the next session: F-16 fixed (`94718fd`): a null id in a dismissal answers 422 instead of 500. PMD: `ContactRepository` literals fixed; `MergeService:98` (complexity 15 of `distinctTargets`) is left for the US-026 session, together with F-15 (`attributes: [null]` answers 500). Full backend run: only the two known failures (`ex_007_05`, `ac_018_09`). The test stack was removed to free port 9099 (D-71 d): UI runs need `scripts/test-stack.sh up`. WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Inputs, ADR-04, the contract and README still say "no service account" (D-70 d). Still open from `docs/04_review-INC-2.md`: F-15 (US-026, next), F-17 and F-18 (`/fix`), carried F-03, F-04, F-13; then `/review INC-2`. Spotless: `./mvnw -B -Pquality spotless:apply`. Commit subjects: count the hash too, at most 72 characters.
 
 ## Next
-- Command: /implement US-025
+- Command: /implement US-026
 - Waiting for: nothing
 
 ## Stories

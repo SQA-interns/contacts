@@ -1,0 +1,129 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< si.contactgroups:contact-groups-backend >---------------
+[INFO] Building Contact Groups backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.1:enforce (enforce) @ contact-groups-backend ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BanDynamicVersions passed
+[INFO] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ contact-groups-backend ---
+[INFO] argLine set to -javaagent:/Users/kyuhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ contact-groups-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ contact-groups-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ contact-groups-backend ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ contact-groups-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ contact-groups-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.contactgroups.config.StartupGuardTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.739 s -- in si.contactgroups.config.StartupGuardTest
+[INFO] Running si.contactgroups.config.FirebaseCredentialsTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s -- in si.contactgroups.config.FirebaseCredentialsTest
+[INFO] Running si.contactgroups.config.ConfigurationPlaceholderTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.070 s -- in si.contactgroups.config.ConfigurationPlaceholderTest
+[INFO] Running si.contactgroups.security.RateLimitFilterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.399 s -- in si.contactgroups.security.RateLimitFilterTest
+[INFO] Running si.contactgroups.security.FirebaseTokenFilterTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+19:41:03.740 [main] INFO si.contactgroups.security.FirebaseTokenFilter -- 409 e-mail taken on GET /api/v1/me
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.008 s -- in si.contactgroups.security.FirebaseTokenFilterTest
+[INFO] Running si.contactgroups.security.RequestSizeFilterTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in si.contactgroups.security.RequestSizeFilterTest
+[INFO] Running si.contactgroups.security.HttpsFilterTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in si.contactgroups.security.HttpsFilterTest
+[INFO] Running si.contactgroups.security.SecurityLoggerTest
+19:41:03.809 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 404 to GET /api/v1/groups/g-1/contacts
+19:41:03.815 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 401 to GET /api/v1/groups/g-1/contacts
+19:41:03.815 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 403 to GET /api/v1/groups/g-1/contacts
+19:41:03.815 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 404 to GET /api/v1/groups/g-1/contacts
+19:41:03.815 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 429 to GET /api/v1/groups/g-1/contacts
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in si.contactgroups.security.SecurityLoggerTest
+[INFO] Running si.contactgroups.web.ApiExceptionHandlerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in si.contactgroups.web.ApiExceptionHandlerTest
+[INFO] Running si.contactgroups.architecture.LayerRulesTest
+19:41:03.883 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.8
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.021 s -- in si.contactgroups.architecture.LayerRulesTest
+[INFO] Running si.contactgroups.architecture.RepositoryScopeRuleTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.224 s -- in si.contactgroups.architecture.RepositoryScopeRuleTest
+[INFO] Running si.contactgroups.architecture.EndpointSecurityTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.182 s -- in si.contactgroups.architecture.EndpointSecurityTest
+[INFO] Running si.contactgroups.service.TagCheckTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s -- in si.contactgroups.service.TagCheckTest
+[INFO] Running si.contactgroups.service.MergeValuesTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in si.contactgroups.service.MergeValuesTest
+[INFO] Running si.contactgroups.service.FilterParserTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in si.contactgroups.service.FilterParserTest
+[INFO] Running si.contactgroups.service.ExportServiceTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.463 s -- in si.contactgroups.service.ExportServiceTest
+[INFO] Running si.contactgroups.service.HistoryRedactorTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in si.contactgroups.service.HistoryRedactorTest
+[INFO] Running si.contactgroups.service.AttributeCheckTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s -- in si.contactgroups.service.AttributeCheckTest
+[INFO] Running si.contactgroups.service.XlsxWriterTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s -- in si.contactgroups.service.XlsxWriterTest
+[INFO] Running si.contactgroups.service.SearchServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in si.contactgroups.service.SearchServiceTest
+[INFO] Running si.contactgroups.service.ContactValidatorTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in si.contactgroups.service.ContactValidatorTest
+[INFO] Running si.contactgroups.domain.DismissedSetsTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in si.contactgroups.domain.DismissedSetsTest
+[INFO] Running si.contactgroups.domain.ContactChangesTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in si.contactgroups.domain.ContactChangesTest
+[INFO] Running si.contactgroups.domain.AttributeChangesTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in si.contactgroups.domain.AttributeChangesTest
+[INFO] Running si.contactgroups.domain.ActionTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in si.contactgroups.domain.ActionTest
+[INFO] Running si.contactgroups.domain.SearchWordsTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in si.contactgroups.domain.SearchWordsTest
+[INFO] Running si.contactgroups.domain.ActivityRangeTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in si.contactgroups.domain.ActivityRangeTest
+[INFO] Running si.contactgroups.domain.TagChangesTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in si.contactgroups.domain.TagChangesTest
+[INFO] Running si.contactgroups.domain.CountryCodesTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in si.contactgroups.domain.CountryCodesTest
+[INFO] Running si.contactgroups.domain.ExportColumnsTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in si.contactgroups.domain.ExportColumnsTest
+[INFO] Running si.contactgroups.domain.TrashPeriodTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in si.contactgroups.domain.TrashPeriodTest
+[INFO] Running si.contactgroups.domain.DuplicateFinderTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in si.contactgroups.domain.DuplicateFinderTest
+[INFO] Running si.contactgroups.domain.NormaliserTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in si.contactgroups.domain.NormaliserTest
+[INFO] Running si.contactgroups.domain.VersionDiffTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in si.contactgroups.domain.VersionDiffTest
+[INFO] Running si.contactgroups.architecture.ArchitectureTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.834 s -- in si.contactgroups.architecture.ArchitectureTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 195, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.073 s
+[INFO] Finished at: 2026-11-09T19:41:10+01:00
+[INFO] ------------------------------------------------------------------------
