@@ -47,6 +47,7 @@ function renderPage() {
       <MemoryRouter initialEntries={['/groups/g1/contacts/c1']}>
         <Routes>
           <Route path="/groups/:groupId/contacts/:contactId" element={<ContactPage />} />
+          <Route path="/groups/:groupId/contacts" element={<p>Seznam kontaktov</p>} />
         </Routes>
       </MemoryRouter>
     </QueryClientProvider>,
@@ -297,5 +298,75 @@ describe('ContactPage tabs (R-016-03, R-016-04)', () => {
     await screen.findByText('udelezenec2025');
 
     expect(screen.queryByRole('button', { name: /značk/i })).not.toBeInTheDocument();
+  });
+
+  describe('delete (R-012-01, R-012-02, R-012-06, R-012-08)', () => {
+    const trashCalls = () => vi.mocked(fetch).mock.calls.filter(([url]) => String(url).endsWith('/trash'));
+
+    it('R-012-01 asks for confirmation and sends nothing before it', async () => {
+      backend('EDITOR', ana);
+      renderPage();
+
+      await userEvent.click(await screen.findByRole('button', { name: 'Izbriši' }));
+
+      const dialog = await screen.findByRole('dialog', { name: 'Premaknem kontakt v koš?' });
+      expect(dialog).toHaveTextContent('30 dni');
+      expect(trashCalls()).toHaveLength(0);
+    });
+
+    it('EX-012-03 cancelling sends nothing and keeps the page', async () => {
+      backend('EDITOR', ana);
+      renderPage();
+      await userEvent.click(await screen.findByRole('button', { name: 'Izbriši' }));
+      await userEvent.click(
+        within(await screen.findByRole('dialog')).getByRole('button', { name: 'Prekliči' }),
+      );
+
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      expect(trashCalls()).toHaveLength(0);
+      expect(screen.getByRole('heading', { level: 1, name: 'Ana Novak' })).toBeInTheDocument();
+    });
+
+    it('R-012-02 moves the Contact to Trash and returns to the list', async () => {
+      backend('EDITOR', ana);
+      vi.mocked(fetch).mockImplementation((url, init) => {
+        const path = String(url);
+        if (init?.method === 'POST' && path.endsWith('/trash')) {
+          return Promise.resolve(new Response(null, { status: 204 }));
+        }
+        if (path.endsWith('/groups')) {
+          return Promise.resolve(
+            answer([{ id: 'g1', name: 'Acme', role: 'EDITOR', createdAt: ana.createdAt }]),
+          );
+        }
+        return Promise.resolve(answer(ana));
+      });
+      renderPage();
+      await userEvent.click(await screen.findByRole('button', { name: 'Izbriši' }));
+      await userEvent.click(
+        within(await screen.findByRole('dialog')).getByRole('button', { name: 'Premakni v koš' }),
+      );
+
+      expect(await screen.findByText('Seznam kontaktov')).toBeInTheDocument();
+      expect(String(trashCalls()[0]?.[0])).toContain('/groups/g1/contacts/c1/trash');
+    });
+
+    it('R-012-08 gives a Viewer no Delete button', async () => {
+      backend('VIEWER', ana);
+      renderPage();
+
+      await screen.findByRole('heading', { level: 1, name: 'Ana Novak' });
+
+      expect(screen.queryByRole('button', { name: 'Izbriši' })).not.toBeInTheDocument();
+    });
+
+    it('R-012-06 shows that a Contact in Trash cannot be saved', async () => {
+      backend('EDITOR', ana, () => answer({ code: 'contact.in_trash', message: 'x' }, 409));
+      renderPage();
+      await userEvent.click(await screen.findByRole('button', { name: 'Uredi' }));
+      await userEvent.click(screen.getByRole('button', { name: 'Shrani' }));
+
+      expect(await screen.findByText('Kontakt je v košu in ga ni mogoče spreminjati.')).toBeInTheDocument();
+    });
   });
 });

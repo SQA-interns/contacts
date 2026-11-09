@@ -65,6 +65,11 @@ export function ContactListPage() {
   const [cleared, setCleared] = useState(0);
   const active = activeCount(filters);
   const canAdd = role === 'OWNER' || role === 'EDITOR';
+  const trashLink = (
+    <Button asChild variant="outline">
+      <Link to={`/groups/${encodeURIComponent(groupId)}/trash`}>{t('trash.title')}</Link>
+    </Button>
+  );
   const addLink = (
     <Button asChild>
       <Link to={`/groups/${encodeURIComponent(groupId)}/contacts/new`}>{t('contactList.add')}</Link>
@@ -112,7 +117,14 @@ export function ContactListPage() {
     <>
       <PageHeader
         title={t('contactList.title')}
-        action={canAdd && data && data.total > 0 ? addLink : undefined}
+        action={
+          canAdd ? (
+            <div className="flex gap-2">
+              {trashLink}
+              {data && data.total > 0 ? addLink : null}
+            </div>
+          ) : undefined
+        }
       />
       <div className="lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:items-start lg:gap-8">
         <FilterPanel

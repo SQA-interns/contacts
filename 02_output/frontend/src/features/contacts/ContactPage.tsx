@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams, useSearchParams } from 'react-router';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
 import { toast } from 'sonner';
 import {
   CONTACT_FIELDS,
@@ -12,8 +12,11 @@ import {
   type ContactField,
 } from '@/api/contacts';
 import { ApiError, errorMessage } from '@/api/errors';
+import { trashContact } from '@/api/trash';
+import { ConfirmDialog } from '@/components/ConfirmDialog';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
+import { Notice } from '@/components/Notice';
 import { PageHeader } from '@/components/PageHeader';
 import { Button } from '@/components/ui/button';
 import { countryName } from '@/i18n/format';
@@ -36,6 +39,8 @@ export function ContactPage() {
   const role = useGroupRole(groupId);
   const [editing, setEditing] = useState(false);
   const [conflict, setConflict] = useState(false);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   const tab = params.get('tab') === 'history' ? 'history' : 'details';
   const query = useQuery({
@@ -66,6 +71,20 @@ export function ContactPage() {
     },
   });
 
+  const remove = useMutation({
+    mutationFn: () => trashContact(groupId, contactId),
+    onSuccess: async () => {
+      queryClient.removeQueries({ queryKey: ['contacts', groupId, contactId] });
+      await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
+      await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
+      toast.success(t('contacts.movedToTrash'), {
+        action: { label: t('contacts.openTrash'), onClick: () => void navigate(`/groups/${groupId}/trash`) },
+      });
+      void navigate(`/groups/${groupId}/contacts`);
+    },
+    onSettled: () => setConfirmingDelete(false),
+  });
+
   if (query.isPending) return <LoadingState rows={6} />;
   if (query.isError) {
     return <ErrorState message={errorMessage(t, query.error)} onRetry={() => void query.refetch()} />;
@@ -86,19 +105,39 @@ export function ContactPage() {
         title={titleOf(contact, t('contacts.untitled'))}
         action={
           canEdit && !editing ? (
-            <Button
-              className="h-11"
-              onClick={() => {
-                save.reset();
-                setConflict(false);
-                setEditing(true);
-              }}
-            >
-              {t('contacts.edit')}
-            </Button>
+            <div className="flex gap-2">
+              <Button variant="outline" className="h-11" onClick={() => setConfirmingDelete(true)}>
+                {t('contacts.delete')}
+              </Button>
+              <Button
+                className="h-11"
+                onClick={() => {
+                  save.reset();
+                  setConflict(false);
+                  setEditing(true);
+                }}
+              >
+                {t('contacts.edit')}
+              </Button>
+            </div>
           ) : undefined
         }
       />
+      <ConfirmDialog
+        open={confirmingDelete}
+        title={t('contacts.deleteTitle')}
+        description={t('contacts.deleteBody')}
+        confirmLabel={remove.isPending ? t('contacts.deleteBusy') : t('contacts.deleteConfirm')}
+        destructive
+        busy={remove.isPending}
+        onConfirm={() => remove.mutate()}
+        onCancel={() => setConfirmingDelete(false)}
+      />
+      {remove.isError ? (
+        <div className="mb-4">
+          <Notice tone="alert" title={errorMessage(t, remove.error)} />
+        </div>
+      ) : null}
       <p className="-mt-4 mb-6 text-text-muted">{t('contacts.version', { version: contact.version })}</p>
       {canEdit ? <ContactTabs tab={tab} /> : null}
       {conflict ? <ConflictBanner version={contact.version} /> : null}

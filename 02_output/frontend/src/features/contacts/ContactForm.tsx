@@ -103,7 +103,7 @@ export function ContactForm({
         <Notice tone="alert" title={t('api.validation.failed')}>
           <p>{t('contacts.fixFields')}</p>
         </Notice>
-      ) : error && error.status !== 409 ? (
+      ) : error && (error.status !== 409 || error.code === 'contact.in_trash') ? (
         <Notice tone="alert" title={t(`api.${error.code}`, { defaultValue: t('error.generic') })} />
       ) : null}
       <div className="grid gap-4 sm:grid-cols-2">
