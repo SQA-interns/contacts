@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-008
+- Session: S5 /implement US-009
 - Result: done
-- Gate: DoD-S of US-008 passed in part: DoD-S-01 (15 of 16 backend frozen tests pass: AC-008-07 waits for US-012; UI AC-008-05, -09, EX-008-04 pass), see D-52
-- Notes for the next session: Backend: `q` of `GET /groups/{g}/contacts` (`SearchWords.patterns`, `ContactRepository.count/page` take LIKE patterns, `SearchService.list(group, page, q, sort, dir)`). Frontend: `features/contacts/SearchBox` (label "Iskanje", `?q=`, 300 ms), no-match state with "Clear filters" in `ContactListPage` (clears `q` only; US-009 must clear its filters too and add the filter panel; AC-009-10 expects the first "Počisti filtre" button even with results). Screens `search` and `no-match` in `out/logs/screens/WF-06_contact-list/`. Re-check after US-009, US-012, US-014: `Us008SearchAcceptanceIT` (AC-008-07), `us007-009-list.spec.ts`.
+- Gate: DoD-S of US-009 passed in part: DoD-S-01 (16 of 17 backend frozen tests pass: EX-009-06 waits for US-012; UI AC-009-09..12 pass), see D-53
+- Notes for the next session: Backend: `ContactFilter` (domain), `FilterParams`/`FilterParser` (service), `FilterSql` (persistence), `GET /groups/{g}/facets` (`FacetController`). Frontend: `features/contacts/FilterPanel`, `MultiSelect`, `filters.ts` (filters in the address); the panel's "Počisti filtre" is the first such button. Screens `filters`, `filters-no-match` in `out/logs/screens/WF-06_contact-list/`. Re-check after US-012, US-014: `Us009FilterAcceptanceIT` (EX-009-06), `us007-009-list.spec.ts` (AC-007-04/05). US-010 builds on `ContactListPage` (Selection must follow the filters).
 
 ## Next
-- Command: /implement US-009
+- Command: /implement US-010
 - Waiting for: nothing
 
 ## Stories
@@ -25,7 +25,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-006 | 1 | done | passed in part (DoD-S-01: 4 backend tests wait for US-007, US-012, US-014, US-017; UI AC-006-04 timing, D-50) |
 | US-007 | 1 | done | passed in part (DoD-S-01: EX-007-05 frozen test contradicts R-007-03, others wait for US-012, US-014; DoD-S-05 screens, D-51) |
 | US-008 | 1 | done | passed in part (DoD-S-01: AC-008-07 waits for US-012; DoD-S-05 screens, D-52) |
-| US-009 | 1 | ready | — |
+| US-009 | 1 | done | passed in part (DoD-S-01: EX-009-06 waits for US-012; DoD-S-05 screens, D-53) |
 | US-010 | 1 | ready | — |
 | US-011 | 1 | ready | — |
 | US-012 | 1 | ready | — |

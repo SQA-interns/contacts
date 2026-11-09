@@ -581,3 +581,15 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+
+## D-53: Readings of US-009 made while implementing, and a frozen test that waits
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-009
+- Class: open
+- Type: non-blocking
+- Trigger: points the story leaves open and DoD-S items not met. (a) `GET /groups/{g}/contacts` takes `tags` (repeated), `tagMode` (`all` default, `any`), `withoutTags`, `country` (two capital letters), `company`, `attrKey`, `attrValue`, `attrExists`; other values are 400. All conditions and the search words join with AND in one SQL condition shared by count and page (R-009-08); every value is a bound parameter. Tag names, company and Attribute value compare on the normalised text (BR-05); the Attribute key compares with `lower()` [ASSUMPTION: accent-insensitive equality for the value, as BR-05 says]. `attrKey` without `attrValue` or `attrExists=true` is no filter; with both, "exists" wins [ASSUMPTION: the contract leaves it open]. (b) `GET /groups/{g}/facets` offers the Tags, companies, countries and Attribute keys of the Contacts not in Trash of the Group, sorted without case and accents [ASSUMPTION: a Tag no Contact carries is not offered]. (c) Screen: `FilterPanel` (`aside` "Filtri") left of the list on desktop, behind a "Filtri (n)" button below 1024 px; filters live in the address so page 1 follows each change (R-009-09). Tags use a listbox (`MultiSelect`); country, company and Attribute key are native selects. The panel's "Clear filters" is the first such button and clears filters and search text (R-009-10), also a search text still waiting for its 300 ms. (d) DoD-S-01: 16 of 17 `Us009FilterAcceptanceIT` pass; EX-009-06 needs the Trash endpoint (US-012). UI: AC-009-09..12 pass; AC-007-04/05 wait for US-014. (e) DoD-S-05 done for WF-06 filters and filters-no-match at 375, 768 and 1440 px, no Critical or Serious axe finding, in Chromium and WebKit; Firefox does not start in this sandbox. (f) `-Pquality` PMD, Checkstyle and SpotBugs are clean on the changed code.
+- Options: 1 (default) as written. 2 offer every Tag of the Group in the filter.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
