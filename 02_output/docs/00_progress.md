@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S8 /fix F-18
+- Session: S8 /fix F-03
 - Result: done
-- Gate: F-18 fixed (D-74); DoD-I-02 still not met until F-14 is shown against the real Firebase project (D-70 b, c); no new Critical or High
-- Notes for the next session: F-18 fixed: `docs/decisions-log.md` now has D-67 and D-68 once each (the newer D-68 with the run results stays; its Options line is corrected); `scripts/check-decision-ids.sh` fails on a repeated decision id (D-74). WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Still open from `docs/04_review-INC-2.md`: carried F-03, F-04, F-13 (for `/fix`); F-19 needs the human's confirmation (D-68 d); then `/review INC-2`. UI runs need `scripts/test-stack.sh up`. Spotless: `./mvnw -B -Pquality spotless:apply`. Commit subjects: count the hash too, at most 72 characters.
+- Gate: F-03 fixed (D-75); DoD-I-02 still not met until F-14 is shown against the real Firebase project (D-70 b, c); no new Critical or High
+- Notes for the next session: F-03 fixed: `PageNumber.parse` (service) is the one rule for `page` on the Contact list, the Group activity and the Contact History; a malformed page is 400 `request.malformed`, page 0 and negatives too (D-75). Backend `verify`: 366 tests, only the two known frozen failures (`EX-007-05`, `AC-018-09`). WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Still open from `docs/04_review-INC-2.md`: carried F-04, F-13 (for `/fix`); F-19 needs the human's confirmation (D-68 d); then `/review INC-2`. UI runs need `scripts/test-stack.sh up`. Spotless: `./mvnw -B -Pquality spotless:apply`. Commit subjects: count the hash too, at most 72 characters.
 
 ## Next
-- Command: /fix F-03
+- Command: /fix F-04
 - Waiting for: nothing
 
 ## Stories

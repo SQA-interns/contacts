@@ -825,3 +825,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-75: F-03 fixed (a malformed `page` of the Activity and the History answered 500)
+- Timestamp: 2026-11-09
+- Session: S8 /fix F-03
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-03 (`docs/04_review-INC-1.md`, carried in `docs/04_review-INC-2.md`). (a) `ActivityController` and `HistoryController` took `page` as an `int`; `page=abc` raised `MethodArgumentTypeMismatchException`, which `ApiExceptionHandler` turned into 500 `server.error`. Both now read the text and parse it with the new `service/PageNumber` (the rule the Contact list already had in `SearchService`: 1 to 9 digits, at least 1, else `InvalidQueryException` and 400 `request.malformed`); `SearchService` uses the same class, so the three lists cannot differ. The contract says `PageParam` is an integer with minimum 1. (b) Behaviour change: `page=0` and negative numbers on these two endpoints used to be read as page 1 (`Math.max(page, 1)`) and now answer 400, as on the Contact list; no test or story relied on it. The service methods keep their `int` parameter. In the History the page is checked before the Contact id, so a malformed page with a malformed id answers 400. (c) Red: `a_malformed_page_is_400_as_in_the_contact_list` in `ActivityEndpointsIT` and in `HistoryEndpointsIT` (values `abc`, `0`, `-1`, `1.5`, empty, `99999999999`) failed with 500 (`logs/f03-red.log`); green after the fix (`logs/f03-green.log`). Full backend `verify`: 366 tests, 2 failures, both the known frozen ones of F-08 (`EX-007-05`, `AC-018-09`; D-68 i), none new (`logs/f03-full.log`). The live call of the check that found it was not repeated against a running stack; the MockMvc tests run the real filter chain and handler. (d) Not touched: F-04, F-13, F-19, and F-14 (waits for the human, D-70 b, c). D-76 is the next free number.
+- Options: 1 (default) 400 for every page below 1 or not a whole number, as on the Contact list. 2 keep page 0 and negative numbers as page 1 and reject only text.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
