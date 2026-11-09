@@ -248,6 +248,36 @@ describe('ContactPage tabs (R-016-03, R-016-04)', () => {
     expect(screen.queryByRole('navigation', { name: 'Zavihki kontakta' })).toBeNull();
     expect(vi.mocked(fetch).mock.calls.some(([url]) => String(url).includes('/history'))).toBe(false);
   });
+  it('R-022-02 offers an Owner the tab Različice and opens the Versions', async () => {
+    vi.mocked(fetch).mockImplementation((url) => {
+      const path = String(url);
+      if (path.includes('/versions')) {
+        return Promise.resolve(
+          answer([{ number: 2, createdAt: '2026-11-08T10:00:00Z', userName: 'Boris Kos' }]),
+        );
+      }
+      if (path.endsWith('/groups')) {
+        return Promise.resolve(answer([{ id: 'g1', name: 'Acme', role: 'OWNER', createdAt: ana.createdAt }]));
+      }
+      return Promise.resolve(answer(ana));
+    });
+    renderPage();
+
+    const tabs = await screen.findByRole('navigation', { name: 'Zavihki kontakta' });
+    await userEvent.click(within(tabs).getByRole('link', { name: 'Različice' }));
+
+    expect(await screen.findAllByText('Boris Kos')).not.toHaveLength(0);
+    expect(within(tabs).getByRole('link', { name: 'Različice' })).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('R-022-06 never asks a Viewer for the Versions', async () => {
+    backend('VIEWER', ana);
+    renderPage();
+
+    await screen.findByRole('heading', { level: 1, name: 'Ana Novak' });
+    expect(vi.mocked(fetch).mock.calls.some(([url]) => String(url).includes('/versions'))).toBe(false);
+  });
+
   it('R-004-06 saves a changed value and a removed pair with the version', async () => {
     backend('EDITOR', {
       ...ana,

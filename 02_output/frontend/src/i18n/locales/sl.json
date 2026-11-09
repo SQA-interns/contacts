@@ -403,7 +403,8 @@
     },
     "tabs": "Zavihki kontakta",
     "tabDetails": "Podrobnosti",
-    "tabHistory": "Zgodovina"
+    "tabHistory": "Zgodovina",
+    "tabVersions": "Različice"
   },
   "history": {
     "title": "Zgodovina",
@@ -546,5 +547,30 @@
       "INVITATION_CANCELLED": "Povabilo preklicano",
       "VERSION_RESTORED": "Različica obnovljena"
     }
+  },
+  "versions": {
+    "title": "Različice",
+    "caption": "Različice kontakta",
+    "number": "Različica",
+    "time": "Čas",
+    "user": "Uporabnik",
+    "actions": "Dejanja",
+    "current": "trenutna",
+    "open": "Odpri",
+    "compare": "Primerjaj s trenutno",
+    "back": "Nazaj na različice",
+    "versionTitle": "Različica {{number}}",
+    "compareTitle": "Razlike: različica {{number}} in trenutna (v{{current}})",
+    "noDifferences": "Ni razlik.",
+    "field": "Polje",
+    "versionColumn": "Različica {{number}}",
+    "currentColumn": "Trenutna",
+    "added": "(dodana)",
+    "removed": "(odstranjena)",
+    "tag": "Značka",
+    "attribute": "Atribut",
+    "empty": "Ta kontakt še nima različic.",
+    "compareCaption": "Razlike med različico {{number}} in trenutno",
+    "short": "v{{number}}"
   }
 }

@@ -14,6 +14,7 @@ import { PageHeader } from '@/components/PageHeader';
 import { Button } from '@/components/ui/button';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import { ContactHistoryTab } from '@/features/history/ContactHistoryTab';
+import { VersionsTab } from '@/features/versions/VersionsTab';
 import { ConflictBanner } from './ConflictBanner';
 import { ContactForm, type ContactValues } from './ContactForm';
 import { Fields, TagsAndAttributes } from './ContactView';
@@ -22,6 +23,10 @@ function titleOf(contact: Contact, fallback: string): string {
   const name = [contact.firstName, contact.lastName].filter(Boolean).join(' ');
   return name || contact.company || contact.email || fallback;
 }
+
+type Tab = 'details' | 'history' | 'versions';
+
+const tabOf = (name: string | null): Tab => (name === 'history' || name === 'versions' ? name : 'details');
 
 /** SC-07 / WF-07: one Contact; Owner and Editor can edit it (R-003-06..09, R-003-11). */
 export function ContactPage() {
@@ -34,7 +39,7 @@ export function ContactPage() {
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const tab = params.get('tab') === 'history' ? 'history' : 'details';
+  const tab = tabOf(params.get('tab'));
   const query = useQuery({
     queryKey: ['contacts', groupId, contactId],
     queryFn: () => getContact(groupId, contactId),
@@ -135,6 +140,8 @@ export function ContactPage() {
       {conflict ? <ConflictBanner version={contact.version} /> : null}
       {tab === 'history' && canEdit ? (
         <ContactHistoryTab groupId={groupId} contactId={contactId} />
+      ) : tab === 'versions' && canEdit ? (
+        <VersionsTab groupId={groupId} contactId={contactId} />
       ) : (
         <div className="mt-4 grid gap-4 lg:grid-cols-[2fr_1fr]">
           <section className="rounded-[12px] border bg-surface-raised p-4">
@@ -165,11 +172,12 @@ export function ContactPage() {
 }
 
 /** Tabs of SC-07 as links to `?tab=`; a Viewer has none (R-016-04). */
-function ContactTabs({ tab }: { tab: 'details' | 'history' }) {
+function ContactTabs({ tab }: { tab: Tab }) {
   const { t } = useTranslation();
   const tabs = [
     { id: 'details', label: t('contacts.tabDetails') },
     { id: 'history', label: t('contacts.tabHistory') },
+    { id: 'versions', label: t('contacts.tabVersions') },
   ] as const;
   return (
     <nav aria-label={t('contacts.tabs')} className="mb-4 flex gap-2 border-b">

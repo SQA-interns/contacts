@@ -403,7 +403,8 @@
     },
     "tabs": "Contact tabs",
     "tabDetails": "Details",
-    "tabHistory": "History"
+    "tabHistory": "History",
+    "tabVersions": "Versions"
   },
   "history": {
     "title": "History",
@@ -546,5 +547,30 @@
       "INVITATION_CANCELLED": "Invitation cancelled",
       "VERSION_RESTORED": "Version restored"
     }
+  },
+  "versions": {
+    "title": "Versions",
+    "caption": "Versions of the contact",
+    "number": "Version",
+    "time": "Time",
+    "user": "User",
+    "actions": "Actions",
+    "current": "current",
+    "open": "Open",
+    "compare": "Compare with current",
+    "back": "Back to versions",
+    "versionTitle": "Version {{number}}",
+    "compareTitle": "Differences: version {{number}} and current (v{{current}})",
+    "noDifferences": "No differences.",
+    "field": "Field",
+    "versionColumn": "Version {{number}}",
+    "currentColumn": "Current",
+    "added": "(added)",
+    "removed": "(removed)",
+    "tag": "Tag",
+    "attribute": "Attribute",
+    "empty": "This contact has no versions yet.",
+    "compareCaption": "Differences between version {{number}} and the current one",
+    "short": "v{{number}}"
   }
 }
