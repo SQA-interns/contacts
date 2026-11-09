@@ -365,6 +365,24 @@ public class ContactRepository {
   }
 
   /**
+   * Puts the Contact in Trash only when it is not there yet and still has version {@code version},
+   * so a merge never trashes a Contact that changed after the user saw it (R-026-08).
+   *
+   * @return whether the Contact was moved by this call
+   */
+  public boolean moveToTrashAtVersion(UUID groupId, UUID contactId, int version, Instant now) {
+    return jdbc.sql(
+                "UPDATE contact SET deleted_at = :now WHERE id = :id AND group_id = :groupId"
+                    + " AND version = :version AND deleted_at IS NULL")
+            .param("id", contactId)
+            .param(GROUP_ID, groupId)
+            .param("version", version)
+            .param("now", Timestamp.from(now))
+            .update()
+        == 1;
+  }
+
+  /**
    * Takes the Contact out of Trash when it went in after {@code cutoff}; fields, Tags, Attributes
    * and version number stay as they are (R-012-04, R-012-05).
    *

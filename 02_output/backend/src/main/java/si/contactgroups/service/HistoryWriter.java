@@ -2,12 +2,14 @@ package si.contactgroups.service;
 
 import java.time.Instant;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import si.contactgroups.domain.AttributeChanges;
+import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.ContactChanges;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.HistoryAction;
@@ -183,6 +185,30 @@ public class HistoryWriter {
     } else {
       write(groupId, userId, HistoryAction.CONTACT_DELETED_FOREVER, contactId, Map.of(), at);
     }
+  }
+
+  /**
+   * Records a merge on the Survivor: the Survivor, the merged-away Contacts and the chosen values
+   * (R-026-07). The History of the merged-away Contacts is shown with the Survivor's through {@code
+   * mergedContactIds}.
+   */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void contactsMerged(
+      UUID groupId,
+      UUID userId,
+      UUID survivorId,
+      List<UUID> mergedContactIds,
+      ContactData values,
+      List<AttributePair> attributes,
+      List<String> tags,
+      Instant at) {
+    Map<String, Object> details = new LinkedHashMap<>();
+    details.put("survivorId", survivorId);
+    details.put("mergedContactIds", mergedContactIds);
+    details.put("values", ContactChanges.stored(values));
+    details.put("attributes", attributes);
+    details.put("tags", tags);
+    write(groupId, userId, HistoryAction.CONTACTS_MERGED, survivorId, details, at);
   }
 
   /** Records an export: the number of Contacts in the file (R-011-07). */
