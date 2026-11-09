@@ -11,6 +11,7 @@ import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
 import { Notice } from '@/components/Notice';
 import { PageHeader } from '@/components/PageHeader';
+import { successToast } from '@/components/successToast';
 import { Button } from '@/components/ui/button';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import { ContactHistoryTab } from '@/features/history/ContactHistoryTab';
@@ -74,7 +75,7 @@ export function ContactPage() {
       queryClient.removeQueries({ queryKey: ['contacts', groupId, contactId] });
       await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
       await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
-      toast.success(t('contacts.movedToTrash'), {
+      successToast(t('contacts.movedToTrash'), {
         action: { label: t('contacts.openTrash'), onClick: () => void navigate(`/groups/${groupId}/trash`) },
       });
       void navigate(`/groups/${groupId}/contacts`);

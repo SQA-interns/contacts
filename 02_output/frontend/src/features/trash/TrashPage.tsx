@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router';
-import { toast } from 'sonner';
 import { errorMessage } from '@/api/errors';
 import { deleteContactForever, listTrash, restoreContact, type TrashContact } from '@/api/trash';
+import { successToast } from '@/components/successToast';
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
@@ -38,7 +38,7 @@ export function TrashPage() {
   const restore = useMutation({
     mutationFn: (contactId: string) => restoreContact(groupId, contactId),
     onSuccess: (contact) => {
-      toast.success(t('trash.restored'), {
+      successToast(t('trash.restored'), {
         action: {
           label: t('trash.openContact'),
           onClick: () => void navigate(`/groups/${groupId}/contacts/${contact.id}`),

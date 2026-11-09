@@ -3,6 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { Toaster } from '@/components/ui/sonner';
 import { setLanguage } from '@/i18n';
 import { TrashPage } from './TrashPage';
 
@@ -49,6 +50,7 @@ function renderPage() {
           <Route path="/groups/:groupId/trash" element={<TrashPage />} />
         </Routes>
       </MemoryRouter>
+      <Toaster />
     </QueryClientProvider>,
   );
 }
@@ -100,6 +102,17 @@ describe('TrashPage WF-10 (R-012-03, R-012-04, R-012-08)', () => {
         expect.stringContaining('/groups/g1/trash/contacts/c1/restore'),
       ]),
     );
+  });
+
+  it('F-17 announces the restore as a status message (R-012-04, UI-13)', async () => {
+    backend('EDITOR', [ana]);
+    renderPage();
+    await userEvent.click((await screen.findAllByRole('button', { name: /Obnovi/ }))[0]!);
+
+    await vi.waitFor(() => {
+      const messages = screen.getAllByRole('status').map((element) => element.textContent);
+      expect(messages.some((text) => text?.includes('Kontakt je obnovljen.'))).toBe(true);
+    });
   });
 
   it('R-012-05 shows "not found" when the restore is refused', async () => {

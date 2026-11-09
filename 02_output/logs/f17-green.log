@@ -1,0 +1,12 @@
+       |                           ^
+    381|       expect(String(trashCalls()[0]?.[0])).toContain('/groups/g1/conta…
+    382|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 43 passed (44)
+      Tests  1 failed | 374 passed (375)
+   Start at  20:09:34
+   Duration  9.04s (transform 1.88s, setup 5.58s, import 10.33s, tests 43.32s, environment 15.51s)
+
