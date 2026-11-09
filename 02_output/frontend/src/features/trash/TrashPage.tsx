@@ -15,6 +15,7 @@ import { formatDate } from '@/i18n/format';
 import type { Language } from '@/i18n';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import { DeleteForeverDialog } from './DeleteForeverDialog';
+import { useDaysText } from './useDaysText';
 
 function nameOf(contact: TrashContact, fallback: string): string {
   const name = [contact.firstName, contact.lastName].filter(Boolean).join(' ');
@@ -115,16 +116,6 @@ interface TrashTableProps {
   /** Only an Owner may delete forever (R-013-03); an Editor gets no button. */
   onDeleteForever?: (contactId: string) => void;
   groupId: string;
-}
-
-/** Slovene has four plural forms; the catalog keeps one text for each (`one`, `two`, `few`, `other`). */
-function useDaysText() {
-  const { t, i18n } = useTranslation();
-  return (count: number) => {
-    const form = new Intl.PluralRules(i18n.language).select(count);
-    const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
-    return t(`trash.days.${key}`, { count });
-  };
 }
 
 function TrashTable({ contacts, busyId, onRestore, onDeleteForever }: TrashTableProps) {
