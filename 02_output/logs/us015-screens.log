@@ -1,0 +1,81 @@
+
+Running 9 tests using 5 workers
+
+  ✓  4 [chromium] › ui-checks/member-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (7.3s)
+  ✓  1 [chromium] › ui-checks/member-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (7.4s)
+  ✓  2 [chromium] › ui-checks/member-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (7.5s)
+  ✓  7 [webkit] › ui-checks/member-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (10.8s)
+  ✓  8 [webkit] › ui-checks/member-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (11.7s)
+  ✓  9 [webkit] › ui-checks/member-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (9.2s)
+  ✘  3 [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (5ms)
+  ✘  5 [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (5ms)
+  ✘  6 [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list (4ms)
+
+
+  1) [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-MwHHid -juggler-pipe -silent[22m
+    [2m  - <launched> pid=86956[22m
+    [2m  - [pid=86956][err] *** You are running in headless mode.[22m
+    [2m  - [pid=86956][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=86956][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=1.70833) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/member-screens.stack-mobil-2f539-ve-confirmation-viewer-list-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/member-screens.stack-mobil-2f539-ve-confirmation-viewer-list-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-qznysh -juggler-pipe -silent[22m
+    [2m  - <launched> pid=86953[22m
+    [2m  - [pid=86953][err] *** You are running in headless mode.[22m
+    [2m  - [pid=86953][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=86953][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=7.16667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/member-screens.stack-table-1676a-ve-confirmation-viewer-list-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/member-screens.stack-table-1676a-ve-confirmation-viewer-list-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-OrgETO -juggler-pipe -silent[22m
+    [2m  - <launched> pid=87007[22m
+    [2m  - [pid=87007][err] *** You are running in headless mode.[22m
+    [2m  - [pid=87007][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=87007][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=6.41667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/member-screens.stack-deskt-6ebc3-ve-confirmation-viewer-list-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/member-screens.stack-deskt-6ebc3-ve-confirmation-viewer-list-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list 
+    [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list 
+    [firefox] › ui-checks/member-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list 
+  6 passed (3.2m)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

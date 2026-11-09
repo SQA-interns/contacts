@@ -649,3 +649,14 @@
 - Human response: none
 - Resolution: pending review (option 1); item g needs the human's approval.
 - Overrides: none
+
+## D-59: Readings of US-015 made while implementing, and frozen tests that wait
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-015
+- Class: open
+- Type: non-blocking
+- Trigger: points the story leaves open, and DoD-S items not met. (a) [ASSUMPTION] A Role change to the Role the Member already has answers 200 with the unchanged Member and writes no History entry (EX-015-02). (b) [ASSUMPTION] The History details of `ROLE_CHANGED` are `member`, `email`, `old`, `new`; of `MEMBER_REMOVED` `member`, `email`, `role`; the acting Owner is the entry's user (R-015-06). (c) A `userId` in the path that is not a UUID, or no Member of the Group, answers 404 `member.not_found` (EX-015-04). (d) Last-Owner checks and the change run after `groups.lock`, so two Owners demoting each other at once give one success (EX-015-01); a removal deletes only the `member` row, Contacts and History keep the name because History stores `user_name` without a foreign key (R-015-07). (e) WF-11 marks the signed-in Member with "(vi)"; the Member list does not know the signed-in User, so the mark is left out. (f) The Contact list shows a "Members" link to every Member (R-015-01: all may see the list). (g) DoD-S-01 in part: `Us015MemberAcceptanceIT.ac_015_07` and `ex_015_02` read `/activity` and wait for US-017; the UI frozen tests AC-015-01.. pass. `e2e-02` waits for US-017 (activity page). (h) The screen checks ran in chromium and webkit; Firefox cannot start in this host's sandbox (`sandbox_extension_issue_file_to_process`), so the Firefox run of `member-screens.stack.spec.ts` was not made.
+- Options: 1 (default) as written. 2 A Role change to the same Role answers 409 instead of 200. 3 Show "(vi)" by adding the signed-in User id to the Group list.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

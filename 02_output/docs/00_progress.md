@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-014
+- Session: S5 /implement US-015
 - Result: done
-- Gate: DoD-S of US-014 passed in part: DoD-S-01 (18 of 20 frozen `Us014InvitationAcceptanceIT` pass; AC-014-03 and AC-014-10 wait for US-015 `/members` and US-017 `/activity`; UI AC-014-03 fails on a locator that matches the e-mail address, approval in D-58 item g), see D-58
-- Notes for the next session: Backend `InvitationController` (`/groups/{g}/invitations`, Owner only), `InvitationService`, `InvitationRepository`; joining happens in `GroupService.listGroups` through `InvitationService.acceptPendingFor`. History writers `invitationCreated`, `invitationCancelled`, `memberJoined`. Frontend `features/invitations/InvitationsPage` (route `/groups/:g/invitations`, link on the Contact list for Owners). US-015 (members) can now use `addMember` in its tests. Re-check after US-015/017: `Us014InvitationAcceptanceIT`, `us012-015-trash-members.spec.ts`, `e2e-02`. Backend ITs need port 9099 free: stop the test stack's emulator (`docker stop contact-groups-test-emulator-1`) before Maven, start it for UI tests. The test stack is up with the new build. `./mvnw spotless:apply` needs `-Pquality`.
+- Gate: DoD-S of US-015 passed in part: DoD-S-01 (12 of 14 frozen `Us015MemberAcceptanceIT` pass, AC-015-07 and EX-015-02 wait for US-017 `/activity`; UI AC-015-01.. pass; `e2e-02` waits for US-017), see D-59
+- Notes for the next session: Backend `MemberController` (`/groups/{g}/members`, GET for all Members, PATCH and DELETE Owner only), `MembershipService` (`list`, `changeRole`, `remove`, locks the Group row for the last-Owner rule), `MemberRepository.findAll/find/updateRole/delete/countOwners`; History writers `roleChanged`, `memberRemoved`. Frontend `features/members/MembersPage` (route `/groups/:g/members`, link on the Contact list). Next is US-017 (activity); then re-check `Us014InvitationAcceptanceIT` AC-014-10, `Us015MemberAcceptanceIT` (ac_015_07, ex_015_02), `e2e-02`. Backend ITs need port 9099 free: `docker stop contact-groups-test-emulator-1` before Maven (it is stopped now); `docker start contact-groups-test-emulator-1` for UI tests. The test stack runs the US-015 build. Firefox does not start in this host's sandbox.
 
 ## Next
-- Command: /implement US-015
+- Command: /implement US-017
 - Waiting for: nothing
 
 ## Stories
@@ -31,7 +31,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-012 | 1 | done | passed in part (DoD-S-01: 13 backend and UI AC-012-01 frozen tests wait for US-014; DoD-S-05 screens, D-56) |
 | US-013 | 1 | done | passed in part (DoD-S-01: 6 backend and UI AC-013-02 frozen tests wait for US-014, US-017, US-020, US-026; DoD-S-05 screens, D-57) |
 | US-014 | 1 | done | passed in part (DoD-S-01: 2 backend and the UI AC-014-03 frozen tests wait for US-015, US-017 and D-58 item g; DoD-S-05 screens, D-58) |
-| US-015 | 1 | ready | — |
+| US-015 | 1 | done | passed in part (DoD-S-01: 2 backend and `e2e-02` frozen tests wait for US-017; DoD-S-05 screens, D-59) |
 | US-016 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-014, US-012, US-007; DoD-S-05 screens; DoD-S-07: size, D-47) |
 | US-017 | 1 | ready | — |
 | US-018 | 1 | done | passed (DoD-S-01: frozen tests wait for US-003, US-014 and the last story, D-44; DoD-S-07: one subject over 72 characters) |

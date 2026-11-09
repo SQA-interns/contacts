@@ -1,0 +1,245 @@
+ Image contact-groups-test-frontend Building 
+ Image contact-groups-test-emulator Building 
+ Image contact-groups-test-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.12kB done
+#1 DONE 0.0s
+
+#2 [emulator internal] load build definition from Dockerfile
+#2 transferring dockerfile: 693B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.05kB done
+#3 DONE 0.0s
+
+#4 [frontend internal] load build definition from Dockerfile
+#4 transferring dockerfile: 769B done
+#4 DONE 0.0s
+
+#5 [frontend internal] load metadata for docker.io/library/node:22.20.0-bookworm-slim
+#5 DONE 0.0s
+
+#6 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.8_9-jdk
+#6 DONE 0.0s
+
+#7 [frontend internal] load metadata for docker.io/library/nginx:1.29.2-alpine
+#7 DONE 0.0s
+
+#8 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.8_9-jre
+#8 DONE 0.0s
+
+#9 [emulator internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [frontend internal] load .dockerignore
+#10 transferring context: 104B done
+#10 DONE 0.0s
+
+#11 [backend internal] load .dockerignore
+#11 transferring context: 58B done
+#11 DONE 0.0s
+
+#12 [backend internal] load build context
+#12 DONE 0.0s
+
+#13 [emulator internal] load build context
+#13 transferring context: 35B done
+#13 DONE 0.0s
+
+#14 [emulator 1/4] FROM docker.io/library/node:22.20.0-bookworm-slim@sha256:b21fe589dfbe5cc39365d0544b9be3f1f33f55f3c86c87a76ff65a02f8f5848e
+#14 resolve docker.io/library/node:22.20.0-bookworm-slim@sha256:b21fe589dfbe5cc39365d0544b9be3f1f33f55f3c86c87a76ff65a02f8f5848e 0.0s done
+#14 DONE 0.0s
+
+#15 [emulator 2/4] RUN npm install -g --no-fund --no-audit firebase-tools@14.22.0     && npm cache clean --force
+#15 CACHED
+
+#16 [emulator 3/4] WORKDIR /srv
+#16 CACHED
+
+#17 [emulator 4/4] COPY firebase.json .
+#17 CACHED
+
+#18 [frontend stage-1 1/5] FROM docker.io/library/nginx:1.29.2-alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22
+#18 resolve docker.io/library/nginx:1.29.2-alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22 0.0s done
+#18 DONE 0.0s
+
+#19 [backend stage-1 1/4] FROM docker.io/library/eclipse-temurin:21.0.8_9-jre@sha256:66bb900643426ad01996d25bada7d56751913f9cec3b827fcb715d2ec9a0fbfc
+#19 resolve docker.io/library/eclipse-temurin:21.0.8_9-jre@sha256:66bb900643426ad01996d25bada7d56751913f9cec3b827fcb715d2ec9a0fbfc 0.0s done
+#19 DONE 0.0s
+
+#20 [emulator] exporting to image
+#20 exporting layers
+#20 exporting layers done
+#20 exporting manifest sha256:493ffcde0aec7168245ec5ef4aee93ceb52727accb1e241c55e84fb6a883d112 done
+#20 exporting config sha256:49a4a42dae241895b3d7ceb8475474cc445f81e948708820b9a49b4b3af3ebd7 done
+#20 exporting attestation manifest sha256:fa86fdbe3f3096f437cc231c03a73924567695d8836270b82ecbbfb8cccb4c08 0.0s done
+#20 exporting manifest list sha256:20fa6ac0295437ff05c8af3292c728c039debd85eda57462d78805a066a8b285 done
+#20 naming to docker.io/library/contact-groups-test-emulator:latest done
+#20 unpacking to docker.io/library/contact-groups-test-emulator:latest done
+#20 DONE 0.1s
+
+#21 [backend build 1/8] FROM docker.io/library/eclipse-temurin:21.0.8_9-jdk@sha256:7d1d666ddafac14da0ded6b4b076becf76cf88b31f9d7953a76555cc82f86511
+#21 resolve docker.io/library/eclipse-temurin:21.0.8_9-jdk@sha256:7d1d666ddafac14da0ded6b4b076becf76cf88b31f9d7953a76555cc82f86511 0.0s done
+#21 DONE 0.0s
+
+#22 [frontend internal] load build context
+#22 transferring context: 69.85kB 0.0s done
+#22 DONE 0.0s
+
+#23 [frontend build 3/6] COPY package.json package-lock.json .npmrc ./
+#23 CACHED
+
+#24 [frontend build 2/6] WORKDIR /build
+#24 CACHED
+
+#25 [frontend build 4/6] RUN npm ci
+#25 CACHED
+
+#12 [backend internal] load build context
+#12 transferring context: 71.90kB 0.0s done
+#12 DONE 0.0s
+
+#26 [backend build 4/8] COPY .mvn .mvn
+#26 CACHED
+
+#27 [backend build 2/8] RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
+#27 CACHED
+
+#28 [backend build 3/8] WORKDIR /build
+#28 CACHED
+
+#29 [backend build 5/8] COPY mvnw pom.xml ./
+#29 CACHED
+
+#30 [backend build 6/8] RUN ./mvnw -B -q dependency:go-offline
+#30 CACHED
+
+#31 [frontend build 5/6] COPY . .
+#31 DONE 0.1s
+
+#32 [backend build 7/8] COPY src src
+#32 DONE 0.1s
+
+#33 [emulator] resolving provenance for metadata file
+#33 DONE 0.0s
+
+#34 [backend build 8/8] RUN ./mvnw -B -q -DskipTests package
+#34 ...
+
+#35 [frontend build 6/6] RUN npm run build
+#35 0.290 
+#35 0.290 > contact-groups-frontend@1.0.0 build
+#35 0.290 > tsc -b && vite build
+#35 0.290 
+#35 9.929 vite v7.3.7 building client environment for production...
+#35 10.05 transforming...
+#35 ...
+
+#34 [backend build 8/8] RUN ./mvnw -B -q -DskipTests package
+#34 DONE 10.9s
+
+#36 [backend stage-1 2/4] RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app --no-create-home app
+#36 CACHED
+
+#37 [backend stage-1 3/4] WORKDIR /app
+#37 CACHED
+
+#38 [backend stage-1 4/4] COPY --from=build /build/target/contact-groups-backend.jar /app/app.jar
+#38 DONE 0.1s
+
+#35 [frontend build 6/6] RUN npm run build
+#35 ...
+
+#39 [backend] exporting to image
+#39 exporting layers
+#39 ...
+
+#35 [frontend build 6/6] RUN npm run build
+#35 13.05 ✓ 1910 modules transformed.
+#35 13.39 rendering chunks...
+#35 13.41 computing gzip size...
+#35 13.43 dist/index.html                   0.52 kB │ gzip:   0.31 kB
+#35 13.43 dist/assets/index-Cst7FDKE.css   41.27 kB │ gzip:   8.10 kB
+#35 13.43 dist/assets/index-DJUcA4Bl.js   733.68 kB │ gzip: 228.23 kB
+#35 13.43 
+#35 13.43 (!) Some chunks are larger than 500 kB after minification. Consider:
+#35 13.43 - Using dynamic import() to code-split the application
+#35 13.43 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#35 13.43 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#35 13.44 ✓ built in 3.45s
+#35 DONE 13.5s
+
+#39 [backend] exporting to image
+#39 exporting layers 2.4s done
+#39 exporting manifest sha256:1d099450da60b92de04287bc83fdd50eb9b4cc555bce0a2438cfc99dc6634a26 done
+#39 exporting config sha256:8a3f7272ff276175ce327fd8e9e0c0a952628eda6cda14d2323d9b470e69581b done
+#39 exporting attestation manifest sha256:f0c4c18df441fac664a013db9b98257b4d2a01f08e34f98d443ea91950263898 done
+#39 exporting manifest list sha256:1ee27658d1c77fa783113b593cd09a4595daddab2abaa6ba468f8da83c49e2d4 done
+#39 naming to docker.io/library/contact-groups-test-backend:latest done
+#39 unpacking to docker.io/library/contact-groups-test-backend:latest
+#39 unpacking to docker.io/library/contact-groups-test-backend:latest 0.4s done
+#39 DONE 2.8s
+
+#40 [backend] resolving provenance for metadata file
+#40 DONE 0.0s
+
+#41 [frontend stage-1 2/5] COPY nginx.conf /etc/nginx/nginx.conf
+#41 CACHED
+
+#42 [frontend stage-1 3/5] COPY docker-entrypoint.sh /docker-entrypoint-app.sh
+#42 CACHED
+
+#43 [frontend stage-1 4/5] COPY --from=build /build/dist /usr/share/nginx/html
+#43 DONE 0.0s
+
+#44 [frontend stage-1 5/5] RUN chmod 0555 /docker-entrypoint-app.sh && chown -R nginx:nginx /usr/share/nginx/html
+#44 DONE 0.1s
+
+#45 [frontend] exporting to image
+#45 exporting layers 0.1s done
+#45 exporting manifest sha256:76cdc093da8f11ad0abc3e4932aa8780bce3f2c1ed36ed653e7c875231064023 done
+#45 exporting config sha256:f37a2f517889e9c0d61aeee0e3188a749a02558a4c948d1612f11f9e3c4d5da7 done
+#45 exporting attestation manifest sha256:0395f598afe94a7252edcd49d47eaaa34e83fde6a62c38e8d67eca5c3b308996
+#45 exporting attestation manifest sha256:0395f598afe94a7252edcd49d47eaaa34e83fde6a62c38e8d67eca5c3b308996 done
+#45 exporting manifest list sha256:81dd916892514d07f40a89a476522355787ae89cc35b824f0739bda5dd4c7318 0.0s done
+#45 naming to docker.io/library/contact-groups-test-frontend:latest done
+#45 unpacking to docker.io/library/contact-groups-test-frontend:latest 0.0s done
+#45 DONE 0.2s
+
+#46 [frontend] resolving provenance for metadata file
+#46 DONE 0.0s
+ Image contact-groups-test-emulator Built 
+ Image contact-groups-test-backend Built 
+ Image contact-groups-test-frontend Built 
+ Network contact-groups-test_default Creating 
+ Volume contact-groups-test_pgdata Creating 
+ Volume contact-groups-test_pgdata Creating 
+ Network contact-groups-test_default Creating 
+ Volume contact-groups-test_pgdata Created 
+ Volume contact-groups-test_pgdata Created 
+ Network contact-groups-test_default Created 
+ Network contact-groups-test_default Created 
+ Container contact-groups-test-emulator-1 Creating 
+ Container contact-groups-test-postgres-1 Creating 
+ Container contact-groups-test-emulator-1 Created 
+ Container contact-groups-test-postgres-1 Created 
+ Container contact-groups-test-backend-1 Creating 
+ Container contact-groups-test-backend-1 Created 
+ Container contact-groups-test-frontend-1 Creating 
+ Container contact-groups-test-frontend-1 Created 
+ Container contact-groups-test-postgres-1 Starting 
+ Container contact-groups-test-emulator-1 Starting 
+ Container contact-groups-test-postgres-1 Started 
+ Container contact-groups-test-emulator-1 Started 
+ Container contact-groups-test-postgres-1 Waiting 
+ Container contact-groups-test-postgres-1 Healthy 
+ Container contact-groups-test-backend-1 Starting 
+ Container contact-groups-test-backend-1 Started 
+ Container contact-groups-test-frontend-1 Starting 
+ Container contact-groups-test-frontend-1 Started 
+curl: (56) Recv failure: Connection reset by peer
+curl: (56) Recv failure: Connection reset by peer
+curl: (56) Recv failure: Connection reset by peer
+test stack ready: frontend http://localhost:5173, backend http://localhost:8080, emulator localhost:9099
