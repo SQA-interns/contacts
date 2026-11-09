@@ -1,0 +1,699 @@
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+16:12:33.435 [main] INFO si.contactgroups.security.FirebaseTokenFilter -- 409 e-mail taken on GET /api/v1/me
+16:12:33.501 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 404 to GET /api/v1/groups/g-1/contacts
+16:12:33.508 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 401 to GET /api/v1/groups/g-1/contacts
+16:12:33.508 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 403 to GET /api/v1/groups/g-1/contacts
+16:12:33.508 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 404 to GET /api/v1/groups/g-1/contacts
+16:12:33.508 [main] INFO si.contactgroups.security.SecurityLogger -- security: answered 429 to GET /api/v1/groups/g-1/contacts
+16:12:33.576 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.8
+16:12:42.721 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us022VersionAcceptanceIT]: Us022VersionAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:12:43.033 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us022VersionAcceptanceIT
+16:12:43.214 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us022VersionAcceptanceIT]: Us022VersionAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:12:43.215 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:12:43.223 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us022VersionAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T16:12:44.589+01:00  INFO 14176 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T16:12:44.593+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T16:12:44.619+01:00  INFO 14176 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T16:12:45.809+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T16:12:45.811+01:00  INFO 14176 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T16:12:45.833+01:00  INFO 14176 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T16:12:46.176+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T16:12:46.273+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T16:12:46.405+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 4b9613250f191f06c60fe884e2a6bc1c59ece10f9465c363143ae797bb86781d
+2026-11-09T16:12:47.066+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.88995S
+2026-11-09T16:12:47.081+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T16:12:47.081+01:00  INFO 14176 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T16:12:47.082+01:00  INFO 14176 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T16:12:47.144+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T16:12:47.329+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T16:12:47.429+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: ef0343ff9269e50adf16aca7cea4740ec98179bd1ad042d8dee06f34fc220ac3
+2026-11-09T16:12:53.963+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT6.633328S
+2026-11-09T16:12:54.050+01:00  INFO 14176 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : Starting Us022VersionAcceptanceIT using Java 21.0.8 with PID 14176 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T16:12:54.051+01:00  INFO 14176 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T16:12:54.531+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T16:12:54.595+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: c470ca2523b5c7fc8b0601c07e2fa5134ca902970c4f10cbbbeb9df7108eac94
+2026-11-09T16:12:55.778+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.247221S
+2026-11-09T16:12:55.780+01:00  INFO 14176 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:59055/test?loggerLevel=OFF)
+2026-11-09T16:12:56.632+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T16:12:56.656+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T16:12:56.656+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T16:12:56.694+01:00  INFO 14176 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2627 ms
+2026-11-09T16:12:57.185+01:00  INFO 14176 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:59055/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T16:12:57.222+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T16:12:57.225+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.016s)
+2026-11-09T16:12:57.239+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T16:12:57.305+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T16:12:57.309+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T16:12:57.342+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T16:12:57.384+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T16:12:57.396+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.049s)
+2026-11-09T16:12:57.875+01:00  INFO 14176 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T16:12:58.389+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T16:12:58.437+01:00  INFO 14176 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 59058 (http) with context path '/'
+2026-11-09T16:12:58.449+01:00  INFO 14176 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : Started Us022VersionAcceptanceIT in 15.095 seconds (process running for 17.522)
+2026-11-09T16:12:58.502+01:00  WARN 14176 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-11-09T16:12:59.018+01:00  INFO 14176 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T16:12:59.046+01:00  INFO 14176 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@c3fd49
+2026-11-09T16:12:59.049+01:00  INFO 14176 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T16:12:59.257+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T16:12:59.257+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T16:12:59.259+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-11-09T16:12:59.883+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/afbb0b1d-9d38-4d41-a67f-a3fe4016d355/contacts/d234db95-ff95-47ff-9492-aca419c08e6b/versions/99
+2026-11-09T16:12:59.892+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/afbb0b1d-9d38-4d41-a67f-a3fe4016d355/contacts/d234db95-ff95-47ff-9492-aca419c08e6b/versions/99
+2026-11-09T16:12:59.903+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/afbb0b1d-9d38-4d41-a67f-a3fe4016d355/contacts/d234db95-ff95-47ff-9492-aca419c08e6b/versions/99/compare
+2026-11-09T16:12:59.905+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/afbb0b1d-9d38-4d41-a67f-a3fe4016d355/contacts/d234db95-ff95-47ff-9492-aca419c08e6b/versions/99/compare
+2026-11-09T16:13:00.178+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/3c2558d2-ef1f-42eb-bd8e-a59ee971b76e/contacts/32842a34-40f3-4962-ba17-a2586f508267/versions
+2026-11-09T16:13:00.179+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/3c2558d2-ef1f-42eb-bd8e-a59ee971b76e/contacts/32842a34-40f3-4962-ba17-a2586f508267/versions
+2026-11-09T16:13:00.368+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/12b27a0e-fe2c-4241-9c78-7bdb2fe2d9ad/contacts/00e5e8a2-b01d-4228-85ab-8b10a5b82c4c/versions
+2026-11-09T16:13:00.370+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/12b27a0e-fe2c-4241-9c78-7bdb2fe2d9ad/contacts/00e5e8a2-b01d-4228-85ab-8b10a5b82c4c/versions
+2026-11-09T16:13:00.565+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/8001af87-1be2-4bf9-b1b1-8f9f2ea5d662/contacts/07a21185-8445-4d1e-95e5-64a1ca95333a/versions/1/compare
+2026-11-09T16:13:00.566+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/8001af87-1be2-4bf9-b1b1-8f9f2ea5d662/contacts/07a21185-8445-4d1e-95e5-64a1ca95333a/versions/1/compare
+2026-11-09T16:13:00.757+01:00  WARN 14176 --- [contact-groups-backend] [-auto-1-exec-10] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/56d652ba-8a36-4955-96f8-41279f5bdd27/contacts/5a56d3a3-ed45-42ec-83e7-c49a895e5a57/versions/1
+2026-11-09T16:13:00.759+01:00  INFO 14176 --- [contact-groups-backend] [-auto-1-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/56d652ba-8a36-4955-96f8-41279f5bdd27/contacts/5a56d3a3-ed45-42ec-83e7-c49a895e5a57/versions/1
+2026-11-09T16:13:00.965+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5dc5f224-6e41-4924-aed1-da3902222f03/contacts/33eb755f-499d-4538-bacc-15a1d798199c/versions
+2026-11-09T16:13:00.966+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5dc5f224-6e41-4924-aed1-da3902222f03/contacts/33eb755f-499d-4538-bacc-15a1d798199c/versions
+2026-11-09T16:13:00.975+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5dc5f224-6e41-4924-aed1-da3902222f03/contacts/33eb755f-499d-4538-bacc-15a1d798199c/versions/1
+2026-11-09T16:13:00.976+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5dc5f224-6e41-4924-aed1-da3902222f03/contacts/33eb755f-499d-4538-bacc-15a1d798199c/versions/1
+2026-11-09T16:13:01.109+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/48c0e951-9849-44e4-b16b-57c174fc7177/contacts/30dc5d7b-5e00-44d6-81de-72edaf56e65b/versions
+2026-11-09T16:13:01.110+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/48c0e951-9849-44e4-b16b-57c174fc7177/contacts/30dc5d7b-5e00-44d6-81de-72edaf56e65b/versions
+2026-11-09T16:13:01.231+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/abdcc194-6404-4ffa-b2fd-d53845112d06/contacts/7e31e58f-f49c-44a5-bcdc-30e06b640200/versions/1
+2026-11-09T16:13:01.232+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/abdcc194-6404-4ffa-b2fd-d53845112d06/contacts/7e31e58f-f49c-44a5-bcdc-30e06b640200/versions/1
+2026-11-09T16:13:01.377+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/ea3203cd-9789-45a5-a7b5-179c08572c6e/contacts/e1f122b8-2d2b-4af8-83bb-9681d2853fd0/versions/1/compare
+2026-11-09T16:13:01.379+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ea3203cd-9789-45a5-a7b5-179c08572c6e/contacts/e1f122b8-2d2b-4af8-83bb-9681d2853fd0/versions/1/compare
+2026-11-09T16:13:01.549+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/ace775ea-b44a-4927-92cb-fde784c19301/contacts/94e155f6-505d-4bdf-a1bc-efb3cf719780/versions
+2026-11-09T16:13:01.550+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ace775ea-b44a-4927-92cb-fde784c19301/contacts/94e155f6-505d-4bdf-a1bc-efb3cf719780/versions
+2026-11-09T16:13:01.569+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/ace775ea-b44a-4927-92cb-fde784c19301/contacts/94e155f6-505d-4bdf-a1bc-efb3cf719780/versions
+2026-11-09T16:13:01.570+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ace775ea-b44a-4927-92cb-fde784c19301/contacts/94e155f6-505d-4bdf-a1bc-efb3cf719780/versions
+2026-11-09T16:13:01.740+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/7c26789f-d089-4655-ad5b-2507404d8c1d/contacts/e9243b96-e057-4ddf-a487-45e27578aad7/versions/3/compare
+2026-11-09T16:13:01.741+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/7c26789f-d089-4655-ad5b-2507404d8c1d/contacts/e9243b96-e057-4ddf-a487-45e27578aad7/versions/3/compare
+2026-11-09T16:13:01.902+01:00  WARN 14176 --- [contact-groups-backend] [o-auto-1-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/fa38975a-cbac-4fea-b372-474be176716f/contacts/08ab0b2c-bf41-4e6e-9d31-54a09d348e3a/versions
+2026-11-09T16:13:01.903+01:00  INFO 14176 --- [contact-groups-backend] [o-auto-1-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/fa38975a-cbac-4fea-b372-474be176716f/contacts/08ab0b2c-bf41-4e6e-9d31-54a09d348e3a/versions
+[ERROR] Tests run: 12, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 19.45 s <<< FAILURE! -- in si.contactgroups.acceptance.Us022VersionAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_01_versions_newest_first -- Time elapsed: 0.273 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_01_versions_newest_first(Us022VersionAcceptanceIT.java:68)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_05_no_change_no_version -- Time elapsed: 0.178 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_05_no_change_no_version(Us022VersionAcceptanceIT.java:199)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_03_compare_with_current -- Time elapsed: 0.195 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_03_compare_with_current(Us022VersionAcceptanceIT.java:95)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_02_open_earlier_version -- Time elapsed: 0.191 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_02_open_earlier_version(Us022VersionAcceptanceIT.java:81)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_01_only_v1 -- Time elapsed: 0.122 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_01_only_v1(Us022VersionAcceptanceIT.java:163)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed -- Time elapsed: 0.121 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed(Us022VersionAcceptanceIT.java:133)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_04_tag_added -- Time elapsed: 0.146 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_04_tag_added(Us022VersionAcceptanceIT.java:109)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash -- Time elapsed: 0.190 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash(Us022VersionAcceptanceIT.java:191)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_02_current_with_itself -- Time elapsed: 0.170 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_02_current_with_itself(Us022VersionAcceptanceIT.java:172)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_05_viewer_refused -- Time elapsed: 0.160 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 403
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_05_viewer_refused(Us022VersionAcceptanceIT.java:125)
+
+[ERROR] Failures: 
+[ERROR]   Us022VersionAcceptanceIT.ac_022_01_versions_newest_first:68->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_02_open_earlier_version:81 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_03_compare_with_current:95->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_04_tag_added:109->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_05_viewer_refused:125 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 403
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed:133 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_01_only_v1:163->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_02_current_with_itself:172->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash:191->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_05_no_change_no_version:199->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR] Tests run: 12, Failures: 10, Errors: 0, Skipped: 0
+16:13:03.999 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us022VersionAcceptanceIT]: Us022VersionAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:13:04.162 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us022VersionAcceptanceIT
+16:13:04.242 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us022VersionAcceptanceIT]: Us022VersionAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:13:04.243 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:13:04.247 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us022VersionAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T16:13:04.811+01:00  INFO 14196 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T16:13:04.815+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T16:13:04.834+01:00  INFO 14196 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T16:13:05.759+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T16:13:05.761+01:00  INFO 14196 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T16:13:05.779+01:00  INFO 14196 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T16:13:06.037+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T16:13:06.160+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T16:13:06.304+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 725a105fef1a8841b119356d5a327939bb7d23cb0d7827fcb4677dd59e3de594
+2026-11-09T16:13:06.737+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.699969S
+2026-11-09T16:13:06.752+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T16:13:06.752+01:00  INFO 14196 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T16:13:06.753+01:00  INFO 14196 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T16:13:06.810+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T16:13:06.965+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T16:13:07.074+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: d6b276997522e860b6974c0bcac13ddd83fcfa66599739b438cd8759ba29ec2d
+2026-11-09T16:13:13.005+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT6.039828S
+2026-11-09T16:13:13.102+01:00  INFO 14196 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : Starting Us022VersionAcceptanceIT using Java 21.0.8 with PID 14196 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T16:13:13.103+01:00  INFO 14196 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T16:13:14.102+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T16:13:14.175+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: 80d322dfca65d48b1e0eb5a2511e67ff4dab637162e6483e8daa28ea2ceb3698
+2026-11-09T16:13:15.368+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.266124S
+2026-11-09T16:13:15.370+01:00  INFO 14196 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:59093/test?loggerLevel=OFF)
+2026-11-09T16:13:16.199+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T16:13:16.216+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T16:13:16.216+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T16:13:16.253+01:00  INFO 14196 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3132 ms
+2026-11-09T16:13:16.734+01:00  INFO 14196 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:59093/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T16:13:16.776+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T16:13:16.779+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.022s)
+2026-11-09T16:13:16.794+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T16:13:16.852+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T16:13:16.857+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T16:13:16.889+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T16:13:16.949+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T16:13:16.960+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.068s)
+2026-11-09T16:13:17.419+01:00  INFO 14196 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T16:13:17.930+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T16:13:17.974+01:00  INFO 14196 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 59096 (http) with context path '/'
+2026-11-09T16:13:17.985+01:00  INFO 14196 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : Started Us022VersionAcceptanceIT in 13.682 seconds (process running for 14.948)
+2026-11-09T16:13:18.021+01:00  INFO 14196 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T16:13:18.036+01:00  WARN 14196 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-09T16:13:18.043+01:00  INFO 14196 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4d1e3f44
+2026-11-09T16:13:18.049+01:00  INFO 14196 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T16:13:18.788+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T16:13:18.788+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T16:13:18.790+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-09T16:13:19.425+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/3d5eb1cb-d1f7-466d-a11a-bff24de2b32b/contacts/44a773d6-93c5-40ed-8594-46b9f8d3fdc6/versions/99
+2026-11-09T16:13:19.433+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/3d5eb1cb-d1f7-466d-a11a-bff24de2b32b/contacts/44a773d6-93c5-40ed-8594-46b9f8d3fdc6/versions/99
+2026-11-09T16:13:19.444+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/3d5eb1cb-d1f7-466d-a11a-bff24de2b32b/contacts/44a773d6-93c5-40ed-8594-46b9f8d3fdc6/versions/99/compare
+2026-11-09T16:13:19.446+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/3d5eb1cb-d1f7-466d-a11a-bff24de2b32b/contacts/44a773d6-93c5-40ed-8594-46b9f8d3fdc6/versions/99/compare
+2026-11-09T16:13:19.707+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/d2af6483-36a5-4d8f-ab9e-f1e266838b08/contacts/8e102fa3-3412-4b42-af15-467cb774a771/versions
+2026-11-09T16:13:19.708+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/d2af6483-36a5-4d8f-ab9e-f1e266838b08/contacts/8e102fa3-3412-4b42-af15-467cb774a771/versions
+2026-11-09T16:13:19.893+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/fbb8c079-708d-43b9-bef4-75057292adf1/contacts/87a9e218-0f6e-4ee1-a9a2-3f729783a8d4/versions
+2026-11-09T16:13:19.894+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/fbb8c079-708d-43b9-bef4-75057292adf1/contacts/87a9e218-0f6e-4ee1-a9a2-3f729783a8d4/versions
+2026-11-09T16:13:20.097+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/f9f78721-657b-4968-ae9b-445c45c4ec78/contacts/55171b59-4393-401b-a221-6fe47390500c/versions/1/compare
+2026-11-09T16:13:20.098+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f9f78721-657b-4968-ae9b-445c45c4ec78/contacts/55171b59-4393-401b-a221-6fe47390500c/versions/1/compare
+2026-11-09T16:13:20.283+01:00  WARN 14196 --- [contact-groups-backend] [-auto-1-exec-10] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/e0ceed41-95d4-45fb-a6b9-ca2f2c0107c3/contacts/d7aa6bdf-7fd5-4084-a15d-94a97e22a689/versions/1
+2026-11-09T16:13:20.284+01:00  INFO 14196 --- [contact-groups-backend] [-auto-1-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/e0ceed41-95d4-45fb-a6b9-ca2f2c0107c3/contacts/d7aa6bdf-7fd5-4084-a15d-94a97e22a689/versions/1
+2026-11-09T16:13:20.491+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/a3c39493-c3d6-4947-ad53-c0c59d37a85a/contacts/5977f8bc-3335-4e63-9f87-4c1d3e133224/versions
+2026-11-09T16:13:20.492+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/a3c39493-c3d6-4947-ad53-c0c59d37a85a/contacts/5977f8bc-3335-4e63-9f87-4c1d3e133224/versions
+2026-11-09T16:13:20.500+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/a3c39493-c3d6-4947-ad53-c0c59d37a85a/contacts/5977f8bc-3335-4e63-9f87-4c1d3e133224/versions/1
+2026-11-09T16:13:20.501+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/a3c39493-c3d6-4947-ad53-c0c59d37a85a/contacts/5977f8bc-3335-4e63-9f87-4c1d3e133224/versions/1
+2026-11-09T16:13:20.631+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/d5e0e9c9-5d86-4951-bbe8-d263916b9611/contacts/d3866339-a934-459f-93ef-d20c33edb56e/versions
+2026-11-09T16:13:20.632+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/d5e0e9c9-5d86-4951-bbe8-d263916b9611/contacts/d3866339-a934-459f-93ef-d20c33edb56e/versions
+2026-11-09T16:13:20.754+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/fe2579ad-e52a-4644-88c9-d39ac3046a54/contacts/4a5ecab3-81b7-44f4-8630-628adeb9e7a3/versions/1
+2026-11-09T16:13:20.755+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/fe2579ad-e52a-4644-88c9-d39ac3046a54/contacts/4a5ecab3-81b7-44f4-8630-628adeb9e7a3/versions/1
+2026-11-09T16:13:20.903+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/8bc52232-d3a6-4765-a08b-a80c6bce10fa/contacts/0f4fe0a5-2765-4b19-8068-4c06300f51e2/versions/1/compare
+2026-11-09T16:13:20.904+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/8bc52232-d3a6-4765-a08b-a80c6bce10fa/contacts/0f4fe0a5-2765-4b19-8068-4c06300f51e2/versions/1/compare
+2026-11-09T16:13:21.074+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/41f93812-0181-48c9-865d-c40f80921f23/contacts/fdf4ada2-aa54-4cb1-add2-0eeebab026a1/versions
+2026-11-09T16:13:21.075+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/41f93812-0181-48c9-865d-c40f80921f23/contacts/fdf4ada2-aa54-4cb1-add2-0eeebab026a1/versions
+2026-11-09T16:13:21.095+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/41f93812-0181-48c9-865d-c40f80921f23/contacts/fdf4ada2-aa54-4cb1-add2-0eeebab026a1/versions
+2026-11-09T16:13:21.096+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/41f93812-0181-48c9-865d-c40f80921f23/contacts/fdf4ada2-aa54-4cb1-add2-0eeebab026a1/versions
+2026-11-09T16:13:21.266+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/0116d01c-c6ca-42d4-98ad-4230600d52c7/contacts/c8d7b993-e72e-4986-a4b7-18c6dbac8ecd/versions/3/compare
+2026-11-09T16:13:21.267+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/0116d01c-c6ca-42d4-98ad-4230600d52c7/contacts/c8d7b993-e72e-4986-a4b7-18c6dbac8ecd/versions/3/compare
+2026-11-09T16:13:21.420+01:00  WARN 14196 --- [contact-groups-backend] [o-auto-1-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/dad6719f-a593-48d7-9bfe-2908195ccda9/contacts/51fedb9e-ad63-456f-b522-0ecc0304ff03/versions
+2026-11-09T16:13:21.421+01:00  INFO 14196 --- [contact-groups-backend] [o-auto-1-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/dad6719f-a593-48d7-9bfe-2908195ccda9/contacts/51fedb9e-ad63-456f-b522-0ecc0304ff03/versions
+[ERROR] Tests run: 12, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 17.56 s <<< FAILURE! -- in si.contactgroups.acceptance.Us022VersionAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_01_versions_newest_first -- Time elapsed: 0.260 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_01_versions_newest_first(Us022VersionAcceptanceIT.java:68)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_05_no_change_no_version -- Time elapsed: 0.175 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_05_no_change_no_version(Us022VersionAcceptanceIT.java:199)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_03_compare_with_current -- Time elapsed: 0.202 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_03_compare_with_current(Us022VersionAcceptanceIT.java:95)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_02_open_earlier_version -- Time elapsed: 0.184 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_02_open_earlier_version(Us022VersionAcceptanceIT.java:81)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_01_only_v1 -- Time elapsed: 0.121 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_01_only_v1(Us022VersionAcceptanceIT.java:163)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed -- Time elapsed: 0.121 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed(Us022VersionAcceptanceIT.java:133)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_04_tag_added -- Time elapsed: 0.147 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_04_tag_added(Us022VersionAcceptanceIT.java:109)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash -- Time elapsed: 0.191 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash(Us022VersionAcceptanceIT.java:191)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_02_current_with_itself -- Time elapsed: 0.170 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_02_current_with_itself(Us022VersionAcceptanceIT.java:172)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_05_viewer_refused -- Time elapsed: 0.153 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 403
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_05_viewer_refused(Us022VersionAcceptanceIT.java:125)
+
+[ERROR] Failures: 
+[ERROR]   Us022VersionAcceptanceIT.ac_022_01_versions_newest_first:68->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_02_open_earlier_version:81 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_03_compare_with_current:95->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_04_tag_added:109->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_05_viewer_refused:125 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 403
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed:133 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_01_only_v1:163->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_02_current_with_itself:172->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash:191->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_05_no_change_no_version:199->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR] Tests run: 12, Failures: 10, Errors: 0, Skipped: 0
+16:13:23.780 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us022VersionAcceptanceIT]: Us022VersionAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:13:23.989 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us022VersionAcceptanceIT
+16:13:24.096 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us022VersionAcceptanceIT]: Us022VersionAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:13:24.097 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:13:24.102 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us022VersionAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T16:13:25.039+01:00  INFO 14218 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T16:13:25.043+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T16:13:25.060+01:00  INFO 14218 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T16:13:25.967+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T16:13:25.969+01:00  INFO 14218 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T16:13:25.989+01:00  INFO 14218 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T16:13:26.247+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T16:13:26.357+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T16:13:26.504+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: e7eef1616e6a247cfbd5c69cc5b331eb86607f8674cfe9e014bb015328cf1848
+2026-11-09T16:13:26.934+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.687204S
+2026-11-09T16:13:26.951+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T16:13:26.952+01:00  INFO 14218 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T16:13:26.953+01:00  INFO 14218 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T16:13:27.027+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T16:13:27.200+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T16:13:27.280+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: 73fed640bf6b2c7ae0f07e4ac4826988f85fcf3e79208801a52908f33c71a5b4
+2026-11-09T16:13:33.404+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT6.204442S
+2026-11-09T16:13:33.481+01:00  INFO 14218 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : Starting Us022VersionAcceptanceIT using Java 21.0.8 with PID 14218 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T16:13:33.482+01:00  INFO 14218 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T16:13:33.938+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T16:13:33.989+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: ef25a3521429338f3a5d3b3d834b22926e17213b18c705bfbfa5a7e2f47eb0ab
+2026-11-09T16:13:35.087+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.148866S
+2026-11-09T16:13:35.088+01:00  INFO 14218 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:59131/test?loggerLevel=OFF)
+2026-11-09T16:13:35.917+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T16:13:35.934+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T16:13:35.935+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T16:13:35.979+01:00  INFO 14218 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2483 ms
+2026-11-09T16:13:36.473+01:00  INFO 14218 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:59131/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T16:13:36.511+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T16:13:36.514+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.017s)
+2026-11-09T16:13:36.528+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T16:13:36.584+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T16:13:36.588+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T16:13:36.619+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T16:13:36.658+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T16:13:36.667+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.045s)
+2026-11-09T16:13:37.114+01:00  INFO 14218 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T16:13:37.614+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T16:13:37.660+01:00  INFO 14218 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 59134 (http) with context path '/'
+2026-11-09T16:13:37.672+01:00  INFO 14218 --- [contact-groups-backend] [           main] s.c.acceptance.Us022VersionAcceptanceIT  : Started Us022VersionAcceptanceIT in 13.494 seconds (process running for 14.897)
+2026-11-09T16:13:37.721+01:00  WARN 14218 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-11-09T16:13:38.025+01:00  INFO 14218 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T16:13:38.047+01:00  INFO 14218 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1b1785b7
+2026-11-09T16:13:38.058+01:00  INFO 14218 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T16:13:38.472+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T16:13:38.472+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T16:13:38.475+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-11-09T16:13:39.085+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/339d22df-d829-445d-be59-d635e07e501e/contacts/d69bb44f-8492-4cf7-aae6-41c8c06fcc42/versions/99
+2026-11-09T16:13:39.093+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/339d22df-d829-445d-be59-d635e07e501e/contacts/d69bb44f-8492-4cf7-aae6-41c8c06fcc42/versions/99
+2026-11-09T16:13:39.104+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/339d22df-d829-445d-be59-d635e07e501e/contacts/d69bb44f-8492-4cf7-aae6-41c8c06fcc42/versions/99/compare
+2026-11-09T16:13:39.105+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/339d22df-d829-445d-be59-d635e07e501e/contacts/d69bb44f-8492-4cf7-aae6-41c8c06fcc42/versions/99/compare
+2026-11-09T16:13:39.369+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/341a3c5d-b598-4e89-9826-1d4c37a169ac/contacts/481c87a0-85e5-49c9-b3cd-600f5ba7b6b0/versions
+2026-11-09T16:13:39.370+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/341a3c5d-b598-4e89-9826-1d4c37a169ac/contacts/481c87a0-85e5-49c9-b3cd-600f5ba7b6b0/versions
+2026-11-09T16:13:39.562+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5be1514e-36ac-471d-88b5-d5a3c5e50c6b/contacts/9ec10976-161f-4242-a518-033f45946989/versions
+2026-11-09T16:13:39.563+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5be1514e-36ac-471d-88b5-d5a3c5e50c6b/contacts/9ec10976-161f-4242-a518-033f45946989/versions
+2026-11-09T16:13:39.760+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5d2eeacc-6a68-4503-9ba3-f48451d7c874/contacts/0ae8c16a-ff4a-45bd-88e2-1307203e4acf/versions/1/compare
+2026-11-09T16:13:39.762+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5d2eeacc-6a68-4503-9ba3-f48451d7c874/contacts/0ae8c16a-ff4a-45bd-88e2-1307203e4acf/versions/1/compare
+2026-11-09T16:13:39.941+01:00  WARN 14218 --- [contact-groups-backend] [-auto-1-exec-10] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/e4789d41-410a-43c8-aea9-0ece6cf5b6ac/contacts/1d799bf8-9a69-4d33-bafb-41ac9687f7f5/versions/1
+2026-11-09T16:13:39.942+01:00  INFO 14218 --- [contact-groups-backend] [-auto-1-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/e4789d41-410a-43c8-aea9-0ece6cf5b6ac/contacts/1d799bf8-9a69-4d33-bafb-41ac9687f7f5/versions/1
+2026-11-09T16:13:40.147+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/99849f83-3d53-482d-9163-8f4156c6eaf3/contacts/a881fab5-16b3-4d61-b39d-0d769aaf5494/versions
+2026-11-09T16:13:40.148+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/99849f83-3d53-482d-9163-8f4156c6eaf3/contacts/a881fab5-16b3-4d61-b39d-0d769aaf5494/versions
+2026-11-09T16:13:40.156+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/99849f83-3d53-482d-9163-8f4156c6eaf3/contacts/a881fab5-16b3-4d61-b39d-0d769aaf5494/versions/1
+2026-11-09T16:13:40.158+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/99849f83-3d53-482d-9163-8f4156c6eaf3/contacts/a881fab5-16b3-4d61-b39d-0d769aaf5494/versions/1
+2026-11-09T16:13:40.285+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/5b0d69a0-94c9-4d8d-a6b9-01eeeb6d0a4d/contacts/2b97d717-0d98-4e90-97b7-a79e38b9e3be/versions
+2026-11-09T16:13:40.287+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5b0d69a0-94c9-4d8d-a6b9-01eeeb6d0a4d/contacts/2b97d717-0d98-4e90-97b7-a79e38b9e3be/versions
+2026-11-09T16:13:40.402+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/82032924-a0b5-40d2-bb9e-8936cb123d36/contacts/338a8e9d-0336-416b-810c-5f3a73a6289c/versions/1
+2026-11-09T16:13:40.403+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/82032924-a0b5-40d2-bb9e-8936cb123d36/contacts/338a8e9d-0336-416b-810c-5f3a73a6289c/versions/1
+2026-11-09T16:13:40.546+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/0ebb2ea1-4f31-4c88-bd91-e3d3129a2856/contacts/6cc2c502-eb91-44e1-95c0-b2d109b3d0d3/versions/1/compare
+2026-11-09T16:13:40.547+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/0ebb2ea1-4f31-4c88-bd91-e3d3129a2856/contacts/6cc2c502-eb91-44e1-95c0-b2d109b3d0d3/versions/1/compare
+2026-11-09T16:13:40.722+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/f6ccb0dc-a468-4177-b655-ea76b6082f8b/contacts/ac845d92-75b8-4072-bbac-f3ed2144be20/versions
+2026-11-09T16:13:40.723+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f6ccb0dc-a468-4177-b655-ea76b6082f8b/contacts/ac845d92-75b8-4072-bbac-f3ed2144be20/versions
+2026-11-09T16:13:40.743+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/f6ccb0dc-a468-4177-b655-ea76b6082f8b/contacts/ac845d92-75b8-4072-bbac-f3ed2144be20/versions
+2026-11-09T16:13:40.744+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f6ccb0dc-a468-4177-b655-ea76b6082f8b/contacts/ac845d92-75b8-4072-bbac-f3ed2144be20/versions
+2026-11-09T16:13:40.908+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/3b8c832a-6527-49f9-b45f-364600353e3e/contacts/40f7f136-96f0-4c40-a4bd-934cad949571/versions/3/compare
+2026-11-09T16:13:40.909+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/3b8c832a-6527-49f9-b45f-364600353e3e/contacts/40f7f136-96f0-4c40-a4bd-934cad949571/versions/3/compare
+2026-11-09T16:13:41.064+01:00  WARN 14218 --- [contact-groups-backend] [o-auto-1-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/groups/ec355add-535a-4d18-a4cd-23cf69e55fdd/contacts/a8f838ba-20c8-4144-89b3-a229f47cd0a2/versions
+2026-11-09T16:13:41.065+01:00  INFO 14218 --- [contact-groups-backend] [o-auto-1-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ec355add-535a-4d18-a4cd-23cf69e55fdd/contacts/a8f838ba-20c8-4144-89b3-a229f47cd0a2/versions
+[ERROR] Tests run: 12, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 17.46 s <<< FAILURE! -- in si.contactgroups.acceptance.Us022VersionAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_01_versions_newest_first -- Time elapsed: 0.264 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_01_versions_newest_first(Us022VersionAcceptanceIT.java:68)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_05_no_change_no_version -- Time elapsed: 0.182 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_05_no_change_no_version(Us022VersionAcceptanceIT.java:199)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_03_compare_with_current -- Time elapsed: 0.197 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_03_compare_with_current(Us022VersionAcceptanceIT.java:95)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_02_open_earlier_version -- Time elapsed: 0.179 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_02_open_earlier_version(Us022VersionAcceptanceIT.java:81)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_01_only_v1 -- Time elapsed: 0.119 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_01_only_v1(Us022VersionAcceptanceIT.java:163)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed -- Time elapsed: 0.116 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed(Us022VersionAcceptanceIT.java:133)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_04_tag_added -- Time elapsed: 0.142 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_04_tag_added(Us022VersionAcceptanceIT.java:109)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash -- Time elapsed: 0.196 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.versions(Us022VersionAcceptanceIT.java:52)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash(Us022VersionAcceptanceIT.java:191)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_02_current_with_itself -- Time elapsed: 0.164 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.differences(Us022VersionAcceptanceIT.java:58)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ex_022_02_current_with_itself(Us022VersionAcceptanceIT.java:172)
+
+[ERROR] si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_05_viewer_refused -- Time elapsed: 0.154 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 403
+ but was: 404
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us022VersionAcceptanceIT.ac_022_05_viewer_refused(Us022VersionAcceptanceIT.java:125)
+
+[ERROR] Failures: 
+[ERROR]   Us022VersionAcceptanceIT.ac_022_01_versions_newest_first:68->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_02_open_earlier_version:81 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_03_compare_with_current:95->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_04_tag_added:109->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_05_viewer_refused:125 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 403
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ac_022_06_versions_cannot_be_changed:133 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_01_only_v1:163->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_02_current_with_itself:172->differences:58 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_04_versions_of_contact_in_trash:191->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR]   Us022VersionAcceptanceIT.ex_022_05_no_change_no_version:199->versions:52 [HTTP status; body: {"code":"route.not_found","message":"Not found"}] 
+expected: 200
+ but was: 404
+[ERROR] Tests run: 12, Failures: 10, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.4:verify (default) on project contact-groups-backend: There are test failures.
+[ERROR] 
+[ERROR] See /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
