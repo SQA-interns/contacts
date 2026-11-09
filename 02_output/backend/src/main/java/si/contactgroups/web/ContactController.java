@@ -45,9 +45,10 @@ public class ContactController {
   public ContactPage listContacts(
       @PathVariable UUID groupId,
       @RequestParam(required = false) String page,
+      @RequestParam(required = false) String q,
       @RequestParam(required = false) String sort,
       @RequestParam(required = false) String dir) {
-    return search.list(groupId, page, sort, dir);
+    return search.list(groupId, page, q, sort, dir);
   }
 
   @PostMapping

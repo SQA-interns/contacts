@@ -65,12 +65,52 @@ public class ContactRepository {
         .single();
   }
 
-  /** The number of Contacts of the Group that are not in Trash. */
-  public int count(UUID groupId) {
-    return jdbc.sql("SELECT count(*) FROM contact WHERE group_id = :groupId AND deleted_at IS NULL")
+  /**
+   * The number of Contacts of the Group that are not in Trash and match every word.
+   *
+   * @param patterns LIKE patterns from {@code SearchWords}; empty means no search
+   */
+  public int count(UUID groupId, List<String> patterns) {
+    return bindWords(
+            jdbc.sql(
+                "SELECT count(*) FROM contact c WHERE c.group_id = :groupId"
+                    + " AND c.deleted_at IS NULL"
+                    + wordConditions(patterns)),
+            patterns)
         .param(GROUP_ID, groupId)
         .query(Integer.class)
         .single();
+  }
+
+  /**
+   * Every word must be in the search text of the Contact, in a Tag name or in an Attribute value
+   * (R-008-01, R-008-02); the patterns are bound, never joined into the SQL (R-008-06).
+   */
+  private static String wordConditions(List<String> patterns) {
+    StringBuilder sql = new StringBuilder();
+    for (int i = 0; i < patterns.size(); i++) {
+      sql.append(
+          " AND (c.search_norm LIKE :word"
+              + i
+              + " ESCAPE '\\'"
+              + " OR EXISTS (SELECT 1 FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
+              + " WHERE ct.contact_id = c.id AND t.name_norm LIKE :word"
+              + i
+              + " ESCAPE '\\')"
+              + " OR EXISTS (SELECT 1 FROM attribute a WHERE a.contact_id = c.id"
+              + " AND a.value_norm LIKE :word"
+              + i
+              + " ESCAPE '\\'))");
+    }
+    return sql.toString();
+  }
+
+  private static JdbcClient.StatementSpec bindWords(
+      JdbcClient.StatementSpec sql, List<String> patterns) {
+    for (int i = 0; i < patterns.size(); i++) {
+      sql = sql.param("word" + i, patterns.get(i));
+    }
+    return sql;
   }
 
   /**
@@ -80,16 +120,23 @@ public class ContactRepository {
    * @param column one of {@link #SORT_COLUMNS}
    */
   public List<ContactListItem> page(
-      UUID groupId, String column, boolean descending, int offset, int limit) {
+      UUID groupId,
+      List<String> patterns,
+      String column,
+      boolean descending,
+      int offset,
+      int limit) {
     String key = SORT_KEY.get(column);
     String dir = descending ? "DESC" : "ASC";
-    return jdbc.sql(
+    return bindWords(
+            jdbc.sql(
             "SELECT c.id, c.first_name, c.last_name, c.email, c.company, c.city, c.country,"
                 + " c.version, c.created_at,"
                 + " COALESCE((SELECT array_agg(t.name ORDER BY lower(t.name), t.name)"
                 + " FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
                 + " WHERE ct.contact_id = c.id), '{}') AS tags"
                 + " FROM contact c WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
+                + wordConditions(patterns)
                 + " ORDER BY ("
                 + key
                 + " IS NULL OR "
@@ -99,7 +146,8 @@ public class ContactRepository {
                 + " "
                 + dir
                 + ", c.last_name_norm ASC NULLS LAST, c.first_name_norm ASC NULLS LAST, c.id"
-                + " LIMIT :limit OFFSET :offset")
+                + " LIMIT :limit OFFSET :offset"),
+            patterns)
         .param(GROUP_ID, groupId)
         .param("limit", limit)
         .param("offset", offset)

@@ -21,41 +21,51 @@ class SearchServiceTest {
 
   @Test
   void refusesAPageBelowOneOrNotANumber() {
-    assertThatThrownBy(() -> service.list(group, "0", null, null))
+    assertThatThrownBy(() -> service.list(group, "0", null, null, null))
         .isInstanceOf(InvalidQueryException.class);
-    assertThatThrownBy(() -> service.list(group, "abc", null, null))
+    assertThatThrownBy(() -> service.list(group, "abc", null, null, null))
         .isInstanceOf(InvalidQueryException.class);
   }
 
   @Test
   void refusesAnUnknownColumnOrDirection() {
-    assertThatThrownBy(() -> service.list(group, null, "notes", null))
+    assertThatThrownBy(() -> service.list(group, null, null, "notes", null))
         .isInstanceOf(InvalidQueryException.class);
-    assertThatThrownBy(() -> service.list(group, null, "company", "up"))
+    assertThatThrownBy(() -> service.list(group, null, null, "company", "up"))
         .isInstanceOf(InvalidQueryException.class);
   }
 
   @Test
   void aPageBeyondTheEndIsEmptyWithTheTotalAndReadsNoRows() {
-    when(contacts.count(group)).thenReturn(60);
+    when(contacts.count(group, List.of())).thenReturn(60);
 
-    ContactPage page = service.list(group, "99", null, null);
+    ContactPage page = service.list(group, "99", null, null, null);
 
     assertThat(page.items()).isEmpty();
     assertThat(page.total()).isEqualTo(60);
     assertThat(page.page()).isEqualTo(99);
-    verify(contacts).count(group);
+    verify(contacts).count(group, List.of());
     verifyNoMoreInteractions(contacts);
   }
 
   @Test
-  void readsTheOffsetOfThePageInTheChosenOrder() {
-    when(contacts.count(group)).thenReturn(60);
-    when(contacts.page(group, "company", true, 50, 25)).thenReturn(List.of());
+  void passesTheWordsOfTheSearchTextAsPatternsToCountAndPage() {
+    when(contacts.count(group, List.of("%ana%", "%nov%"))).thenReturn(1);
 
-    ContactPage page = service.list(group, "3", "company", "desc");
+    ContactPage page = service.list(group, null, " ANA  nov", null, null);
+
+    assertThat(page.total()).isEqualTo(1);
+    verify(contacts).page(group, List.of("%ana%", "%nov%"), "lastName", false, 0, 25);
+  }
+
+  @Test
+  void readsTheOffsetOfThePageInTheChosenOrder() {
+    when(contacts.count(group, List.of())).thenReturn(60);
+    when(contacts.page(group, List.of(), "company", true, 50, 25)).thenReturn(List.of());
+
+    ContactPage page = service.list(group, "3", null, "company", "desc");
 
     assertThat(page.pageSize()).isEqualTo(25);
-    verify(contacts).page(group, "company", true, 50, 25);
+    verify(contacts).page(group, List.of(), "company", true, 50, 25);
   }
 }
