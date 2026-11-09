@@ -1,0 +1,149 @@
+
+Running 18 tests using 5 workers
+
+[1A[2K[1/18] [chromium] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › mobile (375 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[2/18] [chromium] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › tablet (768 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[3/18] [chromium] › ui-checks/version-screens.stack.spec.ts:22:5 › tablet (768 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[4/18] [chromium] › ui-checks/version-screens.stack.spec.ts:22:5 › mobile (375 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[5/18] [chromium] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › desktop (1440 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[6/18] [chromium] › ui-checks/version-screens.stack.spec.ts:22:5 › desktop (1440 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[7/18] [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › mobile (375 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[8/18] [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › tablet (768 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[9/18] [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › desktop (1440 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[10/18] [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › mobile (375 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[11/18] [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › tablet (768 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K  1) [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › mobile (375 px) › WF-07 restore: confirm, busy, refused, restored, stale 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-Vjs62a -juggler-pipe -silent[22m
+    [2m  - <launched> pid=22367[22m
+    [2m  - [pid=22367][err] *** You are running in headless mode.[22m
+    [2m  - [pid=22367][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=22367][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=5.5) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restore-version-screens.st-ef6e1-busy-refused-restored-stale-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restore-version-screens.st-ef6e1-busy-refused-restored-stale-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  2) [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › tablet (768 px) › WF-07 restore: confirm, busy, refused, restored, stale 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-7PjSab -juggler-pipe -silent[22m
+    [2m  - <launched> pid=22368[22m
+    [2m  - [pid=22368][err] *** You are running in headless mode.[22m
+    [2m  - [pid=22368][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=22368][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.583333) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restore-version-screens.st-7e484-busy-refused-restored-stale-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restore-version-screens.st-7e484-busy-refused-restored-stale-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[12/18] [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › desktop (1440 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[13/18] [webkit] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › mobile (375 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K  3) [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › desktop (1440 px) › WF-07 restore: confirm, busy, refused, restored, stale 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-AAwkMR -juggler-pipe -silent[22m
+    [2m  - <launched> pid=22378[22m
+    [2m  - [pid=22378][err] *** You are running in headless mode.[22m
+    [2m  - [pid=22378][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=22378][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=5.41667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restore-version-screens.st-87121-busy-refused-restored-stale-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restore-version-screens.st-87121-busy-refused-restored-stale-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  4) [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › mobile (375 px) › WF-07 Versions: list, open, compare, no differences, error 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-skPObB -juggler-pipe -silent[22m
+    [2m  - <launched> pid=22379[22m
+    [2m  - [pid=22379][err] *** You are running in headless mode.[22m
+    [2m  - [pid=22379][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=22379][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=5.41667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/version-screens.stack-mobi-dc3a4-ompare-no-differences-error-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/version-screens.stack-mobi-dc3a4-ompare-no-differences-error-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[14/18] [webkit] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › tablet (768 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[15/18] [webkit] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › desktop (1440 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K  5) [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › tablet (768 px) › WF-07 Versions: list, open, compare, no differences, error 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-rSMNpi -juggler-pipe -silent[22m
+    [2m  - <launched> pid=22385[22m
+    [2m  - [pid=22385][err] *** You are running in headless mode.[22m
+    [2m  - [pid=22385][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=22385][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=5.45833) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/version-screens.stack-tabl-ff41e-ompare-no-differences-error-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/version-screens.stack-tabl-ff41e-ompare-no-differences-error-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[16/18] [webkit] › ui-checks/version-screens.stack.spec.ts:22:5 › mobile (375 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[17/18] [webkit] › ui-checks/version-screens.stack.spec.ts:22:5 › tablet (768 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[18/18] [webkit] › ui-checks/version-screens.stack.spec.ts:22:5 › desktop (1440 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K  6) [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › desktop (1440 px) › WF-07 Versions: list, open, compare, no differences, error 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-FzPNQq -juggler-pipe -silent[22m
+    [2m  - <launched> pid=22514[22m
+    [2m  - [pid=22514][err] *** You are running in headless mode.[22m
+    [2m  - [pid=22514][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=22514][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.541667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/version-screens.stack-desk-3e79d-ompare-no-differences-error-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/version-screens.stack-desk-3e79d-ompare-no-differences-error-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  6 failed
+    [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › mobile (375 px) › WF-07 restore: confirm, busy, refused, restored, stale 
+    [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › tablet (768 px) › WF-07 restore: confirm, busy, refused, restored, stale 
+    [firefox] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › desktop (1440 px) › WF-07 restore: confirm, busy, refused, restored, stale 
+    [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › mobile (375 px) › WF-07 Versions: list, open, compare, no differences, error 
+    [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › tablet (768 px) › WF-07 Versions: list, open, compare, no differences, error 
+    [firefox] › ui-checks/version-screens.stack.spec.ts:22:5 › desktop (1440 px) › WF-07 Versions: list, open, compare, no differences, error 
+  12 passed (6.1m)
