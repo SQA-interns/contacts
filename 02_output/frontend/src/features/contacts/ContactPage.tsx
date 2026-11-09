@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router';
+import { Link, useParams, useSearchParams } from 'react-router';
 import { toast } from 'sonner';
 import {
   CONTACT_FIELDS,
@@ -36,7 +36,8 @@ export function ContactPage() {
   const role = useGroupRole(groupId);
   const [editing, setEditing] = useState(false);
   const [conflict, setConflict] = useState(false);
-  const [tab, setTab] = useState<'details' | 'history'>('details');
+  const [params] = useSearchParams();
+  const tab = params.get('tab') === 'history' ? 'history' : 'details';
   const query = useQuery({
     queryKey: ['contacts', groupId, contactId],
     queryFn: () => getContact(groupId, contactId),
@@ -99,7 +100,7 @@ export function ContactPage() {
         }
       />
       <p className="-mt-4 mb-6 text-text-muted">{t('contacts.version', { version: contact.version })}</p>
-      {canEdit ? <ContactTabs tab={tab} onChange={setTab} /> : null}
+      {canEdit ? <ContactTabs tab={tab} /> : null}
       {conflict ? <ConflictBanner version={contact.version} /> : null}
       {tab === 'history' && canEdit ? (
         <ContactHistoryTab groupId={groupId} contactId={contactId} />
@@ -132,14 +133,8 @@ export function ContactPage() {
   );
 }
 
-/** Tabs of SC-07; a Viewer has none (R-016-04). */
-function ContactTabs({
-  tab,
-  onChange,
-}: {
-  tab: 'details' | 'history';
-  onChange: (tab: 'details' | 'history') => void;
-}) {
+/** Tabs of SC-07 as links to `?tab=`; a Viewer has none (R-016-04). */
+function ContactTabs({ tab }: { tab: 'details' | 'history' }) {
   const { t } = useTranslation();
   const tabs = [
     { id: 'details', label: t('contacts.tabDetails') },
@@ -148,15 +143,15 @@ function ContactTabs({
   return (
     <nav aria-label={t('contacts.tabs')} className="mb-4 flex gap-2 border-b">
       {tabs.map(({ id, label }) => (
-        <Button
+        <Link
           key={id}
-          variant="ghost"
-          className="h-11 rounded-none"
+          to={id === 'details' ? '?' : `?tab=${id}`}
+          replace
+          className="inline-flex h-11 items-center rounded-none px-4 font-medium hover:bg-surface"
           aria-current={tab === id ? 'page' : undefined}
-          onClick={() => onChange(id)}
         >
           {label}
-        </Button>
+        </Link>
       ))}
     </nav>
   );

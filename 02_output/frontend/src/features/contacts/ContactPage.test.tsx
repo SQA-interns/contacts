@@ -232,11 +232,11 @@ describe('ContactPage tabs (R-016-03, R-016-04)', () => {
     renderPage();
 
     const tabs = await screen.findByRole('navigation', { name: 'Zavihki kontakta' });
-    expect(within(tabs).getByRole('button', { name: 'Podrobnosti' })).toHaveAttribute('aria-current', 'page');
-    await userEvent.click(within(tabs).getByRole('button', { name: 'Zgodovina' }));
+    expect(within(tabs).getByRole('link', { name: 'Podrobnosti' })).toHaveAttribute('aria-current', 'page');
+    await userEvent.click(within(tabs).getByRole('link', { name: 'Zgodovina' }));
 
     expect(await screen.findByText('Ustvarjeno')).toBeInTheDocument();
-    expect(within(tabs).getByRole('button', { name: 'Zgodovina' })).toHaveAttribute('aria-current', 'page');
+    expect(within(tabs).getByRole('link', { name: 'Zgodovina' })).toHaveAttribute('aria-current', 'page');
   });
 
   it('R-016-04 offers a Viewer no tabs and never asks for the History', async () => {
