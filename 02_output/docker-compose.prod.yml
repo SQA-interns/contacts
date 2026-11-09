@@ -37,6 +37,13 @@ services:
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
       REQUIRE_HTTPS: "true"
       SPRING_PROFILES_ACTIVE: prod
+      # Firebase Admin credentials (D-69): reading and deleting accounts are Admin API calls. The
+      # file is mounted below; the backend refuses to start without it.
+      GOOGLE_APPLICATION_CREDENTIALS: /run/secrets/firebase-admin.json
+    volumes:
+      # The host path of the service-account key (role "Firebase Authentication Admin"); the file
+      # must be readable by the user 10001 of the image, for example mode 0440 owned by group 10001.
+      - ${GOOGLE_APPLICATION_CREDENTIALS:?set the path of the Firebase service-account file}:/run/secrets/firebase-admin.json:ro
     ports:
       - "127.0.0.1:8080:8080"
     restart: unless-stopped
