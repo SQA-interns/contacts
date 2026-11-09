@@ -15,6 +15,7 @@ import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.Contact;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.StoredContact;
+import si.contactgroups.error.ApiError.FieldError;
 import si.contactgroups.persistence.ContactRepository;
 
 /**
@@ -64,9 +65,7 @@ public class MergeService {
     List<Source> sources = read(groupId, command.survivorId(), targets);
     List<MergeSource> values = sources.stream().map(Source::values).toList();
     ContactData fields = MergeValues.chooseFields(orEmpty(command.fields()), values);
-    List<AttributePair> pairs =
-        MergeValues.combineAttributes(
-            command.attributes() == null ? List.of() : command.attributes(), values);
+    List<AttributePair> pairs = MergeValues.combineAttributes(chosenAttributes(command), values);
     List<String> mergedTags = MergeValues.combineTags(values);
 
     Source survivor = sources.get(0);
@@ -166,6 +165,19 @@ public class MergeService {
     return contacts.find(groupId, contactId).isPresent()
         ? new ContactChangedException(contactService.get(groupId, contactId))
         : missing(groupId, contactId);
+  }
+
+  /**
+   * The chosen Attribute values of the command.
+   *
+   * @throws ValidationException when a choice is null or has no key (SB-01)
+   */
+  private static List<AttributePair> chosenAttributes(MergeCommand command) {
+    List<AttributePair> chosen = command.attributes() == null ? List.of() : command.attributes();
+    if (chosen.stream().anyMatch(pair -> pair == null || pair.key() == null)) {
+      throw new ValidationException(List.of(new FieldError("attributes", "validation.required")));
+    }
+    return chosen;
   }
 
   private static ContactData orEmpty(ContactData fields) {

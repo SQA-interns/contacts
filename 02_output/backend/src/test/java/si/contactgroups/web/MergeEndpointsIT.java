@@ -129,6 +129,22 @@ class MergeEndpointsIT extends WebTestSupport {
   }
 
   @Test
+  void f_15_a_null_attribute_or_key_answers_422_and_not_500() throws Exception {
+    String fields = body("{\"firstName\":\"Ana\"}");
+
+    merge(ana, fields.replace("\"attributes\":[]", "\"attributes\":[null]"))
+        .andExpect(status().isUnprocessableContent())
+        .andExpect(jsonPath("$.code").value("validation.failed"))
+        .andExpect(jsonPath("$.fieldErrors[0].field").value("attributes"));
+    merge(
+            ana,
+            fields.replace("\"attributes\":[]", "\"attributes\":[{\"key\":null,\"value\":null}]"))
+        .andExpect(status().isUnprocessableContent())
+        .andExpect(jsonPath("$.code").value("validation.failed"))
+        .andExpect(jsonPath("$.fieldErrors[0].field").value("attributes"));
+  }
+
+  @Test
   void a_property_the_contract_does_not_know_is_refused_with_400() throws Exception {
     merge(
             ana,
