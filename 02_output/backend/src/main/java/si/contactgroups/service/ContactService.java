@@ -147,39 +147,56 @@ public class ContactService {
     if (version == null) {
       throw new VersionMissingException();
     }
-    List<FieldError> errors = new ArrayList<>();
-    ContactData data = check(input, errors);
-    List<AttributePair> cleaned = attributes.clean(pairs, errors);
-    List<String> cleanedTags = tags.clean(tagNames, errors);
-    failOn(errors);
-    StoredContact stored =
-        contacts.find(groupId, contactId).orElseThrow(() -> missing(groupId, contactId));
-    if (stored.version() != version) {
-      throw new ContactChangedException(load(groupId, contactId));
-    }
+    Cleaned cleaned = clean(input, pairs, tagNames);
+    StoredContact stored = current(groupId, contactId, version);
     List<AttributePair> before = attributes.list(groupId, contactId);
-    List<AttributePair> after = orKeep(pairs, cleaned, before);
+    List<AttributePair> after = orKeep(pairs, cleaned.pairs(), before);
     List<String> tagsBefore = tags.list(groupId, contactId);
-    List<String> tagsAfter = orKeep(tagNames, cleanedTags, tagsBefore);
-    if (stored.data().equals(data) && unchanged(before, after, tagsBefore, tagsAfter)) {
+    List<String> tagsAfter = orKeep(tagNames, cleaned.tags(), tagsBefore);
+    if (stored.data().equals(cleaned.data()) && unchanged(before, after, tagsBefore, tagsAfter)) {
       return view(stored, before, tagsBefore);
     }
     Instant now = now();
-    if (!contacts.update(groupId, contactId, version, data, now)) {
+    if (!contacts.update(groupId, contactId, version, cleaned.data(), now)) {
       throw contacts.isInTrash(groupId, contactId)
           ? new ContactInTrashException()
           : new ContactChangedException(load(groupId, contactId));
     }
     if (restoredFrom == null) {
-      history.contactEdited(groupId, userId, contactId, stored.data(), data, now);
+      history.contactEdited(groupId, userId, contactId, stored.data(), cleaned.data(), now);
     }
     attributes.replace(groupId, userId, contactId, before, after, now);
     tags.replace(groupId, userId, contactId, tagsBefore, tagsAfter, now);
     if (restoredFrom != null) {
-      history.versionRestored(groupId, userId, contactId, restoredFrom, stored.data(), data, now);
+      history.versionRestored(
+          groupId, userId, contactId, restoredFrom, stored.data(), cleaned.data(), now);
     }
     versions.insertSnapshot(groupId, contactId, version + 1, userId, now);
     return load(groupId, contactId);
+  }
+
+  /**
+   * The fields, Attributes and Tags after the checks of BR-06, R-004-02..04 and R-005-02, R-005-04.
+   */
+  private record Cleaned(ContactData data, List<AttributePair> pairs, List<String> tags) {}
+
+  private Cleaned clean(ContactData input, List<AttributePair> pairs, List<String> tagNames) {
+    List<FieldError> errors = new ArrayList<>();
+    ContactData data = check(input, errors);
+    List<AttributePair> cleanedPairs = attributes.clean(pairs, errors);
+    List<String> cleanedTags = tags.clean(tagNames, errors);
+    failOn(errors);
+    return new Cleaned(data, cleanedPairs, cleanedTags);
+  }
+
+  /** The stored Contact, when {@code version} is its current number (BR-07). */
+  private StoredContact current(UUID groupId, UUID contactId, int version) {
+    StoredContact stored =
+        contacts.find(groupId, contactId).orElseThrow(() -> missing(groupId, contactId));
+    if (stored.version() != version) {
+      throw new ContactChangedException(load(groupId, contactId));
+    }
+    return stored;
   }
 
   /** A Contact in Trash may not be changed (R-012-06); any other missing one is not found. */
