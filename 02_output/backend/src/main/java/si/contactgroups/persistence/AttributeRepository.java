@@ -11,6 +11,7 @@ import si.contactgroups.domain.Normaliser;
 @Repository
 public class AttributeRepository {
 
+  private static final String KEY = "key";
   private static final String GROUP_ID = "groupId";
   private static final String CONTACT_ID = "contactId";
   private static final String IN_GROUP =
@@ -39,7 +40,7 @@ public class AttributeRepository {
                 + " WHERE id = :contactId AND group_id = :groupId")
         .param(GROUP_ID, groupId)
         .param(CONTACT_ID, contactId)
-        .param("key", pair.key())
+        .param(KEY, pair.key())
         .param("value", pair.value())
         .param("valueNorm", Normaliser.normalise(pair.value()))
         .update();
@@ -53,7 +54,7 @@ public class AttributeRepository {
                 + IN_GROUP)
         .param(GROUP_ID, groupId)
         .param(CONTACT_ID, contactId)
-        .param("key", key)
+        .param(KEY, key)
         .param("value", value)
         .param("valueNorm", Normaliser.normalise(value))
         .update();
@@ -64,7 +65,7 @@ public class AttributeRepository {
     jdbc.sql("DELETE FROM attribute WHERE lower(key) = lower(:key) AND" + IN_GROUP)
         .param(GROUP_ID, groupId)
         .param(CONTACT_ID, contactId)
-        .param("key", key)
+        .param(KEY, key)
         .update();
   }
 }
