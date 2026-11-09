@@ -193,3 +193,58 @@ describe('ContactPage WF-07 (R-003-06..09, R-003-11)', () => {
     expect(vi.mocked(fetch).mock.calls.some(([, init]) => init?.method === 'PUT')).toBe(false);
   });
 });
+
+describe('ContactPage tabs (R-016-03, R-016-04)', () => {
+  beforeEach(async () => {
+    await setLanguage('sl');
+    vi.stubGlobal('fetch', vi.fn());
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('offers an Owner the tabs Podrobnosti and Zgodovina and opens the History', async () => {
+    vi.mocked(fetch).mockImplementation((url) => {
+      const path = String(url);
+      if (path.includes('/history')) {
+        return Promise.resolve(
+          answer({
+            items: [
+              {
+                id: 'e1',
+                occurredAt: '2026-01-15T10:00:00Z',
+                userName: 'Ana Novak',
+                userEmail: 'ana@acme.com',
+                action: 'CONTACT_CREATED',
+                contactId: 'c1',
+                details: {},
+              },
+            ],
+            page: 1,
+            pageSize: 25,
+            total: 1,
+          }),
+        );
+      }
+      if (path.endsWith('/groups')) {
+        return Promise.resolve(answer([{ id: 'g1', name: 'Acme', role: 'OWNER', createdAt: ana.createdAt }]));
+      }
+      return Promise.resolve(answer(ana));
+    });
+    renderPage();
+
+    const tabs = await screen.findByRole('navigation', { name: 'Zavihki kontakta' });
+    expect(within(tabs).getByRole('button', { name: 'Podrobnosti' })).toHaveAttribute('aria-current', 'page');
+    await userEvent.click(within(tabs).getByRole('button', { name: 'Zgodovina' }));
+
+    expect(await screen.findByText('Ustvarjeno')).toBeInTheDocument();
+    expect(within(tabs).getByRole('button', { name: 'Zgodovina' })).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('R-016-04 offers a Viewer no tabs and never asks for the History', async () => {
+    backend('VIEWER', ana);
+    renderPage();
+
+    await screen.findByRole('heading', { level: 1, name: 'Ana Novak' });
+    expect(screen.queryByRole('navigation', { name: 'Zavihki kontakta' })).toBeNull();
+    expect(vi.mocked(fetch).mock.calls.some(([url]) => String(url).includes('/history'))).toBe(false);
+  });
+});

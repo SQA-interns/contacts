@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { countryName } from '@/i18n/format';
 import type { Language } from '@/i18n';
 import { useGroupRole } from '@/features/groups/useGroupRole';
+import { ContactHistoryTab } from '@/features/history/ContactHistoryTab';
 import { ConflictBanner } from './ConflictBanner';
 import { ContactForm, type ContactValues } from './ContactForm';
 
@@ -28,6 +29,7 @@ export function ContactPage() {
   const role = useGroupRole(groupId);
   const [editing, setEditing] = useState(false);
   const [conflict, setConflict] = useState(false);
+  const [tab, setTab] = useState<'details' | 'history'>('details');
   const query = useQuery({
     queryKey: ['contacts', groupId, contactId],
     queryFn: () => getContact(groupId, contactId),
@@ -85,30 +87,65 @@ export function ContactPage() {
         }
       />
       <p className="-mt-4 mb-6 text-text-muted">{t('contacts.version', { version: contact.version })}</p>
+      {canEdit ? <ContactTabs tab={tab} onChange={setTab} /> : null}
       {conflict ? <ConflictBanner version={contact.version} /> : null}
-      <div className="mt-4 grid gap-4 lg:grid-cols-[2fr_1fr]">
-        <section className="rounded-[12px] border bg-surface-raised p-4">
-          <h2 className="mb-4 text-xl font-semibold">{t('contacts.data')}</h2>
-          {editing ? (
-            <ContactForm
-              key={contact.version}
-              initial={contact}
-              submitLabel={t('contacts.saveChanges')}
-              busyLabel={t('contacts.saving')}
-              busy={save.isPending}
-              error={error}
-              onSubmit={(values) => save.mutate(values)}
-              onCancel={() => setEditing(false)}
-            />
-          ) : (
-            <Fields contact={contact} />
-          )}
-        </section>
-        <div className="flex flex-col gap-4">
-          <TagsAndAttributes contact={contact} />
+      {tab === 'history' && canEdit ? (
+        <ContactHistoryTab groupId={groupId} contactId={contactId} />
+      ) : (
+        <div className="mt-4 grid gap-4 lg:grid-cols-[2fr_1fr]">
+          <section className="rounded-[12px] border bg-surface-raised p-4">
+            <h2 className="mb-4 text-xl font-semibold">{t('contacts.data')}</h2>
+            {editing ? (
+              <ContactForm
+                key={contact.version}
+                initial={contact}
+                submitLabel={t('contacts.saveChanges')}
+                busyLabel={t('contacts.saving')}
+                busy={save.isPending}
+                error={error}
+                onSubmit={(values) => save.mutate(values)}
+                onCancel={() => setEditing(false)}
+              />
+            ) : (
+              <Fields contact={contact} />
+            )}
+          </section>
+          <div className="flex flex-col gap-4">
+            <TagsAndAttributes contact={contact} />
+          </div>
         </div>
-      </div>
+      )}
     </>
+  );
+}
+
+/** Tabs of SC-07; a Viewer has none (R-016-04). */
+function ContactTabs({
+  tab,
+  onChange,
+}: {
+  tab: 'details' | 'history';
+  onChange: (tab: 'details' | 'history') => void;
+}) {
+  const { t } = useTranslation();
+  const tabs = [
+    { id: 'details', label: t('contacts.tabDetails') },
+    { id: 'history', label: t('contacts.tabHistory') },
+  ] as const;
+  return (
+    <nav aria-label={t('contacts.tabs')} className="mb-4 flex gap-2 border-b">
+      {tabs.map(({ id, label }) => (
+        <Button
+          key={id}
+          variant="ghost"
+          className="h-11 rounded-none"
+          aria-current={tab === id ? 'page' : undefined}
+          onClick={() => onChange(id)}
+        >
+          {label}
+        </Button>
+      ))}
+    </nav>
   );
 }
 
