@@ -36,6 +36,16 @@ for (const viewport of VIEWPORTS) {
       await expect(page.getByText('30 dni').filter({ visible: true })).toBeVisible();
       await check(page, 'WF-10_trash', 'list', viewport.name);
 
+      await page
+        .getByRole('button', { name: 'Izbriši za vedno Ana Novak' })
+        .filter({ visible: true })
+        .click();
+      const forever = page.getByRole('dialog', { name: 'Trajno izbrišem kontakt?' });
+      await expect(forever).toContainText('Tega ni mogoče razveljaviti.');
+      await check(page, 'WF-10_trash', 'delete-forever-confirmation', viewport.name);
+      await forever.getByRole('button', { name: 'Prekliči' }).click();
+      await expect(forever).toBeHidden();
+
       await page.getByRole('button', { name: 'Obnovi Ana Novak' }).filter({ visible: true }).click();
       await expect(page.getByText('Kontakt je obnovljen.')).toBeVisible();
       await check(page, 'WF-10_trash', 'restored', viewport.name);
