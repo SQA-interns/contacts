@@ -814,3 +814,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-72: F-15 fixed (null attribute in a merge) and the PMD finding of MergeService
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-026 resume
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-15 (`docs/04_review-INC-2.md`) and the PMD finding carried in D-71. (a) `POST /groups/{g}/merges` with `attributes: [null]` or an Attribute without a key now answers 422 `validation.failed` with the field error `attributes` / `validation.required` (`MergeService.chosenAttributes`, commit `a8e4837`), as a null in `contacts` already did; before, `MergeValues.key` threw a NullPointerException and the answer was 500. An Attribute with a key and a null value stays 422 `merge.invalid_value` (no source has that value). Red: `f_15_a_null_attribute_or_key_answers_422_and_not_500` failed with status 500 (`logs/f15-red.log`), green after the fix (`logs/f15-green.log`). (b) `MergeService.distinctTargets` (cyclomatic complexity 15) is split into `distinctTargets` and `requireComplete`, with the same checks in the same order (`4fcc65a`, refactor); PMD and Spotless pass (`logs/us026-f15-pmd.log`). (c) Full backend run (`logs/us026-f15-quality.log`): 366 tests, only the two known failures (`ex_007_05`, `ac_018_09`). Secret scan of the three commits: no leaks (`logs/us026-f15-gitleaks.log`). (d) Not touched: F-19 (version of a Survivor that changes nothing, D-68 d), F-20, F-17, F-18 (for `/fix`). (e) The subject of the first F-15 commit was 75 characters with the hash; it was amended before the handover to 68.
+- Options: 1 (default) 422 as written. 2 400 for a malformed Attribute.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
