@@ -180,6 +180,38 @@ public class HistoryWriter {
     write(groupId, userId, HistoryAction.MEMBER_JOINED, null, Map.of("role", role), at);
   }
 
+  /** Records a Role changed: the Member and the old and new Role (R-015-06). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void roleChanged(
+      UUID groupId,
+      UUID userId,
+      String name,
+      String email,
+      String oldRole,
+      String newRole,
+      Instant at) {
+    write(
+        groupId,
+        userId,
+        HistoryAction.ROLE_CHANGED,
+        null,
+        Map.of("member", name, "email", email, "old", oldRole, "new", newRole),
+        at);
+  }
+
+  /** Records a Member removed: the Member and the Role (R-015-06). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void memberRemoved(
+      UUID groupId, UUID userId, String name, String email, String role, Instant at) {
+    write(
+        groupId,
+        userId,
+        HistoryAction.MEMBER_REMOVED,
+        null,
+        Map.of("member", name, "email", email, "role", role),
+        at);
+  }
+
   private void write(
       UUID groupId,
       UUID userId,
