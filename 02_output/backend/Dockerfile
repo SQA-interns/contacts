@@ -17,5 +17,5 @@ USER 10001:10001
 EXPOSE 8080
 ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75 -Duser.timezone=UTC"
 HEALTHCHECK --interval=15s --timeout=3s --start-period=40s --retries=5 \
-  CMD curl -fsS http://127.0.0.1:8080/health/readiness || exit 1
+  CMD curl -fsS http://127.0.0.1:8080/health || exit 1
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

@@ -36,6 +36,27 @@ class ApplicationIT extends ApplicationContextSupport {
   }
 
   @Test
+  void healthNamesNoOtherKeyNotEvenTheProbeGroups() throws Exception {
+    String body = mvc.perform(get("/health")).andReturn().getResponse().getContentAsString();
+
+    org.assertj.core.api.Assertions.assertThat(
+            new com.fasterxml.jackson.databind.ObjectMapper().readTree(body).fieldNames())
+        .toIterable()
+        .containsExactly("status");
+  }
+
+  @Test
+  void theContainerHealthCheckCallsAnAddressThatAnswers() throws Exception {
+    String dockerfile = java.nio.file.Files.readString(java.nio.file.Path.of("Dockerfile"));
+    java.util.regex.Matcher url =
+        java.util.regex.Pattern.compile("curl -fsS http://127\\.0\\.0\\.1:8080(\\S*)")
+            .matcher(dockerfile);
+
+    org.assertj.core.api.Assertions.assertThat(url.find()).isTrue();
+    mvc.perform(get(url.group(1))).andExpect(status().isOk());
+  }
+
+  @Test
   void anyOtherPathWithoutTokenIs401() throws Exception {
     mvc.perform(get("/api/v1/groups"))
         .andExpect(status().isUnauthorized())

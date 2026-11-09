@@ -49,7 +49,7 @@ management:
   endpoint:
     health:
       probes:
-        enabled: true
+        enabled: false
       show-details: never
       show-components: never
 
