@@ -1,0 +1,9 @@
+
+Running 9 tests using 5 workers
+
+  ✓  2 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (19.0s)
+  ✓  4 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (19.5s)
+  ✓  5 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (20.6s)
+  ✓  7 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (23.1s)
+  ✓  8 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (23.5s)
+  ✓  9 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (21.0s)

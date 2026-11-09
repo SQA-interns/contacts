@@ -1,0 +1,89 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< si.contactgroups:contact-groups-backend >---------------
+[INFO] Building Contact Groups backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.46.1:apply (default-cli) @ contact-groups-backend ---
+[INFO] clean file: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/web/ExportEndpointsIT.java
+[INFO] clean file: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/ExportServiceTest.java
+[INFO] clean file: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/XlsxWriterTest.java
+[INFO] clean file: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/domain/ExportColumnsTest.java
+[INFO] clean file: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/main/java/si/contactgroups/service/ExportService.java
+[INFO] clean file: /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/main/java/si/contactgroups/domain/ExportColumns.java
+[INFO] Spotless.Java is keeping 196 files clean - 6 were changed to be clean, 9 were already clean, 181 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (default-cli) @ contact-groups-backend ---
+[INFO] Starting audit...
+Audit done.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] >>> pmd:3.28.0:check (default-cli) > :pmd @ contact-groups-backend >>>
+[INFO] 
+[INFO] --- pmd:3.28.0:pmd (pmd) @ contact-groups-backend ---
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[INFO] PMD version: 7.17.0
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:9:5
+  7|     <exclude name="MissingSerialVersionUID"/>
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+         ^^^^^^^^ Exclude pattern 'BeanMembersShouldSerialize' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+ 11|     <exclude name="NullAssignment"/>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:10:5
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+         ^^^^^^^^ Exclude pattern 'DataflowAnomalyAnalysis' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 11|     <exclude name="NullAssignment"/>
+ 12|   </rule>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:9:5
+  7|     <exclude name="MissingSerialVersionUID"/>
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+         ^^^^^^^^ Exclude pattern 'BeanMembersShouldSerialize' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+ 11|     <exclude name="NullAssignment"/>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:10:5
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+         ^^^^^^^^ Exclude pattern 'DataflowAnomalyAnalysis' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 11|     <exclude name="NullAssignment"/>
+ 12|   </rule>
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] 
+[INFO] <<< pmd:3.28.0:check (default-cli) < :pmd @ contact-groups-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.28.0:check (default-cli) @ contact-groups-backend ---
+[INFO] 
+[INFO] >>> spotbugs:4.9.6.0:check (default-cli) > :spotbugs @ contact-groups-backend >>>
+[INFO] 
+[INFO] --- spotbugs:4.9.6.0:spotbugs (spotbugs) @ contact-groups-backend ---
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] Skipping com.github.spotbugs:spotbugs-maven-plugin:4.9.6.0:spotbugs report goal
+[INFO] 
+[INFO] <<< spotbugs:4.9.6.0:check (default-cli) < :spotbugs @ contact-groups-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs:4.9.6.0:check (default-cli) @ contact-groups-backend ---
+[INFO] BugInstance size is 0
+[INFO] Error size is 0
+[INFO] No errors/warnings found
+[INFO] 
+[INFO] --- spotless:2.46.1:check (default-cli) @ contact-groups-backend ---
+[INFO] Spotless.Java is keeping 196 files clean - 0 needs changes to be clean, 0 were already clean, 196 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.909 s
+[INFO] Finished at: 2026-11-09T10:51:37+01:00
+[INFO] ------------------------------------------------------------------------

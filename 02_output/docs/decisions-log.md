@@ -605,3 +605,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-55: Readings of US-011 made while implementing, and frozen tests that wait
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-011
+- Class: open
+- Type: non-blocking
+- Trigger: points the story and the contract leave open, and DoD-S items not met. (a) "Select all N results" with some Contacts unticked afterwards (D-54): the contract `ExportRequest` names only `contactIds` or a `filter`, so the Export button lists the results page by page (`GET .../contacts`, 25 per page) and sends the ids without the unticked ones [ASSUMPTION]; with no unticked Contact it sends the filter. A Selection of about 10,000 with unticked Contacts therefore costs about 400 list requests. (b) The column of an Attribute key that appears in several spellings (`Kompetenca`, `kompetenca`) shows the smallest spelling in natural order, `Kompetenca` before `kompetenca` [ASSUMPTION]; only case merges keys, so `sola` and `Šola` stay two columns; the columns are ordered by the key without case and accents, ties by natural order. (c) A Contact's Tag cell is sorted without case and accents. (d) The History entry `CONTACTS_EXPORTED` has no Contact id and the details `{"count": n}`, n being the exported rows after Trash was left out (R-011-07, AC-011-09). (e) The file is made by Apache POI `XSSFWorkbook` in memory (10,000 rows of about 23 cells); every cell is a string cell (SR-06). (f) The `lang` of the request defaults to `sl` as in the contract; any other value is 400. (g) A body that names both or neither of `contactIds` and `filter` is 400 `request.malformed`. (h) Frozen `Us011ExportAcceptanceIT`: 14 of 21 pass; the 7 that fail call routes of later stories (members US-014 `addMember`, Trash US-012 `moveToTrash`, activity US-017 `activity`) and answer `route.not_found`; the rules they test (Viewer 403 with no entry, History entry with user, time and count, left-out deleted Contact, Selection of 10,001 with no entry) are covered meanwhile by `ExportEndpointsIT` and `ExportServiceTest`. The frozen UI tests of `us010-011-selection.spec.ts` need US-014 (Members). (i) Slip, no effect: a `find` over `02_output` listed three file names under `02_output/hidden-tests/` (`H07ListsExportHiddenIT`); no file there was opened or used.
+- Options: 1 (default) as written. 2 Add an optional `excludeIds` to the filter selection in the contract (one request for any Selection; needs a contract change and the approval of the human).
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

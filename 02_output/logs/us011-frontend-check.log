@@ -1,0 +1,15 @@
+
+> contact-groups-frontend@1.0.0 check
+> prettier --check . && eslint . && tsc -b --noEmit && vitest run src/i18n
+
+Checking formatting...
+All matched files use Prettier code style!
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  15 passed (15)
+   Start at  10:47:34
+   Duration  621ms (transform 118ms, setup 342ms, import 103ms, tests 48ms, environment 1.00s)
+
