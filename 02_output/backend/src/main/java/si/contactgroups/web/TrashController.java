@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,10 @@ import si.contactgroups.security.AuthenticatedUser;
 import si.contactgroups.security.RequiresAction;
 import si.contactgroups.service.TrashService;
 
-/** Contract {@code trashContact}, {@code listTrashContacts}, {@code restoreContact} (US-012). */
+/**
+ * Contract {@code trashContact}, {@code listTrashContacts}, {@code restoreContact} (US-012) and
+ * {@code deleteContactForever} (US-013).
+ */
 @RestController
 @RequestMapping("/api/v1/groups/{groupId}")
 public class TrashController {
@@ -51,5 +55,15 @@ public class TrashController {
       @PathVariable UUID groupId,
       @PathVariable String contactId) {
     return trash.restore(groupId, caller.userId(), ContactIds.parse(contactId));
+  }
+
+  @DeleteMapping("/trash/contacts/{contactId}")
+  @RequiresAction(Action.DELETE_CONTACT_FOREVER)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void deleteContactForever(
+      @AuthenticationPrincipal AuthenticatedUser caller,
+      @PathVariable UUID groupId,
+      @PathVariable String contactId) {
+    trash.deleteForever(groupId, caller.userId(), ContactIds.parse(contactId));
   }
 }

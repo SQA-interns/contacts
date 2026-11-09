@@ -15,6 +15,7 @@ import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.ContactFilter;
 import si.contactgroups.domain.ContactListItem;
+import si.contactgroups.domain.ExpiredContact;
 import si.contactgroups.domain.ExportContact;
 import si.contactgroups.domain.Facets;
 import si.contactgroups.domain.Normaliser;
@@ -356,6 +357,35 @@ public class ContactRepository {
             .param("cutoff", Timestamp.from(cutoff))
             .update()
         == 1;
+  }
+
+  /**
+   * Deletes a Contact that is in Trash with its Tags links, Attributes and Versions (cascade); of
+   * two requests at once, one deletes the row (R-013-01, EX-013-04).
+   *
+   * @return whether the Contact was deleted by this call
+   */
+  public boolean deleteFromTrash(UUID groupId, UUID contactId) {
+    return jdbc.sql(
+                "DELETE FROM contact WHERE id = :id AND group_id = :groupId"
+                    + " AND deleted_at IS NOT NULL")
+            .param("id", contactId)
+            .param(GROUP_ID, groupId)
+            .update()
+        == 1;
+  }
+
+  /** The Contacts of all Groups that went to Trash at or before {@code cutoff} (R-013-04). */
+  @GlobalScope
+  public List<ExpiredContact> listExpired(Instant cutoff) {
+    return jdbc.sql(
+            "SELECT id, group_id FROM contact WHERE deleted_at <= :cutoff ORDER BY deleted_at")
+        .param("cutoff", Timestamp.from(cutoff))
+        .query(
+            (rs, n) ->
+                new ExpiredContact(
+                    rs.getObject("group_id", UUID.class), rs.getObject("id", UUID.class)))
+        .list();
   }
 
   /**

@@ -25,15 +25,19 @@ import tools.jackson.databind.node.ObjectNode;
 public class HistoryWriter {
 
   private static final int NAME_MAX = 100;
+  private static final String SYSTEM = "system";
 
   private final HistoryRepository history;
   private final UserRepository users;
   private final JsonMapper json;
+  private final HistoryRedactor redactor;
 
-  public HistoryWriter(HistoryRepository history, UserRepository users, JsonMapper json) {
+  public HistoryWriter(
+      HistoryRepository history, UserRepository users, JsonMapper json, HistoryRedactor redactor) {
     this.history = history;
     this.users = users;
     this.json = json;
+    this.redactor = redactor;
   }
 
   /** Records the creation with the stored values (R-016-01). */
@@ -122,6 +126,28 @@ public class HistoryWriter {
   @Transactional(propagation = Propagation.MANDATORY)
   public void contactRestored(UUID groupId, UUID userId, UUID contactId, Instant at) {
     write(groupId, userId, HistoryAction.CONTACT_RESTORED, contactId, Map.of(), at);
+  }
+
+  /**
+   * Replaces the values in the earlier entries of the Contact by "removed", then records the
+   * permanent deletion without any value of the Contact (R-013-06, R-013-08). {@code userId} is
+   * null when the clean-up job deletes (the user reads "system").
+   */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void contactDeletedForever(UUID groupId, UUID userId, UUID contactId, Instant at) {
+    history
+        .detailsOfContact(groupId, contactId)
+        .forEach(e -> history.replaceDetails(groupId, e.id(), redactor.redact(e.details())));
+    if (userId == null) {
+      history.insert(
+          groupId,
+          HistoryAction.CONTACT_DELETED_FOREVER,
+          contactId,
+          "{}",
+          new HistoryActor(null, SYSTEM, null, at));
+    } else {
+      write(groupId, userId, HistoryAction.CONTACT_DELETED_FOREVER, contactId, Map.of(), at);
+    }
   }
 
   /** Records an export: the number of Contacts in the file (R-011-07). */
