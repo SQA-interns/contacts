@@ -14,6 +14,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.contactgroups.error.ApiError;
 import si.contactgroups.security.RequestTooLargeException;
 import si.contactgroups.service.ContactChangedException;
+import si.contactgroups.service.ContactInTrashException;
 import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.ExportTooManyException;
 import si.contactgroups.service.GroupNameTakenException;
@@ -98,6 +99,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> contactNotFound(ContactNotFoundException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(new ApiError("contact.not_found", e.getMessage()));
+  }
+
+  @ExceptionHandler(ContactInTrashException.class)
+  public ResponseEntity<ApiError> contactInTrash(ContactInTrashException e) {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(new ApiError("contact.in_trash", e.getMessage()));
   }
 
   @ExceptionHandler(ContactChangedException.class)

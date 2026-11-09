@@ -112,6 +112,18 @@ public class HistoryWriter {
     write(groupId, userId, HistoryAction.TAG_DELETED, contactId, Map.of("name", name), at);
   }
 
+  /** Records the move of a Contact to Trash (R-012-07). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void contactDeleted(UUID groupId, UUID userId, UUID contactId, Instant at) {
+    write(groupId, userId, HistoryAction.CONTACT_DELETED, contactId, Map.of(), at);
+  }
+
+  /** Records the return of a Contact from Trash (R-012-07). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void contactRestored(UUID groupId, UUID userId, UUID contactId, Instant at) {
+    write(groupId, userId, HistoryAction.CONTACT_RESTORED, contactId, Map.of(), at);
+  }
+
   /** Records an export: the number of Contacts in the file (R-011-07). */
   @Transactional(propagation = Propagation.MANDATORY)
   public void contactsExported(UUID groupId, UUID userId, int count, Instant at) {

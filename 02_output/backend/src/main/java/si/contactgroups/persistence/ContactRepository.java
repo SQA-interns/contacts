@@ -19,6 +19,7 @@ import si.contactgroups.domain.ExportContact;
 import si.contactgroups.domain.Facets;
 import si.contactgroups.domain.Normaliser;
 import si.contactgroups.domain.StoredContact;
+import si.contactgroups.domain.TrashedContact;
 
 /** The Contacts of a Group (table {@code contact}); every method is scoped to one Group. */
 @Repository
@@ -315,6 +316,78 @@ public class ContactRepository {
   /** Whether the Group has the Contact, in Trash or not. */
   public boolean existsIncludingTrash(UUID groupId, UUID contactId) {
     return jdbc.sql("SELECT EXISTS (SELECT 1 FROM contact WHERE id = :id AND group_id = :groupId)")
+        .param("id", contactId)
+        .param(GROUP_ID, groupId)
+        .query(Boolean.class)
+        .single();
+  }
+
+  /**
+   * Puts the Contact in Trash, only when it is not there yet; of two requests at once, one changes
+   * the row (R-012-09, EX-012-04).
+   *
+   * @return whether the Contact was moved by this call
+   */
+  public boolean moveToTrash(UUID groupId, UUID contactId, Instant now) {
+    return jdbc.sql(
+                "UPDATE contact SET deleted_at = :now WHERE id = :id AND group_id = :groupId"
+                    + " AND deleted_at IS NULL")
+            .param("id", contactId)
+            .param(GROUP_ID, groupId)
+            .param("now", Timestamp.from(now))
+            .update()
+        == 1;
+  }
+
+  /**
+   * Takes the Contact out of Trash when it went in after {@code cutoff}; fields, Tags, Attributes
+   * and version number stay as they are (R-012-04, R-012-05).
+   *
+   * @return whether the Contact was restored
+   */
+  public boolean restoreFromTrash(UUID groupId, UUID contactId, Instant cutoff) {
+    return jdbc.sql(
+                "UPDATE contact SET deleted_at = NULL WHERE id = :id AND group_id = :groupId"
+                    + " AND deleted_at > :cutoff")
+            .param("id", contactId)
+            .param(GROUP_ID, groupId)
+            .param("cutoff", Timestamp.from(cutoff))
+            .update()
+        == 1;
+  }
+
+  /**
+   * The Contacts of the Group that went to Trash after {@code cutoff}, the latest first, with the
+   * name of the user of the last deletion entry of the History (D-18f).
+   */
+  public List<TrashedContact> listTrash(UUID groupId, Instant cutoff) {
+    return jdbc.sql(
+            "SELECT c.id, c.first_name, c.last_name, c.email, c.company, c.deleted_at,"
+                + " (SELECT h.user_name FROM history_entry h WHERE h.contact_id = c.id"
+                + " AND h.action = 'CONTACT_DELETED' ORDER BY h.occurred_at DESC, h.id DESC"
+                + " LIMIT 1) AS deleted_by"
+                + " FROM contact c WHERE c.group_id = :groupId AND c.deleted_at > :cutoff"
+                + " ORDER BY c.deleted_at DESC, c.id")
+        .param(GROUP_ID, groupId)
+        .param("cutoff", Timestamp.from(cutoff))
+        .query(
+            (rs, n) ->
+                new TrashedContact(
+                    rs.getObject("id", UUID.class),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString(EMAIL),
+                    rs.getString(COMPANY),
+                    rs.getTimestamp("deleted_at").toInstant(),
+                    rs.getString("deleted_by")))
+        .list();
+  }
+
+  /** Whether the Contact of the Group is in Trash now. */
+  public boolean isInTrash(UUID groupId, UUID contactId) {
+    return jdbc.sql(
+            "SELECT EXISTS (SELECT 1 FROM contact WHERE id = :id AND group_id = :groupId"
+                + " AND deleted_at IS NOT NULL)")
         .param("id", contactId)
         .param(GROUP_ID, groupId)
         .query(Boolean.class)

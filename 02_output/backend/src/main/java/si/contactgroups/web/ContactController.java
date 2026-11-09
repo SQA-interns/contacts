@@ -20,7 +20,6 @@ import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.ContactPage;
 import si.contactgroups.security.AuthenticatedUser;
 import si.contactgroups.security.RequiresAction;
-import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.ContactService;
 import si.contactgroups.service.FilterParams;
 import si.contactgroups.service.SearchService;
@@ -65,7 +64,7 @@ public class ContactController {
   @GetMapping("/{contactId}")
   @RequiresAction(Action.READ_CONTACTS)
   public Contact getContact(@PathVariable UUID groupId, @PathVariable String contactId) {
-    return contacts.get(groupId, contactIdOf(contactId));
+    return contacts.get(groupId, ContactIds.parse(contactId));
   }
 
   @PutMapping("/{contactId}")
@@ -78,19 +77,11 @@ public class ContactController {
     return contacts.update(
         groupId,
         caller.userId(),
-        contactIdOf(contactId),
+        ContactIds.parse(contactId),
         body.version(),
         body.toData(),
         body.attributes(),
         body.tags());
-  }
-
-  private static UUID contactIdOf(String contactId) {
-    try {
-      return UUID.fromString(contactId);
-    } catch (IllegalArgumentException e) {
-      throw new ContactNotFoundException();
-    }
   }
 
   /**

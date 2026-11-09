@@ -111,7 +111,7 @@ public class ContactService {
     List<String> cleanedTags = tags.clean(tagNames, errors);
     failOn(errors);
     StoredContact stored =
-        contacts.find(groupId, contactId).orElseThrow(ContactNotFoundException::new);
+        contacts.find(groupId, contactId).orElseThrow(() -> missing(groupId, contactId));
     if (stored.version() != version) {
       throw new ContactChangedException(load(groupId, contactId));
     }
@@ -124,13 +124,22 @@ public class ContactService {
     }
     Instant now = now();
     if (!contacts.update(groupId, contactId, version, data, now)) {
-      throw new ContactChangedException(load(groupId, contactId));
+      throw contacts.isInTrash(groupId, contactId)
+          ? new ContactInTrashException()
+          : new ContactChangedException(load(groupId, contactId));
     }
     history.contactEdited(groupId, userId, contactId, stored.data(), data, now);
     attributes.replace(groupId, userId, contactId, before, after, now);
     tags.replace(groupId, userId, contactId, tagsBefore, tagsAfter, now);
     versions.insertSnapshot(groupId, contactId, version + 1, userId, now);
     return load(groupId, contactId);
+  }
+
+  /** A Contact in Trash may not be changed (R-012-06); any other missing one is not found. */
+  private RuntimeException missing(UUID groupId, UUID contactId) {
+    return contacts.isInTrash(groupId, contactId)
+        ? new ContactInTrashException()
+        : new ContactNotFoundException();
   }
 
   private ContactData check(ContactData input, List<FieldError> errors) {
