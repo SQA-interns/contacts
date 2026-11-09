@@ -42,7 +42,7 @@ public class ContactController {
       @AuthenticationPrincipal AuthenticatedUser caller,
       @PathVariable UUID groupId,
       @RequestBody ContactInput body) {
-    return contacts.create(groupId, caller.userId(), body.toData());
+    return contacts.create(groupId, caller.userId(), body.toData(), body.attributes());
   }
 
   @GetMapping("/{contactId}")
@@ -59,7 +59,12 @@ public class ContactController {
       @PathVariable String contactId,
       @RequestBody ContactInput body) {
     return contacts.update(
-        groupId, caller.userId(), contactIdOf(contactId), body.version(), body.toData());
+        groupId,
+        caller.userId(),
+        contactIdOf(contactId),
+        body.version(),
+        body.toData(),
+        body.attributes());
   }
 
   private static UUID contactIdOf(String contactId) {
@@ -71,8 +76,8 @@ public class ContactController {
   }
 
   /**
-   * Contract schema {@code ContactInput}. Tags and Attributes are part of the contract and are
-   * stored by US-004 and US-005; until then they are accepted and not stored (decision D-46).
+   * Contract schema {@code ContactInput}. Attributes are stored by US-004; Tags are accepted and
+   * not stored until US-005 (decision D-46).
    */
   public record ContactInput(
       String firstName,

@@ -46,6 +46,9 @@ final class AttributeCheck {
   }
 
   private static AttributePair trimmed(AttributePair pair) {
+    if (pair == null) {
+      return new AttributePair("", "");
+    }
     return new AttributePair(strip(pair.key()), strip(pair.value()));
   }
 

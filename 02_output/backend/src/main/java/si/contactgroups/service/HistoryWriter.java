@@ -1,11 +1,13 @@
 package si.contactgroups.service;
 
 import java.time.Instant;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import si.contactgroups.domain.AttributeChanges;
 import si.contactgroups.domain.ContactChanges;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.HistoryAction;
@@ -68,6 +70,21 @@ public class HistoryWriter {
           pair.put("new", change.newValue());
         });
     write(groupId, userId, HistoryAction.CONTACT_EDITED, contactId, Map.of("changes", pairs), at);
+  }
+
+  /** Records an Attribute added, changed or removed: key, old and new value (R-004-06). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void attributeChanged(
+      UUID groupId, UUID userId, UUID contactId, AttributeChanges.Change change, Instant at) {
+    Map<String, String> details = new LinkedHashMap<>();
+    details.put("key", change.key());
+    if (change.oldValue() != null) {
+      details.put("old", change.oldValue());
+    }
+    if (change.newValue() != null) {
+      details.put("new", change.newValue());
+    }
+    write(groupId, userId, change.action(), contactId, details, at);
   }
 
   private void write(
