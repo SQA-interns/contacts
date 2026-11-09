@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router';
 import { findDuplicates, type DuplicateSet } from '@/api/duplicates';
-import type { ContactListItem } from '@/api/contacts';
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
@@ -14,13 +13,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import type { Language } from '@/i18n';
 import { formatDate } from '@/i18n/format';
+import { contactName } from './contactName';
 import { DismissButton } from './DismissButton';
 import { useReasonText } from './useReasonText';
-
-function nameOf(contact: ContactListItem, fallback: string): string {
-  const name = [contact.firstName, contact.lastName].filter(Boolean).join(' ');
-  return name || contact.company || contact.email || fallback;
-}
 
 /** SC-17 / WF-17: the Duplicate sets of the Group with mark, reason and Contacts; it changes nothing (R-024-01, R-024-06); "Ni podvojeno" dismisses a set (R-025-01); "Združi izbrane" opens the Merge screen with the ticked Contacts (R-026-01). */
 export function DuplicatesPage() {
@@ -114,14 +109,16 @@ function DuplicateSetCard({ groupId, set }: { groupId: string; set: DuplicateSet
           <li key={contact.id} className="flex items-center gap-3">
             <span className="flex size-11 shrink-0 items-center justify-center">
               <Checkbox
-                aria-label={t('duplicates.pick', { name: nameOf(contact, t('contacts.untitled')) })}
+                aria-label={t('duplicates.pick', { name: contactName(contact, t('contacts.untitled')) })}
                 checked={picked.has(contact.id)}
                 onCheckedChange={() => toggle(contact.id)}
               />
             </span>
             <span className="flex min-w-0 grow flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <span className="min-w-0">
-                <span className="font-semibold break-words">{nameOf(contact, t('contacts.untitled'))}</span>
+                <span className="font-semibold break-words">
+                  {contactName(contact, t('contacts.untitled'))}
+                </span>
                 <br />
                 <span className="text-text-muted break-words">
                   {[contact.email, contact.company, contact.city].filter(Boolean).join(' · ')}
