@@ -3,10 +3,12 @@ package si.contactgroups.persistence;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 import si.contactgroups.domain.GroupSummary;
+import si.contactgroups.domain.GroupTrashItem;
 
 /** Groups (glossary: Group, table {@code contact_group}). */
 @Repository
@@ -69,5 +71,47 @@ public class GroupRepository {
         .param("name", name)
         .query(Boolean.class)
         .single();
+  }
+
+  /** The name of the Group when it is not in Trash. */
+  public Optional<String> activeName(UUID groupId) {
+    return jdbc.sql("SELECT name FROM contact_group WHERE id = :groupId AND deleted_at IS NULL")
+        .param("groupId", groupId)
+        .query(String.class)
+        .optional();
+  }
+
+  /** Moves the Group to the Group Trash; false when it is already there or does not exist. */
+  public boolean moveToTrash(UUID groupId, Instant now) {
+    return jdbc.sql(
+                "UPDATE contact_group SET deleted_at = :now"
+                    + " WHERE id = :groupId AND deleted_at IS NULL")
+            .param("now", Timestamp.from(now))
+            .param("groupId", groupId)
+            .update()
+        > 0;
+  }
+
+  /**
+   * The Groups in Trash since after {@code cutoff} of which the User is an Owner, newest deletion
+   * first (R-020-04); a Group at or past the cutoff is past the 30 days.
+   */
+  @GlobalScope
+  public List<GroupTrashItem> findTrashOfOwner(UUID userId, Instant cutoff, Instant now) {
+    return jdbc.sql(
+            "SELECT g.id, g.name, g.deleted_at FROM contact_group g"
+                + " JOIN member m ON m.group_id = g.id"
+                + " WHERE m.user_id = :userId AND m.role = 'OWNER' AND g.deleted_at > :cutoff"
+                + " ORDER BY g.deleted_at DESC, g.id")
+        .param("userId", userId)
+        .param("cutoff", Timestamp.from(cutoff))
+        .query(
+            (rs, row) ->
+                GroupTrashItem.of(
+                    rs.getObject("id", UUID.class),
+                    rs.getString("name"),
+                    rs.getTimestamp("deleted_at").toInstant(),
+                    now))
+        .list();
   }
 }

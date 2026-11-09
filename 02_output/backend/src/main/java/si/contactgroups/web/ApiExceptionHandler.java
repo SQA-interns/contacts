@@ -18,6 +18,7 @@ import si.contactgroups.service.ContactChangedException;
 import si.contactgroups.service.ContactInTrashException;
 import si.contactgroups.service.ContactNotFoundException;
 import si.contactgroups.service.ExportTooManyException;
+import si.contactgroups.service.GroupNameMismatchException;
 import si.contactgroups.service.GroupNameTakenException;
 import si.contactgroups.service.GroupNotFoundException;
 import si.contactgroups.service.InvalidQueryException;
@@ -93,6 +94,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> groupNameTaken(GroupNameTakenException e) {
     return ResponseEntity.status(HttpStatus.CONFLICT)
         .body(new ApiError("group.name_taken", e.getMessage()));
+  }
+
+  @ExceptionHandler(GroupNameMismatchException.class)
+  public ResponseEntity<ApiError> groupNameMismatch(GroupNameMismatchException e) {
+    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
+        .body(new ApiError("group.name_mismatch", e.getMessage()));
   }
 
   @ExceptionHandler(InvitationExistsException.class)
