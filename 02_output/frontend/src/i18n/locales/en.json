@@ -572,6 +572,14 @@
     "attribute": "Attribute",
     "empty": "This contact has no versions yet.",
     "compareCaption": "Differences between version {{number}} and the current one",
-    "short": "v{{number}}"
+    "short": "v{{number}}",
+    "restore": "Restore",
+    "restoreVersion": "Restore this version",
+    "restoreTitle": "Restore version {{number}}?",
+    "restoreBody": "The content of version {{number}} will be saved as the new version {{next}}. Earlier versions stay.",
+    "restoreBusy": "Restoring …",
+    "restored": "Version {{number}} is restored as v{{version}}.",
+    "refusedStale": "The current version is shown. Nothing was restored.",
+    "refusedNothing": "Nothing was restored."
   }
 }

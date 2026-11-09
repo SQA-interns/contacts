@@ -572,6 +572,14 @@
     "attribute": "Atribut",
     "empty": "Ta kontakt še nima različic.",
     "compareCaption": "Razlike med različico {{number}} in trenutno",
-    "short": "v{{number}}"
+    "short": "v{{number}}",
+    "restore": "Obnovi",
+    "restoreVersion": "Obnovi to različico",
+    "restoreTitle": "Obnovim različico {{number}}?",
+    "restoreBody": "Vsebina različice {{number}} bo shranjena kot nova različica {{next}}. Prejšnje različice ostanejo.",
+    "restoreBusy": "Obnavljanje …",
+    "restored": "Različica {{number}} je obnovljena kot v{{version}}.",
+    "refusedStale": "Prikazana je trenutna različica. Nič ni bilo obnovljeno.",
+    "refusedNothing": "Nič ni bilo obnovljeno."
   }
 }

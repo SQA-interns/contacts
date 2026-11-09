@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CONTACT_FIELDS, type ContactField } from '@/api/contacts';
-import { errorMessage } from '@/api/errors';
+import { ApiError, errorKey, errorMessage } from '@/api/errors';
 import {
   compareVersion,
   getVersion,
@@ -13,10 +13,12 @@ import {
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
+import { Notice } from '@/components/Notice';
 import { ResponsiveTable, type Column } from '@/components/ResponsiveTable';
 import { Button } from '@/components/ui/button';
 import { Fields, TagsAndAttributes } from '@/features/contacts/ContactView';
 import { formatDateTime } from '@/i18n/format';
+import { RestoreVersionButton } from './RestoreVersionButton';
 import type { Language } from '@/i18n';
 
 type View = { kind: 'list' } | { kind: 'open'; number: number } | { kind: 'compare'; number: number };
@@ -24,6 +26,13 @@ type View = { kind: 'list' } | { kind: 'open'; number: number } | { kind: 'compa
 interface Ids {
   groupId: string;
   contactId: string;
+}
+
+/** What a restore needs from the tab: the current number and where a refusal and a success go. */
+interface Restore {
+  current: number;
+  onRefused: (error: unknown) => void;
+  onRestored: () => void;
 }
 
 const isField = (name: string): name is ContactField => (CONTACT_FIELDS as readonly string[]).includes(name);
@@ -36,6 +45,7 @@ const isField = (name: string): name is ContactField => (CONTACT_FIELDS as reado
 export function VersionsTab({ groupId, contactId }: Ids) {
   const { t } = useTranslation();
   const [view, setView] = useState<View>({ kind: 'list' });
+  const [refusal, setRefusal] = useState<unknown>(null);
   const query = useQuery({
     queryKey: ['contacts', groupId, contactId, 'versions'],
     queryFn: () => listVersions(groupId, contactId),
@@ -49,33 +59,70 @@ export function VersionsTab({ groupId, contactId }: Ids) {
   if (versions.length === 0) return <EmptyState title={t('versions.empty')} />;
   const current = versions[0]?.number ?? 0;
   const back = () => setView({ kind: 'list' });
+  const restore = { current, onRefused: setRefusal, onRestored: back };
 
-  if (view.kind === 'open') {
-    return <OpenVersion groupId={groupId} contactId={contactId} number={view.number} onBack={back} />;
-  }
-  if (view.kind === 'compare') {
+  return (
+    <div className="flex flex-col gap-4">
+      {refusal ? <Refusal error={refusal} /> : null}
+      {view.kind === 'open' ? (
+        <OpenVersion {...{ groupId, contactId }} number={view.number} onBack={back} {...restore} />
+      ) : view.kind === 'compare' ? (
+        <CompareVersion {...{ groupId, contactId, current }} number={view.number} onBack={back} />
+      ) : (
+        <VersionList
+          {...{ groupId, contactId, versions }}
+          onChoose={(next) => {
+            setRefusal(null);
+            setView(next);
+          }}
+          {...restore}
+        />
+      )}
+    </div>
+  );
+}
+
+/** R-023-03, R-023-04: why nothing was restored (WF-07 "restore refused"). */
+function Refusal({ error }: { error: unknown }) {
+  const { t, i18n } = useTranslation();
+  if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
     return (
-      <CompareVersion
-        groupId={groupId}
-        contactId={contactId}
-        number={view.number}
-        current={current}
-        onBack={back}
-      />
+      <Notice tone="alert" title={t('api.contact.changed_by_someone_else')}>
+        <p>{t('versions.refusedStale')}</p>
+      </Notice>
     );
   }
-  return <VersionList versions={versions} current={current} onChoose={setView} />;
+  const reasons =
+    error instanceof ApiError
+      ? [...new Set(error.fieldErrors.map((f) => errorKey(f.code)))].filter((key) => i18n.exists(key))
+      : [];
+  return (
+    <Notice tone="alert" title={errorMessage(t, error)}>
+      {reasons.length > 0 ? (
+        <ul className="list-disc pl-5">
+          {reasons.map((key) => (
+            <li key={key}>{t(key)}</li>
+          ))}
+        </ul>
+      ) : null}
+      <p>{t('versions.refusedNothing')}</p>
+    </Notice>
+  );
 }
 
 function VersionList({
+  groupId,
+  contactId,
   versions,
   current,
   onChoose,
-}: {
-  versions: VersionSummary[];
-  current: number;
-  onChoose: (view: View) => void;
-}) {
+  onRefused,
+  onRestored,
+}: Ids &
+  Restore & {
+    versions: VersionSummary[];
+    onChoose: (view: View) => void;
+  }) {
   const { t, i18n } = useTranslation();
   const columns: Column<VersionSummary>[] = [
     {
@@ -109,6 +156,13 @@ function VersionList({
               {t('versions.compare')}
             </Button>
           )}
+          {v.number === current ? null : (
+            <RestoreVersionButton
+              {...{ groupId, contactId, current, onRefused, onRestored }}
+              number={v.number}
+              label={t('versions.restore')}
+            />
+          )}
         </div>
       ),
     },
@@ -135,7 +189,15 @@ function BackButton({ onBack }: { onBack: () => void }) {
   );
 }
 
-function OpenVersion({ groupId, contactId, number, onBack }: Ids & { number: number; onBack: () => void }) {
+function OpenVersion({
+  groupId,
+  contactId,
+  number,
+  current,
+  onBack,
+  onRefused,
+  onRestored,
+}: Ids & Restore & { number: number; onBack: () => void }) {
   const { t } = useTranslation();
   const query = useQuery({
     queryKey: ['contacts', groupId, contactId, 'versions', number],
@@ -150,7 +212,15 @@ function OpenVersion({ groupId, contactId, number, onBack }: Ids & { number: num
       <section className="rounded-[12px] border bg-surface-raised p-4">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-xl font-semibold">{t('versions.versionTitle', { number })}</h2>
-          <BackButton onBack={onBack} />
+          <div className="flex flex-wrap gap-2">
+            {number === current ? null : (
+              <RestoreVersionButton
+                {...{ groupId, contactId, number, current, onRefused, onRestored }}
+                label={t('versions.restoreVersion')}
+              />
+            )}
+            <BackButton onBack={onBack} />
+          </div>
         </div>
         <Fields contact={query.data.content} />
       </section>
