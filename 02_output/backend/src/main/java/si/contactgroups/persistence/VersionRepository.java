@@ -68,7 +68,7 @@ public class VersionRepository {
     return jdbc.sql(SELECT_VERSIONS + " ORDER BY v.number DESC")
         .param(GROUP_ID, groupId)
         .param(CONTACT_ID, contactId)
-        .query(VersionRepository::row)
+        .query((rs, n) -> row(rs))
         .list();
   }
 
@@ -78,11 +78,11 @@ public class VersionRepository {
         .param(GROUP_ID, groupId)
         .param(CONTACT_ID, contactId)
         .param("number", number)
-        .query(VersionRepository::row)
+        .query((rs, n) -> row(rs))
         .optional();
   }
 
-  private static StoredVersion row(ResultSet rs, int n) throws SQLException {
+  private static StoredVersion row(ResultSet rs) throws SQLException {
     return new StoredVersion(
         rs.getInt("number"),
         rs.getTimestamp("created_at").toInstant(),
