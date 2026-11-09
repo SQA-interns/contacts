@@ -847,3 +847,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-77: F-13 fixed (empty link in the name column of the Contact list)
+- Timestamp: 2026-11-09
+- Session: S8 /fix F-13
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-13 (`docs/04_review-INC-1.md`, carried in `docs/04_review-INC-2.md`; D-61 item f; R-007-05, WCAG 2.4.4). (a) `ContactTable` drew `{row.lastName || ''}` as the text of the link in the name column, so a Contact without a last name had a link without text (axe `link-name`, Serious). The link now shows `nameOf(row)`: last name, else first name, else e-mail address, else "(brez imena)" / "(no name)"; the same fallback the card list (below 768 px) already used for its title. For a Contact without a last name the first name therefore shows in both the first and the second column; the specification does not say otherwise and an empty link is the defect. (b) Red: `names the link of a Contact without a last name by its first name, e-mail or "(brez imena)" (R-007-05, F-13)` in `ContactListPage.test.tsx` failed (link text was empty for all three Contacts). Frontend `vitest`: 376 tests pass; `tsc -b`, ESLint, Prettier clean. (c) Check that found it: the new `ui-checks/contact-list-no-last-name.stack.spec.ts` (two Contacts without a last name, axe Critical/Serious, overflow, screenshots at 375, 768 and 1440 px) passes in Chromium and WebKit against the rebuilt test stack (`logs/f13-ui-check.log`, `logs/screens/WF-06_contact-list/no-last-name-*.png`); it was not run against the old build, so the red evidence is the unit test. Firefox is not run (sandbox, D-61 h). The test stack was taken down afterwards. (d) F-12 (chips clipped in the Tags column) and F-11 are other findings and untouched.
+- Options: 1 (default) show the fallback name in the link. 2 leave the cell empty and give the link an `aria-label` (keeps the table text as it was, but a sighted user still sees no link).
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

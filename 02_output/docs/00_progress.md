@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S8 /fix F-04
+- Session: S8 /fix F-13
 - Result: done
-- Gate: F-04 fixed (D-76); DoD-I-02 still not met until F-14 is shown against the real Firebase project (D-70 b, c); no new Critical or High
-- Notes for the next session: F-04 fixed: probes are off (`management.endpoint.health.probes.enabled: false`), `GET /health` answers `{"status":"UP"}` only (`AC-018-09` passes), the backend `HEALTHCHECK` calls `/health`, not run in a real container build (D-76). Backend `verify`: 366 tests, only the known frozen failure `EX-007-05`. WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Still open from `docs/04_review-INC-2.md`: carried F-13 (for `/fix`); F-19 needs the human's confirmation (D-68 d); then `/review INC-2`. UI runs need `scripts/test-stack.sh up`. Spotless: `./mvnw -B -Pquality spotless:apply`. Commit subjects: count the hash too, at most 72 characters.
+- Gate: F-13 fixed (D-77); DoD-I-02 still not met until F-14 is shown against the real Firebase project (D-70 b, c); no new Critical or High
+- Notes for the next session: F-13 fixed: the name link of the Contact list shows last name, else first name, else e-mail, else "(brez imena)" (D-77); frontend `vitest` 376 pass; live axe/overflow check `ui-checks/contact-list-no-last-name.stack.spec.ts` passes in Chromium and WebKit at 375/768/1440 px. WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Still open from `docs/04_review-INC-2.md`: F-19 needs the human's confirmation (D-68 d); Low items F-06, F-07, F-11, F-12 untouched; then `/review INC-2`. UI runs need `scripts/test-stack.sh up` (it is down now). Spotless: `./mvnw -B -Pquality spotless:apply`. Commit subjects: count the hash too, at most 72 characters.
 
 ## Next
-- Command: /fix F-13
-- Waiting for: nothing
+- Command: /review INC-2
+- Waiting for: D-70 b, c (Firebase service account, human); D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
