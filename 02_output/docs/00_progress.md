@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-011
+- Session: S5 /implement US-012
 - Result: done
-- Gate: DoD-S of US-011 passed in part: DoD-S-01 (frozen `Us011ExportAcceptanceIT` 14 of 21 pass; the 7 call routes of US-012, US-014, US-017; the UI tests need US-014), see D-55
-- Notes for the next session: Backend `POST /groups/{g}/exports` (`ExportController`, `ExportService`, `XlsxWriter`, `domain/ExportColumns`, `export_<lang>.properties`) writes History `CONTACTS_EXPORTED` with `{"count": n}` and no contact id. Frontend `ExportButton` in the Selection bar; with "all results" and unticked Contacts it lists the results by page and sends ids (D-55a). Re-check after US-012, US-014, US-017: `Us011ExportAcceptanceIT` (7 tests) and `acceptance/us010-011-selection.spec.ts`. Own `ExportEndpointsIT` covers Viewer 403, entry, left-out deleted Contact, 10,001. Screens `selection`, `export-too-many` in `out/logs/screens/WF-06_contact-list/`. The test stack is up (`scripts/test-stack.sh down` to stop; it holds port 9099, which the backend ITs need).
+- Gate: DoD-S of US-012 passed in part: DoD-S-01 (the 13 frozen `Us012TrashAcceptanceIT` tests fail in their set-up, `addMember` needs US-014; UI AC-012-01 waits for US-014, EX-012-03 passes), see D-56
+- Notes for the next session: Backend `TrashController`/`TrashService`: `POST .../contacts/{c}/trash` (204, once), `GET .../trash/contacts`, `POST .../trash/contacts/{c}/restore`; domain `TrashPeriod` holds the 30 days (US-013's purge should use `TrashPeriod.cutoff`); a save of a Contact in Trash is 409 `contact.in_trash`. Frontend `features/trash/TrashPage` (no "Izbriši za vedno" yet: US-013) and the Delete button on `ContactPage`. Re-check after US-014: `Us012TrashAcceptanceIT`, `Us011ExportAcceptanceIT` (Trash test), `us012-015-trash-members.spec.ts`. Backend ITs need port 9099: stop the test stack's emulator (`docker stop contact-groups-test-emulator-1`) before `mvnw verify`, and acceptance and web ITs run in separate Maven calls (D-56j). The test stack is up with the new build, emulator stopped.
 
 ## Next
-- Command: /implement US-012
+- Command: /implement US-013
 - Waiting for: nothing
 
 ## Stories
@@ -28,7 +28,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-009 | 1 | done | passed in part (DoD-S-01: EX-009-06 waits for US-012; DoD-S-05 screens, D-53) |
 | US-010 | 1 | done | passed in part (DoD-S-01: 13 frozen tests wait for US-014, US-011; DoD-S-05 screens, D-54) |
 | US-011 | 1 | done | passed in part (DoD-S-01: 7 backend and the UI frozen tests wait for US-012, US-014, US-017; DoD-S-05 screens, D-55) |
-| US-012 | 1 | ready | — |
+| US-012 | 1 | done | passed in part (DoD-S-01: 13 backend and UI AC-012-01 frozen tests wait for US-014; DoD-S-05 screens, D-56) |
 | US-013 | 1 | ready | — |
 | US-014 | 1 | ready | — |
 | US-015 | 1 | ready | — |

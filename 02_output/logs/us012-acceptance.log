@@ -1,0 +1,158 @@
+
+Running 6 tests using 4 workers
+
+  ✘  1 [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme (930ms)
+  ✘  2 [chromium] › acceptance/us012-015-trash-members.spec.ts:6:1 › AC-012-01 Delete asks for confirmation and the Contact is still listed (853ms)
+  ✓  3 [chromium] › acceptance/us012-015-trash-members.spec.ts:20:1 › EX-012-03 cancelling the delete confirmation changes nothing (1.8s)
+  ✘  6 [chromium] › acceptance/us012-015-trash-members.spec.ts:74:1 › AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls (411ms)
+  ✘  4 [chromium] › acceptance/us012-015-trash-members.spec.ts:37:1 › AC-013-02 cancelling "Delete forever" keeps the Contact in Trash (1.0m)
+  ✘  5 [chromium] › acceptance/us012-015-trash-members.spec.ts:101:1 › AC-015-04 the only Owner trying to become Editor sees "A group needs at least one owner" (1.0m)
+
+
+  1) [chromium] › acceptance/us012-015-trash-members.spec.ts:6:1 › AC-012-01 Delete asks for confirmation and the Contact is still listed 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:10:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-b293f-the-Contact-is-still-listed-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-b293f-the-Contact-is-still-listed-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › acceptance/us012-015-trash-members.spec.ts:37:1 › AC-013-02 cancelling "Delete forever" keeps the Contact in Trash 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('row').filter({ hasText: 'Zupan' }).getByRole('button', { name: 'Izbriši za vedno' })[22m
+
+
+      46 |     .filter({ hasText: 'Zupan' })
+      47 |     .getByRole('button', { name: 'Izbriši za vedno' })
+    > 48 |     .click();
+         |      ^
+      49 |   const dialog = page.getByRole('dialog', { name: 'Trajno izbrišem kontakt?' });
+      50 |   await expect(dialog).toContainText('Tega ni mogoče razveljaviti.');
+      51 |   await dialog.getByRole('button', { name: 'Prekliči' }).click();
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:48:6
+
+    Error Context: test-results/acceptance/us012-015-trash-members-AC-03d7e--keeps-the-Contact-in-Trash-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-03d7e--keeps-the-Contact-in-Trash-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-03d7e--keeps-the-Contact-in-Trash-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+      62 |   expect(
+      63 |     (await api(ana, 'POST', `/groups/${acme.id}/invitations`, { email: boris.email, role: 'EDITOR' })).status,
+    > 64 |   ).toBe(201);
+         |     ^
+      65 |
+      66 |   await signIn(page, boris, false);
+      67 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:64:5
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › acceptance/us012-015-trash-members.spec.ts:74:1 › AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:81:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-3cba1-oles-and-no-change-controls-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-3cba1-oles-and-no-change-controls-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › acceptance/us012-015-trash-members.spec.ts:101:1 › AC-015-04 the only Owner trying to become Editor sees "A group needs at least one owner" 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.evaluate: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('table', { name: 'Člani skupine' }).getByRole('row').filter({ hasText: 'Ana Novak' }).getByRole('combobox', { name: 'Vloga' })[22m
+
+
+      111 |     .filter({ hasText: 'Ana Novak' });
+      112 |   const role = row.getByRole('combobox', { name: 'Vloga' });
+    > 113 |   const tag = await role.evaluate((el) => el.tagName.toLowerCase());
+          |                          ^
+      114 |   if (tag === 'select') {
+      115 |     await role.selectOption({ label: 'Urednik' });
+      116 |   } else {
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:113:26
+
+    Error Context: test-results/acceptance/us012-015-trash-members-AC-c7fbf-p-needs-at-least-one-owner--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-c7fbf-p-needs-at-least-one-owner--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-c7fbf-p-needs-at-least-one-owner--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:6:1 › AC-012-01 Delete asks for confirmation and the Contact is still listed 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:37:1 › AC-013-02 cancelling "Delete forever" keeps the Contact in Trash 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:74:1 › AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:101:1 › AC-015-04 the only Owner trying to become Editor sees "A group needs at least one owner" 
+  1 passed (1.1m)
