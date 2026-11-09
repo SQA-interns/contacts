@@ -3,14 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
 import { toast } from 'sonner';
-import {
-  CONTACT_FIELDS,
-  getContact,
-  updateContact,
-  type AttributePair,
-  type Contact,
-  type ContactField,
-} from '@/api/contacts';
+import { getContact, updateContact, type AttributePair, type Contact } from '@/api/contacts';
 import { ApiError, errorMessage } from '@/api/errors';
 import { trashContact } from '@/api/trash';
 import { ConfirmDialog } from '@/components/ConfirmDialog';
@@ -19,12 +12,11 @@ import { LoadingState } from '@/components/LoadingState';
 import { Notice } from '@/components/Notice';
 import { PageHeader } from '@/components/PageHeader';
 import { Button } from '@/components/ui/button';
-import { countryName } from '@/i18n/format';
-import type { Language } from '@/i18n';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import { ContactHistoryTab } from '@/features/history/ContactHistoryTab';
 import { ConflictBanner } from './ConflictBanner';
 import { ContactForm, type ContactValues } from './ContactForm';
+import { Fields, TagsAndAttributes } from './ContactView';
 
 function titleOf(contact: Contact, fallback: string): string {
   const name = [contact.firstName, contact.lastName].filter(Boolean).join(' ');
@@ -193,61 +185,5 @@ function ContactTabs({ tab }: { tab: 'details' | 'history' }) {
         </Link>
       ))}
     </nav>
-  );
-}
-
-function Fields({ contact }: { contact: Contact }) {
-  const { t, i18n } = useTranslation();
-  const valueOf = (field: ContactField): string => {
-    const value = contact[field];
-    if (!value) return '';
-    return field === 'country' ? countryName(value, i18n.language as Language) : value;
-  };
-  return (
-    <dl className="grid grid-cols-[max-content_1fr] gap-x-6 gap-y-2">
-      {CONTACT_FIELDS.map((field) => (
-        <div key={field} className="contents">
-          <dt className="text-text-muted">{t(`contacts.fields.${field}`)}</dt>
-          <dd className="break-words whitespace-pre-wrap">{valueOf(field) || '—'}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
-function TagsAndAttributes({ contact }: { contact: Contact }) {
-  const { t } = useTranslation();
-  return (
-    <>
-      <section className="rounded-[12px] border bg-surface-raised p-4">
-        <h2 className="mb-3 text-xl font-semibold">{t('contacts.tags')}</h2>
-        {contact.tags.length === 0 ? (
-          <p className="text-text-muted">{t('contacts.noTags')}</p>
-        ) : (
-          <ul className="flex flex-wrap gap-2">
-            {contact.tags.map((tag) => (
-              <li key={tag} className="rounded-[8px] border px-2 py-0.5 text-sm">
-                {tag}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-      <section className="rounded-[12px] border bg-surface-raised p-4">
-        <h2 className="mb-3 text-xl font-semibold">{t('contacts.attributes')}</h2>
-        {contact.attributes.length === 0 ? (
-          <p className="text-text-muted">{t('contacts.noAttributes')}</p>
-        ) : (
-          <dl className="grid grid-cols-[max-content_1fr] gap-x-6 gap-y-2">
-            {contact.attributes.map((attribute) => (
-              <div key={attribute.key} className="contents">
-                <dt className="text-text-muted">{attribute.key}</dt>
-                <dd className="break-words">{attribute.value}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
-      </section>
-    </>
   );
 }
