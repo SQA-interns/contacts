@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-004
+- Session: S5 /implement US-005
 - Result: done
-- Gate: DoD-S of US-004 passed in part: DoD-S-01 (4 of 20 frozen backend tests wait for US-014 and US-009, the UI tests for US-007), DoD-S-05 (no screenshots or accessibility scan), see D-48
-- Notes for the next session: Backend: `AttributeService` (replace by diff, one History entry per pair via `HistoryWriter.attributeChanged`), `AttributeRepository`, `AttributeCheck` (R-004-02..04), `AttributeChanges` (diff); `ContactService.create/update` take the pairs (null on edit keeps them) and merge their errors with BR-06. Version snapshot includes Attributes. Frontend: `AttributeEditor` inside `ContactForm` (props `groupId`; `onSubmit(values, attributes)`), suggestions from `getAttributeKeys` (`GET /groups/{g}/facets`, US-009 must return `attributeKeys`). Tags are still not stored (US-005). Backend quality (`-Pquality` spotless, checkstyle, PMD, SpotBugs) clean; frontend prettier, eslint, tsc and 145 unit tests green. Re-check after US-014, US-009, US-007: `Us004AttributeAcceptanceIT` (ac_004_04, 07, 08, 09), the `us003-005-contact.spec.ts` tests. gitleaks flags two old log files, see D-48 (i).
+- Gate: DoD-S of US-005 passed in part: DoD-S-01 (11 of 19 frozen backend tests wait for US-006, US-007, US-009, US-014; the UI tests for US-007), DoD-S-05 (no screenshots or accessibility scan), see D-49
+- Notes for the next session: Backend: `TagService` (replace by diff, one History entry per Tag via `HistoryWriter.tagChanged`), `TagRepository` (`attach` creates or reuses the Tag ignoring case and links, `detach` removes the link only), `TagCheck` (R-005-02, 04), `TagChanges` (diff); `ContactService.create/update` take the names (null on edit keeps them) and merge their errors with BR-06 and the Attribute errors. Version snapshot includes Tags. Frontend: `TagInput` inside `ContactForm` (`onSubmit(values, attributes, tags)`), suggestions from `getTagNames` (`GET /groups/{g}/facets`, US-009 must return `tags`). The Tag list endpoint and renaming are US-006; Tags in the list US-007. Backend quality (`-Pquality`) clean; frontend prettier, eslint, tsc and 167 unit tests green; gitleaks clean on the new commits. Re-check after US-006, US-007, US-009, US-014: `Us005TagAcceptanceIT` (11 tests), the `us003-005-contact.spec.ts` tests.
 
 ## Next
-- Command: /implement US-004
+- Command: /implement US-006
 - Waiting for: nothing
 
 ## Stories
@@ -21,7 +21,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-002 | 1 | done | passed (DoD-S-01: EX-002-06/07 wait for US-020/US-014, D-42; DoD-S-07: one subject over 72 characters) |
 | US-003 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-007, US-014, US-004, US-005; DoD-S-05 screens; DoD-S-07: size, D-46) |
 | US-004 | 1 | done | passed in part (DoD-S-01: AC-004-04/07/08/09 wait for US-009, US-014; DoD-S-05 screens, D-48) |
-| US-005 | 1 | ready | — |
+| US-005 | 1 | done | passed in part (DoD-S-01: AC-005-01..08 frozen tests wait for US-006, US-007, US-009, US-014; DoD-S-05 screens, D-49) |
 | US-006 | 1 | ready | — |
 | US-007 | 1 | ready | — |
 | US-008 | 1 | ready | — |

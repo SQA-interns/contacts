@@ -535,3 +535,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-49: Readings of US-005 made while implementing, and frozen tests that wait for later stories
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-005
+- Class: open
+- Type: non-blocking
+- Trigger: points the story, the specification and the contract leave open, and DoD-S items not met. (a) `tags` in the Contact body: absent (`null`) keeps the stored Tags on an edit and means none on create; `[]` removes all (the form always sends the list). (b) Names are trimmed and a name typed twice (ignoring case) counts once before the checks; field errors are named `tags[i]` (`validation.tag_invalid`) and `tags` (`validation.tag_limit`, more than 50 distinct names), all returned together with the other field errors (422 `validation.failed`). A letter is any Unicode letter (`\p{L}`), as the Definitions `[ASSUMPTION]` allows. (c) A typed name equal to an existing Tag of the Group ignoring case uses that Tag and its spelling (`INSERT … ON CONFLICT (group_id, lower(name)) DO NOTHING`, then link); a Tag is created only when the Group has none. Removing a Tag deletes only the `contact_tag` row (R-005-06). (d) `details` of `TAG_ADDED` and `TAG_REMOVED` is `{name}` with the Group's spelling; one entry per Tag, written in the transaction of the save, after the Attribute entries. A save that changes only Tags raises the version and writes a Version (R-005-08). The Version snapshot now carries the Tags (it carried `[]`). (e) Tags are listed ordered by name ignoring case. (f) The Tag suggestions read `GET /groups/{g}/facets` (`tags`), which US-009 builds; the request runs only while text is typed, until then it fails and the form shows no suggestions. The form also checks the name with the same pattern before it adds the Tag, to show the rule at once (R-005-02); the server judges again. (g) DoD-S-01: 8 of 19 frozen `Us005TagAcceptanceIT` tests pass; the other 11 need `GET /groups/{g}/tags` (US-006), the Contact list (US-007), Members (US-014) or the facets (US-009) and fail with `route.not_found`; they exercise the code written here (checked with own `TagEndpointsIT`, 9 tests, all green). Other frozen classes show the same counts as before (US-003 19 of 29, US-016 15 of 15, US-018 14 of 21 fail). The frozen UI tests were not run (no contact list before US-007). (h) DoD-S-05: no screenshots or accessibility scan of the Tag input, the Contact screens cannot be reached before US-007. (i) R-005-09 (Tags in the contact list) waits for US-007; the Contact screen already shows every Tag. (j) The unit test of `NewContactPage` that counted 11 fields now counts 12: the 11 fields and the Tag input.
+- Options: 1 (default) as written. 2 ask the human per item.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
