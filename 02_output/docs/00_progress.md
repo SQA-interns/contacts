@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-023
+- Session: S5 /implement US-024
 - Result: done
-- Gate: DoD-S passed in part for US-023 (DoD-S-01: the 11 frozen backend tests pass, no frozen UI test exists, the rest of the full run fails as before; DoD-S-05 screens)
-- Notes for the next session: D-65 records the readings. `POST .../versions/{n}/restore` is in `VersionController` and `VersionService.restore`, which calls `ContactService.restore` (shares the private `save` with `update`); `HistoryWriter.versionRestored` writes `VERSION_RESTORED` `{restored, changes}`. UI: `features/versions/RestoreVersionButton` (list and opened Version), refusals shown by `VersionsTab`; History tab and Activity show "Obnovljena različica n". For US-024: `DuplicateService` and `DuplicateController` do not exist yet; frozen `Us024`, `Us025`, `Us026` backend tests and the US-024/US-026 UI tests fail for that reason. Open from the review as before: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12; HUMAN, BEFORE PRODUCTION: Firebase Admin credentials (D-63 a); known failing frozen UI tests of INC-1: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h). A `mvnw verify -Dit.test=...` exits 1 on a stale failsafe summary and two classes of different kinds in one `-Dit.test` clash on the Firebase app; read `target/failsafe-reports/TEST-*.xml`. Backend acceptance runs need port 9099 free (stop `contact-groups-test-emulator-1`, then start it again). Run gitleaks at the repository root. Screens: `logs/screens/WF-07_versions`.
+- Gate: DoD-S passed in part for US-024 (DoD-S-01: the 17 frozen backend tests and the 2 frozen UI tests pass, the rest of the full run fails as before; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, one commit over 400 lines, D-66)
+- Notes for the next session: D-66 records the readings. `GET /groups/{g}/duplicates` is in `DuplicateController` and `DuplicateService.find`, which calls the pure `domain.DuplicateFinder` on `ContactRepository.duplicateCandidates`; a set has `key` (SHA-256 of the sorted Contact ids), `mark`, `reasonCode`, `reasonParams`, `contacts` (oldest first). For US-025: `find` does not hide dismissed sets yet (R-025-02) and `DuplicateService` has no dismiss method; the tables `duplicate_dismissal*` exist in `V2__schema.sql`, `DismissalRepository` does not exist. UI: `features/duplicates/DuplicatesPage` shows sets without pick boxes and without the buttons "Ni podvojeno" (US-025) and "Združi izbrane (n)" (US-026); `api/duplicates.ts`, `useReasonText`. Frozen `Us025`, `Us026` backend tests and the US-026 UI tests fail for the missing endpoints. Open from the review as before: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12; HUMAN, BEFORE PRODUCTION: Firebase Admin credentials (D-63 a); known failing frozen UI tests of INC-1: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h). A `mvnw verify -Dit.test=...` exits 1 on a stale failsafe summary and two classes of different kinds in one `-Dit.test` clash on the Firebase app; read `target/failsafe-reports/TEST-*.xml`. Backend acceptance runs need port 9099 free (stop `contact-groups-test-emulator-1`, then start it again). Run gitleaks at the repository root. Screens: `logs/screens/WF-17_duplicates`. Commit subjects: count the hash too, the subject alone must stay at 72 characters.
 
 ## Next
-- Command: /implement US-024
+- Command: /implement US-025
 - Waiting for: nothing
 
 ## Stories
@@ -40,6 +40,6 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-021 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-022..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one subject over 72 characters, D-63) |
 | US-022 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-023..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one commit over 400 lines, D-64) |
 | US-023 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-024..US-026 and the known ones; DoD-S-05 screens, D-65) |
-| US-024 | 2 | ready | — |
+| US-024 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-025..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, one commit over 400 lines, D-66) |
 | US-025 | 2 | ready | — |
 | US-026 | 2 | ready | — |
