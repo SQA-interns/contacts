@@ -6,6 +6,7 @@ import { SignInPage } from '@/features/auth/SignInPage';
 import { VerifyEmailPage } from '@/features/auth/VerifyEmailPage';
 import { ContactPage } from '@/features/contacts/ContactPage';
 import { NewContactPage } from '@/features/contacts/NewContactPage';
+import { AccountPage } from '@/features/account/AccountPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
 import { GroupShell } from '@/features/groups/GroupShell';
 import { GroupTrashPage } from '@/features/groups/GroupTrashPage';
@@ -34,6 +35,7 @@ export const routes: RouteObject[] = [
         children: [
           { path: 'groups', element: <GroupListPage /> },
           { path: 'group-trash', element: <GroupTrashPage /> },
+          { path: 'account', element: <AccountPage /> },
           {
             path: 'groups/:groupId',
             element: <GroupShell />,

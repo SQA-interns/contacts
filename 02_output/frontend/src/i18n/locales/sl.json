@@ -7,7 +7,8 @@
     "groups": "Skupine",
     "menu": "Meni",
     "userMenu": "Uporabniški meni",
-    "signOut": "Odjava"
+    "signOut": "Odjava",
+    "account": "Moj račun"
   },
   "groupNav": {
     "label": "Navigacija skupine",
@@ -94,6 +95,24 @@
     "optionsFor": "Možnosti skupine {{name}}",
     "open": "Odpri",
     "trashLink": "Koš skupin"
+  },
+  "account": {
+    "title": "Moj račun",
+    "details": "Podatki",
+    "displayName": "Prikazno ime",
+    "email": "E-pošta",
+    "deleteTitle": "Izbris računa",
+    "deleteIntro": "Račun in vsa vaša članstva bodo izbrisani. Kontakti, ki ste jih ustvarili, ostanejo v skupinah; v zgodovini ostane vaše ime.",
+    "deleteButton": "Izbriši račun",
+    "confirmTitle": "Izbrišem račun?",
+    "confirmBody": "Tega ni mogoče razveljaviti. Izgubili boste dostop do vseh skupin.",
+    "busy": "Brisanje računa …",
+    "done": "Račun je izbrisan.",
+    "soleOwnerHint": "Vlogo lastnika predajte drugemu članu ali skupino izbrišite, nato poskusite znova.",
+    "members": "Člani",
+    "membersFor": "Člani {{name}}",
+    "deleteGroupFor": "Izbriši skupino {{name}}",
+    "inTrash": "v košu skupin, še {{days}}"
   },
   "groupTrash": {
     "title": "Koš skupin",

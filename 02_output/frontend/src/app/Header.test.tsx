@@ -33,6 +33,19 @@ describe('Header (US-001)', () => {
     expect(screen.queryByRole('link', { name: 'Skupine' })).not.toBeInTheDocument();
   });
 
+  it('US-021 the user menu links to My account for a verified User only', async () => {
+    renderApp('/groups', fakeAuthClient(ANA).client);
+    await userEvent.click(await screen.findByRole('button', { name: 'Uporabniški meni' }));
+    expect(await screen.findByRole('menuitem', { name: 'Moj račun' })).toHaveAttribute('href', '/account');
+  });
+
+  it('US-021 an unverified User has no link to My account', async () => {
+    renderApp('/verify-email', fakeAuthClient(ANA_UNVERIFIED).client);
+    await userEvent.click(await screen.findByRole('button', { name: 'Uporabniški meni' }));
+    expect(await screen.findByRole('menuitem', { name: 'Odjava' })).toBeInTheDocument();
+    expect(screen.queryByRole('menuitem', { name: 'Moj račun' })).not.toBeInTheDocument();
+  });
+
   it('a visitor who is not signed in sees no user menu', async () => {
     renderApp('/sign-in', fakeAuthClient(null).client);
     expect(await screen.findByRole('heading', { level: 1, name: 'Prijava' })).toBeInTheDocument();

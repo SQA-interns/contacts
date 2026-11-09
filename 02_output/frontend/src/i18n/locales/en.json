@@ -7,7 +7,8 @@
     "groups": "Groups",
     "menu": "Menu",
     "userMenu": "User menu",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "account": "My account"
   },
   "groupNav": {
     "label": "Group navigation",
@@ -94,6 +95,24 @@
     "optionsFor": "Group options {{name}}",
     "open": "Open",
     "trashLink": "Group trash"
+  },
+  "account": {
+    "title": "My account",
+    "details": "Details",
+    "displayName": "Display name",
+    "email": "E-mail",
+    "deleteTitle": "Delete account",
+    "deleteIntro": "Your account and all your memberships will be deleted. The contacts you created stay in the groups; your name stays in the history.",
+    "deleteButton": "Delete account",
+    "confirmTitle": "Delete account?",
+    "confirmBody": "This cannot be undone. You will lose access to all your groups.",
+    "busy": "Deleting account …",
+    "done": "The account is deleted.",
+    "soleOwnerHint": "Hand the owner role to another member or delete the group, then try again.",
+    "members": "Members",
+    "membersFor": "Members of {{name}}",
+    "deleteGroupFor": "Delete group {{name}}",
+    "inTrash": "in the group trash, {{days}} left"
   },
   "groupTrash": {
     "title": "Group trash",

@@ -76,6 +76,11 @@ export function Header() {
                     {account.email}
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {account.emailVerified ? (
+                    <DropdownMenuItem asChild>
+                      <Link to="/account">{t('nav.account')}</Link>
+                    </DropdownMenuItem>
+                  ) : null}
                   <DropdownMenuItem onSelect={() => void handleSignOut()}>
                     {t('nav.signOut')}
                   </DropdownMenuItem>
@@ -99,6 +104,11 @@ export function Header() {
                     </DropdownMenuItem>
                   ))}
                   {links.length > 0 ? <DropdownMenuSeparator /> : null}
+                  {account.emailVerified ? (
+                    <DropdownMenuItem asChild>
+                      <Link to="/account">{t('nav.account')}</Link>
+                    </DropdownMenuItem>
+                  ) : null}
                   <DropdownMenuItem onSelect={() => void handleSignOut()}>
                     {t('nav.signOut')}
                   </DropdownMenuItem>
