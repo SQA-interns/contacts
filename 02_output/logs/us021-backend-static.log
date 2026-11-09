@@ -1,0 +1,87 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< si.contactgroups:contact-groups-backend >---------------
+[INFO] Building Contact Groups backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.1:enforce (enforce) @ contact-groups-backend ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BanDynamicVersions passed
+[INFO] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ contact-groups-backend ---
+[INFO] argLine set to -javaagent:/Users/kyuhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ contact-groups-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ contact-groups-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 137 source files with javac [debug parameters release 21] to target/classes
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/main/java/si/contactgroups/security/RequestSizeFilter.java:[38,21] PAYLOAD_TOO_LARGE in org.springframework.http.HttpStatus has been deprecated
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/main/java/si/contactgroups/service/ExportTooManyException.java:[4,8] serializable class si.contactgroups.service.ExportTooManyException has no definition of serialVersionUID
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/main/java/si/contactgroups/service/InvalidQueryException.java:[4,8] serializable class si.contactgroups.service.InvalidQueryException has no definition of serialVersionUID
+[WARNING] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/main/java/si/contactgroups/web/ApiExceptionHandler.java:[71,46] PAYLOAD_TOO_LARGE in org.springframework.http.HttpStatus has been deprecated
+[INFO] 
+[INFO] >>> pmd:3.28.0:check (default-cli) > :pmd @ contact-groups-backend >>>
+[INFO] 
+[INFO] --- pmd:3.28.0:pmd (pmd) @ contact-groups-backend ---
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[INFO] PMD version: 7.17.0
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:9:5
+  7|     <exclude name="MissingSerialVersionUID"/>
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+         ^^^^^^^^ Exclude pattern 'BeanMembersShouldSerialize' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+ 11|     <exclude name="NullAssignment"/>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:10:5
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+         ^^^^^^^^ Exclude pattern 'DataflowAnomalyAnalysis' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 11|     <exclude name="NullAssignment"/>
+ 12|   </rule>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:9:5
+  7|     <exclude name="MissingSerialVersionUID"/>
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+         ^^^^^^^^ Exclude pattern 'BeanMembersShouldSerialize' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+ 11|     <exclude name="NullAssignment"/>
+[WARNING] Warning at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/pmd/rulesets/001-pmd-ruleset.xml:10:5
+  8|     <exclude name="AvoidLiteralsInIfCondition"/>
+  9|     <exclude name="BeanMembersShouldSerialize"/>
+ 10|     <exclude name="DataflowAnomalyAnalysis"/>
+         ^^^^^^^^ Exclude pattern 'DataflowAnomalyAnalysis' did not match any rule in ruleset 'category/java/errorprone.xml'
+
+ 11|     <exclude name="NullAssignment"/>
+ 12|   </rule>
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] 
+[INFO] <<< pmd:3.28.0:check (default-cli) < :pmd @ contact-groups-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.28.0:check (default-cli) @ contact-groups-backend ---
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (default-cli) @ contact-groups-backend ---
+[INFO] Starting audit...
+Audit done.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.46.1:check (default-cli) @ contact-groups-backend ---
+[INFO] Spotless.Java is keeping 246 files clean - 0 needs changes to be clean, 0 were already clean, 246 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.621 s
+[INFO] Finished at: 2026-11-09T15:02:03+01:00
+[INFO] ------------------------------------------------------------------------

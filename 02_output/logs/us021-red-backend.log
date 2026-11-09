@@ -1,0 +1,578 @@
+14:35:07.043 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT]: Us021DeleteAccountAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:07.164 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+14:35:07.213 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT]: Us021DeleteAccountAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:07.213 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:07.217 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T14:35:07.607+01:00  INFO 6686 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T14:35:07.609+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T14:35:07.618+01:00  INFO 6686 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T14:35:07.995+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T14:35:07.996+01:00  INFO 6686 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T14:35:08.010+01:00  INFO 6686 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T14:35:08.197+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T14:35:08.298+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T14:35:08.397+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 4160fc4de16caf13f848e5e1d8ad5bbb32a36cc53c918b0605eade027571297a
+2026-11-09T14:35:08.703+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.50553S
+2026-11-09T14:35:08.709+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T14:35:08.710+01:00  INFO 6686 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T14:35:08.710+01:00  INFO 6686 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T14:35:08.736+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T14:35:08.837+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T14:35:08.900+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: 08a45f534a3484afe8d7a9915cf752ebfe4e1ba4c77705ed8630bc2a35a0c937
+2026-11-09T14:35:14.545+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT5.70807S
+2026-11-09T14:35:14.594+01:00  INFO 6686 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : Starting Us021DeleteAccountAcceptanceIT using Java 21.0.8 with PID 6686 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T14:35:14.595+01:00  INFO 6686 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T14:35:14.945+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T14:35:15.002+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: 1ed07aaa8462a1529f95a1acac1de043207f9e93e8fb79256ad2b5b8f46898a3
+2026-11-09T14:35:15.980+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.035024S
+2026-11-09T14:35:15.981+01:00  INFO 6686 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:55722/test?loggerLevel=OFF)
+2026-11-09T14:35:16.705+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T14:35:16.722+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T14:35:16.722+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T14:35:16.752+01:00  INFO 6686 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2145 ms
+2026-11-09T14:35:17.099+01:00  INFO 6686 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:55722/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T14:35:17.130+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T14:35:17.132+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.013s)
+2026-11-09T14:35:17.144+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T14:35:17.207+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T14:35:17.210+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T14:35:17.241+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T14:35:17.280+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T14:35:17.289+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.045s)
+2026-11-09T14:35:17.627+01:00  INFO 6686 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T14:35:18.018+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T14:35:18.051+01:00  INFO 6686 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 55725 (http) with context path '/'
+2026-11-09T14:35:18.062+01:00  INFO 6686 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : Started Us021DeleteAccountAcceptanceIT in 10.797 seconds (process running for 11.648)
+2026-11-09T14:35:18.112+01:00  WARN 6686 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T14:35:18.707+01:00  INFO 6686 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T14:35:18.707+01:00  INFO 6686 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T14:35:18.708+01:00  INFO 6686 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-09T14:35:18.856+01:00  INFO 6686 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T14:35:18.873+01:00  INFO 6686 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@764553c7
+2026-11-09T14:35:18.875+01:00  INFO 6686 --- [contact-groups-backend] [o-auto-1-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 13.24 s <<< FAILURE! -- in si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships -- Time elapsed: 1.051 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships(Us021DeleteAccountAcceptanceIT.java:113)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion -- Time elapsed: 0.172 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion(Us021DeleteAccountAcceptanceIT.java:63)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused -- Time elapsed: 0.099 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused(Us021DeleteAccountAcceptanceIT.java:47)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept -- Time elapsed: 0.136 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept(Us021DeleteAccountAcceptanceIT.java:91)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed -- Time elapsed: 0.103 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed(Us021DeleteAccountAcceptanceIT.java:127)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails -- Time elapsed: 0.088 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails(Us021DeleteAccountAcceptanceIT.java:103)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email -- Time elapsed: 0.134 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email(Us021DeleteAccountAcceptanceIT.java:77)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending -- Time elapsed: 0.113 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending(Us021DeleteAccountAcceptanceIT.java:149)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_02_no_group -- Time elapsed: 0.099 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_02_no_group(Us021DeleteAccountAcceptanceIT.java:138)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted -- Time elapsed: 0.081 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted(Us021DeleteAccountAcceptanceIT.java:38)
+
+[ERROR] Failures: 
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted:38 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused:47 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion:63 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email:77 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept:91 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails:103 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships:113 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed:127 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_02_no_group:138 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending:149 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0
+14:35:21.474 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT]: Us021DeleteAccountAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:21.581 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+14:35:21.624 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT]: Us021DeleteAccountAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:21.625 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:21.628 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T14:35:21.976+01:00  INFO 6695 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T14:35:21.977+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T14:35:21.984+01:00  INFO 6695 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T14:35:22.325+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T14:35:22.326+01:00  INFO 6695 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T14:35:22.343+01:00  INFO 6695 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T14:35:22.585+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T14:35:22.681+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T14:35:22.781+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: cd41daeeb43189920dfa13ebc9fd3aed59e3a50fb54e463debec28af9da047d5
+2026-11-09T14:35:23.191+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.605549S
+2026-11-09T14:35:23.214+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T14:35:23.215+01:00  INFO 6695 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T14:35:23.216+01:00  INFO 6695 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T14:35:23.269+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T14:35:23.425+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T14:35:23.504+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: 5b9bf6dc0845a3a8ea07caf1a3b8e67d8771a7182a23b7400da8c1787e0a853c
+2026-11-09T14:35:29.629+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT6.203972S
+2026-11-09T14:35:29.687+01:00  INFO 6695 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : Starting Us021DeleteAccountAcceptanceIT using Java 21.0.8 with PID 6695 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T14:35:29.688+01:00  INFO 6695 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T14:35:30.031+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T14:35:30.090+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: 7448338d96056d2f0e15f5926372f81dc3058abce0cbd5e6340dd1e1d97da33e
+2026-11-09T14:35:31.213+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.181986S
+2026-11-09T14:35:31.214+01:00  INFO 6695 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:55756/test?loggerLevel=OFF)
+2026-11-09T14:35:31.967+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T14:35:31.983+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T14:35:31.983+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T14:35:32.017+01:00  INFO 6695 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2307 ms
+2026-11-09T14:35:32.348+01:00  INFO 6695 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:55756/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T14:35:32.376+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T14:35:32.378+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.012s)
+2026-11-09T14:35:32.390+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T14:35:32.448+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T14:35:32.451+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T14:35:32.479+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T14:35:32.515+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T14:35:32.524+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.040s)
+2026-11-09T14:35:32.832+01:00  INFO 6695 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T14:35:33.241+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T14:35:33.274+01:00  INFO 6695 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 55759 (http) with context path '/'
+2026-11-09T14:35:33.283+01:00  INFO 6695 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : Started Us021DeleteAccountAcceptanceIT in 11.622 seconds (process running for 12.363)
+2026-11-09T14:35:33.334+01:00  WARN 6695 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T14:35:33.914+01:00  INFO 6695 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T14:35:33.914+01:00  INFO 6695 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T14:35:33.915+01:00  INFO 6695 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-09T14:35:34.009+01:00  INFO 6695 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T14:35:34.026+01:00  INFO 6695 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@19ab7266
+2026-11-09T14:35:34.028+01:00  INFO 6695 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 13.94 s <<< FAILURE! -- in si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships -- Time elapsed: 0.980 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships(Us021DeleteAccountAcceptanceIT.java:113)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion -- Time elapsed: 0.154 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion(Us021DeleteAccountAcceptanceIT.java:63)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused -- Time elapsed: 0.098 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused(Us021DeleteAccountAcceptanceIT.java:47)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept -- Time elapsed: 0.137 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept(Us021DeleteAccountAcceptanceIT.java:91)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed -- Time elapsed: 0.099 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed(Us021DeleteAccountAcceptanceIT.java:127)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails -- Time elapsed: 0.092 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails(Us021DeleteAccountAcceptanceIT.java:103)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email -- Time elapsed: 0.139 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email(Us021DeleteAccountAcceptanceIT.java:77)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending -- Time elapsed: 0.105 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending(Us021DeleteAccountAcceptanceIT.java:149)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_02_no_group -- Time elapsed: 0.105 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_02_no_group(Us021DeleteAccountAcceptanceIT.java:138)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted -- Time elapsed: 0.084 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted(Us021DeleteAccountAcceptanceIT.java:38)
+
+[ERROR] Failures: 
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted:38 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused:47 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion:63 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email:77 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept:91 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails:103 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships:113 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed:127 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_02_no_group:138 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending:149 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0
+14:35:36.853 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT]: Us021DeleteAccountAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:36.961 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+14:35:37.002 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT]: Us021DeleteAccountAcceptanceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:37.003 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:35:37.006 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T14:35:37.356+01:00  INFO 6708 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-09T14:35:37.358+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-09T14:35:37.365+01:00  INFO 6708 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-09T14:35:37.718+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-09T14:35:37.719+01:00  INFO 6708 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-09T14:35:37.735+01:00  INFO 6708 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-09T14:35:37.904+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-09T14:35:38.002+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-09T14:35:38.107+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 40bbec3307ebef57d9f20e52bca554ed29da56069353a9cfad18dbcc50b6f88f
+2026-11-09T14:35:38.375+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.470843S
+2026-11-09T14:35:38.381+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-09T14:35:38.381+01:00  INFO 6708 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-09T14:35:38.382+01:00  INFO 6708 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-09T14:35:38.404+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.t.images.builder.ImageFromDockerfile   : Transferred 0 bytes to Docker daemon
+2026-11-09T14:35:38.506+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Creating container for image: contact-groups-emulator-test:latest
+2026-11-09T14:35:38.556+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest is starting: ec202502e48ba19bd92a48af6255bdee6f31534e51e492bc7378ceb20c9e8a5a
+2026-11-09T14:35:44.384+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.contact-groups-emulator-test:latest   : Container contact-groups-emulator-test:latest started in PT5.87769S
+2026-11-09T14:35:44.439+01:00  INFO 6708 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : Starting Us021DeleteAccountAcceptanceIT using Java 21.0.8 with PID 6708 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-09T14:35:44.440+01:00  INFO 6708 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : No active profile set, falling back to 1 default profile: "default"
+2026-11-09T14:35:44.774+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-09T14:35:44.841+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: c85f926819d314d237d979799fbad4bd6a9c29be442b2c8eaea2bc841d726e07
+2026-11-09T14:35:45.834+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.059969S
+2026-11-09T14:35:45.835+01:00  INFO 6708 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:55793/test?loggerLevel=OFF)
+2026-11-09T14:35:46.613+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-09T14:35:46.629+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T14:35:46.630+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T14:35:46.658+01:00  INFO 6708 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2198 ms
+2026-11-09T14:35:46.976+01:00  INFO 6708 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:55793/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-09T14:35:47.006+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T14:35:47.008+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.011s)
+2026-11-09T14:35:47.020+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T14:35:47.078+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T14:35:47.081+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T14:35:47.110+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T14:35:47.145+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T14:35:47.154+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.040s)
+2026-11-09T14:35:47.466+01:00  INFO 6708 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T14:35:47.832+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T14:35:47.864+01:00  INFO 6708 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 55796 (http) with context path '/'
+2026-11-09T14:35:47.875+01:00  INFO 6708 --- [contact-groups-backend] [           main] s.c.a.Us021DeleteAccountAcceptanceIT     : Started Us021DeleteAccountAcceptanceIT in 10.835 seconds (process running for 11.568)
+2026-11-09T14:35:47.925+01:00  WARN 6708 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+2026-11-09T14:35:48.014+01:00  INFO 6708 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T14:35:48.034+01:00  INFO 6708 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@41299bb3
+2026-11-09T14:35:48.037+01:00  INFO 6708 --- [contact-groups-backend] [   scheduling-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-09T14:35:48.525+01:00  INFO 6708 --- [contact-groups-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T14:35:48.525+01:00  INFO 6708 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T14:35:48.526+01:00  INFO 6708 --- [contact-groups-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 13.19 s <<< FAILURE! -- in si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships -- Time elapsed: 1.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships(Us021DeleteAccountAcceptanceIT.java:113)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion -- Time elapsed: 0.167 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion(Us021DeleteAccountAcceptanceIT.java:63)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused -- Time elapsed: 0.104 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused(Us021DeleteAccountAcceptanceIT.java:47)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept -- Time elapsed: 0.142 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept(Us021DeleteAccountAcceptanceIT.java:91)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed -- Time elapsed: 0.101 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.support.Resp.expectError(Resp.java:48)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed(Us021DeleteAccountAcceptanceIT.java:127)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails -- Time elapsed: 0.090 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails(Us021DeleteAccountAcceptanceIT.java:103)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email -- Time elapsed: 0.137 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email(Us021DeleteAccountAcceptanceIT.java:77)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending -- Time elapsed: 0.108 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending(Us021DeleteAccountAcceptanceIT.java:149)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_02_no_group -- Time elapsed: 0.097 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ex_021_02_no_group(Us021DeleteAccountAcceptanceIT.java:138)
+
+[ERROR] si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted -- Time elapsed: 0.077 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+	at si.contactgroups.acceptance.support.Resp.expect(Resp.java:42)
+	at si.contactgroups.acceptance.Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted(Us021DeleteAccountAcceptanceIT.java:38)
+
+[ERROR] Failures: 
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_01_account_deleted:38 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_02_sole_owner_refused:47 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_03_second_owner_allows_deletion:63 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_04_history_keeps_name_without_email:77 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_05_contacts_kept:91 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_06_sign_in_fails:103 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ac_021_07_new_account_without_memberships:113 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_01_two_groups_listed:127 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 409
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_02_no_group:138 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR]   Us021DeleteAccountAcceptanceIT.ex_021_04_invitation_stays_pending:149 [HTTP status; body: {"code":"request.method_not_allowed","message":"Method not allowed"}] 
+expected: 204
+ but was: 405
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.4:verify (default) on project contact-groups-backend: There are test failures.
+[ERROR] 
+[ERROR] See /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
