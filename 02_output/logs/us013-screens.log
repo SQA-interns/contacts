@@ -1,0 +1,13 @@
+
+Running 3 tests using 3 workers
+
+  ✓  1 [chromium] › ui-checks/trash-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-07 delete confirmation, WF-10 list, restored, empty (5.7s)
+  ✓  2 [chromium] › ui-checks/trash-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-07 delete confirmation, WF-10 list, restored, empty (5.8s)
+  ✓  3 [chromium] › ui-checks/trash-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-07 delete confirmation, WF-10 list, restored, empty (5.9s)
+
+  3 passed (7.5s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

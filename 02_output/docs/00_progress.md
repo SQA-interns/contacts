@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-012
+- Session: S5 /implement US-013
 - Result: done
-- Gate: DoD-S of US-012 passed in part: DoD-S-01 (the 13 frozen `Us012TrashAcceptanceIT` tests fail in their set-up, `addMember` needs US-014; UI AC-012-01 waits for US-014, EX-012-03 passes), see D-56
-- Notes for the next session: Backend `TrashController`/`TrashService`: `POST .../contacts/{c}/trash` (204, once), `GET .../trash/contacts`, `POST .../trash/contacts/{c}/restore`; domain `TrashPeriod` holds the 30 days (US-013's purge should use `TrashPeriod.cutoff`); a save of a Contact in Trash is 409 `contact.in_trash`. Frontend `features/trash/TrashPage` (no "Izbriši za vedno" yet: US-013) and the Delete button on `ContactPage`. Re-check after US-014: `Us012TrashAcceptanceIT`, `Us011ExportAcceptanceIT` (Trash test), `us012-015-trash-members.spec.ts`. Backend ITs need port 9099: stop the test stack's emulator (`docker stop contact-groups-test-emulator-1`) before `mvnw verify`, and acceptance and web ITs run in separate Maven calls (D-56j). The test stack is up with the new build, emulator stopped.
+- Gate: DoD-S of US-013 passed in part: DoD-S-01 (7 of 13 frozen `Us013DeleteForeverAcceptanceIT` pass; AC-013-03, 06, 08, EX-013-04, 05, 06 wait for US-014, US-017, US-020, US-026; UI AC-013-02 waits for US-014), see D-57
+- Notes for the next session: Backend `DELETE /groups/{g}/trash/contacts/{c}` (`TrashService.deleteForever`, Owner only, 404 when not in Trash) and `job/TrashPurgeJob` (`TrashService.purgeExpired`, cron `TRASH_PURGE_CRON`). `HistoryWriter.contactDeletedForever` replaces the values of the Contact's earlier entries by "removed" (`HistoryRedactor`) and writes the `CONTACT_DELETED_FOREVER` entry (user `system` for the job). US-026 must handle `details.mergedContactIds` entries (EX-013-06). Frontend: "Izbriši za vedno" and `DeleteForeverDialog` on `TrashPage` (Owner only). Re-check after US-014/017: `Us013DeleteForeverAcceptanceIT`, `us012-015-trash-members.spec.ts`. Backend ITs need port 9099 free: the test stack's emulator is stopped (`docker start contact-groups-test-emulator-1` for the UI tests); acceptance and web ITs run in separate Maven calls (D-56j). The test stack is up with the new build.
 
 ## Next
-- Command: /implement US-013
+- Command: /implement US-014
 - Waiting for: nothing
 
 ## Stories
@@ -29,7 +29,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-010 | 1 | done | passed in part (DoD-S-01: 13 frozen tests wait for US-014, US-011; DoD-S-05 screens, D-54) |
 | US-011 | 1 | done | passed in part (DoD-S-01: 7 backend and the UI frozen tests wait for US-012, US-014, US-017; DoD-S-05 screens, D-55) |
 | US-012 | 1 | done | passed in part (DoD-S-01: 13 backend and UI AC-012-01 frozen tests wait for US-014; DoD-S-05 screens, D-56) |
-| US-013 | 1 | ready | — |
+| US-013 | 1 | done | passed in part (DoD-S-01: 6 backend and UI AC-013-02 frozen tests wait for US-014, US-017, US-020, US-026; DoD-S-05 screens, D-57) |
 | US-014 | 1 | ready | — |
 | US-015 | 1 | ready | — |
 | US-016 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-014, US-012, US-007; DoD-S-05 screens; DoD-S-07: size, D-47) |
