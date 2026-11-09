@@ -137,7 +137,8 @@ public final class DuplicateFinder {
       DuplicateMark mark, String code, Map<String, String> params, List<DuplicateCandidate> group) {
     List<ContactListItem> contacts =
         group.stream().map(DuplicateCandidate::item).sorted(OLDEST_FIRST).toList();
-    return new DuplicateSet(keyOf(contacts.stream().map(ContactListItem::id).toList()), mark, code, params, contacts);
+    return new DuplicateSet(
+        keyOf(contacts.stream().map(ContactListItem::id).toList()), mark, code, params, contacts);
   }
 
   /** Groups by a key, leaving out the Contacts whose key is empty. */
@@ -178,8 +179,7 @@ public final class DuplicateFinder {
 
   /** The key of a set: the SHA-256 (hex) of the sorted Contact ids (contract {@code key}). */
   public static String keyOf(Collection<UUID> contactIds) {
-    String ids =
-        contactIds.stream().map(UUID::toString).sorted().collect(Collectors.joining(","));
+    String ids = contactIds.stream().map(UUID::toString).sorted().collect(Collectors.joining(","));
     try {
       byte[] hash =
           MessageDigest.getInstance("SHA-256").digest(ids.getBytes(StandardCharsets.UTF_8));
