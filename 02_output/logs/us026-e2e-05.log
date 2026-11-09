@@ -1,33 +1,31 @@
 
-Running 3 tests using 1 worker
+Running 1 test using 1 worker
 
-  ✘  1 [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (16.1s)
-  ✘  2 [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (2ms)
-  ✘  3 [webkit] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (23.3s)
+  ✘  1 [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (16.7s)
 
 
   1) [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
 
     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
 
-    Locator: getByRole('status').filter({ hasText: 'Kontakti so združeni.' })
+    Locator: getByRole('status').filter({ hasText: 'Kontakt je obnovljen.' })
     Expected: visible
     Timeout: 15000ms
     Error: element(s) not found
 
     Call log:
     [2m  - Expect "toBeVisible" with timeout 15000ms[22m
-    [2m  - waiting for getByRole('status').filter({ hasText: 'Kontakti so združeni.' })[22m
+    [2m  - waiting for getByRole('status').filter({ hasText: 'Kontakt je obnovljen.' })[22m
 
 
-      54 |     .getByRole('button', { name: 'Združi', exact: true })
-      55 |     .click();
-    > 56 |   await expect(page.getByRole('status').filter({ hasText: 'Kontakti so združeni.' })).toBeVisible();
+      71 |   await expect(trashed).toHaveCount(1);
+      72 |   await trashed.getByRole('button', { name: 'Obnovi' }).click();
+    > 73 |   await expect(page.getByRole('status').filter({ hasText: 'Kontakt je obnovljen.' })).toBeVisible();
          |                                                                                       ^
-      57 |
-      58 |   // the Survivor shows the merged data and its History shows the merge
-      59 |   await page.goto(paths.contact(acme, a.id));
-        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-05-clean-up.spec.ts:56:87
+      74 |   await page.goto(paths.contacts(acme));
+      75 |   await expect(
+      76 |     page.getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasText: 'Zupan' }),
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-05-clean-up.spec.ts:73:87
 
     Error Context: test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-chromium/error-context.md
 
@@ -39,59 +37,5 @@ Running 3 tests using 1 worker
 
     ────────────────────────────────────────────────────────────────────────────────────────────────
 
-  2) [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
-
-    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
-    Call log:
-    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-0vjYEN -juggler-pipe -silent[22m
-    [2m  - <launched> pid=41320[22m
-    [2m  - [pid=41320][err] *** You are running in headless mode.[22m
-    [2m  - [pid=41320][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
-    [2m  - [pid=41320][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.875) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
-
-
-    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
-    test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
-    Usage:
-
-        npx playwright show-trace test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-  3) [webkit] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
-
-    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
-
-    Locator: getByRole('status').filter({ hasText: 'Kontakti so združeni.' })
-    Expected: visible
-    Timeout: 15000ms
-    Error: element(s) not found
-
-    Call log:
-    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
-    [2m  - waiting for getByRole('status').filter({ hasText: 'Kontakti so združeni.' })[22m
-
-
-      54 |     .getByRole('button', { name: 'Združi', exact: true })
-      55 |     .click();
-    > 56 |   await expect(page.getByRole('status').filter({ hasText: 'Kontakti so združeni.' })).toBeVisible();
-         |                                                                                       ^
-      57 |
-      58 |   // the Survivor shows the merged data and its History shows the merge
-      59 |   await page.goto(paths.contact(acme, a.id));
-        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/e2e/e2e-05-clean-up.spec.ts:56:87
-
-    Error Context: test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-webkit/error-context.md
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-webkit/trace.zip
-    Usage:
-
-        npx playwright show-trace test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-webkit/trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-  3 failed
+  1 failed
     [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
-    [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
-    [webkit] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 

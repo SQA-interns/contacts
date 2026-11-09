@@ -2,88 +2,15 @@
 Running 11 tests using 4 workers
 
   ✓   4 [chromium] › acceptance/us020-026-increment2.spec.ts:74:1 › EX-021-03 cancelling the account deletion changes nothing (2.2s)
-  ✓   3 [chromium] › acceptance/us020-026-increment2.spec.ts:40:1 › AC-020-02 typing acme keeps the delete button disabled; the Group stays (2.7s)
-  ✓   2 [chromium] › acceptance/us020-026-increment2.spec.ts:53:1 › AC-021-02 the Sole Owner of Acme sees that the account cannot be deleted, with Acme listed (2.7s)
-  ✓   1 [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list (2.9s)
+  ✓   3 [chromium] › acceptance/us020-026-increment2.spec.ts:40:1 › AC-020-02 typing acme keeps the delete button disabled; the Group stays (2.4s)
+  ✓   1 [chromium] › acceptance/us020-026-increment2.spec.ts:53:1 › AC-021-02 the Sole Owner of Acme sees that the account cannot be deleted, with Acme listed (2.4s)
+  ✓   2 [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list (2.6s)
   ✓   6 [chromium] › acceptance/us020-026-increment2.spec.ts:108:1 › AC-024-10 without duplicates "No duplicates found" is shown (1.4s)
-  ✓   5 [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason (1.8s)
-  ✓   7 [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B (1.6s)
-  ✘   8 [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge (1.9s)
+  ✓   7 [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B (1.8s)
+  ✓   5 [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason (2.0s)
+  ✓   8 [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge (1.8s)
   ✓  11 [chromium] › acceptance/us020-026-increment2.spec.ts:196:1 › EX-026-03 with equal creation times the Contact with the smaller id is the Survivor (1.3s)
   ✓   9 [chromium] › acceptance/us020-026-increment2.spec.ts:164:1 › AC-026-05 and AC-026-12 "Združi" asks for confirmation; without it nothing is merged (1.7s)
-  ✘  10 [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice (11.7s)
+  ✓  10 [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice (1.5s)
 
-
-  1) [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge 
-
-    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
-
-    Locator: getByText('Izberite vrednost.')
-    Expected: visible
-    Error: strict mode violation: getByText('Izberite vrednost.') resolved to 2 elements:
-        1) <p class="-mt-4 mb-6 text-text-muted">Za vsako polje izberite vrednost. Ohranjeni konta…</p> aka getByText('Za vsako polje izberite')
-        2) <span role="alert" class="block text-sm font-semibold text-danger">Izberite vrednost.</span> aka getByText('Izberite vrednost.', { exact: true })
-
-    Call log:
-    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
-    [2m  - waiting for getByText('Izberite vrednost.')[22m
-
-
-      156 |   await page.getByRole('button', { name: 'Združi', exact: true }).click();
-      157 |
-    > 158 |   await expect(page.getByText('Izberite vrednost.')).toBeVisible();
-          |                                                      ^
-      159 |   await expect(page.getByRole('dialog')).toHaveCount(0);
-      160 |   expect((await api(ana, 'GET', `/groups/${acme.id}/contacts/${idB}`)).status).toBe(200);
-      161 |   expect((await api(ana, 'GET', `/groups/${acme.id}/contacts/${idA}`)).body.version).toBe(1);
-        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:158:54
-
-    Error Context: test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/error-context.md
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/trace.zip
-    Usage:
-
-        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-  2) [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice 
-
-    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
-
-    Locator:  getByText('Izberite vrednost.')
-    Expected: [32m0[39m
-    Received: [31m1[39m
-    Timeout:  10000ms
-
-    Call log:
-    [2m  - Expect "toHaveCount" with timeout 10000ms[22m
-    [2m  - waiting for getByText('Izberite vrednost.')[22m
-    [2m    14 × locator resolved to 1 element[22m
-    [2m       - unexpected value "1"[22m
-
-
-      191 |
-      192 |   await expect(page.getByRole('dialog', { name: 'Združim 2 kontakta?' })).toBeVisible();
-    > 193 |   await expect(page.getByText('Izberite vrednost.')).toHaveCount(0);
-          |                                                      ^
-      194 | });
-      195 |
-      196 | test('EX-026-03 with equal creation times the Contact with the smaller id is the Survivor', async ({
-        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:193:54
-
-    Error Context: test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/error-context.md
-
-    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
-    test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/trace.zip
-    Usage:
-
-        npx playwright show-trace test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/trace.zip
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-  2 failed
-    [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge 
-    [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice 
-  9 passed (17.3s)
+  11 passed (6.8s)
