@@ -46,6 +46,18 @@ for (const viewport of VIEWPORTS) {
       await page.getByRole('checkbox', { name: 'Izberi vse na tej strani' }).locator('visible=true').check();
       await expect(page.getByRole('button', { name: 'Izberi vseh 31 zadetkov' })).toBeVisible();
       await check(page, 'WF-06_contact-list', 'selection-page', viewport.name);
+      // US-011: the export refused as too large (R-011-05)
+      await page.route('**/api/v1/groups/*/exports', (route) =>
+        route.fulfill({
+          status: 422,
+          contentType: 'application/json',
+          body: JSON.stringify({ code: 'export.too_many', message: 'Too many' }),
+        }),
+      );
+      await page.getByRole('button', { name: 'Izvozi v Excel' }).click();
+      await expect(page.getByRole('alert').filter({ hasText: 'Zožite jo.' })).toBeVisible();
+      await check(page, 'WF-06_contact-list', 'export-too-many', viewport.name);
+      await page.unroute('**/api/v1/groups/*/exports');
       await page.getByRole('button', { name: 'Počisti izbiro' }).click();
 
       await page.getByLabel('Iskanje').fill('Priimek07');

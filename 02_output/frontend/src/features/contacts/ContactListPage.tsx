@@ -10,6 +10,8 @@ import { PageHeader } from '@/components/PageHeader';
 import { Button } from '@/components/ui/button';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import { ContactTable, type Sorting } from './ContactTable';
+import { ExportButton } from './ExportButton';
+import { resolveSelection } from './exportSelection';
 import { FilterPanel } from './FilterPanel';
 import { SearchBox } from './SearchBox';
 import { SelectionBar } from './selection/SelectionBar';
@@ -148,7 +150,13 @@ export function ContactListPage() {
               }
               onSelectAll={selection.selectAll}
               onClear={selection.clear}
-            />
+            >
+              <ExportButton
+                groupId={groupId}
+                count={selection.count(data.total)}
+                getSelection={() => resolveSelection(groupId, selection, q, filters)}
+              />
+            </SelectionBar>
           ) : null}
           {contacts.isPending ? (
             <LoadingState rows={6} />

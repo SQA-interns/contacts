@@ -335,6 +335,10 @@
     "selectAllResults": "Select all {{count}} results",
     "clear": "Clear selection"
   },
+  "export": {
+    "button": "Export to Excel",
+    "running": "Exporting …"
+  },
   "filters": {
     "title": "Filters",
     "chooseTags": "Choose Tags",

@@ -63,4 +63,17 @@ describe('useSelection', () => {
     rerender({ key: 'q=a' });
     expect(result.current.count(5)).toBe(0);
   });
+  it('tells the ticked Contacts, or the unticked ones in "all results" mode (US-011)', () => {
+    const { result } = renderHook(() => useSelection(''));
+
+    act(() => result.current.toggle('a'));
+    act(() => result.current.toggle('b'));
+    expect(result.current.ticked).toEqual(['a', 'b']);
+    expect(result.current.unticked).toEqual([]);
+
+    act(() => result.current.selectAll());
+    act(() => result.current.toggle('c'));
+    expect(result.current.ticked).toEqual([]);
+    expect(result.current.unticked).toEqual(['c']);
+  });
 });

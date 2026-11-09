@@ -335,6 +335,10 @@
     "selectAllResults": "Izberi vseh {{count}} zadetkov",
     "clear": "Počisti izbiro"
   },
+  "export": {
+    "button": "Izvozi v Excel",
+    "running": "Izvažanje …"
+  },
   "filters": {
     "title": "Filtri",
     "chooseTags": "Izberite značke",

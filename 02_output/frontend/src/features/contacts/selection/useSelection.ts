@@ -22,6 +22,10 @@ export interface Selection {
   count: (total: number) => number;
   /** True while "select all results" is active. */
   allResults: boolean;
+  /** The ticked Contacts; empty while "select all results" is active. */
+  ticked: string[];
+  /** The Contacts taken out of "all results"; empty otherwise. */
+  unticked: string[];
 }
 
 function flip(ids: ReadonlySet<string>, id: string, on: boolean): ReadonlySet<string> {
@@ -64,5 +68,7 @@ export function useSelection(key: string): Selection {
     clear: () => update(() => ({ all: false, ids: new Set() })),
     count: (total) => (state.all ? Math.max(0, total - state.ids.size) : state.ids.size),
     allResults: state.all,
+    ticked: state.all ? [] : [...state.ids],
+    unticked: state.all ? [...state.ids] : [],
   };
 }

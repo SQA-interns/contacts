@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 
@@ -8,6 +9,8 @@ interface SelectionBarProps {
   offerAll?: number;
   onSelectAll: () => void;
   onClear: () => void;
+  /** Actions at the end of the bar (the Export button, US-011). */
+  children?: ReactNode;
 }
 
 /** The count of the Selection in the language of the page; Slovene has four plural forms. */
@@ -21,7 +24,7 @@ export function useSelectedText() {
 }
 
 /** WF-06: the Selection bar with the count, the offer to select all results and "Clear selection". */
-export function SelectionBar({ count, offerAll, onSelectAll, onClear }: SelectionBarProps) {
+export function SelectionBar({ count, offerAll, onSelectAll, onClear, children }: SelectionBarProps) {
   const { t } = useTranslation();
   const selectedText = useSelectedText();
   return (
@@ -42,6 +45,7 @@ export function SelectionBar({ count, offerAll, onSelectAll, onClear }: Selectio
           {t('selection.clear')}
         </Button>
       ) : null}
+      {children}
     </section>
   );
 }
