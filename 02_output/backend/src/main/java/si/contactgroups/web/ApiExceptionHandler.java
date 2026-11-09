@@ -28,6 +28,7 @@ import si.contactgroups.service.InvitationNotFoundException;
 import si.contactgroups.service.LastOwnerException;
 import si.contactgroups.service.MemberNotFoundException;
 import si.contactgroups.service.RoleForbiddenException;
+import si.contactgroups.service.SoleOwnerException;
 import si.contactgroups.service.TagNameTakenException;
 import si.contactgroups.service.TagNotFoundException;
 import si.contactgroups.service.ValidationException;
@@ -124,6 +125,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> memberNotFound(MemberNotFoundException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(new ApiError("member.not_found", e.getMessage()));
+  }
+
+  @ExceptionHandler(SoleOwnerException.class)
+  public ResponseEntity<SoleOwnerConflict> soleOwner(SoleOwnerException e) {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(new SoleOwnerConflict("account.sole_owner", e.getMessage(), e.groups()));
   }
 
   @ExceptionHandler(LastOwnerException.class)

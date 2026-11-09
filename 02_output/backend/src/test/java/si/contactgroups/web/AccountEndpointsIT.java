@@ -1,5 +1,6 @@
 package si.contactgroups.web;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -91,5 +92,35 @@ class AccountEndpointsIT extends WebTestSupport {
         .andExpect(jsonPath("$[?(@.id == '" + club + "')].role").value("VIEWER"))
         .andExpect(jsonPath("$[?(@.id == '" + club + "')].name").value("Club"))
         .andExpect(jsonPath("$[0].createdAt").exists());
+  }
+
+  @Test
+  void r_021_02_a_sole_owner_gets_409_with_the_groups_to_hand_over_or_delete() throws Exception {
+    User ana = newUser("Ana Novak");
+    UUID acme = groupOf(ana, "Acme", "OWNER", false);
+    UUID old = groupOf(ana, "Old", "OWNER", true);
+
+    mvc.perform(delete("/api/v1/me").with(as(ana, true)))
+        .andExpect(status().isConflict())
+        .andExpect(jsonPath("$.code").value("account.sole_owner"))
+        .andExpect(jsonPath("$.groups.length()").value(2))
+        .andExpect(jsonPath("$.groups[0].id").value(acme.toString()))
+        .andExpect(jsonPath("$.groups[0].name").value("Acme"))
+        .andExpect(jsonPath("$.groups[0].inTrash").value(false))
+        .andExpect(jsonPath("$.groups[0].daysLeft").doesNotExist())
+        .andExpect(jsonPath("$.groups[1].id").value(old.toString()))
+        .andExpect(jsonPath("$.groups[1].inTrash").value(true))
+        .andExpect(jsonPath("$.groups[1].daysLeft").value(30));
+
+    mvc.perform(get("/api/v1/me").with(as(ana, true))).andExpect(status().isOk());
+  }
+
+  @Test
+  void r_021_01_an_unverified_user_may_not_delete_the_account() throws Exception {
+    User ana = newUser("Ana Novak");
+
+    mvc.perform(delete("/api/v1/me").with(as(ana, false)))
+        .andExpect(status().isForbidden())
+        .andExpect(jsonPath("$.code").value("auth.email_not_verified"));
   }
 }

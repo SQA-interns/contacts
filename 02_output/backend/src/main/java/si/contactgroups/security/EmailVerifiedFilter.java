@@ -9,18 +9,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
- * While the e-mail of the caller is not verified, every request about a Group is answered 403
- * {@code auth.email_not_verified} (R-001-04, R-018-06); it runs after the token check (D-18c).
+ * While the e-mail of the caller is not verified, every request about a Group and the deletion of
+ * the account are answered 403 {@code auth.email_not_verified} (R-001-04, R-018-06, US-021); it
+ * runs after the token check (D-18c).
  */
 public class EmailVerifiedFilter extends OncePerRequestFilter {
 
   private static final String GROUPS = "/api/v1/groups";
   private static final String GROUP_TRASH = "/api/v1/group-trash";
+  private static final String ME = "/api/v1/me";
 
   @Override
   protected boolean shouldNotFilter(HttpServletRequest request) {
     String path = request.getRequestURI();
-    return !(isUnder(path, GROUPS) || isUnder(path, GROUP_TRASH));
+    boolean deletesAccount = "DELETE".equals(request.getMethod()) && path.equals(ME);
+    return !(isUnder(path, GROUPS) || isUnder(path, GROUP_TRASH) || deletesAccount);
   }
 
   private static boolean isUnder(String path, String root) {
