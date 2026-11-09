@@ -3,7 +3,14 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
 import { toast } from 'sonner';
-import { CONTACT_FIELDS, getContact, updateContact, type Contact, type ContactField } from '@/api/contacts';
+import {
+  CONTACT_FIELDS,
+  getContact,
+  updateContact,
+  type AttributePair,
+  type Contact,
+  type ContactField,
+} from '@/api/contacts';
 import { ApiError, errorMessage } from '@/api/errors';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
@@ -35,8 +42,12 @@ export function ContactPage() {
     queryFn: () => getContact(groupId, contactId),
   });
   const save = useMutation({
-    mutationFn: (values: ContactValues) =>
-      updateContact(groupId, contactId, { ...values, version: query.data?.version }),
+    mutationFn: (input: { values: ContactValues; attributes: AttributePair[] }) =>
+      updateContact(groupId, contactId, {
+        ...input.values,
+        attributes: input.attributes,
+        version: query.data?.version,
+      }),
     onSuccess: async (contact) => {
       queryClient.setQueryData(['contacts', groupId, contactId], contact);
       await queryClient.invalidateQueries({ queryKey: ['contacts', groupId], exact: true });
@@ -97,13 +108,14 @@ export function ContactPage() {
             <h2 className="mb-4 text-xl font-semibold">{t('contacts.data')}</h2>
             {editing ? (
               <ContactForm
+                groupId={groupId}
                 key={contact.version}
                 initial={contact}
                 submitLabel={t('contacts.saveChanges')}
                 busyLabel={t('contacts.saving')}
                 busy={save.isPending}
                 error={error}
-                onSubmit={(values) => save.mutate(values)}
+                onSubmit={(values, attributes) => save.mutate({ values, attributes })}
                 onCancel={() => setEditing(false)}
               />
             ) : (

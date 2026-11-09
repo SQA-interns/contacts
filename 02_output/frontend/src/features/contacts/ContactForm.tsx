@@ -1,8 +1,15 @@
+import { useQuery } from '@tanstack/react-query';
 import { useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ApiError } from '@/api/errors';
 import { errorKey } from '@/api/errors';
-import { CONTACT_FIELDS, type ContactField, type ContactFields } from '@/api/contacts';
+import {
+  CONTACT_FIELDS,
+  getAttributeKeys,
+  type AttributePair,
+  type ContactField,
+  type ContactFields,
+} from '@/api/contacts';
 import { FormField } from '@/components/FormField';
 import { Notice } from '@/components/Notice';
 import { Button } from '@/components/ui/button';
@@ -10,6 +17,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { countryName } from '@/i18n/format';
 import type { Language } from '@/i18n';
+import { AttributeEditor } from './AttributeEditor';
 import { COUNTRY_CODES } from './countries';
 
 export type ContactValues = Record<ContactField, string>;
@@ -30,17 +38,19 @@ function errorCodes(error: ApiError | null): Partial<Record<string, string>> {
 }
 
 interface ContactFormProps {
-  initial?: ContactFields;
+  groupId: string;
+  initial?: ContactFields & { attributes?: AttributePair[] };
   submitLabel: string;
   busyLabel: string;
   busy: boolean;
   error: ApiError | null;
-  onSubmit: (values: ContactValues) => void;
+  onSubmit: (values: ContactValues, attributes: AttributePair[]) => void;
   onCancel?: () => void;
 }
 
 /** WF-07 / WF-08: the 11 predefined fields; the server judges them, the form shows its answer (R-003-03). */
 export function ContactForm({
+  groupId,
   initial,
   submitLabel,
   busyLabel,
@@ -51,6 +61,13 @@ export function ContactForm({
 }: ContactFormProps) {
   const { t, i18n } = useTranslation();
   const [values, setValues] = useState(() => valuesOf(initial));
+  const [pairs, setPairs] = useState<AttributePair[]>(() => initial?.attributes ?? []);
+  const keys = useQuery({
+    queryKey: ['facets', groupId, 'attributeKeys'],
+    queryFn: () => getAttributeKeys(groupId),
+    enabled: pairs.length > 0,
+    retry: false,
+  });
   const codes = errorCodes(error);
   const hasFieldErrors = Object.keys(codes).length > 0;
   const language = i18n.language as Language;
@@ -61,8 +78,12 @@ export function ContactForm({
   const set = (field: ContactField, value: string) => setValues((v) => ({ ...v, [field]: value }));
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    onSubmit(values);
+    onSubmit(values, pairs);
   };
+  const attributeErrors: Record<string, string | undefined> = {};
+  for (const [field, code] of Object.entries(codes)) {
+    if (field.startsWith('attributes') && code) attributeErrors[field] = t(errorKey(code));
+  }
   const messageOf = (field: ContactField) => (codes[field] ? t(errorKey(codes[field])) : undefined);
 
   return (
@@ -142,6 +163,12 @@ export function ContactForm({
         })}
       </div>
       <p className="text-sm text-text-muted">{t('contacts.oneOfFour')}</p>
+      <AttributeEditor
+        pairs={pairs}
+        onChange={setPairs}
+        errors={attributeErrors}
+        suggestions={keys.data ?? []}
+      />
       <div className="sticky bottom-0 flex justify-end gap-3 bg-surface py-3 sm:static">
         {onCancel ? (
           <Button type="button" variant="ghost" className="h-11" onClick={onCancel} disabled={busy}>

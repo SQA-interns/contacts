@@ -126,4 +126,63 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
 
     expect(await screen.findByRole('alert')).toHaveTextContent('Za to dejanje nimate pravice.');
   });
+  it('R-004-01 sends the Attributes with the Contact', async () => {
+    vi.mocked(fetch).mockImplementation((url) =>
+      Promise.resolve(
+        String(url).includes('/facets') ? answer({ attributeKeys: ['projekt'] }) : answer(created, 201),
+      ),
+    );
+    renderPage();
+
+    await userEvent.type(field('Ime'), 'Ana');
+    await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
+    await userEvent.type(field('Ključ 1'), 'kompetenca');
+    await userEvent.type(field('Vrednost 1'), 'java');
+    await save();
+
+    expect(await screen.findByText('Contact page')).toBeInTheDocument();
+    const post = vi.mocked(fetch).mock.calls.find(([, init]) => init?.method === 'POST');
+    expect(JSON.parse(String(post?.[1]?.body)).attributes).toEqual([{ key: 'kompetenca', value: 'java' }]);
+  });
+
+  it('R-004-05 suggests the keys already used in the Group', async () => {
+    vi.mocked(fetch).mockResolvedValue(answer({ attributeKeys: ['kompetenca'] }));
+    renderPage();
+
+    await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
+
+    const list = field('Ključ 1').getAttribute('list');
+    await vi.waitFor(() => expect(document.querySelectorAll(`datalist#${list} option`)).toHaveLength(1));
+    expect(String(vi.mocked(fetch).mock.calls[0]?.[0])).toContain('/api/v1/groups/g1/facets');
+  });
+
+  it('R-004-03 shows the message next to the second pair and keeps the pairs', async () => {
+    vi.mocked(fetch).mockImplementation((url) =>
+      Promise.resolve(
+        String(url).includes('/facets')
+          ? answer({ attributeKeys: [] })
+          : answer(
+              {
+                code: 'validation.failed',
+                message: 'x',
+                fieldErrors: [{ field: 'attributes[1].key', code: 'validation.attribute_duplicate_key' }],
+              },
+              422,
+            ),
+      ),
+    );
+    renderPage();
+
+    await userEvent.type(field('Ime'), 'Ana');
+    for (const n of [1, 2]) {
+      await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
+      await userEvent.type(field(`Ključ ${n}`), n === 1 ? 'a' : 'A');
+      await userEvent.type(field(`Vrednost ${n}`), 'x');
+    }
+    await save();
+
+    expect(await screen.findByText('Ključ atributa se ponavlja.')).toBeInTheDocument();
+    expect(field('Ključ 2')).toHaveAttribute('aria-invalid', 'true');
+    expect(field('Ključ 2')).toHaveValue('A');
+  });
 });

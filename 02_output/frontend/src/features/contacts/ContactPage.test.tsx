@@ -247,4 +247,33 @@ describe('ContactPage tabs (R-016-03, R-016-04)', () => {
     expect(screen.queryByRole('navigation', { name: 'Zavihki kontakta' })).toBeNull();
     expect(vi.mocked(fetch).mock.calls.some(([url]) => String(url).includes('/history'))).toBe(false);
   });
+  it('R-004-06 saves a changed value and a removed pair with the version', async () => {
+    backend('EDITOR', {
+      ...ana,
+      attributes: [
+        { key: 'kompetenca', value: 'spletnoProgramiranje' },
+        { key: 'projekt', value: 'x' },
+      ],
+    });
+    renderPage();
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Uredi' }));
+    const value = screen.getByLabelText('Vrednost 1');
+    await userEvent.clear(value);
+    await userEvent.type(value, 'java');
+    await userEvent.click(screen.getByRole('button', { name: 'Odstrani atribut 2' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Shrani' }));
+
+    await vi.waitFor(() => expect(putBody().version).toBe(2));
+    expect(putBody().attributes).toEqual([{ key: 'kompetenca', value: 'java' }]);
+  });
+
+  it('R-004-08 gives a Viewer no control to change an Attribute', async () => {
+    backend('VIEWER', ana);
+    renderPage();
+
+    await screen.findByText('spletnoProgramiranje');
+
+    expect(screen.queryByRole('button', { name: /atribut/i })).not.toBeInTheDocument();
+  });
 });

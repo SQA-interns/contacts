@@ -59,3 +59,11 @@ export function updateContact(groupId: string, contactId: string, input: Contact
     body: input,
   });
 }
+
+/** The Attribute keys used in the Group, for suggestions (R-004-05): `GET /groups/{g}/facets`. */
+export async function getAttributeKeys(groupId: string): Promise<string[]> {
+  const facets = await apiRequest<{ attributeKeys?: string[] }>(
+    `/groups/${encodeURIComponent(groupId)}/facets`,
+  );
+  return facets.attributeKeys ?? [];
+}
