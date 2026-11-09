@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -136,7 +137,7 @@ public final class DuplicateFinder {
       DuplicateMark mark, String code, Map<String, String> params, List<DuplicateCandidate> group) {
     List<ContactListItem> contacts =
         group.stream().map(DuplicateCandidate::item).sorted(OLDEST_FIRST).toList();
-    return new DuplicateSet(keyOf(contacts), mark, code, params, contacts);
+    return new DuplicateSet(keyOf(contacts.stream().map(ContactListItem::id).toList()), mark, code, params, contacts);
   }
 
   /** Groups by a key, leaving out the Contacts whose key is empty. */
@@ -175,9 +176,10 @@ public final class DuplicateFinder {
     return text == null ? "" : text.strip();
   }
 
-  private static String keyOf(List<ContactListItem> contacts) {
+  /** The key of a set: the SHA-256 (hex) of the sorted Contact ids (contract {@code key}). */
+  public static String keyOf(Collection<UUID> contactIds) {
     String ids =
-        contacts.stream().map(c -> c.id().toString()).sorted().collect(Collectors.joining(","));
+        contactIds.stream().map(UUID::toString).sorted().collect(Collectors.joining(","));
     try {
       byte[] hash =
           MessageDigest.getInstance("SHA-256").digest(ids.getBytes(StandardCharsets.UTF_8));
