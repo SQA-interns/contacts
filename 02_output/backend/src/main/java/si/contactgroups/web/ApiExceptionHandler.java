@@ -156,7 +156,7 @@ public class ApiExceptionHandler {
   @ExceptionHandler(DuplicateSetNotFoundException.class)
   public ResponseEntity<ApiError> duplicateSetNotFound(DuplicateSetNotFoundException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
-        .body(new ApiError("duplicate.set_not_found", e.getMessage()));
+        .body(new ApiError("duplicate.not_found", e.getMessage()));
   }
 
   @ExceptionHandler(ContactInTrashException.class)

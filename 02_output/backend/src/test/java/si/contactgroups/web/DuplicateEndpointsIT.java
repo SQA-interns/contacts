@@ -1,6 +1,7 @@
 package si.contactgroups.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -8,6 +9,7 @@ import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.web.servlet.ResultActions;
 import si.contactgroups.domain.ContactData;
@@ -18,7 +20,7 @@ import si.contactgroups.service.GroupService;
 import si.contactgroups.service.TrashService;
 import si.contactgroups.support.WebTestSupport;
 
-/** US-024: the duplicate search over the REST interface (contract {@code findDuplicates}). */
+/** US-024, US-025: the duplicate search and "not a duplicate" over the REST interface. */
 class DuplicateEndpointsIT extends WebTestSupport {
 
   @Autowired private JdbcClient jdbc;
@@ -109,5 +111,40 @@ class DuplicateEndpointsIT extends WebTestSupport {
         .andExpect(status().isOk())
         .andExpect(jsonPath("$[0].mark").value("probable"))
         .andExpect(jsonPath("$[0].reasonCode").value("duplicate.same_name_phone"));
+  }
+
+  private ResultActions dismiss(User user, String body) throws Exception {
+    return mvc.perform(
+        post("/api/v1/groups/" + acme + "/duplicates/dismissals")
+            .with(as(user))
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(body));
+  }
+
+  @Test
+  void r_025_01_a_set_is_dismissed_with_204_and_is_gone_from_the_search() throws Exception {
+    UUID a = contact(acme, "Ana", "ana@acme.com", null);
+    UUID b = contact(acme, "Anica", "ana@acme.com", null);
+
+    dismiss(ana, "{\"contactIds\":[\"" + a + "\",\"" + b + "\"]}")
+        .andExpect(status().isNoContent());
+
+    search(ana).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(0));
+  }
+
+  @Test
+  void ex_025_03_ids_that_are_no_set_answer_404_duplicate_not_found() throws Exception {
+    dismiss(ana, "{\"contactIds\":[\"" + UUID.randomUUID() + "\",\"" + UUID.randomUUID() + "\"]}")
+        .andExpect(status().isNotFound())
+        .andExpect(jsonPath("$.code").value("duplicate.not_found"));
+    dismiss(ana, "{}")
+        .andExpect(status().isNotFound())
+        .andExpect(jsonPath("$.code").value("duplicate.not_found"));
+  }
+
+  @Test
+  void r_025_01_a_body_that_is_not_json_or_has_other_properties_answers_400() throws Exception {
+    dismiss(ana, "{\"contactIds\":[\"not-an-id\"]}").andExpect(status().isBadRequest());
+    dismiss(ana, "{\"contactIds\":[],\"x\":1}").andExpect(status().isBadRequest());
   }
 }
