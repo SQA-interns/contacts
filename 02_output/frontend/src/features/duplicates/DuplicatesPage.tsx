@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { findDuplicates, type DuplicateSet } from '@/api/duplicates';
 import type { ContactListItem } from '@/api/contacts';
 import { EmptyState } from '@/components/EmptyState';
@@ -9,6 +10,7 @@ import { LoadingState } from '@/components/LoadingState';
 import { Notice } from '@/components/Notice';
 import { PageHeader } from '@/components/PageHeader';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import type { Language } from '@/i18n';
 import { formatDate } from '@/i18n/format';
@@ -20,7 +22,7 @@ function nameOf(contact: ContactListItem, fallback: string): string {
   return name || contact.company || contact.email || fallback;
 }
 
-/** SC-17 / WF-17: the Duplicate sets of the Group with mark, reason and Contacts; it changes nothing (R-024-01, R-024-06); "Ni podvojeno" dismisses a set (R-025-01). */
+/** SC-17 / WF-17: the Duplicate sets of the Group with mark, reason and Contacts; it changes nothing (R-024-01, R-024-06); "Ni podvojeno" dismisses a set (R-025-01); "Združi izbrane" opens the Merge screen with the ticked Contacts (R-026-01). */
 export function DuplicatesPage() {
   const { t } = useTranslation();
   const { groupId = '' } = useParams();
@@ -79,8 +81,24 @@ export function DuplicatesPage() {
 
 function DuplicateSetCard({ groupId, set }: { groupId: string; set: DuplicateSet }) {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const reason = useReasonText();
   const language = i18n.language as Language;
+  const [picked, setPicked] = useState<Set<string>>(() => new Set(set.contacts.map((c) => c.id)));
+  const canMerge = picked.size >= 2;
+  const toggle = (id: string) =>
+    setPicked((before) => {
+      const next = new Set(before);
+      if (!next.delete(id)) next.add(id);
+      return next;
+    });
+  const openMerge = () => {
+    if (!canMerge) return;
+    const ids = set.contacts
+      .filter((c) => picked.has(c.id))
+      .map((c) => `contact=${encodeURIComponent(c.id)}`);
+    void navigate(`/groups/${encodeURIComponent(groupId)}/merge?${ids.join('&')}`);
+  };
   return (
     <article className="flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4">
       <div className="flex flex-wrap items-center gap-3">
@@ -93,24 +111,39 @@ function DuplicateSetCard({ groupId, set }: { groupId: string; set: DuplicateSet
       </div>
       <ul className="flex flex-col gap-2">
         {set.contacts.map((contact) => (
-          <li key={contact.id} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <span className="min-w-0">
-              <span className="font-semibold break-words">{nameOf(contact, t('contacts.untitled'))}</span>
-              <br />
-              <span className="text-text-muted break-words">
-                {[contact.email, contact.company, contact.city].filter(Boolean).join(' · ')}
-              </span>
+          <li key={contact.id} className="flex items-center gap-3">
+            <span className="flex size-11 shrink-0 items-center justify-center">
+              <Checkbox
+                aria-label={t('duplicates.pick', { name: nameOf(contact, t('contacts.untitled')) })}
+                checked={picked.has(contact.id)}
+                onCheckedChange={() => toggle(contact.id)}
+              />
             </span>
-            {contact.createdAt ? (
-              <span className="text-sm text-text-muted">
-                {t('duplicates.createdOn', { date: formatDate(contact.createdAt, language) })}
+            <span className="flex min-w-0 grow flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <span className="min-w-0">
+                <span className="font-semibold break-words">{nameOf(contact, t('contacts.untitled'))}</span>
+                <br />
+                <span className="text-text-muted break-words">
+                  {[contact.email, contact.company, contact.city].filter(Boolean).join(' · ')}
+                </span>
               </span>
-            ) : null}
+              {contact.createdAt ? (
+                <span className="text-sm text-text-muted">
+                  {t('duplicates.createdOn', { date: formatDate(contact.createdAt, language) })}
+                </span>
+              ) : null}
+            </span>
           </li>
         ))}
       </ul>
-      <div className="flex flex-wrap justify-end gap-2">
+      <div className="flex flex-wrap items-center justify-end gap-2">
+        {canMerge ? null : (
+          <p className="grow text-right text-sm text-text-muted">{t('duplicates.pickTwo')}</p>
+        )}
         <DismissButton groupId={groupId} set={set} />
+        <Button variant="secondary" className="h-11" aria-disabled={!canMerge} onClick={openMerge}>
+          {t('duplicates.mergePicked', { count: picked.size })}
+        </Button>
       </div>
     </article>
   );

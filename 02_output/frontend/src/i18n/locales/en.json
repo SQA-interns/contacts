@@ -595,6 +595,9 @@
     "dismiss": "Not a duplicate",
     "dismissBusy": "Marking …",
     "dismissed": "The set is marked “not a duplicate” and is no longer shown.",
+    "pick": "Pick contact {{name}}",
+    "pickTwo": "Pick at least two Contacts to merge them.",
+    "mergePicked": "Merge picked ({{count}})",
     "mark": {
       "certain": "Certain",
       "probable": "Probable"

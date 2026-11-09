@@ -595,6 +595,9 @@
     "dismiss": "Ni podvojeno",
     "dismissBusy": "Označevanje …",
     "dismissed": "Množica je označena kot »ni podvojeno« in ni več prikazana.",
+    "pick": "Izberi kontakt {{name}}",
+    "pickTwo": "Za združitev izberite vsaj dva kontakta.",
+    "mergePicked": "Združi izbrane ({{count}})",
     "mark": {
       "certain": "Zanesljivo",
       "probable": "Verjetno"

@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter, Route, Routes } from 'react-router';
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { setLanguage } from '@/i18n';
 import { DuplicatesPage } from './DuplicatesPage';
@@ -60,6 +60,12 @@ function backend(role: string, sets: () => Response): Sent[] {
   return sent;
 }
 
+/** Stands for the Merge screen: shows where the page navigated to. */
+function MergeProbe() {
+  const location = useLocation();
+  return <p>merge screen {location.search}</p>;
+}
+
 function renderPage() {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   render(
@@ -67,6 +73,7 @@ function renderPage() {
       <MemoryRouter initialEntries={['/groups/g1/duplicates']}>
         <Routes>
           <Route path="/groups/:groupId/duplicates" element={<DuplicatesPage />} />
+          <Route path="/groups/:groupId/merge" element={<MergeProbe />} />
         </Routes>
       </MemoryRouter>
     </QueryClientProvider>,
@@ -131,6 +138,48 @@ describe('DuplicatesPage WF-17 (R-024-01, R-024-05, R-024-10)', () => {
     expect(first).toHaveTextContent('Acme');
     expect(first).toHaveTextContent('Ljubljana');
     expect(first).toHaveTextContent('ustvarjen 6. 11. 2026');
+  });
+
+  it('R-026-01 every Contact of a set has a box, all ticked, and the button counts them', async () => {
+    backend('EDITOR', () => answer([certain(3)]));
+    renderPage();
+
+    const boxes = await screen.findAllByRole('checkbox');
+    expect(boxes).toHaveLength(3);
+    expect(boxes.every((box) => box.getAttribute('aria-checked') === 'true')).toBe(true);
+    expect(screen.getByRole('checkbox', { name: 'Izberi kontakt Ana1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Združi izbrane (3)' })).toBeInTheDocument();
+  });
+
+  it('R-026-01 "Združi izbrane" opens the Merge screen with the ticked Contacts only', async () => {
+    backend('EDITOR', () => answer([certain(3)]));
+    renderPage();
+    await userEvent.click(await screen.findByRole('checkbox', { name: 'Izberi kontakt Ana1' }));
+
+    await userEvent.click(screen.getByRole('button', { name: 'Združi izbrane (2)' }));
+
+    expect(await screen.findByText('merge screen ?contact=c0&contact=c2')).toBeInTheDocument();
+  });
+
+  it('R-026-01 with fewer than two ticked Contacts the button is off and says why', async () => {
+    backend('EDITOR', () => answer([certain(2)]));
+    renderPage();
+    await userEvent.click(await screen.findByRole('checkbox', { name: 'Izberi kontakt Ana1' }));
+
+    const merge = screen.getByRole('button', { name: 'Združi izbrane (1)' });
+    expect(merge).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.getByText('Za združitev izberite vsaj dva kontakta.')).toBeInTheDocument();
+    await userEvent.click(merge);
+    expect(screen.queryByText(/merge screen/)).not.toBeInTheDocument();
+  });
+
+  it('R-026-10 nothing is merged by the page itself: it only reads and navigates', async () => {
+    const sent = backend('EDITOR', () => answer([certain(2)]));
+    renderPage();
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Združi izbrane (2)' }));
+
+    expect(sent.every((s) => s.method === 'GET')).toBe(true);
   });
 
   it('R-024-10 shows "No duplicates found" when there is no set', async () => {

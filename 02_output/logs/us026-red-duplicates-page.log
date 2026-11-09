@@ -1,0 +1,1081 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/duplicates/DuplicatesPage.test.tsx (14 tests | 4 failed) 4404ms
+     × R-026-01 every Contact of a set has a box, all ticked, and the button counts them 1012ms
+     × R-026-01 "Združi izbrane" opens the Merge screen with the ticked Contacts only 1009ms
+     × R-026-01 with fewer than two ticked Contacts the button is off and says why 1009ms
+     × R-026-10 nothing is merged by the page itself: it only reads and navigates 1013ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/duplicates/DuplicatesPage.test.tsx > DuplicatesPage WF-17 (R-024-01, R-024-05, R-024-10) > R-026-01 every Contact of a set has a box, all ticked, and the button counts them
+TestingLibraryElementError: Unable to find role="checkbox"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m3 kontakti imajo e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna2[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m3 kontakti imajo e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna2[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/DuplicatesPage.test.tsx:147:32
+    145|     renderPage();
+    146|
+    147|     const boxes = await screen.findAllByRole('checkbox');
+       |                                ^
+    148|     expect(boxes).toHaveLength(3);
+    149|     expect(boxes.every((box) => box.getAttribute('aria-checked') === '…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/features/duplicates/DuplicatesPage.test.tsx > DuplicatesPage WF-17 (R-024-01, R-024-05, R-024-10) > R-026-01 "Združi izbrane" opens the Merge screen with the ticked Contacts only
+TestingLibraryElementError: Unable to find role="checkbox" and name "Izberi kontakt Ana1"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m3 kontakti imajo e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna2[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m3 kontakti imajo e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna2[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/DuplicatesPage.test.tsx:157:40
+    155|     backend('EDITOR', () => answer([certain(3)]));
+    156|     renderPage();
+    157|     await userEvent.click(await screen.findByRole('checkbox', { name: …
+       |                                        ^
+    158|
+    159|     await userEvent.click(screen.getByRole('button', { name: 'Združi i…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/features/duplicates/DuplicatesPage.test.tsx > DuplicatesPage WF-17 (R-024-01, R-024-05, R-024-10) > R-026-01 with fewer than two ticked Contacts the button is off and says why
+TestingLibraryElementError: Unable to find role="checkbox" and name "Izberi kontakt Ana1"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m2 kontakta imata e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m2 kontakta imata e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/DuplicatesPage.test.tsx:167:40
+    165|     backend('EDITOR', () => answer([certain(2)]));
+    166|     renderPage();
+    167|     await userEvent.click(await screen.findByRole('checkbox', { name: …
+       |                                        ^
+    168|
+    169|     const merge = screen.getByRole('button', { name: 'Združi izbrane (…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/features/duplicates/DuplicatesPage.test.tsx > DuplicatesPage WF-17 (R-024-01, R-024-05, R-024-10) > R-026-10 nothing is merged by the page itself: it only reads and navigates
+TestingLibraryElementError: Unable to find role="button" and name "Združi izbrane (2)"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m2 kontakta imata e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mb-6 flex flex-wrap items-center justify-between gap-3"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-semibold"[39m
+      [36m>[39m
+        [0mPodvojeni kontakti[0m
+      [36m</h1>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+        [33mdata-size[39m=[32m"default"[39m
+        [33mdata-slot[39m=[32m"button"[39m
+        [33mdata-variant[39m=[32m"secondary"[39m
+      [36m>[39m
+        [0mPoišči znova[0m
+      [36m</button>[39m
+    [36m</div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"-mt-4 mb-6 text-text-muted"[39m
+    [36m>[39m
+      [0mKontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"flex flex-col gap-4"[39m
+    [36m>[39m
+      [36m<article[39m
+        [33mclass[39m=[32m"flex flex-col gap-3 rounded-[12px] border bg-surface-raised p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap items-center gap-3"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"inline-flex min-h-6 items-center rounded-full border px-2 text-xs font-semibold bg-primary text-primary-foreground"[39m
+          [36m>[39m
+            [0mZanesljivo[0m
+          [36m</span>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"min-w-0 font-semibold break-words"[39m
+          [36m>[39m
+            [0m2 kontakta imata e-pošto ana@acme.com[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"flex flex-col gap-2"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna0[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"min-w-0"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-semibold break-words"[39m
+              [36m>[39m
+                [0mAna1[0m
+              [36m</span>[39m
+              [36m<br />[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-text-muted break-words"[39m
+              [36m>[39m
+                [0mana@acme.com[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"text-sm text-text-muted"[39m
+            [36m>[39m
+              [0mustvarjen 6. 11. 2026[0m
+            [36m</span>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap justify-end gap-2"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 px-4 py-2 has-[>svg]:px-3 h-11"[39m
+            [33mdata-size[39m=[32m"default"[39m
+            [33mdata-slot[39m=[32m"button"[39m
+            [33mdata-variant[39m=[32m"ghost"[39m
+          [36m>[39m
+            [0mNi podvojeno[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</article>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/duplicates/DuplicatesPage.test.tsx:180:40
+    178|     renderPage();
+    179|
+    180|     await userEvent.click(await screen.findByRole('button', { name: 'Z…
+       |                                        ^
+    181|
+    182|     expect(sent.every((s) => s.method === 'GET')).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 10 passed (14)
+   Start at  18:34:22
+   Duration  5.43s (transform 144ms, setup 160ms, import 250ms, tests 4.40s, environment 492ms)
+
