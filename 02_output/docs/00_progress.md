@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-006 resume
+- Session: R /review INC-1 (round 2)
 - Result: done
-- Gate: DoD-S passed in part (frozen tests AC-006-04, AC-014-03, AC-019-06 fail unchanged, D-61 item g; DoD-S-05 shell screens done)
-- Notes for the next session: F-01 and F-02 fixed by one `GroupShell` (Group bar, tab bar, phone menu) for all Group screens, D-61. "Podvojeni kontakti" tab and "Možnosti skupine" menu wait for US-024 and US-020. Open from the review: F-03 (`page=abc` answers 500 on History endpoints), F-04 (`/health` extra `groups` field), F-05 (screens WF-07, WF-08, WF-19), F-06 (date format in WF-13), F-07..F-09. New: empty link for a Contact with no last name (D-61 item f); frozen AC-019-06 needs an approval decision (D-61 item g). The test stack runs with the data of the screen checks.
+- Gate: DoD-I passed (no Critical or High open; F-01, F-02 closed)
+- Notes for the next session: `docs/04_review-INC-1.md` lists the open Medium and Low findings: F-03 (500 on `page=abc`, History endpoints, US-016/US-017), F-04 (`/health` extra `groups`, US-018), F-10 (Contact page scrolls sideways at 375 px, `ContactPage.tsx:207,241`, US-003..US-005), F-13 (empty name link, `ContactTable.tsx:149`, US-007) go to `/fix` or the next session on the story; F-06/F-07, F-11 (404 page has no `h1`), F-12 (clipped tag chips) are Low. F-08: frozen tests of INC-2 stories and AC-006-04, AC-014-03, AC-019-06 are re-run at the release gate. GroupShell still lacks the tab "Podvojeni kontakti" (US-024) and the "Možnosti skupine" menu (US-020); those stories add them. Review screenshots: `logs/screens/review-INC-1/`. The test stack now holds the seed data (users and `seed.sql`).
 
 ## Next
-- Command: /review INC-1
+- Command: /implement US-020
 - Waiting for: nothing
 
 ## Stories
