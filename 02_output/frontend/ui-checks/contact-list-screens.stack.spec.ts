@@ -31,6 +31,15 @@ for (const viewport of VIEWPORTS) {
       await expect(page.getByText('Stran 1 od 2').first()).toBeVisible();
       await check(page, 'WF-06_contact-list', 'list', viewport.name);
 
+      await page.getByLabel('Iskanje').fill('Priimek07');
+      await expect(page.getByText('1 kontakt').first()).toBeVisible();
+      await check(page, 'WF-06_contact-list', 'search', viewport.name);
+      await page.getByLabel('Iskanje').fill('kompetenca');
+      await expect(page.getByRole('heading', { name: 'Noben kontakt ne ustreza' })).toBeVisible();
+      await check(page, 'WF-06_contact-list', 'no-match', viewport.name);
+      await page.getByRole('button', { name: 'Počisti filtre' }).click();
+      await expect(page.getByText('Stran 1 od 2').first()).toBeVisible();
+
       if (viewport.width >= 768) {
         await page.getByRole('button', { name: 'Podjetje' }).click();
         await expect(page.getByRole('columnheader', { name: 'Podjetje' })).toHaveAttribute(
