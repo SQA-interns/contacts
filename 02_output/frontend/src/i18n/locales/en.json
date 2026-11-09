@@ -585,7 +585,7 @@
   },
   "duplicates": {
     "title": "Duplicates",
-    "intro": "Contacts that are probably the same person. Nothing changes until you merge Contacts.",
+    "intro": "Contacts that may be the same person. Nothing changes until you merge Contacts.",
     "searchAgain": "Search again",
     "searching": "Searching for duplicate Contacts …",
     "noPermission": "You have no permission to search for duplicate Contacts.",

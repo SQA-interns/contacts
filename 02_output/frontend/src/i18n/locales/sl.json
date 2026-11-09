@@ -585,7 +585,7 @@
   },
   "duplicates": {
     "title": "Podvojeni kontakti",
-    "intro": "Kontakti, ki so verjetno ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.",
+    "intro": "Kontakti, ki bi lahko bili ista oseba. Nič se ne spremeni, dokler kontaktov ne združite.",
     "searchAgain": "Poišči znova",
     "searching": "Iskanje podvojenih kontaktov …",
     "noPermission": "Za iskanje podvojenih kontaktov nimate pravice.",

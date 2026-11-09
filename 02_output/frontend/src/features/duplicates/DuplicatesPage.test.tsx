@@ -87,6 +87,8 @@ describe('DuplicatesPage WF-17 (R-024-01, R-024-05, R-024-10)', () => {
     expect(await screen.findByText('Zanesljivo')).toBeInTheDocument();
     expect(screen.getByText('3 kontakti imajo e-pošto ana@acme.com')).toBeInTheDocument();
     expect(screen.getAllByRole('listitem')).toHaveLength(3);
+    // the frozen e2e-05 counts the words of the marks on the page: the intro must not use them
+    expect(screen.queryByText(/verjetno/i)).not.toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 1, name: 'Podvojeni kontakti' })).toBeInTheDocument();
   });
 
