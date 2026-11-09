@@ -80,6 +80,11 @@ export function ContactListPage() {
       <Link to={`/groups/${encodeURIComponent(groupId)}/invitations`}>{t('invitations.title')}</Link>
     </Button>
   );
+  const activityLink = (
+    <Button asChild variant="outline">
+      <Link to={`/groups/${encodeURIComponent(groupId)}/activity`}>{t('activity.title')}</Link>
+    </Button>
+  );
   const addLink = (
     <Button asChild>
       <Link to={`/groups/${encodeURIComponent(groupId)}/contacts/new`}>{t('contactList.add')}</Link>
@@ -132,6 +137,7 @@ export function ContactListPage() {
             <div className="flex gap-2">
               {trashLink}
               {membersLink}
+              {activityLink}
               {role === 'OWNER' ? invitationsLink : null}
               {data && data.total > 0 ? addLink : null}
             </div>
