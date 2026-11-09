@@ -10,12 +10,15 @@ const answer = (body: unknown) => new Response(JSON.stringify(body), { status: 2
 const group = (role: string) => ({ id: 'g1', name: 'Acme', role, createdAt: '2026-11-08T08:00:00Z' });
 
 function renderShell(role: string, path = '/groups/g1/tags') {
-  vi.mocked(fetch).mockImplementation(() => Promise.resolve(answer([group(role)])));
+  vi.mocked(fetch).mockImplementation((_url, init) =>
+    Promise.resolve(init?.method === 'POST' ? new Response(null, { status: 204 }) : answer([group(role)])),
+  );
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   render(
     <QueryClientProvider client={queryClient}>
       <MemoryRouter initialEntries={[path]}>
         <Routes>
+          <Route path="/groups" element={<p>group list page</p>} />
           <Route path="/groups/:groupId" element={<GroupShell />}>
             <Route path="tags" element={<p>tags page</p>} />
             <Route path="contacts" element={<p>contacts page</p>} />
@@ -108,5 +111,23 @@ describe('GroupShell: Group bar and Group navigation (WF-06..WF-13, F-01, F-02)'
     renderShell('OWNER');
 
     expect(await screen.findByText('tags page')).toBeInTheDocument();
+  });
+
+  it('R-020-01 offers an Owner "Izbriši skupino" in "Možnosti skupine" and shows the Group list afterwards', async () => {
+    renderShell('OWNER');
+    await userEvent.click(await screen.findByRole('button', { name: 'Možnosti skupine' }));
+    await userEvent.click(await screen.findByRole('menuitem', { name: 'Izbriši skupino' }));
+    const dialog = await screen.findByRole('dialog', { name: 'Izbrišem skupino Acme?' });
+    await userEvent.type(within(dialog).getByLabelText(/Za potrditev vpišite ime skupine/), 'Acme');
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Izbriši skupino' }));
+
+    expect(await screen.findByText('group list page')).toBeInTheDocument();
+  });
+
+  it('R-020-06 offers an Editor and a Viewer no "Možnosti skupine"', async () => {
+    renderShell('EDITOR');
+    await tabBar();
+
+    expect(screen.queryByRole('button', { name: 'Možnosti skupine' })).not.toBeInTheDocument();
   });
 });

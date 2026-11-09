@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router';
+import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router';
 import { listGroups, type Role } from '@/api/groups';
 import { Button } from '@/components/ui/button';
+import { GroupOptionsMenu } from './GroupOptionsMenu';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,6 +38,7 @@ export function GroupShell() {
   const { t } = useTranslation();
   const { groupId = '' } = useParams();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const groups = useQuery({ queryKey: ['groups'], queryFn: listGroups });
   const group = groups.data?.find((g) => g.id === groupId);
   const base = `/groups/${encodeURIComponent(groupId)}`;
@@ -53,6 +55,20 @@ export function GroupShell() {
             <span className="inline-flex min-h-6 items-center rounded-full border bg-surface px-2 text-xs font-semibold">
               {t(`role.${group.role}`)}
             </span>
+            {group.role === 'OWNER' ? (
+              <div className="ml-auto">
+                <GroupOptionsMenu
+                  group={group}
+                  onDeleted={() => void navigate('/groups')}
+                  trigger={
+                    <Button variant="ghost" className="h-11">
+                      {t('groups.options')}
+                      <ChevronDown aria-hidden="true" />
+                    </Button>
+                  }
+                />
+              </div>
+            ) : null}
           </div>
           <nav
             aria-label={t('groupNav.label')}

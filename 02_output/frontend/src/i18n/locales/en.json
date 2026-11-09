@@ -89,7 +89,11 @@
     "nameHint": "Up to 100 characters.",
     "submit": "Create",
     "busy": "Creating …",
-    "created": "Group created."
+    "created": "Group created.",
+    "options": "Group options",
+    "optionsFor": "Group options {{name}}",
+    "open": "Open",
+    "trashLink": "Group trash"
   },
   "groupTrash": {
     "title": "Group trash",

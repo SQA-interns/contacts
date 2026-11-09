@@ -199,3 +199,44 @@ describe('CreateGroupDialog WF-05 create dialog (R-002-01..03)', () => {
     expect(within(dialog).queryByText('boom')).not.toBeInTheDocument();
   });
 });
+
+describe('GroupListPage options of a Group and the Group Trash link (WF-05, R-020-01, R-020-06)', () => {
+  const klub = { id: 'g2', name: 'Klub', role: 'VIEWER', createdAt: '2026-11-08T09:00:00Z' };
+  const boris = { id: 'g3', name: 'Beta', role: 'EDITOR', createdAt: '2026-11-08T09:00:00Z' };
+
+  beforeEach(async () => {
+    await setLanguage('sl');
+    vi.stubGlobal('fetch', vi.fn());
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('R-020-01 offers an Owner "Izbriši skupino" in the card menu, which opens the confirmation', async () => {
+    vi.mocked(fetch).mockResolvedValue(answer([acme]));
+    renderPage();
+    await userEvent.click(await screen.findByRole('button', { name: 'Možnosti skupine Acme' }));
+
+    const menu = await screen.findByRole('menu');
+    expect(within(menu).getByRole('menuitem', { name: 'Odpri' })).toHaveAttribute(
+      'href',
+      '/groups/g1/contacts',
+    );
+    await userEvent.click(within(menu).getByRole('menuitem', { name: 'Izbriši skupino' }));
+
+    expect(await screen.findByRole('dialog', { name: 'Izbrišem skupino Acme?' })).toBeInTheDocument();
+  });
+
+  it('R-020-06 shows an Editor and a Viewer no card menu', async () => {
+    vi.mocked(fetch).mockResolvedValue(answer([klub, boris]));
+    renderPage();
+
+    expect(await screen.findByRole('heading', { level: 2, name: 'Klub' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Možnosti skupine/ })).not.toBeInTheDocument();
+  });
+
+  it('R-020-04 links to the Group Trash, also when the User has no Group left', async () => {
+    vi.mocked(fetch).mockResolvedValue(answer([]));
+    renderPage();
+
+    expect(await screen.findByRole('link', { name: 'Koš skupin' })).toHaveAttribute('href', '/group-trash');
+  });
+});

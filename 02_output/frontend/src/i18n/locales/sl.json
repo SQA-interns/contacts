@@ -89,7 +89,11 @@
     "nameHint": "Do 100 znakov.",
     "submit": "Ustvari",
     "busy": "Ustvarjanje …",
-    "created": "Skupina je ustvarjena."
+    "created": "Skupina je ustvarjena.",
+    "options": "Možnosti skupine",
+    "optionsFor": "Možnosti skupine {{name}}",
+    "open": "Odpri",
+    "trashLink": "Koš skupin"
   },
   "groupTrash": {
     "title": "Koš skupin",
