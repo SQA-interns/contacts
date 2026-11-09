@@ -29,7 +29,10 @@
   --color-secondary-foreground: var(--text);
   --color-accent: var(--surface);
   --color-accent-foreground: var(--text);
-  --color-destructive: var(--danger);
+  --color-destructive: var(
+    --danger-solid,
+    var(--danger)
+  ); /* a fill that carries white text; the final theme defines it */
   --color-input: var(--border);
 
   --radius-control: 8px;

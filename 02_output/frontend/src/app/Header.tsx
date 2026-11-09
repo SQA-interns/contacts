@@ -37,7 +37,7 @@ export function Header() {
         <Link to="/" className="flex items-center gap-3 font-semibold">
           <span
             aria-hidden="true"
-            className="inline-flex size-10 items-center justify-center rounded-[8px] border bg-surface-raised"
+            className="inline-flex size-10 items-center justify-center rounded-[8px] border border-primary bg-primary text-primary-foreground"
           >
             {brand.logoText}
           </span>

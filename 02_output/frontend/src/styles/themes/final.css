@@ -12,6 +12,7 @@
   --success: #15803d;
   --warning: #a16207;
   --danger: #b91c1c;
+  --danger-solid: #b91c1c; /* red fill under white text: 6.5:1 */
   --focus-ring: var(--brand-primary);
   --shadow: 0 1px 2px rgb(0 0 0 / 0.08);
 }
@@ -26,5 +27,7 @@
     --success: #4ade80;
     --warning: #facc15;
     --danger: #f87171;
+    --danger-solid: #dc2626; /* red-600: 4.8:1 under white text, 4:1 on the dark page */
+    --focus-ring: #818cf8; /* indigo-400: 3:1 or more on the dark surfaces (UI-05, UI-20) */
   }
 }

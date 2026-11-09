@@ -26,6 +26,11 @@
     --tw-border-style: var(--border-style);
     border-color: var(--border);
   }
+  /* native radio buttons and check boxes take the brand colour (UI-02) */
+  input[type='radio'],
+  input[type='checkbox'] {
+    accent-color: var(--primary);
+  }
   :focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
@@ -40,4 +45,24 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+/* UI-21: buttons animate their colour only. Enabling or disabling a button changes its opacity at once, so the
+   state is readable (and measurable) the moment it changes. Unlayered, so it wins over the utility classes. */
+[data-slot='button'],
+button[data-button='true'] {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 150ms;
+}
+
+/* UI-21: toasts slide in within 200 ms and appear at full opacity at once. Sonner's own 400 ms fades (toast, content,
+   action button) are longer than UI-21 allows and leave the text at half contrast while they run. Specificity is
+   raised because Sonner injects its style sheet after this one. */
+[data-sonner-toaster] [data-sonner-toast] {
+  transition-property: transform, height, box-shadow;
+  transition-duration: 200ms;
+}
+[data-sonner-toaster] [data-sonner-toast] > *,
+[data-sonner-toaster] [data-sonner-toast][data-styled='true'] [data-button] {
+  transition: none;
 }
