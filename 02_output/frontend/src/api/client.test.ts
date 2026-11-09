@@ -66,6 +66,19 @@ describe('API client (AR-03, R-018-01)', () => {
     });
   });
 
+  it('R-021-02 keeps the Groups of a 409 account.sole_owner', async () => {
+    const groups = [{ id: 'g1', name: 'Acme', inTrash: false, daysLeft: null }];
+    server.use(
+      http.delete(`${BASE}/me`, () =>
+        HttpResponse.json({ code: 'account.sole_owner', message: 'x', groups }, { status: 409 }),
+      ),
+    );
+
+    const error = await apiRequest('/me', { method: 'DELETE' }).catch((e: unknown) => e);
+
+    expect(error).toMatchObject({ status: 409, code: 'account.sole_owner', groups });
+  });
+
   it('keeps field errors of a validation answer', async () => {
     server.use(
       http.post(`${BASE}/groups`, () =>

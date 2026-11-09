@@ -1,5 +1,5 @@
 import { readConfig } from '@/config';
-import { ApiError, type FieldError } from './errors';
+import { ApiError, type FieldError, type SoleOwnerGroup } from './errors';
 
 type TokenProvider = () => Promise<string | null>;
 let tokenProvider: TokenProvider = () => Promise.resolve(null);
@@ -50,20 +50,23 @@ export async function apiRequest<T = void>(path: string, options: RequestOptions
   let message = response.statusText;
   let fieldErrors: FieldError[] = [];
   let current: unknown;
+  let groups: SoleOwnerGroup[] = [];
   try {
     const body = (await response.json()) as {
       code?: string;
       message?: string;
       fieldErrors?: FieldError[];
       current?: unknown;
+      groups?: SoleOwnerGroup[];
     };
     code = body.code ?? code;
     message = body.message ?? message;
     fieldErrors = body.fieldErrors ?? [];
     current = body.current;
+    groups = body.groups ?? [];
   } catch {
     /* not JSON: keep the defaults, show nothing technical */
   }
   if (response.status === 401) onUnauthorized();
-  throw new ApiError(response.status, code, message, fieldErrors, current);
+  throw new ApiError(response.status, code, message, fieldErrors, current, groups);
 }

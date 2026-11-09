@@ -6,12 +6,22 @@ export interface FieldError {
   code: string;
 }
 
+/** Contract schema `SoleOwnerGroup`: a Group the User alone owns (R-021-02); `daysLeft` only in the Group Trash. */
+export interface SoleOwnerGroup {
+  id: string;
+  name: string;
+  inTrash: boolean;
+  daysLeft: number | null;
+}
+
 /** An answer of the backend in the error format (ADR-10). `code` is translated by the UI. */
 export class ApiError extends Error {
   readonly status: number;
   readonly code: string;
   readonly fieldErrors: FieldError[];
   readonly current: unknown;
+  /** The Groups of a 409 `account.sole_owner`. */
+  readonly groups: SoleOwnerGroup[];
 
   constructor(
     status: number,
@@ -19,6 +29,7 @@ export class ApiError extends Error {
     message: string,
     fieldErrors: FieldError[] = [],
     current?: unknown,
+    groups: SoleOwnerGroup[] = [],
   ) {
     super(message);
     this.name = 'ApiError';
@@ -26,6 +37,7 @@ export class ApiError extends Error {
     this.code = code;
     this.fieldErrors = fieldErrors;
     this.current = current;
+    this.groups = groups;
   }
 }
 
