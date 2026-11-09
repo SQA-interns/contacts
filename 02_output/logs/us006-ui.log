@@ -1,0 +1,35 @@
+
+Running 2 tests using 2 workers
+
+  ✓  2 [chromium] › acceptance/us006-tags.spec.ts:43:1 › AC-006-05 cancelling the deletion changes nothing (1.6s)
+  ✘  1 [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay (1.7s)
+
+
+  1) [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeUndefined[2m()[22m
+
+    Received: [31m5[39m
+
+      37 |
+      38 |   await expect(page.getByRole('row').filter({ hasText: 'gost' })).toHaveCount(0);
+    > 39 |   expect(await gostCount(ana, acme)).toBeUndefined();
+         |                                      ^
+      40 |   expect((await api(ana, 'GET', `/groups/${acme.id}/contacts`)).body.total).toBe(5);
+      41 | });
+      42 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us006-tags.spec.ts:39:38
+
+    Error Context: test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+  1 passed (2.6s)

@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-005
+- Session: S5 /implement US-006
 - Result: done
-- Gate: DoD-S of US-005 passed in part: DoD-S-01 (11 of 19 frozen backend tests wait for US-006, US-007, US-009, US-014; the UI tests for US-007), DoD-S-05 (no screenshots or accessibility scan), see D-49
-- Notes for the next session: Backend: `TagService` (replace by diff, one History entry per Tag via `HistoryWriter.tagChanged`), `TagRepository` (`attach` creates or reuses the Tag ignoring case and links, `detach` removes the link only), `TagCheck` (R-005-02, 04), `TagChanges` (diff); `ContactService.create/update` take the names (null on edit keeps them) and merge their errors with BR-06 and the Attribute errors. Version snapshot includes Tags. Frontend: `TagInput` inside `ContactForm` (`onSubmit(values, attributes, tags)`), suggestions from `getTagNames` (`GET /groups/{g}/facets`, US-009 must return `tags`). The Tag list endpoint and renaming are US-006; Tags in the list US-007. Backend quality (`-Pquality`) clean; frontend prettier, eslint, tsc and 167 unit tests green; gitleaks clean on the new commits. Re-check after US-006, US-007, US-009, US-014: `Us005TagAcceptanceIT` (11 tests), the `us003-005-contact.spec.ts` tests.
+- Gate: DoD-S of US-006 passed in part: DoD-S-01 (9 of 13 frozen backend tests pass, 4 wait for US-007, US-012, US-014, US-017; frozen UI AC-006-04 races with the delete, AC-006-05 passes), see D-50
+- Notes for the next session: Backend: `TagController` (`GET/PATCH/DELETE /groups/{g}/tags[/{t}]`, action `MANAGE_TAGS`), `TagService.listWithCounts/rename/delete`, `TagRepository.counts/find/rename/delete/contactIds`, `HistoryWriter.tagRenamed/tagDeleted`, `TagNotFoundException` (404), `TagNameTakenException` (409). Frontend: `features/tags/TagListPage`, `api/tags.ts`, route `groups/:groupId/tags`; screens checked, see `out/logs/screens/WF-09_tags/`. Quality (`-Pquality` spotless, checkstyle, spotbugs), prettier, eslint, tsc, 175 unit tests green; gitleaks clean. Re-check after US-007, US-009, US-012, US-014, US-017: `Us005TagAcceptanceIT` (11), `Us006TagListAcceptanceIT` (4), `us003-005-contact.spec.ts`. The group tab bar (Contacts, Tags, Trash, …) does not exist yet; the Tag list is reached by URL until US-007 builds the Group navigation.
 
 ## Next
-- Command: /implement US-006
+- Command: /implement US-007
 - Waiting for: nothing
 
 ## Stories
@@ -22,7 +22,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-003 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-007, US-014, US-004, US-005; DoD-S-05 screens; DoD-S-07: size, D-46) |
 | US-004 | 1 | done | passed in part (DoD-S-01: AC-004-04/07/08/09 wait for US-009, US-014; DoD-S-05 screens, D-48) |
 | US-005 | 1 | done | passed in part (DoD-S-01: AC-005-01..08 frozen tests wait for US-006, US-007, US-009, US-014; DoD-S-05 screens, D-49) |
-| US-006 | 1 | ready | — |
+| US-006 | 1 | done | passed in part (DoD-S-01: 4 backend tests wait for US-007, US-012, US-014, US-017; UI AC-006-04 timing, D-50) |
 | US-007 | 1 | ready | — |
 | US-008 | 1 | ready | — |
 | US-009 | 1 | ready | — |

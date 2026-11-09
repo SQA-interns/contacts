@@ -546,3 +546,15 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-50: Readings of US-006 made while implementing, and frozen tests that wait or race
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-006
+- Class: open
+- Type: non-blocking
+- Trigger: points the story leaves open, a frozen test that seems wrong, and DoD-S items not met. (a) Routes `GET /groups/{g}/tags`, `PATCH` and `DELETE /groups/{g}/tags/{t}` as in the contract; `TagCount` = `{id, name, contactCount}`, counted over all Contacts including Trash, ordered by name ignoring case. A tag id that is not a UUID or not of this Group is 404 `tag.not_found` (BR-01). (b) Rename: the name is trimmed and checked with the Tag name rule of US-005 (422, field `name`, `validation.tag_invalid`); another Tag with the name ignoring case is 409 `tag.name_taken`; the same spelling returns 200 and writes nothing (EX-006-05); a case-only change is stored (R-006-04). (c) History: one `TAG_RENAMED` entry per carrying Contact with `details` `{old, new, name}`, one `TAG_DELETED` entry with `{name}`; no version change, no Version (R-006-07, BR-07). A Tag in Trash only gets entries too (its Contact carries it). (d) Delete: links and the Tag are removed in one transaction; Contacts are untouched (R-006-05); a restored Contact has no Tag (EX-006-04). (e) UI: `TagListPage` at `/groups/:g/tags`; a Viewer sees a notice and no request is sent (R-006-08); the count in the confirmation uses the four Slovene plural forms (`tags.contactCount.*`). (f) DoD-S-01: 9 of 13 frozen `Us006TagListAcceptanceIT` tests pass; AC-006-04, AC-006-07, EX-006-03, EX-006-04 need the Contact list (US-007), Members (US-014), Activity (US-017) and Trash (US-012) and fail with `route.not_found` or 405; the same rules are checked by own `TagListEndpointsIT` (3 tests, green). (g) Frozen UI test AC-006-04 fails: while the confirmation is open Radix marks the page `aria-hidden`, so `getByRole('row')…toHaveCount(0)` is true at once and the test reads the Tag list before the `DELETE` (204, checked in the browser) has finished. The feature works (list empty afterwards); a frozen test that waits for the closing of the dialog would pass. AC-006-05 passes. Approval needed to change the test. (h) DoD-S-05 done for WF-09 (list, rename, refusals, confirmation, empty at 375, 768 and 1440 px, no Critical or Serious axe finding, no overflow) in Chromium and WebKit; Firefox does not start in this sandbox.
+- Options: 1 (default) as written, test unchanged. 2 change the frozen test to wait for the dialog to close.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
+

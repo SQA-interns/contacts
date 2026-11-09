@@ -81,6 +81,38 @@
     "busy": "Ustvarjanje …",
     "created": "Skupina je ustvarjena."
   },
+  "tags": {
+    "title": "Značke",
+    "intro": "Značke te skupine in število kontaktov z vsako. Nove značke dodate na kontaktu.",
+    "tableCaption": "Značke skupine",
+    "nameColumn": "Značka",
+    "countColumn": "Kontakti",
+    "actionsColumn": "Dejanja",
+    "contactCount": {
+      "one": "{{count}} kontakt",
+      "two": "{{count}} kontakta",
+      "few": "{{count}} kontakti",
+      "other": "{{count}} kontaktov"
+    },
+    "rename": "Preimenuj",
+    "renameFor": "Preimenuj značko {{tag}}",
+    "renameTitle": "Preimenuj značko",
+    "newName": "Novo ime",
+    "newNameHint": "Črke, števke, - in _, do 50 znakov.",
+    "renameBusy": "Preimenovanje …",
+    "renamed": "Značka je preimenovana.",
+    "delete": "Izbriši",
+    "deleteFor": "Izbriši značko {{tag}}",
+    "deleteTitle": "Izbrišem značko {{tag}}?",
+    "deleteBody": "Značko ima {{contacts}}. Odstranjena bo z vseh, kontakti ostanejo.",
+    "deleteConfirm": "Izbriši značko",
+    "deleteBusy": "Brisanje …",
+    "deleted": "Značka je izbrisana.",
+    "emptyTitle": "V skupini še ni značk",
+    "emptyBody": "Značke dodate na kontaktu. Z njimi kontakte razvrstite in filtrirate.",
+    "noPermission": "Za upravljanje značk nimate pravice.",
+    "countLine": "Kontakti: {{contacts}}"
+  },
   "role": {
     "OWNER": "Lastnik",
     "EDITOR": "Urednik",

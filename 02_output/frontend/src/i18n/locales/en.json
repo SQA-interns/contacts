@@ -81,6 +81,38 @@
     "busy": "Creating …",
     "created": "Group created."
   },
+  "tags": {
+    "title": "Tags",
+    "intro": "The Tags of this Group and the number of Contacts with each. Add new Tags on a Contact.",
+    "tableCaption": "Tags of the Group",
+    "nameColumn": "Tag",
+    "countColumn": "Contacts",
+    "actionsColumn": "Actions",
+    "contactCount": {
+      "one": "{{count}} contact",
+      "two": "{{count}} contacts",
+      "few": "{{count}} contacts",
+      "other": "{{count}} contacts"
+    },
+    "rename": "Rename",
+    "renameFor": "Rename tag {{tag}}",
+    "renameTitle": "Rename tag",
+    "newName": "New name",
+    "newNameHint": "Letters, digits, - and _, up to 50 characters.",
+    "renameBusy": "Renaming …",
+    "renamed": "The tag was renamed.",
+    "delete": "Delete",
+    "deleteFor": "Delete tag {{tag}}",
+    "deleteTitle": "Delete tag {{tag}}?",
+    "deleteBody": "{{contacts}} carry the tag. It will be removed from all of them; the contacts stay.",
+    "deleteConfirm": "Delete tag",
+    "deleteBusy": "Deleting …",
+    "deleted": "The tag was deleted.",
+    "emptyTitle": "This group has no tags yet",
+    "emptyBody": "Add tags on a contact. They help you sort and filter contacts.",
+    "noPermission": "You do not have permission to manage tags.",
+    "countLine": "Contacts: {{contacts}}"
+  },
   "role": {
     "OWNER": "Owner",
     "EDITOR": "Editor",
