@@ -1,0 +1,8 @@
+
+Running 3 tests using 3 workers
+
+  ✓  1 [chromium] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-17 Duplicates: list, empty, loading, error (4.0s)
+  ✓  3 [chromium] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-17 Duplicates: list, empty, loading, error (4.1s)
+  ✓  2 [chromium] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-17 Duplicates: list, empty, loading, error (4.1s)
+
+  3 passed (4.8s)
