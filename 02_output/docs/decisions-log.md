@@ -569,3 +569,15 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+
+## D-52: Readings of US-008 made while implementing, and a frozen test that waits
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-008
+- Class: open
+- Type: non-blocking
+- Trigger: points the story leaves open and DoD-S items not met. (a) `GET /groups/{g}/contacts?q=` splits the text at whitespace after `Normaliser`, and each word must be contained (`LIKE '%word%' ESCAPE '\'`) in `contact.search_norm`, in a `tag.name_norm` or in an `attribute.value_norm` (ADR-06); `%`, `_` and `\` are escaped and every pattern is a bound parameter, so `'; DROP TABLE` and `<script>` are plain text (R-008-06). `q` of spaces or empty is no search (R-008-05). The count and the page use the same condition; the page number is as sent, so the UI sends page 1 on a new text (R-008-03). (b) Screen: `SearchBox` (label "Iskanje" / "Search", `role="search"`) in `ContactListPage`; the text is kept in `?q=` and sent 300 ms after the last key [ASSUMPTION: 300 ms, no source in the inputs; a UI timing only]. A new text sets `page=1`. With `q` set and no result the page shows "No contacts match" and "Clear filters", which removes `q`; filters join it in US-009. A Group without Contacts and without `q` still shows the empty state of US-007. (c) DoD-S-01: 15 of 16 `Us008SearchAcceptanceIT` pass; AC-008-07 needs the Trash endpoint (US-012) and fails with `route.not_found`; the Trash condition is `deleted_at IS NULL`, shared with US-007. UI: AC-008-05, AC-008-09, EX-008-04 pass; AC-009-09..12 and AC-007-04/05 in the same file wait for US-009 and US-014. (d) DoD-S-05 done for WF-06 (list with search text, "No contacts match" at 375, 768 and 1440 px, no Critical or Serious axe finding, no overflow) in Chromium and WebKit; Firefox does not start in this sandbox. (e) The repository-wide secret scan reports 2 findings outside the changed code (backend/src, frontend/src and ui-checks scan clean); not looked into here.
+- Options: 1 (default) as written. 2 another delay for the search box.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

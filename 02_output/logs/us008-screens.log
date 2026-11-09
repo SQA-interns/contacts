@@ -1,0 +1,81 @@
+
+Running 9 tests using 5 workers
+
+  ✓  1 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (7.0s)
+  ✓  4 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (8.0s)
+  ✓  5 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (8.3s)
+  ✓  7 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (10.3s)
+  ✓  8 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (10.9s)
+  ✓  9 [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (9.2s)
+  ✘  2 [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (7ms)
+  ✘  3 [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (5ms)
+  ✘  6 [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (3ms)
+
+
+  1) [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-Gaijnj -juggler-pipe -silent[22m
+    [2m  - <launched> pid=60739[22m
+    [2m  - [pid=60739][err] *** You are running in headless mode.[22m
+    [2m  - [pid=60739][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=60739][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=1.70833) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/contact-list-screens.stack-ca136-ist-sorted-by-company-empty-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/contact-list-screens.stack-ca136-ist-sorted-by-company-empty-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-WDLWmg -juggler-pipe -silent[22m
+    [2m  - <launched> pid=60740[22m
+    [2m  - [pid=60740][err] *** You are running in headless mode.[22m
+    [2m  - [pid=60740][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=60740][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=6.625) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/contact-list-screens.stack-044b0-ist-sorted-by-company-empty-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/contact-list-screens.stack-044b0-ist-sorted-by-company-empty-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-UfpFO7 -juggler-pipe -silent[22m
+    [2m  - <launched> pid=60778[22m
+    [2m  - [pid=60778][err] *** You are running in headless mode.[22m
+    [2m  - [pid=60778][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=60778][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=6.66667) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/contact-list-screens.stack-b1c70-ist-sorted-by-company-empty-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/contact-list-screens.stack-b1c70-ist-sorted-by-company-empty-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty 
+    [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty 
+    [firefox] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty 
+  6 passed (3.2m)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

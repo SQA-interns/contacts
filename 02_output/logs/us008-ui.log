@@ -1,0 +1,211 @@
+
+> contact-groups-frontend@1.0.0 acceptance
+> playwright test -c playwright.acceptance.config.ts us007-009-list
+
+
+Running 13 tests using 4 workers
+
+  ✘   1 [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" (884ms)
+  ✘   3 [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" (864ms)
+  ✓   2 [chromium] › acceptance/us007-009-list.spec.ts:52:1 › AC-007-03 choosing the header Company twice sorts ascending, then descending (1.7s)
+  ✓   6 [chromium] › acceptance/us007-009-list.spec.ts:117:1 › EX-007-07 a very long company name stays available in full in the list (1.6s)
+  ✓   7 [chromium] › acceptance/us007-009-list.spec.ts:135:1 › AC-008-05 searching kompetenca (a key only) shows "No contacts match" and "Clear filters" (2.0s)
+  ✓   5 [chromium] › acceptance/us007-009-list.spec.ts:100:1 › AC-007-07 choosing the row of Ana Novak opens the Contact (1.7s)
+  ✓   4 [chromium] › acceptance/us007-009-list.spec.ts:41:1 › AC-007-01 Acme with 60 Contacts shows 25 sorted by last name and "60 contacts" (4.1s)
+  ✓   9 [chromium] › acceptance/us007-009-list.spec.ts:165:1 › EX-008-04 the search text <script> finds nothing and is shown as text (1.3s)
+  ✓   8 [chromium] › acceptance/us007-009-list.spec.ts:153:1 › AC-008-09 typing a search on page 3 shows page 1 of 2 and "30 contacts" (3.4s)
+  ✘  10 [chromium] › acceptance/us007-009-list.spec.ts:183:1 › AC-009-09 changing a filter on page 2 shows page 1 and the new count (1.0m)
+  ✘  11 [chromium] › acceptance/us007-009-list.spec.ts:195:1 › AC-009-10 "Clear filters" shows the full list again (1.0m)
+  ✘  12 [chromium] › acceptance/us007-009-list.spec.ts:209:1 › AC-009-11 the Tag filter of Acme does not offer gost of Beta (1.0m)
+  ✘  13 [chromium] › acceptance/us007-009-list.spec.ts:224:1 › AC-009-12 a filter that matches nothing shows "No contacts match" and "Clear filters" (1.0m)
+
+
+  1) [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:73:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-04-a-70240-pty-state-with-Add-contact--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-04-a-70240-pty-state-with-Add-contact--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:91:3
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-007-05-a-243ad--state-without-Add-contact--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-007-05-a-243ad--state-without-Add-contact--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › acceptance/us007-009-list.spec.ts:183:1 › AC-009-09 changing a filter on page 2 shows page 1 and the new count 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.evaluate: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('Država', { exact: true })[22m
+
+
+       at support/stack.ts:207
+
+      205 | export async function choose(page: Page, label: string, option: string): Promise<void> {
+      206 |   const field = page.getByLabel(label, { exact: true });
+    > 207 |   const tag = await field.evaluate((el) => el.tagName.toLowerCase());
+          |                           ^
+      208 |   if (tag === 'select') {
+      209 |     await field.selectOption({ label: option });
+      210 |   } else {
+        at choose (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:207:27)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:189:9
+
+    Error Context: test-results/acceptance/us007-009-list-AC-009-09-c-cc3b7-ws-page-1-and-the-new-count-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-09-c-cc3b7-ws-page-1-and-the-new-count-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-09-c-cc3b7-ws-page-1-and-the-new-count-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › acceptance/us007-009-list.spec.ts:195:1 › AC-009-10 "Clear filters" shows the full list again 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.evaluate: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('Država', { exact: true })[22m
+
+
+       at support/stack.ts:207
+
+      205 | export async function choose(page: Page, label: string, option: string): Promise<void> {
+      206 |   const field = page.getByLabel(label, { exact: true });
+    > 207 |   const tag = await field.evaluate((el) => el.tagName.toLowerCase());
+          |                           ^
+      208 |   if (tag === 'select') {
+      209 |     await field.selectOption({ label: option });
+      210 |   } else {
+        at choose (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:207:27)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:198:9
+
+    Error Context: test-results/acceptance/us007-009-list-AC-009-10-C-32312-s-shows-the-full-list-again-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-10-C-32312-s-shows-the-full-list-again-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-10-C-32312-s-shows-the-full-list-again-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › acceptance/us007-009-list.spec.ts:209:1 › AC-009-11 the Tag filter of Acme does not offer gost of Beta 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('complementary', { name: 'Filtri' }).getByText('Izberite značke').first()[22m
+
+
+      216 |
+      217 |   const filters = page.getByRole('complementary', { name: 'Filtri' });
+    > 218 |   await filters.getByText('Izberite značke').first().click();
+          |                                                      ^
+      219 |
+      220 |   await expect(page.getByRole('option', { name: 'udelezenec2025' }).first()).toBeVisible();
+      221 |   await expect(page.getByRole('option', { name: 'gost', exact: true })).toHaveCount(0);
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:218:54
+
+    Error Context: test-results/acceptance/us007-009-list-AC-009-11-t-1a1d1-does-not-offer-gost-of-Beta-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-11-t-1a1d1-does-not-offer-gost-of-Beta-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-11-t-1a1d1-does-not-offer-gost-of-Beta-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › acceptance/us007-009-list.spec.ts:224:1 › AC-009-12 a filter that matches nothing shows "No contacts match" and "Clear filters" 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.evaluate: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('Država', { exact: true })[22m
+
+
+       at support/stack.ts:207
+
+      205 | export async function choose(page: Page, label: string, option: string): Promise<void> {
+      206 |   const field = page.getByLabel(label, { exact: true });
+    > 207 |   const tag = await field.evaluate((el) => el.tagName.toLowerCase());
+          |                           ^
+      208 |   if (tag === 'select') {
+      209 |     await field.selectOption({ label: option });
+      210 |   } else {
+        at choose (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:207:27)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us007-009-list.spec.ts:232:9
+
+    Error Context: test-results/acceptance/us007-009-list-AC-009-12-a-db2d8-ts-match-and-Clear-filters--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us007-009-list-AC-009-12-a-db2d8-ts-match-and-Clear-filters--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us007-009-list-AC-009-12-a-db2d8-ts-match-and-Clear-filters--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact" 
+    [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact" 
+    [chromium] › acceptance/us007-009-list.spec.ts:183:1 › AC-009-09 changing a filter on page 2 shows page 1 and the new count 
+    [chromium] › acceptance/us007-009-list.spec.ts:195:1 › AC-009-10 "Clear filters" shows the full list again 
+    [chromium] › acceptance/us007-009-list.spec.ts:209:1 › AC-009-11 the Tag filter of Acme does not offer gost of Beta 
+    [chromium] › acceptance/us007-009-list.spec.ts:224:1 › AC-009-12 a filter that matches nothing shows "No contacts match" and "Clear filters" 
+  7 passed (1.1m)
