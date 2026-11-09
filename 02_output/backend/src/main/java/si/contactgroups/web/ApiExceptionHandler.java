@@ -17,6 +17,7 @@ import si.contactgroups.service.ActivityRangeException;
 import si.contactgroups.service.ContactChangedException;
 import si.contactgroups.service.ContactInTrashException;
 import si.contactgroups.service.ContactNotFoundException;
+import si.contactgroups.service.DuplicateSetNotFoundException;
 import si.contactgroups.service.ExportTooManyException;
 import si.contactgroups.service.GroupNameMismatchException;
 import si.contactgroups.service.GroupNameTakenException;
@@ -150,6 +151,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> contactNotFound(ContactNotFoundException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(new ApiError("contact.not_found", e.getMessage()));
+  }
+
+  @ExceptionHandler(DuplicateSetNotFoundException.class)
+  public ResponseEntity<ApiError> duplicateSetNotFound(DuplicateSetNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ApiError("duplicate.set_not_found", e.getMessage()));
   }
 
   @ExceptionHandler(ContactInTrashException.class)
