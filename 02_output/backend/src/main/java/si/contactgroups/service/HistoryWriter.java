@@ -26,6 +26,9 @@ public class HistoryWriter {
 
   private static final int NAME_MAX = 100;
   private static final String SYSTEM = "system";
+  private static final String OLD = "old";
+  private static final String NEW = "new";
+  private static final String EMAIL = "email";
 
   private final HistoryRepository history;
   private final UserRepository users;
@@ -70,8 +73,8 @@ public class HistoryWriter {
     changes.forEach(
         (field, change) -> {
           ObjectNode pair = pairs.putObject(field);
-          pair.put("old", change.oldValue());
-          pair.put("new", change.newValue());
+          pair.put(OLD, change.oldValue());
+          pair.put(NEW, change.newValue());
         });
     write(groupId, userId, HistoryAction.CONTACT_EDITED, contactId, Map.of("changes", pairs), at);
   }
@@ -83,10 +86,10 @@ public class HistoryWriter {
     Map<String, String> details = new LinkedHashMap<>();
     details.put("key", change.key());
     if (change.oldValue() != null) {
-      details.put("old", change.oldValue());
+      details.put(OLD, change.oldValue());
     }
     if (change.newValue() != null) {
-      details.put("new", change.newValue());
+      details.put(NEW, change.newValue());
     }
     write(groupId, userId, change.action(), contactId, details, at);
   }
@@ -107,7 +110,7 @@ public class HistoryWriter {
         userId,
         HistoryAction.TAG_RENAMED,
         contactId,
-        Map.of("old", oldName, "new", newName, "name", newName),
+        Map.of(OLD, oldName, NEW, newName, "name", newName),
         at);
   }
 
@@ -164,14 +167,14 @@ public class HistoryWriter {
         userId,
         HistoryAction.INVITATION_CREATED,
         null,
-        Map.of("email", email, "role", role),
+        Map.of(EMAIL, email, "role", role),
         at);
   }
 
   /** Records an Invitation cancelled (R-014-11). */
   @Transactional(propagation = Propagation.MANDATORY)
   public void invitationCancelled(UUID groupId, UUID userId, String email, Instant at) {
-    write(groupId, userId, HistoryAction.INVITATION_CANCELLED, null, Map.of("email", email), at);
+    write(groupId, userId, HistoryAction.INVITATION_CANCELLED, null, Map.of(EMAIL, email), at);
   }
 
   /** Records a User joining through an Invitation, with the Role (R-014-11). */
@@ -195,7 +198,7 @@ public class HistoryWriter {
         userId,
         HistoryAction.ROLE_CHANGED,
         null,
-        Map.of("member", name, "email", email, "old", oldRole, "new", newRole),
+        Map.of("member", name, EMAIL, email, OLD, oldRole, NEW, newRole),
         at);
   }
 
@@ -208,7 +211,7 @@ public class HistoryWriter {
         userId,
         HistoryAction.MEMBER_REMOVED,
         null,
-        Map.of("member", name, "email", email, "role", role),
+        Map.of("member", name, EMAIL, email, "role", role),
         at);
   }
 

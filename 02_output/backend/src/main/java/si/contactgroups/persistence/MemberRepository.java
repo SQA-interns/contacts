@@ -15,6 +15,7 @@ import si.contactgroups.domain.Role;
 public class MemberRepository {
 
   private static final String GROUP_ID = "groupId";
+  private static final String USER_ID = "userId";
 
   private final JdbcClient jdbc;
 
@@ -27,7 +28,7 @@ public class MemberRepository {
             "INSERT INTO member (group_id, user_id, role, joined_at)"
                 + " VALUES (:groupId, :userId, :role, :joinedAt)")
         .param(GROUP_ID, groupId)
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .param("role", role.name())
         .param("joinedAt", Timestamp.from(joinedAt))
         .update();
@@ -39,7 +40,7 @@ public class MemberRepository {
             "SELECT m.role FROM member m JOIN contact_group g ON g.id = m.group_id"
                 + " WHERE m.group_id = :groupId AND m.user_id = :userId AND g.deleted_at IS NULL")
         .param(GROUP_ID, groupId)
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .query(String.class)
         .optional()
         .map(Role::valueOf);
@@ -61,7 +62,7 @@ public class MemberRepository {
     return jdbc.sql(
             "SELECT EXISTS (SELECT 1 FROM member WHERE group_id = :groupId AND user_id = :userId)")
         .param(GROUP_ID, groupId)
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .query(Boolean.class)
         .single();
   }
@@ -93,14 +94,14 @@ public class MemberRepository {
     jdbc.sql("UPDATE member SET role = :role WHERE group_id = :groupId AND user_id = :userId")
         .param("role", role.name())
         .param(GROUP_ID, groupId)
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .update();
   }
 
   public void delete(UUID groupId, UUID userId) {
     jdbc.sql("DELETE FROM member WHERE group_id = :groupId AND user_id = :userId")
         .param(GROUP_ID, groupId)
-        .param("userId", userId)
+        .param(USER_ID, userId)
         .update();
   }
 
