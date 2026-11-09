@@ -2,6 +2,8 @@ package si.contactgroups.persistence;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -9,9 +11,11 @@ import java.util.Set;
 import java.util.UUID;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.ContactFilter;
 import si.contactgroups.domain.ContactListItem;
+import si.contactgroups.domain.ExportContact;
 import si.contactgroups.domain.Facets;
 import si.contactgroups.domain.Normaliser;
 import si.contactgroups.domain.StoredContact;
@@ -21,6 +25,7 @@ import si.contactgroups.domain.StoredContact;
 public class ContactRepository {
 
   private static final String GROUP_ID = "groupId";
+  private static final String IDS = "ids";
   private static final String EMAIL = "email";
   private static final String COMPANY = "company";
   private static final String CITY = "city";
@@ -202,6 +207,109 @@ public class ContactRepository {
                     rs.getInt("version"),
                     rs.getTimestamp("created_at").toInstant()))
         .list();
+  }
+
+  /** The ids of the Contacts of the Group, not in Trash, that match the search and filters. */
+  public List<UUID> idsMatching(UUID groupId, ContactFilter filter) {
+    return FilterSql.bind(
+            jdbc.sql(
+                "SELECT c.id FROM contact c WHERE c.group_id = :groupId"
+                    + " AND c.deleted_at IS NULL"
+                    + conditions(filter)
+                    + " ORDER BY c.last_name_norm NULLS LAST, c.first_name_norm NULLS LAST, c.id"),
+            filter)
+        .param(GROUP_ID, groupId)
+        .query(UUID.class)
+        .list();
+  }
+
+  /** Those of the given ids that are Contacts of the Group not in Trash, in list order. */
+  public List<UUID> exportableIds(UUID groupId, List<UUID> contactIds) {
+    return jdbc.sql(
+            "SELECT id FROM contact WHERE group_id = :groupId AND deleted_at IS NULL"
+                + " AND id = ANY(:ids)"
+                + " ORDER BY last_name_norm NULLS LAST, first_name_norm NULLS LAST, id")
+        .param(GROUP_ID, groupId)
+        .param(IDS, contactIds.toArray(UUID[]::new))
+        .query(UUID.class)
+        .list();
+  }
+
+  /** The data, Tags and Attributes of the Contacts, in the order of {@code contactIds}. */
+  public List<ExportContact> forExport(UUID groupId, List<UUID> contactIds) {
+    UUID[] ids = contactIds.toArray(UUID[]::new);
+    Map<UUID, List<String>> tags = tagsOf(groupId, ids);
+    Map<UUID, List<AttributePair>> attributes = attributesOf(groupId, ids);
+    Map<UUID, ContactData> data = dataOf(groupId, ids);
+    return contactIds.stream()
+        .map(
+            id ->
+                new ExportContact(
+                    data.get(id),
+                    tags.getOrDefault(id, List.of()),
+                    attributes.getOrDefault(id, List.of())))
+        .toList();
+  }
+
+  private Map<UUID, ContactData> dataOf(UUID groupId, UUID[] ids) {
+    Map<UUID, ContactData> data = new HashMap<>();
+    jdbc.sql(
+            "SELECT "
+                + COLUMNS
+                + " FROM contact WHERE group_id = :groupId AND deleted_at IS NULL"
+                + " AND id = ANY(:ids)")
+        .param(GROUP_ID, groupId)
+        .param(IDS, ids)
+        .query((rs, n) -> data.put(rs.getObject("id", UUID.class), dataOf(rs)))
+        .list();
+    return data;
+  }
+
+  private static ContactData dataOf(java.sql.ResultSet rs) throws java.sql.SQLException {
+    return new ContactData(
+        rs.getString("first_name"),
+        rs.getString("last_name"),
+        rs.getString(EMAIL),
+        rs.getString("phone"),
+        rs.getString(COMPANY),
+        rs.getString("job_title"),
+        rs.getString("street"),
+        rs.getString("postal_code"),
+        rs.getString(CITY),
+        rs.getString(COUNTRY),
+        rs.getString("notes"));
+  }
+
+  private Map<UUID, List<String>> tagsOf(UUID groupId, UUID[] ids) {
+    Map<UUID, List<String>> tags = new HashMap<>();
+    jdbc.sql(
+            "SELECT ct.contact_id, t.name FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
+                + " WHERE t.group_id = :groupId AND ct.contact_id = ANY(:ids)")
+        .param(GROUP_ID, groupId)
+        .param(IDS, ids)
+        .query(
+            (rs, n) ->
+                tags.computeIfAbsent(rs.getObject("contact_id", UUID.class), k -> new ArrayList<>())
+                    .add(rs.getString("name")))
+        .list();
+    return tags;
+  }
+
+  private Map<UUID, List<AttributePair>> attributesOf(UUID groupId, UUID[] ids) {
+    Map<UUID, List<AttributePair>> attributes = new HashMap<>();
+    jdbc.sql(
+            "SELECT a.contact_id, a.key, a.value FROM attribute a JOIN contact c ON c.id = a.contact_id"
+                + " WHERE c.group_id = :groupId AND a.contact_id = ANY(:ids)"
+                + " ORDER BY lower(a.key), a.key")
+        .param(GROUP_ID, groupId)
+        .param(IDS, ids)
+        .query(
+            (rs, n) ->
+                attributes
+                    .computeIfAbsent(rs.getObject("contact_id", UUID.class), k -> new ArrayList<>())
+                    .add(new AttributePair(rs.getString("key"), rs.getString("value"))))
+        .list();
+    return attributes;
   }
 
   /** Whether the Group has the Contact, in Trash or not. */

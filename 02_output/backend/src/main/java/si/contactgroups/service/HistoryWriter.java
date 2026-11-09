@@ -112,6 +112,12 @@ public class HistoryWriter {
     write(groupId, userId, HistoryAction.TAG_DELETED, contactId, Map.of("name", name), at);
   }
 
+  /** Records an export: the number of Contacts in the file (R-011-07). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void contactsExported(UUID groupId, UUID userId, int count, Instant at) {
+    write(groupId, userId, HistoryAction.CONTACTS_EXPORTED, null, Map.of("count", count), at);
+  }
+
   private void write(
       UUID groupId,
       UUID userId,

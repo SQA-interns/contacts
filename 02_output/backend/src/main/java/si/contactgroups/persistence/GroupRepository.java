@@ -31,6 +31,14 @@ public class GroupRepository {
         .list();
   }
 
+  /** The name of the Group. */
+  public String name(UUID groupId) {
+    return jdbc.sql("SELECT name FROM contact_group WHERE id = :groupId")
+        .param("groupId", groupId)
+        .query(String.class)
+        .single();
+  }
+
   /** Stores a new Group and returns its id; the Group has no Member yet. */
   @GlobalScope
   public UUID insert(String name, Instant createdAt) {
