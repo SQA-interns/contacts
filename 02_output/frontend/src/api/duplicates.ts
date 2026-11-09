@@ -15,3 +15,14 @@ export interface DuplicateSet {
 export function findDuplicates(groupId: string): Promise<DuplicateSet[]> {
   return apiRequest<DuplicateSet[]>(`/groups/${encodeURIComponent(groupId)}/duplicates`);
 }
+
+/**
+ * `POST /groups/{g}/duplicates/dismissals` (R-025-01): marks the set of exactly these Contacts "not a
+ * duplicate"; no Contact changes (R-025-05).
+ */
+export function dismissDuplicate(groupId: string, contactIds: string[]): Promise<void> {
+  return apiRequest<void>(`/groups/${encodeURIComponent(groupId)}/duplicates/dismissals`, {
+    method: 'POST',
+    body: { contactIds },
+  });
+}

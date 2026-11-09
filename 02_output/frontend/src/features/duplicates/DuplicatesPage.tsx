@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { useGroupRole } from '@/features/groups/useGroupRole';
 import type { Language } from '@/i18n';
 import { formatDate } from '@/i18n/format';
+import { DismissButton } from './DismissButton';
 import { useReasonText } from './useReasonText';
 
 function nameOf(contact: ContactListItem, fallback: string): string {
@@ -19,7 +20,7 @@ function nameOf(contact: ContactListItem, fallback: string): string {
   return name || contact.company || contact.email || fallback;
 }
 
-/** SC-17 / WF-17: the Duplicate sets of the Group with mark, reason and Contacts; it changes nothing (R-024-01, R-024-06). */
+/** SC-17 / WF-17: the Duplicate sets of the Group with mark, reason and Contacts; it changes nothing (R-024-01, R-024-06); "Ni podvojeno" dismisses a set (R-025-01). */
 export function DuplicatesPage() {
   const { t } = useTranslation();
   const { groupId = '' } = useParams();
@@ -68,7 +69,7 @@ export function DuplicatesPage() {
       ) : (
         <div className="flex flex-col gap-4">
           {sets.data.map((set) => (
-            <DuplicateSetCard key={set.key} set={set} />
+            <DuplicateSetCard key={set.key} groupId={groupId} set={set} />
           ))}
         </div>
       )}
@@ -76,7 +77,7 @@ export function DuplicatesPage() {
   );
 }
 
-function DuplicateSetCard({ set }: { set: DuplicateSet }) {
+function DuplicateSetCard({ groupId, set }: { groupId: string; set: DuplicateSet }) {
   const { t, i18n } = useTranslation();
   const reason = useReasonText();
   const language = i18n.language as Language;
@@ -108,6 +109,9 @@ function DuplicateSetCard({ set }: { set: DuplicateSet }) {
           </li>
         ))}
       </ul>
+      <div className="flex flex-wrap justify-end gap-2">
+        <DismissButton groupId={groupId} set={set} />
+      </div>
     </article>
   );
 }

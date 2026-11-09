@@ -592,6 +592,9 @@
     "emptyTitle": "No duplicates found",
     "emptyBody": "We found no Contacts in this Group that are the same person.",
     "createdOn": "created {{date}}",
+    "dismiss": "Not a duplicate",
+    "dismissBusy": "Marking …",
+    "dismissed": "The set is marked “not a duplicate” and is no longer shown.",
     "mark": {
       "certain": "Certain",
       "probable": "Probable"

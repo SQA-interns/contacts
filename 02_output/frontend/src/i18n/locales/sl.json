@@ -592,6 +592,9 @@
     "emptyTitle": "Ni podvojenih kontaktov",
     "emptyBody": "V tej skupini nismo našli kontaktov, ki bi bili ista oseba.",
     "createdOn": "ustvarjen {{date}}",
+    "dismiss": "Ni podvojeno",
+    "dismissBusy": "Označevanje …",
+    "dismissed": "Množica je označena kot »ni podvojeno« in ni več prikazana.",
     "mark": {
       "certain": "Zanesljivo",
       "probable": "Verjetno"
