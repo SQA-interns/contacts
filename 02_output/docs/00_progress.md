@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-009
+- Session: S5 /implement US-010
 - Result: done
-- Gate: DoD-S of US-009 passed in part: DoD-S-01 (16 of 17 backend frozen tests pass: EX-009-06 waits for US-012; UI AC-009-09..12 pass), see D-53
-- Notes for the next session: Backend: `ContactFilter` (domain), `FilterParams`/`FilterParser` (service), `FilterSql` (persistence), `GET /groups/{g}/facets` (`FacetController`). Frontend: `features/contacts/FilterPanel`, `MultiSelect`, `filters.ts` (filters in the address); the panel's "Počisti filtre" is the first such button. Screens `filters`, `filters-no-match` in `out/logs/screens/WF-06_contact-list/`. Re-check after US-012, US-014: `Us009FilterAcceptanceIT` (EX-009-06), `us007-009-list.spec.ts` (AC-007-04/05). US-010 builds on `ContactListPage` (Selection must follow the filters).
+- Gate: DoD-S of US-010 passed in part: DoD-S-01 (the 13 frozen tests need invitations, US-014; own unit and page tests pass), see D-54
+- Notes for the next session: Frontend only: `features/contacts/selection/` (`useSelection` hook with ids or "all results" minus unticked, `SelectionBar`); `ContactTable` takes an optional `selection`. The bar's Export button is US-011 (T-36): it must send the filter plus the unticked ids, or the ids (`useSelection` has `allResults`, `isSelected`, `count`). Re-check after US-014, US-011: `acceptance/us010-011-selection.spec.ts`. Screens `selection`, `selection-page` in `out/logs/screens/WF-06_contact-list/`. The test stack is up (`scripts/test-stack.sh down` to stop).
 
 ## Next
-- Command: /implement US-010
+- Command: /implement US-011
 - Waiting for: nothing
 
 ## Stories
@@ -26,7 +26,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-007 | 1 | done | passed in part (DoD-S-01: EX-007-05 frozen test contradicts R-007-03, others wait for US-012, US-014; DoD-S-05 screens, D-51) |
 | US-008 | 1 | done | passed in part (DoD-S-01: AC-008-07 waits for US-012; DoD-S-05 screens, D-52) |
 | US-009 | 1 | done | passed in part (DoD-S-01: EX-009-06 waits for US-012; DoD-S-05 screens, D-53) |
-| US-010 | 1 | ready | — |
+| US-010 | 1 | done | passed in part (DoD-S-01: 13 frozen tests wait for US-014, US-011; DoD-S-05 screens, D-54) |
 | US-011 | 1 | ready | — |
 | US-012 | 1 | ready | — |
 | US-013 | 1 | ready | — |

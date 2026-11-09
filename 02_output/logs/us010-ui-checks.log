@@ -1,0 +1,13 @@
+
+Running 3 tests using 3 workers
+
+  ✓  2 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty (15.0s)
+  ✓  1 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty (15.1s)
+  ✓  3 [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty (16.1s)
+
+  3 passed (17.4s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

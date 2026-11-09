@@ -593,3 +593,15 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+
+## D-54: Readings of US-010 made while implementing, and frozen tests that wait
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-010
+- Class: open
+- Type: non-blocking
+- Trigger: points the story leaves open and DoD-S items not met. (a) The Selection is built in the browser only (`selection/useSelection`, `SelectionBar`): either a set of ticked Contact ids, or "all results" with the set of Contacts unticked afterwards, so the count is N minus the unticked ones and a Contact can still be unticked after "select all N results" [ASSUMPTION: the story leaves unticking after "select all" open]. It is cleared when the search text or any filter changes, also back to an earlier text (R-010-08, EX-010-04); page and sort order do not clear it. The export (US-011) will have to send the filter and the unticked ids, or the ids, to the backend; no endpoint was changed here. (b) "Select all N results" is offered while the page is fully selected and N is larger than the number of rows on the page (EX-010-01, EX-010-02). (c) Slovene count forms: `1 izbran`, `2 izbrana`, `3 izbrani`, other `izbranih`; "Počisti izbiro" shows from 1 selected on; the bar is shown to an Owner or Editor only. (d) Below 768 px the cards have a checkbox each and a "Izberi vse na tej strani" box above the list. (e) The Export button of the bar (AC-011-01, AC-011-05) belongs to US-011 (T-36) and is not built; the frozen AC-011-01 and AC-011-05 fail until then. (f) DoD-S-01: all 13 frozen AC-010 and EX-010 tests need `POST /groups/{g}/invitations` for the Editor and Viewer set-up (US-014) and fail with `route.not_found` before the screen is reached; they could not be run. They are covered by 10 page tests and 5 hook tests (207 unit tests pass), and the screens were checked as an Owner. Re-check `us010-011-selection.spec.ts` after US-014 and US-011. (g) DoD-S-05 done for WF-06 `selection` and `selection-page` at 375, 768 and 1440 px, no Critical or Serious axe finding, no overflow, in Chromium; WebKit and Firefox not run in this session.
+- Options: 1 (default) as written. 2 a Selection of all results that holds no unticked Contacts (unticking then ends "all results").
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none

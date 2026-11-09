@@ -1,0 +1,501 @@
+
+Running 15 tests using 4 workers
+
+  ✘   2 [chromium] › acceptance/us010-011-selection.spec.ts:70:1 › AC-010-03 "select all on this page" of 60 shows "25 selected" and offers "select all 60 results" (999ms)
+  ✘   4 [chromium] › acceptance/us010-011-selection.spec.ts:45:1 › AC-010-01 ticking 2 rows shows "2 selected" (998ms)
+  ✘   1 [chromium] › acceptance/us010-011-selection.spec.ts:82:1 › AC-010-04 "select all 60 results" shows "60 selected" (998ms)
+  ✘   3 [chromium] › acceptance/us010-011-selection.spec.ts:55:1 › AC-010-02 the 2 ticked rows stay ticked after going to page 2 and back (995ms)
+  ✘   7 [chromium] › acceptance/us010-011-selection.spec.ts:106:1 › AC-010-06 unticking one of 2 rows shows "1 selected" (649ms)
+  ✘   5 [chromium] › acceptance/us010-011-selection.spec.ts:130:1 › AC-010-08 "Clear selection" of 60 shows "0 selected" and changes no Contact (648ms)
+  ✘   6 [chromium] › acceptance/us010-011-selection.spec.ts:117:1 › AC-010-07 a Viewer sees no checkbox and no selection control (690ms)
+  ✘   8 [chromium] › acceptance/us010-011-selection.spec.ts:92:1 › AC-010-05 changing the search to 12 matches clears a Selection of 60 (698ms)
+  ✘  11 [chromium] › acceptance/us010-011-selection.spec.ts:167:1 › EX-010-02 with 26 results the whole page selected offers "select all 26 results" (522ms)
+  ✘  10 [chromium] › acceptance/us010-011-selection.spec.ts:144:1 › AC-010-09 changing the sort order keeps a Selection of 60 (542ms)
+  ✘  12 [chromium] › acceptance/us010-011-selection.spec.ts:176:1 › EX-010-03 after a reload the Selection is empty (544ms)
+  ✘   9 [chromium] › acceptance/us010-011-selection.spec.ts:155:1 › EX-010-01 with exactly 25 results the whole page selected offers no "select all N results" (600ms)
+  ✘  14 [chromium] › acceptance/us010-011-selection.spec.ts:208:1 › AC-011-01 with nothing selected the Export button is disabled (398ms)
+  ✘  13 [chromium] › acceptance/us010-011-selection.spec.ts:189:1 › EX-010-04 changing the search back to the earlier text leaves the Selection cleared (411ms)
+  ✘  15 [chromium] › acceptance/us010-011-selection.spec.ts:217:1 › AC-011-05 an export of more than 10,000 shows the message to narrow the Selection (417ms)
+
+
+  1) [chromium] › acceptance/us010-011-selection.spec.ts:45:1 › AC-010-01 ticking 2 rows shows "2 selected" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:46:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-f8984-ng-2-rows-shows-2-selected--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-f8984-ng-2-rows-shows-2-selected--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › acceptance/us010-011-selection.spec.ts:55:1 › AC-010-02 the 2 ticked rows stay ticked after going to page 2 and back 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:56:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-d35b6-er-going-to-page-2-and-back-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-d35b6-er-going-to-page-2-and-back-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › acceptance/us010-011-selection.spec.ts:70:1 › AC-010-03 "select all on this page" of 60 shows "25 selected" and offers "select all 60 results" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:73:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-203dd-fers-select-all-60-results--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-203dd-fers-select-all-60-results--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › acceptance/us010-011-selection.spec.ts:82:1 › AC-010-04 "select all 60 results" shows "60 selected" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:83:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-b4635--results-shows-60-selected--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-b4635--results-shows-60-selected--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › acceptance/us010-011-selection.spec.ts:92:1 › AC-010-05 changing the search to 12 matches clears a Selection of 60 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:93:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-aa7b2-es-clears-a-Selection-of-60-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-aa7b2-es-clears-a-Selection-of-60-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › acceptance/us010-011-selection.spec.ts:106:1 › AC-010-06 unticking one of 2 rows shows "1 selected" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:107:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-bf487-of-2-rows-shows-1-selected--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-bf487-of-2-rows-shows-1-selected--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › acceptance/us010-011-selection.spec.ts:117:1 › AC-010-07 a Viewer sees no checkbox and no selection control 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:118:25
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-8129c-ox-and-no-selection-control-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-8129c-ox-and-no-selection-control-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › acceptance/us010-011-selection.spec.ts:130:1 › AC-010-08 "Clear selection" of 60 shows "0 selected" and changes no Contact 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:131:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-cdd54-cted-and-changes-no-Contact-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-cdd54-cted-and-changes-no-Contact-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › acceptance/us010-011-selection.spec.ts:144:1 › AC-010-09 changing the sort order keeps a Selection of 60 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:145:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-010-f1784-der-keeps-a-Selection-of-60-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-010-f1784-der-keeps-a-Selection-of-60-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › acceptance/us010-011-selection.spec.ts:155:1 › EX-010-01 with exactly 25 results the whole page selected offers no "select all N results" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:158:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-75473-rs-no-select-all-N-results--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-75473-rs-no-select-all-N-results--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium] › acceptance/us010-011-selection.spec.ts:167:1 › EX-010-02 with 26 results the whole page selected offers "select all 26 results" 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:168:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-ee927-fers-select-all-26-results--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-ee927-fers-select-all-26-results--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [chromium] › acceptance/us010-011-selection.spec.ts:176:1 › EX-010-03 after a reload the Selection is empty 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:177:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-464ba-load-the-Selection-is-empty-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-464ba-load-the-Selection-is-empty-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [chromium] › acceptance/us010-011-selection.spec.ts:189:1 › EX-010-04 changing the search back to the earlier text leaves the Selection cleared 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:192:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-EX-010-e2989-eaves-the-Selection-cleared-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-EX-010-e2989-eaves-the-Selection-cleared-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [chromium] › acceptance/us010-011-selection.spec.ts:208:1 › AC-011-01 with nothing selected the Export button is disabled 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:209:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-011-89ba0-e-Export-button-is-disabled-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-011-89ba0-e-Export-button-is-disabled-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [chromium] › acceptance/us010-011-selection.spec.ts:217:1 › AC-011-05 an export of more than 10,000 shows the message to narrow the Selection 
+
+    Error: {"code":"route.not_found","message":"Not found"}
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m201[39m
+    Received: [31m404[39m
+
+       at support/stack.ts:114
+
+      112 | async function ok(answer: Promise<Answer>, status: number): Promise<any> {
+      113 |   const a = await answer;
+    > 114 |   expect(a.status, JSON.stringify(a.body)).toBe(status);
+          |                                            ^
+      115 |   return a.body;
+      116 | }
+      117 |
+        at ok (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:114:44)
+        at addMember (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/support/stack.ts:134:3)
+        at borisWith (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:22:3)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us010-011-selection.spec.ts:220:27
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us010-011-selection-AC-011-87c98-age-to-narrow-the-Selection-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us010-011-selection-AC-011-87c98-age-to-narrow-the-Selection-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15 failed
+    [chromium] › acceptance/us010-011-selection.spec.ts:45:1 › AC-010-01 ticking 2 rows shows "2 selected" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:55:1 › AC-010-02 the 2 ticked rows stay ticked after going to page 2 and back 
+    [chromium] › acceptance/us010-011-selection.spec.ts:70:1 › AC-010-03 "select all on this page" of 60 shows "25 selected" and offers "select all 60 results" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:82:1 › AC-010-04 "select all 60 results" shows "60 selected" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:92:1 › AC-010-05 changing the search to 12 matches clears a Selection of 60 
+    [chromium] › acceptance/us010-011-selection.spec.ts:106:1 › AC-010-06 unticking one of 2 rows shows "1 selected" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:117:1 › AC-010-07 a Viewer sees no checkbox and no selection control 
+    [chromium] › acceptance/us010-011-selection.spec.ts:130:1 › AC-010-08 "Clear selection" of 60 shows "0 selected" and changes no Contact 
+    [chromium] › acceptance/us010-011-selection.spec.ts:144:1 › AC-010-09 changing the sort order keeps a Selection of 60 
+    [chromium] › acceptance/us010-011-selection.spec.ts:155:1 › EX-010-01 with exactly 25 results the whole page selected offers no "select all N results" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:167:1 › EX-010-02 with 26 results the whole page selected offers "select all 26 results" 
+    [chromium] › acceptance/us010-011-selection.spec.ts:176:1 › EX-010-03 after a reload the Selection is empty 
+    [chromium] › acceptance/us010-011-selection.spec.ts:189:1 › EX-010-04 changing the search back to the earlier text leaves the Selection cleared 
+    [chromium] › acceptance/us010-011-selection.spec.ts:208:1 › AC-011-01 with nothing selected the Export button is disabled 
+    [chromium] › acceptance/us010-011-selection.spec.ts:217:1 › AC-011-05 an export of more than 10,000 shows the message to narrow the Selection 
