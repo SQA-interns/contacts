@@ -28,7 +28,9 @@ public class VersionRepository {
                 + " 'phone', c.phone, 'company', c.company, 'jobTitle', c.job_title,"
                 + " 'street', c.street, 'postalCode', c.postal_code, 'city', c.city,"
                 + " 'country', c.country, 'notes', c.notes,"
-                + " 'tags', '[]'::jsonb, 'attributes', (SELECT coalesce(jsonb_agg(jsonb_build_object("
+                + " 'tags', (SELECT coalesce(jsonb_agg(t.name ORDER BY lower(t.name)), '[]'::jsonb)"
+                + " FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id WHERE ct.contact_id = c.id),"
+                + " 'attributes', (SELECT coalesce(jsonb_agg(jsonb_build_object("
                 + "'key', a.key, 'value', a.value) ORDER BY lower(a.key)), '[]'::jsonb)"
                 + " FROM attribute a WHERE a.contact_id = c.id))"
                 + " FROM contact c WHERE c.id = :contactId AND c.group_id = :groupId")

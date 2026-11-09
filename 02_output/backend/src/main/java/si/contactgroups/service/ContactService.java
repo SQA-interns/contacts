@@ -13,6 +13,7 @@ import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.Contact;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.StoredContact;
+import si.contactgroups.domain.TagChanges;
 import si.contactgroups.error.ApiError.FieldError;
 import si.contactgroups.persistence.ContactRepository;
 import si.contactgroups.persistence.VersionRepository;
@@ -26,6 +27,7 @@ public class ContactService {
   private final HistoryWriter history;
   private final ContactValidator validator;
   private final AttributeService attributes;
+  private final TagService tags;
   private final Clock clock;
 
   public ContactService(
@@ -34,12 +36,14 @@ public class ContactService {
       HistoryWriter history,
       ContactValidator validator,
       AttributeService attributes,
+      TagService tags,
       Clock clock) {
     this.contacts = contacts;
     this.versions = versions;
     this.history = history;
     this.validator = validator;
     this.attributes = attributes;
+    this.tags = tags;
     this.clock = clock;
   }
 
@@ -47,18 +51,26 @@ public class ContactService {
    * Stores a new Contact with version number 1 (R-003-01).
    *
    * @param pairs the Attributes; {@code null} means none
+   * @param tagNames the Tags; {@code null} means none
    * @throws ValidationException when BR-06 or R-004-02..04 is broken
    */
   @Transactional
-  public Contact create(UUID groupId, UUID userId, ContactData input, List<AttributePair> pairs) {
+  public Contact create(
+      UUID groupId,
+      UUID userId,
+      ContactData input,
+      List<AttributePair> pairs,
+      List<String> tagNames) {
     List<FieldError> errors = new ArrayList<>();
     ContactData data = check(input, errors);
     List<AttributePair> cleaned = attributes.clean(pairs, errors);
+    List<String> cleanedTags = tags.clean(tagNames, errors);
     failOn(errors);
     Instant now = now();
     UUID id = contacts.insert(groupId, userId, data, now);
     history.contactCreated(groupId, userId, id, data, now);
     attributes.replace(groupId, userId, id, List.of(), cleaned, now);
+    tags.replace(groupId, userId, id, List.of(), cleanedTags, now);
     versions.insertSnapshot(groupId, id, 1, userId, now);
     return load(groupId, id);
   }
@@ -76,7 +88,8 @@ public class ContactService {
    * @throws VersionMissingException when {@code version} is {@code null}
    * @param pairs the Attributes; {@code null} keeps the stored ones (R-004-07: any change is a
    *     save)
-   * @throws ValidationException when BR-06 or R-004-02..04 is broken
+   * @param tagNames the Tags; {@code null} keeps the stored ones (R-005-08: any change is a save)
+   * @throws ValidationException when BR-06, R-004-02..04 or R-005-02, R-005-04 is broken
    * @throws ContactNotFoundException when the Group has no such Contact
    * @throws ContactChangedException when {@code version} is not the current one (BR-07)
    */
@@ -87,13 +100,15 @@ public class ContactService {
       UUID contactId,
       Integer version,
       ContactData input,
-      List<AttributePair> pairs) {
+      List<AttributePair> pairs,
+      List<String> tagNames) {
     if (version == null) {
       throw new VersionMissingException();
     }
     List<FieldError> errors = new ArrayList<>();
     ContactData data = check(input, errors);
     List<AttributePair> cleaned = attributes.clean(pairs, errors);
+    List<String> cleanedTags = tags.clean(tagNames, errors);
     failOn(errors);
     StoredContact stored =
         contacts.find(groupId, contactId).orElseThrow(ContactNotFoundException::new);
@@ -101,9 +116,11 @@ public class ContactService {
       throw new ContactChangedException(load(groupId, contactId));
     }
     List<AttributePair> before = attributes.list(groupId, contactId);
-    List<AttributePair> after = pairs == null ? before : cleaned;
-    if (stored.data().equals(data) && sameAttributes(before, after)) {
-      return view(stored, before);
+    List<AttributePair> after = orKeep(pairs, cleaned, before);
+    List<String> tagsBefore = tags.list(groupId, contactId);
+    List<String> tagsAfter = orKeep(tagNames, cleanedTags, tagsBefore);
+    if (stored.data().equals(data) && unchanged(before, after, tagsBefore, tagsAfter)) {
+      return view(stored, before, tagsBefore);
     }
     Instant now = now();
     if (!contacts.update(groupId, contactId, version, data, now)) {
@@ -111,6 +128,7 @@ public class ContactService {
     }
     history.contactEdited(groupId, userId, contactId, stored.data(), data, now);
     attributes.replace(groupId, userId, contactId, before, after, now);
+    tags.replace(groupId, userId, contactId, tagsBefore, tagsAfter, now);
     versions.insertSnapshot(groupId, contactId, version + 1, userId, now);
     return load(groupId, contactId);
   }
@@ -130,19 +148,28 @@ public class ContactService {
     }
   }
 
-  private static boolean sameAttributes(List<AttributePair> before, List<AttributePair> after) {
-    return AttributeChanges.between(before, after).isEmpty();
+  private static <T> List<T> orKeep(List<?> sent, List<T> cleaned, List<T> stored) {
+    return sent == null ? stored : cleaned;
+  }
+
+  private static boolean unchanged(
+      List<AttributePair> before,
+      List<AttributePair> after,
+      List<String> tagsBefore,
+      List<String> tagsAfter) {
+    return AttributeChanges.between(before, after).isEmpty()
+        && TagChanges.between(tagsBefore, tagsAfter).isEmpty();
   }
 
   private Contact load(UUID groupId, UUID contactId) {
     StoredContact row =
         contacts.find(groupId, contactId).orElseThrow(ContactNotFoundException::new);
-    return view(row, attributes.list(groupId, contactId));
+    return view(row, attributes.list(groupId, contactId), tags.list(groupId, contactId));
   }
 
-  private static Contact view(StoredContact row, List<AttributePair> pairs) {
+  private static Contact view(StoredContact row, List<AttributePair> pairs, List<String> tagNames) {
     return new Contact(
-        row.id(), row.version(), row.data(), List.of(), pairs, row.createdAt(), row.updatedAt());
+        row.id(), row.version(), row.data(), tagNames, pairs, row.createdAt(), row.updatedAt());
   }
 
   private Instant now() {

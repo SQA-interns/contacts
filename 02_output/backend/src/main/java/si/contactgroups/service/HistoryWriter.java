@@ -87,6 +87,13 @@ public class HistoryWriter {
     write(groupId, userId, change.action(), contactId, details, at);
   }
 
+  /** Records a Tag put on or taken off a Contact: its name (R-005-08). */
+  @Transactional(propagation = Propagation.MANDATORY)
+  public void tagChanged(
+      UUID groupId, UUID userId, UUID contactId, HistoryAction action, String name, Instant at) {
+    write(groupId, userId, action, contactId, Map.of("name", name), at);
+  }
+
   private void write(
       UUID groupId,
       UUID userId,

@@ -42,7 +42,7 @@ public class ContactController {
       @AuthenticationPrincipal AuthenticatedUser caller,
       @PathVariable UUID groupId,
       @RequestBody ContactInput body) {
-    return contacts.create(groupId, caller.userId(), body.toData(), body.attributes());
+    return contacts.create(groupId, caller.userId(), body.toData(), body.attributes(), body.tags());
   }
 
   @GetMapping("/{contactId}")
@@ -64,7 +64,8 @@ public class ContactController {
         contactIdOf(contactId),
         body.version(),
         body.toData(),
-        body.attributes());
+        body.attributes(),
+        body.tags());
   }
 
   private static UUID contactIdOf(String contactId) {
@@ -76,8 +77,8 @@ public class ContactController {
   }
 
   /**
-   * Contract schema {@code ContactInput}. Attributes are stored by US-004; Tags are accepted and
-   * not stored until US-005 (decision D-46).
+   * Contract schema {@code ContactInput}. A missing {@code attributes} or {@code tags} keeps the
+   * stored ones on an edit.
    */
   public record ContactInput(
       String firstName,
