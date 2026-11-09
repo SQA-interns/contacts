@@ -91,6 +91,24 @@
     "busy": "Ustvarjanje …",
     "created": "Skupina je ustvarjena."
   },
+  "groupTrash": {
+    "title": "Koš skupin",
+    "intro": "Izbrisane skupine, katerih lastnik ste. Po 30 dneh se trajno izbrišejo z vsemi kontakti.",
+    "back": "← Moje skupine",
+    "tableCaption": "Skupine v košu",
+    "groupColumn": "Skupina",
+    "deletedAtColumn": "Izbrisano",
+    "daysLeftColumn": "Preostane",
+    "actionsColumn": "Dejanja",
+    "restore": "Obnovi",
+    "restoreFor": "Obnovi {{name}}",
+    "restored": "Skupina je obnovljena.",
+    "openGroup": "Odpri skupino",
+    "nameTakenHint": "Preimenujte ali izbrišite obstoječo skupino, nato poskusite znova.",
+    "emptyTitle": "Koš skupin je prazen",
+    "emptyBody": "Izbrisane skupine ostanejo tu 30 dni.",
+    "deletedLine": "Izbrisano: {{date}}"
+  },
   "trash": {
     "title": "Koš",
     "intro": "Kontakti v košu se po 30 dneh trajno izbrišejo. Do takrat jih lahko obnovite.",

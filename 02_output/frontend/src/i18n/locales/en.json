@@ -91,6 +91,24 @@
     "busy": "Creating …",
     "created": "Group created."
   },
+  "groupTrash": {
+    "title": "Group trash",
+    "intro": "Deleted groups of which you are an owner. After 30 days they are deleted permanently with all their contacts.",
+    "back": "← My groups",
+    "tableCaption": "Groups in the trash",
+    "groupColumn": "Group",
+    "deletedAtColumn": "Deleted",
+    "daysLeftColumn": "Days left",
+    "actionsColumn": "Actions",
+    "restore": "Restore",
+    "restoreFor": "Restore {{name}}",
+    "restored": "The group is restored.",
+    "openGroup": "Open group",
+    "nameTakenHint": "Rename or delete the existing group, then try again.",
+    "emptyTitle": "The group trash is empty",
+    "emptyBody": "Deleted groups stay here for 30 days.",
+    "deletedLine": "Deleted: {{date}}"
+  },
   "trash": {
     "title": "Trash",
     "intro": "Contacts in the trash are deleted permanently after 30 days. Until then you can restore them.",

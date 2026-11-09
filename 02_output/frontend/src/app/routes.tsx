@@ -8,6 +8,7 @@ import { ContactPage } from '@/features/contacts/ContactPage';
 import { NewContactPage } from '@/features/contacts/NewContactPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
 import { GroupShell } from '@/features/groups/GroupShell';
+import { GroupTrashPage } from '@/features/groups/GroupTrashPage';
 import { ContactListPage } from '@/features/contacts/ContactListPage';
 import { ActivityPage } from '@/features/activity/ActivityPage';
 import { MembersPage } from '@/features/members/MembersPage';
@@ -32,6 +33,7 @@ export const routes: RouteObject[] = [
         element: <RequireVerified />,
         children: [
           { path: 'groups', element: <GroupListPage /> },
+          { path: 'group-trash', element: <GroupTrashPage /> },
           {
             path: 'groups/:groupId',
             element: <GroupShell />,
