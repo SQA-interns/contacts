@@ -558,3 +558,14 @@
 - Resolution: pending review (option 1).
 - Overrides: none
 
+
+## D-51: Readings of US-007 made while implementing, and a frozen test that seems wrong
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-007
+- Class: open
+- Type: approval
+- Trigger: a frozen test that contradicts its rule, points the story leaves open, and DoD-S items not met. (a) Frozen `Us007ContactListAcceptanceIT.ex_007_05_sort_ignores_accents` and EX-007-05 expect `Cerar`, `Čeh`, `Cvetko`. Comparing "ignoring case and accents" (R-007-03, BR-05) gives `ceh` < `cerar` < `cvetko`, i.e. `Čeh`, `Cerar`, `Cvetko`; no accent-insensitive order puts `Čeh` between `Cerar` and `Cvetko`, and Slovene collation (Č after C) gives `Cerar`, `Cvetko`, `Čeh`. The code follows the rule (normalised text, BR-05); the test fails. Approval needed to change the expected order in the story and the test. (b) `GET /groups/{g}/contacts` takes `page`, `sort`, `dir`; `q` and the filters of US-008/US-009 are ignored until those stories. A page below 1 or not a number, an unknown `sort` or a `dir` other than `asc`/`desc` is 400 `request.malformed`. (c) Empty values sort last in both directions; ties by last name, first name, id. `tags` sorts by the first Tag name; `country` by its code. (d) Migration `V3__contact_city_norm.sql` adds `city_norm` (the sort key of the city column, BR-05; existing rows get `lower(city)`); `DatabaseRolesIT` now expects 3 migrations. (e) Screen: `ContactListPage` at `/groups/:g/contacts` (page, sort and direction in the query string); a column header is a button, `aria-sort` marks the order; tablet hides city and country (WF-06); mobile shows cards. The Group tab bar, search, filters and Selection (US-008..US-010) are not built. (f) The Contact tabs are links to `?tab=history`, because the frozen AC-007-07 looks for a link or tab named "Podrobnosti". (g) DoD-S-01: 9 of 11 `Us007ContactListAcceptanceIT` pass backend-side; fails: EX-007-05 (a), AC-007-06 (Trash, US-012), AC-007-08 (Members, US-014). UI: AC-007-01, -03, -07, EX-007-07 pass; AC-007-04, -05 wait for Members (US-014). (h) DoD-S-05 done for WF-06 (list, sorted, empty at 375, 768 and 1440 px, no Critical or Serious axe finding, no overflow) in Chromium and WebKit. (i) DoD-S-07: the first frontend commit has no test of its own (the table is exercised by the page test of the next commit); split to stay under 400 lines.
+- Options: 1 (default) as written, test unchanged. 2 change EX-007-05 and the test to `Čeh`, `Cerar`, `Cvetko`.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
