@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-021 (review finding F-14)
-- Result: blocked
-- Gate: not passed (DoD-I-02: F-14 High open; no code changed in this session)
-- Notes for the next session: F-14 is confirmed in the code (`FirebaseTokenFilter` -> `UserService.findOrCreate` -> `FirebaseAccountDirectory.exists` -> `getUser`; `FirebaseConfig` has no credentials). It is a Block topic (access, security, a secret of `project/00_setup/`), recorded as D-69 with three options: 1 supply a service account (proposed), 2 table of deleted identifiers instead of `getUser`, 3 fail open on other Firebase errors. The human answers with `/implement US-021 D-69: <number>`; option 1 also needs the key file and approval to change `project/00_setup/` and `docker-compose.prod.yml`. After the answer: fix F-14 as its own `fix:` commit with a test (a failing `getUser` must not answer 500 on first sign-in, or the chosen behaviour), then the rest of the procedure for US-021. The other findings of `docs/04_review-INC-2.md` (F-15, F-16, F-17, F-18, carried F-03, F-04, F-13) are for their own sessions. D-69 is the next free decision number (D-67 and D-68 are duplicated, F-18). Spotless: `./mvnw -B -Pquality spotless:apply`; backend acceptance runs need port 9099 free; UI runs need `scripts/test-stack.sh up`.
+- Session: S5 /implement US-021 D-69: 1 (review finding F-14)
+- Result: done
+- Gate: DoD-I-02 not met until F-14 is shown against the real Firebase project (code fixed, D-70); no new Critical or High
+- Notes for the next session: F-14 is fixed in code (D-69 option 1, D-70): `FirebaseCredentials`, `StartupGuard` (prod refuses to start without the service-account file), `docker-compose.prod.yml` mount. WAITS FOR THE HUMAN (D-70 b, c): create the service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Inputs, ADR-04, the contract and README still say "no service account" (D-70 d). Full backend run: 2 known failures (`ex_007_05`, `ac_018_09`); PMD reports 3 findings in other stories' code (`ContactRepository:94`, `:234`, `MergeService:98`): fix them in the sessions on US-025/US-026. Still open from `docs/04_review-INC-2.md`: F-16 (US-025, next), F-15 (US-026, after it), F-17 and F-18 (`/fix`), carried F-03, F-04, F-13; then `/review INC-2`. Spotless: `./mvnw -B -Pquality spotless:apply`; backend runs need port 9099 free; UI runs need `scripts/test-stack.sh up`. Commit subjects: count the hash too, at most 72 characters.
 
 ## Next
-- Command: /implement US-021 D-69: 1
-- Waiting for: D-69
+- Command: /implement US-025
+- Waiting for: nothing
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
@@ -37,7 +37,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-018 | 1 | done | passed (DoD-S-01: frozen tests wait for US-003, US-014 and the last story, D-44; DoD-S-07: one subject over 72 characters) |
 | US-019 | 1 | done | passed in part (frozen UI tests wait for US-003, US-005, US-016) |
 | US-020 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-021..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, D-62) |
-| US-021 | 2 | in progress | F-14 open (D-69); earlier: passed in part (DoD-S-01: frozen tests of the full run that wait for US-022..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one subject over 72 characters, D-63) |
+| US-021 | 2 | done | passed in part (F-14 fixed in code, real-project check waits for the human, D-69, D-70; DoD-S-07: three subjects over 72 characters; DoD-S-01: frozen tests of the full run that wait for US-022..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one subject over 72 characters, D-63) |
 | US-022 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-023..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: one commit over 400 lines, D-64) |
 | US-023 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-024..US-026 and the known ones; DoD-S-05 screens, D-65) |
 | US-024 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-025..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, one commit over 400 lines, D-66) |
