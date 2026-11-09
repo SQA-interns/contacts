@@ -1,0 +1,44 @@
+
+Running 2 tests using 2 workers
+
+  ✓  2 [chromium] › acceptance/us020-026-increment2.spec.ts:40:1 › AC-020-02 typing acme keeps the delete button disabled; the Group stays (1.6s)
+  ✘  1 [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list (1.7s)
+
+
+  1) [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 6[39m
+    [31m+ Received  + 1[39m
+
+    [32m- Array [[39m
+    [32m-   Array [[39m
+    [32m-     "edc58964-908f-46de-a6d5-1d9e6c760c45",[39m
+    [32m-     30,[39m
+    [32m-   ],[39m
+    [32m- ][39m
+    [31m+ Array [][39m
+
+      35 |   await expect(page.getByRole('heading', { name: 'Acme', exact: true })).toHaveCount(0);
+      36 |   const trash = (await api(ana, 'GET', '/group-trash')).body;
+    > 37 |   expect(trash.map((g: any) => [g.id, g.daysLeft])).toEqual([[acme.id, 30]]);
+         |                                                     ^
+      38 | });
+      39 |
+      40 | test('AC-020-02 typing acme keeps the delete button disabled; the Group stays', async ({ page }) => {
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:37:53
+
+    Error Context: test-results/acceptance/us020-026-increment2-AC-02-57d30--Acme-leaves-the-Group-list-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-57d30--Acme-leaves-the-Group-list-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-57d30--Acme-leaves-the-Group-list-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list 
+  1 passed (2.8s)

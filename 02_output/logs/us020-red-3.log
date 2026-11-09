@@ -1,0 +1,21 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupPurgeServiceIT.java:[32,25] cannot find symbol
+  symbol:   method purgeExpired()
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupPurgeServiceIT.java:[47,11] cannot find symbol
+  symbol:   method purgeExpired()
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:testCompile (default-testCompile) on project contact-groups-backend: Compilation failure: Compilation failure: 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupPurgeServiceIT.java:[32,25] cannot find symbol
+[ERROR]   symbol:   method purgeExpired()
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupPurgeServiceIT.java:[47,11] cannot find symbol
+[ERROR]   symbol:   method purgeExpired()
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

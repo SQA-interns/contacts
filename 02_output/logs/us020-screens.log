@@ -1,0 +1,19 @@
+
+Running 9 tests using 5 workers
+
+  ✓  1 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › mobile (375 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group (3.4s)
+  ✓  6 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › tablet (768 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group (2.0s)
+  ✓  3 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › mobile (375 px) › WF-15 loading, error and empty states (8.5s)
+  ✓  2 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty (8.6s)
+  ✓  5 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › tablet (768 px) › WF-15 loading, error and empty states (8.6s)
+  ✓  4 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty (8.6s)
+  ✓  9 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › desktop (1440 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group (2.1s)
+  ✓  7 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty (6.6s)
+  ✓  8 [chromium] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › desktop (1440 px) › WF-15 loading, error and empty states (6.3s)
+
+  9 passed (16.5s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

@@ -1,0 +1,249 @@
+[ERROR] COMPILATION ERROR : 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[15,31] cannot find symbol
+  symbol:   class GroupTrashItem
+  location: package si.contactgroups.domain
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[64,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[74,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[85,23] cannot find symbol
+  symbol:   class GroupNameMismatchException
+  location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[84,36] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[87,23] cannot find symbol
+  symbol:   class GroupNameMismatchException
+  location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[86,36] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,<nulltype>)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[96,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[98,10] cannot find symbol
+  symbol:   class GroupTrashItem
+  location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[98,40] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[114,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[116,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[116,61] cannot find symbol
+  symbol:   variable GroupTrashItem
+  location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[117,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[125,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[132,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[135,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[135,60] cannot find symbol
+  symbol:   variable GroupTrashItem
+  location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[144,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[147,35] cannot find symbol
+  symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[154,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[161,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[164,36] cannot find symbol
+  symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[166,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[176,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[178,36] cannot find symbol
+  symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[180,36] cannot find symbol
+  symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[182,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[190,36] cannot find symbol
+  symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[198,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[201,36] cannot find symbol
+  symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[203,22] cannot find symbol
+  symbol:   method listGroupTrash(java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[203,60] cannot find symbol
+  symbol:   variable GroupTrashItem
+  location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[210,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[212,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[214,22] cannot find symbol
+  symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[228,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[231,25] cannot find symbol
+  symbol:   method purgeExpired()
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[243,11] cannot find symbol
+  symbol:   method trashGroup(java.util.UUID,java.lang.String)
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[246,11] cannot find symbol
+  symbol:   method purgeExpired()
+  location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:testCompile (default-testCompile) on project contact-groups-backend: Compilation failure: Compilation failure: 
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[15,31] cannot find symbol
+[ERROR]   symbol:   class GroupTrashItem
+[ERROR]   location: package si.contactgroups.domain
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[64,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[74,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[85,23] cannot find symbol
+[ERROR]   symbol:   class GroupNameMismatchException
+[ERROR]   location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[84,36] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[87,23] cannot find symbol
+[ERROR]   symbol:   class GroupNameMismatchException
+[ERROR]   location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[86,36] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,<nulltype>)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[96,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[98,10] cannot find symbol
+[ERROR]   symbol:   class GroupTrashItem
+[ERROR]   location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[98,40] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[114,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[116,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[116,61] cannot find symbol
+[ERROR]   symbol:   variable GroupTrashItem
+[ERROR]   location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[117,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[125,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[132,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[135,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[135,60] cannot find symbol
+[ERROR]   symbol:   variable GroupTrashItem
+[ERROR]   location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[144,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[147,35] cannot find symbol
+[ERROR]   symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[154,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[161,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[164,36] cannot find symbol
+[ERROR]   symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[166,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[176,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[178,36] cannot find symbol
+[ERROR]   symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[180,36] cannot find symbol
+[ERROR]   symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[182,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[190,36] cannot find symbol
+[ERROR]   symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[198,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[201,36] cannot find symbol
+[ERROR]   symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[203,22] cannot find symbol
+[ERROR]   symbol:   method listGroupTrash(java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[203,60] cannot find symbol
+[ERROR]   symbol:   variable GroupTrashItem
+[ERROR]   location: class si.contactgroups.service.GroupTrashServiceIT
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[210,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[212,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[214,22] cannot find symbol
+[ERROR]   symbol:   method restoreGroup(java.util.UUID,java.util.UUID)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[228,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[231,25] cannot find symbol
+[ERROR]   symbol:   method purgeExpired()
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[243,11] cannot find symbol
+[ERROR]   symbol:   method trashGroup(java.util.UUID,java.lang.String)
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/src/test/java/si/contactgroups/service/GroupTrashServiceIT.java:[246,11] cannot find symbol
+[ERROR]   symbol:   method purgeExpired()
+[ERROR]   location: variable groups of type si.contactgroups.service.GroupService
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
