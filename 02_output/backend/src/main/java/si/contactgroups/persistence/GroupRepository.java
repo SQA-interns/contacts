@@ -114,4 +114,29 @@ public class GroupRepository {
                     now))
         .list();
   }
+
+  /**
+   * The Group in Trash since after {@code cutoff} of which the User is an Owner, shown as the User
+   * will see it in the Group list after the restore (R-020-07).
+   */
+  @GlobalScope
+  public Optional<GroupSummary> findRestorable(UUID groupId, UUID userId, Instant cutoff) {
+    return jdbc.sql(
+            "SELECT g.id, g.name, m.role, g.created_at FROM contact_group g"
+                + " JOIN member m ON m.group_id = g.id"
+                + " WHERE g.id = :groupId AND m.user_id = :userId AND m.role = 'OWNER'"
+                + " AND g.deleted_at > :cutoff")
+        .param("groupId", groupId)
+        .param("userId", userId)
+        .param("cutoff", Timestamp.from(cutoff))
+        .query(GroupSummary.class)
+        .optional();
+  }
+
+  /** Takes the Group out of the Group Trash. */
+  public void restore(UUID groupId) {
+    jdbc.sql("UPDATE contact_group SET deleted_at = NULL WHERE id = :groupId")
+        .param("groupId", groupId)
+        .update();
+  }
 }

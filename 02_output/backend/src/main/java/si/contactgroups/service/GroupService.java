@@ -94,6 +94,29 @@ public class GroupService {
     return groups.findTrashOfOwner(userId, TrashPeriod.cutoff(now), now);
   }
 
+  /**
+   * Returns the Group from the Group Trash to the Group lists of its Members with everything in it
+   * (R-020-07). The row of the User is locked first, as in {@link #createGroup}.
+   *
+   * @throws GroupNotFoundException when the Group is not in Trash, has been for 30 days, or the
+   *     User is not an Owner of it
+   * @throws GroupNameTakenException when the User owns a Group not in Trash with the same name
+   *     ignoring case (R-020-08)
+   */
+  @Transactional
+  public GroupSummary restoreGroup(UUID userId, UUID groupId) {
+    users.lock(userId);
+    GroupSummary group =
+        groups
+            .findRestorable(groupId, userId, TrashPeriod.cutoff(now()))
+            .orElseThrow(GroupNotFoundException::new);
+    if (groups.ownerHasGroupNamed(userId, group.name())) {
+      throw new GroupNameTakenException();
+    }
+    groups.restore(groupId);
+    return group;
+  }
+
   private Instant now() {
     return clock.instant().truncatedTo(ChronoUnit.MICROS);
   }
