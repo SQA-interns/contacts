@@ -1,0 +1,30 @@
+    test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-Dx0mEm -juggler-pipe -silent[22m
+    [2m  - <launched> pid=52818[22m
+    [2m  - [pid=52818][err] *** You are running in headless mode.[22m
+    [2m  - [pid=52818][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=52818][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.375) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
+    [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 
+  4 passed (6.2m)

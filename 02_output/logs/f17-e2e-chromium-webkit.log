@@ -1,0 +1,9 @@
+
+Running 4 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (1.7s)
+  ✓  2 [chromium] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (2.1s)
+  ✓  3 [webkit] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (2.4s)
+  ✓  4 [webkit] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (3.8s)
+
+  4 passed (11.0s)

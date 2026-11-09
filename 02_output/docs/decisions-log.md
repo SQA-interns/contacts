@@ -825,3 +825,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-73: F-17 fixed (toasts of the Trash restore and of the move to Trash had no role status)
+- Timestamp: 2026-11-09
+- Session: S8 /fix F-17
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-17 (`docs/04_review-INC-2.md`, found in US-026, D-68 k). (a) Sonner (2.0.7) gives its toast list `aria-live="polite"` but its toasts no role, so `getByRole('status')` of the frozen `E2E-05` and `E2E-06` and a screen reader's status announcement did not find "Kontakt je obnovljen.". The new `components/successToast.tsx` wraps the message of a success toast in `<span role="status">`; `TrashPage` (restore) uses it. (b) Same defect, same frozen expectation: the toast "Kontakt je v košu." after a Contact is moved to Trash (`ContactPage`, expected as `status` by `E2E-06` steps 1 and the second Owner check). It was not in the text of F-17 but is the same cause and the scenario cannot pass without it, so `ContactPage` uses `successToast` too. Other toasts (saved, created, tags, group dialogs, dismissals) are unchanged: no frozen test looks for a role on them. (c) Red: `TrashPage.test.tsx` "F-17 announces the restore as a status message" failed, no `status` element in the page (`logs/f17-red.log`); green after the fix (`logs/f17-green.log`); full frontend unit run: 44 files, 375 tests, all pass (`logs/f17-full.log`); `tsc` and ESLint clean. (d) The check that found it, on the rebuilt test stack: `E2E-05` and `E2E-06` pass in Chromium and WebKit (`logs/f17-e2e-chromium-webkit.log`). Firefox did not start in this session (`browserType.launch` timeout, sandbox error of the Firefox build; `logs/f17-e2e.log`), so the Firefox run of these two is not shown. The test stack was taken down after the run. (e) Not touched: F-18, F-19, F-20 and the carried F-03, F-04, F-13.
+- Options: 1 (default) one `successToast` helper for the two toasts the frozen tests name. 2 give every toast the role through the `Toaster` (a wrapper around `toast`), larger change, no test asks for it.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
