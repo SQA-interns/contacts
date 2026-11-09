@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-017
+- Session: R /review INC-1
 - Result: done
-- Gate: DoD-S of US-017 passed in part: DoD-S-01 (14 of 14 frozen `Us017ActivityAcceptanceIT`, UI AC-017-06/07, E2E-02 and E2E-04 pass; the earlier waiting tests of US-006, US-011, US-014, US-015 pass; AC-013 tests wait for US-020, US-026; UI AC-014-03 waits for D-58 item g), see D-60
-- Notes for the next session: Backend `ActivityController` (`GET /groups/{g}/activity`, READ_HISTORY), `HistoryQueryService.groupActivity`, `HistoryRepository.pageOfGroup/countOfGroup`, `ActivityRange` (days in Europe/Ljubljana), `ActivityFilter`. Frontend `features/activity/ActivityPage` (route `/groups/:g/activity`, link on the Contact list); user filter uses the Members list (D-60 d). INC-1 has no story left: next is `/review INC-1`. Backend ITs need port 9099 free: `docker stop contact-groups-test-emulator-1` before Maven; `docker start contact-groups-test-emulator-1` for UI tests (the test stack is up and runs the US-017 build). Firefox does not start in this host's sandbox. `rm -rf backend/target/failsafe-reports` before a partial acceptance run, else old failures fail the build.
+- Gate: DoD-I not passed (DoD-I-02: F-01, F-02 High; DoD-I-04: F-01, F-05, F-06), see `docs/04_review-INC-1.md`
+- Notes for the next session: F-01 the Group tab bar and Group bar of the wireframes are missing; F-02 no link to the Tags page. Build one Group shell (header, name, Role badge, tabs, mobile menu) for all Group screens; add the missing screens WF-07, WF-08, WF-19 (F-05). Medium: F-03 `page=abc` on History endpoints answers 500, F-04 `/health` has an extra `groups` field (AC-018-09), F-06 date format in WF-13. The test stack now holds the seed and one test Contact (`<script>…`) in Acme.
 
 ## Next
-- Command: /review INC-1
+- Command: /implement US-006
 - Waiting for: nothing
 
 ## Stories
