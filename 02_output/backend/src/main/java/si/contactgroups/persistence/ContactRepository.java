@@ -32,6 +32,7 @@ public class ContactRepository {
   private static final String FIRST_NAME = "first_name";
   private static final String LAST_NAME = "last_name";
   private static final String EMAIL = "email";
+  private static final String PHONE = "phone";
   private static final String COMPANY = "company";
   private static final String CITY = "city";
   private static final String COUNTRY = "country";
@@ -216,7 +217,7 @@ public class ContactRepository {
                 + ", c.phone FROM contact c WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
                 + " ORDER BY c.created_at, c.id")
         .param(GROUP_ID, groupId)
-        .query((rs, n) -> new DuplicateCandidate(listItemOf(rs), rs.getString("phone")))
+        .query((rs, n) -> new DuplicateCandidate(listItemOf(rs), rs.getString(PHONE)))
         .list();
   }
 
@@ -295,7 +296,7 @@ public class ContactRepository {
         rs.getString(FIRST_NAME),
         rs.getString(LAST_NAME),
         rs.getString(EMAIL),
-        rs.getString("phone"),
+        rs.getString(PHONE),
         rs.getString(COMPANY),
         rs.getString("job_title"),
         rs.getString("street"),
@@ -464,7 +465,7 @@ public class ContactRepository {
                         rs.getString(FIRST_NAME),
                         rs.getString(LAST_NAME),
                         rs.getString(EMAIL),
-                        rs.getString("phone"),
+                        rs.getString(PHONE),
                         rs.getString(COMPANY),
                         rs.getString("job_title"),
                         rs.getString("street"),
@@ -508,7 +509,7 @@ public class ContactRepository {
     return sql.param("firstName", d.firstName())
         .param("lastName", d.lastName())
         .param(EMAIL, d.email())
-        .param("phone", d.phone())
+        .param(PHONE, d.phone())
         .param(COMPANY, d.company())
         .param("jobTitle", d.jobTitle())
         .param("street", d.street())
