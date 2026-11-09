@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import si.contactgroups.security.AccountDirectory;
 import si.contactgroups.security.EmailVerifiedFilter;
 import si.contactgroups.security.ErrorWriter;
 import si.contactgroups.security.FirebaseTokenFilter;
@@ -38,6 +39,7 @@ public class SecurityConfig {
       HttpSecurity http,
       TokenVerifier verifier,
       UserService users,
+      AccountDirectory directory,
       AppProperties properties,
       Clock clock)
       throws Exception {
@@ -51,7 +53,8 @@ public class SecurityConfig {
         .addFilterBefore(new RequestSizeFilter(properties.maxRequestSize()), CorsFilter.class)
         .addFilterBefore(new HttpsFilter(properties.requireHttps()), CorsFilter.class)
         .addFilterBefore(
-            new FirebaseTokenFilter(verifier, users), UsernamePasswordAuthenticationFilter.class)
+            new FirebaseTokenFilter(verifier, users, directory),
+            UsernamePasswordAuthenticationFilter.class)
         .addFilterAfter(
             new RateLimitFilter(clock, properties.rateLimitPerMinute()), FirebaseTokenFilter.class)
         .addFilterAfter(new EmailVerifiedFilter(), RateLimitFilter.class)

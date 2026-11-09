@@ -21,8 +21,9 @@ import si.contactgroups.service.UserService;
  * Checks the Firebase ID token of every request except the health check (SR-02, ADR-04). A missing
  * header is left to the security entry point (401 {@code auth.token_missing}); an invalid token is
  * answered here (401 {@code auth.token_invalid}). A valid token gives the User of the request,
- * created on the first token (R-001-11); an e-mail held by another identifier is 409 {@code
- * user.email_taken} (D-18d). Nothing about the token is logged.
+ * created on the first token if Firebase still holds the account (R-001-11, R-021-05); an e-mail
+ * held by another identifier is 409 {@code user.email_taken} (D-18d). Nothing about the token is
+ * logged.
  */
 public class FirebaseTokenFilter extends OncePerRequestFilter {
 
@@ -31,10 +32,13 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
 
   private final TokenVerifier verifier;
   private final UserService users;
+  private final AccountDirectory directory;
 
-  public FirebaseTokenFilter(TokenVerifier verifier, UserService users) {
+  public FirebaseTokenFilter(
+      TokenVerifier verifier, UserService users, AccountDirectory directory) {
     this.verifier = verifier;
     this.users = users;
+    this.directory = directory;
   }
 
   @Override
@@ -53,7 +57,7 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
     }
     try {
       VerifiedToken token = verifier.verify(header.substring(BEARER.length()).trim());
-      User known = users.findOrCreate(token);
+      User known = users.findOrCreate(token, directory::exists);
       AuthenticatedUser user =
           new AuthenticatedUser(known.id(), known.email(), token.emailVerified());
       SecurityContextHolder.getContext()

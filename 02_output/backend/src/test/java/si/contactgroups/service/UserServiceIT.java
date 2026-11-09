@@ -7,6 +7,8 @@ import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import si.contactgroups.domain.User;
+import si.contactgroups.persistence.UserRepository;
+import si.contactgroups.security.InvalidTokenException;
 import si.contactgroups.security.VerifiedToken;
 import si.contactgroups.support.ApplicationContextSupport;
 
@@ -14,6 +16,7 @@ import si.contactgroups.support.ApplicationContextSupport;
 class UserServiceIT extends ApplicationContextSupport {
 
   @Autowired private UserService users;
+  @Autowired private UserRepository stored;
 
   private static String uid() {
     return "uid-" + UUID.randomUUID();
@@ -72,5 +75,39 @@ class UserServiceIT extends ApplicationContextSupport {
 
     assertThatThrownBy(() -> users.findOrCreate(new VerifiedToken(uid(), email, true, "Ana")))
         .isInstanceOf(EmailTakenException.class);
+  }
+
+  @Test
+  void r_021_05_a_token_of_an_account_that_firebase_no_longer_holds_creates_no_user() {
+    VerifiedToken token = new VerifiedToken(uid(), email("boris"), true, "Boris Kos");
+
+    assertThatThrownBy(() -> users.findOrCreate(token, uid -> false))
+        .isInstanceOf(InvalidTokenException.class);
+
+    assertThat(stored.findByFirebaseUid(token.uid())).isEmpty();
+  }
+
+  @Test
+  void r_021_05_an_existing_firebase_account_creates_the_user() {
+    VerifiedToken token = new VerifiedToken(uid(), email("boris"), true, "Boris Kos");
+
+    User user = users.findOrCreate(token, uid -> uid.equals(token.uid()));
+
+    assertThat(stored.findByFirebaseUid(token.uid())).contains(user);
+  }
+
+  @Test
+  void r_021_05_the_account_is_looked_up_only_when_the_user_is_created() {
+    VerifiedToken token = new VerifiedToken(uid(), email("ana"), true, "Ana Novak");
+    User first = users.findOrCreate(token);
+
+    User again =
+        users.findOrCreate(
+            token,
+            uid -> {
+              throw new AssertionError("Firebase must not be asked for a known user");
+            });
+
+    assertThat(again).isEqualTo(first);
   }
 }

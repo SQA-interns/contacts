@@ -1,13 +1,18 @@
 package si.contactgroups.security;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.Instant;
 import java.util.UUID;
+import java.util.function.Predicate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -30,7 +35,8 @@ class FirebaseTokenFilterTest {
         }
         throw new InvalidTokenException("rejected", null);
       };
-  private final FirebaseTokenFilter filter = new FirebaseTokenFilter(verifier, users);
+  private final AccountDirectory directory = mock(AccountDirectory.class);
+  private final FirebaseTokenFilter filter = new FirebaseTokenFilter(verifier, users, directory);
 
   @AfterEach
   void clear() {
@@ -48,7 +54,7 @@ class FirebaseTokenFilterTest {
   @Test
   void r_001_11_a_valid_token_gives_the_user_id_and_the_verified_flag() throws Exception {
     UUID id = UUID.randomUUID();
-    when(users.findOrCreate(ANA))
+    when(users.findOrCreate(eq(ANA), any()))
         .thenReturn(new User(id, "uid-ana", "ana@acme.com", "Ana Novak", Instant.EPOCH));
     MockFilterChain chain = new MockFilterChain();
 
@@ -61,7 +67,7 @@ class FirebaseTokenFilterTest {
 
   @Test
   void d_18d_a_token_whose_email_belongs_to_another_user_is_409() throws Exception {
-    when(users.findOrCreate(ANA)).thenThrow(new EmailTakenException());
+    when(users.findOrCreate(eq(ANA), any())).thenThrow(new EmailTakenException());
     MockFilterChain chain = new MockFilterChain();
 
     MockHttpServletResponse response = call("valid", chain);
@@ -80,5 +86,32 @@ class FirebaseTokenFilterTest {
     assertThat(response.getStatus()).isEqualTo(401);
     assertThat(response.getContentAsString()).contains("\"code\":\"auth.token_invalid\"");
     assertThat(chain.getRequest()).isNull();
+  }
+
+  @Test
+  void r_021_05_a_token_of_a_deleted_account_is_401_and_the_user_is_not_created() throws Exception {
+    when(users.findOrCreate(eq(ANA), any())).thenThrow(new InvalidTokenException("gone", null));
+    MockFilterChain chain = new MockFilterChain();
+
+    MockHttpServletResponse response = call("valid", chain);
+
+    assertThat(response.getStatus()).isEqualTo(401);
+    assertThat(response.getContentAsString()).contains("\"code\":\"auth.token_invalid\"");
+    assertThat(chain.getRequest()).isNull();
+  }
+
+  @Test
+  void r_021_05_the_filter_asks_firebase_whether_the_account_exists() throws Exception {
+    when(directory.exists("uid-ana")).thenReturn(false);
+    when(users.findOrCreate(eq(ANA), any()))
+        .thenReturn(new User(UUID.randomUUID(), "uid-ana", "ana@acme.com", "Ana", Instant.EPOCH));
+
+    call("valid", new MockFilterChain());
+
+    @SuppressWarnings("unchecked")
+    ArgumentCaptor<Predicate<String>> exists = ArgumentCaptor.forClass(Predicate.class);
+    verify(users).findOrCreate(eq(ANA), exists.capture());
+    assertThat(exists.getValue().test("uid-ana")).isFalse();
+    verify(directory).exists("uid-ana");
   }
 }
