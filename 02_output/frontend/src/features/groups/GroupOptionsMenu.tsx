@@ -24,7 +24,8 @@ export function GroupOptionsMenu({ group, trigger, children, onDeleted }: GroupO
   const [deleting, setDeleting] = useState(false);
   return (
     <>
-      <DropdownMenu>
+      {/* Not modal: a modal menu hides the page from assistive technology while the page stays focusable, and a dialog opened from it would leave the page blocked (D-62). */}
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           {children}

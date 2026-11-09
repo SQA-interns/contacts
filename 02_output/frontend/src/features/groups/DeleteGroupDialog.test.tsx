@@ -95,18 +95,30 @@ describe('DeleteGroupDialog WF-14 (R-020-01, R-020-02)', () => {
     expect(confirm()).toBeEnabled();
   });
 
-  it('R-020-01 confirms in a toast that offers the Group Trash and tells the caller', async () => {
+  it('R-020-01 closes at once, shows the progress and then the result with a link to the Group Trash', async () => {
     backend();
-    const { onDeleted } = renderDialog();
+    const { onDeleted, onClose } = renderDialog();
     await userEvent.type(field(), 'Acme');
     await userEvent.click(confirm());
 
+    expect(onClose).toHaveBeenCalledTimes(1);
     expect(await screen.findByText('Skupina je v košu skupin.')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Odpri koš skupin' })).toBeInTheDocument();
     expect(onDeleted).toHaveBeenCalledTimes(1);
   });
 
-  it('R-020-02 shows the message under the field when the server refuses the name', async () => {
+  it('D-62 shows "Brisanje …" while the server has not answered, and does not call onDeleted yet', async () => {
+    vi.mocked(fetch).mockReturnValue(new Promise(() => undefined));
+    const { onDeleted, onClose } = renderDialog();
+    await userEvent.type(field(), 'Acme');
+    await userEvent.click(confirm());
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(await screen.findByText('Brisanje …')).toBeInTheDocument();
+    expect(onDeleted).not.toHaveBeenCalled();
+  });
+
+  it('R-020-02 tells in a toast when the server refuses the name, and the Group stays', async () => {
     backend(() => answer({ code: 'group.name_mismatch', message: 'x' }, 422));
     const { onDeleted } = renderDialog();
     await userEvent.type(field(), 'Acme');
@@ -116,13 +128,13 @@ describe('DeleteGroupDialog WF-14 (R-020-01, R-020-02)', () => {
     expect(onDeleted).not.toHaveBeenCalled();
   });
 
-  it('R-020-06 shows the refusal when the caller may not delete the Group', async () => {
+  it('R-020-06 tells in a toast when the caller may not delete the Group', async () => {
     backend(() => answer({ code: 'auth.role_forbidden', message: 'x' }, 403));
     renderDialog();
     await userEvent.type(field(), 'Acme');
     await userEvent.click(confirm());
 
-    expect(await screen.findByRole('alert')).toHaveTextContent('Za to dejanje nimate pravice.');
+    expect(await screen.findByText('Za to dejanje nimate pravice.')).toBeInTheDocument();
   });
 
   it('closes without a request when Cancel is pressed', async () => {
