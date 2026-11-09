@@ -7,6 +7,7 @@ import { VerifyEmailPage } from '@/features/auth/VerifyEmailPage';
 import { ContactPage } from '@/features/contacts/ContactPage';
 import { NewContactPage } from '@/features/contacts/NewContactPage';
 import { GroupListPage } from '@/features/groups/GroupListPage';
+import { GroupShell } from '@/features/groups/GroupShell';
 import { ContactListPage } from '@/features/contacts/ContactListPage';
 import { ActivityPage } from '@/features/activity/ActivityPage';
 import { MembersPage } from '@/features/members/MembersPage';
@@ -31,14 +32,20 @@ export const routes: RouteObject[] = [
         element: <RequireVerified />,
         children: [
           { path: 'groups', element: <GroupListPage /> },
-          { path: 'groups/:groupId/contacts', element: <ContactListPage /> },
-          { path: 'groups/:groupId/tags', element: <TagListPage /> },
-          { path: 'groups/:groupId/trash', element: <TrashPage /> },
-          { path: 'groups/:groupId/invitations', element: <InvitationsPage /> },
-          { path: 'groups/:groupId/members', element: <MembersPage /> },
-          { path: 'groups/:groupId/activity', element: <ActivityPage /> },
-          { path: 'groups/:groupId/contacts/new', element: <NewContactPage /> },
-          { path: 'groups/:groupId/contacts/:contactId', element: <ContactPage /> },
+          {
+            path: 'groups/:groupId',
+            element: <GroupShell />,
+            children: [
+              { path: 'contacts', element: <ContactListPage /> },
+              { path: 'tags', element: <TagListPage /> },
+              { path: 'trash', element: <TrashPage /> },
+              { path: 'invitations', element: <InvitationsPage /> },
+              { path: 'members', element: <MembersPage /> },
+              { path: 'activity', element: <ActivityPage /> },
+              { path: 'contacts/new', element: <NewContactPage /> },
+              { path: 'contacts/:contactId', element: <ContactPage /> },
+            ],
+          },
         ],
       },
       { path: '*', element: <NotFoundPage /> },

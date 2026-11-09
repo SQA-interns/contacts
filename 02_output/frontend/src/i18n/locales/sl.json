@@ -9,6 +9,16 @@
     "userMenu": "Uporabniški meni",
     "signOut": "Odjava"
   },
+  "groupNav": {
+    "label": "Navigacija skupine",
+    "menu": "Meni skupine: {{current}}",
+    "contacts": "Kontakti",
+    "tags": "Značke",
+    "trash": "Koš",
+    "activity": "Dejavnost",
+    "members": "Člani",
+    "invitations": "Povabila"
+  },
   "language": {
     "label": "Jezik",
     "sl": "Slovenščina",

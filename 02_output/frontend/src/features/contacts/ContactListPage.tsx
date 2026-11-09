@@ -65,26 +65,6 @@ export function ContactListPage() {
   const [cleared, setCleared] = useState(0);
   const active = activeCount(filters);
   const canAdd = role === 'OWNER' || role === 'EDITOR';
-  const trashLink = (
-    <Button asChild variant="outline">
-      <Link to={`/groups/${encodeURIComponent(groupId)}/trash`}>{t('trash.title')}</Link>
-    </Button>
-  );
-  const membersLink = (
-    <Button asChild variant="outline">
-      <Link to={`/groups/${encodeURIComponent(groupId)}/members`}>{t('members.title')}</Link>
-    </Button>
-  );
-  const invitationsLink = (
-    <Button asChild variant="outline">
-      <Link to={`/groups/${encodeURIComponent(groupId)}/invitations`}>{t('invitations.title')}</Link>
-    </Button>
-  );
-  const activityLink = (
-    <Button asChild variant="outline">
-      <Link to={`/groups/${encodeURIComponent(groupId)}/activity`}>{t('activity.title')}</Link>
-    </Button>
-  );
   const addLink = (
     <Button asChild>
       <Link to={`/groups/${encodeURIComponent(groupId)}/contacts/new`}>{t('contactList.add')}</Link>
@@ -132,17 +112,7 @@ export function ContactListPage() {
     <>
       <PageHeader
         title={t('contactList.title')}
-        action={
-          canAdd ? (
-            <div className="flex gap-2">
-              {trashLink}
-              {membersLink}
-              {activityLink}
-              {role === 'OWNER' ? invitationsLink : null}
-              {data && data.total > 0 ? addLink : null}
-            </div>
-          ) : undefined
-        }
+        action={canAdd && data && data.total > 0 ? addLink : undefined}
       />
       <div className="lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:items-start lg:gap-8">
         <FilterPanel

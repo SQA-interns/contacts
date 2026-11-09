@@ -9,6 +9,16 @@
     "userMenu": "User menu",
     "signOut": "Sign out"
   },
+  "groupNav": {
+    "label": "Group navigation",
+    "menu": "Group menu: {{current}}",
+    "contacts": "Contacts",
+    "tags": "Tags",
+    "trash": "Trash",
+    "activity": "Activity",
+    "members": "Members",
+    "invitations": "Invitations"
+  },
   "language": {
     "label": "Language",
     "sl": "Slovenščina",
