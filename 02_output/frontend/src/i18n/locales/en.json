@@ -133,6 +133,31 @@
     "emptyBody": "Invite a person with the form above.",
     "noPermission": "You may not manage invitations. Only owners can invite."
   },
+  "members": {
+    "title": "Members",
+    "count": {
+      "one": "{{count}} member",
+      "two": "{{count}} members",
+      "few": "{{count}} members",
+      "other": "{{count}} members"
+    },
+    "tableCaption": "Members of the group",
+    "nameColumn": "Name",
+    "emailColumn": "E-mail",
+    "roleColumn": "Role",
+    "actionsColumn": "Actions",
+    "roleFor": "Role of {{name}}",
+    "roleLabel": "Role",
+    "remove": "Remove",
+    "removeFor": "Remove {{name}}",
+    "removeTitle": "Remove {{name}}?",
+    "removeBody": "The member loses access to the group. Contacts and history entries the member created stay.",
+    "removeConfirm": "Remove member",
+    "roleChanged": "Role changed.",
+    "removed": "Member removed.",
+    "invite": "Invite a person",
+    "listLabel": "Members of the group"
+  },
   "tags": {
     "title": "Tags",
     "intro": "The Tags of this Group and the number of Contacts with each. Add new Tags on a Contact.",

@@ -70,6 +70,11 @@ export function ContactListPage() {
       <Link to={`/groups/${encodeURIComponent(groupId)}/trash`}>{t('trash.title')}</Link>
     </Button>
   );
+  const membersLink = (
+    <Button asChild variant="outline">
+      <Link to={`/groups/${encodeURIComponent(groupId)}/members`}>{t('members.title')}</Link>
+    </Button>
+  );
   const invitationsLink = (
     <Button asChild variant="outline">
       <Link to={`/groups/${encodeURIComponent(groupId)}/invitations`}>{t('invitations.title')}</Link>
@@ -126,6 +131,7 @@ export function ContactListPage() {
           canAdd ? (
             <div className="flex gap-2">
               {trashLink}
+              {membersLink}
               {role === 'OWNER' ? invitationsLink : null}
               {data && data.total > 0 ? addLink : null}
             </div>

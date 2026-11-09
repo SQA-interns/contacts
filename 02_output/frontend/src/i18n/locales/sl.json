@@ -133,6 +133,31 @@
     "emptyBody": "Povabite osebo z obrazcem zgoraj.",
     "noPermission": "Za povabila nimate pravice. Povabite lahko samo lastniki."
   },
+  "members": {
+    "title": "Člani",
+    "count": {
+      "one": "{{count}} član",
+      "two": "{{count}} člana",
+      "few": "{{count}} člani",
+      "other": "{{count}} članov"
+    },
+    "tableCaption": "Člani skupine",
+    "nameColumn": "Ime",
+    "emailColumn": "E-pošta",
+    "roleColumn": "Vloga",
+    "actionsColumn": "Dejanja",
+    "roleFor": "Vloga člana {{name}}",
+    "roleLabel": "Vloga",
+    "remove": "Odstrani",
+    "removeFor": "Odstrani člana {{name}}",
+    "removeTitle": "Odstranim člana {{name}}?",
+    "removeBody": "Član izgubi dostop do skupine. Kontakti in zgodovina, ki jih je ustvaril, ostanejo.",
+    "removeConfirm": "Odstrani člana",
+    "roleChanged": "Vloga je spremenjena.",
+    "removed": "Član je odstranjen.",
+    "invite": "Povabi osebo",
+    "listLabel": "Člani skupine"
+  },
   "tags": {
     "title": "Značke",
     "intro": "Značke te skupine in število kontaktov z vsako. Nove značke dodate na kontaktu.",
