@@ -2,6 +2,7 @@ package si.contactgroups.service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import si.contactgroups.domain.DismissedSets;
 import si.contactgroups.domain.DuplicateFinder;
 import si.contactgroups.domain.DuplicateSet;
+import si.contactgroups.error.ApiError.FieldError;
 import si.contactgroups.persistence.ContactRepository;
 import si.contactgroups.persistence.DismissalRepository;
 
@@ -38,10 +40,14 @@ public class DuplicateService {
    * Marks the set of exactly these Contacts "not a duplicate" (R-025-01). A set that is already
    * dismissed is stored once, so two Editors dismissing the same set both succeed (EX-025-04).
    *
+   * @throws ValidationException when the list holds a null id (SB-01)
    * @throws DuplicateSetNotFoundException when the Contacts are no set of the Group (EX-025-03)
    */
   @Transactional
   public void dismiss(UUID groupId, UUID userId, List<UUID> contactIds) {
+    if (contactIds != null && contactIds.stream().anyMatch(Objects::isNull)) {
+      throw new ValidationException(List.of(new FieldError("contactIds", "validation.required")));
+    }
     Set<UUID> ids = contactIds == null ? Set.of() : new HashSet<>(contactIds);
     String key = DuplicateFinder.keyOf(ids);
     boolean isSet = allSets(groupId).stream().anyMatch(set -> set.key().equals(key));

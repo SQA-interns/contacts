@@ -143,6 +143,19 @@ class DuplicateEndpointsIT extends WebTestSupport {
   }
 
   @Test
+  void f_16_a_null_id_in_the_list_answers_422_and_not_500() throws Exception {
+    UUID a = contact(acme, "Ana", "ana@acme.com", null);
+
+    dismiss(ana, "{\"contactIds\":[null]}")
+        .andExpect(status().isUnprocessableContent())
+        .andExpect(jsonPath("$.code").value("validation.failed"))
+        .andExpect(jsonPath("$.fieldErrors[0].field").value("contactIds"));
+    dismiss(ana, "{\"contactIds\":[\"" + a + "\",null]}")
+        .andExpect(status().isUnprocessableContent())
+        .andExpect(jsonPath("$.code").value("validation.failed"));
+  }
+
+  @Test
   void r_025_01_a_body_that_is_not_json_or_has_other_properties_answers_400() throws Exception {
     dismiss(ana, "{\"contactIds\":[\"not-an-id\"]}").andExpect(status().isBadRequest());
     dismiss(ana, "{\"contactIds\":[],\"x\":1}").andExpect(status().isBadRequest());
