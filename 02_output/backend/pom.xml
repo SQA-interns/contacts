@@ -291,6 +291,12 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${jacoco.version}</version>
+        <configuration>
+          <!-- measurement exclusions of docs/03_test-strategy.md (phase 3): the application entry point only -->
+          <excludes>
+            <exclude>si/contactgroups/ContactGroupsApplication*</exclude>
+          </excludes>
+        </configuration>
         <executions>
           <execution>
             <id>prepare-agent</id>
@@ -311,6 +317,60 @@
               <goal>report</goal>
               <goal>report-integration</goal>
             </goals>
+          </execution>
+          <!-- all levels together: one merged report, the headline figure (general/testing/measurement.md) -->
+          <execution>
+            <id>merge-all</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>merge</goal>
+            </goals>
+            <configuration>
+              <fileSets>
+                <fileSet>
+                  <directory>${project.build.directory}</directory>
+                  <includes>
+                    <include>jacoco.exec</include>
+                    <include>jacoco-it.exec</include>
+                  </includes>
+                </fileSet>
+              </fileSets>
+              <destFile>${project.build.directory}/jacoco-all.exec</destFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>report-all</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <dataFile>${project.build.directory}/jacoco-all.exec</dataFile>
+              <outputDirectory>${project.reporting.outputDirectory}/jacoco-all</outputDirectory>
+            </configuration>
+          </execution>
+          <!-- quality gate: line coverage of all levels together >= 95 % (quality-requirements.md); branch is recorded only -->
+          <execution>
+            <id>check-all</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <configuration>
+              <dataFile>${project.build.directory}/jacoco-all.exec</dataFile>
+              <rules>
+                <rule>
+                  <element>BUNDLE</element>
+                  <limits>
+                    <limit>
+                      <counter>LINE</counter>
+                      <value>COVEREDRATIO</value>
+                      <minimum>0.95</minimum>
+                    </limit>
+                  </limits>
+                </rule>
+              </rules>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -345,7 +405,9 @@
           </execution>
         </executions>
       </plugin>
-      <!-- phase 5 configures PIT and the thresholds (docs/02_adr/ADR-16); the plugin is only pinned here -->
+      <!-- PIT (docs/02_adr/ADR-16): all production code under si.contactgroups except the application entry point
+           (measurement exclusion of docs/03_test-strategy.md); mutation threshold 90 % (quality-requirements.md);
+           the full suite of the component is run: unit, integration and acceptance tests -->
       <plugin>
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
@@ -361,6 +423,19 @@
           <targetClasses>
             <param>si.contactgroups.*</param>
           </targetClasses>
+          <excludedClasses>
+            <param>si.contactgroups.ContactGroupsApplication*</param>
+          </excludedClasses>
+          <targetTests>
+            <param>si.contactgroups.*</param>
+          </targetTests>
+          <outputFormats>
+            <outputFormat>XML</outputFormat>
+            <outputFormat>HTML</outputFormat>
+          </outputFormats>
+          <mutationThreshold>90</mutationThreshold>
+          <timestampedReports>false</timestampedReports>
+          <threads>4</threads>
         </configuration>
       </plugin>
       <!-- CI scanner job runs dependency-check:check and license:aggregate-add-third-party -->

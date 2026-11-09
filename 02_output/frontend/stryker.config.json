@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/stryker-mutator/stryker/master/packages/core/schema/stryker-core.schema.json",
+  "testRunner": "vitest",
+  "vitest": { "configFile": "vite.config.ts" },
+  "coverageAnalysis": "perTest",
+  "mutate": [
+    "src/**/*.{ts,tsx}",
+    "!src/**/*.test.{ts,tsx}",
+    "!src/test/**",
+    "!src/main.tsx",
+    "!src/components/ui/**",
+    "!src/brand.ts"
+  ],
+  "reporters": ["clear-text", "json", "html"],
+  "jsonReporter": { "fileName": "coverage/mutation/mutation.json" },
+  "htmlReporter": { "fileName": "coverage/mutation/mutation.html" },
+  "thresholds": { "high": 90, "low": 90, "break": null },
+  "tempDirName": ".stryker-tmp",
+  "cleanTempDir": true,
+  "timeoutMS": 30000,
+  "timeoutFactor": 2
+}

@@ -15,10 +15,23 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     include: ['src/**/*.test.{ts,tsx}'],
     css: false,
+    // instrumented and mutated runs are several times slower than a plain run (phase 5)
+    testTimeout: 30000,
     coverage: {
       provider: 'v8',
+      reportsDirectory: './coverage',
+      reporter: ['text-summary', 'json-summary', 'lcov'],
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.test.{ts,tsx}', 'src/components/ui/**', 'src/test/**'],
+      // test code and the measurement exclusions of docs/03_test-strategy.md (phase 3); no others
+      exclude: [
+        'src/**/*.test.{ts,tsx}',
+        'src/test/**',
+        'src/main.tsx',
+        'src/components/ui/**',
+        'src/styles/**/*.css',
+        'src/brand.ts',
+        'src/i18n/locales/**',
+      ],
     },
   },
 });
