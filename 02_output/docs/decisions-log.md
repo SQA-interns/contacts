@@ -814,3 +814,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-74: F-18 fixed (duplicate D-67 and D-68 removed from this log)
+- Timestamp: 2026-11-09
+- Session: S8 /fix F-18
+- Class: open
+- Type: non-blocking
+- Trigger: review finding F-18 (`docs/04_review-INC-2.md`). (a) Commit `bec68c5` had inserted the newer D-68 and a copy of D-67 above the older D-68 of `fa0a9a8`. The log is cleaned so that D-67 and D-68 each appear once, as the entries `bec68c5` wrote: D-68 is the one with (i) "Run after the human allowed it" (the frozen `Us026MergeAcceptanceIT` and the UI tests pass), (j) and (k); the older D-68 ("Not run in this session") and the second copy of D-67 (identical to the first) are removed. The newer entry had the `Options` line of D-66 by mistake (a copy error of `bec68c5`); it now has the options of the older entry (2 always raise the version, 3 tick only the two oldest Contacts), which are the ones (d) and (g) of the text refer to. No other entry changed. (b) Red: the new `scripts/check-decision-ids.sh` (fails on a repeated `## D-nn` heading) reported D-67 and D-68 and exited 1 (`logs/f18-red.log`); green after the fix (`logs/f18-green.log`). Documentation only, so no code suite was run. (c) Not touched: F-19 (needs the human, D-68 d), F-20, F-22 and the carried F-03, F-04, F-13. D-75 is the next free number.
+- Options: 1 (default) keep the newer D-68 (the run results). 2 keep the older D-68 and re-add the results of the run as a new decision.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
