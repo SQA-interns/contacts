@@ -1,0 +1,556 @@
+
+Running 95 tests using 4 workers
+
+[1A[2K[1/95] [chromium] › acceptance/us001-account.spec.ts:24:1 › AC-001-01 registering Ana Novak sends the verification e-mail and asks to verify; no Group opens
+[1A[2K[2/95] [chromium] › acceptance/us001-account.spec.ts:61:1 › AC-001-05 a wrong password shows "E-mail or password is wrong" and nobody is signed in
+[1A[2K[3/95] [chromium] › acceptance/us001-account.spec.ts:39:1 › AC-001-02 a verified sign-in opens the Group list
+[1A[2K[4/95] [chromium] › acceptance/us001-account.spec.ts:47:1 › AC-001-04 an unverified User sees "Verify your e-mail to continue" and the resend button, no Group
+[1A[2K[5/95] [chromium] › acceptance/us001-account.spec.ts:76:1 › AC-001-06 the password Abc1234 (7 characters) creates no account; the rule is shown at the field
+[1A[2K[6/95] [chromium] › acceptance/us001-account.spec.ts:87:1 › AC-001-07 registering an address that exists offers Sign in and Reset password; no second account
+[1A[2K[7/95] [chromium] › acceptance/us001-account.spec.ts:109:1 › AC-001-08 the reset confirmation is the same for nobody@acme.com and a registered address
+[1A[2K[8/95] [chromium] › acceptance/us001-account.spec.ts:127:1 › AC-001-09 after a reload Ana is still signed in
+[1A[2K[9/95] [chromium] › acceptance/us001-account.spec.ts:136:1 › AC-001-10 after signing out the sign-in page is shown and the Group list needs a sign-in
+[1A[2K[10/95] [chromium] › acceptance/us001-account.spec.ts:151:1 › AC-001-11 an expired token (401 from the server) returns Ana to the sign-in page
+[1A[2K[11/95] [chromium] › acceptance/us001-account.spec.ts:168:1 › EX-001-01 a password of exactly 8 characters creates the account
+[1A[2K[12/95] [chromium] › acceptance/us001-account.spec.ts:177:1 › EX-001-02 a password of 7 characters is refused
+[1A[2K[13/95] [chromium] › acceptance/us001-account.spec.ts:186:1 › EX-001-03 a display name of 100 characters creates the account
+[1A[2K[14/95] [chromium] › acceptance/us001-account.spec.ts:199:3 › EX-001-04 a display name that is 101 characters creates no account; the message is at the field
+[1A[2K[15/95] [chromium] › acceptance/us001-account.spec.ts:199:3 › EX-001-04 a display name that is empty creates no account; the message is at the field
+[1A[2K[16/95] [chromium] › acceptance/us001-account.spec.ts:211:1 › EX-001-06 the e-mail ana@ creates no account; the message is at the field
+[1A[2K[17/95] [chromium] › acceptance/us001-account.spec.ts:219:1 › EX-001-08 a reset for an unregistered address shows the confirmation and reveals nothing
+[1A[2K[18/95] [chromium] › acceptance/us001-account.spec.ts:232:1 › EX-001-09 after verifying the e-mail and reloading, the Group list opens
+[1A[2K[19/95] [chromium] › acceptance/us002-groups.spec.ts:13:1 › AC-002-07 a User with no Group sees the empty state with "Create group"
+[1A[2K[20/95] [chromium] › acceptance/us002-groups.spec.ts:22:1 › AC-002-01 creating Acme shows it in the Group list with Role Owner
+[1A[2K[21/95] [chromium] › acceptance/us002-groups.spec.ts:38:1 › AC-002-03 creating ACME next to Acme shows "You already have a group with this name"
+[1A[2K[22/95] [chromium] › acceptance/us002-groups.spec.ts:53:1 › AC-002-05 an empty name shows the rule next to the field and creates nothing
+[1A[2K[23/95] [chromium] › acceptance/us003-005-contact.spec.ts:31:1 › AC-003-02 with only a phone the form says one of the four is needed and keeps the phone
+[1A[2K[24/95] [chromium] › acceptance/us003-005-contact.spec.ts:45:1 › AC-003-03 the e-mail ana@ shows a message next to the e-mail field and stores nothing
+[1A[2K[25/95] [chromium] › acceptance/us003-005-contact.spec.ts:60:1 › AC-003-06 a stale save shows "This contact was changed by someone else" and the current Contact
+[1A[2K[26/95] [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action
+[1A[2K[27/95] [chromium] › acceptance/us003-005-contact.spec.ts:95:1 › AC-003-08 the Contact shows all 11 predefined fields, the Tag and the Attribute
+[1A[2K[28/95] [chromium] › acceptance/us003-005-contact.spec.ts:149:1 › EX-003-13 the last name <script>alert(1)</script> is shown as plain text and not run
+[1A[2K  1) [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Novak')
+    Expected: visible
+    Error: strict mode violation: getByText('Novak') resolved to 2 elements:
+        1) <a data-discover="true" class="underline-offset-4 hover:underline" href="/groups/50f6e8c8-3ce7-4ec6-9eac-37ab731d4661/contacts/48acc478-3506-49e3-8dde-a292faf882ed">Novak</a> aka getByRole('link', { name: 'Novak' })
+        2) <a title="Novak" data-discover="true" class="block min-w-0 truncate font-semibold" href="/groups/50f6e8c8-3ce7-4ec6-9eac-37ab731d4661/contacts/48acc478-3506-49e3-8dde-a292faf882ed">Novak Ana</a> aka getByText('Novak Ana')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Novak')[22m
+
+
+      88 |
+      89 |   await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+    > 90 |   await expect(page.getByText('Novak')).toBeVisible();
+         |                                         ^
+      91 |   await expect(page.getByRole('button', { name: 'Dodaj kontakt' })).toHaveCount(0);
+      92 |   await expect(page.getByRole('link', { name: 'Dodaj kontakt' })).toHaveCount(0);
+      93 | });
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:90:41
+
+    Error Context: test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[29/95] [chromium] › acceptance/us003-005-contact.spec.ts:187:1 › AC-004-07 a Viewer sees the Attributes but no control to change them
+[1A[2K[30/95] [chromium] › acceptance/us003-005-contact.spec.ts:205:1 › AC-004-08 the key projekt of another Group is not suggested in Acme
+[1A[2K[31/95] [chromium] › acceptance/us003-005-contact.spec.ts:220:1 › AC-005-03 the Tag "udelezenec 2025" shows the rule and adds no Tag
+[1A[2K[32/95] [chromium] › acceptance/us003-005-contact.spec.ts:166:1 › AC-004-04 typing komp suggests kompetenca of the Group; the new key kompetentnost can be saved
+[1A[2K[33/95] [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme
+[1A[2K[34/95] [chromium] › acceptance/us003-005-contact.spec.ts:246:1 › AC-005-07 the Tags neObvescaj and udelezenec2025 are shown in the list and on the Contact
+[1A[2K[35/95] [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay
+[1A[2K  2) [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeUndefined[2m()[22m
+
+    Received: [31m5[39m
+
+      37 |
+      38 |   await expect(page.getByRole('row').filter({ hasText: 'gost' })).toHaveCount(0);
+    > 39 |   expect(await gostCount(ana, acme)).toBeUndefined();
+         |                                      ^
+      40 |   expect((await api(ana, 'GET', `/groups/${acme.id}/contacts`)).body.total).toBe(5);
+      41 | });
+      42 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us006-tags.spec.ts:39:38
+
+    Error Context: test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[36/95] [chromium] › acceptance/us006-tags.spec.ts:43:1 › AC-006-05 cancelling the deletion changes nothing
+[1A[2K[37/95] [chromium] › acceptance/us007-009-list.spec.ts:41:1 › AC-007-01 Acme with 60 Contacts shows 25 sorted by last name and "60 contacts"
+[1A[2K[38/95] [chromium] › acceptance/us007-009-list.spec.ts:52:1 › AC-007-03 choosing the header Company twice sorts ascending, then descending
+[1A[2K[39/95] [chromium] › acceptance/us007-009-list.spec.ts:69:1 › AC-007-04 an empty Acme shows an Editor the empty state with "Add contact"
+[1A[2K[40/95] [chromium] › acceptance/us007-009-list.spec.ts:87:1 › AC-007-05 an empty Acme shows a Viewer the empty state without "Add contact"
+[1A[2K[41/95] [chromium] › acceptance/us007-009-list.spec.ts:100:1 › AC-007-07 choosing the row of Ana Novak opens the Contact
+[1A[2K[42/95] [chromium] › acceptance/us007-009-list.spec.ts:117:1 › EX-007-07 a very long company name stays available in full in the list
+[1A[2K[43/95] [chromium] › acceptance/us007-009-list.spec.ts:135:1 › AC-008-05 searching kompetenca (a key only) shows "No contacts match" and "Clear filters"
+[1A[2K[44/95] [chromium] › acceptance/us007-009-list.spec.ts:153:1 › AC-008-09 typing a search on page 3 shows page 1 of 2 and "30 contacts"
+[1A[2K[45/95] [chromium] › acceptance/us007-009-list.spec.ts:165:1 › EX-008-04 the search text <script> finds nothing and is shown as text
+[1A[2K[46/95] [chromium] › acceptance/us007-009-list.spec.ts:183:1 › AC-009-09 changing a filter on page 2 shows page 1 and the new count
+[1A[2K[47/95] [chromium] › acceptance/us007-009-list.spec.ts:195:1 › AC-009-10 "Clear filters" shows the full list again
+[1A[2K[48/95] [chromium] › acceptance/us007-009-list.spec.ts:209:1 › AC-009-11 the Tag filter of Acme does not offer gost of Beta
+[1A[2K[49/95] [chromium] › acceptance/us007-009-list.spec.ts:224:1 › AC-009-12 a filter that matches nothing shows "No contacts match" and "Clear filters"
+[1A[2K  3) [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('option', { name: 'gospodar' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('option', { name: 'gospodar' })[22m
+
+
+      240 |   await page.getByLabel('Dodaj značko').fill('go');
+      241 |
+    > 242 |   await expect(page.getByRole('option', { name: 'gospodar' })).toBeVisible();
+          |                                                                ^
+      243 |   await expect(page.getByRole('option', { name: 'gost', exact: true })).toHaveCount(0);
+      244 | });
+      245 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:242:64
+
+    Error Context: test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[50/95] [chromium] › acceptance/us010-011-selection.spec.ts:55:1 › AC-010-02 the 2 ticked rows stay ticked after going to page 2 and back
+[1A[2K[51/95] [chromium] › acceptance/us010-011-selection.spec.ts:45:1 › AC-010-01 ticking 2 rows shows "2 selected"
+[1A[2K[52/95] [chromium] › acceptance/us010-011-selection.spec.ts:70:1 › AC-010-03 "select all on this page" of 60 shows "25 selected" and offers "select all 60 results"
+[1A[2K[53/95] [chromium] › acceptance/us010-011-selection.spec.ts:82:1 › AC-010-04 "select all 60 results" shows "60 selected"
+[1A[2K[54/95] [chromium] › acceptance/us010-011-selection.spec.ts:92:1 › AC-010-05 changing the search to 12 matches clears a Selection of 60
+[1A[2K[55/95] [chromium] › acceptance/us010-011-selection.spec.ts:106:1 › AC-010-06 unticking one of 2 rows shows "1 selected"
+[1A[2K[56/95] [chromium] › acceptance/us010-011-selection.spec.ts:117:1 › AC-010-07 a Viewer sees no checkbox and no selection control
+[1A[2K[57/95] [chromium] › acceptance/us010-011-selection.spec.ts:130:1 › AC-010-08 "Clear selection" of 60 shows "0 selected" and changes no Contact
+[1A[2K[58/95] [chromium] › acceptance/us010-011-selection.spec.ts:144:1 › AC-010-09 changing the sort order keeps a Selection of 60
+[1A[2K[59/95] [chromium] › acceptance/us010-011-selection.spec.ts:155:1 › EX-010-01 with exactly 25 results the whole page selected offers no "select all N results"
+[1A[2K[60/95] [chromium] › acceptance/us010-011-selection.spec.ts:167:1 › EX-010-02 with 26 results the whole page selected offers "select all 26 results"
+[1A[2K[61/95] [chromium] › acceptance/us010-011-selection.spec.ts:176:1 › EX-010-03 after a reload the Selection is empty
+[1A[2K[62/95] [chromium] › acceptance/us010-011-selection.spec.ts:189:1 › EX-010-04 changing the search back to the earlier text leaves the Selection cleared
+[1A[2K[63/95] [chromium] › acceptance/us010-011-selection.spec.ts:208:1 › AC-011-01 with nothing selected the Export button is disabled
+[1A[2K[64/95] [chromium] › acceptance/us010-011-selection.spec.ts:217:1 › AC-011-05 an export of more than 10,000 shows the message to narrow the Selection
+[1A[2K[65/95] [chromium] › acceptance/us012-015-trash-members.spec.ts:6:1 › AC-012-01 Delete asks for confirmation and the Contact is still listed
+[1A[2K[66/95] [chromium] › acceptance/us012-015-trash-members.spec.ts:20:1 › EX-012-03 cancelling the delete confirmation changes nothing
+[1A[2K[67/95] [chromium] › acceptance/us012-015-trash-members.spec.ts:37:1 › AC-013-02 cancelling "Delete forever" keeps the Contact in Trash
+[1A[2K[68/95] [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme
+[1A[2K[69/95] [chromium] › acceptance/us012-015-trash-members.spec.ts:74:1 › AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls
+[1A[2K[70/95] [chromium] › acceptance/us012-015-trash-members.spec.ts:101:1 › AC-015-04 the only Owner trying to become Editor sees "A group needs at least one owner"
+[1A[2K[71/95] [chromium] › acceptance/us016-019-history-language.spec.ts:65:1 › AC-016-03 entries of 2026-01-15 10:00 and 2026-07-01 10:00 UTC read 15. 1. 2026 11:00 and 1. 7. 2026 12:00
+[1A[2K[72/95] [chromium] › acceptance/us016-019-history-language.spec.ts:77:1 › EX-016-04 2026-03-29 00:30 UTC reads 01:30 (CET) and 01:30 UTC reads 03:30 (CEST)
+[1A[2K[73/95] [chromium] › acceptance/us016-019-history-language.spec.ts:89:1 › AC-017-06 a start date after the end date shows the message next to the dates and no list
+[1A[2K[74/95] [chromium] › acceptance/us016-019-history-language.spec.ts:103:1 › AC-017-07 filters that match nothing show "No activity matches" and a clear button
+[1A[2K[75/95] [chromium] › acceptance/us016-019-history-language.spec.ts:115:1 › AC-018-16 the last name <script>alert(1)</script> is listed and opened as typed; no script runs
+[1A[2K[76/95] [chromium] › acceptance/us016-019-history-language.spec.ts:136:3 › in a browser whose language is English › AC-019-01 the product opens in Slovene
+[1A[2K[77/95] [chromium] › acceptance/us016-019-history-language.spec.ts:144:1 › AC-019-02 switching to English keeps the half-filled Contact form
+[1A[2K[78/95] [chromium] › acceptance/us016-019-history-language.spec.ts:162:1 › AC-019-03 the language chosen last is used when the product is opened again
+[1A[2K[79/95] [chromium] › acceptance/us016-019-history-language.spec.ts:180:1 › AC-019-04 the entry of 2026-11-08 10:00 UTC reads 8. 11. 2026 11:00, then 2026-11-08 11:00
+[1A[2K[80/95] [chromium] › acceptance/us016-019-history-language.spec.ts:194:1 › AC-019-05 the country SI reads Slovenija, then Slovenia
+[1A[2K[81/95] [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched
+[1A[2K  4) [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByText('Acme')
+    Expected: [32m0[39m
+    Received: [31m1[39m
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Acme')[22m
+    [2m    14 × locator resolved to 1 element[22m
+    [2m       - unexpected value "1"[22m
+
+
+      69 |     page.getByRole('heading', { level: 1, name: 'Potrdite svoj e-poštni naslov, da nadaljujete.' }),
+      70 |   ).toBeVisible();
+    > 71 |   await expect(page.getByText('Acme')).toHaveCount(0);
+         |                                        ^
+      72 | });
+      73 |
+      74 | test('AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls', async ({
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:71:40
+
+    Error Context: test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[82/95] [chromium] › acceptance/us016-019-history-language.spec.ts:220:1 › AC-019-07 the error "changed by someone else" is shown in Slovene, then in English
+[1A[2K[83/95] [chromium] › acceptance/us016-019-history-language.spec.ts:241:1 › EX-019-01 with browser storage blocked Slovene is used at every visit and nothing fails
+[1A[2K[84/95] [chromium] › acceptance/us016-019-history-language.spec.ts:262:1 › EX-019-02 a result that arrives after the switch is shown in the new language
+[1A[2K[85/95] [chromium] › acceptance/us020-026-increment2.spec.ts:25:1 › AC-020-01 typing Acme enables the delete; Acme leaves the Group list
+[1A[2K[86/95] [chromium] › acceptance/us020-026-increment2.spec.ts:40:1 › AC-020-02 typing acme keeps the delete button disabled; the Group stays
+[1A[2K[87/95] [chromium] › acceptance/us020-026-increment2.spec.ts:53:1 › AC-021-02 the Sole Owner of Acme sees that the account cannot be deleted, with Acme listed
+[1A[2K  5) [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasNot: getByRole('columnheader') }).first()
+    Expected substring: [32m"neObvescaj"[39m
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasNot: getByRole('columnheader') }).first()[22m
+
+
+      214 |   await switchTo(page, 'EN');
+      215 |
+    > 216 |   await expect(contactRows(page).first()).toContainText('neObvescaj');
+          |                                           ^
+      217 |   await expect(page.getByText('Šola').first()).toBeVisible();
+      218 | });
+      219 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:216:43
+
+    Error Context: test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[88/95] [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason
+[1A[2K[89/95] [chromium] › acceptance/us020-026-increment2.spec.ts:74:1 › EX-021-03 cancelling the account deletion changes nothing
+[1A[2K[90/95] [chromium] › acceptance/us020-026-increment2.spec.ts:108:1 › AC-024-10 without duplicates "No duplicates found" is shown
+[1A[2K  6) [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Zanesljivo')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Zanesljivo')[22m
+
+
+      101 |   await openAs(page, ana, paths.duplicates(acme));
+      102 |
+    > 103 |   await expect(page.getByText('Zanesljivo')).toBeVisible();
+          |                                              ^
+      104 |   await expect(page.getByText(/3 kontakti imajo e-pošto/)).toBeVisible();
+      105 |   await expect(page.getByText('ana@acme.com').first()).toBeVisible();
+      106 | });
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:103:46
+
+    Error Context: test-results/acceptance/us020-026-increment2-AC-02-88682-certain-set-with-the-reason-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-88682-certain-set-with-the-reason-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-88682-certain-set-with-the-reason-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[91/95] [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B
+[1A[2K  7) [chromium] › acceptance/us020-026-increment2.spec.ts:108:1 › AC-024-10 without duplicates "No duplicates found" is shown 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Ni podvojenih kontaktov' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Ni podvojenih kontaktov' })[22m
+
+
+      113 |   await openAs(page, ana, paths.duplicates(acme));
+      114 |
+    > 115 |   await expect(page.getByRole('heading', { name: 'Ni podvojenih kontaktov' })).toBeVisible();
+          |                                                                                ^
+      116 | });
+      117 |
+      118 | async function pair(
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:115:80
+
+    Error Context: test-results/acceptance/us020-026-increment2-AC-02-a01e0-o-duplicates-found-is-shown-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-a01e0-o-duplicates-found-is-shown-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-a01e0-o-duplicates-found-is-shown-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[92/95] [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge
+[1A[2K  8) [chromium] › acceptance/us003-005-contact.spec.ts:205:1 › AC-004-08 the key projekt of another Group is not suggested in Acme 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('Ključ', { exact: true }).last()[22m
+
+
+      211 |
+      212 |   await page.getByRole('button', { name: 'Dodaj atribut' }).click();
+    > 213 |   await page.getByLabel('Ključ', { exact: true }).last().fill('k');
+          |                                                          ^
+      214 |   await expect(page.getByRole('option', { name: 'kompetenca' })).toBeVisible();
+      215 |   await page.getByLabel('Ključ', { exact: true }).last().fill('pro');
+      216 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:213:58
+
+    Error Context: test-results/acceptance/us003-005-contact-AC-004-0-8fd91-up-is-not-suggested-in-Acme-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-004-0-8fd91-up-is-not-suggested-in-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-004-0-8fd91-up-is-not-suggested-in-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[93/95] [chromium] › acceptance/us020-026-increment2.spec.ts:164:1 › AC-026-05 and AC-026-12 "Združi" asks for confirmation; without it nothing is merged
+[1A[2K  9) [chromium] › acceptance/us003-005-contact.spec.ts:166:1 › AC-004-04 typing komp suggests kompetenca of the Group; the new key kompetentnost can be saved 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByLabel('Ključ', { exact: true }).last()[22m
+
+
+      173 |
+      174 |   await page.getByRole('button', { name: 'Dodaj atribut' }).click();
+    > 175 |   await page.getByLabel('Ključ', { exact: true }).last().fill('komp');
+          |                                                          ^
+      176 |
+      177 |   await expect(page.getByRole('option', { name: 'kompetenca' })).toBeVisible();
+      178 |   await page.getByLabel('Ključ', { exact: true }).last().fill('kompetentnost');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:175:58
+
+    Error Context: test-results/acceptance/us003-005-contact-AC-004-0-10fe0--kompetentnost-can-be-saved-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-004-0-10fe0--kompetentnost-can-be-saved-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-004-0-10fe0--kompetentnost-can-be-saved-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[94/95] [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice
+[1A[2K  10) [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /Združi izbrane \(2\)/ })[22m
+
+
+      129 | async function openMerge(page: Page, user: User, group: Group) {
+      130 |   await openAs(page, user, paths.duplicates(group));
+    > 131 |   await page.getByRole('button', { name: /Združi izbrane \(2\)/ }).click();
+          |                                                                    ^
+      132 |   await expect(page.getByRole('heading', { level: 1, name: 'Združi kontakte' })).toBeVisible();
+      133 | }
+      134 |
+        at openMerge (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:131:68)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:140:3
+
+    Error Context: test-results/acceptance/us020-026-increment2-AC-02-e4b1b-elected-from-A-phone-from-B-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-e4b1b-elected-from-A-phone-from-B-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-e4b1b-elected-from-A-phone-from-B-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  11) [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /Združi izbrane \(2\)/ })[22m
+
+
+      129 | async function openMerge(page: Page, user: User, group: Group) {
+      130 |   await openAs(page, user, paths.duplicates(group));
+    > 131 |   await page.getByRole('button', { name: /Združi izbrane \(2\)/ }).click();
+          |                                                                    ^
+      132 |   await expect(page.getByRole('heading', { level: 1, name: 'Združi kontakte' })).toBeVisible();
+      133 | }
+      134 |
+        at openMerge (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:131:68)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:152:3
+
+    Error Context: test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-fc420-d-a-choice-before-the-merge-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[95/95] [chromium] › acceptance/us020-026-increment2.spec.ts:196:1 › EX-026-03 with equal creation times the Contact with the smaller id is the Survivor
+[1A[2K  12) [chromium] › acceptance/us020-026-increment2.spec.ts:164:1 › AC-026-05 and AC-026-12 "Združi" asks for confirmation; without it nothing is merged 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /Združi izbrane \(2\)/ })[22m
+
+
+      129 | async function openMerge(page: Page, user: User, group: Group) {
+      130 |   await openAs(page, user, paths.duplicates(group));
+    > 131 |   await page.getByRole('button', { name: /Združi izbrane \(2\)/ }).click();
+          |                                                                    ^
+      132 |   await expect(page.getByRole('heading', { level: 1, name: 'Združi kontakte' })).toBeVisible();
+      133 | }
+      134 |
+        at openMerge (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:131:68)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:168:3
+
+    Error Context: test-results/acceptance/us020-026-increment2-AC-02-3e856-ithout-it-nothing-is-merged-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-AC-02-3e856-ithout-it-nothing-is-merged-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-AC-02-3e856-ithout-it-nothing-is-merged-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  13) [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /Združi izbrane \(2\)/ })[22m
+
+
+      129 | async function openMerge(page: Page, user: User, group: Group) {
+      130 |   await openAs(page, user, paths.duplicates(group));
+    > 131 |   await page.getByRole('button', { name: /Združi izbrane \(2\)/ }).click();
+          |                                                                    ^
+      132 |   await expect(page.getByRole('heading', { level: 1, name: 'Združi kontakte' })).toBeVisible();
+      133 | }
+      134 |
+        at openMerge (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:131:68)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:186:3
+
+    Error Context: test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-EX-02-eddae-elected-and-needs-no-choice-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  14) [chromium] › acceptance/us020-026-increment2.spec.ts:196:1 › EX-026-03 with equal creation times the Contact with the smaller id is the Survivor 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /Združi izbrane \(2\)/ })[22m
+
+
+      129 | async function openMerge(page: Page, user: User, group: Group) {
+      130 |   await openAs(page, user, paths.duplicates(group));
+    > 131 |   await page.getByRole('button', { name: /Združi izbrane \(2\)/ }).click();
+          |                                                                    ^
+      132 |   await expect(page.getByRole('heading', { level: 1, name: 'Združi kontakte' })).toBeVisible();
+      133 | }
+      134 |
+        at openMerge (/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:131:68)
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us020-026-increment2.spec.ts:250:3
+
+    Error Context: test-results/acceptance/us020-026-increment2-EX-02-19468--smaller-id-is-the-Survivor-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us020-026-increment2-EX-02-19468--smaller-id-is-the-Survivor-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us020-026-increment2-EX-02-19468--smaller-id-is-the-Survivor-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  14 failed
+    [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action 
+    [chromium] › acceptance/us003-005-contact.spec.ts:166:1 › AC-004-04 typing komp suggests kompetenca of the Group; the new key kompetentnost can be saved 
+    [chromium] › acceptance/us003-005-contact.spec.ts:205:1 › AC-004-08 the key projekt of another Group is not suggested in Acme 
+    [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme 
+    [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:88:1 › AC-024-01 three Contacts sharing ana@acme.com are one certain set with the reason 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:108:1 › AC-024-10 without duplicates "No duplicates found" is shown 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:135:1 › AC-026-01 the merge screen shows both; first name is preselected from A, phone from B 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:147:1 › AC-026-03 two values of kompetenca need a choice before the merge 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:164:1 › AC-026-05 and AC-026-12 "Združi" asks for confirmation; without it nothing is merged 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:181:1 › EX-026-02 a value all Contacts share is preselected and needs no choice 
+    [chromium] › acceptance/us020-026-increment2.spec.ts:196:1 › EX-026-03 with equal creation times the Contact with the smaller id is the Survivor 
+  81 passed (2.9m)
+finished
