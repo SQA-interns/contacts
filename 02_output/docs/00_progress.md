@@ -5,10 +5,10 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S5 /implement US-016
+- Session: S5 /implement US-004
 - Result: done
-- Gate: DoD-S of US-016 passed in part: DoD-S-01 (the 15 frozen backend tests and the UI tests wait for US-014, US-012, US-007), DoD-S-05 (no screenshots or accessibility scan) and DoD-S-07 (one commit over the size limit) are open, see D-47
-- Notes for the next session: Backend: `HistoryWriter` (only way to write entries, joins the caller's transaction), `HistoryRepository`, `HistoryQueryService`, `HistoryController` (`GET .../contacts/{c}/history?page`, 25 per page), `ContactChanges`, `HistoryAction`; `ContactService` writes `CONTACT_CREATED` and `CONTACT_EDITED` (no entry when nothing changed). Later stories add their actions through `HistoryWriter.write` (make it package-visible methods per action; details shapes in D-47). `ApiExceptionHandler` answers 405 for writes on `/history/**`. Frontend: `api/history.ts`, `ContactHistoryTab` (shows `details.changes` and `details.values`; other actions show action, time and user only, so US-004/005/011..15 add their detail lines), tabs on `ContactPage` (Owner, Editor). Backend quality (`-Pquality`: Spotless, Checkstyle, SpotBugs, PMD) clean; frontend prettier, eslint, tsc and 135 unit tests green; gitleaks clean. Re-check after US-014, US-012, US-007: `Us016HistoryAcceptanceIT`, `us016-019-history-language.spec.ts`. Run `./mvnw -Pquality spotless:apply` before committing Java (plain `spotless:apply` does nothing).
+- Gate: DoD-S of US-004 passed in part: DoD-S-01 (4 of 20 frozen backend tests wait for US-014 and US-009, the UI tests for US-007), DoD-S-05 (no screenshots or accessibility scan), see D-48
+- Notes for the next session: Backend: `AttributeService` (replace by diff, one History entry per pair via `HistoryWriter.attributeChanged`), `AttributeRepository`, `AttributeCheck` (R-004-02..04), `AttributeChanges` (diff); `ContactService.create/update` take the pairs (null on edit keeps them) and merge their errors with BR-06. Version snapshot includes Attributes. Frontend: `AttributeEditor` inside `ContactForm` (props `groupId`; `onSubmit(values, attributes)`), suggestions from `getAttributeKeys` (`GET /groups/{g}/facets`, US-009 must return `attributeKeys`). Tags are still not stored (US-005). Backend quality (`-Pquality` spotless, checkstyle, PMD, SpotBugs) clean; frontend prettier, eslint, tsc and 145 unit tests green. Re-check after US-014, US-009, US-007: `Us004AttributeAcceptanceIT` (ac_004_04, 07, 08, 09), the `us003-005-contact.spec.ts` tests. gitleaks flags two old log files, see D-48 (i).
 
 ## Next
 - Command: /implement US-004
@@ -20,7 +20,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-001 | 1 | done | passed (DoD-S-07: two subjects over 72 characters) |
 | US-002 | 1 | done | passed (DoD-S-01: EX-002-06/07 wait for US-020/US-014, D-42; DoD-S-07: one subject over 72 characters) |
 | US-003 | 1 | done | passed in part (DoD-S-01: frozen tests wait for US-007, US-014, US-004, US-005; DoD-S-05 screens; DoD-S-07: size, D-46) |
-| US-004 | 1 | ready | — |
+| US-004 | 1 | done | passed in part (DoD-S-01: AC-004-04/07/08/09 wait for US-009, US-014; DoD-S-05 screens, D-48) |
 | US-005 | 1 | ready | — |
 | US-006 | 1 | ready | — |
 | US-007 | 1 | ready | — |

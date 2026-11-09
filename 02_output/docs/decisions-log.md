@@ -524,3 +524,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-48: Readings of US-004 made while implementing, and frozen tests that wait for later stories
+- Timestamp: 2026-11-09
+- Session: S5 /implement US-004
+- Class: open
+- Type: non-blocking
+- Trigger: points the story, the specification and the contract leave open, and DoD-S items not met. (a) `attributes` in the Contact body: absent (`null`) keeps the stored pairs on an edit and means none on create; `[]` removes all (the form always sends the list). (b) Keys and values are trimmed before the checks; field errors are named `attributes[i].key`, `attributes[i].value` and `attributes` (limit), all returned together with the Contact field errors (422 `validation.failed`). (c) `details` of the History entries: `ATTRIBUTE_ADDED` `{key, new}`, `ATTRIBUTE_CHANGED` `{key, old, new}`, `ATTRIBUTE_REMOVED` `{key, old}`; one entry per pair, written in the transaction of the save, after `CONTACT_EDITED`. A save that changes only Attributes raises the version and writes a Version (R-004-07). (d) Pairs are listed ordered by key ignoring case. The Version snapshot now carries the Attributes (it carried `[]`). (e) Key suggestions read `GET /groups/{g}/facets` (`attributeKeys`), which US-009 builds; until then the request fails and the form shows no suggestions (the query runs only when a pair exists). (f) `ContactInput` keeps accepting `tags` without storing them (D-46, US-005). (g) DoD-S-01: 16 of 20 frozen `Us004AttributeAcceptanceIT` tests pass; AC-004-07 and AC-004-09 wait for Members (US-014), AC-004-04 and AC-004-08 for the facets endpoint (US-009). The frozen UI tests were not run (no contact list before US-007). Other frozen classes show the same counts as before (US-003 19 of 29, US-016 15 of 15, US-018 14 of 21 fail). (h) DoD-S-05: no screenshots or accessibility scan of the Attribute editor, the Contact screens cannot be reached before US-007. (i) DoD-S-07: the backend `feat` commit has 385 changed lines in 8 files (within limits); gitleaks reports 2 findings in `02_output/logs/backend-verify.log` and `backend-check.log` of commit d6ac788 (log files, not from this session, not changed here; for review).
+- Options: 1 (default) as written. 2 ask the human per item.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
