@@ -93,6 +93,28 @@ Not done: **`DELETE /me` and the refusal of a token of a deleted account against
 | F-23 | Low | Open | the failing `getUser` now cannot be a missing key or role at the first sign-in (it worked); an outage of the Admin API is still answered by the container, not by `ApiExceptionHandler` |
 | F-19..F-22, F-24, F-25 | Low | Open | not changed; F-19 still waits for the human (D-68 d) |
 
+## Fifth look: the account deletion against the real project (session S13, 2026-11-09)
+
+Call: `/review INC-2` with no outcomes in words. Nothing in the project changed since S12 (`HEAD` `7434e15`, tree clean), so the code, the screens and the other findings are not re-read. This session looked at what the human's stack recorded since S12. Evidence: `logs/review4-INC-2/evidence.txt` (no token, no e-mail, no name).
+
+| Check | Method | Result |
+|---|---|---|
+| What the human did | access log of the TLS proxy, backend log, `select count(*)` of the tables | after the first sign-in (20:25:59, 20:26:05) the same person called `GET /groups` 200 at 20:30:00, `GET /me` 200 at 20:30:02 and **`DELETE /api/v1/me` 204 at 20:30:06**. `app_user` is back to **0** rows (it was 1); no Group, Member or History entry. The backend log has no error and no "token rejected" line after the S12 probes (those at 20:27:37 are mine) |
+| What the 204 shows | `AccountService.deleteAccount`, `FirebaseAccountDirectory.delete` | the Firebase call is the last step of the transaction and every error other than `USER_NOT_FOUND` throws `IllegalStateException`, which rolls the database back (R-021-01). The row is gone and the answer is 204, so the Admin API accepted `deleteUser` for the account that `getUser` had found 4 minutes before: the service account has the right for deletion too. This is the second of the three results of D-70 (c). The Firebase console was not seen by me; the human can look at Authentication, Users |
+| Refused token of the deleted account | access log after 20:30:06 | **no call at all after the `DELETE`**: the app signs out after a successful deletion and the human did not replay a copied call. So no answer of the backend to a token of a deleted account exists. This is the third result of D-70 (c), **not shown** |
+
+What the open third result can still be. `exists` maps only `AuthErrorCode.USER_NOT_FOUND` to "no account" (`FirebaseAccountDirectory.java:38-43`); if the real Admin API gave another code for a deleted uid, the filter would throw `IllegalStateException` and the call would fail with 500 instead of 401 (the F-23 path). Either way no User row is created and no data is reached: the case fails closed, as the emulator shows 401 (live in S6 and S9). Written here as evidence for a decision, not as a lowering: lowering a High needs a blocking decision (`severity-scale.md`).
+
+Not done: the replay of a token of a deleted account; the Firebase console; everything listed as not done in S12. Data changed by this session: none in the project; the files under `logs/review4-INC-2/` and the two documents.
+
+### Status after the fifth look
+
+| ID | Severity | Status | Evidence |
+|---|---|---|---|
+| F-14 | **High** | **Open: two of three results shown** | shown against the real project: the first sign-in of a new person (S12) and `DELETE /me` 204 with the database emptied (this look). Not shown: that a token of the deleted account is refused (R-021-05) |
+| F-26 | Critical | Closed (S12) | unchanged |
+| F-23, F-19..F-22, F-24, F-25 | Low | Open | not changed |
+
 ## Findings
 
 | ID | Severity | Story | Finding |
@@ -149,11 +171,13 @@ The first column of status is that of the first review (S6); the second is that 
 | DoD-I | Result | Evidence |
 |---|---|---|
 | DoD-I-01 | Met as far as it can be | every story of INC-2 is "passed" or "passed in part"; the open parts are the known frozen tests (F-08) and F-22 |
-| DoD-I-02 | **Not met** | F-26 (Critical) is closed (S12). F-14 (High) is open: the first sign-in works against the real Firebase project, `DELETE /me` and the refusal of the token of a deleted account are not shown |
+| DoD-I-02 | **Not met** | F-26 (Critical) is closed (S12). F-14 (High) is open: against the real Firebase project the first sign-in works (S12) and `DELETE /me` answers 204 (S13); the refusal of the token of the deleted account is not shown |
 | DoD-I-03 | Met | the rebuilt stack runs; Group Trash, account deletion, Versions with restore, duplicate search, dismissal and merge work at runtime (two runs of the same probe script, 51 screenshots); since S12 a real person has also signed in against the production stack (`GET /groups` and `GET /me` 200); account deletion against real Firebase is still the open part of F-14 |
 | DoD-I-04 | Met with exceptions | 51 screenshots at 375, 768 and 1440 px, no overflow, one `h1` each, structure and wording as in the wireframes; deviations are F-20 and F-21 |
 
 ## Handover
+
+**S13 (fifth look):** the human deleted the real account (`DELETE /me` 204, `app_user` empty): second of the three results of D-70 (c). F-14 (High) stays open on the third: nobody replayed a token of the deleted account, and the only account is gone. Two ways to close it, the human chooses: (A) the steps of the S12 paragraph below with another throw-away account: register and sign in, copy one call as cURL **before** deleting, delete in "Moj račun", run the cURL in your own terminal within the hour of its token, tell `/review INC-2` "401" (or the status you got); the review checks the access log. (B) Accept the gap with a blocking decision that lowers F-14: the evidence is in the S13 section (first sign-in and deletion shown on the real project; the open case fails closed, no row is created, no data is reached, the emulator shows 401); that is the human's decision and the review does not make it. The next command stays `/review INC-2`; no code is waiting for `/implement`.
 
 **S12 (fourth look):** F-26 (Critical) is closed: the human's real sign-in reached the backend (`GET /groups` 200, `GET /me` 200, one `app_user` row, no rejected token), and the Admin API accepted the service account for `getUser`. F-14 (High) stays open on two results: `DELETE /me` and the refusal of the token of a deleted account. `DoD-I-02` is therefore still not met. The skill names `/implement <story>` for an open High; there is no code to change for F-14 (as in S9), so the next command is `/review INC-2` again, once the human has done the following with a throw-away account, not the account they want to keep: (1) register a second person and sign in; in the browser's network tab copy one call of the app as cURL (for example `GET /api/v1/me`; the copy holds the token, keep it on your machine, do not paste it anywhere); (2) open "Moj račun" and "Izbris računa" and confirm: the app signs out and shows the sign-in, and the person must be gone from the Firebase console (Authentication, Users); (3) run the copied cURL in your own terminal within the hour: the answer must be 401 `auth.token_invalid`, and `select count(*) from app_user` must still be the count of the first person (the deleted one's row is removed by the deletion, none comes back). Start `/review INC-2` with the three outcomes in words ("deleted, gone from console, 401, count 1"); the review checks the access log, the backend log and the count. No token or password is to be pasted anywhere (the app itself does not keep the token after the sign-out, so the copied call is the only way to replay it). If step (1) fails with 500 or the account stays in Firebase, the role of the service account is the first thing to look at (D-70 b); then `/implement US-021` with the log line. Everything else of the S10 handover about the TLS proxy, CORS and `X-Forwarded-Proto` holds.
 

@@ -1,0 +1,31 @@
+# Evidence of the fifth look at INC-2 (S13, 2026-11-09 20:31:07 UTC), no token, no e-mail, no name
+
+## TLS proxy access log of the API (time, method, path, status; user agent dropped)
+[09/Nov/2026:20:10:45 +0000] "OPTIONS /api/v1/groups 200
+[09/Nov/2026:20:10:45 +0000] "GET /api/v1/groups 401
+[09/Nov/2026:20:10:55 +0000] "GET /api/v1/groups 401
+[09/Nov/2026:20:11:25 +0000] "GET /api/v1/groups 401
+[09/Nov/2026:20:11:48 +0000] "GET /api/v1/groups 401
+[09/Nov/2026:20:14:10 +0000] "GET /api/v1/groups 401
+[09/Nov/2026:20:25:59 +0000] "OPTIONS /api/v1/groups 200
+[09/Nov/2026:20:25:59 +0000] "GET /api/v1/groups 200
+[09/Nov/2026:20:26:05 +0000] "OPTIONS /api/v1/me 200
+[09/Nov/2026:20:26:05 +0000] "GET /api/v1/me 200
+[09/Nov/2026:20:30:00 +0000] "GET /api/v1/groups 200
+[09/Nov/2026:20:30:02 +0000] "GET /api/v1/me 200
+[09/Nov/2026:20:30:06 +0000] "DELETE /api/v1/me 204
+
+## backend log: rejected tokens, answers 4xx/5xx, errors (the lines at 20:27:37 are the reviewer's own probes of S12)
+2026-11-09T20:27:37.633Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/readiness
+2026-11-09T20:27:37.654Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /actuator/health
+2026-11-09T20:27:37.664Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /v3/api-docs
+2026-11-09T20:27:37.672Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/me
+2026-11-09T20:27:37.682Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.c.security.FirebaseTokenFilter         : token rejected on GET /api/v1/me: FirebaseAuthException <- JsonParseException
+2026-11-09T20:27:37.683Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/me
+2026-11-09T20:27:37.691Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 403 to GET /api/v1/me
+
+## database counts (no personal column read)
+app_user|0
+contact_group|0
+member|0
+history_entry|0

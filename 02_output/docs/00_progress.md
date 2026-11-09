@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S12 /review INC-2 (the human reports a successful sign-in)
+- Session: S13 /review INC-2
 - Result: done
-- Gate: DoD-I not passed (F-14 High open: `DELETE /me` and the refusal of a deleted account's token are not shown against the real Firebase project)
-- Notes for the next session: F-26 (Critical) is CLOSED. Seen on the machine, not taken from the statement: after the rebuild the human's real calls `GET /groups` and `GET /me` answered 200, `app_user` holds one row created in the same second as the first 200, no rejected-token line in the backend log. That also shows `getUser` accepted the service account (first of the three results of D-70 c). F-14 stays open on two results: `DELETE /me` and the 401 of the deleted account's token; `docs/04_review-INC-2.md` ("Handover", S12) says step by step what the human does with a throw-away account (copy one call as cURL before deleting, delete in "Moj račun", replay the cURL, expect 401). If the deletion fails, look at the role of the service account (D-70 b) and run `/implement US-021`. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12. Evidence: `logs/review3-INC-2/`.
+- Gate: DoD-I not passed (F-14 High open: the refusal of a deleted account's token is not shown against the real Firebase project)
+- Notes for the next session: seen in the proxy and backend logs, not told: after S12 the human called `DELETE /api/v1/me` (204, 20:30:06) and `app_user` is empty, so the Admin API accepted `deleteUser`: second of the three results of D-70 (c). No call followed the deletion, so no token of the deleted account was replayed (third result). F-26 stays closed. The review's "Handover" (S13) gives the human two ways: (A) repeat with a throw-away account and replay a copied cURL (expect 401), or (B) a blocking decision that lowers F-14, with the evidence in the S13 section; the review does not make that decision. No code waits for `/implement`. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12. Evidence: `logs/review4-INC-2/`.
 
 ## Next
 - Command: /review INC-2
-- Waiting for: the human's account deletion and replay of the token (D-70 c, "Handover" of the review); D-68 d (F-19)
+- Waiting for: the human's choice (A) replay of a deleted account's token, or (B) a decision on F-14 (D-70 c); D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
