@@ -1,0 +1,299 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-09T19:31:27.347Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : Starting ContactGroupsApplication v1.0.0 using Java 21.0.8 with PID 1 (/app/app.jar started by app in /app)
+2026-11-09T19:31:27.349Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : The following 1 profile is active: "local"
+2026-11-09T19:31:28.097Z  INFO 1 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-11-09T19:31:28.104Z  INFO 1 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-09T19:31:28.104Z  INFO 1 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-09T19:31:28.114Z  INFO 1 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 730 ms
+2026-11-09T19:31:28.364Z  INFO 1 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://postgres:5432/contactgroups_test (PostgreSQL 17.6)
+2026-11-09T19:31:28.384Z  INFO 1 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-09T19:31:28.385Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.006s)
+2026-11-09T19:31:28.390Z  INFO 1 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-09T19:31:28.408Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-09T19:31:28.410Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-09T19:31:28.425Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-09T19:31:28.439Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-09T19:31:28.444Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.015s)
+2026-11-09T19:31:28.723Z  INFO 1 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-09T19:31:29.038Z  INFO 1 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-09T19:31:29.067Z  INFO 1 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-11-09T19:31:29.074Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : Started ContactGroupsApplication in 1.924 seconds (process running for 2.208)
+2026-11-09T19:31:29.107Z  WARN 1 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-09T19:31:31.092Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09T19:31:31.092Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-09T19:31:31.093Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-09T19:31:31.129Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-09T19:31:31.139Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@183e4a01
+2026-11-09T19:31:31.141Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-09T19:31:34.584Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/readiness
+2026-11-09T19:31:42.430Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 403 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates
+2026-11-09T19:31:42.436Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 403 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates/dismissals
+2026-11-09T19:31:42.442Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 403 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/merges
+2026-11-09T19:31:42.447Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 403 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/contacts/088cb52c-8f93-44f5-b2ef-e0f428af679e/versions
+2026-11-09T19:31:42.453Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 403 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/contacts/088cb52c-8f93-44f5-b2ef-e0f428af679e/versions/1/restore
+2026-11-09T19:31:42.458Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 403 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/trash
+2026-11-09T19:31:42.468Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates
+2026-11-09T19:31:42.471Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates
+2026-11-09T19:31:42.482Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/48dd3e90-8c78-480c-9a58-d171fa7eb23c/merges
+2026-11-09T19:31:42.565Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/merges
+2026-11-09T19:31:42.590Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates/dismissals
+2026-11-09T19:31:42.598Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates/dismissals
+2026-11-09T19:31:42.609Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates/dismissals
+2026-11-09T19:31:42.615Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/contacts/zzz/versions
+2026-11-09T19:31:42.621Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/contacts/088cb52c-8f93-44f5-b2ef-e0f428af679e/versions/abc
+2026-11-09T19:31:42.626Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/contacts/088cb52c-8f93-44f5-b2ef-e0f428af679e/versions/99999999999
+2026-11-09T19:31:42.633Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/contacts/088cb52c-8f93-44f5-b2ef-e0f428af679e/versions/-1/compare
+2026-11-09T19:31:42.771Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/trash
+2026-11-09T19:31:42.776Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/contacts
+2026-11-09T19:31:42.781Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/192ab659-86bf-4d43-999f-4bbb786ff148/duplicates
+2026-11-09T19:31:42.800Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/group-trash/192ab659-86bf-4d43-999f-4bbb786ff148/restore
+2026-11-09T19:31:42.805Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/group-trash/192ab659-86bf-4d43-999f-4bbb786ff148/restore
+2026-11-09T19:31:42.809Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/group-trash/zzz/restore
+2026-11-09T19:31:42.819Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to POST /api/v1/group-trash/192ab659-86bf-4d43-999f-4bbb786ff148/restore
+2026-11-09T19:31:42.831Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/me
+2026-11-09T19:31:42.833Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+2026-11-09T19:31:42.847Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 401 to DELETE /api/v1/me
+2026-11-09T19:31:42.934Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /actuator
+2026-11-09T19:31:42.935Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /actuator/health
+2026-11-09T19:31:42.936Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /actuator/env
+2026-11-09T19:31:42.937Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/readiness
+2026-11-09T19:31:42.938Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/liveness
+2026-11-09T19:31:42.939Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /v3/api-docs
+2026-11-09T19:32:31.871Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5ebadc19-3833-4b38-84cf-d2be1beb8181/contacts/79ab39c9-1e5c-40c7-bb82-02cc327ca255
+2026-11-09T19:32:55.041Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5ebadc19-3833-4b38-84cf-d2be1beb8181/contacts/79ab39c9-1e5c-40c7-bb82-02cc327ca255
+2026-11-09T19:33:18.308Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5ebadc19-3833-4b38-84cf-d2be1beb8181/contacts/79ab39c9-1e5c-40c7-bb82-02cc327ca255
+2026-11-09T19:34:02.314Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/me
+2026-11-09T19:34:22.277Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@183e4a01 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.283Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6cad2eb5 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.284Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@dbd8c0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.285Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7d9044db (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.285Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7ccd149e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.285Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@79904534 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.286Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@27539f1e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.286Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@581ab1b3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.287Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@4c6727ca (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:22.287Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@37a56297 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-11-09T19:34:52.290Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] o.s.b.j.h.DataSourceHealthIndicator      : DataSource health check failed
+
+org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:84) ~[spring-jdbc-7.0.10.jar!/:7.0.10]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:362) ~[spring-jdbc-7.0.10.jar!/:7.0.10]
+	at org.springframework.boot.jdbc.health.DataSourceHealthIndicator.getProduct(DataSourceHealthIndicator.java:113) ~[spring-boot-jdbc-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.jdbc.health.DataSourceHealthIndicator.doDataSourceHealthCheck(DataSourceHealthIndicator.java:96) ~[spring-boot-jdbc-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.jdbc.health.DataSourceHealthIndicator.doHealthCheck(DataSourceHealthIndicator.java:90) ~[spring-boot-jdbc-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.contributor.AbstractHealthIndicator.health(AbstractHealthIndicator.java:68) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.contributor.HealthIndicator.health(HealthIndicator.java:25) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.Contributor$Blocking.getDescriptor(Contributor.java:136) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.Contributor$Blocking.getDescriptor(Contributor.java:114) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getDescriptorAndLogIfSlow(HealthEndpointSupport.java:160) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getDescriptor(HealthEndpointSupport.java:133) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getAggregateDescriptor(HealthEndpointSupport.java:145) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getDescriptor(HealthEndpointSupport.java:129) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getResult(HealthEndpointSupport.java:98) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getResult(HealthEndpointSupport.java:70) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointWebExtension.health(HealthEndpointWebExtension.java:73) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointWebExtension.health(HealthEndpointWebExtension.java:61) ~[spring-boot-health-4.0.9.jar!/:4.0.9]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:281) ~[spring-core-7.0.10.jar!/:7.0.10]
+	at org.springframework.boot.actuate.endpoint.invoke.reflect.ReflectiveOperationInvoker.invoke(ReflectiveOperationInvoker.java:64) ~[spring-boot-actuator-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredOperation.invoke(AbstractDiscoveredOperation.java:50) ~[spring-boot-actuator-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.webmvc.actuate.endpoint.web.AbstractWebMvcEndpointHandlerMapping$ServletWebOperationAdapter.handle(AbstractWebMvcEndpointHandlerMapping.java:335) ~[spring-boot-webmvc-4.0.9.jar!/:4.0.9]
+	at org.springframework.boot.webmvc.actuate.endpoint.web.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(AbstractWebMvcEndpointHandlerMapping.java:464) ~[spring-boot-webmvc-4.0.9.jar!/:4.0.9]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:892) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622) ~[tomcat-embed-core-11.0.27.jar!/:6.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874) ~[spring-webmvc-7.0.10.jar!/:7.0.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710) ~[tomcat-embed-core-11.0.27.jar!/:6.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59) ~[tomcat-embed-websocket-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:235) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:493) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:354) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:86) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:132) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:132) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:86) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:101) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at si.contactgroups.security.RateLimitFilter.doFilterInternal(RateLimitFilter.java:59) ~[!/:1.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at si.contactgroups.security.HttpsFilter.doFilterInternal(HttpsFilter.java:29) ~[!/:1.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at si.contactgroups.security.RequestSizeFilter.doFilterInternal(RequestSizeFilter.java:43) ~[!/:1.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at si.contactgroups.security.SecurityLogger.doFilterInternal(SecurityLogger.java:28) ~[!/:1.0.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:91) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:76) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:231) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:244) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:337) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:141) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.8.jar!/:7.0.8]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-7.0.10.jar!/:7.0.10]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:164) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:411) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1308) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2202) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:947) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:481) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74) ~[tomcat-embed-core-11.0.27.jar!/:11.0.27]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+Caused by: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30007ms (total=0, active=0, idle=0, waiting=2)
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:714) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:184) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:142) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:127) ~[HikariCP-7.0.2.jar!/:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160) ~[spring-jdbc-7.0.10.jar!/:7.0.10]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118) ~[spring-jdbc-7.0.10.jar!/:7.0.10]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-7.0.10.jar!/:7.0.10]
+	... 173 common frames omitted
+Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:439) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:52) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:295) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at org.postgresql.Driver.makeConnection(Driver.java:437) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at org.postgresql.Driver.connect(Driver.java:305) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:373) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:210) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:752) ~[HikariCP-7.0.2.jar!/:na]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:731) ~[HikariCP-7.0.2.jar!/:na]
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[na:na]
+	... 1 common frames omitted
+Caused by: java.net.UnknownHostException: postgres
+	at java.base/sun.nio.ch.NioSocketImpl.connect(Unknown Source) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(Unknown Source) ~[na:na]
+	at java.base/java.net.Socket.connect(Unknown Source) ~[na:na]
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:270) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at org.postgresql.core.PGStream.<init>(PGStream.java:131) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:221) ~[postgresql-42.7.14.jar!/:42.7.14]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:367) ~[postgresql-42.7.14.jar!/:42.7.14]
+	... 14 common frames omitted
+
+2026-11-09T19:34:52.315Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-5] o.s.b.h.a.e.HealthEndpointSupport        : Health contributor org.springframework.boot.jdbc.health.DataSourceHealthIndicator (db) took 30041ms to respond
+2026-11-09T19:34:52.513Z  WARN 1 --- [contact-groups-backend] [nio-8080-exec-3] o.s.b.h.a.e.HealthEndpointSupport        : Health contributor org.springframework.boot.jdbc.health.DataSourceHealthIndicator (db) took 20203ms to respond
+2026-11-09T19:35:04.119Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups/g1/contacts/c1/versions

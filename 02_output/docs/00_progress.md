@@ -5,10 +5,10 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S8 /fix F-13
+- Session: S9 /review INC-2 (re-review of the fixes `1a8bb5e..HEAD`)
 - Result: done
-- Gate: F-13 fixed (D-77); DoD-I-02 still not met until F-14 is shown against the real Firebase project (D-70 b, c); no new Critical or High
-- Notes for the next session: F-13 fixed: the name link of the Contact list shows last name, else first name, else e-mail, else "(brez imena)" (D-77); frontend `vitest` 376 pass; live axe/overflow check `ui-checks/contact-list-no-last-name.stack.spec.ts` passes in Chromium and WebKit at 375/768/1440 px. WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account, put the key on the server (readable by uid 10001), set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, and show a first sign-in and `DELETE /me` against the real project; /review must not close F-14 without that. Still open from `docs/04_review-INC-2.md`: F-19 needs the human's confirmation (D-68 d); Low items F-06, F-07, F-11, F-12 untouched; then `/review INC-2`. UI runs need `scripts/test-stack.sh up` (it is down now). Spotless: `./mvnw -B -Pquality spotless:apply`. Commit subjects: count the hash too, at most 72 characters.
+- Gate: DoD-I not met: F-14 (High) open, fixed in code but not shown against the real Firebase project (D-70 b, c); F-15, F-16, F-17, F-18 and the carried F-03, F-04, F-13 closed (live probes, 51 screenshots); new Low F-23, F-24
+- Notes for the next session: the next command is `/review INC-2`, not `/implement US-021` as the skill's rule says, because the code of F-14 is done and there is nothing for `/implement` to change; the human may still ask for D-70 option 2 or the 503 of F-23 with `/implement US-021`. WAITS FOR THE HUMAN (D-70 b, c): create the Firebase service account (role "Firebase Authentication Admin"), put the key on the server readable by uid 10001, set `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`, show a first sign-in (`GET /me` 200), `DELETE /me` and a refused token of a deleted account against the real project; the next review closes F-14 only with that. F-19 needs the human's answer (D-68 d). Low and for the release notes: F-20..F-24, F-06..F-09, F-11, F-12 (F-24: ADR-04, `secrets.env.example`, `configuration.schema.json` and README still say no service account is needed). Review evidence: `logs/review2-INC-2/`, `logs/screens/review2-INC-2/`. UI runs need `scripts/test-stack.sh up` (it is down now). Commit subjects: count the hash too, at most 72 characters.
 
 ## Next
 - Command: /review INC-2

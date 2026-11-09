@@ -1,0 +1,115 @@
+const API = 'http://localhost:8080/api/v1', EM = 'http://localhost:9099', P = 'demo-contact-groups', PW = 'Geslo1234';
+const u = (l) => `${l}.${Date.now().toString(36)}${Math.random().toString(36).slice(2,6)}@acme.com`;
+async function em(method, path, body, admin) {
+  const r = await fetch(EM + path, { method, headers: { 'Content-Type': 'application/json', ...(admin ? { Authorization: 'Bearer owner' } : {}) }, body: body && JSON.stringify(body) });
+  const t = await r.text(); return t ? JSON.parse(t) : null;
+}
+async function api(user, method, path, body, raw) {
+  const r = await fetch(API + path, { method, headers: { ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}), ...(user ? { Authorization: 'Bearer ' + user.token } : {}) }, body: raw ?? (body === undefined ? undefined : JSON.stringify(body)) });
+  const t = await r.text(); let b = t; try { b = t ? JSON.parse(t) : null } catch {}
+  return { s: r.status, b };
+}
+async function mk(name, l) {
+  const email = u(l);
+  const a = await em('POST', `/identitytoolkit.googleapis.com/v1/projects/${P}/accounts`, { email, password: PW, displayName: name, emailVerified: true }, true);
+  const t = await em('POST', '/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=fake-api-key', { email, password: PW, returnSecureToken: true });
+  const user = { email, name, uid: a.localId, token: t.idToken };
+  await api(user, 'GET', '/me'); return user;
+}
+const show = (label, r) => console.log(label.padEnd(58), r.s, typeof r.b === 'string' ? r.b.slice(0,80) : JSON.stringify(r.b)?.slice(0, 150));
+const ana = await mk('Ana Novak', 'ana'), boris = await mk('Boris Kos', 'boris'), viola = await mk('Viola V', 'viola'), eva = await mk('Eva Other', 'eva');
+const g = (await api(ana, 'POST', '/groups', { name: 'Acme' })).b;
+await api(ana, 'POST', `/groups/${g.id}/invitations`, { email: boris.email, role: 'EDITOR' });
+await api(ana, 'POST', `/groups/${g.id}/invitations`, { email: viola.email, role: 'VIEWER' });
+await api(boris, 'GET', '/groups'); await api(viola, 'GET', '/groups');
+const og = (await api(eva, 'POST', '/groups', { name: 'Other' })).b;
+const A = (await api(ana, 'POST', `/groups/${g.id}/contacts`, { firstName: 'Ana', lastName: 'Novak', email: 'ana@acme.com', company: 'Acme', tags: ['t1'], attributes: [{ key: 'k', value: 'v1' }] })).b;
+const B = (await api(boris, 'POST', `/groups/${g.id}/contacts`, { firstName: 'ana', email: 'ANA@acme.com', phone: '040 123 456', tags: ['t2'], attributes: [{ key: 'K', value: 'v2' }] })).b;
+const OC = (await api(eva, 'POST', `/groups/${og.id}/contacts`, { firstName: 'Zed', email: 'zed@x.si' })).b;
+console.log('--- role checks (viola=Viewer)');
+show('viewer GET duplicates', await api(viola, 'GET', `/groups/${g.id}/duplicates`));
+show('viewer POST dismissals', await api(viola, 'POST', `/groups/${g.id}/duplicates/dismissals`, { contactIds: [A.id, B.id] }));
+show('viewer POST merges', await api(viola, 'POST', `/groups/${g.id}/merges`, { survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: {}, attributes: [] }));
+show('viewer GET versions', await api(viola, 'GET', `/groups/${g.id}/contacts/${A.id}/versions`));
+show('viewer POST version restore', await api(viola, 'POST', `/groups/${g.id}/contacts/${A.id}/versions/1/restore`, { version: 1 }));
+show('editor POST group trash', await api(boris, 'POST', `/groups/${g.id}/trash`, { name: 'Acme' }));
+show('outsider(eva) GET duplicates of Acme', await api(eva, 'GET', `/groups/${g.id}/duplicates`));
+show('no token GET duplicates', await api(null, 'GET', `/groups/${g.id}/duplicates`));
+show('eva merge with Contact of other Group', await api(eva, 'POST', `/groups/${og.id}/merges`, { survivorId: OC.id, contacts: [{ id: OC.id, version: 1 }, { id: A.id, version: 1 }], fields: {}, attributes: [] }));
+console.log('--- malformed merge bodies (ana)');
+const m = (b, raw) => api(ana, 'POST', `/groups/${g.id}/merges`, b, raw);
+show('empty object', await m({}));
+show('not json', await m(undefined, 'xx'));
+show('survivorId not uuid', await m({ survivorId: 'x', contacts: [] }));
+show('attributes [null]', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: {}, attributes: [null] }));
+show('attributes [{key:null,value:null}]', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: {}, attributes: [{ key: null, value: null }] }));
+show('attributes [{key:"k"}] (value missing)', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: {}, attributes: [{ key: 'k' }] }));
+show('no attributes chosen (k clashes)', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: { firstName: 'Ana' }, attributes: [] }));
+show('contacts [null]', await m({ survivorId: A.id, contacts: [null, null], fields: {}, attributes: [] }));
+show('version missing', await m({ survivorId: A.id, contacts: [{ id: A.id }, { id: B.id }], fields: {}, attributes: [] }));
+show('foreign contact id', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: OC.id, version: 1 }], fields: {}, attributes: [] }));
+show('fields with a 6000-char invented value', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: { notes: 'x'.repeat(6000) }, attributes: [{ key: 'k', value: 'v1' }] }));
+show('unknown property', await m({ survivorId: A.id, foo: 1, contacts: [], fields: {}, attributes: [] }));
+console.log('--- dismissals / versions malformed');
+const d = (b, raw) => api(ana, 'POST', `/groups/${g.id}/duplicates/dismissals`, b, raw);
+show('dismiss {}', await d({})); show('dismiss []', await d({ contactIds: [] })); show('dismiss [null]', await d({ contactIds: [null] }));
+show('dismiss foreign id', await d({ contactIds: [A.id, OC.id] }));
+show('versions of non-uuid contact', await api(ana, 'GET', `/groups/${g.id}/contacts/zzz/versions`));
+show('version abc', await api(ana, 'GET', `/groups/${g.id}/contacts/${A.id}/versions/abc`));
+show('version 99999999999', await api(ana, 'GET', `/groups/${g.id}/contacts/${A.id}/versions/99999999999`));
+show('version -1 compare', await api(ana, 'GET', `/groups/${g.id}/contacts/${A.id}/versions/-1/compare`));
+show('restore no body', await api(ana, 'POST', `/groups/${g.id}/contacts/${A.id}/versions/1/restore`));
+show('restore version null', await api(ana, 'POST', `/groups/${g.id}/contacts/${A.id}/versions/1/restore`, {}));
+show('DELETE version', await api(ana, 'DELETE', `/groups/${g.id}/contacts/${A.id}/versions/1`));
+show('PUT version', await api(ana, 'PUT', `/groups/${g.id}/contacts/${A.id}/versions/1`, {}));
+console.log('--- merge A+B (survivor A), then check');
+const ok = await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: { firstName: 'Ana', lastName: 'Novak', email: 'ana@acme.com', phone: '040 123 456', company: 'Acme' }, attributes: [{ key: 'k', value: 'v2' }] });
+show('merge ok', ok);
+show('same merge again (B in trash)', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 2 }, { id: B.id, version: 1 }], fields: {}, attributes: [] }));
+const hist = await api(ana, 'GET', `/groups/${g.id}/contacts/${A.id}/history`);
+console.log('survivor history actions:', JSON.stringify((hist.b.items ?? hist.b).map?.(e => e.action)));
+console.log('merged entry:', JSON.stringify((hist.b.items ?? hist.b).find?.(e => e.action === 'CONTACTS_MERGED'))?.slice(0, 500));
+console.log('--- unchanged survivor merge');
+const C = (await api(ana, 'POST', `/groups/${g.id}/contacts`, { firstName: 'Carl', lastName: 'Zed', email: 'carl@x.si', company: 'Z' })).b;
+const D = (await api(ana, 'POST', `/groups/${g.id}/contacts`, { email: 'carl@x.si' })).b;
+const r2 = await m({ survivorId: C.id, contacts: [{ id: C.id, version: 1 }, { id: D.id, version: 1 }], fields: { firstName: 'Carl', lastName: 'Zed', email: 'carl@x.si', company: 'Z' }, attributes: [] });
+show('merge subset', r2); console.log('versions of survivor:', JSON.stringify((await api(ana, 'GET', `/groups/${g.id}/contacts/${C.id}/versions`)).b));
+console.log('--- Group trash');
+show('trash with {}', await api(ana, 'POST', `/groups/${g.id}/trash`, {}));
+show('trash no body', await api(ana, 'POST', `/groups/${g.id}/trash`));
+show('trash wrong case', await api(ana, 'POST', `/groups/${g.id}/trash`, { name: 'acme' }));
+show('trash unknown prop', await api(ana, 'POST', `/groups/${g.id}/trash`, { name: 'Acme', x: 1 }));
+show('GET /group-trash before', await api(ana, 'GET', '/group-trash'));
+show('trash ok', await api(ana, 'POST', `/groups/${g.id}/trash`, { name: ' Acme ' }));
+show('trash again', await api(ana, 'POST', `/groups/${g.id}/trash`, { name: 'Acme' }));
+show('GET contacts after trash (ana)', await api(ana, 'GET', `/groups/${g.id}/contacts`));
+show('GET merges/dups after trash (boris)', await api(boris, 'GET', `/groups/${g.id}/duplicates`));
+show('GET /groups boris', await api(boris, 'GET', '/groups'));
+show('GET /group-trash boris(editor)', await api(boris, 'GET', '/group-trash'));
+show('GET /group-trash ana', await api(ana, 'GET', '/group-trash'));
+show('restore by boris', await api(boris, 'POST', `/group-trash/${g.id}/restore`));
+show('restore by eva', await api(eva, 'POST', `/group-trash/${g.id}/restore`));
+show('restore non-uuid', await api(ana, 'POST', `/group-trash/zzz/restore`));
+show('restore by ana', await api(ana, 'POST', `/group-trash/${g.id}/restore`));
+show('restore again', await api(ana, 'POST', `/group-trash/${g.id}/restore`));
+console.log('--- account deletion');
+show('boris DELETE /me', await api(boris, 'DELETE', '/me'));
+show('boris token after delete GET /me', await api(boris, 'GET', '/me'));
+show('boris token after delete GET /groups', await api(boris, 'GET', '/groups'));
+const h2 = await api(ana, 'GET', `/groups/${g.id}/contacts/${B.id}/history`);
+console.log('B history after boris deleted (emails):', JSON.stringify(((h2.b.items ?? h2.b) || []).map?.(e => [e.userName ?? e.user?.name, e.userEmail ?? e.user?.email])));
+show('ana (sole owner) DELETE /me', await api(ana, 'DELETE', '/me'));
+show('ana delete /me w/o token', await api(null, 'DELETE', '/me'));
+console.log('IDS', JSON.stringify({ g: g.id, A: A.id, B: B.id, ana: ana.email, boris: boris.email, viola: viola.email }));
+console.log('--- INC-1 carried findings (F-03)');
+for (const p of ['abc','0','-1','1.5','','99999999999','2'])
+  show(`activity page=${JSON.stringify(p)}`, await api(ana, 'GET', `/groups/${g.id}/activity?page=${p}`));
+for (const p of ['abc','0','1'])
+  show(`history page=${JSON.stringify(p)}`, await api(ana, 'GET', `/groups/${g.id}/contacts/${A.id}/history?page=${p}`));
+show('history non-uuid contact + bad page', await api(ana, 'GET', `/groups/${g.id}/contacts/zzz/history?page=abc`));
+console.log('--- real merge after fixes');
+show('merge A+B', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 1 }, { id: B.id, version: 1 }], fields: { firstName: 'Ana' }, attributes: [{ key: 'k', value: 'v1' }] }));
+show('merge again', await m({ survivorId: A.id, contacts: [{ id: A.id, version: 2 }, { id: B.id, version: 1 }], fields: {}, attributes: [] }));
+show('GET /health', { s: (await fetch('http://localhost:8080/health')).status, b: await (await fetch('http://localhost:8080/health')).text() });
+for (const p of ['/actuator','/actuator/health','/actuator/env','/health/readiness','/health/liveness','/v3/api-docs'])
+  { const r = await fetch('http://localhost:8080'+p); console.log(p.padEnd(30), r.status); }

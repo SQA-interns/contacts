@@ -17,6 +17,38 @@ Range: `333e0e1..HEAD` (`bec68c5`), 76 commits, stories US-020..US-026 of INC-2 
 
 Not done: no axe scan of my own (the implementing sessions report none Critical or Serious, D-62..D-68); I did not re-run the full backend and UI acceptance suites (their results are those of D-68 i and `logs/us026-*`); Firefox and WebKit not run; WF-14 "busy", WF-15 "restore refused", WF-16 "busy", WF-17 "dismissed" and WF-18 "confirm", "refused", "busy", "merged" states were not re-shot (the implementers' screens exist in `logs/screens/`); Viewer screens not re-shot. Data changed by this review: test users, Groups and Contacts in the test stack's Auth emulator and database; no other file outside the two docs, the screenshot folder and the two scripts.
 
+## Re-review after the fixes (session S9, 2026-11-09)
+
+Range of the fixes: `1a8bb5e..HEAD` (`67e5e01`), 29 commits of `/implement US-021`, `US-025`, `US-026` and `/fix F-17, F-18, F-03, F-04, F-13`. Reviewer: S9, who wrote none of it. The findings below are those of the first review (S6, text unchanged); this section says what became of each and adds the findings found now.
+
+| Check | Method | Result |
+|---|---|---|
+| Fix diffs | read `git diff 1a8bb5e..HEAD` for `src/main`, `docker-compose.prod.yml` and the changed front-end files; decisions D-69..D-77 | code of F-14, F-15, F-16, F-17, F-03, F-04, F-13 read; only the files the findings name were changed (ES-10); the refactors (`ContactRepository` constants, `MergeService.distinctTargets` split, `PageNumber` moved out of `SearchService`) serve a PMD or duplicate-code finding |
+| Test-first | `Red:` lines of every `feat` and `fix` commit of the fixes, and of all `feat` commits of `333e0e1..HEAD` | all present; each fix commit changes a test file or, for F-18, the new `scripts/check-decision-ids.sh` |
+| Live probes | `logs/review2-INC-2/probe.mjs` (my script of the first review, extended with F-03 and `/health` calls) against a freshly built test stack: Owner, Editor, Viewer, outsider; output `probe.out` | F-03, F-04, F-15, F-16 gone; every authorisation answer of the first review unchanged (below) |
+| Screens | `logs/review2-INC-2/shots.mjs` (Chromium, 375, 768, 1440 px), 51 screenshots in `logs/screens/review2-INC-2/` of WF-05 (list, menu), WF-14 (three states), WF-15, WF-16 (three states), WF-07 Versions (list, compare, restore), WF-17, WF-18, WF-06 (list), the Trash of a Contact; `scrollWidth <= clientWidth` and `h1` count on each; the file names `WF-08_trash-confirm_*` and `WF-12_trash-list_*` are the confirmation to move a Contact to the Trash and the Trash list of a Group (my label, not the wireframe ids) | no horizontal overflow and exactly one `h1` on all 51; no step failed |
+| F-13 / F-17 at runtime | the same script: visible links of the Contact list; texts with the role `status` after "move to Trash" and after "restore" | no empty link at 375, 768, 1440 px (names "Horvat", "horvat", "Novak", "ana"); `status` reads "Kontakt je v košu." and "Kontakt je obnovljen." at all three widths |
+| `/health` (D-76) | `curl` with the stack up and with the database container stopped | `{"status":"UP"}` 200; `{"status":"DOWN"}` 503 while PostgreSQL was stopped; `/health/readiness` and `/health/liveness` 404; `/actuator*` and `/v3/api-docs` 401 |
+| Production compose (D-70) | `docker compose -f docker-compose.prod.yml config` with every other required variable set | refuses with "set the path of the Firebase service-account file" when `GOOGLE_APPLICATION_CREDENTIALS` is unset |
+| Logs | backend log of the whole run (`logs/review2-INC-2/backend.log`, 299 lines) | no e-mail address, name or token; the only errors are the JDBC failures that my own `/health` test caused by stopping PostgreSQL |
+| Front-end unit tests | `npx vitest run` (`logs/review2-INC-2/vitest.log`) | 44 files, 376 tests, all pass |
+
+Not done: the backend `verify` and the UI acceptance suites were not re-run (results are those of D-70 e, D-72 c, D-75 c, D-76 c and D-77 b, D-73 d); Firefox and WebKit not run; no own axe scan (the implementing sessions report one for WF-06 in Chromium and WebKit, D-77 c); the Group shell and the Viewer screens not re-shot. A failing Firebase Admin call during a first sign-in could not be provoked: with the Auth emulator stopped, the emulator-verified token itself is refused (401) before `getUser` is reached. Data changed by this re-review: test users, Groups and Contacts of the test stack (taken down afterwards, `logs/review2-stack-down.log`), the files under `logs/review2-INC-2/`, `logs/screens/review2-INC-2/` and `logs/review2-stack-up.log`, and the two documents.
+
+### Status of the findings F-14..F-22
+
+| ID | Severity | Status | Evidence |
+|---|---|---|---|
+| F-14 | **High** | **Open: fixed in code, not shown against the real Firebase project** | `FirebaseCredentials.load` reads the key named by `GOOGLE_APPLICATION_CREDENTIALS`, `FirebaseConfig` passes it, `StartupGuard` refuses the `prod` profile without a readable key (`config/FirebaseCredentials.java`, `StartupGuard.java:24-35`); `docker-compose.prod.yml` mounts the file read-only and refuses to render without the variable; the unit tests have `Red:` lines and pass (D-70 e). The error message names the variable and never quotes the key file. What is still missing is the closing condition set by the first review and by D-70 (c): a first sign-in (`GET /me` 200), `DELETE /me` and a refused token of a deleted account against the real project. The emulator cannot show it. A service account, its role and the file's permissions for user 10001 are the human's (D-70 b). Not lowered: lowering a High needs a blocking decision (`severity-scale.md`) |
+| F-15 | Medium | **Closed** | live: `attributes: [null]` and `[{key:null,value:null}]` answer 422 `validation.failed` with the field `attributes`; no 500 in the log; test `f_15_a_null_attribute_or_key_answers_422_and_not_500` has its `Red:` |
+| F-16 | Medium | **Closed** | live: `{"contactIds":[null]}` 422 `validation.failed`, field `contactIds`; `{}`, `[]`, a foreign id still 404 `duplicate.not_found` |
+| F-17 | Medium | **Closed** | live: the `status` role carries the toast text after the move to Trash and after the restore at 375, 768, 1440 px; D-73 reports `E2E-05` and `E2E-06` passing in Chromium and WebKit (not re-run by me; Firefox not run) |
+| F-18 | Medium | **Closed** | `scripts/check-decision-ids.sh` reports "decision ids unique"; D-67 and D-68 each appear once (D-74) |
+| F-19 | Low | Open, waits for the human | D-68 (d) option 2; live again: a merge that leaves the Survivor unchanged keeps `version 1` and one Version |
+| F-20 | Low | Open | `WF-18_merge_tablet.png` and `WF-18_merge_desktop.png` of this run again show the "Prekliči / Združi" bar over table rows; not changed |
+| F-21 | Low | Open | not changed |
+| F-22 | Low | Open (release notes) | the fixes add two more subjects over 72 characters counted with the hash (`db4fb46` 75, `7262c2a` 76; D-70 f); no commit of the fixes is over 400 lines; history is not rewritten |
+
 ## Findings
 
 | ID | Severity | Story | Finding |
@@ -31,18 +63,27 @@ Not done: no axe scan of my own (the implementing sessions report none Critical 
 | F-21 | Low | US-002 (WF-05) | Group cards show the Role badge but not the "N kontaktov" line the wireframe draws under it (`WF-05_list_*.png` against `WF-05_group-list_desktop.png`). No rule asks for the number; a wireframe detail like F-07. The "Koš skupin" button is always shown while the wireframe note says only to a User who owns a Group; decided in D-62 (e), not a finding. |
 | F-22 | Low | US-020, US-021, US-022, US-024, US-026 | DoD-S-07 (`commits.md`): subject lines over 72 characters (D-62 k three, D-63 l one, D-66 m three) and commits over 400 lines (US-022 498, US-024 420, US-021 404, US-026 about 1,000: "Merge screen WF-18 …" holds screen, tests and both catalogs). All are recorded in the decisions; history is not rewritten. Release notes. |
 
+### New findings of the re-review
+
+| ID | Severity | Story | Finding |
+|---|---|---|---|
+| F-23 | Low | US-021 (US-001, US-018) | A failing Firebase Admin call during the first sign-in of a new person is not turned into an error answer. `FirebaseAccountDirectory.exists` throws `IllegalStateException` for every error other than `USER_NOT_FOUND` (`security/FirebaseAccountDirectory.java:42`) and `FirebaseTokenFilter` catches only `InvalidTokenException` and `EmailTakenException` (`security/FirebaseTokenFilter.java:58-80`), so with the Admin API unreachable or refusing the key the answer to `GET /me` of every new person comes from the servlet container, not from `ApiExceptionHandler` and its error format (the 500 body is not checked). Known persons are not affected (`findOrCreate` calls `exists` only for an unknown UID). Not demonstrated: with the emulator stopped the token itself is refused first. D-70 option 2 (503 `auth.unavailable`) names the cure and was not built. Low because it needs an outage or a wrong key, and a wrong key stops the start (`StartupGuard`) only when the file is unreadable, not when the role is missing; the latter appears only against the real project, which is F-14 |
+| F-24 | Low | US-021 (documentation) | The documents of the setup still say that no service account is needed: `docs/02_adr/ADR-04-authentication.md:18` ("no service account, `GOOGLE_APPLICATION_CREDENTIALS` is not needed"), `project/00_setup/secrets.env.example:21` ("none; not needed"), `02_contracts/configuration.schema.json` (no such variable, `additionalProperties: false`) and `README.md` (no step). Production now refuses to start without it. D-70 (d) records the override and leaves the documents to a later step; a person who deploys from ADR-04 or the example file meets the refusal first. For the release notes and the documentation step |
+
 ## Status of the findings of INC-1
 
-| ID | Severity | Status | Evidence |
-|---|---|---|---|
-| F-03 | Medium | **Open** | live: `GET /groups/{g}/activity?page=abc` still answers 500 |
-| F-04 | Medium | **Open** | live: `GET /health` answers `{"groups":["liveness","readiness"],"status":"UP"}` |
-| F-06, F-07 | Low | Open | not re-checked; WF-13 not changed in INC-2 |
-| F-08 | Low | Open, re-run at the release gate | known failures per D-68 (i): backend `EX-007-05`, `AC-018-09`; UI `AC-003-07`, `AC-004-04`, `AC-004-08`, `AC-005-06`, `AC-006-04`, `AC-014-03`, `AC-019-06`; plus F-17. The INC-2 frozen tests (US-020..US-026) pass per D-62..D-68. Not re-run by me |
-| F-09 | Low | Open (hygiene) | no new scaffolding commit in INC-2; all 36 `feat` commits have `Red:` |
-| F-10 | Medium | **Closed** (not reproduced) | Contact page at 375 px: `scrollWidth` 375 of 375 with a Contact with Attributes and a street |
-| F-11, F-12 | Low | Open, not re-checked | files not changed in INC-2 |
-| F-13 | Medium | **Open** | live: the Contact list at 1440 px has two links without text for Contacts without a last name |
+The first column of status is that of the first review (S6); the second is that of the re-review (S9).
+
+| ID | Severity | Status (S6) | Status (S9) | Evidence |
+|---|---|---|---|---|
+| F-03 | Medium | Open | **Closed** | live: `page` = `abc`, `0`, `-1`, `1.5`, empty, `99999999999` answer 400 `request.malformed` on the Activity and the History (also with a malformed Contact id); `page=2` 200 (D-75) |
+| F-04 | Medium | Open | **Closed** | live: `GET /health` is `{"status":"UP"}`; 503 `{"status":"DOWN"}` with the database stopped (D-76). ES-09 asks for "health and readiness information": `/health` now serves both and the separate probe paths are gone (404) |
+| F-06, F-07 | Low | Open | Open | not re-checked; WF-13 not changed |
+| F-08 | Low | Open, re-run at the release gate | Open | the frozen failures that were known: backend `EX-007-05` (D-76 c says `AC-018-09` now passes); UI `AC-003-07`, `AC-004-04`, `AC-004-08`, `AC-005-06`, `AC-006-04`, `AC-014-03`, `AC-019-06` (D-68 i); `E2E-05` and `E2E-06` pass since F-17 (D-73). Not re-run by me |
+| F-09 | Low | Open (hygiene) | Open | no scaffolding commit in the fixes; every `feat` and `fix` commit has `Red:` |
+| F-10 | Medium | Closed | Closed | — |
+| F-11, F-12 | Low | Open, not re-checked | Open | files not changed; the chip of the Tags column is still clipped in `WF-06_list_desktop.png` ("udelezenec20") |
+| F-13 | Medium | Open | **Closed** | live at 375, 768, 1440 px: no visible link without text; the link shows the last name, else the first name (D-77) |
 
 ## Checks without a finding
 
@@ -61,11 +102,11 @@ Not done: no axe scan of my own (the implementing sessions report none Critical 
 
 | DoD-I | Result | Evidence |
 |---|---|---|
-| DoD-I-01 | Met as far as it can be | every story of INC-2 is "passed" or "passed in part"; the open parts are known frozen tests (F-08, F-17) and F-22 |
-| DoD-I-02 | **Not met** | F-14 (High) is open |
-| DoD-I-03 | Met | the stack runs; Group Trash, account deletion, Versions with restore, duplicate search, dismissal and merge work at runtime (56 calls, 42 screenshots); F-14 appears only with real Firebase |
-| DoD-I-04 | Met with exceptions | 42 own screenshots match the wireframes in structure and wording; deviations are F-20 and F-21 |
+| DoD-I-01 | Met as far as it can be | every story of INC-2 is "passed" or "passed in part"; the open parts are the known frozen tests (F-08) and F-22 |
+| DoD-I-02 | **Not met** | F-14 (High) is open: fixed in code, but the first sign-in and `DELETE /me` are not shown against the real Firebase project |
+| DoD-I-03 | Met | the rebuilt stack runs; Group Trash, account deletion, Versions with restore, duplicate search, dismissal and merge work at runtime (two runs of the same probe script, 51 screenshots); F-14 appears only with real Firebase |
+| DoD-I-04 | Met with exceptions | 51 screenshots at 375, 768 and 1440 px, no overflow, one `h1` each, structure and wording as in the wireframes; deviations are F-20 and F-21 |
 
 ## Handover
 
-F-14 (High) is open, so `DoD-I` is not met and next is `/implement US-021`; the session must first raise the blocking decision (supply Firebase Admin credentials in `FirebaseConfig` and the production setup, which needs the human, or ask Firebase only where a deleted account matters) and cannot go on without the answer (D-63 a is the same question). Medium: F-15 (US-026) and F-16 (US-025) for the next session on those stories; F-17 (US-012 code) and F-18 (documentation) for `/fix`; carried F-03 (US-016, US-017), F-04 (US-018), F-13 (US-007). Low: F-19 (needs the human's confirmation), F-20, F-21, F-22 and F-06, F-07, F-08, F-09, F-11, F-12 go to the release notes.
+F-14 (High) stays open, so `DoD-I` is not met. The skill names `/implement US-021` as next, but the code part of F-14 is done and verified here; what remains is the human's (D-70 b: service account with the role "Firebase Authentication Admin", key file readable by user 10001, `GOOGLE_APPLICATION_CREDENTIALS` in `production.env`) and a first sign-in plus `DELETE /me` against the real project (D-70 c). An `/implement` session would have nothing to change, so the next command is `/review INC-2` once the human has done that and shows the three results; that review closes F-14 or finds what is wrong. The human may instead tell `/implement US-021` to build D-70 option 2 or the 503 of F-23. Closed by this re-review: F-15, F-16, F-17, F-18 and the carried F-03, F-04, F-13. Open and not blocking: F-19 (needs the human, D-68 d), Low F-20, F-21, F-22, F-23, F-24 and the carried F-06, F-07, F-08, F-09, F-11, F-12, which go to the story's next session or the release notes (F-24 to the documentation step). The test stack was taken down after the run.

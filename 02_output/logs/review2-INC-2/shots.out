@@ -1,0 +1,68 @@
+trash beta 204
+WF-05 list mobile: scrollWidth 375/375, h1=1 "Moje skupine"
+WF-05 menu mobile: scrollWidth 375/375, h1=1 "Moje skupine"
+WF-14 empty-input mobile: scrollWidth 375/375, h1=1 "Moje skupine"
+WF-14 wrong-name mobile: scrollWidth 375/375, h1=1 "Moje skupine"
+WF-14 exact-name mobile: scrollWidth 375/375, h1=1 "Moje skupine"
+WF-15 list mobile: scrollWidth 375/375, h1=1 "Koš skupin"
+WF-07 versions-list mobile: scrollWidth 375/375, h1=1 "Ana Novak"
+WF-07 versions-compare mobile: scrollWidth 375/375, h1=1 "Ana Novak"
+WF-07 restore-confirm mobile: scrollWidth 375/375, h1=1 "Ana Novak"
+WF-17 list mobile: scrollWidth 375/375, h1=1 "Podvojeni kontakti"
+WF-18 has Kraj row: 1, Celje: 1
+WF-18 merge mobile: scrollWidth 375/375, h1=1 "Združi kontakte"
+WF-16 details mobile: scrollWidth 375/375, h1=1 "Moj račun"
+WF-16 confirm mobile: scrollWidth 375/375, h1=1 "Moj račun"
+WF-16 refused mobile: scrollWidth 375/375, h1=1 "Moj račun"
+WF-06 list mobile: scrollWidth 375/375, h1=1 "Kontakti"
+WF-06 visible contact links mobile: ["Dodaj kontakt","Horvat Janez","horvat janez","Novak Ana","ana"]
+WF-06 empty visible links mobile: 0
+WF-08 trash-confirm mobile: scrollWidth 375/375, h1=1 "janez horvat"
+F-17 status role texts mobile: ["Kontakt je v košu."]
+WF-12 trash-list mobile: scrollWidth 375/375, h1=1 "Koš"
+F-17 restore status texts mobile: ["Kontakt je obnovljen."]
+WF-05 list tablet: scrollWidth 768/768, h1=1 "Moje skupine"
+WF-05 menu tablet: scrollWidth 768/768, h1=1 "Moje skupine"
+WF-14 empty-input tablet: scrollWidth 768/768, h1=1 "Moje skupine"
+WF-14 wrong-name tablet: scrollWidth 768/768, h1=1 "Moje skupine"
+WF-14 exact-name tablet: scrollWidth 768/768, h1=1 "Moje skupine"
+WF-15 list tablet: scrollWidth 768/768, h1=1 "Koš skupin"
+WF-07 versions-list tablet: scrollWidth 768/768, h1=1 "Ana Novak"
+WF-07 versions-compare tablet: scrollWidth 768/768, h1=1 "Ana Novak"
+WF-07 restore-confirm tablet: scrollWidth 768/768, h1=1 "Ana Novak"
+WF-17 list tablet: scrollWidth 768/768, h1=1 "Podvojeni kontakti"
+WF-18 has Kraj row: 1, Celje: 1
+WF-18 merge tablet: scrollWidth 768/768, h1=1 "Združi kontakte"
+WF-16 details tablet: scrollWidth 768/768, h1=1 "Moj račun"
+WF-16 confirm tablet: scrollWidth 768/768, h1=1 "Moj račun"
+WF-16 refused tablet: scrollWidth 768/768, h1=1 "Moj račun"
+WF-06 list tablet: scrollWidth 768/768, h1=1 "Kontakti"
+WF-06 visible contact links tablet: ["Dodaj kontakt","Horvat","horvat","Novak","ana"]
+WF-06 empty visible links tablet: 0
+WF-08 trash-confirm tablet: scrollWidth 768/768, h1=1 "janez horvat"
+F-17 status role texts tablet: ["Kontakt je v košu."]
+WF-12 trash-list tablet: scrollWidth 768/768, h1=1 "Koš"
+F-17 restore status texts tablet: ["Kontakt je obnovljen."]
+WF-05 list desktop: scrollWidth 1440/1440, h1=1 "Moje skupine"
+WF-05 menu desktop: scrollWidth 1440/1440, h1=1 "Moje skupine"
+WF-14 empty-input desktop: scrollWidth 1440/1440, h1=1 "Moje skupine"
+WF-14 wrong-name desktop: scrollWidth 1440/1440, h1=1 "Moje skupine"
+WF-14 exact-name desktop: scrollWidth 1440/1440, h1=1 "Moje skupine"
+WF-15 list desktop: scrollWidth 1440/1440, h1=1 "Koš skupin"
+WF-07 versions-list desktop: scrollWidth 1440/1440, h1=1 "Ana Novak"
+WF-07 versions-compare desktop: scrollWidth 1440/1440, h1=1 "Ana Novak"
+WF-07 restore-confirm desktop: scrollWidth 1440/1440, h1=1 "Ana Novak"
+WF-17 list desktop: scrollWidth 1440/1440, h1=1 "Podvojeni kontakti"
+WF-18 has Kraj row: 1, Celje: 1
+WF-18 merge desktop: scrollWidth 1440/1440, h1=1 "Združi kontakte"
+WF-16 details desktop: scrollWidth 1440/1440, h1=1 "Moj račun"
+WF-16 confirm desktop: scrollWidth 1440/1440, h1=1 "Moj račun"
+WF-16 refused desktop: scrollWidth 1440/1440, h1=1 "Moj račun"
+WF-06 list desktop: scrollWidth 1440/1440, h1=1 "Kontakti"
+WF-06 visible contact links desktop: ["Dodaj kontakt","Horvat","horvat","Novak","ana"]
+WF-06 empty visible links desktop: 0
+WF-08 trash-confirm desktop: scrollWidth 1440/1440, h1=1 "janez horvat"
+F-17 status role texts desktop: ["Kontakt je v košu."]
+WF-12 trash-list desktop: scrollWidth 1440/1440, h1=1 "Koš"
+F-17 restore status texts desktop: ["Kontakt je obnovljen."]
+{"acme":"5ebadc19-3833-4b38-84cf-d2be1beb8181","A":"d45ca40e-02bc-4772-a885-4a6ad2f72c95","user":"ana.mw9nqzu84rre@acme.com"}

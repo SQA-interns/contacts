@@ -1,0 +1,92 @@
+--- role checks (viola=Viewer)
+viewer GET duplicates                                      403 {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+viewer POST dismissals                                     403 {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+viewer POST merges                                         403 {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+viewer GET versions                                        403 {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+viewer POST version restore                                403 {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+editor POST group trash                                    403 {"code":"auth.role_forbidden","message":"Your role does not allow this"}
+outsider(eva) GET duplicates of Acme                       404 {"code":"group.not_found","message":"Group not found"}
+no token GET duplicates                                    401 {"code":"auth.token_missing","message":"Authentication required"}
+eva merge with Contact of other Group                      404 {"code":"contact.not_found","message":"Contact not found"}
+--- malformed merge bodies (ana)
+empty object                                               422 {"code":"merge.invalid_selection","message":"A merge needs at least two different Contacts of this Group, one of them the Survivor"}
+not json                                                   415 {"code":"request.unsupported_media_type","message":"Unsupported media type"}
+survivorId not uuid                                        400 {"code":"request.malformed","message":"Malformed request"}
+attributes [null]                                          422 {"code":"validation.failed","message":"Validation failed","fieldErrors":[{"field":"attributes","code":"validation.required"}]}
+attributes [{key:null,value:null}]                         422 {"code":"validation.failed","message":"Validation failed","fieldErrors":[{"field":"attributes","code":"validation.required"}]}
+attributes [{key:"k"}] (value missing)                     422 {"code":"merge.invalid_value","message":"a merged value is none of the values of the merged Contacts","fieldErrors":[{"field":"attributes","code":"mer
+no attributes chosen (k clashes)                           422 {"code":"merge.invalid_value","message":"a merged value is none of the values of the merged Contacts","fieldErrors":[{"field":"attributes","code":"mer
+contacts [null]                                            422 {"code":"merge.invalid_selection","message":"A merge needs at least two different Contacts of this Group, one of them the Survivor"}
+version missing                                            400 {"code":"request.malformed","message":"The version number is required to edit a Contact"}
+foreign contact id                                         404 {"code":"contact.not_found","message":"Contact not found"}
+fields with a 6000-char invented value                     422 {"code":"merge.invalid_value","message":"a merged value is none of the values of the merged Contacts","fieldErrors":[{"field":"notes","code":"merge.in
+unknown property                                           400 {"code":"request.unknown_property","message":"Unknown property in the request body"}
+--- dismissals / versions malformed
+dismiss {}                                                 404 {"code":"duplicate.not_found","message":"Duplicate set not found"}
+dismiss []                                                 404 {"code":"duplicate.not_found","message":"Duplicate set not found"}
+dismiss [null]                                             422 {"code":"validation.failed","message":"Validation failed","fieldErrors":[{"field":"contactIds","code":"validation.required"}]}
+dismiss foreign id                                         404 {"code":"duplicate.not_found","message":"Duplicate set not found"}
+versions of non-uuid contact                               404 {"code":"contact.not_found","message":"Contact not found"}
+version abc                                                404 {"code":"version.not_found","message":"Version not found"}
+version 99999999999                                        404 {"code":"version.not_found","message":"Version not found"}
+version -1 compare                                         404 {"code":"version.not_found","message":"Version not found"}
+restore no body                                            400 {"code":"request.malformed","message":"Malformed request"}
+restore version null                                       400 {"code":"request.malformed","message":"The version number is required to edit a Contact"}
+DELETE version                                             405 {"code":"request.method_not_allowed","message":"Method not allowed"}
+PUT version                                                405 {"code":"request.method_not_allowed","message":"Method not allowed"}
+--- merge A+B (survivor A), then check
+merge ok                                                   200 {"id":"088cb52c-8f93-44f5-b2ef-e0f428af679e","version":2,"firstName":"Ana","lastName":"Novak","email":"ana@acme.com","phone":"040 123 456","company":"
+same merge again (B in trash)                              409 {"code":"contact.in_trash","message":"Contact is in Trash"}
+survivor history actions: ["CONTACTS_MERGED","CONTACT_DELETED","TAG_ADDED","ATTRIBUTE_CHANGED","CONTACT_EDITED","CONTACT_CREATED","TAG_ADDED","ATTRIBUTE_ADDED","TAG_ADDED","ATTRIBUTE_ADDED","CONTACT_CREATED"]
+merged entry: {"id":"46f44f2d-b2dc-41a6-87d1-f2b06c5bed98","occurredAt":"2026-11-09T19:31:42.675499Z","userName":"Ana Novak","userEmail":"ana.mw9nqde9li93@acme.com","action":"CONTACTS_MERGED","contactId":"088cb52c-8f93-44f5-b2ef-e0f428af679e","details":{"tags":["t1","t2"],"values":{"email":"ana@acme.com","phone":"040 123 456","company":"Acme","lastName":"Novak","firstName":"Ana"},"attributes":[{"key":"k","value":"v2"}],"survivorId":"088cb52c-8f93-44f5-b2ef-e0f428af679e","mergedContactIds":["b3c0175e-c47f-4288
+--- unchanged survivor merge
+merge subset                                               200 {"id":"e68acc2a-bb74-4238-a83d-972dccd30d7f","version":1,"firstName":"Carl","lastName":"Zed","email":"carl@x.si","company":"Z","tags":[],"attributes":
+versions of survivor: [{"number":1,"createdAt":"2026-11-09T19:31:42.702058Z","userName":"Ana Novak"}]
+--- Group trash
+trash with {}                                              422 {"code":"group.name_mismatch","message":"The typed name does not match the group name"}
+trash no body                                              400 {"code":"request.malformed","message":"Malformed request"}
+trash wrong case                                           422 {"code":"group.name_mismatch","message":"The typed name does not match the group name"}
+trash unknown prop                                         400 {"code":"request.unknown_property","message":"Unknown property in the request body"}
+GET /group-trash before                                    200 []
+trash ok                                                   204 null
+trash again                                                404 {"code":"group.not_found","message":"Group not found"}
+GET contacts after trash (ana)                             404 {"code":"group.not_found","message":"Group not found"}
+GET merges/dups after trash (boris)                        404 {"code":"group.not_found","message":"Group not found"}
+GET /groups boris                                          200 []
+GET /group-trash boris(editor)                             200 []
+GET /group-trash ana                                       200 [{"id":"192ab659-86bf-4d43-999f-4bbb786ff148","name":"Acme","deletedAt":"2026-11-09T19:31:42.765812Z","daysLeft":30}]
+restore by boris                                           404 {"code":"group.not_found","message":"Group not found"}
+restore by eva                                             404 {"code":"group.not_found","message":"Group not found"}
+restore non-uuid                                           404 {"code":"group.not_found","message":"Group not found"}
+restore by ana                                             200 {"id":"192ab659-86bf-4d43-999f-4bbb786ff148","name":"Acme","role":"OWNER","createdAt":"2026-11-09T19:31:42.310599Z"}
+restore again                                              404 {"code":"group.not_found","message":"Group not found"}
+--- account deletion
+boris DELETE /me                                           204 null
+boris token after delete GET /me                           401 {"code":"auth.token_invalid","message":"Invalid or expired token"}
+boris token after delete GET /groups                       401 {"code":"auth.token_invalid","message":"Invalid or expired token"}
+B history after boris deleted (emails): [["Ana Novak","ana.mw9nqde9li93@acme.com"],["Boris Kos",null],["Boris Kos",null],["Boris Kos",null]]
+ana (sole owner) DELETE /me                                409 {"code":"account.sole_owner","message":"The user is the only owner of a group","groups":[{"id":"192ab659-86bf-4d43-999f-4bbb786ff148","name":"Acme","i
+ana delete /me w/o token                                   401 {"code":"auth.token_missing","message":"Authentication required"}
+IDS {"g":"192ab659-86bf-4d43-999f-4bbb786ff148","A":"088cb52c-8f93-44f5-b2ef-e0f428af679e","B":"b3c0175e-c47f-4288-b18f-5ba5a26900ed","ana":"ana.mw9nqde9li93@acme.com","boris":"boris.mw9nqdjwrvby@acme.com","viola":"viola.mw9nqdkcxsdk@acme.com"}
+--- INC-1 carried findings (F-03)
+activity page="abc"                                        400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+activity page="0"                                          400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+activity page="-1"                                         400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+activity page="1.5"                                        400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+activity page=""                                           400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+activity page="99999999999"                                400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+activity page="2"                                          200 {"items":[],"page":2,"pageSize":25,"total":19}
+history page="abc"                                         400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+history page="0"                                           400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+history page="1"                                           200 {"items":[{"id":"46f44f2d-b2dc-41a6-87d1-f2b06c5bed98","occurredAt":"2026-11-09T19:31:42.675499Z","userName":"Ana Novak","userEmail":"ana.mw9nqde9li93
+history non-uuid contact + bad page                        400 {"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+--- real merge after fixes
+merge A+B                                                  409 {"code":"contact.changed_by_someone_else","message":"This contact was changed by someone else","current":{"id":"088cb52c-8f93-44f5-b2ef-e0f428af679e",
+merge again                                                409 {"code":"contact.in_trash","message":"Contact is in Trash"}
+GET /health                                                200 {"status":"UP"}
+/actuator                      401
+/actuator/health               401
+/actuator/env                  401
+/health/readiness              404
+/health/liveness               404
+/v3/api-docs                   401
