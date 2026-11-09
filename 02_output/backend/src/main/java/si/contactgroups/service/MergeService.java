@@ -5,9 +5,9 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -98,25 +98,26 @@ public class MergeService {
     if (command.contacts() == null || command.survivorId() == null) {
       throw new MergeSelectionException();
     }
-    Set<UUID> seen = new HashSet<>();
-    List<MergeCommand.Target> targets = new ArrayList<>();
-    for (MergeCommand.Target target : command.contacts()) {
-      if (target == null || target.id() == null) {
-        throw new MergeSelectionException();
-      }
-      if (target.version() == null) {
-        throw new VersionMissingException();
-      }
-      if (seen.add(target.id())) {
-        targets.add(target);
-      }
-    }
-    if (targets.size() < 2
-        || targets.size() != command.contacts().size()
-        || !seen.contains(command.survivorId())) {
+    command.contacts().forEach(MergeService::requireComplete);
+    Map<UUID, MergeCommand.Target> byId = new LinkedHashMap<>();
+    command.contacts().forEach(target -> byId.putIfAbsent(target.id(), target));
+    boolean selection =
+        byId.size() >= 2
+            && byId.size() == command.contacts().size()
+            && byId.containsKey(command.survivorId());
+    if (!selection) {
       throw new MergeSelectionException();
     }
-    return targets;
+    return List.copyOf(byId.values());
+  }
+
+  private static void requireComplete(MergeCommand.Target target) {
+    if (target == null || target.id() == null) {
+      throw new MergeSelectionException();
+    }
+    if (target.version() == null) {
+      throw new VersionMissingException();
+    }
   }
 
   /** What the service read of one merged Contact. */
