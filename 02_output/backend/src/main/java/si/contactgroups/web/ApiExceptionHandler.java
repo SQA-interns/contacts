@@ -13,6 +13,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.contactgroups.error.ApiError;
 import si.contactgroups.security.RequestTooLargeException;
+import si.contactgroups.service.ActivityRangeException;
 import si.contactgroups.service.ContactChangedException;
 import si.contactgroups.service.ContactInTrashException;
 import si.contactgroups.service.ContactNotFoundException;
@@ -165,6 +166,12 @@ public class ApiExceptionHandler {
   public ResponseEntity<ApiError> invalidQuery(InvalidQueryException e) {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
         .body(new ApiError("request.malformed", e.getMessage()));
+  }
+
+  @ExceptionHandler(ActivityRangeException.class)
+  public ResponseEntity<ApiError> activityRange(ActivityRangeException e) {
+    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT)
+        .body(new ApiError("activity.range_invalid", e.getMessage()));
   }
 
   @ExceptionHandler(ExportTooManyException.class)
