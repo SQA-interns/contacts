@@ -15,6 +15,7 @@ import si.contactgroups.domain.AttributePair;
 import si.contactgroups.domain.ContactData;
 import si.contactgroups.domain.ContactFilter;
 import si.contactgroups.domain.ContactListItem;
+import si.contactgroups.domain.DuplicateCandidate;
 import si.contactgroups.domain.ExpiredContact;
 import si.contactgroups.domain.ExportContact;
 import si.contactgroups.domain.Facets;
@@ -37,6 +38,14 @@ public class ContactRepository {
   private static final String COLUMNS =
       "id, version, first_name, last_name, email, phone, company, job_title, street,"
           + " postal_code, city, country, notes, created_at, updated_at";
+
+  /** The columns of a {@link ContactListItem}; the caller adds FROM contact c. */
+  private static final String LIST_ITEM_SELECT =
+      "SELECT c.id, c.first_name, c.last_name, c.email, c.company, c.city, c.country,"
+          + " c.version, c.created_at,"
+          + " COALESCE((SELECT array_agg(t.name ORDER BY lower(t.name), t.name)"
+          + " FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
+          + " WHERE ct.contact_id = c.id), '{}') AS tags";
 
   /** The columns the Contact list can be sorted by (contract parameter {@code sort}). */
   public static final Set<String> SORT_COLUMNS =
@@ -176,11 +185,7 @@ public class ContactRepository {
     String dir = descending ? "DESC" : "ASC";
     return FilterSql.bind(
             jdbc.sql(
-                "SELECT c.id, c.first_name, c.last_name, c.email, c.company, c.city, c.country,"
-                    + " c.version, c.created_at,"
-                    + " COALESCE((SELECT array_agg(t.name ORDER BY lower(t.name), t.name)"
-                    + " FROM contact_tag ct JOIN tag t ON t.id = ct.tag_id"
-                    + " WHERE ct.contact_id = c.id), '{}') AS tags"
+                LIST_ITEM_SELECT
                     + " FROM contact c WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
                     + conditions(filter)
                     + " ORDER BY ("
@@ -197,20 +202,36 @@ public class ContactRepository {
         .param(GROUP_ID, groupId)
         .param("limit", limit)
         .param("offset", offset)
-        .query(
-            (rs, n) ->
-                new ContactListItem(
-                    rs.getObject("id", UUID.class),
-                    rs.getString(FIRST_NAME),
-                    rs.getString(LAST_NAME),
-                    rs.getString(EMAIL),
-                    rs.getString(COMPANY),
-                    rs.getString(CITY),
-                    rs.getString(COUNTRY),
-                    List.of((String[]) rs.getArray("tags").getArray()),
-                    rs.getInt("version"),
-                    rs.getTimestamp("created_at").toInstant()))
+        .query((rs, n) -> listItemOf(rs))
         .list();
+  }
+
+  /**
+   * Every Contact of the Group not in Trash with its phone number, for the duplicate search
+   * (US-024); oldest first.
+   */
+  public List<DuplicateCandidate> duplicateCandidates(UUID groupId) {
+    return jdbc.sql(
+            LIST_ITEM_SELECT
+                + ", c.phone FROM contact c WHERE c.group_id = :groupId AND c.deleted_at IS NULL"
+                + " ORDER BY c.created_at, c.id")
+        .param(GROUP_ID, groupId)
+        .query((rs, n) -> new DuplicateCandidate(listItemOf(rs), rs.getString("phone")))
+        .list();
+  }
+
+  private static ContactListItem listItemOf(java.sql.ResultSet rs) throws java.sql.SQLException {
+    return new ContactListItem(
+        rs.getObject("id", UUID.class),
+        rs.getString(FIRST_NAME),
+        rs.getString(LAST_NAME),
+        rs.getString(EMAIL),
+        rs.getString(COMPANY),
+        rs.getString(CITY),
+        rs.getString(COUNTRY),
+        List.of((String[]) rs.getArray("tags").getArray()),
+        rs.getInt("version"),
+        rs.getTimestamp("created_at").toInstant());
   }
 
   /** The ids of the Contacts of the Group, not in Trash, that match the search and filters. */
