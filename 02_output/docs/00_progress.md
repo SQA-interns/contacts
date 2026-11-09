@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: R /review INC-1 (round 2)
+- Session: S5 /implement US-020
 - Result: done
-- Gate: DoD-I passed (no Critical or High open; F-01, F-02 closed)
-- Notes for the next session: `docs/04_review-INC-1.md` lists the open Medium and Low findings: F-03 (500 on `page=abc`, History endpoints, US-016/US-017), F-04 (`/health` extra `groups`, US-018), F-10 (Contact page scrolls sideways at 375 px, `ContactPage.tsx:207,241`, US-003..US-005), F-13 (empty name link, `ContactTable.tsx:149`, US-007) go to `/fix` or the next session on the story; F-06/F-07, F-11 (404 page has no `h1`), F-12 (clipped tag chips) are Low. F-08: frozen tests of INC-2 stories and AC-006-04, AC-014-03, AC-019-06 are re-run at the release gate. GroupShell still lacks the tab "Podvojeni kontakti" (US-024) and the "Možnosti skupine" menu (US-020); those stories add them. Review screenshots: `logs/screens/review-INC-1/`. The test stack now holds the seed data (users and `seed.sql`).
+- Gate: DoD-S passed in part for US-020 (DoD-S-01: 14 backend and 2 UI frozen tests pass, the rest of the full run fails as before; DoD-S-07: three subjects over 72 characters)
+- Notes for the next session: D-62 records the readings. The delete dialog closes on confirm and shows progress and result in a toast, because the frozen AC-020-01 raced with a dialog that stays open (D-62 g). Group Trash list and restore are in `GroupService`; `TrashPurgeJob` purges Groups too. GroupShell has the "Možnosti skupine" menu; the tab "Podvojeni kontakti" is still missing (US-024). Four frozen UI tests of INC-1 fail on the base commit as well: AC-003-07, AC-004-04, AC-004-08, AC-005-06 (D-62 h; not in review F-08), for `/fix` or the release gate. Open from the review: F-03, F-04, F-10, F-13 and Low F-06, F-07, F-11, F-12. The test stack was rebuilt and the small seed reloaded; backend acceptance runs need port 9099 free (stop the emulator container, then start it again). Screens: `logs/screens/WF-14_delete-group`, `WF-15_group-trash`, `WF-05_group-list/card-menu-*`, `WF-06_contact-list/group-options-menu-*`.
 
 ## Next
-- Command: /implement US-020
+- Command: /implement US-021
 - Waiting for: nothing
 
 ## Stories
@@ -36,7 +36,7 @@ The handover between sessions. Every session reads it first and updates it last.
 | US-017 | 1 | done | passed in part (DoD-S-01: UI AC-014-03 waits for D-58 item g; DoD-S-05 screens, D-60) |
 | US-018 | 1 | done | passed (DoD-S-01: frozen tests wait for US-003, US-014 and the last story, D-44; DoD-S-07: one subject over 72 characters) |
 | US-019 | 1 | done | passed in part (frozen UI tests wait for US-003, US-005, US-016) |
-| US-020 | 2 | ready | — |
+| US-020 | 2 | done | passed in part (DoD-S-01: frozen tests of the full run that wait for US-021..US-026 and the known ones; DoD-S-05 screens; DoD-S-07: three subjects over 72 characters, D-62) |
 | US-021 | 2 | ready | — |
 | US-022 | 2 | ready | — |
 | US-023 | 2 | ready | — |
