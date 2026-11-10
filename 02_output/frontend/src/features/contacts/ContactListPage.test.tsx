@@ -146,6 +146,21 @@ describe('ContactListPage', () => {
     expect(screen.queryByRole('link', { name: 'Dodaj kontakt' })).toBeNull();
   });
 
+  it('shows a Viewer the Contacts and no "Add contact" action (R-003-09, AC-003-07)', async () => {
+    backend('VIEWER', () => ({
+      items: [item(1, { lastName: 'Novak', firstName: 'Ana' })],
+      page: 1,
+      pageSize: 25,
+      total: 1,
+    }));
+    renderPage();
+
+    expect(await screen.findByRole('heading', { level: 1, name: 'Kontakti' })).toBeInTheDocument();
+    expect((await screen.findAllByRole('link', { name: /Novak/ })).length).toBeGreaterThan(0);
+    expect(screen.queryByRole('button', { name: 'Dodaj kontakt' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Dodaj kontakt' })).toBeNull();
+  });
+
   it('shows an empty page with the total when the page is beyond the last (R-007-08)', async () => {
     backend('OWNER', () => ({ items: [], page: 99, pageSize: 25, total: 60 }));
     renderPage();

@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -167,6 +167,17 @@ describe('ContactTable WF-06 (R-007-01..05)', () => {
         false,
       ]);
     }
+  });
+
+  it('R-019-06 keeps a Tag name as it is when the language is switched (AC-019-06)', async () => {
+    renderTable([{ ...ana, tags: ['neObvescaj'] }]);
+    expect(within(table()).getByText('neObvescaj')).toBeInTheDocument();
+
+    await act(() => setLanguage('sl'));
+
+    const slovene = screen.getByRole('table', { name: 'Kontakti skupine' });
+    expect(within(slovene).getByText('neObvescaj')).toBeInTheDocument();
+    expect(screen.queryByRole('table', { name: 'Group contacts' })).not.toBeInTheDocument();
   });
 
   it('shows the values, the country by its name, the Tags as chips and the full text as a title', () => {
