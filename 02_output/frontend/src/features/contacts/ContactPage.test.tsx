@@ -289,7 +289,9 @@ describe('ContactPage tabs (R-016-03, R-016-04)', () => {
     renderPage();
 
     await userEvent.click(await screen.findByRole('button', { name: 'Uredi' }));
-    const value = screen.getByLabelText('Vrednost 1');
+    const value = within(screen.getByRole('group', { name: 'Atribut 1' })).getByLabelText('Vrednost', {
+      exact: true,
+    });
     await userEvent.clear(value);
     await userEvent.type(value, 'java');
     await userEvent.click(screen.getByRole('button', { name: 'Odstrani atribut 2' }));

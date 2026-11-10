@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -137,8 +137,8 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
 
     await userEvent.type(field('Ime'), 'Ana');
     await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
-    await userEvent.type(field('Ključ 1'), 'kompetenca');
-    await userEvent.type(field('Vrednost 1'), 'java');
+    await userEvent.type(field('Ključ'), 'kompetenca');
+    await userEvent.type(field('Vrednost'), 'java');
     await save();
 
     expect(await screen.findByText('Contact page')).toBeInTheDocument();
@@ -152,7 +152,7 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
 
-    const list = field('Ključ 1').getAttribute('list');
+    const list = field('Ključ').getAttribute('list');
     await vi.waitFor(() => expect(document.querySelectorAll(`datalist#${list} option`)).toHaveLength(1));
     expect(String(vi.mocked(fetch).mock.calls[0]?.[0])).toContain('/api/v1/groups/g1/facets');
   });
@@ -177,14 +177,18 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
     await userEvent.type(field('Ime'), 'Ana');
     for (const n of [1, 2]) {
       await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
-      await userEvent.type(field(`Ključ ${n}`), n === 1 ? 'a' : 'A');
-      await userEvent.type(field(`Vrednost ${n}`), 'x');
+      const row = within(screen.getByRole('group', { name: `Atribut ${n}` }));
+      await userEvent.type(row.getByLabelText('Ključ', { exact: true }), n === 1 ? 'a' : 'A');
+      await userEvent.type(row.getByLabelText('Vrednost', { exact: true }), 'x');
     }
     await save();
 
     expect(await screen.findByText('Ključ atributa se ponavlja.')).toBeInTheDocument();
-    expect(field('Ključ 2')).toHaveAttribute('aria-invalid', 'true');
-    expect(field('Ključ 2')).toHaveValue('A');
+    const second = within(screen.getByRole('group', { name: 'Atribut 2' })).getByLabelText('Ključ', {
+      exact: true,
+    });
+    expect(second).toHaveAttribute('aria-invalid', 'true');
+    expect(second).toHaveValue('A');
   });
   it('R-005-01 sends the typed Tags with the Contact', async () => {
     vi.mocked(fetch).mockImplementation((url) =>

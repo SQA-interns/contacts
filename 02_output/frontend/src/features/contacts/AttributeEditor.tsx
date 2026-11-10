@@ -33,10 +33,15 @@ export function AttributeEditor({ pairs, onChange, errors, suggestions }: Attrib
         ))}
       </datalist>
       {pairs.map((pair, index) => (
-        <div key={index} className="grid items-start gap-3 sm:grid-cols-[1fr_1fr_auto]">
+        <div
+          key={index}
+          role="group"
+          aria-label={t('contacts.attributeRow', { n: index + 1 })}
+          className="grid items-start gap-3 sm:grid-cols-[1fr_1fr_auto]"
+        >
           <FormField
             id={`attribute-key-${index}`}
-            label={t('contacts.attributeKey', { n: index + 1 })}
+            label={t('contacts.attributeKey')}
             list={listId}
             autoComplete="off"
             value={pair.key}
@@ -45,7 +50,7 @@ export function AttributeEditor({ pairs, onChange, errors, suggestions }: Attrib
           />
           <FormField
             id={`attribute-value-${index}`}
-            label={t('contacts.attributeValue', { n: index + 1 })}
+            label={t('contacts.attributeValue')}
             autoComplete="off"
             value={pair.value}
             error={errors[`attributes[${index}].value`]}

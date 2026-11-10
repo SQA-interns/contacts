@@ -126,8 +126,8 @@ describe('ContactForm WF-07 / WF-08 (R-003-01..05)', () => {
     await userEvent.type(screen.getByLabelText('Notes'), 'Hi');
     await userEvent.selectOptions(screen.getByLabelText('Country'), 'SI');
     await userEvent.click(screen.getByRole('button', { name: 'Add attribute' }));
-    await userEvent.type(screen.getByLabelText('Key 1'), 'skill');
-    await userEvent.type(screen.getByLabelText('Value 1'), 'java');
+    await userEvent.type(screen.getByLabelText('Key'), 'skill');
+    await userEvent.type(screen.getByLabelText('Value'), 'java');
     await userEvent.type(screen.getByLabelText('Add tag'), 'gost{Enter}');
     await userEvent.click(screen.getByRole('button', { name: 'Save contact' }));
     expect(onSubmit).toHaveBeenCalledOnce();
@@ -146,7 +146,7 @@ describe('ContactForm WF-07 / WF-08 (R-003-01..05)', () => {
   it('starts with the Attributes and Tags of the Contact', async () => {
     const onSubmit = vi.fn();
     renderForm({ onSubmit, initial: { attributes: [{ key: 'k', value: 'v' }], tags: ['t1'] } });
-    expect(screen.getByLabelText('Key 1')).toHaveValue('k');
+    expect(screen.getByLabelText('Key')).toHaveValue('k');
     await userEvent.click(screen.getByRole('button', { name: 'Save contact' }));
     expect(onSubmit).toHaveBeenCalledWith(expect.anything(), [{ key: 'k', value: 'v' }], ['t1']);
   });

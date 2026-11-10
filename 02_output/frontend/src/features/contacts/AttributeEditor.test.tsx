@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { beforeEach, describe, expect, it } from 'vitest';
@@ -29,10 +29,27 @@ describe('AttributeEditor WF-07 (R-004-02..05)', () => {
     render(<Harness />);
 
     await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
-    await userEvent.type(screen.getByLabelText('Ključ 1'), 'kompetenca');
-    await userEvent.type(screen.getByLabelText('Vrednost 1'), 'java');
+    await userEvent.type(screen.getByLabelText('Ključ', { exact: true }), 'kompetenca');
+    await userEvent.type(screen.getByLabelText('Vrednost', { exact: true }), 'java');
 
     expect(latest).toEqual([{ key: 'kompetenca', value: 'java' }]);
+  });
+
+  it('F-55 labels every field `Ključ` and `Vrednost` as in WF-07, the row is named by its group', () => {
+    render(
+      <Harness
+        start={[
+          { key: 'a', value: '1' },
+          { key: 'b', value: '2' },
+        ]}
+      />,
+    );
+
+    expect(screen.getAllByLabelText('Ključ', { exact: true })).toHaveLength(2);
+    expect(screen.getAllByLabelText('Vrednost', { exact: true })).toHaveLength(2);
+    expect(screen.getByRole('group', { name: 'Atribut 2' })).toContainElement(
+      screen.getAllByLabelText('Ključ', { exact: true })[1]!,
+    );
   });
 
   it('removes a pair', async () => {
@@ -53,7 +70,7 @@ describe('AttributeEditor WF-07 (R-004-02..05)', () => {
   it('R-004-05 offers the keys of the Group while the user types a key', () => {
     render(<Harness start={[{ key: '', value: '' }]} suggestions={['kompetenca', 'projekt']} />);
 
-    const list = screen.getByLabelText('Ključ 1').getAttribute('list');
+    const list = screen.getByLabelText('Ključ', { exact: true }).getAttribute('list');
     const options = [...document.querySelectorAll(`datalist#${list} option`)];
 
     expect(options.map((o) => o.getAttribute('value'))).toEqual(['kompetenca', 'projekt']);
@@ -70,8 +87,11 @@ describe('AttributeEditor WF-07 (R-004-02..05)', () => {
       />,
     );
 
-    expect(screen.getByLabelText('Ključ 2')).toHaveAccessibleDescription('Ključ atributa se ponavlja.');
-    expect(screen.getByLabelText('Ključ 1')).not.toHaveAttribute('aria-invalid');
+    const [first, second] = screen.getAllByRole('group', { name: /^Atribut \d$/ });
+    expect(within(second!).getByLabelText('Ključ', { exact: true })).toHaveAccessibleDescription(
+      'Ključ atributa se ponavlja.',
+    );
+    expect(within(first!).getByLabelText('Ključ', { exact: true })).not.toHaveAttribute('aria-invalid');
   });
 
   it('R-004-04 stops adding at 50 pairs and shows the limit', () => {
