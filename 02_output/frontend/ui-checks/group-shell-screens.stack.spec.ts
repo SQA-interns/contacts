@@ -39,7 +39,7 @@ for (const viewport of VIEWPORTS) {
           .click();
       }
       await expect(page.getByRole('heading', { level: 1, name: 'Značke' })).toBeVisible();
-      await expect(page).toHaveURL(new RegExp(`/groups/${acme.id}/tags$`));
+      await expect(page).toHaveURL((url) => url.pathname === `/groups/${acme.id}/tags`);
       await check(page, 'WF-09_tags', 'group-shell', viewport.name);
 
       const context = await browser.newContext({

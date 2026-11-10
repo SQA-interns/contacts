@@ -1,0 +1,4 @@
+  42:36  warning  Found non-literal argument to RegExp Constructor  security/detect-non-literal-regexp
+
+✖ 1 problem (0 errors, 1 warning)
+
