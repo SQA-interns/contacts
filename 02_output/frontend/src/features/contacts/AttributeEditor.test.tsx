@@ -67,13 +67,50 @@ describe('AttributeEditor WF-07 (R-004-02..05)', () => {
     expect(latest).toEqual([{ key: 'b', value: '2' }]);
   });
 
-  it('R-004-05 offers the keys of the Group while the user types a key', () => {
+  it('R-004-05 shows the keys of the Group that match the typed key as visible options (AC-004-04)', async () => {
     render(<Harness start={[{ key: '', value: '' }]} suggestions={['kompetenca', 'projekt']} />);
 
-    const list = screen.getByLabelText('Ključ', { exact: true }).getAttribute('list');
-    const options = [...document.querySelectorAll(`datalist#${list} option`)];
+    await userEvent.type(screen.getByLabelText('Ključ', { exact: true }), 'komp');
 
-    expect(options.map((o) => o.getAttribute('value'))).toEqual(['kompetenca', 'projekt']);
+    expect(screen.getByRole('listbox')).toBeVisible();
+    expect(screen.getAllByRole('option').map((o) => o.textContent)).toEqual(['kompetenca']);
+  });
+
+  it('R-004-05 offers no key that does not match, e.g. `pro` without `projekt` in the Group (AC-004-08)', async () => {
+    render(<Harness start={[{ key: '', value: '' }]} suggestions={['kompetenca']} />);
+
+    await userEvent.type(screen.getByLabelText('Ključ', { exact: true }), 'pro');
+
+    expect(screen.queryByRole('option')).not.toBeInTheDocument();
+  });
+
+  it('R-004-05 puts the chosen key into the field and still accepts a new key', async () => {
+    render(<Harness start={[{ key: '', value: '' }]} suggestions={['kompetenca']} />);
+    const key = screen.getByLabelText('Ključ', { exact: true });
+
+    await userEvent.type(key, 'komp');
+    await userEvent.click(screen.getByRole('option', { name: 'kompetenca' }));
+    expect(latest).toEqual([{ key: 'kompetenca', value: '' }]);
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+
+    await userEvent.type(key, 'ntnost');
+    expect(latest).toEqual([{ key: 'kompetencantnost', value: '' }]);
+  });
+
+  it('R-004-05 chooses a suggestion with the keyboard', async () => {
+    render(<Harness start={[{ key: '', value: '' }]} suggestions={['kompetenca', 'kontakt']} />);
+
+    await userEvent.type(screen.getByLabelText('Ključ', { exact: true }), 'ko{ArrowDown}{ArrowDown}{Enter}');
+
+    expect(latest).toEqual([{ key: 'kontakt', value: '' }]);
+  });
+
+  it('R-004-05 closes the options with Escape', async () => {
+    render(<Harness start={[{ key: '', value: '' }]} suggestions={['kompetenca']} />);
+
+    await userEvent.type(screen.getByLabelText('Ključ', { exact: true }), 'ko{Escape}');
+
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   it('R-004-03 shows the message next to the pair it belongs to', () => {

@@ -152,8 +152,8 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'Dodaj atribut' }));
 
-    const list = field('Ključ').getAttribute('list');
-    await vi.waitFor(() => expect(document.querySelectorAll(`datalist#${list} option`)).toHaveLength(1));
+    await userEvent.type(field('Ključ'), 'komp');
+    expect(await screen.findByRole('option', { name: 'kompetenca' })).toBeVisible();
     expect(String(vi.mocked(fetch).mock.calls[0]?.[0])).toContain('/api/v1/groups/g1/facets');
   });
 

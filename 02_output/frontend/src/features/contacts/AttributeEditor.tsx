@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { AttributePair } from '@/api/contacts';
 import { FormField } from '@/components/FormField';
@@ -16,10 +16,104 @@ interface AttributeEditorProps {
   suggestions: string[];
 }
 
+/** The most suggested keys shown at once. */
+const MAX_SUGGESTIONS = 8;
+
+interface KeyFieldProps {
+  id: string;
+  value: string;
+  error?: string;
+  suggestions: string[];
+  onChange: (key: string) => void;
+}
+
+/** The key input with the keys of the Group that match what is typed, as a list under the field (R-004-05, WF-08). */
+function KeyField({ id, value, error, suggestions, onChange }: KeyFieldProps) {
+  const { t } = useTranslation();
+  const [focused, setFocused] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const [active, setActive] = useState(-1);
+  const needle = value.trim().toLowerCase();
+  const matches = suggestions
+    .filter((key) => key.toLowerCase() !== needle && key.toLowerCase().includes(needle))
+    .slice(0, MAX_SUGGESTIONS);
+  const open = focused && !dismissed && matches.length > 0;
+  const listId = `${id}-options`;
+
+  const choose = (key: string) => {
+    onChange(key);
+    setActive(-1);
+  };
+  const type = (key: string) => {
+    onChange(key);
+    setDismissed(false);
+    setActive(-1);
+  };
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') return setDismissed(true);
+    if (!open) return;
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setActive((active + 1) % matches.length);
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setActive((active - 1 + matches.length) % matches.length);
+    } else if (event.key === 'Enter' && matches[active] !== undefined) {
+      event.preventDefault();
+      choose(matches[active]);
+    }
+  };
+
+  return (
+    <div className="relative">
+      <FormField
+        id={id}
+        label={t('contacts.attributeKey')}
+        role="combobox"
+        aria-expanded={open}
+        aria-controls={open ? listId : undefined}
+        aria-autocomplete="list"
+        aria-activedescendant={open && active >= 0 ? `${listId}-${active}` : undefined}
+        autoComplete="off"
+        value={value}
+        error={error}
+        onChange={(e) => type(e.target.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        onKeyDown={onKeyDown}
+      />
+      {open ? (
+        <ul
+          id={listId}
+          role="listbox"
+          aria-label={t('contacts.attributeSuggestions')}
+          className="absolute z-10 mt-1 w-full rounded-[8px] border bg-background p-1 shadow-md"
+        >
+          {matches.map((key, index) => (
+            <li
+              key={key}
+              id={`${listId}-${index}`}
+              role="option"
+              aria-selected={index === active}
+              className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : ''}`}
+              // mousedown, not click: the click would come after the input lost focus and closed the list
+              onMouseDown={(event) => {
+                event.preventDefault();
+                choose(key);
+              }}
+            >
+              {key}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
 /** Key-value pairs of a Contact: add, change, remove, with key suggestions (R-004-02..05). */
 export function AttributeEditor({ pairs, onChange, errors, suggestions }: AttributeEditorProps) {
   const { t } = useTranslation();
-  const listId = useId();
   const full = pairs.length >= MAX_ATTRIBUTES;
   const set = (index: number, change: Partial<AttributePair>) =>
     onChange(pairs.map((pair, i) => (i === index ? { ...pair, ...change } : pair)));
@@ -27,11 +121,6 @@ export function AttributeEditor({ pairs, onChange, errors, suggestions }: Attrib
   return (
     <fieldset className="flex flex-col gap-3">
       <legend className="mb-1 text-xl font-semibold">{t('contacts.attributes')}</legend>
-      <datalist id={listId}>
-        {suggestions.map((key) => (
-          <option key={key} value={key} />
-        ))}
-      </datalist>
       {pairs.map((pair, index) => (
         <div
           key={index}
@@ -39,14 +128,12 @@ export function AttributeEditor({ pairs, onChange, errors, suggestions }: Attrib
           aria-label={t('contacts.attributeRow', { n: index + 1 })}
           className="grid items-start gap-3 sm:grid-cols-[1fr_1fr_auto]"
         >
-          <FormField
+          <KeyField
             id={`attribute-key-${index}`}
-            label={t('contacts.attributeKey')}
-            list={listId}
-            autoComplete="off"
             value={pair.key}
             error={errors[`attributes[${index}].key`]}
-            onChange={(e) => set(index, { key: e.target.value })}
+            suggestions={suggestions}
+            onChange={(key) => set(index, { key })}
           />
           <FormField
             id={`attribute-value-${index}`}

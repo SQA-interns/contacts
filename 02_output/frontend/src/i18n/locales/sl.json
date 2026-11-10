@@ -372,6 +372,7 @@
     "noAttributes": "Kontakt še nima atributov.",
     "attributeKey": "Ključ",
     "attributeValue": "Vrednost",
+    "attributeSuggestions": "Predlagani ključi",
     "attributeRow": "Atribut {{n}}",
     "addAttribute": "Dodaj atribut",
     "removeAttribute": "Odstrani atribut {{n}}",

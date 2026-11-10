@@ -372,6 +372,7 @@
     "noAttributes": "This contact has no attributes yet.",
     "attributeKey": "Key",
     "attributeValue": "Value",
+    "attributeSuggestions": "Suggested keys",
     "attributeRow": "Attribute {{n}}",
     "addAttribute": "Add attribute",
     "removeAttribute": "Remove attribute {{n}}",
