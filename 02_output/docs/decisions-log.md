@@ -1001,3 +1001,14 @@
 - Human response: "Approve changes" (2026-11-10, in chat, option 2).
 - Resolution: option 2. The four locators of `AC-003-07`, `AC-006-04`, `AC-014-03` and `AC-019-06` were changed in the commit `test: fix four frozen locators approved by the human`, nothing else in the frozen tests. UI acceptance passes 95 of 95 on a fresh test stack (`logs/fix3-ui-acceptance2.log`). `docs/03_acceptance-manifest.sha256` was NOT renewed by me: those four files no longer match it, so the human renews it before `/verify` run 4 step 2, otherwise the manifest check fails. F-47 has no failing test left.
 - Overrides: the freeze of the four files, for the locator lines only.
+
+## D-91: Fourth verify round: continue, accept the open Medium findings as known limitations, or change a requirement?
+- Timestamp: 2026-11-10
+- Session: S11 /verify (run 4, step 1)
+- Class: block
+- Type: approval (a fourth verify/fix round, `general/rules/decisions.md`)
+- Trigger: step 1 of `/verify`: this is run 4 (runs 1 to 3 are in `docs/06_verification-report.md`, three `/fix` loops done). Findings open in all three earlier runs: F-41..F-45 (held-out cases of `R-003-02`, `R-006-07`, `R-007-03`, `R-017-02`, `R-018-07`, already accepted as a known limitation by D-86), F-48 (Firefox does not start, NFR-07, NFR-08), F-50 (NFR-10 counting rule D-89, NFR-13 licences D-88), F-51 (CI never ran, DoD-R-15). Nothing was run in this session: no checks, no manifest recomputation, no report section. Facts for the decision: no Critical or High is open (D-86); the acceptance manifest was renewed by the human in `78ef42d` (D-90); the latest hidden evaluation (run 4 of `06_hidden-evaluation.md`) is of `12e38c7`, not `HEAD` (`78ef42d`), so a verify run would need `node system/run.mjs --hidden-eval` first; F-47, F-52, F-57, F-58 are fixed and wait for a `/verify` to be confirmed; D-88 (licences) and D-68 d (F-19) are still waiting for the human.
+- Options: 1 (proposed) one more `/verify` round (run 4), as the last: first answer D-88 and D-89, run `node system/run.mjs --hidden-eval`, then `/verify`; whatever stays open after it (F-48, F-51 need the human's machine and a push) is accepted as a known limitation and listed in the release notes. 2 accept F-48, F-50, F-51 and the unconfirmed fixes as known limitations now and go to `/release` without a run 4; DoD-R-01, DoD-R-08, DoD-R-14 and DoD-R-15 then stay "not met" in the release notes. 3 change a requirement (for example NFR-07 to "Chromium and WebKit", NFR-10 to the count of reading A, NFR-13 to "no strong copyleft"); the human says which, and `/fix` or `/to-spec` applies it.
+- Human response: none
+- Resolution: pending (waiting for the human)
+- Overrides: none
