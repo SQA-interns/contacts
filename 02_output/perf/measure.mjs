@@ -181,12 +181,18 @@ if (ONLY.has('nfr04')) {
     const invited = await owner.call('POST', `${G}/invitations`, { email, role: 'EDITOR' });
     if (![201, 409].includes(invited.status)) throw new Error(`invitation of ${email} answered ${invited.status}`);
     const client = await signIn(email);
-    const me = await client.call('GET', '/me'); // joins the Group through the pending Invitation
+    const me = await client.call('GET', '/me');
     if (me.status !== 200) throw new Error(`/me of ${email} answered ${me.status}`);
+    // A pending Invitation is accepted when the User lists the Groups (R-014-05), not on /me (F-58).
+    const listed = await client.call('GET', '/groups');
+    if (listed.status !== 200 || !(listed.body ?? []).some((g) => g.id === group.id)) {
+      throw new Error(`${email} did not join the Group through the Invitation (GET /groups answered ${listed.status})`);
+    }
     clients.push(client);
   }
   const members = (await owner.call('GET', `${G}/members`)).body.length;
   console.log(`${members} Members in the Group`);
+  if (members < USERS) throw new Error(`only ${members} of ${USERS} Users are Members of the Group`);
 
   const until = Date.now() + MINUTES * 60_000;
   const reads = [];
