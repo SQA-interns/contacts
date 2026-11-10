@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S11 /verify (run 4, ended at step 1)
+- Session: S12 /verify D-91: 1 (run 4, ended at step 3)
 - Result: blocked
-- Gate: phase 6 gate not passed (not run: run 4 needs the human's approval, D-91)
-- Notes for the next session: step 1 of `/verify` stops at run 4; no check was run and `docs/06_verification-report.md` has no Run 4 section. D-91 asks: 1 one last `/verify` round, 2 accept the open Medium findings (F-48, F-50, F-51 and the fixes waiting for confirmation) and go to `/release`, 3 change a requirement. Before a run 4 the human runs `node system/run.mjs --hidden-eval` (the last evaluation is of `12e38c7`, `HEAD` is later). The acceptance manifest was renewed (`78ef42d`); the earlier notes still hold: F-47, F-52, F-57, F-58 fixed and unconfirmed, D-88 licences and D-89 NFR-10 rule open, Firefox (F-48) and CI (F-51) need the human. Nothing pushed.
+- Gate: phase 6 gate not passed (not run: the hidden evaluation is not of `HEAD`)
+- Notes for the next session: D-91 answered 1 (run 4 approved as the last round). No check was run and `docs/06_verification-report.md` has no Run 4 section: the latest hidden evaluation (run 4 of `06_hidden-evaluation.md`) is of `12e38c7`, `HEAD` is later with code changes. The human runs `node system/run.mjs --hidden-eval` (automatic with `/run`), commits nothing else, then starts `/verify` again, with no argument needed for step 1 (D-91 is resolved). Answer D-88 (licences) and D-89 (NFR-10 counting rule) first if possible. Unchanged: F-47, F-52, F-57, F-58 fixed and unconfirmed; Firefox (F-48) and CI (F-51) need the human; the acceptance manifest was renewed (`78ef42d`). Nothing pushed.
 
 ## Next
-- Command: /verify D-91: <1|2|3> (with 2: /release)
-- Waiting for: D-91 (fourth round), D-88 (licences), D-68 d (F-19)
+- Command: /verify (after `node system/run.mjs --hidden-eval`)
+- Waiting for: hidden evaluation of HEAD (human runs it), D-88 (licences), D-89 (NFR-10 rule), D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
