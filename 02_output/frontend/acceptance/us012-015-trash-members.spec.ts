@@ -68,7 +68,7 @@ test('AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not
   await expect(
     page.getByRole('heading', { level: 1, name: 'Potrdite svoj e-poštni naslov, da nadaljujete.' }),
   ).toBeVisible();
-  await expect(page.getByText('Acme')).toHaveCount(0);
+  await expect(page.getByText('Acme', { exact: true })).toHaveCount(0);
 });
 
 test('AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls', async ({

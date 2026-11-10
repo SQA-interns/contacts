@@ -213,7 +213,9 @@ test('AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the l
 
   await switchTo(page, 'EN');
 
-  await expect(contactRows(page).first()).toContainText('neObvescaj');
+  await expect(page.getByRole('table', { name: 'Group contacts' }).getByRole('row').nth(1)).toContainText(
+    'neObvescaj',
+  );
   await expect(page.getByText('Šola').first()).toBeVisible();
 });
 

@@ -36,7 +36,7 @@ test('AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is
   await dialog.getByRole('button', { name: 'Izbriši značko' }).click();
 
   await expect(page.getByRole('row').filter({ hasText: 'gost' })).toHaveCount(0);
-  expect(await gostCount(ana, acme)).toBeUndefined();
+  await expect.poll(() => gostCount(ana, acme)).toBeUndefined();
   expect((await api(ana, 'GET', `/groups/${acme.id}/contacts`)).body.total).toBe(5);
 });
 

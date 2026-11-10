@@ -87,7 +87,7 @@ test('AC-003-07 a Viewer is offered no "Add contact" action', async ({ page }) =
   await openAs(page, viola, paths.contacts(acme));
 
   await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
-  await expect(page.getByText('Novak')).toBeVisible();
+  await expect(page.getByRole('table').getByText('Novak')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Dodaj kontakt' })).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Dodaj kontakt' })).toHaveCount(0);
 });
