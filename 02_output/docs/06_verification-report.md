@@ -222,3 +222,16 @@ Carried and not re-opened by this run: F-08 (Low, see F-47), F-14 (Medium, D-79:
 2. D-68 d (F-19): the version of a Survivor that changes nothing.
 3. Run Firefox (and the real Excel check of Q-06, real Google sign-in) on a machine where Firefox starts; this environment cannot.
 4. Push `main` so CI can run (F-51); I did not push.
+
+## Run 2
+
+> **Self-check by the agent in a separate session (S9), not an independent review.** Commit under test: `d453f13`. Result: **stopped at step 3, nothing re-verified**. Logs: `out/logs/verify-run2-manifests.log`.
+
+| Step | Result |
+|---|---|
+| 1 run number | run 2; no finding has stayed open for three runs |
+| 2 manifests | input manifest 77 of 77 and acceptance manifest 59 of 59 hashes match; the hidden manifest is checked by the runner |
+| 3 hidden evaluation | **stopped**: the latest run in `06_hidden-evaluation.md` is of commit `3c49bdb`, `HEAD` is `d453f13`. It still shows F-41..F-45 as failing, so it says nothing about the loop 1 fixes. The full suite, E2E, UI and NFR checks were not run, because F-40 (E2E) and the NFR script need the test stack on port 8080, which the human's production stack holds. |
+| 4..10 | not run in this session |
+
+**Needed from the human:** run `node system/run.mjs --hidden-eval` (automatic with `/run`). The test stack needs port 8080: stop the production stack for the run with consent and start it again afterwards. Then start `/verify` again; it is still run 2 (no run section was completed).

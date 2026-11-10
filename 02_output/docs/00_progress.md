@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S8 /fix (loop 1)
-- Result: done
-- Gate: phase 6 gate not passed yet: fixes made, nothing re-verified (F-40 E2E, hidden evaluation, NFR script wait for `/verify` run 2); F-42, F-43, F-44 probed without finding a defect, so not shown fixed
-- Notes for the next session: see D-84 and the resolution column of `docs/06_verification-report.md`. Fixed: F-40 (new Group opens its Contact list), F-41 (non-text value in a text field is 400), F-45 (`/health` is `application/json`), F-46 (backup and restore scripts, `perf/measure.mjs`, `docs/openapi.json` with `tools/export-openapi.mjs`, install and backup guide, Slovene user guide), F-53 `EX-019-03`, F-54; `ConcurrentSaveIT` for F-50. Open: F-47, F-48, F-50 rest, F-51, F-52, F-53 subjects. `/verify` must run E2E-01..06, the UI checks and `perf/measure.mjs` on the test stack, which needs port 8080: the human's production stack holds it and must be stopped again with the human's consent, then restarted. Full backend run: only the known `EX-007-05` fails. Nothing pushed.
+- Session: S9 /verify (run 2, stopped at step 3)
+- Result: blocked
+- Gate: phase 6 gate not passed (nothing re-verified; hidden evaluation is of `3c49bdb`, not `HEAD`)
+- Notes for the next session: manifests match (77 of 77, 59 of 59). Run `node system/run.mjs --hidden-eval` on `HEAD` first. `/verify` then has to run E2E-01..06, the UI checks (also WF-08, WF-19, WF-07 main page, F-52) and `perf/measure.mjs` on the test stack, which needs port 8080: the human's production stack holds it and must be stopped for that and restarted with the human's consent. Open: F-47, F-48, F-50 rest, F-51, F-52, F-53 subjects; F-42..F-44 probed without a defect. See `docs/06_verification-report.md` "Run 2". Nothing pushed.
 
 ## Next
 - Command: /verify
-- Waiting for: D-68 d (F-19)
+- Waiting for: hidden evaluation of HEAD (`node system/run.mjs --hidden-eval`), D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
