@@ -48,7 +48,7 @@ One section per `/verify` run (`## Run 1`, `## Run 2`, …), each a self-check i
 
 ## Run 1
 
-> **Self-check by the agent in a separate session (S7), not an independent review.** Commit under test: `3c49bdb` (code identical to `HEAD`; later commits only add documents). Result: **phase 6 gate not passed**: 8 High findings, one Critical-by-rule finding that waits for the human (D-83), and several Medium ones are open. Logs: `out/logs/verify-*.log`. Ad hoc scripts (NFR measurement, traceability count) were written to a scratch folder outside the project, so the missing `perf/measure.mjs` (F-46) is not replaced by this run.
+> **Self-check by the agent in a separate session (S7), not an independent review.** Commit under test: `3c49bdb` (code identical to `HEAD`; later commits only add documents). Result: **phase 6 gate not passed**: 8 High findings, one Critical-by-rule finding that the human lowered to Low (D-83, option 1), and several Medium ones are open. Logs: `out/logs/verify-*.log`. Ad hoc scripts (NFR measurement, traceability count) were written to a scratch folder outside the project, so the missing `perf/measure.mjs` (F-46) is not replaced by this run.
 
 ### Procedure result
 
@@ -73,7 +73,7 @@ One section per `/verify` run (`## Run 1`, `## Run 2`, …), each a self-check i
 | DoD-R-02 format, lint, type check, static analysis | Met | Backend: Spotless, Checkstyle (0 violations), SpotBugs with find-sec-bugs (0 bug instances), PMD all pass (`verify-backend-static.log`; they are bound after Failsafe, so the failing frozen test stops `verify -Pquality` before them and they were run directly). Frontend: Prettier, ESLint (0 errors, 1 warning, F-54), `tsc -b`, i18n tests pass (`verify-frontend-check.log`) |
 | DoD-R-03 quality gate | Met with a decision | backend 97.62 % line, 97.37 % mutation; frontend 97.77 % line, 82.43 % mutation (shortfall 7.57 points after three rounds, D-82, F-38 Medium). Not re-measured (no change since S6) |
 | DoD-R-04 architecture constraints, no cycles | Met | `ArchitectureTest` 6, `LayerRulesTest` 2, `RepositoryScopeRuleTest` 2, `EndpointSecurityTest` 4: all pass |
-| DoD-R-05 no open Critical or High | **Not met** | F-40..F-46 (High), F-49 (Critical by rule, D-83) |
+| DoD-R-05 no open Critical or High | **Not met** | F-40..F-46 (High); F-49 was Critical by rule and is Low since D-83 |
 | DoD-R-06 components run, core flows work | Partly | all components ran in the test stack and the production stack; E2E-02, -04, -05, -06 pass in chromium and webkit, E2E-01 and -03 do not (F-40) |
 | DoD-R-07 every AC, EX, R traces to a test and a commit | Mostly met | 649 ids: AC 236 of 236 and EX 177 of 178 name a test; 196 of 235 R name one directly, the other 39 only through an AC or EX row that cites them; no test for `EX-019-03` (F-53). Every story has `feat` commits naming its R, AC or EX ids (`verify-traceability.log`) |
 | DoD-R-08 final theme, three widths, no Critical/Serious accessibility violation | Partly | chromium: 79 of 79 light, 79 of 79 dark; webkit light: 73 of 79; firefox not run; WF-08 and WF-19 have no check (F-48, F-52) |
@@ -201,7 +201,7 @@ Checked by `check-traceability.mjs` (every id mapped to the specification) and a
 | F-46 | High | T-69, T-70, T-76 of `02_tasks.md`; DoD-P04, DoD-P07; NFR-05, 06, 15 | The files of three planned tasks do not exist: `perf/measure.mjs`, `scripts/backup.sh`, `scripts/restore.sh`, `docs/install-and-backup.md`, `docs/user-guide-sl.md`, `docs/openapi.json`. `/release` writes only READMEs, release notes and the retrospective, so nothing would create them. NFR-01..04 and the restore were checked by hand here; the customer deliverables are missing. | open |
 | F-47 | Medium | UI acceptance (7 failing frozen tests, carried as F-08 Low) | Five of the seven failing tests have no recorded cause: `AC-003-07` (strict mode: `getByText('Novak')` matches 2 elements), `AC-004-04` and `AC-004-08` (`getByLabel('Ključ')` not found after adding an Attribute), `AC-005-06` (option `gospodar` not shown), `AC-006-04` (the row disappears, but the API still counts 5 Contacts on the Tag right after). `AC-014-03` and `AC-019-06` have decisions (D-58 g, D-61 g). Each needs to be classed as a product defect or a frozen-test defect; `AC-006-04` may be a timing or a real defect. | open |
 | F-48 | Medium | NFR-07, NFR-08 | Firefox cannot start in this environment (`browserType.launch` timeout of 180 s, graphics crash), so no Firefox E2E or UI result exists. In WebKit the Merge screen crashes the page on `page.reload` with a mocked 500 at all three widths (reproducible serially); three Contact-list checks time out under parallel load and pass serially. Cause not found. | open |
-| F-49 | Critical (by rule) | step 8, `.env` scan | The scan lists files and 14 commit messages. Two matching values are not secrets (a database name, a public Firebase project id); the four secret-class values appear nowhere (D-83). | waits for the human, D-83 |
+| F-49 | Low (Critical by rule, lowered by the human, D-83) | step 8, `.env` scan | The scan lists files and 14 commit messages. Two matching values are not secrets (a database name, a public Firebase project id); the four secret-class values appear nowhere (D-83). | accepted, D-83 option 1 |
 | F-50 | Medium | NFR-09, NFR-10, NFR-13, NFR-14 | No keyboard-only walkthrough was run; NFR-10 has no counting rule and E2E-01 fails at step 4; the Maven licence report was not run; `ConcurrentSaveIT` (T-75) does not exist. | open |
 | F-51 | Medium | DoD-R-15, ES-14 | The CI pipeline has never run: `origin/main` is 212 commits behind and no runner is pinned. The local run of every job fails at the frozen backend test and has no Firefox. | open |
 | F-52 | Medium | DoD-R-08 | WF-08 (New Contact), WF-19 (Not found) and the main page of WF-07 have no UI check (three widths, axe, overflow) in `frontend/ui-checks/`. | open |
@@ -218,7 +218,7 @@ Carried and not re-opened by this run: F-08 (Low, see F-47), F-14 (Medium, D-79:
 
 ### Human to do
 
-1. Answer D-83 (`/verify D-83: 1` accepts option 1).
+1. D-83 answered (option 1).
 2. D-68 d (F-19): the version of a Survivor that changes nothing.
 3. Run Firefox (and the real Excel check of Q-06, real Google sign-in) on a machine where Firefox starts; this environment cannot.
 4. Push `main` so CI can run (F-51); I did not push.
