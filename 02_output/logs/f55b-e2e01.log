@@ -1,0 +1,30 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (1.7s)
+  ✘  2 [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (2ms)
+  ✓  3 [webkit] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (3.3s)
+
+
+  1) [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-eS81FJ -juggler-pipe -silent[22m
+    [2m  - <launched> pid=48337[22m
+    [2m  - [pid=48337][err] *** You are running in headless mode.[22m
+    [2m  - [pid=48337][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=48337][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.708333) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+  2 passed (3.1m)

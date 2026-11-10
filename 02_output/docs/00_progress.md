@@ -7,8 +7,8 @@ The handover between sessions. Every session reads it first and updates it last.
 ## Last session
 - Session: S8 /fix F-55
 - Result: done
-- Gate: phase 6 gate not passed (open High: F-56, F-41..F-45 held-out; F-55 fixed in code, not re-run; Medium: F-47, F-48, F-50..F-52, F-57, F-58)
-- Notes for the next session: F-55 fixed in `7394819` (labels `Ključ`, `Vrednost`; row group `Atribut n`; unit tests 588 of 588). E2E-01, `AC-004-04`, `AC-004-08` were NOT re-run: the test stack needs port 8080, held by the production stack (`contact-groups-*`), and stopping it was denied in this session. Stack is unchanged (production containers still run, from images before `7394819`). Next fix: F-56 (non-Member on another Group's contact URL sees an error panel, not Not found, E2E-03); F-57, F-58 also open. Backend tests need port 9099. Nothing pushed.
+- Gate: phase 6 gate not passed (open High: F-56, F-41..F-45 held-out; F-55 fixed, waits for /verify; Medium: F-47 (five frozen UI tests), F-48, F-50..F-52, F-57, F-58)
+- Notes for the next session: F-55 fixed in `7394819` (labels `Ključ`, `Vrednost`, row group `Atribut n`) and `04b29a9` (key suggestions as a visible listbox, as WF-08). Checked against a fresh test stack: `AC-004-04`, `AC-004-08`, E2E-01 (chromium, webkit) pass. `AC-003-07` and `AC-005-06` still fail (F-47; `AC-005-06`: `TagInput.tsx` also uses a native datalist, probably the same cause). Test stack is down; the four production containers were stopped and started again, but they still run images from before these fixes. Next fix: F-56 (non-Member on another Group's contact URL sees an error panel, not Not found, E2E-03); F-57, F-58 also open. Backend tests need port 9099. Nothing pushed.
 
 ## Next
 - Command: /fix
