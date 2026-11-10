@@ -12,6 +12,7 @@ target/
 dist/
 build/
 coverage/
+reports/
 .stryker-tmp/
 playwright-report/
 test-results/
