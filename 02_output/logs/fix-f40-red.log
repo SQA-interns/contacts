@@ -1,0 +1,31 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/features/groups/GroupListPage.test.tsx (16 tests | 1 failed) 2831ms
+     × F-40 the new Group opens as its empty Contact list (E2E-01 step 4) 1119ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/groups/GroupListPage.test.tsx > CreateGroupDialog WF-05 create dialog (R-002-01..03) > F-40 the new Group opens as its empty Contact list (E2E-01 step 4)
+Error: [2mexpect([22m[31melement[39m[2m).toHaveTextContent()[22m
+
+Expected element to have text content:
+[32m  /groups/g1/contacts[39m
+Received:
+[31m  /[39m
+ ❯ src/features/groups/GroupListPage.test.tsx:153:64
+    151|     await submitName('Acme');
+    152|
+    153|     await vi.waitFor(() => expect(screen.getByTestId('where')).toHaveT…
+       |                                                                ^
+    154|   });
+    155|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  11:18:28
+   Duration  3.74s (transform 172ms, setup 114ms, import 352ms, tests 2.83s, environment 329ms)
+

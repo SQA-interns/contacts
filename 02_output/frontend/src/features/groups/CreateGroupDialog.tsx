@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
 import { createGroup } from '@/api/groups';
 import { ApiError, errorKey } from '@/api/errors';
@@ -27,14 +28,17 @@ interface CreateGroupDialogProps {
 export function CreateGroupDialog({ open, onOpenChange }: CreateGroupDialogProps) {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [tooShortOrLong, setTooShortOrLong] = useState(false);
   const create = useMutation({
     mutationFn: createGroup,
-    onSuccess: async () => {
+    onSuccess: async (group) => {
       toast.success(t('groups.created'));
       close(false);
       await queryClient.invalidateQueries({ queryKey: ['groups'] });
+      // E2E-01 step 4: the new Group opens as its (empty) Contact list
+      void navigate(`/groups/${encodeURIComponent(group.id)}/contacts`);
     },
   });
 

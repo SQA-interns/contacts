@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, useLocation } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { setLanguage } from '@/i18n';
 import { GroupListPage } from './GroupListPage';
@@ -38,11 +38,16 @@ async function submitName(name: string) {
   return dialog;
 }
 
+function Where() {
+  return <span data-testid="where">{useLocation().pathname}</span>;
+}
+
 function renderPage() {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   render(
     <QueryClientProvider client={queryClient}>
       <MemoryRouter>
+        <Where />
         <GroupListPage />
       </MemoryRouter>
     </QueryClientProvider>,
@@ -136,6 +141,16 @@ describe('CreateGroupDialog WF-05 create dialog (R-002-01..03)', () => {
     expect(posted).toEqual([{ name: 'Acme' }]);
     expect(await screen.findByRole('heading', { level: 2, name: 'Acme' })).toBeInTheDocument();
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('F-40 the new Group opens as its empty Contact list (E2E-01 step 4)', async () => {
+    backend(() => answer(acme, 201));
+    renderPage();
+    expect(screen.getByTestId('where')).toHaveTextContent('/');
+
+    await submitName('Acme');
+
+    await vi.waitFor(() => expect(screen.getByTestId('where')).toHaveTextContent('/groups/g1/contacts'));
   });
 
   it('R-002-02 an empty name shows the rule next to the field and sends nothing', async () => {
