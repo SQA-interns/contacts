@@ -1,0 +1,2 @@
+npm audit frontend --omit=dev: critical 0, high 4, moderate 0, low 0
+only findings accepted in D-05 remain

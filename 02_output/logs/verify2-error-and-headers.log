@@ -1,0 +1,32 @@
+== health
+HTTP/1.1 200 
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Referrer-Policy: no-referrer
+
+== no token
+HTTP/1.1 401 
+{"code":"auth.token_missing","message":"Authentication required"}{"code":"auth.token_missing","message":"Authentication required"}== garbage token
+HTTP/1.1 401 
+{"code":"auth.token_invalid","message":"Invalid or expired token"}== big body
+HTTP/1.1 100 
+{"code":"request.too_large","message":"The request body is too large"}== sql injection-ish
+HTTP/1.1 401 
+{"code":"auth.token_missing","message":"Authentication required"}== frontend headers
+HTTP/1.1 200 OK
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.googleusercontent.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com http://localhost:8080 http://localhost:9099; frame-src https://accounts.google.com https://*.firebaseapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+== cors foreign origin
+HTTP/1.1 403 
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers

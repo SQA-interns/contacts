@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-10T12:19:50.866Z",
+  "results": [
+    {
+      "nfr": "NFR-04",
+      "what": "20 Users for 5 minutes",
+      "measured": "8962 requests, 0 not 200 (0 times 429), reads median 14 ms, p95 47 ms, max 365 ms",
+      "passValue": "no error, no 429, reads below 1000 ms",
+      "pass": true
+    }
+  ]
+}

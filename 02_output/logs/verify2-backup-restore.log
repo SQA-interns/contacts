@@ -1,0 +1,25 @@
+backup written: /private/tmp/claude-501/-Users-kyuhi--claude-spares-spare-DUsYiO/6a3c8c45-714a-473a-9ecc-9352f7138f48/scratchpad/bk/contact-groups-2026-11-10T122254Z.dump (766387 bytes)
+backup-exit=0
+total 1504
+-rw-------@ 1 kyuhi  wheel  766387 Nov 10 13:22 contact-groups-2026-11-10T122254Z.dump
+-rw-r--r--@ 1 kyuhi  wheel       0 Nov 10 13:22 empty.env
+DROP DATABASE
+NOTICE:  database "contactgroups_test_restore" does not exist, skipping
+CREATE DATABASE
+restored into the database <name>_restore; rows per table:
+app_user: 389
+attribute: 3387
+contact: 11198
+contact_group: 288
+contact_tag: 10685
+contact_version: 1765
+duplicate_dismissal: 9
+duplicate_dismissal_contact: 27
+flyway_schema_history: 3
+history_entry: 3229
+invitation: 145
+member: 407
+tag: 112
+compare with the production database, then remove the copy:
+  docker compose -p contact-groups-test -f /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/docker-compose.yml --env-file /private/tmp/claude-501/-Users-kyuhi--claude-spares-spare-DUsYiO/6a3c8c45-714a-473a-9ecc-9352f7138f48/scratchpad/bk/empty.env exec postgres sh -c 'psql -U "$POSTGRES_USER" -d postgres -c "DROP DATABASE \"${POSTGRES_DB}_restore\""'
+restore-exit=0

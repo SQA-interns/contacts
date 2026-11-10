@@ -1,0 +1,8 @@
+Group "Large Co" holds 10000 Contacts
+NFR-04: 20 Users for 5 minutes (this takes a while)
+21 Members in the Group
+PASS  NFR-04  20 Users for 5 minutes: 8962 requests, 0 not 200 (0 times 429), reads median 14 ms, p95 47 ms, max 365 ms (pass: no error, no 429, reads below 1000 ms)
+
+| NFR | Measured | Pass value | Result |
+|---|---|---|---|
+| NFR-04 20 Users for 5 minutes | 8962 requests, 0 not 200 (0 times 429), reads median 14 ms, p95 47 ms, max 365 ms | no error, no 429, reads below 1000 ms | Met |

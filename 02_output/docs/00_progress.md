@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S9 /verify (run 2, stopped at step 3)
-- Result: blocked
-- Gate: phase 6 gate not passed (nothing re-verified; hidden evaluation is of `3c49bdb`, not `HEAD`)
-- Notes for the next session: manifests match (77 of 77, 59 of 59). Run `node system/run.mjs --hidden-eval` on `HEAD` first. `/verify` then has to run E2E-01..06, the UI checks (also WF-08, WF-19, WF-07 main page, F-52) and `perf/measure.mjs` on the test stack, which needs port 8080: the human's production stack holds it and must be stopped for that and restarted with the human's consent. Open: F-47, F-48, F-50 rest, F-51, F-52, F-53 subjects; F-42..F-44 probed without a defect. See `docs/06_verification-report.md` "Run 2". Nothing pushed.
+- Session: S9 /verify (run 2)
+- Result: done
+- Gate: phase 6 gate not passed (open High: F-40 as F-55 and F-56, F-41..F-45 held-out; Medium: F-47, F-48, F-50..F-52, F-57, F-58)
+- Notes for the next session: details in `docs/06_verification-report.md` "Run 2". F-55: Attribute fields are labelled `Ključ 1`, `Vrednost 1`; wireframes WF-07/WF-08 and the frozen tests (E2E-01, AC-004-04/08) expect `Ključ`, `Vrednost`. F-56: a non-Member on another Group's contact URL sees a generic error panel, not the Not found page (E2E-03). F-57: the F-40 fix broke the WF-05 UI check `ui-checks/group-screens.stack.spec.ts:38` (not frozen). F-58: `perf/measure.mjs` joins invited Users with `GET /me`, but Invitations are accepted on `GET /groups`. Held-out failures are unchanged (R-003-02, R-006-07, R-007-03, R-017-02, R-018-07). Backend tests need port 9099, so the test stack must be down for `mvnw verify`. Test stack is down; production stack and TLS proxy were started again from images of `HEAD`. Nothing pushed.
 
 ## Next
-- Command: /verify
-- Waiting for: hidden evaluation of HEAD (`node system/run.mjs --hidden-eval`), D-68 d (F-19)
+- Command: /fix
+- Waiting for: D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |

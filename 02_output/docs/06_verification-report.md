@@ -225,13 +225,151 @@ Carried and not re-opened by this run: F-08 (Low, see F-47), F-14 (Medium, D-79:
 
 ## Run 2
 
-> **Self-check by the agent in a separate session (S9), not an independent review.** Commit under test: `d453f13`. Result: **stopped at step 3, nothing re-verified**. Logs: `out/logs/verify-run2-manifests.log`.
+> **Self-check by the agent in a separate session (S9), not an independent review.** Commit under test: `a7d0a77` (code identical to `d453f13`, the commit of the loop 1 fixes; later commits only add documents). Result: **phase 6 gate not passed**: the five held-out failures are unchanged, `E2E-01` and `E2E-03` still fail (now for two other reasons), and the loop 1 fix of F-40 broke a UI check. Logs: `out/logs/verify2-*.log`. The first attempt of this run stopped at step 3 because the hidden evaluation was not of `HEAD`; the runner has since evaluated `a7d0a77` (runs 2 and 3 of `06_hidden-evaluation.md`).
+
+### Procedure result
 
 | Step | Result |
 |---|---|
 | 1 run number | run 2; no finding has stayed open for three runs |
-| 2 manifests | input manifest 77 of 77 and acceptance manifest 59 of 59 hashes match; the hidden manifest is checked by the runner |
-| 3 hidden evaluation | **stopped**: the latest run in `06_hidden-evaluation.md` is of commit `3c49bdb`, `HEAD` is `d453f13`. It still shows F-41..F-45 as failing, so it says nothing about the loop 1 fixes. The full suite, E2E, UI and NFR checks were not run, because F-40 (E2E) and the NFR script need the test stack on port 8080, which the human's production stack holds. |
-| 4..10 | not run in this session |
+| 2 manifests | input manifest 77 of 77 and acceptance manifest 59 of 59 hashes match (`verify-run2-manifests.log`); hidden manifest "ok" in the runner's evaluation |
+| 3 suite, checks, hidden evaluation | see "Definition of Done"; hidden evaluation of `a7d0a77` (runs 2 and 3, same result): 214 tests, 209 pass, 5 fail, the same five as before (F-41..F-45). Coverage and mutation not re-measured: no component changed since phase 5 except the loop 1 fixes; backend line coverage 97.71 % (JaCoCo of this run) |
+| 4 runtime | test stack (Compose, emulator, empty database, then the 10,000-Contact seed) and production stack |
+| 5 NFR | measured, see "NFR" |
+| 6 UI | see "UI and accessibility" |
+| 7 security | see "Threats and controls" |
+| 8 logs, errors, secrets | live probes and a scan of 8,640 backend log lines: no stack frame, token, password or e-mail address; `.env` scan: only the two non-secret values of F-49 (below) |
+| 9 CI, deployment | see "CI and deployment" |
+| 10 traceability | see "Traceability" |
 
-**Needed from the human:** run `node system/run.mjs --hidden-eval` (automatic with `/run`). The test stack needs port 8080: stop the production stack for the run with consent and start it again afterwards. Then start `/verify` again; it is still run 2 (no run section was completed).
+### Definition of Done
+
+| DoD | Result | Evidence |
+|---|---|---|
+| DoD-R-01 full suite passes, hashes match | **Not met** | hashes match. Backend 845 tests (197 unit, 648 integration, counted from the fresh reports): 844 pass, `EX-007-05` fails (F-08, D-68 i). Frontend unit 587 of 587 pass. UI acceptance 88 of 95 (the same 7 failures, F-47). E2E scenarios: chromium 4 of 6, webkit 4 of 6 (E2E-01, E2E-03 fail: F-55, F-56), firefox 0 of 6 (F-48). `verify2-backend-quality.log`, `verify2-ui-acceptance.log`, `verify2-e2e-scenarios.log`, `verify2-frontend-test.log` |
+| DoD-R-02 format, lint, type check, static analysis | Met | Spotless, Checkstyle 0, SpotBugs with find-sec-bugs 0, PMD 0; Prettier, ESLint, `tsc -b`, i18n tests pass, no ESLint warning left (`npm run check` exit 0; F-54 fixed) |
+| DoD-R-03 quality gate | Met with a decision | as in run 1 (D-82, F-38); not re-measured |
+| DoD-R-04 architecture constraints, no cycles | Met | architecture tests pass in the backend run |
+| DoD-R-05 no open Critical or High | **Not met** | F-40..F-46 as listed below, F-55, F-56 |
+| DoD-R-06 components run, core flows work | Partly | all components start; E2E-02, -04, -05, -06 pass, E2E-01 and -03 do not |
+| DoD-R-07 every AC, EX, R traces to a test and a commit | Met in the main | AC 236 of 236, EX 178 of 178 name a test (`EX-019-03` now has one, F-53); R 181 of 235 are named directly (counting rule of this run; run 1 counted 196), the rest through the AC or EX that cites them (`verify2-traceability.log`) |
+| DoD-R-08 final theme, three widths, no Critical/Serious accessibility violation | Partly | chromium light 76 of 79 and dark 76 of 79, webkit light 73 of 79, firefox not run; no accessibility violation on any screen that ran; WF-08, WF-19 and the main page of WF-07 still have no check (F-52) |
+| DoD-R-09 READMEs from a clean checkout | Not yet checked | `/release` |
+| DoD-R-10 release notes | Not yet written | `/release` |
+| DoD-R-11 decisions resolved or pending review; inputs unchanged | Met | 84 decisions, each with a resolution or "pending review"; input manifest matches |
+| DoD-R-12 commit history | Met in part | as in run 1: 47 subjects over 72 characters, history not rewritten (F-53) |
+| DoD-R-13 hidden suite passes | **Not met** | 209 of 214 at `a7d0a77`; F-41..F-45 |
+| DoD-R-14 every NFR meets its pass value | **Not met** | see "NFR" |
+| DoD-R-15 CI pipeline passes | **Not met** | never ran remotely; local run: see "CI and deployment" (F-51) |
+| DoD-R-16 production files build and start; every threat has a checked control | Met | images rebuilt from `HEAD`, production stack healthy in 20 s |
+| DoD-P01 E2E-01, -02, -03, -04, -06 against the Compose stack | **Not met** | E2E-01 (F-55), E2E-03 (F-56) |
+| DoD-P02 isolation test on every endpoint | Met | `IsolationIT`, `ContractParityIT`, `EndpointSecurityTest`, `AC-018-04` pass in the backend run |
+| DoD-P03 NFR-01..05 on the deployed system | Partly | NFR-01..03 pass with the specified script; NFR-04 passes only with a one-line change to the script (F-58) |
+| DoD-P04 four customer deliverables | Met in the main | `docs/install-and-backup.md` (130 lines), `docs/user-guide-sl.md` (115 lines), `docs/openapi.json` (OpenAPI 3.1, 37 operations, same as the contract), backup and restore scripts. Content of the guides was not tested by a person |
+| DoD-P05 later features finished, E2E-05 passes | Met | E2E-05 passes in chromium and webkit |
+| DoD-P06 no Critical or High open | **Not met** | see findings |
+| DoD-P07 restore tested once | Met | `scripts/backup.sh` wrote a 0600 dump of the test stack's database; `scripts/restore.sh` restored it into a new database with 13 tables and row counts equal to the source (11,198 Contacts); `verify2-backup-restore.log` |
+
+### UI and accessibility
+
+`frontend/ui-checks/` (overflow, axe WCAG 2.2 AA, no Critical or Serious violation) at 375, 768 and 1440 px against the test stack: chromium light and dark (dark through `colorScheme` in a scratch configuration), webkit light. Firefox does not start (F-48). The structure against the approved wireframes was not compared again in this run.
+
+| Screens | Widths and modes | Baseline result | Accessibility violations |
+|---|---|---|---|
+| all screens with a check file except those below | 3 widths; chromium light 76 of 79 and dark 76 of 79 pass; webkit light 73 of 79 | pass, no overflow | none Critical or Serious |
+| WF-05 create-Group dialog "created" state | chromium light, dark and webkit: **fails** | after "Ustvari" the app opens the new Group, the check expects the Group card in the list (F-57) | none seen |
+| WF-18 Merge | chromium pass; webkit **fails** | tab crash at `page.reload` with a mocked 500, as in run 1 (F-48) | none seen before the crash |
+| WF-08, WF-19, WF-07 main page | no check file | no result | no result (F-52) |
+
+### NFR
+
+Measured with the specified script `perf/measure.mjs` on the test stack with the 10,000-Contact seed (`verify2-nfr-measure.log`, `verify2-nfr04.log`).
+
+| NFR | Measured | Pass value | Result |
+|---|---|---|---|
+| NFR-01 list, search, filter | median 13 to 209 ms, p95 20 to 212 ms | median and p95 below 1 s | Met |
+| NFR-02 open a Contact | median 11 ms, p95 13 ms | p95 below 500 ms | Met |
+| NFR-03 export of 1,000 Contacts | 155 to 564 ms | each below 10 s | Met |
+| NFR-04 20 concurrent Users, 5 minutes | script as delivered: 8,111 of 9,000 requests answered 404, because the invited Users never became Members (F-58). Same script with one line changed (`GET /groups` after `/me`): 8,962 requests, 0 not 200, 0 times 429, reads median 14 ms, p95 47 ms, max 365 ms | zero errors, zero 429, reads below 1 s | Met only with the changed copy |
+| NFR-05 restart and health | `restart: unless-stopped` and `HEALTHCHECK` on both images, install guide exists | both present | Met |
+| NFR-06 backup and restore | scripts run, row counts equal | counts equal | Met |
+| NFR-07 E2E in three browsers | chromium 4 of 6, webkit 4 of 6, firefox does not start | all pass | Not met (F-55, F-56, F-48) |
+| NFR-08 three widths, no overflow | chromium 76 of 79 (the 3 failures are the F-57 check, not an overflow), webkit 73 of 79, firefox not run | no horizontal scroll | Partly (F-48, F-52, F-57) |
+| NFR-09 axe and keyboard walkthrough | axe clean on every screen that ran; no keyboard-only walkthrough | zero violations and walkthrough passes | Partly (F-50) |
+| NFR-10 actions in E2E-01 | not measured: E2E-01 fails at step 5 and there is no counting rule | at most 12 | Not shown (F-50) |
+| NFR-11 catalog | i18n tests pass (20) | identical sets | Met |
+| NFR-12 production start | healthy 20 s after `up` from freshly built images (existing volume) | within 2 minutes | Met |
+| NFR-13 licences | npm production tree: MIT 176, Apache-2.0 55, BSD-3-Clause 11, ISC 8, 0BSD 1; Maven licence report not run | only allowed licences | Partly (F-50) |
+| NFR-14 stale save stores nothing | `ConcurrentSaveIT` (T-75) exists and passes in the backend run, with the stale-save tests | a stale save stores nothing | Met |
+| NFR-15 release checklist files | `docs/openapi.json`, install and backup guide, user guide exist | three files | Met |
+
+### Threats and controls
+
+Unchanged from run 1 except where stated; the backend security and isolation tests all pass again in this run (the only backend failure is `EX-007-05`). Live probes on the test stack (`verify2-error-and-headers.log`): no token 401 `auth.token_missing`; garbage token 401 `auth.token_invalid`; 2 MB body 413-class answer `request.too_large`; API headers `X-Frame-Options: DENY`, `frame-ancestors 'none'`, `nosniff`, `no-referrer`; frontend CSP and the same headers; a request from a foreign origin gets 403 and no `Access-Control-Allow-Origin`; `/health` answers `application/json` (F-45's observation fixed, the held-out case still fails); Boris, no Member of Acme, gets no Acme data on its URL (F-56 is about the screen, not about data). Scanners: gitleaks 8.28.0 no leaks in 407 commits; `npm audit` gate: frontend 4 High all accepted in D-05, tools 0; `jscpd` 63 clones, 1.85 % (limit 3 %); backend OWASP dependency-check not re-run (no dependency changed since run 1). `.env` scan: file scan and commit scan match only `POSTGRES_DB` (the database name, 15 commit messages) and `FIREBASE_PROJECT_ID` (public, 2 files); the other four values of 6 or more characters appear nowhere; Low by D-83 (F-49).
+
+| Threat group | Result |
+|---|---|
+| S, T, R, I, D, E rows and data items of run 1 | Controlled as in run 1 (tests pass again) |
+| I: personal data in backups kept longer | Controlled: the install and backup guide describes the 14-day retention and `backup.sh` removes older dumps only after a new one succeeded |
+| SB-03, SR-09 no secrets | Controlled; F-49 Low (D-83) |
+| SB-11 non-root | backend 10001, frontend `nginx` |
+
+### CI and deployment
+
+- No runner is pinned and `origin/main` was not pushed, so the pipeline never ran remotely. Every job run locally: backend `verify -Pquality` fails only at `EX-007-05`; frontend build, test, check pass; browser tests fail as above; contracts (37 operations) and traceability (all ids mapped) pass; gitleaks, `npm audit` gate, licences, `jscpd` pass. Result: not passing (F-51).
+- Production: `contact-groups-backend:1.0.0` and `contact-groups-frontend:1.0.0` rebuilt from `HEAD`; `docker compose -p contact-groups -f docker-compose.prod.yml --env-file production.env up -d`: three services healthy within 20 s; `/health` `{"status":"UP"}`, `application/json`; frontend 200; plain HTTP 403 (`REQUIRE_HTTPS`); both application containers non-root with `restart: unless-stopped`; Flyway ran; no error in the log. The human had stopped the production stack and its TLS proxy for this run; both were started again (`docker start contact-groups-tlsproxy`). Logs: `verify2-prod-start.log`, `verify2-image-*.log`.
+- Note for the next run: the backend integration tests start their own emulator on port 9099, so `mvnw verify` cannot run while the test stack is up (the first attempt, `verify2-backend-quality-attempt1-port-clash.log`, failed 406 tests for that reason and is not counted).
+
+### Runtime demonstration
+
+| Component | Environment | Flows exercised | Result |
+|---|---|---|---|
+| backend, frontend, emulator, PostgreSQL | test stack (`scripts/test-stack.sh up`, empty database, throw-away values; then `seed/`, 10,000 Contacts) | UI acceptance (95), E2E-01..06 in three browsers, UI checks, `perf/measure.mjs`, error and header probes, backup and restore scripts | UI acceptance 88 of 95; E2E 8 of 18; the rest as above |
+| backend, frontend, PostgreSQL, TLS proxy | production stack, the human's production configuration | start, `/health`, frontend, plain-HTTP refusal | Healthy; no sign-in flow run |
+
+The test stack was removed afterwards (`scripts/test-stack.sh down`).
+
+### Traceability
+
+| R / AC / EX | Tests | Commits |
+|---|---|---|
+| 649 defined ids | AC 236 of 236, EX 178 of 178, R 181 of 235 directly | unchanged from run 1; loop 1 commits `1174061`, `d5c20f0`..`3f36c9c` name F-ids |
+
+### Findings
+
+| F | Severity | Source | Finding | Resolution |
+|---|---|---|---|---|
+| F-40 | High | E2E-01, E2E-03 | The first cause is fixed (the new Group opens). Both scenarios now fail further on: see F-55 and F-56. | open until E2E-01 and E2E-03 pass |
+| F-41 | High | hidden evaluation | `R-003-02` fails a held-out case (invalid) at `a7d0a77`, after the loop 1 change | open; fix not shown |
+| F-42 | High | hidden evaluation | `R-006-07` fails a held-out case (other) | open |
+| F-43 | High | hidden evaluation | `R-007-03` fails a held-out case (other); frozen `EX-007-05` also fails (F-08) | open |
+| F-44 | High | hidden evaluation | `R-017-02` fails a held-out case (other) | open |
+| F-45 | High | hidden evaluation | `R-018-07` fails a held-out case (other) after `/health` became `application/json` | open; cause still unknown |
+| F-46 | High | T-69, T-70, T-76 | **Closed in substance**: guides, `openapi.json`, backup and restore scripts exist and work; `perf/measure.mjs` has a defect (F-58) | closed except F-58 |
+| F-47 | Medium | UI acceptance | Seven failing frozen tests, unchanged. Cause found for `AC-004-04`, `AC-004-08` (F-55). `AC-003-07`: two links per list row carry the surname, so the strict locator matches twice; `AC-005-06` (option `gospodar` not offered after typing `go`) and `AC-006-04` (the API still lists the Tag right after the row disappeared) not classed. | open |
+| F-48 | Medium | NFR-07, NFR-08 | Firefox does not start; WebKit Merge screen crashes on `page.reload` with a mocked 500; unchanged | open item for the release notes |
+| F-49 | Low (D-83) | `.env` scan | Same two non-secret values; 15 commit messages now | accepted, D-83 |
+| F-50 | Medium | NFR-09, NFR-10, NFR-13 | `ConcurrentSaveIT` exists and passes (NFR-14 met). Keyboard walkthrough, NFR-10 counting rule and Maven licence report still open. | open |
+| F-51 | Medium | DoD-R-15 | CI never ran; the human pushes `main` | open item for the release notes |
+| F-52 | Medium | DoD-R-08 | WF-08, WF-19, WF-07 main page have no UI check | open |
+| F-53 | Low | DoD-R-07, DoD-R-12 | `EX-019-03` fixed; 47 long subjects stay | accepted, history is not rewritten |
+| F-54 | Low | `npm run check` | fixed, no ESLint warning | closed |
+| F-55 | High | E2E-01 step 5 (`verify2-e2e-scenarios.log`, chromium and webkit), `AC-004-04`, `AC-004-08`, DoD-P01 | The Attribute fields are labelled with a number, `Ključ 1` and `Vrednost 1` (`AttributeEditor.tsx`, key `contacts.attributeKey` = "Ključ {{n}}"). The approved wireframes WF-07 and WF-08 show `Ključ` and `Vrednost`, and the frozen tests look for the exact labels `Ključ` and `Vrednost` of the last row. `getByLabel('Ključ', { exact: true })` finds nothing, the test times out. | open |
+| F-56 | High | E2E-03 step 2, DoD-P01, AC-002-06 | A Member-less User who opens the contact-list URL of another Group sees the Group shell with the list headings and a generic error ("Nekaj je šlo narobe", "Poskusi znova") instead of the Not found page "Strani ni mogoče najti"; the scenario expects the page. No Acme data is shown (probe of this run), so isolation holds, but the screen is wrong. Hidden behind F-40 in run 1. | open |
+| F-57 | Medium | `ui-checks/group-screens.stack.spec.ts:38`, NFR-08 | WF-05 "created" check fails in chromium (light, dark) and webkit at all widths: after the loop 1 change of F-40 the dialog opens the new Group, the check still waits for the Group's card in the list. A regression of the fix; the check is not frozen. | open |
+| F-58 | Medium | `perf/measure.mjs`, T-69, DoD-P03, NFR-04 | The script invites 19 Users and joins them with `GET /me`, but the contract accepts Invitations on `GET /groups` (R-014-05). The Users stay outside the Group, 8,111 of 9,000 requests are 404, the script exits 1. With `GET /groups` added, NFR-04 passes (8,962 requests, none failed). | open |
+
+Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low, waits for the human, D-68 d), F-20..F-25 (Low), F-38 (Medium, D-82), F-39 (Low).
+
+### Fix loops
+
+| Loop | Findings | Change | Re-verification |
+|---|---|---|---|
+| 1 | F-40..F-46, F-50, F-53, F-54 (D-84) | 10 `fix` commits and 3 `test` commits | run 2: F-46, F-54, `EX-019-03`, NFR-14 and the restore confirmed; F-40, F-41..F-45 not confirmed; two new findings from the fixes (F-57, F-58) |
+
+### Human to do
+
+1. D-68 d (F-19): the version of a Survivor that changes nothing.
+2. Run Firefox, the real Excel check (Q-06) and real Google sign-in on a machine where they work.
+3. Push `main` so CI can run (F-51); I did not push.
+4. The five held-out failures cannot be seen by `/fix`: if two more loops do not clear them, run 4 asks you (accept as a known limitation, see the failing test, or change the requirement).
