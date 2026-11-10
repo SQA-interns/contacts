@@ -6,13 +6,13 @@ The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
 - Session: S9 /release
-- Result: done (run complete, with one step open: the hidden suite commit)
+- Result: done (run complete)
 - Gate: phase 7 gate passed (READMEs checked from a clean clone, release notes and retrospective written); phase 6 gate was not passed (see the release notes)
-- Notes for the next session: READMEs `423b4e9`, release notes `9bdb5a0`, retrospective `91e6b58` (Numbers from `node system/run.mjs --summary`). Clean clone checked: backend build and checks, `verify` (only the known `EX-007-05` red), frontend build, test, check, contracts, traceability, both images, quick start with seed and a seed-user sign-in (on spare ports, another project holds 5173 and 8080); logs `out/logs/release-*.log`. Browser tests, load script and a production start were not repeated. Step 4 of `/release` NOT done: `02_output/hidden-tests/` does not exist in the working tree, so there is nothing to commit and `.gitignore` is unchanged; I did not look for the vault. Once the runner puts the suite back: remove `02_output/hidden-tests/` from `.gitignore`, check the hashes against `docs/03_hidden-manifest.sha256`, commit as `test:`. The Docker images `contact-groups-*:1.0.0` on this host were rebuilt from the clean clone (same commit as before).
+- Notes for the next session: READMEs `423b4e9`, release notes `9bdb5a0`, retrospective `91e6b58` (Numbers from `node system/run.mjs --summary`). Clean clone checked: backend build and checks, `verify` (only the known `EX-007-05` red), frontend build, test, check, contracts, traceability, both images, quick start with seed and a seed-user sign-in (on spare ports, another project holds 5173 and 8080); logs `out/logs/release-*.log`. Browser tests, load script and a production start were not repeated. Step 4 done: the runner restored `02_output/hidden-tests/`, its 16 files match `docs/03_hidden-manifest.sha256`, and the suite is committed (`test:`) with the `.gitignore` entry removed. The Docker images `contact-groups-*:1.0.0` on this host were rebuilt from the clean clone (same commit as before).
 
 ## Next
-- Command: none (run complete); `/release` step 4 only when the hidden suite is back in `02_output/hidden-tests/`
-- Waiting for: the hidden suite (runner), D-88 (licences), D-89 (NFR-10), D-68 d (F-19), D-41 c, D-63 a / D-70 b, c (production Firebase), the human's push for CI (F-51), Firefox (F-48)
+- Command: none (run complete)
+- Waiting for: D-88 (licences), D-89 (NFR-10), D-68 d (F-19), D-41 c, D-63 a / D-70 b, c (production Firebase), the human's push for CI (F-51), Firefox (F-48)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
