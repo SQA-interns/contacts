@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S6 /quality-gate
-- Result: done
-- Gate: phase 5 gate met in part: backend meets both thresholds (line 97.62 %, mutation 97.37 %); frontend meets the line threshold (97.77 %) and misses the mutation threshold by 7.57 points (82.43 %, three survivor rounds done, D-82, F-38)
-- Notes for the next session: figures and the sets of tests run are in `docs/03_test-strategy.md` ("Test measures", "Quality gate", "Phase 5 notes"). D-81: PIT ran in five runs with disjoint test sets (one `FirebaseApp` per JVM, fixed emulator port) and the results were merged by mutant; frontend nonUnit coverage is not measured. D-82 carries F-38 (Medium, frontend mutation shortfall; 330 more mutants, mainly in ten screens) and F-39 (Low, `TagListPage` asks for Tags before the Role is known); neither is fixed. Known failing frozen tests unchanged: backend `EX-007-05`, `AC-018-15` (fails in Failsafe, passed in PIT), UI acceptance 7, E2E-01 and E2E-03 (not re-run in S6). Test commits of the survivor rounds are over 400 lines (D-82 d). 585 frontend unit tests pass. Reports: `backend/target/pit-reports/`, `frontend/reports/mutation/` (not committed). The dev stack is untouched.
+- Session: S7 /verify (run 1)
+- Result: blocked
+- Gate: phase 6 gate not passed (step 3 not reached: no hidden evaluation for `HEAD`; steps 4 to 11 not run)
+- Notes for the next session: step 2 passed (input and acceptance manifests match, `out/logs/verify-manifests.log`); the hidden manifest was left to the runner. `docs/06_hidden-evaluation.md` is missing, so `/verify` stopped as step 3 says. Run `node system/run.mjs --hidden-eval` (or `/run`), then start `/verify` again; it will be run 1 again, because run 1 produced no result. The report has a `## Run 1` section that says so. A slip is disclosed there: one `find` printed a path inside `hidden-tests/` (no content read). Open for the human: D-68 d (F-19), D-70 b, c (F-14).
 
 ## Next
-- Command: /verify
-- Waiting for: D-68 d (F-19)
+- Command: node system/run.mjs --hidden-eval, then /verify
+- Waiting for: hidden evaluation (runner); D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
