@@ -1,0 +1,27 @@
+ Container contact-groups-postgres-1 Running 
+ Container contact-groups-backend-1 Recreate 
+ Container contact-groups-backend-1 Recreated 
+ Container contact-groups-frontend-1 Recreate 
+ Container contact-groups-frontend-1 Recreated 
+ Container contact-groups-postgres-1 Waiting 
+ Container contact-groups-postgres-1 Healthy 
+ Container contact-groups-backend-1 Starting 
+ Container contact-groups-backend-1 Started 
+ Container contact-groups-frontend-1 Starting 
+ Container contact-groups-frontend-1 Started 
+seconds until all healthy: 7
+contact-groups-frontend-1 Up 5 seconds (healthy)
+contact-groups-backend-1 Up 5 seconds (healthy)
+contact-groups-tlsproxy Up 12 hours
+contact-groups-postgres-1 Up 12 hours (healthy)
+backend /health: {"status":"UP"}
+frontend /: 200
+unauthenticated /api/v1/groups: 403 (http without TLS header)
+2026-11-10T09:49:14.867Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : The following 1 profile is active: "prod"
+2026-11-10T09:49:16.841Z  INFO 1 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://postgres:5432/contacts (PostgreSQL 17.6)
+2026-11-10T09:49:16.897Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.030s)
+2026-11-10T09:49:17.893Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : Started ContactGroupsApplication in 3.492 seconds (process running for 4.01)
+2026-11-10T09:49:17.950Z  WARN 1 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it 
+restart=unless-stopped user=10001:10001 image=sha256:0f04b12f9396c4293448dce898eb5bbcb46a1634b2ec149a07b826955249e073
+restart=unless-stopped user=nginx
+tls proxy 8443 -> 200

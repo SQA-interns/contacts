@@ -1,0 +1,21 @@
+
+> contact-groups-frontend@1.0.0 check
+> prettier --check . && eslint . && tsc -b --noEmit && vitest run src/i18n
+
+Checking formatting...
+All matched files use Prettier code style!
+
+/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/group-shell-screens.stack.spec.ts
+  42:36  warning  Found non-literal argument to RegExp Constructor  security/detect-non-literal-regexp
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+
+ Test Files  4 passed (4)
+      Tests  19 passed (19)
+   Start at  10:04:02
+   Duration  1.48s (transform 453ms, setup 1.09s, import 459ms, tests 174ms, environment 3.37s)
+

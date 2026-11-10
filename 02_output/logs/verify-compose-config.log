@@ -1,0 +1,3 @@
+docker-compose.yml valid
+with emulator overlay valid
+docker-compose.prod.yml valid

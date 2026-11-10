@@ -1,0 +1,14 @@
+{
+ "users": 19,
+ "seconds": 300,
+ "total": 7703,
+ "byStatus": {
+  "200": 7703
+ },
+ "n": 7703,
+ "median_ms": 13.2,
+ "p95_ms": 124.2,
+ "max_ms": 473.4,
+ "maxRequestsPerUserInOneClockMinute": 82
+}
+load done 0

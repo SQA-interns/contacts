@@ -1,0 +1,5 @@
+POSTGRES_USER history-commits-touching-value=0
+POSTGRES_PASSWORD history-commits-touching-value=0
+FIREBASE_PROJECT_ID history-commits-touching-value=4
+VITE_FIREBASE_API_KEY history-commits-touching-value=0
+VITE_FIREBASE_AUTH_DOMAIN history-commits-touching-value=0

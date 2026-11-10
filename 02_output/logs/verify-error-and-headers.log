@@ -1,0 +1,51 @@
+## no token
+HTTP/1.1 401 
+Content-Type: application/json;charset=UTF-8
+{"code":"auth.token_missing","message":"Authentication required"}
+## garbage token
+HTTP/1.1 401 
+Content-Type: application/json;charset=UTF-8
+{"code":"auth.token_invalid","message":"Invalid or expired token"}
+## unknown group (404, no existence info)
+HTTP/1.1 404 
+Content-Type: application/json
+{"code":"group.not_found","message":"Group not found"}
+## malformed page
+HTTP/1.1 400 
+Content-Type: application/json
+{"code":"request.malformed","message":"Page must be a whole number of at least 1"}
+## malformed json
+HTTP/1.1 400 
+Content-Type: application/json
+{"code":"request.malformed","message":"Malformed request"}
+## unknown property
+HTTP/1.1 400 
+Content-Type: application/json
+{"code":"request.unknown_property","message":"Unknown property in the request body"}
+## oversize body (2 MB)
+HTTP/1.1 100 
+HTTP/1.1 413 
+Content-Type: application/json;charset=UTF-8
+{"code":"request.too_large","message":"The request body is too large"}
+## SQL text in query
+HTTP/1.1 200 
+Content-Type: application/json
+{"items":[],"page":1,"pageSize":25,"total":0}
+## headers API /health
+X-Content-Type-Options: nosniff
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Referrer-Policy: no-referrer
+## headers nginx /
+Server: nginx
+Cache-Control: no-cache
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.googleusercontent.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com http://localhost:8080 http://localhost:9099; frame-src https://accounts.google.com https://*.firebaseapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+## CORS
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+(none above = no ACAO for evil origin)

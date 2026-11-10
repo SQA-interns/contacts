@@ -1,0 +1,8 @@
+NFR-01 list (page 1..400) median 90.4 p95 141.1 max 203.9 non200 0
+NFR-01 list sorted lastName median 89.2 p95 141.6 max 178.4 non200 0
+NFR-01 search median 15.2 p95 66.6 max 67.5 non200 0
+NFR-01 search accents median 15.4 p95 55.3 max 57.5 non200 0
+NFR-01 filter city+company median 9 p95 12 max 16.9 non200 0
+NFR-01 filter tags median 12.1 p95 13.7 max 14.1 non200 0
+NFR-02 open contact median 3.2 p95 7.1 max 8.4 non200 0
+NFR-03 export 1000 x5 200:139ms 200:126ms 200:135ms 200:144ms 200:132ms

@@ -1,0 +1,323 @@
+
+Running 158 tests using 5 workers
+
+[1A[2K[1/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:69:5 › mobile (375 px) › WF-16 loading and error states
+[1A[2K[2/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-16 details, confirmation, busy, deleted
+[1A[2K[3/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:42:5 › mobile (375 px) › WF-16 refused: Sole Owner of a Group and of a Group in the Group Trash
+[1A[2K[4/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:42:5 › tablet (768 px) › WF-16 refused: Sole Owner of a Group and of a Group in the Group Trash
+[1A[2K[5/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-16 details, confirmation, busy, deleted
+[1A[2K[6/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:69:5 › tablet (768 px) › WF-16 loading and error states
+[1A[2K[7/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-16 details, confirmation, busy, deleted
+[1A[2K[8/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:42:5 › desktop (1440 px) › WF-16 refused: Sole Owner of a Group and of a Group in the Group Trash
+[1A[2K[9/158] [chromium] › ui-checks/account-delete-screens.stack.spec.ts:69:5 › desktop (1440 px) › WF-16 loading and error states
+[1A[2K[10/158] [chromium] › ui-checks/account-screens.stack.spec.ts:16:5 › mobile (375 px) › WF-01 sign-in: form and wrong credentials
+[1A[2K[11/158] [chromium] › ui-checks/account-screens.stack.spec.ts:27:5 › mobile (375 px) › WF-02 register: form and field errors
+[1A[2K[12/158] [chromium] › ui-checks/account-screens.stack.spec.ts:37:5 › mobile (375 px) › WF-03 reset password: form and confirmation
+[1A[2K[13/158] [chromium] › ui-checks/account-screens.stack.spec.ts:47:5 › mobile (375 px) › WF-04 verify e-mail: message, resend
+[1A[2K[14/158] [chromium] › ui-checks/account-screens.stack.spec.ts:57:5 › mobile (375 px) › WF-05 Group list: empty, list and error
+[1A[2K[15/158] [chromium] › ui-checks/account-screens.stack.spec.ts:16:5 › tablet (768 px) › WF-01 sign-in: form and wrong credentials
+[1A[2K[16/158] [chromium] › ui-checks/account-screens.stack.spec.ts:27:5 › tablet (768 px) › WF-02 register: form and field errors
+[1A[2K[17/158] [chromium] › ui-checks/account-screens.stack.spec.ts:37:5 › tablet (768 px) › WF-03 reset password: form and confirmation
+[1A[2K[18/158] [chromium] › ui-checks/account-screens.stack.spec.ts:47:5 › tablet (768 px) › WF-04 verify e-mail: message, resend
+[1A[2K[19/158] [chromium] › ui-checks/account-screens.stack.spec.ts:57:5 › tablet (768 px) › WF-05 Group list: empty, list and error
+[1A[2K[20/158] [chromium] › ui-checks/account-screens.stack.spec.ts:16:5 › desktop (1440 px) › WF-01 sign-in: form and wrong credentials
+[1A[2K[21/158] [chromium] › ui-checks/account-screens.stack.spec.ts:27:5 › desktop (1440 px) › WF-02 register: form and field errors
+[1A[2K[22/158] [chromium] › ui-checks/account-screens.stack.spec.ts:37:5 › desktop (1440 px) › WF-03 reset password: form and confirmation
+[1A[2K[23/158] [chromium] › ui-checks/account-screens.stack.spec.ts:47:5 › desktop (1440 px) › WF-04 verify e-mail: message, resend
+[1A[2K[24/158] [chromium] › ui-checks/account-screens.stack.spec.ts:57:5 › desktop (1440 px) › WF-05 Group list: empty, list and error
+[1A[2K[25/158] [chromium] › ui-checks/activity-screens.stack.spec.ts:23:5 › mobile (375 px) › WF-13 list, filtered, no match, range message, viewer refused
+[1A[2K[26/158] [chromium] › ui-checks/activity-screens.stack.spec.ts:23:5 › tablet (768 px) › WF-13 list, filtered, no match, range message, viewer refused
+[1A[2K[27/158] [chromium] › ui-checks/activity-screens.stack.spec.ts:23:5 › desktop (1440 px) › WF-13 list, filtered, no match, range message, viewer refused
+[1A[2K[28/158] [chromium] › ui-checks/contact-list-no-last-name.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list with Contacts that have no last name
+[1A[2K[29/158] [chromium] › ui-checks/contact-list-no-last-name.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list with Contacts that have no last name
+[1A[2K[30/158] [chromium] › ui-checks/contact-list-no-last-name.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list with Contacts that have no last name
+[1A[2K[31/158] [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty
+[1A[2K[32/158] [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty
+[1A[2K[33/158] [chromium] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty
+[1A[2K[34/158] [chromium] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-17 Duplicates: list, empty, loading, error
+[1A[2K[35/158] [chromium] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-17 Duplicates: list, empty, loading, error
+[1A[2K[36/158] [chromium] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-17 Duplicates: list, empty, loading, error
+[1A[2K[37/158] [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-05 create dialog: open, errors, created
+[1A[2K[38/158] [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-05 create dialog: open, errors, created
+[1A[2K[39/158] [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-05 create dialog: open, errors, created
+[1A[2K[40/158] [chromium] › ui-checks/group-shell-screens.stack.spec.ts:15:5 › mobile (375 px) › Owner reaches the Tag list from the Contact list, Viewer sees fewer tabs
+[1A[2K[41/158] [chromium] › ui-checks/group-shell-screens.stack.spec.ts:15:5 › tablet (768 px) › Owner reaches the Tag list from the Contact list, Viewer sees fewer tabs
+[1A[2K[42/158] [chromium] › ui-checks/group-shell-screens.stack.spec.ts:15:5 › desktop (1440 px) › Owner reaches the Tag list from the Contact list, Viewer sees fewer tabs
+[1A[2K[43/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty
+[1A[2K[44/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › mobile (375 px) › WF-15 loading, error and empty states
+[1A[2K[45/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › mobile (375 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group
+[1A[2K[46/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty
+[1A[2K[47/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › tablet (768 px) › WF-15 loading, error and empty states
+[1A[2K[48/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › tablet (768 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group
+[1A[2K[49/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty
+[1A[2K[50/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › desktop (1440 px) › WF-15 loading, error and empty states
+[1A[2K[51/158] [chromium] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › desktop (1440 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group
+[1A[2K[52/158] [chromium] › ui-checks/invitation-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-12 empty, invalid, created, already invited, list, cancel confirmation
+[1A[2K[53/158] [chromium] › ui-checks/invitation-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-12 empty, invalid, created, already invited, list, cancel confirmation
+[1A[2K[54/158] [chromium] › ui-checks/invitation-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-12 empty, invalid, created, already invited, list, cancel confirmation
+[1A[2K[55/158] [chromium] › ui-checks/member-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list
+[1A[2K[56/158] [chromium] › ui-checks/member-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list
+[1A[2K[57/158] [chromium] › ui-checks/member-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list
+[1A[2K[58/158] [chromium] › ui-checks/merge-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K[59/158] [chromium] › ui-checks/merge-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K[60/158] [chromium] › ui-checks/merge-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K[61/158] [chromium] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › mobile (375 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[62/158] [chromium] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › tablet (768 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[63/158] [chromium] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › desktop (1440 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[64/158] [chromium] › ui-checks/smoke.spec.ts:10:5 › mobile (375 px) › sign-in page has no horizontal scroll, no serious accessibility violation, and a screenshot
+[1A[2K[65/158] [chromium] › ui-checks/smoke.spec.ts:32:5 › mobile (375 px) › language switch changes the UI at once
+[1A[2K[66/158] [chromium] › ui-checks/smoke.spec.ts:10:5 › tablet (768 px) › sign-in page has no horizontal scroll, no serious accessibility violation, and a screenshot
+[1A[2K[67/158] [chromium] › ui-checks/smoke.spec.ts:32:5 › tablet (768 px) › language switch changes the UI at once
+[1A[2K[68/158] [chromium] › ui-checks/smoke.spec.ts:10:5 › desktop (1440 px) › sign-in page has no horizontal scroll, no serious accessibility violation, and a screenshot
+[1A[2K[69/158] [chromium] › ui-checks/smoke.spec.ts:32:5 › desktop (1440 px) › language switch changes the UI at once
+[1A[2K[70/158] [chromium] › ui-checks/smoke.spec.ts:43:1 › unknown route shows the not found page
+[1A[2K[71/158] [chromium] › ui-checks/tag-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-09 list, rename dialog, refusals, delete confirmation, empty
+[1A[2K[72/158] [chromium] › ui-checks/tag-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-09 list, rename dialog, refusals, delete confirmation, empty
+[1A[2K[73/158] [chromium] › ui-checks/tag-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-09 list, rename dialog, refusals, delete confirmation, empty
+[1A[2K[74/158] [chromium] › ui-checks/trash-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-07 delete confirmation, WF-10 list, restored, empty
+[1A[2K[75/158] [chromium] › ui-checks/trash-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-07 delete confirmation, WF-10 list, restored, empty
+[1A[2K[76/158] [chromium] › ui-checks/trash-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-07 delete confirmation, WF-10 list, restored, empty
+[1A[2K[77/158] [chromium] › ui-checks/version-screens.stack.spec.ts:22:5 › mobile (375 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[78/158] [chromium] › ui-checks/version-screens.stack.spec.ts:22:5 › tablet (768 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[79/158] [chromium] › ui-checks/version-screens.stack.spec.ts:22:5 › desktop (1440 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[80/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-16 details, confirmation, busy, deleted
+[1A[2K[81/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:42:5 › mobile (375 px) › WF-16 refused: Sole Owner of a Group and of a Group in the Group Trash
+[1A[2K[82/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:69:5 › mobile (375 px) › WF-16 loading and error states
+[1A[2K[83/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-16 details, confirmation, busy, deleted
+[1A[2K[84/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:42:5 › tablet (768 px) › WF-16 refused: Sole Owner of a Group and of a Group in the Group Trash
+[1A[2K[85/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:69:5 › tablet (768 px) › WF-16 loading and error states
+[1A[2K[86/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-16 details, confirmation, busy, deleted
+[1A[2K[87/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:42:5 › desktop (1440 px) › WF-16 refused: Sole Owner of a Group and of a Group in the Group Trash
+[1A[2K[88/158] [webkit] › ui-checks/account-delete-screens.stack.spec.ts:69:5 › desktop (1440 px) › WF-16 loading and error states
+[1A[2K[89/158] [webkit] › ui-checks/account-screens.stack.spec.ts:16:5 › mobile (375 px) › WF-01 sign-in: form and wrong credentials
+[1A[2K[90/158] [webkit] › ui-checks/account-screens.stack.spec.ts:27:5 › mobile (375 px) › WF-02 register: form and field errors
+[1A[2K[91/158] [webkit] › ui-checks/account-screens.stack.spec.ts:37:5 › mobile (375 px) › WF-03 reset password: form and confirmation
+[1A[2K[92/158] [webkit] › ui-checks/account-screens.stack.spec.ts:47:5 › mobile (375 px) › WF-04 verify e-mail: message, resend
+[1A[2K[93/158] [webkit] › ui-checks/account-screens.stack.spec.ts:57:5 › mobile (375 px) › WF-05 Group list: empty, list and error
+[1A[2K[94/158] [webkit] › ui-checks/account-screens.stack.spec.ts:16:5 › tablet (768 px) › WF-01 sign-in: form and wrong credentials
+[1A[2K[95/158] [webkit] › ui-checks/account-screens.stack.spec.ts:27:5 › tablet (768 px) › WF-02 register: form and field errors
+[1A[2K[96/158] [webkit] › ui-checks/account-screens.stack.spec.ts:37:5 › tablet (768 px) › WF-03 reset password: form and confirmation
+[1A[2K[97/158] [webkit] › ui-checks/account-screens.stack.spec.ts:47:5 › tablet (768 px) › WF-04 verify e-mail: message, resend
+[1A[2K[98/158] [webkit] › ui-checks/account-screens.stack.spec.ts:57:5 › tablet (768 px) › WF-05 Group list: empty, list and error
+[1A[2K[99/158] [webkit] › ui-checks/account-screens.stack.spec.ts:16:5 › desktop (1440 px) › WF-01 sign-in: form and wrong credentials
+[1A[2K[100/158] [webkit] › ui-checks/account-screens.stack.spec.ts:27:5 › desktop (1440 px) › WF-02 register: form and field errors
+[1A[2K[101/158] [webkit] › ui-checks/account-screens.stack.spec.ts:37:5 › desktop (1440 px) › WF-03 reset password: form and confirmation
+[1A[2K[102/158] [webkit] › ui-checks/account-screens.stack.spec.ts:47:5 › desktop (1440 px) › WF-04 verify e-mail: message, resend
+[1A[2K[103/158] [webkit] › ui-checks/account-screens.stack.spec.ts:57:5 › desktop (1440 px) › WF-05 Group list: empty, list and error
+[1A[2K[104/158] [webkit] › ui-checks/activity-screens.stack.spec.ts:23:5 › mobile (375 px) › WF-13 list, filtered, no match, range message, viewer refused
+[1A[2K[105/158] [webkit] › ui-checks/activity-screens.stack.spec.ts:23:5 › tablet (768 px) › WF-13 list, filtered, no match, range message, viewer refused
+[1A[2K[106/158] [webkit] › ui-checks/activity-screens.stack.spec.ts:23:5 › desktop (1440 px) › WF-13 list, filtered, no match, range message, viewer refused
+[1A[2K[107/158] [webkit] › ui-checks/contact-list-no-last-name.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list with Contacts that have no last name
+[1A[2K[108/158] [webkit] › ui-checks/contact-list-no-last-name.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list with Contacts that have no last name
+[1A[2K[109/158] [webkit] › ui-checks/contact-list-no-last-name.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list with Contacts that have no last name
+[1A[2K[110/158] [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty
+[1A[2K[111/158] [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty
+[1A[2K[112/158] [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty
+[1A[2K[113/158] [webkit] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-17 Duplicates: list, empty, loading, error
+[1A[2K[114/158] [webkit] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-17 Duplicates: list, empty, loading, error
+[1A[2K[115/158] [webkit] › ui-checks/duplicate-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-17 Duplicates: list, empty, loading, error
+[1A[2K[116/158] [webkit] › ui-checks/group-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-05 create dialog: open, errors, created
+[1A[2K[117/158] [webkit] › ui-checks/group-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-05 create dialog: open, errors, created
+[1A[2K[118/158] [webkit] › ui-checks/group-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-05 create dialog: open, errors, created
+[1A[2K  1) [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Noben kontakt ne ustreza' })
+    Expected: visible
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Noben kontakt ne ustreza' })[22m
+
+
+      80 |       await check(page, 'WF-06_contact-list', 'filters', viewport.name);
+      81 |       await filters.getByLabel('Država').selectOption({ label: 'Avstrija' });
+    > 82 |       await expect(page.getByRole('heading', { name: 'Noben kontakt ne ustreza' })).toBeVisible();
+         |                                                                                     ^
+      83 |       await check(page, 'WF-06_contact-list', 'filters-no-match', viewport.name);
+      84 |       await page.getByRole('button', { name: 'Počisti filtre' }).last().click();
+      85 |       await expect(page.getByText('Stran 1 od 2').first()).toBeVisible();
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/contact-list-screens.stack.spec.ts:82:85
+
+    Error Context: test-results/contact-list-screens.stack-b1c70-ist-sorted-by-company-empty-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/contact-list-screens.stack-b1c70-ist-sorted-by-company-empty-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/contact-list-screens.stack-b1c70-ist-sorted-by-company-empty-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  2) [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:5173/groups/fbdfaf48-be9d-438f-94da-e17f520fd767/contacts", waiting until "load"[22m
+
+
+      94 |       }
+      95 |
+    > 96 |       await page.goto(paths.contacts(empty));
+         |                  ^
+      97 |       await expect(page.getByRole('heading', { name: 'V skupini še ni kontaktov' })).toBeVisible();
+      98 |       await check(page, 'WF-06_contact-list', 'empty', viewport.name);
+      99 |     });
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/contact-list-screens.stack.spec.ts:96:18
+
+    Error Context: test-results/contact-list-screens.stack-044b0-ist-sorted-by-company-empty-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/contact-list-screens.stack-044b0-ist-sorted-by-company-empty-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/contact-list-screens.stack-044b0-ist-sorted-by-company-empty-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[119/158] [webkit] › ui-checks/group-shell-screens.stack.spec.ts:15:5 › desktop (1440 px) › Owner reaches the Tag list from the Contact list, Viewer sees fewer tabs
+[1A[2K  3) [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error Context: test-results/contact-list-screens.stack-ca136-ist-sorted-by-company-empty-webkit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/contact-list-screens.stack-ca136-ist-sorted-by-company-empty-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/contact-list-screens.stack-ca136-ist-sorted-by-company-empty-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[120/158] [webkit] › ui-checks/group-shell-screens.stack.spec.ts:15:5 › mobile (375 px) › Owner reaches the Tag list from the Contact list, Viewer sees fewer tabs
+[1A[2K[121/158] [webkit] › ui-checks/group-shell-screens.stack.spec.ts:15:5 › tablet (768 px) › Owner reaches the Tag list from the Contact list, Viewer sees fewer tabs
+[1A[2K[122/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty
+[1A[2K[123/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › mobile (375 px) › WF-15 loading, error and empty states
+[1A[2K[124/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › mobile (375 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group
+[1A[2K[125/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty
+[1A[2K[126/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › tablet (768 px) › WF-15 loading, error and empty states
+[1A[2K[127/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › tablet (768 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group
+[1A[2K[128/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-14 dialog states, WF-15 list, restore refused, restored, empty
+[1A[2K[129/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:60:5 › desktop (1440 px) › WF-15 loading, error and empty states
+[1A[2K[130/158] [webkit] › ui-checks/group-trash-screens.stack.spec.ts:80:5 › desktop (1440 px) › WF-06 Owner opens "Možnosti skupine" in the Group bar and deletes the Group
+[1A[2K[131/158] [webkit] › ui-checks/invitation-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-12 empty, invalid, created, already invited, list, cancel confirmation
+[1A[2K[132/158] [webkit] › ui-checks/invitation-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-12 empty, invalid, created, already invited, list, cancel confirmation
+[1A[2K[133/158] [webkit] › ui-checks/invitation-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-12 empty, invalid, created, already invited, list, cancel confirmation
+[1A[2K[134/158] [webkit] › ui-checks/member-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list
+[1A[2K[135/158] [webkit] › ui-checks/member-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list
+[1A[2K[136/158] [webkit] › ui-checks/member-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-11 owner list, role changed, last owner refused, remove confirmation, viewer list
+[1A[2K[137/158] [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K[138/158] [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K[139/158] [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K[140/158] [webkit] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › mobile (375 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[141/158] [webkit] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › tablet (768 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K[142/158] [webkit] › ui-checks/restore-version-screens.stack.spec.ts:26:5 › desktop (1440 px) › WF-07 restore: confirm, busy, refused, restored, stale
+[1A[2K  4) [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+
+    Error: page.reload: Page crashed
+    Call log:
+    [2m  - waiting for navigation until "load"[22m
+
+
+      112 |         route.fulfill({ status: 500, json: { code: 'x', message: 'x' } }),
+      113 |       );
+    > 114 |       await page.reload();
+          |                  ^
+      115 |       await expect(page.getByRole('button', { name: 'Poskusi znova' })).toBeVisible();
+      116 |       await check(page, 'WF-18_merge', 'error', viewport.name);
+      117 |       await page.unroute('**/api/v1/groups/*/contacts/*');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/merge-screens.stack.spec.ts:114:18
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/merge-screens.stack-mobile-bfaf9-ls-busy-loading-empty-error-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/merge-screens.stack-mobile-bfaf9-ls-busy-loading-empty-error-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[143/158] [webkit] › ui-checks/smoke.spec.ts:32:5 › mobile (375 px) › language switch changes the UI at once
+[1A[2K  5) [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+
+    Error: page.reload: Page crashed
+    Call log:
+    [2m  - waiting for navigation until "load"[22m
+
+
+      112 |         route.fulfill({ status: 500, json: { code: 'x', message: 'x' } }),
+      113 |       );
+    > 114 |       await page.reload();
+          |                  ^
+      115 |       await expect(page.getByRole('button', { name: 'Poskusi znova' })).toBeVisible();
+      116 |       await check(page, 'WF-18_merge', 'error', viewport.name);
+      117 |       await page.unroute('**/api/v1/groups/*/contacts/*');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/merge-screens.stack.spec.ts:114:18
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/merge-screens.stack-tablet-b1f29-ls-busy-loading-empty-error-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/merge-screens.stack-tablet-b1f29-ls-busy-loading-empty-error-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[144/158] [webkit] › ui-checks/smoke.spec.ts:10:5 › mobile (375 px) › sign-in page has no horizontal scroll, no serious accessibility violation, and a screenshot
+[1A[2K[145/158] [webkit] › ui-checks/smoke.spec.ts:32:5 › tablet (768 px) › language switch changes the UI at once
+[1A[2K[146/158] [webkit] › ui-checks/smoke.spec.ts:10:5 › tablet (768 px) › sign-in page has no horizontal scroll, no serious accessibility violation, and a screenshot
+[1A[2K  6) [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+
+    Error: page.reload: Page crashed
+    Call log:
+    [2m  - waiting for navigation until "load"[22m
+
+
+      112 |         route.fulfill({ status: 500, json: { code: 'x', message: 'x' } }),
+      113 |       );
+    > 114 |       await page.reload();
+          |                  ^
+      115 |       await expect(page.getByRole('button', { name: 'Poskusi znova' })).toBeVisible();
+      116 |       await check(page, 'WF-18_merge', 'error', viewport.name);
+      117 |       await page.unroute('**/api/v1/groups/*/contacts/*');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/merge-screens.stack.spec.ts:114:18
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/merge-screens.stack-deskto-57bce-ls-busy-loading-empty-error-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/merge-screens.stack-deskto-57bce-ls-busy-loading-empty-error-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[147/158] [webkit] › ui-checks/smoke.spec.ts:32:5 › desktop (1440 px) › language switch changes the UI at once
+[1A[2K[148/158] [webkit] › ui-checks/smoke.spec.ts:43:1 › unknown route shows the not found page
+[1A[2K[149/158] [webkit] › ui-checks/tag-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-09 list, rename dialog, refusals, delete confirmation, empty
+[1A[2K[150/158] [webkit] › ui-checks/tag-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-09 list, rename dialog, refusals, delete confirmation, empty
+[1A[2K[151/158] [webkit] › ui-checks/smoke.spec.ts:10:5 › desktop (1440 px) › sign-in page has no horizontal scroll, no serious accessibility violation, and a screenshot
+[1A[2K[152/158] [webkit] › ui-checks/tag-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-09 list, rename dialog, refusals, delete confirmation, empty
+[1A[2K[153/158] [webkit] › ui-checks/trash-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-07 delete confirmation, WF-10 list, restored, empty
+[1A[2K[154/158] [webkit] › ui-checks/trash-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-07 delete confirmation, WF-10 list, restored, empty
+[1A[2K[155/158] [webkit] › ui-checks/trash-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-07 delete confirmation, WF-10 list, restored, empty
+[1A[2K[156/158] [webkit] › ui-checks/version-screens.stack.spec.ts:22:5 › mobile (375 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[157/158] [webkit] › ui-checks/version-screens.stack.spec.ts:22:5 › tablet (768 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K[158/158] [webkit] › ui-checks/version-screens.stack.spec.ts:22:5 › desktop (1440 px) › WF-07 Versions: list, open, compare, no differences, error
+[1A[2K  6 failed
+    [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty 
+    [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty 
+    [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty 
+    [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+    [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+    [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+  152 passed (5.1m)

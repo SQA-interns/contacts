@@ -1,0 +1,78 @@
+{
+ "NFR-01 list (page 1..400)": {
+  "n": 50,
+  "median_ms": 105.7,
+  "p95_ms": 150.1,
+  "max_ms": 154.1,
+  "non200": 0
+ },
+ "NFR-01 list sorted lastName": {
+  "n": 50,
+  "median_ms": 93.8,
+  "p95_ms": 142.8,
+  "max_ms": 149.2,
+  "non200": 0
+ },
+ "NFR-01 search": {
+  "n": 50,
+  "median_ms": 234.4,
+  "p95_ms": 256.5,
+  "max_ms": 262.6,
+  "non200": 0
+ },
+ "NFR-01 search accents": {
+  "n": 50,
+  "median_ms": 227.2,
+  "p95_ms": 230.7,
+  "max_ms": 233.1,
+  "non200": 0
+ },
+ "NFR-01 filter city+company": {
+  "n": 50,
+  "median_ms": 9.8,
+  "p95_ms": 11.9,
+  "max_ms": 16.3,
+  "non200": 0
+ },
+ "NFR-01 filter tags": {
+  "n": 50,
+  "median_ms": 48.8,
+  "p95_ms": 50.8,
+  "max_ms": 51.2,
+  "non200": 0
+ },
+ "NFR-02 open contact": {
+  "n": 50,
+  "median_ms": 3.5,
+  "p95_ms": 4.8,
+  "max_ms": 8.6,
+  "non200": 0
+ },
+ "NFR-03 export 1000 x5": [
+  {
+   "status": 200,
+   "ms": 1750,
+   "bytes": 56119
+  },
+  {
+   "status": 200,
+   "ms": 1460,
+   "bytes": 56346
+  },
+  {
+   "status": 200,
+   "ms": 1416,
+   "bytes": 56138
+  },
+  {
+   "status": 200,
+   "ms": 1327,
+   "bytes": 56344
+  },
+  {
+   "status": 200,
+   "ms": 1338,
+   "bytes": 56341
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+backend log lines:       57
+eyJ[A-Za-z0-9_-]\{15,\}                  0
+Bearer                                   0
+@example\.com                            0
+@acme\.com                               0
+Seed-Passw0rd                            0
+password                                 0
+Novak                                    0
+Kovač                                   0
+person[0-9]*@                            0
+jdbc:postgresql://[^ ]*:[^ ]*@           0
+at si\.contactgroups\.                   0
+Exception:                               0
+2026-11-10T09:11:46.124Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 403 to PUT /api/v1/groups/4fbb4627-5b97-4509-9132-bd42b8916155/contacts/b6cebf53-ca6e-43
+2026-11-10T09:12:05.360Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups/b38e8d29-2f82-45e6-8ba4-36cfecb365fd/exports
+2026-11-10T09:12:08.109Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/4027d70a-283d-4025-9a78-62a3dea245d1/contacts/8e93584d-af32-4e
+frontend log hits: 0

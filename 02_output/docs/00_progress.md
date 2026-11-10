@@ -7,12 +7,12 @@ The handover between sessions. Every session reads it first and updates it last.
 ## Last session
 - Session: S7 /verify (run 1)
 - Result: blocked
-- Gate: phase 6 gate not passed (step 3 not reached: no hidden evaluation for `HEAD`; steps 4 to 11 not run)
-- Notes for the next session: step 2 passed (input and acceptance manifests match, `out/logs/verify-manifests.log`); the hidden manifest was left to the runner. `docs/06_hidden-evaluation.md` is missing, so `/verify` stopped as step 3 says. Run `node system/run.mjs --hidden-eval` (or `/run`), then start `/verify` again; it will be run 1 again, because run 1 produced no result. The report has a `## Run 1` section that says so. A slip is disclosed there: one `find` printed a path inside `hidden-tests/` (no content read). Open for the human: D-68 d (F-19), D-70 b, c (F-14).
+- Gate: phase 6 gate not passed: 8 High findings open (F-40 E2E-01 and E2E-03 fail, F-41..F-45 five held-out failures, F-46 missing deliverables), F-49 Critical by rule waits for D-83, F-47, F-48, F-50..F-52 Medium; hashes match, no secret value leaked
+- Notes for the next session: the whole run is in `docs/06_verification-report.md` ("Run 1"), logs `out/logs/verify-*.log`. Blocking decision D-83: the `.env` scan lists files, but the two matching values are a database name and a public Firebase project id (the four secret values appear nowhere); the human answers with `/verify D-83: <1, 2 or 3>`, then `/fix` takes F-40..F-46 (F-46: write `perf/measure.mjs`, backup and restore scripts, install and backup guide, Slovene user guide, `docs/openapi.json`). The production stack was restarted from images built at `HEAD`; the test stack is down; nothing was pushed. Not done here: Firefox (does not start in this sandbox), keyboard-only walkthrough, real Google sign-in and Excel check. `perf.mjs` and `trace.mjs` were written outside the project.
 
 ## Next
-- Command: node system/run.mjs --hidden-eval, then /verify
-- Waiting for: hidden evaluation (runner); D-68 d (F-19)
+- Command: /verify D-83: 1
+- Waiting for: D-83 (F-49), D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |

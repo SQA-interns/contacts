@@ -1,0 +1,89 @@
+
+Running 6 tests using 1 worker
+
+[1A[2K[1/6] [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › mobile (375 px) › WF-06 list, sorted by company, empty
+[1A[2K[2/6] [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › tablet (768 px) › WF-06 list, sorted by company, empty
+[1A[2K[3/6] [webkit] › ui-checks/contact-list-screens.stack.spec.ts:14:5 › desktop (1440 px) › WF-06 list, sorted by company, empty
+[1A[2K[4/6] [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K  1) [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+
+    Error: page.reload: Page crashed
+    Call log:
+    [2m  - waiting for navigation until "load"[22m
+
+
+      112 |         route.fulfill({ status: 500, json: { code: 'x', message: 'x' } }),
+      113 |       );
+    > 114 |       await page.reload();
+          |                  ^
+      115 |       await expect(page.getByRole('button', { name: 'Poskusi znova' })).toBeVisible();
+      116 |       await check(page, 'WF-18_merge', 'error', viewport.name);
+      117 |       await page.unroute('**/api/v1/groups/*/contacts/*');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/merge-screens.stack.spec.ts:114:18
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/merge-screens.stack-mobile-bfaf9-ls-busy-loading-empty-error-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/merge-screens.stack-mobile-bfaf9-ls-busy-loading-empty-error-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[5/6] [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K  2) [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+
+    Error: page.reload: Page crashed
+    Call log:
+    [2m  - waiting for navigation until "load"[22m
+
+
+      112 |         route.fulfill({ status: 500, json: { code: 'x', message: 'x' } }),
+      113 |       );
+    > 114 |       await page.reload();
+          |                  ^
+      115 |       await expect(page.getByRole('button', { name: 'Poskusi znova' })).toBeVisible();
+      116 |       await check(page, 'WF-18_merge', 'error', viewport.name);
+      117 |       await page.unroute('**/api/v1/groups/*/contacts/*');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/merge-screens.stack.spec.ts:114:18
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/merge-screens.stack-tablet-b1f29-ls-busy-loading-empty-error-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/merge-screens.stack-tablet-b1f29-ls-busy-loading-empty-error-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K[6/6] [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error
+[1A[2K  3) [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+
+    Error: page.reload: Page crashed
+    Call log:
+    [2m  - waiting for navigation until "load"[22m
+
+
+      112 |         route.fulfill({ status: 500, json: { code: 'x', message: 'x' } }),
+      113 |       );
+    > 114 |       await page.reload();
+          |                  ^
+      115 |       await expect(page.getByRole('button', { name: 'Poskusi znova' })).toBeVisible();
+      116 |       await check(page, 'WF-18_merge', 'error', viewport.name);
+      117 |       await page.unroute('**/api/v1/groups/*/contacts/*');
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/merge-screens.stack.spec.ts:114:18
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/merge-screens.stack-deskto-57bce-ls-busy-loading-empty-error-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/merge-screens.stack-deskto-57bce-ls-busy-loading-empty-error-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  3 failed
+    [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+    [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+    [webkit] › ui-checks/merge-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-18 Merge: choices, attribute, confirmation, refusals, busy, loading, empty, error 
+  3 passed (1.1m)

@@ -1,0 +1,66 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 769B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:1.29.2-alpine
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:22.20.0-bookworm-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 104B done
+#4 DONE 0.0s
+
+#5 [build 1/6] FROM docker.io/library/node:22.20.0-bookworm-slim@sha256:b21fe589dfbe5cc39365d0544b9be3f1f33f55f3c86c87a76ff65a02f8f5848e
+#5 resolve docker.io/library/node:22.20.0-bookworm-slim@sha256:b21fe589dfbe5cc39365d0544b9be3f1f33f55f3c86c87a76ff65a02f8f5848e 0.0s done
+#5 DONE 0.0s
+
+#6 [stage-1 1/5] FROM docker.io/library/nginx:1.29.2-alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22
+#6 resolve docker.io/library/nginx:1.29.2-alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22 0.0s done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 13.51kB 0.0s done
+#7 DONE 0.0s
+
+#8 [build 5/6] COPY . .
+#8 CACHED
+
+#9 [build 3/6] COPY package.json package-lock.json .npmrc ./
+#9 CACHED
+
+#10 [stage-1 3/5] COPY docker-entrypoint.sh /docker-entrypoint-app.sh
+#10 CACHED
+
+#11 [build 2/6] WORKDIR /build
+#11 CACHED
+
+#12 [stage-1 2/5] COPY nginx.conf /etc/nginx/nginx.conf
+#12 CACHED
+
+#13 [build 6/6] RUN npm run build
+#13 CACHED
+
+#14 [build 4/6] RUN npm ci
+#14 CACHED
+
+#15 [stage-1 4/5] COPY --from=build /build/dist /usr/share/nginx/html
+#15 CACHED
+
+#16 [stage-1 5/5] RUN chmod 0555 /docker-entrypoint-app.sh && chown -R nginx:nginx /usr/share/nginx/html
+#16 CACHED
+
+#17 exporting to image
+#17 exporting layers done
+#17 exporting manifest sha256:a8baab5476b1e9b87f9964639a331308484599ce24c7608b18ee77c258806dd0 done
+#17 exporting config sha256:c00859bc74f771edefe28b2e49f8bf41c33e9c206a630710dcbee307ec295205 done
+#17 exporting attestation manifest sha256:7a5efbb25f2a06973b8ab20903f3b5b51e6296c76c8836b1ea565e57d76bf086 done
+#17 exporting manifest list sha256:880fba53ea79adec4f6d67c5f8c573a72991cf597bb8d91121411753cc21c712 done
+#17 naming to docker.io/library/contact-groups-frontend:1.0.0 done
+#17 unpacking to docker.io/library/contact-groups-frontend:1.0.0 done
+#17 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/or3xwu7aulvd8kexh0b8dq9rj

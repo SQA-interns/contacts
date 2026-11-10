@@ -1,0 +1,15 @@
+dump bytes: 833818
+app_user source=392 restored=392 equal
+attribute source=3396 restored=3396 equal
+contact source=11291 restored=11291 equal
+contact_group source=296 restored=296 equal
+contact_tag source=10871 restored=10871 equal
+contact_version source=2212 restored=2212 equal
+duplicate_dismissal source=9 restored=9 equal
+duplicate_dismissal_contact source=27 restored=27 equal
+flyway_schema_history source=3 restored=3 equal
+history_entry source=4442 restored=4442 equal
+invitation source=126 restored=126 equal
+member source=414 restored=414 equal
+tag source=124 restored=124 equal
+all tables equal: yes

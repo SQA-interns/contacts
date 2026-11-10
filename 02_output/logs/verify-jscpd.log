@@ -1,0 +1,259 @@
+Clone found (tsx):
+ - src/features/tags/TagListPage.texts.test.tsx [232:5 - 242:6] (10 lines, 141 tokens)
+   src/features/tags/TagListPage.texts.test.tsx [178:2 - 218:6]
+
+Clone found (tsx):
+ - src/features/members/MembersPage.test.tsx [39:5 - 55:35] (16 lines, 128 tokens)
+   src/features/members/MembersPage.texts.test.tsx [58:6 - 74:77]
+
+Clone found (tsx):
+ - src/features/invitations/InvitationsPage.test.tsx [44:5 - 60:69] (16 lines, 128 tokens)
+   src/features/invitations/InvitationsPage.texts.test.tsx [50:6 - 66:75]
+
+Clone found (tsx):
+ - src/features/groups/GroupTrashPage.texts.test.tsx [32:2 - 48:13] (16 lines, 136 tokens)
+   src/features/trash/TrashPage.texts.test.tsx [61:5 - 77:23]
+
+Clone found (tsx):
+ - src/features/duplicates/MergePage.test.tsx [342:4 - 352:25] (10 lines, 112 tokens)
+   src/features/duplicates/MergePage.test.tsx [317:4 - 327:35]
+
+Clone found (tsx):
+ - src/features/contacts/ContactPage.test.tsx [256:2 - 267:6] (11 lines, 124 tokens)
+   src/features/contacts/ContactPage.test.tsx [225:2 - 236:7]
+
+Clone found (tsx):
+ - src/features/contacts/ContactListPage.more.test.tsx [22:2 - 34:30] (12 lines, 128 tokens)
+   src/features/contacts/ContactListPage.test.tsx [36:2 - 48:37]
+
+Clone found (tsx):
+ - src/features/activity/ActivityPage.tsx [234:11 - 245:2] (11 lines, 147 tokens)
+   src/features/history/ContactHistoryTab.tsx [81:2 - 92:3]
+
+Clone found (tsx):
+ - src/features/activity/ActivityPage.details.test.tsx [1:1 - 12:6] (11 lines, 175 tokens)
+   src/features/activity/ActivityPage.test.tsx [1:1 - 11:8]
+
+Clone found (typescript):
+ - src/auth/firebaseClient.test.ts [116:2 - 132:73] (16 lines, 201 tokens)
+   src/auth/firebaseClient.test.ts [96:2 - 112:102]
+
+Clone found (typescript):
+ - src/auth/firebaseClient.test.ts [138:2 - 148:17] (10 lines, 108 tokens)
+   src/auth/firebaseClient.test.ts [98:2 - 108:21]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/TagListEndpointsIT.java [6:6 - 18:5] (12 lines, 165 tokens)
+   ../backend/src/test/java/si/contactgroups/web/VersionRestoreEndpointsIT.java [1:4 - 14:12]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/TagListEndpointsIT.java [32:23 - 45:8] (13 lines, 117 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [32:26 - 45:7]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/TagEndpointsIT.java [5:4 - 16:5] (11 lines, 144 tokens)
+   ../backend/src/test/java/si/contactgroups/web/VersionRestoreEndpointsIT.java [3:5 - 14:12]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/MergeEndpointsIT.java [1:1 - 21:84] (20 lines, 232 tokens)
+   ../backend/src/test/java/si/contactgroups/web/VersionRestoreEndpointsIT.java [1:1 - 21:92]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/MemberEndpointsIT.java [1:1 - 11:5] (10 lines, 158 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TagListEndpointsIT.java [1:1 - 11:5]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/MemberEndpointsIT.java [11:8 - 22:85] (11 lines, 116 tokens)
+   ../backend/src/test/java/si/contactgroups/web/VersionRestoreEndpointsIT.java [5:7 - 21:94]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/MemberEndpointsIT.java [32:21 - 45:6] (13 lines, 117 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [32:26 - 45:7]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/InvitationEndpointsIT.java [12:5 - 23:97] (11 lines, 116 tokens)
+   ../backend/src/test/java/si/contactgroups/web/VersionRestoreEndpointsIT.java [5:7 - 21:94]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/InvitationEndpointsIT.java [32:12 - 45:2] (13 lines, 117 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [32:26 - 45:7]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/HistoryEndpointsIT.java [11:9 - 23:82] (12 lines, 127 tokens)
+   ../backend/src/test/java/si/contactgroups/web/VersionRestoreEndpointsIT.java [5:7 - 20:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/HistoryEndpointsIT.java [35:12 - 47:5] (12 lines, 100 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [33:12 - 45:7]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/GroupEndpointsIT.java [6:7 - 16:91] (10 lines, 95 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TagListEndpointsIT.java [12:11 - 21:94]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/GroupAccessIT.java [9:5 - 22:4] (13 lines, 90 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [13:11 - 22:95]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/GroupAccessIT.java [27:3 - 43:5] (16 lines, 147 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TagEndpointsIT.java [36:3 - 52:14]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/ExportEndpointsIT.java [4:5 - 20:90] (16 lines, 181 tokens)
+   ../backend/src/test/java/si/contactgroups/web/HistoryEndpointsIT.java [7:4 - 20:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/ExportEndpointsIT.java [21:2 - 44:5] (23 lines, 165 tokens)
+   ../backend/src/test/java/si/contactgroups/web/InvitationEndpointsIT.java [24:2 - 47:7]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/DuplicateEndpointsIT.java [1:1 - 20:8] (19 lines, 247 tokens)
+   ../backend/src/test/java/si/contactgroups/web/GroupTrashEndpointsIT.java [1:1 - 19:8]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/DeleteForeverEndpointsIT.java [34:33 - 52:51] (18 lines, 166 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [32:26 - 50:27]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/ContactEndpointsIT.java [1:1 - 17:11] (16 lines, 232 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [1:1 - 14:12]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/ContactEndpointsIT.java [33:7 - 52:5] (19 lines, 159 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TagEndpointsIT.java [33:2 - 43:5]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/AttributeEndpointsIT.java [1:1 - 20:63] (19 lines, 241 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TagEndpointsIT.java [1:1 - 20:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/AttributeEndpointsIT.java [32:15 - 45:5] (13 lines, 121 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [32:26 - 46:4]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/ActivityEndpointsIT.java [1:1 - 19:71] (18 lines, 220 tokens)
+   ../backend/src/test/java/si/contactgroups/web/GroupTrashEndpointsIT.java [1:1 - 20:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/web/ActivityEndpointsIT.java [33:15 - 46:5] (13 lines, 112 tokens)
+   ../backend/src/test/java/si/contactgroups/web/TrashEndpointsIT.java [33:12 - 48:2]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us024DuplicatesAcceptanceIT.java [1:1 - 14:9] (13 lines, 151 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us025DismissAcceptanceIT.java [1:1 - 14:5]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us023RestoreVersionAcceptanceIT.java [6:10 - 18:55] (12 lines, 129 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us025DismissAcceptanceIT.java [5:9 - 17:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us022VersionAcceptanceIT.java [1:1 - 17:62] (16 lines, 168 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us025DismissAcceptanceIT.java [1:1 - 17:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us021DeleteAccountAcceptanceIT.java [1:1 - 11:9] (10 lines, 112 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us025DismissAcceptanceIT.java [1:1 - 11:3]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us020DeleteGroupAcceptanceIT.java [6:9 - 18:77] (12 lines, 129 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us025DismissAcceptanceIT.java [5:9 - 17:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us016HistoryAcceptanceIT.java [8:10 - 20:96] (12 lines, 129 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us021DeleteAccountAcceptanceIT.java [5:9 - 17:54]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us015MemberAcceptanceIT.java [1:1 - 17:40] (16 lines, 168 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us025DismissAcceptanceIT.java [1:1 - 17:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us014InvitationAcceptanceIT.java [7:8 - 21:4] (14 lines, 129 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us021DeleteAccountAcceptanceIT.java [5:9 - 17:54]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us013DeleteForeverAcceptanceIT.java [1:1 - 22:4] (21 lines, 177 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us020DeleteGroupAcceptanceIT.java [1:1 - 17:57]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us012TrashAcceptanceIT.java [1:1 - 12:8] (11 lines, 121 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us020DeleteGroupAcceptanceIT.java [1:1 - 12:3]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us012TrashAcceptanceIT.java [6:9 - 17:7] (11 lines, 128 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us017ActivityAcceptanceIT.java [6:8 - 21:4]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us008SearchAcceptanceIT.java [5:9 - 17:59] (12 lines, 123 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us009FilterAcceptanceIT.java [3:11 - 16:86]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us006TagListAcceptanceIT.java [1:1 - 11:4] (10 lines, 100 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us023RestoreVersionAcceptanceIT.java [1:1 - 11:3]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us005TagAcceptanceIT.java [1:1 - 12:12] (11 lines, 123 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us023RestoreVersionAcceptanceIT.java [1:1 - 12:10]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us004AttributeAcceptanceIT.java [1:1 - 14:4] (13 lines, 149 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us023RestoreVersionAcceptanceIT.java [1:1 - 14:3]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us004AttributeAcceptanceIT.java [19:2 - 37:7] (18 lines, 145 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us005TagAcceptanceIT.java [19:2 - 37:5]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/acceptance/Us001AccountAcceptanceIT.java [56:15 - 67:4] (11 lines, 106 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/Us018SecurityAcceptanceIT.java [91:2 - 102:9]
+
+Clone found (java):
+ - ../backend/src/main/java/si/contactgroups/web/MemberController.java [1:1 - 16:7] (15 lines, 193 tokens)
+   ../backend/src/main/java/si/contactgroups/web/TrashController.java [1:1 - 16:9]
+
+Clone found (java):
+ - ../backend/src/main/java/si/contactgroups/web/GroupController.java [1:1 - 15:13] (14 lines, 178 tokens)
+   ../backend/src/main/java/si/contactgroups/web/InvitationController.java [1:1 - 15:11]
+
+Clone found (java):
+ - ../backend/src/main/java/si/contactgroups/web/DuplicateController.java [1:1 - 15:13] (14 lines, 178 tokens)
+   ../backend/src/main/java/si/contactgroups/web/InvitationController.java [1:1 - 15:11]
+
+Clone found (java):
+ - ../backend/src/main/java/si/contactgroups/web/ActivityController.java [1:1 - 11:20] (10 lines, 124 tokens)
+   ../backend/src/main/java/si/contactgroups/web/HistoryController.java [1:1 - 11:25]
+
+Clone found (java):
+ - ../backend/src/main/java/si/contactgroups/service/GroupService.java [1:1 - 14:13] (13 lines, 131 tokens)
+   ../backend/src/main/java/si/contactgroups/service/TrashService.java [1:1 - 14:8]
+
+Clone found (java):
+ - ../backend/src/main/java/si/contactgroups/persistence/ContactRepository.java [484:21 - 495:2] (11 lines, 103 tokens)
+   ../backend/src/main/java/si/contactgroups/persistence/ContactRepository.java [297:2 - 308:2]
+
+Clone found (java):
+ - ../backend/src/test/java/si/contactgroups/FirebaseEmulatorIT.java [42:2 - 54:9] (12 lines, 127 tokens)
+   ../backend/src/test/java/si/contactgroups/acceptance/support/Emulator.java [63:2 - 75:7]
+
+┌────────────┬────────────────┬─────────────┬──────────────┬──────────────┬──────────────────┬───────────────────┐
+│ Format     │ Files analyzed │ Total lines │ Total tokens │ Clones found │ Duplicated lines │ Duplicated tokens │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ typescript │ 56             │ 3727        │ 41861        │ 2            │ 26 (0.7%)        │ 309 (0.74%)       │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ javascript │ 89             │ 3502        │ 37446        │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ tsx        │ 105            │ 13638       │ 163518       │ 9            │ 113 (0.83%)      │ 1219 (0.75%)      │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ css        │ 4              │ 170         │ 1062         │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ java       │ 261            │ 23657       │ 223962       │ 48           │ 663 (2.8%)       │ 7006 (3.13%)      │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ sql        │ 1              │ 145         │ 1818         │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ properties │ 2              │ 22          │ 92           │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ yaml       │ 1              │ 67          │ 392          │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ Total:     │ 519            │ 44928       │ 470151       │ 59           │ 802 (1.79%)      │ 8534 (1.82%)      │
+└────────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+Found 59 clones.
+Detection time:: 4.893s
