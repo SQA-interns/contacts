@@ -162,6 +162,7 @@ jobs:
           POSTGRES_USER: owner
           POSTGRES_PASSWORD: ci-dummy
           DB_APP_PASSWORD: ci-dummy-app
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/ci-dummy-firebase-admin.json
           FIREBASE_PROJECT_ID: demo-ci
           CORS_ALLOWED_ORIGIN: https://contacts.example.test
           VITE_API_BASE_URL: https://api.example.test
