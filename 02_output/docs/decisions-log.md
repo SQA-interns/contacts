@@ -946,3 +946,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-86: Five held-out failures stay open for three runs: accept them as a known limitation?
+- Timestamp: 2026-11-10
+- Session: S10 /verify run 3
+- Class: block
+- Type: approval
+- Trigger: step 1 of `/verify`: a finding that has stayed open for three runs. The hidden evaluation (`docs/06_hidden-evaluation.md`, runs 1 to 4, commits `3c49bdb`, `a7d0a77`, `12e38c7`) fails the same five cases each time: `R-003-02` (invalid), `R-006-07` (other), `R-007-03` (other), `R-017-02` (other), `R-018-07` (other); findings F-41..F-45, High (DoD-R-05, DoD-R-13, DoD-P06). The evaluation names only the rule and the case category, so no session can see the case. Evidence for the decision: loop 1 changed code for F-41 (a number or truth value in a text field is 400) and F-45 (`/health` is `application/json`) and the evaluation did not change; F-42, F-43, F-44 were probed without finding a defect and extra tests were added (`d1a9ec4`, `ecc793a`); the frozen and own tests of all five rules pass in the backend run of run 3 (only `EX-007-05` fails, F-08, which contradicts `R-007-03`, D-68 i); the live probes of run 3 show the documented error and header behaviour; no data of another Group or User is exposed by any of them as far as the tests and probes show. The real cause of each failure is not known.
+- Options: 1 look at the five failing cases in the hidden vault yourself and describe each to `/fix`; 2 accept all five as a known limitation (lower to Medium, name each rule and category in the release notes); 3 change the requirement of one or more of the five rules.
+- Human response: "Accept as known limitation" (2026-11-10, in chat, option 2).
+- Resolution: option 2. F-41..F-45 are lowered from High to Medium and recorded as a known limitation: the cause is unknown and unreproduced, so this is an acceptance of risk by the human, not a finding that the behaviour is correct. `/release` lists the five rules and categories in the release notes. DoD-R-13 (hidden suite passes) stays unmet for exactly these five cases and DoD-R-05 and DoD-P06 count no High for them; any new failing hidden case, or a case outside these five, is not covered. No requirement or input file changes.
+- Overrides: DoD-R-13 of `general/quality/done-release.md` for the cases `R-003-02` (invalid), `R-006-07`, `R-007-03`, `R-017-02`, `R-018-07` (other), as accepted by the human.

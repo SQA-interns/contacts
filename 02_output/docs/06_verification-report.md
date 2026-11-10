@@ -376,13 +376,13 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 
 ## Run 3
 
-> **Self-check by the agent in a separate session (S10), not an independent review.** Commit under test: `12e38c7` (code identical to `0e7f518`, the commit of the F-56 fix; later commits only add documents). Result: **phase 6 gate not passed**: the five held-out failures F-41..F-45 are unchanged. F-40, F-55 and F-56 are confirmed fixed (E2E-01 and E2E-03 pass in chromium and webkit). Logs: `out/logs/verify3-*.log`. The first attempt of this run stopped at step 3 because the hidden evaluation was not of `HEAD` (commit `12e38c7`); the human then ran `node system/run.mjs --hidden-eval` (run 4 of `06_hidden-evaluation.md`, commit `12e38c7`), and the human allowed stopping the production stack for the browser checks.
+> **Self-check by the agent in a separate session (S10), not an independent review.** Commit under test: `12e38c7` (code identical to `0e7f518`, the commit of the F-56 fix; later commits only add documents). Result: **phase 6 gate not passed** because of the open Medium findings below; the five held-out failures F-41..F-45 are unchanged, and after the run the human accepted them as a known limitation (D-86), so no High is open. F-40, F-55 and F-56 are confirmed fixed (E2E-01 and E2E-03 pass in chromium and webkit). Logs: `out/logs/verify3-*.log`. The first attempt of this run stopped at step 3 because the hidden evaluation was not of `HEAD` (commit `12e38c7`); the human then ran `node system/run.mjs --hidden-eval` (run 4 of `06_hidden-evaluation.md`, commit `12e38c7`), and the human allowed stopping the production stack for the browser checks.
 
 ### Procedure result
 
 | Step | Result |
 |---|---|
-| 1 run number | run 3. F-41..F-45 were open in runs 1, 2 and 3, so they have now stayed open for three runs: **run 4 starts with the approval decision** (accept as a known limitation; show the human the failing hidden test; change the requirement) |
+| 1 run number | run 3. F-41..F-45 were open in runs 1, 2 and 3, so they stayed open for three runs and the approval decision was asked: the human accepted them as a known limitation (D-86) |
 | 2 manifests | input manifest 77 of 77 and acceptance manifest 59 of 59 hashes match (`verify-run3-manifests.log`); hidden manifest "ok" in the runner's evaluation |
 | 3 suite, checks, hidden evaluation | see "Definition of Done". Hidden evaluation of `12e38c7`: 214 tests, 209 pass, 5 fail, the same five (F-41..F-45). Coverage and mutation not re-measured: no backend file changed since phase 5 except the loop 1 fixes, the frontend changed only in `AttributeEditor`, `GroupShell` and the two catalogs; combined JaCoCo line coverage 97.71 % (report of the latest backend run) |
 | 4 runtime | test stack (Compose, emulator, empty database, then `seed/` and the 10,000-Contact seed) and production stack |
@@ -401,7 +401,7 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 | DoD-R-02 format, lint, type check, static analysis | Met | `spotless:check`, Checkstyle 0 violations, SpotBugs with find-sec-bugs 0 bugs, PMD pass (`verify3-static-analysis.log`; Maven stops `verify -Pquality` at the failing `EX-007-05` before these plugins, so they ran as separate goals); Prettier, ESLint, `tsc -b`, i18n tests pass (`npm run check` exit 0) |
 | DoD-R-03 quality gate | Met with a decision | as in run 1 (D-82, F-38); not re-measured |
 | DoD-R-04 architecture constraints, no cycles | Met | architecture tests pass in the backend run |
-| DoD-R-05 no open Critical or High | **Not met** | F-41..F-45 (F-40, F-46, F-55, F-56 closed) |
+| DoD-R-05 no open Critical or High | Met after D-86 | F-41..F-45 lowered to Medium by D-86 (human approval); F-40, F-46, F-55, F-56 closed |
 | DoD-R-06 components run, core flows work | Met | all components start; E2E-01..06 pass in chromium and webkit |
 | DoD-R-07 every AC, EX, R traces to a test and a commit | Met in the main | AC 236 of 236, EX 178 of 178 name a test; R 198 of 235 are named directly (looser counting rule than run 2's 181, `verify3-traceability.log`), the rest through the AC or EX that cites them; `check-traceability.mjs`: all 684 story ids, 7 BR, 13 SR, 14 SB, 15 NFR mapped |
 | DoD-R-08 final theme, three widths, no Critical/Serious accessibility violation | Partly | chromium light 76 of 79 and dark 76 of 79, webkit light 73 of 79, firefox not run; no accessibility violation on any screen that ran; WF-08, WF-19 and the main page of WF-07 still have no check (F-52); the structure against the approved wireframes was not compared again |
@@ -409,7 +409,7 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 | DoD-R-10 release notes | Not yet written | `/release` |
 | DoD-R-11 decisions resolved or pending review; inputs unchanged | Met | 85 decisions, each with a resolution or "pending review"; input manifest matches; `check-decision-ids.sh`: ids unique |
 | DoD-R-12 commit history | Met in part | 47 subjects over 72 characters of 417 commits, history not rewritten (F-53) |
-| DoD-R-13 hidden suite passes | **Not met** | 209 of 214 at `12e38c7`; F-41..F-45 |
+| DoD-R-13 hidden suite passes | **Not met**, accepted for five cases (D-86) | 209 of 214 at `12e38c7`; the five failing cases are the accepted known limitation |
 | DoD-R-14 every NFR meets its pass value | **Not met** | see "NFR" |
 | DoD-R-15 CI pipeline passes | **Not met** | never ran remotely; local run: see "CI and deployment" (F-51) |
 | DoD-R-16 production files build and start; every threat has a checked control | Met | images rebuilt from `HEAD`, production stack healthy in 17 s |
@@ -418,7 +418,7 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 | DoD-P03 NFR-01..05 on the deployed system | Partly | NFR-01..03 pass with the specified script; NFR-04 passes only with a one-line change to the script (F-58) |
 | DoD-P04 four customer deliverables | Met in the main | as in run 2; content of the guides was not tested by a person |
 | DoD-P05 later features finished, E2E-05 passes | Met | E2E-05 passes in chromium and webkit |
-| DoD-P06 no Critical or High open | **Not met** | F-41..F-45 |
+| DoD-P06 no Critical or High open | Met after D-86 | none open |
 | DoD-P07 restore tested once | Met | run 2 (`verify2-backup-restore.log`); `scripts/` and the backend are unchanged since, so not repeated |
 
 ### UI and accessibility
@@ -491,11 +491,11 @@ The test stack was removed afterwards (`scripts/test-stack.sh down`).
 | F | Severity | Source | Finding | Resolution |
 |---|---|---|---|---|
 | F-40 | High | E2E-01, E2E-03 | New Group opens its Contact list. | closed: E2E-01 and E2E-03 pass in chromium and webkit (`verify3-e2e-scenarios.log`) |
-| F-41 | High | hidden evaluation | `R-003-02` fails a held-out case (invalid) at `12e38c7` | open for the third run; run 4 asks the human |
-| F-42 | High | hidden evaluation | `R-006-07` fails a held-out case (other) | open for the third run |
-| F-43 | High | hidden evaluation | `R-007-03` fails a held-out case (other); frozen `EX-007-05` also fails (F-08) | open for the third run |
-| F-44 | High | hidden evaluation | `R-017-02` fails a held-out case (other) | open for the third run |
-| F-45 | High | hidden evaluation | `R-018-07` fails a held-out case (other) | open for the third run; cause still unknown |
+| F-41 | Medium (D-86) | hidden evaluation | `R-003-02` fails a held-out case (invalid) at `12e38c7` | accepted as a known limitation, D-86 (lowered from High on the human's approval; the cause is unknown); listed in the release notes |
+| F-42 | Medium (D-86) | hidden evaluation | `R-006-07` fails a held-out case (other) | accepted as a known limitation, D-86 (lowered from High on the human's approval; the cause is unknown); listed in the release notes |
+| F-43 | Medium (D-86) | hidden evaluation | `R-007-03` fails a held-out case (other); frozen `EX-007-05` also fails (F-08) | accepted as a known limitation, D-86 (lowered from High on the human's approval; the cause is unknown); listed in the release notes |
+| F-44 | Medium (D-86) | hidden evaluation | `R-017-02` fails a held-out case (other) | accepted as a known limitation, D-86 (lowered from High on the human's approval; the cause is unknown); listed in the release notes |
+| F-45 | Medium (D-86) | hidden evaluation | `R-018-07` fails a held-out case (other) | accepted as a known limitation, D-86 (lowered from High on the human's approval; the cause is unknown); listed in the release notes |
 | F-46 | High | T-69, T-70, T-76 | closed in substance in run 2; `perf/measure.mjs` defect is F-58 | closed except F-58 |
 | F-47 | Medium | UI acceptance | Five failing frozen tests: `AC-003-07`, `AC-005-06`, `AC-006-04`, `AC-014-03`, `AC-019-06` (`AC-004-04`, `AC-004-08` pass since F-55) | open |
 | F-48 | Medium | NFR-07, NFR-08 | Firefox does not start; WebKit Merge screen crashes on `page.reload` with a mocked 500; unchanged | open item for the release notes |
@@ -521,7 +521,7 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 
 ### Human to do
 
-1. Decide F-41..F-45 (held-out failures that `/fix` cannot see): run 4 will ask for the decision; you can also say now which option you choose.
+1. F-41..F-45: decided (D-86, known limitation). If you later want them fixed, look at the five cases in the hidden vault and describe them; `/fix` cannot see them.
 2. D-68 d (F-19): the version of a Survivor that changes nothing.
 3. Run Firefox, the real Excel check (Q-06) and real Google sign-in on a machine where they work.
 4. Push `main` so CI can run (F-51); I did not push.
