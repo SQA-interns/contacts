@@ -99,16 +99,37 @@ describe('TagInput WF-07 (R-005-01..07)', () => {
     expect(latest).toEqual(['b']);
   });
 
-  it('R-005-07 offers the suggestions and reports what is typed', async () => {
+  it('R-005-07 reports what is typed and shows the matching suggestions as visible options', async () => {
     const typed: string[] = [];
-    render(<Harness suggestions={['gospodar']} onType={(text) => typed.push(text)} />);
+    render(<Harness suggestions={['gospodar', 'beta']} onType={(text) => typed.push(text)} />);
 
     await userEvent.type(input(), 'go');
 
     expect(typed.at(-1)).toBe('go');
-    const list = input().getAttribute('list');
-    const options = [...document.querySelectorAll(`datalist[id="${list}"] option`)];
-    expect(options.map((o) => o.getAttribute('value'))).toEqual(['gospodar']);
+    expect(screen.getByRole('listbox', { name: 'Predlagane značke' })).toBeVisible();
+    expect(screen.getAllByRole('option').map((o) => o.textContent)).toEqual(['gospodar']);
+  });
+
+  it('R-005-07 puts a suggested Tag on with a click on its option', async () => {
+    render(<Harness suggestions={['gospodar']} />);
+
+    await userEvent.type(input(), 'go');
+    await userEvent.click(screen.getByRole('option', { name: 'gospodar' }));
+
+    expect(latest).toEqual(['gospodar']);
+    expect(input()).toHaveValue('');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+  });
+
+  it('R-005-07 puts a suggested Tag on with the arrow key and Enter, and closes the list with Escape', async () => {
+    render(<Harness suggestions={['gospodar', 'gostitelj']} />);
+
+    await userEvent.type(input(), 'go{ArrowDown}{ArrowDown}{Enter}');
+    expect(latest).toEqual(['gostitelj']);
+
+    await userEvent.type(input(), 'go{Escape}');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(latest).toEqual(['gostitelj']);
   });
 
   it('R-005-04 refuses a 51st Tag and shows the limit', async () => {

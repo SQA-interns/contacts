@@ -211,10 +211,7 @@ describe('NewContactPage WF-08 (R-003-01..05)', () => {
 
     await userEvent.type(field('Dodaj značko'), 'go');
 
-    const list = field('Dodaj značko').getAttribute('list');
-    await vi.waitFor(() =>
-      expect(document.querySelectorAll(`datalist[id="${list}"] option`)).toHaveLength(1),
-    );
+    expect(await screen.findByRole('option', { name: 'gospodar' })).toBeVisible();
     expect(String(vi.mocked(fetch).mock.calls[0]?.[0])).toContain('/api/v1/groups/g1/facets');
   });
 

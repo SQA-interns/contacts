@@ -373,6 +373,7 @@
     "attributeKey": "Ključ",
     "attributeValue": "Vrednost",
     "attributeSuggestions": "Predlagani ključi",
+    "tagSuggestions": "Predlagane značke",
     "attributeRow": "Atribut {{n}}",
     "addAttribute": "Dodaj atribut",
     "removeAttribute": "Odstrani atribut {{n}}",

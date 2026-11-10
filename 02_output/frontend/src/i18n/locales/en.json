@@ -373,6 +373,7 @@
     "attributeKey": "Key",
     "attributeValue": "Value",
     "attributeSuggestions": "Suggested keys",
+    "tagSuggestions": "Suggested tags",
     "attributeRow": "Attribute {{n}}",
     "addAttribute": "Add attribute",
     "removeAttribute": "Remove attribute {{n}}",

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useSuggestions } from '@/components/useSuggestions';
 
 /** The most Tags a Contact can have (R-005-04). */
 export const MAX_TAGS = 50;
@@ -36,16 +37,25 @@ export function TagInput({ tags, onChange, error, suggestions, onType }: TagInpu
     setRule(undefined);
     onType?.(value);
   };
-  const add = () => {
-    const name = text.trim();
+  const add = (typedName = text) => {
+    const name = typedName.trim();
     if (!TAG_NAME.test(name)) return setRule(t('api.validation.tag_invalid'));
     if (tags.some((tag) => same(tag, name))) return type('');
     if (full) return setRule(t('api.validation.tag_limit'));
     onChange([...tags, suggestions.find((s) => same(s, name)) ?? name]);
     type('');
   };
+  const inputId = `${listId}-tag`;
+  const suggest = useSuggestions({
+    id: inputId,
+    value: text,
+    suggestions: suggestions.filter((name) => !tags.some((tag) => same(tag, name))),
+    label: t('contacts.tagSuggestions'),
+    onChoose: (name) => add(name),
+  });
   const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key !== 'Enter') return;
+    suggest.inputProps.onKeyDown(event);
+    if (event.defaultPrevented || event.key !== 'Enter') return;
     event.preventDefault();
     add();
   };
@@ -72,27 +82,25 @@ export function TagInput({ tags, onChange, error, suggestions, onType }: TagInpu
           ))}
         </ul>
       ) : null}
-      <datalist id={listId}>
-        {suggestions.map((name) => (
-          <option key={name} value={name} />
-        ))}
-      </datalist>
       <div className="flex items-end gap-3">
-        <div className="flex flex-1 flex-col gap-1.5">
-          <Label htmlFor={`${listId}-tag`}>{t('contacts.addTag')}</Label>
+        <div className="relative flex flex-1 flex-col gap-1.5">
+          <Label htmlFor={inputId}>{t('contacts.addTag')}</Label>
           <Input
-            id={`${listId}-tag`}
+            id={inputId}
             className="h-11"
-            list={listId}
-            autoComplete="off"
+            {...suggest.inputProps}
             value={text}
             disabled={full}
             aria-invalid={message ? true : undefined}
-            onChange={(e) => type(e.target.value)}
+            onChange={(e) => {
+              type(e.target.value);
+              suggest.typed();
+            }}
             onKeyDown={onKeyDown}
           />
+          {suggest.listbox}
         </div>
-        <Button type="button" variant="outline" className="h-11" disabled={full} onClick={add}>
+        <Button type="button" variant="outline" className="h-11" disabled={full} onClick={() => add()}>
           {t('contacts.addTagButton')}
         </Button>
       </div>
