@@ -1,0 +1,413 @@
+11:20:17.434 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:17.672 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+11:20:17.797 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:17.797 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:17.806 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-10T11:20:18.439+01:00  INFO 32766 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Starting ApplicationIT using Java 21.0.8 with PID 32766 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-10T11:20:18.441+01:00  INFO 32766 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : The following 1 profile is active: "group-path-probe"
+2026-11-10T11:20:19.306+01:00  INFO 32766 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-10T11:20:19.309+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-10T11:20:19.323+01:00  INFO 32766 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-10T11:20:20.236+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-10T11:20:20.237+01:00  INFO 32766 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-10T11:20:20.255+01:00  INFO 32766 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-10T11:20:20.436+01:00  INFO 32766 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-10T11:20:20.520+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-10T11:20:20.646+01:00  INFO 32766 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 00a4ea9ef1bc8776bc3fa941aeb9869298fe4a48a1d3d9fcf375934d223786b1
+2026-11-10T11:20:21.024+01:00  INFO 32766 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.588025S
+2026-11-10T11:20:21.038+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-10T11:20:21.038+01:00  INFO 32766 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-10T11:20:21.039+01:00  INFO 32766 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-10T11:20:21.040+01:00  INFO 32766 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-10T11:20:21.110+01:00  INFO 32766 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: e9b77b581f1f996b304e73d404bbb6224528d86a0cfd7689b0e1632ef3f995aa
+2026-11-10T11:20:22.321+01:00  INFO 32766 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.281671S
+2026-11-10T11:20:22.323+01:00  INFO 32766 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:56000/test?loggerLevel=OFF)
+2026-11-10T11:20:23.395+01:00  INFO 32766 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:56000/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-10T11:20:23.436+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-10T11:20:23.439+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.017s)
+2026-11-10T11:20:23.454+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-10T11:20:23.514+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-10T11:20:23.518+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-10T11:20:23.553+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-10T11:20:23.594+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-10T11:20:23.604+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.050s)
+2026-11-10T11:20:24.076+01:00  INFO 32766 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-10T11:20:24.708+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-10T11:20:24.708+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-10T11:20:24.718+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-10T11:20:24.723+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
+2026-11-10T11:20:24.830+01:00  INFO 32766 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Started ApplicationIT in 6.93 seconds (process running for 8.871)
+2026-11-10T11:20:24.883+01:00  WARN 32766 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-11-10T11:20:25.546+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/db
+2026-11-10T11:20:25.607+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/ping
+2026-11-10T11:20:25.611+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/diskSpace
+2026-11-10T11:20:25.614+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/x
+2026-11-10T11:20:25.667+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.c.security.FirebaseTokenFilter         : token rejected on GET /api/v1/groups: FirebaseAuthException <- IllegalArgumentException
+2026-11-10T11:20:25.715+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+2026-11-10T11:20:25.767+01:00  INFO 32766 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-10T11:20:25.788+01:00  INFO 32766 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@250be230
+2026-11-10T11:20:25.790+01:00  INFO 32766 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-10T11:20:25.835+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/openapi.json
+2026-11-10T11:20:26.315+01:00  INFO 32766 --- [contact-groups-backend] [           main] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 466 ms
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /health
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.boot.webmvc.actuate.endpoint.web.AbstractWebMvcEndpointHandlerMapping$OperationHandler
+           Method = Actuator web endpoint 'health'
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/vnd.spring-boot.actuator.v3+json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/vnd.spring-boot.actuator.v3+json
+             Body = {"status":"UP"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-10T11:20:26.386+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 403 to OPTIONS /api/v1/groups
+2026-11-10T11:20:26.393+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+2026-11-10T11:20:26.399+01:00  WARN 32766 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/nothing
+2026-11-10T11:20:26.403+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/nothing
+2026-11-10T11:20:26.421+01:00  INFO 32766 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+[ERROR] Tests run: 14, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 9.228 s <<< FAILURE! -- in si.contactgroups.ApplicationIT
+[ERROR] si.contactgroups.ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType -- Time elapsed: 0.011 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  "application/vnd.spring-boot.actuator.v3+json"
+to start with:
+  "application/json"
+
+	at si.contactgroups.ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType(ApplicationIT.java:53)
+
+[ERROR] Failures: 
+[ERROR]   ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType:53 
+Expecting actual:
+  "application/vnd.spring-boot.actuator.v3+json"
+to start with:
+  "application/json"
+
+[ERROR] Tests run: 14, Failures: 1, Errors: 0, Skipped: 0
+11:20:27.766 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:27.910 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+11:20:27.991 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:27.992 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:27.998 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-10T11:20:28.621+01:00  INFO 32774 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Starting ApplicationIT using Java 21.0.8 with PID 32774 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-10T11:20:28.622+01:00  INFO 32774 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : The following 1 profile is active: "group-path-probe"
+2026-11-10T11:20:29.626+01:00  INFO 32774 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-10T11:20:29.630+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-10T11:20:29.642+01:00  INFO 32774 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-10T11:20:30.470+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-10T11:20:30.471+01:00  INFO 32774 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-10T11:20:30.489+01:00  INFO 32774 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-10T11:20:30.724+01:00  INFO 32774 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-10T11:20:30.784+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-10T11:20:30.919+01:00  INFO 32774 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: efe427c84a8de00a5999045b177cf73927e00c61c78777f8bbeeed001642997c
+2026-11-10T11:20:31.342+01:00  INFO 32774 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.617872S
+2026-11-10T11:20:31.356+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-10T11:20:31.356+01:00  INFO 32774 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-10T11:20:31.357+01:00  INFO 32774 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-10T11:20:31.358+01:00  INFO 32774 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-10T11:20:31.428+01:00  INFO 32774 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: 124b00d792c445f6d0d4d0806b582b00af6ebddbe5be07590f59d2966be36706
+2026-11-10T11:20:32.607+01:00  INFO 32774 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.249272S
+2026-11-10T11:20:32.609+01:00  INFO 32774 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:56015/test?loggerLevel=OFF)
+2026-11-10T11:20:33.654+01:00  INFO 32774 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:56015/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-10T11:20:33.692+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-10T11:20:33.696+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.017s)
+2026-11-10T11:20:33.711+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-10T11:20:33.769+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-10T11:20:33.772+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-10T11:20:33.804+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-10T11:20:33.843+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-10T11:20:33.854+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.045s)
+2026-11-10T11:20:34.331+01:00  INFO 32774 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-10T11:20:34.968+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-10T11:20:34.969+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-10T11:20:34.982+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-10T11:20:34.988+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 19 ms
+2026-11-10T11:20:35.096+01:00  INFO 32774 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Started ApplicationIT in 7.043 seconds (process running for 8.272)
+2026-11-10T11:20:35.145+01:00  WARN 32774 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-10T11:20:35.743+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/db
+2026-11-10T11:20:35.803+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/ping
+2026-11-10T11:20:35.806+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/diskSpace
+2026-11-10T11:20:35.808+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/x
+2026-11-10T11:20:35.857+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.c.security.FirebaseTokenFilter         : token rejected on GET /api/v1/groups: FirebaseAuthException <- IllegalArgumentException
+2026-11-10T11:20:35.907+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+2026-11-10T11:20:35.950+01:00  INFO 32774 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-10T11:20:35.971+01:00  INFO 32774 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@a015b90
+2026-11-10T11:20:35.974+01:00  INFO 32774 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-10T11:20:36.019+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/openapi.json
+2026-11-10T11:20:36.514+01:00  INFO 32774 --- [contact-groups-backend] [           main] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 481 ms
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /health
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.boot.webmvc.actuate.endpoint.web.AbstractWebMvcEndpointHandlerMapping$OperationHandler
+           Method = Actuator web endpoint 'health'
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/vnd.spring-boot.actuator.v3+json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/vnd.spring-boot.actuator.v3+json
+             Body = {"status":"UP"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-10T11:20:36.586+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 403 to OPTIONS /api/v1/groups
+2026-11-10T11:20:36.593+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+2026-11-10T11:20:36.599+01:00  WARN 32774 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/nothing
+2026-11-10T11:20:36.604+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/nothing
+2026-11-10T11:20:36.621+01:00  INFO 32774 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+[ERROR] Tests run: 14, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 8.988 s <<< FAILURE! -- in si.contactgroups.ApplicationIT
+[ERROR] si.contactgroups.ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType -- Time elapsed: 0.011 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  "application/vnd.spring-boot.actuator.v3+json"
+to start with:
+  "application/json"
+
+	at si.contactgroups.ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType(ApplicationIT.java:53)
+
+[ERROR] Failures: 
+[ERROR]   ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType:53 
+Expecting actual:
+  "application/vnd.spring-boot.actuator.v3+json"
+to start with:
+  "application/json"
+
+[ERROR] Tests run: 14, Failures: 1, Errors: 0, Skipped: 0
+11:20:39.404 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:39.647 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+11:20:39.779 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.ApplicationIT]: ApplicationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:39.780 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.contactgroups.support.ApplicationContextSupport]: ApplicationContextSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:20:39.787 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.contactgroups.ContactGroupsApplication for test class si.contactgroups.ApplicationIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-10T11:20:40.397+01:00  INFO 32793 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Starting ApplicationIT using Java 21.0.8 with PID 32793 (started by kyuhi in /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend)
+2026-11-10T11:20:40.399+01:00  INFO 32793 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : The following 1 profile is active: "group-path-probe"
+2026-11-10T11:20:41.233+01:00  INFO 32793 --- [contact-groups-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-11-10T11:20:41.236+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-11-10T11:20:41.250+01:00  INFO 32793 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-11-10T11:20:42.102+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with Docker accessed via Unix socket (/Users/kyuhi/.docker/run/docker.sock)
+2026-11-10T11:20:42.103+01:00  INFO 32793 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-11-10T11:20:42.121+01:00  INFO 32793 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 7934 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/kyuhi/Library/Containers/com.docker.docker/Data/docker-cli.sock
+2026-11-10T11:20:42.299+01:00  INFO 32793 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-11-10T11:20:42.349+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.t.utility.RegistryAuthLocator          : Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-11-10T11:20:42.458+01:00  INFO 32793 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: c008c59dceceb803628ef16c9f7a73c5744f300fe214a58454bf6a413c19d5a5
+2026-11-10T11:20:42.866+01:00  INFO 32793 --- [contact-groups-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.566S
+2026-11-10T11:20:42.880+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-11-10T11:20:42.880+01:00  INFO 32793 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-11-10T11:20:42.881+01:00  INFO 32793 --- [contact-groups-backend] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2026-11-10T11:20:42.882+01:00  INFO 32793 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Creating container for image: postgres:17.6
+2026-11-10T11:20:42.951+01:00  INFO 32793 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 is starting: 25510a77179660eed61b3be19901f6197e6020fd3d12b7d178bf0e0e48a8d08f
+2026-11-10T11:20:44.066+01:00  INFO 32793 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container postgres:17.6 started in PT1.184778S
+2026-11-10T11:20:44.068+01:00  INFO 32793 --- [contact-groups-backend] [           main] tc.postgres:17.6                         : Container is started (JDBC URL: jdbc:postgresql://localhost:56030/test?loggerLevel=OFF)
+2026-11-10T11:20:45.134+01:00  INFO 32793 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:56030/test?loggerLevel=OFF (PostgreSQL 17.6)
+2026-11-10T11:20:45.168+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-10T11:20:45.171+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.015s)
+2026-11-10T11:20:45.182+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-10T11:20:45.232+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-10T11:20:45.235+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-10T11:20:45.264+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-10T11:20:45.296+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-10T11:20:45.306+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.035s)
+2026-11-10T11:20:45.755+01:00  INFO 32793 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-10T11:20:46.370+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-10T11:20:46.370+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-10T11:20:46.379+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-10T11:20:46.384+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 13 ms
+2026-11-10T11:20:46.487+01:00  INFO 32793 --- [contact-groups-backend] [           main] si.contactgroups.ApplicationIT           : Started ApplicationIT in 6.611 seconds (process running for 8.852)
+2026-11-10T11:20:46.536+01:00  WARN 32793 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/kyuhi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-10T11:20:47.202+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/db
+2026-11-10T11:20:47.401+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/ping
+2026-11-10T11:20:47.409+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/diskSpace
+2026-11-10T11:20:47.418+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /health/x
+2026-11-10T11:20:47.572+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.c.security.FirebaseTokenFilter         : token rejected on GET /api/v1/groups: FirebaseAuthException <- IllegalArgumentException
+2026-11-10T11:20:47.688+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+2026-11-10T11:20:47.790+01:00  INFO 32793 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-10T11:20:47.828+01:00  INFO 32793 --- [contact-groups-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@588e6c7a
+2026-11-10T11:20:47.832+01:00  INFO 32793 --- [contact-groups-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-10T11:20:47.904+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/openapi.json
+2026-11-10T11:20:48.707+01:00  INFO 32793 --- [contact-groups-backend] [           main] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 780 ms
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /health
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = org.springframework.boot.webmvc.actuate.endpoint.web.AbstractWebMvcEndpointHandlerMapping$OperationHandler
+           Method = Actuator web endpoint 'health'
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/vnd.spring-boot.actuator.v3+json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Content-Security-Policy:"default-src 'none'; frame-ancestors 'none'", Referrer-Policy:"no-referrer"]
+     Content type = application/vnd.spring-boot.actuator.v3+json
+             Body = {"status":"UP"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2026-11-10T11:20:48.806+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 403 to OPTIONS /api/v1/groups
+2026-11-10T11:20:48.816+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+2026-11-10T11:20:48.821+01:00  WARN 32793 --- [contact-groups-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/v1/nothing
+2026-11-10T11:20:48.827+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/nothing
+2026-11-10T11:20:48.849+01:00  INFO 32793 --- [contact-groups-backend] [           main] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups
+[ERROR] Tests run: 14, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 9.645 s <<< FAILURE! -- in si.contactgroups.ApplicationIT
+[ERROR] si.contactgroups.ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType -- Time elapsed: 0.018 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  "application/vnd.spring-boot.actuator.v3+json"
+to start with:
+  "application/json"
+
+	at si.contactgroups.ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType(ApplicationIT.java:53)
+
+[ERROR] Failures: 
+[ERROR]   ApplicationIT.f45_healthAnswersPlainJsonNotTheActuatorVendorType:53 
+Expecting actual:
+  "application/vnd.spring-boot.actuator.v3+json"
+to start with:
+  "application/json"
+
+[ERROR] Tests run: 14, Failures: 1, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:3.5.4:verify (default) on project contact-groups-backend: There are test failures.
+[ERROR] 
+[ERROR] See /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/backend/target/failsafe-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

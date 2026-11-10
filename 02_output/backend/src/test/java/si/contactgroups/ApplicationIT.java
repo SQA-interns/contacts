@@ -46,6 +46,33 @@ class ApplicationIT extends ApplicationContextSupport {
   }
 
   @Test
+  void f45_healthAnswersPlainJsonNotTheActuatorVendorType() throws Exception {
+    var type = mvc.perform(get("/health")).andReturn().getResponse().getContentType();
+
+    org.assertj.core.api.Assertions.assertThat(type).startsWith("application/json");
+  }
+
+  @Test
+  void f45_aComponentPathRevealsNothingAboutTheSystem() throws Exception {
+    for (String path :
+        new String[] {"/health/db", "/health/ping", "/health/diskSpace", "/health/x"}) {
+      String body = mvc.perform(get(path)).andReturn().getResponse().getContentAsString();
+
+      org.assertj.core.api.Assertions.assertThat(body)
+          .as(path)
+          .doesNotContain("PostgreSQL", "total", "free", "database");
+    }
+  }
+
+  @Test
+  void f45_healthIgnoresAnInvalidTokenAndStillAnswersOnlyTheStatus() throws Exception {
+    mvc.perform(get("/health").header("Authorization", "Bearer not-a-token"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.status").value("UP"))
+        .andExpect(jsonPath("$.length()").value(1));
+  }
+
+  @Test
   void theContainerHealthCheckCallsAnAddressThatAnswers() throws Exception {
     String dockerfile = java.nio.file.Files.readString(java.nio.file.Path.of("Dockerfile"));
     java.util.regex.Matcher url =
