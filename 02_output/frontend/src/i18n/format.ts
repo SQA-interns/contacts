@@ -29,9 +29,9 @@ export function formatDateTime(date: Date | string, language: Language): string 
   return `${formatDate(date, language)} ${formatTime(date)}`;
 }
 
-/** Slovene decimal comma, English decimal point. */
+/** Slovene decimal comma, English decimal point, no thousands separator: 1234.5 is `1234,5` and `1234.5` (EX-019-03). */
 export function formatNumber(value: number, language: Language): string {
-  return new Intl.NumberFormat(language === 'sl' ? 'sl-SI' : 'en-GB').format(value);
+  return new Intl.NumberFormat(language === 'sl' ? 'sl-SI' : 'en-GB', { useGrouping: false }).format(value);
 }
 
 /** Country name in the active language from an ISO 3166-1 alpha-2 code (R-019-05). */

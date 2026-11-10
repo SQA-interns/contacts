@@ -22,9 +22,16 @@ describe('formats of the project-wide facts (UI-18, AR-10)', () => {
     expect(formatTime('2026-11-08T21:05:00Z')).toBe('22:05');
   });
 
-  it('uses a decimal comma in Slovene and a decimal point in English', () => {
-    expect(formatNumber(1234.5, 'sl')).toMatch(/^1\.?\s?234,5$/);
-    expect(formatNumber(1234.5, 'en')).toBe('1,234.5');
+  it('EX-019-03 shows 1234.5 as 1234,5 in Slovene and 1234.5 in English', () => {
+    expect(formatNumber(1234.5, 'sl')).toBe('1234,5');
+    expect(formatNumber(1234.5, 'en')).toBe('1234.5');
+  });
+
+  it('R-019-04 uses a decimal comma in Slovene and a decimal point in English, no grouping', () => {
+    expect(formatNumber(1234567.25, 'sl')).toBe('1234567,25');
+    expect(formatNumber(1234567.25, 'en')).toBe('1234567.25');
+    expect(formatNumber(0.5, 'sl')).toBe('0,5');
+    expect(formatNumber(-7, 'en')).toBe('-7');
   });
 
   it('names countries in the active language (R-019-05)', () => {

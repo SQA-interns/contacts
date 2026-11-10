@@ -1,0 +1,47 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+ ❯ src/i18n/format.test.ts (7 tests | 2 failed) 35ms
+     × EX-019-03 shows 1234.5 as 1234,5 in Slovene and 1234.5 in English 7ms
+     × R-019-04 uses a decimal comma in Slovene and a decimal point in English, no grouping 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/i18n/format.test.ts > formats of the project-wide facts (UI-18, AR-10) > EX-019-03 shows 1234.5 as 1234,5 in Slovene and 1234.5 in English
+AssertionError: expected '1,234.5' to be '1234.5' // Object.is equality
+
+Expected: "1234.5"
+Received: "1,234.5"
+
+ ❯ src/i18n/format.test.ts:27:40
+     25|   it('EX-019-03 shows 1234.5 as 1234,5 in Slovene and 1234.5 in Englis…
+     26|     expect(formatNumber(1234.5, 'sl')).toBe('1234,5');
+     27|     expect(formatNumber(1234.5, 'en')).toBe('1234.5');
+       |                                        ^
+     28|   });
+     29|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/i18n/format.test.ts > formats of the project-wide facts (UI-18, AR-10) > R-019-04 uses a decimal comma in Slovene and a decimal point in English, no grouping
+AssertionError: expected '1.234.567,25' to be '1234567,25' // Object.is equality
+
+Expected: "1234567,25"
+Received: "1.234.567,25"
+
+ ❯ src/i18n/format.test.ts:31:44
+     29|
+     30|   it('R-019-04 uses a decimal comma in Slovene and a decimal point in …
+     31|     expect(formatNumber(1234567.25, 'sl')).toBe('1234567,25');
+       |                                            ^
+     32|     expect(formatNumber(1234567.25, 'en')).toBe('1234567.25');
+     33|     expect(formatNumber(0.5, 'sl')).toBe('0,5');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 5 passed (7)
+   Start at  11:33:41
+   Duration  896ms (transform 48ms, setup 176ms, import 19ms, tests 35ms, environment 536ms)
+
