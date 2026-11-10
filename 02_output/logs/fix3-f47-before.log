@@ -1,0 +1,176 @@
+
+Running 5 tests using 4 workers
+
+  ✘  4 [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action (891ms)
+  ✘  2 [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay (949ms)
+  ✘  1 [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme (10.7s)
+  ✘  3 [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme (10.9s)
+  ✘  5 [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched (10.6s)
+
+
+  1) [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Novak')
+    Expected: visible
+    Error: strict mode violation: getByText('Novak') resolved to 2 elements:
+        1) <a data-discover="true" class="underline-offset-4 hover:underline" href="/groups/7dc8f514-5eea-42b9-98d0-45ac38b9a257/contacts/f09386f5-ac0c-40e3-9151-ccdf00d12feb">Novak</a> aka getByRole('link', { name: 'Novak' })
+        2) <a title="Novak" data-discover="true" class="block min-w-0 truncate font-semibold" href="/groups/7dc8f514-5eea-42b9-98d0-45ac38b9a257/contacts/f09386f5-ac0c-40e3-9151-ccdf00d12feb">Novak Ana</a> aka getByText('Novak Ana')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Novak')[22m
+
+
+      88 |
+      89 |   await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+    > 90 |   await expect(page.getByText('Novak')).toBeVisible();
+         |                                         ^
+      91 |   await expect(page.getByRole('button', { name: 'Dodaj kontakt' })).toHaveCount(0);
+      92 |   await expect(page.getByRole('link', { name: 'Dodaj kontakt' })).toHaveCount(0);
+      93 | });
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:90:41
+
+    Error Context: test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-003-0-07540-fered-no-Add-contact-action-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('option', { name: 'gospodar' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('option', { name: 'gospodar' })[22m
+
+
+      240 |   await page.getByLabel('Dodaj značko').fill('go');
+      241 |
+    > 242 |   await expect(page.getByRole('option', { name: 'gospodar' })).toBeVisible();
+          |                                                                ^
+      243 |   await expect(page.getByRole('option', { name: 'gost', exact: true })).toHaveCount(0);
+      244 | });
+      245 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us003-005-contact.spec.ts:242:64
+
+    Error Context: test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us003-005-contact-AC-005-0-804e5-ta-is-not-suggested-in-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeUndefined[2m()[22m
+
+    Received: [31m5[39m
+
+      37 |
+      38 |   await expect(page.getByRole('row').filter({ hasText: 'gost' })).toHaveCount(0);
+    > 39 |   expect(await gostCount(ana, acme)).toBeUndefined();
+         |                                      ^
+      40 |   expect((await api(ana, 'GET', `/groups/${acme.id}/contacts`)).body.total).toBe(5);
+      41 | });
+      42 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us006-tags.spec.ts:39:38
+
+    Error Context: test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us006-tags-AC-006-04-the-d-83413-g-is-gone-the-Contacts-stay-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByText('Acme')
+    Expected: [32m0[39m
+    Received: [31m1[39m
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 10000ms[22m
+    [2m  - waiting for getByText('Acme')[22m
+    [2m    14 × locator resolved to 1 element[22m
+    [2m       - unexpected value "1"[22m
+
+
+      69 |     page.getByRole('heading', { level: 1, name: 'Potrdite svoj e-poštni naslov, da nadaljujete.' }),
+      70 |   ).toBeVisible();
+    > 71 |   await expect(page.getByText('Acme')).toHaveCount(0);
+         |                                        ^
+      72 | });
+      73 |
+      74 | test('AC-015-01 Viola sees three Members with names, e-mails and Roles and no change controls', async ({
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us012-015-trash-members.spec.ts:71:40
+
+    Error Context: test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us012-015-trash-members-AC-83087-fy-your-e-mail-and-not-Acme-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasNot: getByRole('columnheader') }).first()
+    Expected substring: [32m"neObvescaj"[39m
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('table', { name: 'Kontakti skupine' }).getByRole('row').filter({ hasNot: getByRole('columnheader') }).first()[22m
+
+
+      214 |   await switchTo(page, 'EN');
+      215 |
+    > 216 |   await expect(contactRows(page).first()).toContainText('neObvescaj');
+          |                                           ^
+      217 |   await expect(page.getByText('Šola').first()).toBeVisible();
+      218 | });
+      219 |
+        at /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/acceptance/us016-019-history-language.spec.ts:216:43
+
+    Error Context: test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/acceptance/us016-019-history-language-589ac-en-the-language-is-switched-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    [chromium] › acceptance/us003-005-contact.spec.ts:81:1 › AC-003-07 a Viewer is offered no "Add contact" action 
+    [chromium] › acceptance/us003-005-contact.spec.ts:233:1 › AC-005-06 the Tag gost of Beta is not suggested in Acme 
+    [chromium] › acceptance/us006-tags.spec.ts:27:1 › AC-006-04 the deletion asks with "5 contacts"; after confirming the Tag is gone, the Contacts stay 
+    [chromium] › acceptance/us012-015-trash-members.spec.ts:58:1 › AC-014-03 Boris, invited but unverified, sees "Verify your e-mail" and not Acme 
+    [chromium] › acceptance/us016-019-history-language.spec.ts:205:1 › AC-019-06 the Tag neObvescaj and the Group Šola stay unchanged when the language is switched 

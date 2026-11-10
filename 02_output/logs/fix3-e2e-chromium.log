@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (1.3s)
+  ✓  2 [chromium] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (2.1s)
+  ✓  3 [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (1.8s)
+  ✓  4 [chromium] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (1.8s)
+  ✓  5 [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (1.4s)
+  ✓  6 [chromium] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (2.2s)
+
+  6 passed (11.4s)

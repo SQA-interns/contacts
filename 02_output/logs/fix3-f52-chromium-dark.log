@@ -1,0 +1,17 @@
+
+Running 12 tests using 2 workers
+
+  ✓   2 [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-05 create dialog: open, errors, created (1.7s)
+  ✓   1 [chromium] › ui-checks/contact-screens.stack.spec.ts:24:5 › mobile (375 px) › WF-08 New Contact: empty, rules, suggestions (2.6s)
+  ✓   3 [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-05 create dialog: open, errors, created (1.5s)
+  ✓   4 [chromium] › ui-checks/contact-screens.stack.spec.ts:57:5 › mobile (375 px) › WF-07 Contact: view, edit, stale save (1.6s)
+  ✓   5 [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-05 create dialog: open, errors, created (1.6s)
+  ✓   6 [chromium] › ui-checks/contact-screens.stack.spec.ts:89:5 › mobile (375 px) › WF-19 Not found: a Group of another User, an unknown page; WF-07 missing Contact (2.9s)
+  ✓   7 [chromium] › ui-checks/contact-screens.stack.spec.ts:24:5 › tablet (768 px) › WF-08 New Contact: empty, rules, suggestions (2.4s)
+  ✓   8 [chromium] › ui-checks/contact-screens.stack.spec.ts:57:5 › tablet (768 px) › WF-07 Contact: view, edit, stale save (1.6s)
+  ✓   9 [chromium] › ui-checks/contact-screens.stack.spec.ts:89:5 › tablet (768 px) › WF-19 Not found: a Group of another User, an unknown page; WF-07 missing Contact (2.9s)
+  ✓  10 [chromium] › ui-checks/contact-screens.stack.spec.ts:24:5 › desktop (1440 px) › WF-08 New Contact: empty, rules, suggestions (2.4s)
+  ✓  11 [chromium] › ui-checks/contact-screens.stack.spec.ts:57:5 › desktop (1440 px) › WF-07 Contact: view, edit, stale save (1.6s)
+  ✓  12 [chromium] › ui-checks/contact-screens.stack.spec.ts:89:5 › desktop (1440 px) › WF-19 Not found: a Group of another User, an unknown page; WF-07 missing Contact (2.9s)
+
+  12 passed (21.7s)

@@ -1,0 +1,17 @@
+
+Running 12 tests using 5 workers
+
+  ✓   3 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:33:5 › mobile (375 px) › flow 1 sign in (1.5s)
+  ✓   2 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:33:5 › tablet (768 px) › flow 1 sign in (1.5s)
+  ✓   1 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:43:5 › mobile (375 px) › flow 2 list: open the Group, then a Contact (1.9s)
+  ✓   4 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:89:5 › mobile (375 px) › flow 4 export the selected Contacts (2.7s)
+  ✓   6 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:43:5 › tablet (768 px) › flow 2 list: open the Group, then a Contact (1.3s)
+  ✓   9 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:33:5 › desktop (1440 px) › flow 1 sign in (863ms)
+  ✓   8 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:89:5 › tablet (768 px) › flow 4 export the selected Contacts (2.0s)
+  ✓   5 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:60:5 › mobile (375 px) › flow 3 create and edit a Contact (4.4s)
+  ✓  10 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:43:5 › desktop (1440 px) › flow 2 list: open the Group, then a Contact (2.0s)
+  ✓  12 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:89:5 › desktop (1440 px) › flow 4 export the selected Contacts (1.5s)
+  ✓   7 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:60:5 › tablet (768 px) › flow 3 create and edit a Contact (4.5s)
+  ✓  11 [webkit] › ui-checks/keyboard-walkthrough.stack.spec.ts:60:5 › desktop (1440 px) › flow 3 create and edit a Contact (3.4s)
+
+  12 passed (7.7s)

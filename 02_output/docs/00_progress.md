@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S10 /verify (run 3)
+- Session: S8 /fix (loop 3)
 - Result: done
-- Gate: phase 6 gate not passed (no High open after D-86; open Medium: F-41..F-45 accepted as a known limitation, F-47 (five frozen UI tests), F-48, F-50..F-52, F-57, F-58)
-- Notes for the next session: F-40, F-55, F-56 confirmed fixed (E2E-01..06 pass in chromium and webkit; `AC-004-04`, `AC-004-08` pass). Unchanged: hidden evaluation 209 of 214 (same five), backend 844 of 845 (`EX-007-05`), UI acceptance 90 of 95, Firefox does not start, WF-05 check (F-57), `perf/measure.mjs` joins with `GET /me` (F-58). Nothing new found. `/fix` can still do F-57, F-58, F-47 (the five frozen tests), F-52 (checks for WF-08, WF-19, WF-07), F-50. The human accepted F-41..F-45 as a known limitation (D-86): `/release` must list the five rules and categories in the release notes; DoD-R-13 stays unmet for exactly these five cases. The next `/verify` is run 4. Production stack was stopped with the human's consent for this run and runs again from images built at `HEAD`. Backend tests need port 9099 (test stack down), the test stack needs 8080 (production stack stopped). Nothing pushed.
+- Gate: phase 6 gate not passed (no High open; open Medium: F-41..F-45 accepted by D-86, F-47 four frozen tests (D-87), F-48, F-50 (D-88 licences, D-89 NFR-10 rule), F-51)
+- Notes for the next session: fixed and re-checked on a fresh test stack: F-57 `11d5b6e`, F-58 `ce9b26a` (NFR-04 1,792 requests, none failed), F-52 `1ca570f` (three screens, chromium light and dark, webkit), F-50 keyboard walkthrough `11ffe4b` (chromium and webkit), F-47 `AC-005-06` `ca16728`. UI acceptance 91 of 95, E2E-01..06 pass in chromium. The four other F-47 tests are defects of the frozen tests (D-87, one-line locator changes; need the human's approval, no frozen file touched). Maven licence report: five dual or weak-copyleft libraries (D-88, blocking, the human decides); NFR-10 counting rule D-89. Not done: Firefox (F-48), CI (F-51, the human pushes), backend unchanged and not re-run, production stack not touched (it was not running), test stack removed. Unit tests 595 of 595 (+2 new). The next `/verify` is run 4 and must re-run E2E in three browsers, the hidden evaluation (runner) and `perf/measure.mjs` in full. Nothing pushed.
 
 ## Next
-- Command: /fix
-- Waiting for: D-68 d (F-19)
+- Command: /verify
+- Waiting for: D-88 (licences), D-87 (approval of four frozen-test changes, optional), D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |

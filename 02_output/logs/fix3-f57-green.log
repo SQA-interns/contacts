@@ -1,0 +1,13 @@
+
+Running 3 tests using 3 workers
+
+  ✓  1 [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › mobile (375 px) › WF-05 create dialog: open, errors, created (2.2s)
+  ✓  2 [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › tablet (768 px) › WF-05 create dialog: open, errors, created (2.3s)
+  ✓  3 [chromium] › ui-checks/group-screens.stack.spec.ts:15:5 › desktop (1440 px) › WF-05 create dialog: open, errors, created (2.4s)
+
+  3 passed (3.1s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+
