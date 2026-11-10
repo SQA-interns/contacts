@@ -1,0 +1,28 @@
+== health
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+Content-Type: application/json
+{"status":"UP"}
+== frontend
+200
+== plain http to backend API
+403
+== users
+10001
+/contact-groups-backend-1 restart=unless-stopped
+101
+/contact-groups-frontend-1 restart=unless-stopped
+== errors in backend log
+0
+3
+contact-groups-frontend:1.0.0 About an hour ago
+contact-groups-test-frontend:latest About an hour ago
+contact-groups-backend:1.0.0 3 hours ago
+contact-groups-test-backend:latest 3 hours ago
+contact-groups-emulator-hidden:latest 2 days ago
+contact-groups-emulator-test:latest 2 days ago
+contact-groups-frontend:latest 2 days ago
+contact-groups-backend:latest 2 days ago
+contact-groups-emulator:dev 2 days ago
+contact-groups-emulator:latest 2 days ago
+contact-groups-test-emulator:latest 2 days ago

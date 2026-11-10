@@ -1,0 +1,54 @@
+{
+  "at": "2026-11-10T14:31:45.135Z",
+  "results": [
+    {
+      "nfr": "NFR-01",
+      "what": "list, 50 requests",
+      "measured": "median 7 ms, p95 10 ms",
+      "passValue": "median and p95 below 1000 ms",
+      "pass": true
+    },
+    {
+      "nfr": "NFR-01",
+      "what": "search, 50 requests",
+      "measured": "median 10 ms, p95 40 ms",
+      "passValue": "median and p95 below 1000 ms",
+      "pass": true
+    },
+    {
+      "nfr": "NFR-01",
+      "what": "filter by country and company, 50 requests",
+      "measured": "median 6 ms, p95 7 ms",
+      "passValue": "median and p95 below 1000 ms",
+      "pass": true
+    },
+    {
+      "nfr": "NFR-01",
+      "what": "filter by Tag, 50 requests",
+      "measured": "median 8 ms, p95 17 ms",
+      "passValue": "median and p95 below 1000 ms",
+      "pass": true
+    },
+    {
+      "nfr": "NFR-02",
+      "what": "50 opens of a Contact",
+      "measured": "median 4 ms, p95 12 ms",
+      "passValue": "p95 below 500 ms",
+      "pass": true
+    },
+    {
+      "nfr": "NFR-03",
+      "what": "5 exports of 1000 Contacts",
+      "measured": "212 ms, 132 ms, 78 ms, 86 ms, 81 ms",
+      "passValue": "each below 10000 ms",
+      "pass": true
+    },
+    {
+      "nfr": "NFR-04",
+      "what": "20 Users for 5 minutes",
+      "measured": "8964 requests, 0 not 200 (0 times 429), reads median 14 ms, p95 39 ms, max 142 ms",
+      "passValue": "no error, no 429, reads below 1000 ms",
+      "pass": true
+    }
+  ]
+}

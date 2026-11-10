@@ -1,0 +1,9 @@
+Group "Large Co" holds 10000 Contacts
+NFR-04: 20 Users for 1 minutes (this takes a while)
+2 Members in the Group
+FAIL  NFR-04  20 Users for 1 minutes: 1787 requests, 1652 not 200 (0 times 429), reads median 16 ms, p95 117 ms, max 122 ms; first: GET /groups/00000000-0000-4000-8000-0000000000c3/contacts?page=6 -> 404 (pass: no error, no 429, reads below 1000 ms)
+
+| NFR | Measured | Pass value | Result |
+|---|---|---|---|
+| NFR-04 20 Users for 1 minutes | 1787 requests, 1652 not 200 (0 times 429), reads median 16 ms, p95 117 ms, max 122 ms; first: GET /groups/00000000-0000-4000-8000-0000000000c3/contacts?page=6 -> 404 | no error, no 429, reads below 1000 ms | Not met |
+delivered exit 1

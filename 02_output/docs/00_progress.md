@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S10 /verify (run 3, stopped at step 3)
-- Result: blocked
-- Gate: phase 6 gate not passed (nothing re-verified; hidden evaluation is of `a7d0a77`, not `HEAD`)
-- Notes for the next session: manifests match (77 of 77, 59 of 59). Run `node system/run.mjs --hidden-eval` on `HEAD` first. Then `/verify` runs E2E-01..06 (F-55, F-56 confirm), UI checks, `perf/measure.mjs` on the test stack, which needs port 8080 held by the human's production stack: stop it with the human's consent and restart it. Backend tests need port 9099, so run them with the test stack down. Open for `/fix`: F-57, F-58, F-47, F-48, F-50..F-52; F-41..F-45 held-out, open in runs 1 and 2: if they still fail in run 3's evaluation, run 4 asks the human. See `docs/06_verification-report.md` "Run 3". Nothing pushed.
+- Session: S10 /verify (run 3)
+- Result: done
+- Gate: phase 6 gate not passed (open High: F-41..F-45 held-out, open in three runs; Medium: F-47 (five frozen UI tests), F-48, F-50..F-52, F-57, F-58)
+- Notes for the next session: F-40, F-55, F-56 confirmed fixed (E2E-01..06 pass in chromium and webkit; `AC-004-04`, `AC-004-08` pass). Unchanged: hidden evaluation 209 of 214 (same five), backend 844 of 845 (`EX-007-05`), UI acceptance 90 of 95, Firefox does not start, WF-05 check (F-57), `perf/measure.mjs` joins with `GET /me` (F-58). Nothing new found. `/fix` can still do F-57, F-58, F-47 (the five frozen tests), F-52 (checks for WF-08, WF-19, WF-07), F-50. The next `/verify` is run 4 and must open with the approval decision about F-41..F-45 (step 1). Production stack was stopped with the human's consent for this run and runs again from images built at `HEAD`. Backend tests need port 9099 (test stack down), the test stack needs 8080 (production stack stopped). Nothing pushed.
 
 ## Next
-- Command: /verify
-- Waiting for: hidden evaluation of HEAD (`node system/run.mjs --hidden-eval`), D-68 d (F-19)
+- Command: /fix
+- Waiting for: D-68 d (F-19); the human's decision on F-41..F-45 at run 4
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
