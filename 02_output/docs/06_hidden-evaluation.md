@@ -67,3 +67,19 @@ Results of the held-out suite, run by the runner on a copy of the project. Failu
 | R-007-03 | other |
 | R-017-02 | other |
 | R-018-07 | other |
+
+## Run 5
+
+- Commit: f56ae0e
+- Date: 2026-11-10T16:32:03.224Z
+- Manifest: ok
+- Tests: 214, passed: 209, failed: 5
+- Exit code: 1
+
+| Rule | Case category |
+|---|---|
+| R-003-02 | invalid |
+| R-006-07 | other |
+| R-007-03 | other |
+| R-017-02 | other |
+| R-018-07 | other |
