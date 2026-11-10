@@ -1,0 +1,2094 @@
+[32m04:27:17 (10859) INFO ProjectReader[39m Found 8 of 383 file(s) to be mutated.
+[32m04:27:17 (10859) INFO Instrumenter[39m Instrumented 8 source file(s) with 1060 mutant(s)
+[32m04:27:18 (10859) INFO ConcurrencyTokenProvider[39m Creating 9 test runner process(es).
+[32m04:27:19 (10859) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m04:28:00 (10859) INFO DryRunExecutor[39m Initial test run succeeded. Ran 250 tests in 41 seconds (net 25631.729084000013 ms, overhead 15438.270915999987 ms).
+[33m04:28:00 (10859) WARN MutantTestPlanner[39m Detected 68 static mutants (6% of total) that are estimated to take 46% of the time running the tests!
+  You might want to enable "ignoreStatic" to ignore these static mutants for your next run. 
+  For more information about static mutants visit: https://stryker-mutator.io/docs/mutation-testing-elements/static-mutants
+  (disable "warnings.slow" to ignore this warning)
+
+All tests
+  app
+    App.test.tsx
+      ✘ app shell (UI-10, UI-19, US-019) shows the product name, one h1, main and footer landmarks and the skip link (covered 0)
+      ✘ app shell (UI-10, UI-19, US-019) shows the main navigation to a signed-in User with a verified e-mail (covered 0)
+      ✘ app shell (UI-10, UI-19, US-019) switches the whole UI to English and back without reloading (covered 0)
+      ✘ app shell (UI-10, UI-19, US-019) shows the same page for an unknown route (BR-01) (covered 0)
+    Header.test.tsx
+      ✘ Header (US-001) R-001-10 signing out from the user menu ends the session and shows the sign-in page (covered 0)
+      ✘ Header (US-001) R-001-04 an unverified User sees no Group navigation (covered 0)
+      ✘ Header (US-001) US-021 the user menu links to My account for a verified User only (covered 0)
+      ✘ Header (US-001) US-021 an unverified User has no link to My account (covered 0)
+      ✘ Header (US-001) a visitor who is not signed in sees no user menu (covered 0)
+  auth/AuthProvider.test.tsx
+    ✘ AuthProvider and RequireVerified (US-001) R-001-09 a restored Firebase session keeps the User signed in on the Group list (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-001-10 without a session the Group list sends the visitor to the sign-in page (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-001-04 an unverified User is sent to the verify page instead of a Group (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-001-12 a 401 from the server ends the session and returns to the sign-in page (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-018-01 requests carry the ID token of the session (covered 0)
+  features
+    activity
+      ActivityPage.details.test.tsx
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag (killed 39)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag (killed 1)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute (killed 5)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a removed Attribute (killed 1)
+        ~ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a changed Attribute (covered 163)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an Attribute without values (killed 1)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Role change (killed 5)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a removed Member (killed 3)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a created Invitation (killed 3)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a cancelled Invitation (killed 3)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a cancelled Invitation without address (killed 1)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a joined Member (killed 2)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a joined Member with an unknown Role (killed 1)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a joined Member without a Role (killed 1)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an export (killed 3)
+        ~ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a merge (covered 160)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a creation with values (killed 14)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a deletion forever (killed 6)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows values partly removed (killed 1)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows values that are all empty (killed 2)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows changes with empty sides (killed 8)
+        ~ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a change of an unknown field (covered 161)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a restored Version (killed 4)
+        ~ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a restored Version of the number 0 (covered 160)
+        ~ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a restored text that is not a number (covered 158)
+        ~ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows no details (covered 158)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows the user as name and e-mail, the action by its name and the time of the Ljubljana zone (killed 4)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) links an entry of a Contact to it and shows a dash for the others (killed 6)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) pages through the entries and keeps the buttons inside the range (killed 18)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) goes back to page 1 when a filter changes (killed 10)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows one page for an empty total, and the empty state with a button that clears the filters (killed 7)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an error with a retry (killed 1)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) does not ask for the entries of a Viewer, and asks nothing when the dates are reversed (killed 4)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) does not ask for entries while the start date is after the end date, and says so (killed 10)
+        ✓ ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) accepts equal dates (killed 2)
+      ActivityPage.test.tsx
+        ✓ ActivityPage WF-13 (R-017-01..07) R-017-01 lists time, user, action, Contact and details of every entry (killed 13)
+        ~ ActivityPage WF-13 (R-017-01..07) R-023-02 an entry of a restore shows the Version number and the changed field (covered 165)
+        ✓ ActivityPage WF-13 (R-017-01..07) R-017-02, R-017-03, R-017-04, R-017-05 the chosen filters are sent together (killed 13)
+        ✓ ActivityPage WF-13 (R-017-01..07) R-017-06 a start date after the end date shows the message and no list, and asks nothing (killed 4)
+        ~ ActivityPage WF-13 (R-017-01..07) R-017-07 no match shows the message and a button that clears the filters (covered 97)
+        ✓ ActivityPage WF-13 (R-017-01..07) R-017-08 a Viewer sees a refusal and no request for the list is sent (killed 3)
+    auth
+      RegisterPage.test.tsx
+        ✘ RegisterPage WF-02 (US-001) R-001-01 registering creates the account and asks to verify the e-mail (AC-001-01) (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-01 a password of exactly 8 characters creates the account (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-03 a display name of 100 characters creates the account (covered 0)
+        ✘ RegisterPage WF-02 (US-001) R-001-06 a password of 7 characters creates no account and shows the rule at the field (EX-001-02) (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-04 a display name that is 101 characters creates no account; the message is at the field (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-04 a display name that is empty creates no account; the message is at the field (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-04 a display name that is only spaces creates no account; the message is at the field (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-06 the e-mail ana@ creates no account; the message is at the field and the values stay (covered 0)
+        ✘ RegisterPage WF-02 (US-001) R-001-07 an address that is registered offers Sign in and Reset password (AC-001-07) (covered 0)
+        ✘ RegisterPage WF-02 (US-001) R-001-07 the Sign in offer opens the sign-in page (covered 0)
+        ✘ RegisterPage WF-02 (US-001) shows the generic error when Firebase cannot be reached (covered 0)
+      ResetPasswordPage.test.tsx
+        ✘ ResetPasswordPage WF-03 (US-001) R-001-08 a reset for nobody@acme.com starts Firebase reset and shows the same confirmation (EX-001-08) (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) R-001-08 a reset for ana@acme.com starts Firebase reset and shows the same confirmation (EX-001-08) (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) an address that is not an e-mail is refused at the field (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) an address Firebase finds invalid is shown at the field (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) shows the generic error when Firebase cannot be reached (covered 0)
+      SignInPage.test.tsx
+        ✘ SignInPage WF-01 (US-001) R-001-03 a sign-in Firebase accepts opens the Group list (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-05 a wrong e-mail or password shows the one message and signs nobody in (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-05 an unreachable Firebase shows the generic error, not the credential message (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-02 "Prijava z Googlom" signs in through Google (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-02 a closed Google window shows no error (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-12 after a 401 the sign-in page says that the session expired (covered 0)
+        ✘ SignInPage WF-01 (US-001) links to registration and password reset (WF-01) (covered 0)
+      VerifyEmailPage.test.tsx
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-04 an unverified User sees the message and the resend button, and no Group (AC-001-04) (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-04 the resend button sends the verification e-mail again (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-04 a failed resend shows the generic error (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-10 signing out on the page shows the sign-in page (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) EX-001-09 once the e-mail is verified the page opens the Group list (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) a visitor who is not signed in is sent to the sign-in page (covered 0)
+    contacts
+      selection/ContactListSelection.test.tsx
+        ✓ Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06) (killed 1)
+        ✓ Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02) (killed 3)
+        ~ Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04) (covered 127)
+        ~ Selection on the contact list (US-010) offers no "select all" when the result is one page, and does when it is 26 (EX-010-01, 02) (covered 127)
+        ~ Selection on the contact list (US-010) offers "select all 26 results" for 26 results (EX-010-02) (covered 127)
+        ~ Selection on the contact list (US-010) keeps the Selection of all results when the sort order changes (AC-010-09) (covered 127)
+        ~ Selection on the contact list (US-010) clears the Selection with "Clear selection" (AC-010-08) (covered 127)
+        ~ Selection on the contact list (US-010) clears the Selection when the search text changes, also back to the earlier text (AC-010-05, EX-010-04) (covered 128)
+        ~ Selection on the contact list (US-010) shows no checkbox and no Selection bar to a Viewer (AC-010-07) (covered 117)
+        ~ Selection on the contact list (US-010) starts empty after a reload (EX-010-03) (covered 126)
+      ContactListPage.test.tsx
+        ~ ContactListPage shows the Contacts, the total and asks for page 1 sorted by last name (R-007-01, 02) (covered 126)
+        ~ ContactListPage sorts ascending on the first choice of a header and descending on the next (R-007-03) (covered 128)
+        ~ ContactListPage goes to another page and keeps the order (R-007-04) (covered 126)
+        ~ ContactListPage opens the Contact when its row is chosen (R-007-05) (covered 126)
+        ~ ContactListPage names the link of a Contact without a last name by its first name, e-mail or "(brez imena)" (R-007-05, F-13) (covered 127)
+        ~ ContactListPage offers "Add contact" in the empty state to an Editor only (R-007-06) (covered 14)
+        ~ ContactListPage shows a Viewer the empty state without "Add contact" (R-007-06) (covered 14)
+        ~ ContactListPage shows an empty page with the total when the page is beyond the last (R-007-08) (covered 57)
+        ~ ContactListPage asks for page 1 with the search text, trimmed of nothing, and shows the count (R-008-01, R-008-03) (covered 126)
+        ~ ContactListPage treats a search text of spaces as no search (R-008-05) (covered 126)
+        ~ ContactListPage shows "No contacts match" and "Clear filters" that empties the search (R-008-04) (covered 126)
+        ~ ContactListPage shows the error state with a retry when the request fails (covered 14)
+        ✓ ContactListPage offers the Tags, countries, companies and keys of the Group and sends the Tag filters (R-009-01..03, R-009-11) (killed 3)
+        ~ ContactListPage sends the Without-Tags filter, the country and the company (R-009-03..05) (covered 131)
+        ~ ContactListPage sends the Attribute filter with a value, or with "exists" (R-009-06, R-009-07) (covered 126)
+        ~ ContactListPage clears every filter and the search text with the first "Clear filters" (R-009-10) (covered 127)
+        ~ ContactListPage shows "No contacts match" when a filter matches nothing, and its button clears the filters (R-009-12) (covered 126)
+        ~ ContactListPage drops a search text that is still waiting to be sent when the filters are cleared (R-009-10) (covered 126)
+      ContactPage.test.tsx
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-08 shows all 11 fields, the Tag and the Attribute (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-09 offers a Viewer no way to edit (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) EX-003-13 shows markup in a name as plain text (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) EX-003-12 says the Contact is not found when the server does (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-06 saves the edited fields with the version the form was opened at (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-07 a stale save shows the message and the current Contact; nothing of the form stays (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-03 keeps the form open and names the field when the server refuses the edit (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) cancel leaves the edit form without a request (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) offers an Owner the tabs Podrobnosti and Zgodovina and opens the History (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-016-04 offers a Viewer no tabs and never asks for the History (covered 0)
+        ✓ ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions (killed 2)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-022-06 never asks a Viewer for the Versions (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-004-06 saves a changed value and a removed pair with the version (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-004-08 gives a Viewer no control to change an Attribute (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-005-01, R-005-06 saves a Tag put on and a Tag taken off with the version (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-005-10 gives a Viewer no control to change a Tag (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-01 asks for confirmation and sends nothing before it (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) EX-012-03 cancelling sends nothing and keeps the page (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-02 moves the Contact to Trash and returns to the list (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-08 gives a Viewer no Delete button (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-06 shows that a Contact in Trash cannot be saved (covered 0)
+      ContactTable.test.tsx
+        ✓ ContactTable WF-06 (R-007-01..05) has a column header for each of the seven columns; six of them can sort (killed 30)
+        ✓ ContactTable WF-06 (R-007-01..05) marks only the sorted column, ascending with an up arrow and descending with a down arrow (killed 18)
+        ✓ ContactTable WF-06 (R-007-01..05) asks for the sort by the column of the clicked header (killed 1)
+        ✓ ContactTable WF-06 (R-007-01..05) hides City and Country from a tablet in the header and in every row, and no other column (killed 12)
+        ✓ ContactTable WF-06 (R-007-01..05) shows the values, the country by its name, the Tags as chips and the full text as a title (killed 35)
+        ✓ ContactTable WF-06 (R-007-01..05) names a Contact by last name, else first name, else e-mail, else "(no name)" (killed 5)
+        ✓ ContactTable WF-06 (R-007-01..05) leaves empty values empty and writes the code of a country the browser cannot name (killed 4)
+        ✓ ContactTable WF-06 (R-007-01..05) opens the Contact when the row is clicked, and once when the name is clicked (killed 1)
+        ~ ContactTable WF-06 (R-007-01..05) has no check boxes without a Selection (covered 106)
+        ✓ ContactTable WF-06 (R-007-01..05) shows a check box per row and one for the page, in the table and in the cards (R-010-01, R-010-02) (killed 5)
+        ✓ ContactTable WF-06 (R-007-01..05) shows the page box checked, half-checked or empty by how much of the page is selected (killed 6)
+        ✓ ContactTable WF-06 (R-007-01..05) ticks a Contact without opening it, and the page box ticks the page (killed 3)
+        ✓ ContactTable WF-06 (R-007-01..05) shows a card per Contact below 768 px with the name and the other five values (killed 20)
+      MultiSelect.test.tsx
+        ✓ MultiSelect (R-009-01..03) shows the placeholder, or the chosen values joined, and starts closed (killed 9)
+        ✓ MultiSelect (R-009-01..03) opens and closes with the button and marks the chosen options (killed 3)
+        ✓ MultiSelect (R-009-01..03) adds an option with a click and takes it out with a second click (killed 8)
+        ✓ MultiSelect (R-009-01..03) chooses with Enter and with Space on an option, and ignores other keys (killed 13)
+        ✓ MultiSelect (R-009-01..03) closes with Escape on the button and on an option, and with no other key (killed 4)
+    invitations
+      InvitationForm.test.tsx
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses plain without asking the server (killed 17)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b without asking the server (killed 2)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses @b.si without asking the server (killed 7)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@@b.si without asking the server (killed 2)
+        ~ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b@c.si without asking the server (covered 57)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a b@c.si without asking the server (killed 1)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@.si without asking the server (killed 4)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b. without asking the server (killed 2)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b..si without asking the server (killed 1)
+        ~ InvitationForm: the e-mail check and the answers (R-014-02..04) refuses ab@c d.si without asking the server (covered 59)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) sends a trimmed address with the chosen Role, shows the notice and empties the field (killed 21)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) offers Editor as the first choice of the Role (killed 2)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) removes the format error as soon as the address is edited (killed 1)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) shows invitation.exists next to the e-mail field (killed 10)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) shows invitation.limit next to the e-mail field (killed 3)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) shows the server field error of the e-mail address, but not one of another field (killed 7)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) shows a general error for any other failure (killed 2)
+        ✓ InvitationForm: the e-mail check and the answers (R-014-02..04) disables the button while the invitation is being created (killed 3)
+      InvitationsPage.test.tsx
+        ~ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-09 lists the pending Invitations with e-mail, Role and expiry date (covered 25)
+        ~ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) shows an empty state when nothing is pending (covered 25)
+        ~ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-01 sends the e-mail and Role and tells the Owner to inform the person (R-014-12) (covered 74)
+        ~ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-02 shows a message next to the field and sends nothing for "boris@" (covered 60)
+        ~ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-04 says the person is already a Member or invited (covered 75)
+        ~ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-03 shows the limit (covered 78)
+        ~ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-07 asks for confirmation, then cancels the Invitation (covered 25)
+        ✘ InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-10 shows an Editor a refusal and asks the backend nothing (covered 0)
+    tags
+      TagListPage.test.tsx
+        ✓ TagListPage WF-09 (R-006-01..06, R-006-08) R-006-01 lists every Tag with its number of Contacts (killed 6)
+        ~ TagListPage WF-09 (R-006-01..06, R-006-08) shows the empty state when the Group has no Tag (covered 87)
+        ✓ TagListPage WF-09 (R-006-01..06, R-006-08) R-006-06 asks with the number of Contacts before deleting, and deletes on confirm (killed 1)
+        ~ TagListPage WF-09 (R-006-01..06, R-006-08) AC-006-05 cancelling the deletion sends nothing (covered 104)
+        ~ TagListPage WF-09 (R-006-01..06, R-006-08) R-006-02 renames with the typed name (covered 117)
+        ~ TagListPage WF-09 (R-006-01..06, R-006-08) R-006-03 shows why a rename is refused and keeps the dialog open (covered 115)
+        ~ TagListPage WF-09 (R-006-01..06, R-006-08) R-006-03 checks the name before sending it (covered 111)
+        ✓ TagListPage WF-09 (R-006-01..06, R-006-08) R-006-08 offers no action to a Viewer (killed 1)
+      TagListPage.texts.test.tsx
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards (killed 32)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation (killed 3)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again (killed 1)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) shows a Viewer no Tags and says why (killed 4)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) words the count of Contacts in the delete question by its plural form (killed 21)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) deletes with the DELETE of the Tag, says so and asks for the list again (killed 9)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) keeps the dialog and shows a general error when the deletion fails (killed 2)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) opens the rename dialog with the name, its hint and the two buttons (killed 12)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) renames with the trimmed name, says so, closes and asks for the list again (killed 16)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) shows the busy state while renaming and cannot be cancelled then (killed 1)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal tag.name_taken next to the field (killed 3)
+        ~ TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field (covered 122)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field (killed 2)
+        ✓ TagListPage: texts, errors and busy states (R-006-01..08) forgets the error and the typed text when the dialog is closed and opened again (killed 6)
+    trash
+      TrashPage.test.tsx
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-012-03 lists the Contact with who deleted it and the days left (covered 85)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-012-03 counts the days with the Slovene forms (covered 85)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) EX-012-07 shows an empty state when nothing is in Trash (covered 41)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-012-04 restores the Contact and lists the rest (covered 98)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) F-17 announces the restore as a status message (R-012-04, UI-13) (covered 98)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-012-05 shows "not found" when the restore is refused (covered 93)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-012-08 shows a Viewer a refusal and asks the backend nothing (covered 27)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever (covered 102)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-02 keeps the Contact when the confirmation is cancelled (covered 90)
+        ✓ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-03 shows an Editor no "Izbriši za vedno" (killed 1)
+        ~ TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-05 shows "not found" when the Contact is already gone (covered 103)
+      TrashPage.texts.test.tsx
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts (killed 28)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash (killed 26)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact (killed 10)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the empty state with its explanation (killed 6)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows an error with a retry that asks again (killed 1)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows a Viewer a refusal and does not ask for the trash (killed 5)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again (killed 13)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored (killed 1)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list (killed 3)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list (killed 9)
+        ✓ TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question (killed 2)
+    versions
+      VersionsTab.test.tsx
+        ✓ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user (killed 14)
+        ✓ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it (killed 3)
+        ✓ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-02 opening v1 shows its fields, Tags and Attributes (killed 8)
+        ✓ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute (killed 8)
+        ~ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) EX-022-01 shows "no differences" when there is none (covered 108)
+        ✓ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) goes back from an opened Version to the list (killed 2)
+        ~ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) shows no control that changes or deletes a Version (R-022-05) (covered 85)
+        ~ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) UI-14 shows the error state with a retry (covered 14)
+        ~ VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) shows the English labels after the language is switched (covered 85)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 and EX-023-01 offer "Obnovi" for v2 and v1 but not for the current Version (killed 4)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 asks for confirmation that names the new Version and sends nothing on "Prekliči" (killed 3)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-01 confirming sends the shown version and reloads the list with the new Version (killed 6)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore (killed 2)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the confirm button is disabled and says "Obnavljanje …" while the restore runs (killed 1)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list (killed 5)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored (killed 7)
+        ✓ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works (killed 1)
+        ~ VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) shows the English labels of the restore after the language is switched (covered 86)
+      VersionsTab.texts.test.tsx
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the heading, the headers, the current badge on the highest Version only, and the time zone of Ljubljana (killed 24)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the empty state, and an error with a retry (killed 2)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the error of the list with a retry that asks again (killed 3)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) opens a Version with its title, content, a Restore button and a way back (killed 11)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) offers no restore on the opened current Version (killed 1)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the error of an opened Version with a retry (killed 3)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes (killed 53)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) says there are no differences, and shows the error of the comparison with a retry (killed 5)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) asks before restoring with the number of the new Version, restores the shown Version and says so (killed 13)
+        ✓ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the stale refusal with its explanation, and the validation reasons once each, and clears them on the next try (killed 7)
+        ~ VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows a refusal that is not an API error without reasons (covered 110)
+
+[NoCoverage] StringLiteral
+src/features/activity/ActivityPage.tsx:79:21
+-     const { groupId = '' } = useParams();
++     const { groupId = "Stryker was here!" } = useParams();
+
+[NoCoverage] ArrayDeclaration
+src/features/activity/ActivityPage.tsx:227:34
+-               rows={data?.items ?? []}
++               rows={data?.items ?? ["Stryker was here"]}
+
+[Survived] Regex
+src/features/activity/ActivityPage.tsx:71:84
+-     else if (d.key) parts.push(`${d.key}: ${d.old ?? '—'} → ${d.new ?? '—'}`.replace(/^(.*): — → —$/, '$1'));
++     else if (d.key) parts.push(`${d.key}: ${d.old ?? '—'} → ${d.new ?? '—'}`.replace(/(.*): — → —$/, '$1'));
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a removed Attribute
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a changed Attribute
+  and 1 more test!
+
+
+[Survived] Regex
+src/features/activity/ActivityPage.tsx:71:84
+-     else if (d.key) parts.push(`${d.key}: ${d.old ?? '—'} → ${d.new ?? '—'}`.replace(/^(.*): — → —$/, '$1'));
++     else if (d.key) parts.push(`${d.key}: ${d.old ?? '—'} → ${d.new ?? '—'}`.replace(/^(.): — → —$/, '$1'));
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a removed Attribute
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a changed Attribute
+  and 1 more test!
+
+
+[Survived] Regex
+src/features/activity/ActivityPage.tsx:71:84
+-     else if (d.key) parts.push(`${d.key}: ${d.old ?? '—'} → ${d.new ?? '—'}`.replace(/^(.*): — → —$/, '$1'));
++     else if (d.key) parts.push(`${d.key}: ${d.old ?? '—'} → ${d.new ?? '—'}`.replace(/^(.*): — → —/, '$1'));
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a removed Attribute
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a changed Attribute
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/features/activity/ActivityPage.tsx:72:12
+-     else if (d.name) parts.push(d.old ? `${d.old} → ${d.new}` : d.name);
++     else if (true) parts.push(d.old ? `${d.old} → ${d.new}` : d.name);
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an export
+  and 21 more tests!
+
+
+[Survived] MethodExpression
+src/features/activity/ActivityPage.tsx:73:10
+-     return parts.filter(Boolean).join(' · ');
++     return parts.join(' · ');
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 33 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/activity/ActivityPage.tsx:84:20
+-     const inverted = filters.from !== '' && filters.to !== '' && filters.from > filters.to;
++     const inverted = true && filters.to !== '' && filters.from > filters.to;
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 38 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:84:37
+-     const inverted = filters.from !== '' && filters.to !== '' && filters.from > filters.to;
++     const inverted = filters.from !== "Stryker was here!" && filters.to !== '' && filters.from > filters.to;
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 38 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:87:16
+-       queryKey: ['members', groupId],
++       queryKey: ["", groupId],
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 38 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/activity/ActivityPage.tsx:87:15
+-       queryKey: ['members', groupId],
++       queryKey: [],
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 38 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:92:16
+-       queryKey: ['activity', groupId, filters, page],
++       queryKey: ["", groupId, filters, page],
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 38 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:102:30
+-           <PageHeader title={t('activity.title')} />
++           <PageHeader title={t("")} />
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) does not ask for the entries of a Viewer, and asks nothing when the dates are reversed
+    ActivityPage WF-13 (R-017-01..07) R-017-08 a Viewer sees a refusal and no request for the list is sent
+
+
+[Survived] ConditionalExpression
+src/features/activity/ActivityPage.tsx:98:7
+-     if (role === undefined) return <LoadingState rows={4} />;
++     if (false) return <LoadingState rows={4} />;
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 38 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:111:17
+-         header: t('activity.time'),
++         header: t(""),
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:110:12
+-         key: 'time',
++         key: "",
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:115:12
+-         key: 'user',
++         key: "",
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:116:17
+-         header: t('activity.user'),
++         header: t(""),
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:119:12
+-       { key: 'action', header: t('activity.action'), cell: (e) => t(`activity.actions.${e.action}`) },
++       { key: "", header: t('activity.action'), cell: (e) => t(`activity.actions.${e.action}`) },
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:119:32
+-       { key: 'action', header: t('activity.action'), cell: (e) => t(`activity.actions.${e.action}`) },
++       { key: 'action', header: t(""), cell: (e) => t(`activity.actions.${e.action}`) },
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:121:12
+-         key: 'contact',
++         key: "",
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:122:17
+-         header: t('activity.contact'),
++         header: t(""),
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:135:12
+-       { key: 'details', header: t('activity.details'), cell: (e) => detailsText(e, t) },
++       { key: "", header: t('activity.details'), cell: (e) => detailsText(e, t) },
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:135:33
+-       { key: 'details', header: t('activity.details'), cell: (e) => detailsText(e, t) },
++       { key: 'details', header: t(""), cell: (e) => detailsText(e, t) },
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:147:28
+-         <PageHeader title={t('activity.title')} />
++         <PageHeader title={t("")} />
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:150:23
+-           aria-label={t('activity.filters')}
++           aria-label={t("")}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:148:52
+-         <p className="-mt-4 mb-6 text-text-muted">{t('activity.intro')}</p>
++         <p className="-mt-4 mb-6 text-text-muted">{t("")}</p>
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] ArrowFunction
+src/features/activity/ActivityPage.tsx:152:19
+-           onSubmit={(e) => e.preventDefault()}
++           onSubmit={() => undefined}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:162:33
+-               <option value="">{t('activity.allUsers')}</option>
++               <option value="">{t("")}</option>
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/activity/ActivityPage.tsx:163:31
+-               {(members.data ?? []).map((m) => (
++               {(members.data ?? ["Stryker was here"]).map((m) => (
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:178:33
+-               <option value="">{t('activity.allActions')}</option>
++               <option value="">{t("")}</option>
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:195:42
+-               aria-describedby={inverted ? 'activity-range' : undefined}
++               aria-describedby={inverted ? "" : undefined}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) does not ask for entries while the start date is after the end date, and says so
+    ActivityPage WF-13 (R-017-01..07) R-017-06 a start date after the end date shows the message and no list, and asks nothing
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:207:42
+-               aria-describedby={inverted ? 'activity-range' : undefined}
++               aria-describedby={inverted ? "" : undefined}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) does not ask for entries while the start date is after the end date, and says so
+    ActivityPage WF-13 (R-017-01..07) R-017-06 a start date after the end date shows the message and no list, and asks nothing
+
+
+[Survived] ConditionalExpression
+src/features/activity/ActivityPage.tsx:193:18
+-               max={filters.to || undefined}
++               max={true}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/activity/ActivityPage.tsx:193:18
+-               max={filters.to || undefined}
++               max={false}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] LogicalOperator
+src/features/activity/ActivityPage.tsx:193:18
+-               max={filters.to || undefined}
++               max={filters.to && undefined}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 36 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:222:57
+-           <EmptyState title={t('activity.empty')} body={t('activity.emptyBody')} action={clear} />
++           <EmptyState title={t('activity.empty')} body={t("")} action={clear} />
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows one page for an empty total, and the empty state with a button that clears the filters
+    ActivityPage WF-13 (R-017-01..07) R-017-07 no match shows the message and a button that clears the filters
+
+
+[Survived] OptionalChaining
+src/features/activity/ActivityPage.tsx:227:19
+-               rows={data?.items ?? []}
++               rows={data.items ?? []}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 33 more tests!
+
+
+[Survived] ArrowFunction
+src/features/activity/ActivityPage.tsx:228:21
+-               rowKey={(e) => e.id}
++               rowKey={() => undefined}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 33 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:232:27
+-               aria-label={t('history.pages')}
++               aria-label={t("")}
+Tests ran:
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows a renamed Tag
+    ActivityPage: the Details text of every kind of entry (ADR-08, R-017-01) shows an added Attribute
+  and 33 more tests!
+
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:21:3
+-     'CONTACT_CREATED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:23:3
+-     'CONTACT_DELETED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:24:3
+-     'CONTACT_DELETED_FOREVER',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:27:3
+-     'TAG_REMOVED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:25:3
+-     'CONTACT_RESTORED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:28:3
+-     'TAG_RENAMED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:29:3
+-     'TAG_DELETED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:30:3
+-     'ATTRIBUTE_ADDED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:31:3
+-     'ATTRIBUTE_CHANGED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:32:3
+-     'ATTRIBUTE_REMOVED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:33:3
+-     'CONTACTS_MERGED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:34:3
+-     'CONTACTS_EXPORTED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:35:3
+-     'MEMBER_JOINED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:36:3
+-     'ROLE_CHANGED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:37:3
+-     'MEMBER_REMOVED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:38:3
+-     'INVITATION_CREATED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:39:3
+-     'INVITATION_CANCELLED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:40:3
+-     'VERSION_RESTORED',
++     "",
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:43:47
+-   const NO_FILTERS: ActivityFilters = { userId: '', action: '', from: '', to: '' };
++   const NO_FILTERS: ActivityFilters = { userId: "Stryker was here!", action: '', from: '', to: '' };
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:43:59
+-   const NO_FILTERS: ActivityFilters = { userId: '', action: '', from: '', to: '' };
++   const NO_FILTERS: ActivityFilters = { userId: '', action: "Stryker was here!", from: '', to: '' };
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:43:77
+-   const NO_FILTERS: ActivityFilters = { userId: '', action: '', from: '', to: '' };
++   const NO_FILTERS: ActivityFilters = { userId: '', action: '', from: '', to: "Stryker was here!" };
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/features/activity/ActivityPage.tsx:45:21
+-   const selectClass = 'h-11 w-full rounded-md border border-input bg-transparent px-3';
++   const selectClass = "";
+Ran all tests for this mutant.
+
+[Survived] ArrayDeclaration
+src/features/contacts/ContactTable.tsx:28:36
+-         return new Intl.DisplayNames([i18n.language], { type: 'region' }).of(code) ?? code;
++         return new Intl.DisplayNames([], { type: 'region' }).of(code) ?? code;
+Tests ran:
+    ContactTable WF-06 (R-007-01..05) has a column header for each of the seven columns; six of them can sort
+    ContactTable WF-06 (R-007-01..05) marks only the sorted column, ascending with an up arrow and descending with a down arrow
+    ContactTable WF-06 (R-007-01..05) asks for the sort by the column of the clicked header
+  and 10 more tests!
+
+
+[Survived] ArrowFunction
+src/features/contacts/ContactTable.tsx:80:18
+-           onClick={(e) => e.stopPropagation()}
++           onClick={() => undefined}
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/ContactTable.tsx:104:100
+-                   className={`border-b p-0 font-semibold ${c.hideOnTablet ? 'hidden lg:table-cell' : ''}`}
++                   className={`border-b p-0 font-semibold ${c.hideOnTablet ? 'hidden lg:table-cell' : "Stryker was here!"}`}
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 35 more tests!
+
+
+[Survived] ArrowFunction
+src/features/contacts/ContactTable.tsx:135:55
+-                   <td className="border-b p-3" onClick={(e) => e.stopPropagation()}>
++                   <td className="border-b p-3" onClick={() => undefined}>
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/ContactTable.tsx:142:97
+-                     className={`truncate border-b p-3 ${c.hideOnTablet ? 'hidden lg:table-cell' : ''}`}
++                     className={`truncate border-b p-3 ${c.hideOnTablet ? 'hidden lg:table-cell' : "Stryker was here!"}`}
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 34 more tests!
+
+
+[Survived] ArrowFunction
+src/features/contacts/ContactTable.tsx:148:32
+-                         onClick={(e) => e.stopPropagation()}
++                         onClick={() => undefined}
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 34 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/ContactTable.tsx:167:27
+-               aria-label={t('selection.selectPage')}
++               aria-label={t("")}
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 24 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/ContactTable.tsx:171:14
+-             {t('selection.selectPage')}
++             {t("")}
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 24 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/MultiSelect.tsx:45:29
+-           <span className={cn('truncate', value.length === 0 && 'text-text-muted')}>
++           <span className={cn("", value.length === 0 && 'text-text-muted')}>
+Tests ran:
+    Selection on the contact list (US-010) shows "2 selected" after two rows are ticked and "1 selected" after one is unticked (AC-010-01, 06)
+    Selection on the contact list (US-010) keeps the ticked rows when the page changes and back (AC-010-02)
+    Selection on the contact list (US-010) selects the page, offers all 60 results and selects them (AC-010-03, 04)
+  and 30 more tests!
+
+
+[Survived] ObjectLiteral
+src/features/invitations/InvitationForm.tsx:46:43
+-         await queryClient.invalidateQueries({ queryKey: ['invitations', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) sends a trimmed address with the chosen Role, shows the notice and empties the field
+    InvitationForm: the e-mail check and the answers (R-014-02..04) disables the button while the invitation is being created
+    InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-01 sends the e-mail and Role and tells the Owner to inform the person (R-014-12)
+
+
+[Survived] MethodExpression
+src/features/invitations/InvitationForm.tsx:43:49
+-       mutationFn: () => createInvitation(groupId, email.trim(), role),
++       mutationFn: () => createInvitation(groupId, email, role),
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) sends a trimmed address with the chosen Role, shows the notice and empties the field
+    InvitationForm: the e-mail check and the answers (R-014-02..04) shows invitation.exists next to the e-mail field
+    InvitationForm: the e-mail check and the answers (R-014-02..04) shows invitation.limit next to the e-mail field
+  and 6 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/invitations/InvitationForm.tsx:46:55
+-         await queryClient.invalidateQueries({ queryKey: ['invitations', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) sends a trimmed address with the chosen Role, shows the notice and empties the field
+    InvitationForm: the e-mail check and the answers (R-014-02..04) disables the button while the invitation is being created
+    InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-01 sends the e-mail and Role and tells the Owner to inform the person (R-014-12)
+
+
+[Survived] StringLiteral
+src/features/invitations/InvitationForm.tsx:46:56
+-         await queryClient.invalidateQueries({ queryKey: ['invitations', groupId] });
++         await queryClient.invalidateQueries({ queryKey: ["", groupId] });
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) sends a trimmed address with the chosen Role, shows the notice and empties the field
+    InvitationForm: the e-mail check and the answers (R-014-02..04) disables the button while the invitation is being created
+    InvitationsPage WF-12 (R-014-01..04, R-014-07, R-014-09, R-014-10) R-014-01 sends the e-mail and Role and tells the Owner to inform the person (R-014-12)
+
+
+[Survived] BooleanLiteral
+src/features/invitations/InvitationForm.tsx:41:50
+-     const [formatError, setFormatError] = useState(false);
++     const [formatError, setFormatError] = useState(true);
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses plain without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses @b.si without asking the server
+  and 22 more tests!
+
+
+[Survived] MethodExpression
+src/features/invitations/InvitationForm.tsx:53:37
+-       const invalid = !hasEmailFormat(email.trim());
++       const invalid = !hasEmailFormat(email);
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses plain without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses @b.si without asking the server
+  and 18 more tests!
+
+
+[Survived] StringLiteral
+src/features/invitations/InvitationForm.tsx:70:64
+-         {create.isError && !code ? <Notice tone="alert" title={t('error.generic')} /> : null}
++         {create.isError && !code ? <Notice tone="alert" title={t("")} /> : null}
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) shows a general error for any other failure
+
+
+[Survived] StringLiteral
+src/features/invitations/InvitationForm.tsx:63:12
+-           {t('invitations.formTitle')}
++           {t("")}
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses plain without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses @b.si without asking the server
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/features/invitations/InvitationForm.tsx:88:62
+-               <span className="font-normal text-text-muted">{t('form.required')}</span>
++               <span className="font-normal text-text-muted">{t("")}</span>
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses plain without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses @b.si without asking the server
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/features/invitations/InvitationForm.tsx:98:20
+-                   {t(`role.${r}`)}
++                   {t(``)}
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses plain without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses @b.si without asking the server
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/features/invitations/InvitationForm.tsx:103:51
+-           <p className="text-sm text-text-muted">{t('invitations.hint')}</p>
++           <p className="text-sm text-text-muted">{t("")}</p>
+Tests ran:
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses plain without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses a@b without asking the server
+    InvitationForm: the e-mail check and the answers (R-014-02..04) refuses @b.si without asking the server
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/features/invitations/InvitationForm.tsx:12:24
+-   const ROLES: Role[] = ['OWNER', 'EDITOR', 'VIEWER'];
++   const ROLES: Role[] = ["", 'EDITOR', 'VIEWER'];
+Ran all tests for this mutant.
+
+[NoCoverage] StringLiteral
+src/features/tags/TagListPage.tsx:41:21
+-     const { groupId = '' } = useParams();
++     const { groupId = "Stryker was here!" } = useParams();
+
+[NoCoverage] StringLiteral
+src/features/tags/TagListPage.tsx:262:42
+-         confirmLabel={remove.isPending ? t('tags.deleteBusy') : t('tags.deleteConfirm')}
++         confirmLabel={remove.isPending ? t("") : t('tags.deleteConfirm')}
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:26:17
+-       const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
++       const key = true ? form : 'other';
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:26:35
+-       const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
++       const key = form === 'one' || false || form === 'few' ? form : 'other';
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] EqualityOperator
+src/features/tags/TagListPage.tsx:26:35
+-       const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
++       const key = form === 'one' || form !== 'two' || form === 'few' ? form : 'other';
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] StringLiteral
+src/features/tags/TagListPage.tsx:26:44
+-       const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
++       const key = form === 'one' || form === "" || form === 'few' ? form : 'other';
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:26:53
+-       const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
++       const key = form === 'one' || form === 'two' || false ? form : 'other';
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] EqualityOperator
+src/features/tags/TagListPage.tsx:26:53
+-       const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
++       const key = form === 'one' || form === 'two' || form !== 'few' ? form : 'other';
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] StringLiteral
+src/features/tags/TagListPage.tsx:26:62
+-       const key = form === 'one' || form === 'two' || form === 'few' ? form : 'other';
++       const key = form === 'one' || form === 'two' || form === "" ? form : 'other';
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] LogicalOperator
+src/features/tags/TagListPage.tsx:35:10
+-     return error.fieldErrors.find((f) => f.field === 'name')?.code ?? null;
++     return error.fieldErrors.find(f => f.field === 'name')?.code && null;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+
+
+[Survived] ArrowFunction
+src/features/tags/TagListPage.tsx:35:33
+-     return error.fieldErrors.find((f) => f.field === 'name')?.code ?? null;
++     return error.fieldErrors.find(() => undefined)?.code ?? null;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+
+
+[Survived] BlockStatement
+src/features/tags/TagListPage.tsx:32:57
+-   function renameErrorCode(error: unknown): string | null {
+-     if (!(error instanceof ApiError)) return null;
+-     if (error.code === 'tag.name_taken') return error.code;
+-     return error.fieldErrors.find((f) => f.field === 'name')?.code ?? null;
+-   }
++   function renameErrorCode(error: unknown): string | null {}
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:34:7
+-     if (error.code === 'tag.name_taken') return error.code;
++     if (true) return error.code;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal tag.name_taken next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/features/tags/TagListPage.tsx:34:7
+-     if (error.code === 'tag.name_taken') return error.code;
++     if (error.code !== 'tag.name_taken') return error.code;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal tag.name_taken next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:34:7
+-     if (error.code === 'tag.name_taken') return error.code;
++     if (false) return error.code;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal tag.name_taken next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/tags/TagListPage.tsx:34:22
+-     if (error.code === 'tag.name_taken') return error.code;
++     if (error.code === "") return error.code;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal tag.name_taken next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:35:40
+-     return error.fieldErrors.find((f) => f.field === 'name')?.code ?? null;
++     return error.fieldErrors.find((f) => true)?.code ?? null;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:35:40
+-     return error.fieldErrors.find((f) => f.field === 'name')?.code ?? null;
++     return error.fieldErrors.find((f) => false)?.code ?? null;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+
+
+[Survived] StringLiteral
+src/features/tags/TagListPage.tsx:35:52
+-     return error.fieldErrors.find((f) => f.field === 'name')?.code ?? null;
++     return error.fieldErrors.find((f) => f.field === "")?.code ?? null;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+
+
+[Survived] EqualityOperator
+src/features/tags/TagListPage.tsx:35:40
+-     return error.fieldErrors.find((f) => f.field === 'name')?.code ?? null;
++     return error.fieldErrors.find((f) => f.field !== 'name')?.code ?? null;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the refusal validation.failed next to the field
+    TagListPage: texts, errors and busy states (R-006-01..08) shows a general error in the dialog for an unexpected refusal, and a field error of another field is not shown at the field
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:33:7
+-     if (!(error instanceof ApiError)) return null;
++     if (true) return null;
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/tags/TagListPage.tsx:46:14
+-       enabled: role !== 'VIEWER',
++       enabled: true,
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] StringLiteral
+src/features/tags/TagListPage.tsx:46:23
+-       enabled: role !== 'VIEWER',
++       enabled: role !== "",
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] ObjectLiteral
+src/features/tags/TagListPage.tsx:185:43
+-         await queryClient.invalidateQueries({ queryKey: ['tags', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) renames with the trimmed name, says so, closes and asks for the list again
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the busy state while renaming and cannot be cancelled then
+    TagListPage WF-09 (R-006-01..06, R-006-08) R-006-02 renames with the typed name
+
+
+[Survived] ArrayDeclaration
+src/features/tags/TagListPage.tsx:185:55
+-         await queryClient.invalidateQueries({ queryKey: ['tags', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) renames with the trimmed name, says so, closes and asks for the list again
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the busy state while renaming and cannot be cancelled then
+    TagListPage WF-09 (R-006-01..06, R-006-08) R-006-02 renames with the typed name
+
+
+[Survived] StringLiteral
+src/features/tags/TagListPage.tsx:178:49
+-     const [name, setName] = useState(tag?.name ?? '');
++     const [name, setName] = useState(tag?.name ?? "Stryker was here!");
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] BooleanLiteral
+src/features/tags/TagListPage.tsx:190:16
+-       setInvalid(false);
++       setInvalid(true);
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) renames with the trimmed name, says so, closes and asks for the list again
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the busy state while renaming and cannot be cancelled then
+    TagListPage: texts, errors and busy states (R-006-01..08) forgets the error and the typed text when the dialog is closed and opened again
+  and 1 more test!
+
+
+[Survived] ArrowFunction
+src/features/tags/TagListPage.tsx:207:47
+-       <Dialog open={tag !== null} onOpenChange={(open) => (open ? undefined : close())}>
++       <Dialog open={tag !== null} onOpenChange={() => undefined}>
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[Survived] ObjectLiteral
+src/features/tags/TagListPage.tsx:253:43
+-         await queryClient.invalidateQueries({ queryKey: ['tags', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) deletes with the DELETE of the Tag, says so and asks for the list again
+    TagListPage WF-09 (R-006-01..06, R-006-08) R-006-06 asks with the number of Contacts before deleting, and deletes on confirm
+
+
+[Survived] ArrayDeclaration
+src/features/tags/TagListPage.tsx:253:55
+-         await queryClient.invalidateQueries({ queryKey: ['tags', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) deletes with the DELETE of the Tag, says so and asks for the list again
+    TagListPage WF-09 (R-006-01..06, R-006-08) R-006-06 asks with the number of Contacts before deleting, and deletes on confirm
+
+
+[Survived] StringLiteral
+src/features/tags/TagListPage.tsx:260:56
+-         title={t('tags.deleteTitle', { tag: tag?.name ?? '' })}
++         title={t('tags.deleteTitle', { tag: tag?.name ?? "Stryker was here!" })}
+Tests ran:
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the title, the introduction, the table with its caption and headers, and the cards
+    TagListPage: texts, errors and busy states (R-006-01..08) shows the empty state with its explanation
+    TagListPage: texts, errors and busy states (R-006-01..08) shows an error with a retry that asks again
+  and 19 more tests!
+
+
+[NoCoverage] StringLiteral
+src/features/trash/TrashPage.tsx:28:21
+-     const { groupId = '' } = useParams();
++     const { groupId = "Stryker was here!" } = useParams();
+
+[Survived] ArrayDeclaration
+src/features/trash/TrashPage.tsx:34:15
+-       queryKey: ['trash', groupId],
++       queryKey: [],
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 19 more tests!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:34:16
+-       queryKey: ['trash', groupId],
++       queryKey: ["", groupId],
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 19 more tests!
+
+
+[Survived] BlockStatement
+src/features/trash/TrashPage.tsx:48:28
+-       onSettled: async () => {
+-         await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
+-       },
++       onSettled: async () => {},
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list
+  and 3 more tests!
+
+
+[Survived] ObjectLiteral
+src/features/trash/TrashPage.tsx:49:43
+-         await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list
+  and 3 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/trash/TrashPage.tsx:49:55
+-         await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:49:56
+-         await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
++         await queryClient.invalidateQueries({ queryKey: ["", groupId] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list
+  and 3 more tests!
+
+
+[Survived] ObjectLiteral
+src/features/trash/TrashPage.tsx:50:43
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list
+  and 3 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/trash/TrashPage.tsx:50:55
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:50:56
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({ queryKey: ["", groupId] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) restores, says so with a way to open the Contact, and asks for the list again
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) disables only the Restore button of the Contact being restored
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the restore above the list
+  and 3 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/trash/TrashPage.tsx:59:55
+-         await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question
+    TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever
+  and 1 more test!
+
+
+[Survived] ObjectLiteral
+src/features/trash/TrashPage.tsx:59:43
+-         await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question
+    TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:59:56
+-         await queryClient.invalidateQueries({ queryKey: ['trash', groupId] });
++         await queryClient.invalidateQueries({ queryKey: ["", groupId] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question
+    TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever
+  and 1 more test!
+
+
+[Survived] ObjectLiteral
+src/features/trash/TrashPage.tsx:60:43
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question
+    TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:60:56
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({ queryKey: ["", groupId] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question
+    TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever
+  and 1 more test!
+
+
+[Survived] ArrayDeclaration
+src/features/trash/TrashPage.tsx:60:55
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question
+    TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/features/trash/TrashPage.tsx:64:7
+-     if (role === undefined) return <LoadingState rows={4} />;
++     if (false) return <LoadingState rows={4} />;
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/trash/TrashPage.tsx:77:8
+-         {restore.isError || forever.isError ? (
++         {true ? (
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 17 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/trash/TrashPage.tsx:100:26
+-           onConfirm={() => deleting !== undefined && forever.mutate(deleting)}
++           onConfirm={() => true && forever.mutate(deleting)}
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the refusal of the delete above the list
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) asks before deleting forever, deletes the chosen Contact only and closes the question
+    TrashPage WF-10 (R-012-03, R-012-04, R-012-08) R-013-01, R-013-02 asks for confirmation that says it cannot be undone, then deletes forever
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:132:65
+-             aria-label={t('trash.foreverFor', { name: nameOf(c, t('contacts.untitled')) })}
++             aria-label={t('trash.foreverFor', { name: nameOf(c, t("")) })}
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:145:61
+-         aria-label={t('trash.restoreFor', { name: nameOf(c, t('contacts.untitled')) })}
++         aria-label={t('trash.restoreFor', { name: nameOf(c, t("")) })}
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:180:72
+-                 <td className="truncate border-b p-3" title={nameOf(c, t('contacts.untitled'))}>
++                 <td className="truncate border-b p-3" title={nameOf(c, t(""))}>
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/features/trash/TrashPage.tsx:197:72
+-               <p className="min-w-0 truncate font-semibold">{nameOf(c, t('contacts.untitled'))}</p>
++               <p className="min-w-0 truncate font-semibold">{nameOf(c, t(""))}</p>
+Tests ran:
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) shows the title, the explanation, the table headers and a link back to the contacts
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) names a Contact by name, else company, else e-mail, else the untitled text, and fills the empty cells with a dash
+    TrashPage: texts, names, errors and busy states (R-012-03..05, R-013-01..03) labels the buttons with the name and shows the card of each Contact
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/RestoreVersionButton.tsx:36:13
+-     variant = 'secondary',
++     variant = "",
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-02 opening v1 shows its fields, Tags and Attributes
+  and 23 more tests!
+
+
+[Survived] ObjectLiteral
+src/features/versions/RestoreVersionButton.tsx:49:43
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({});
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-01 confirming sends the shown version and reloads the list with the new Version
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the confirm button is disabled and says "Obnavljanje …" while the restore runs
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/RestoreVersionButton.tsx:43:23
+-     const contactKey = ['contacts', groupId, contactId];
++     const contactKey = ["", groupId, contactId];
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-02 opening v1 shows its fields, Tags and Attributes
+  and 23 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/versions/RestoreVersionButton.tsx:43:22
+-     const contactKey = ['contacts', groupId, contactId];
++     const contactKey = [];
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-02 opening v1 shows its fields, Tags and Attributes
+  and 23 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/versions/RestoreVersionButton.tsx:49:55
+-         await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++         await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-01 confirming sends the shown version and reloads the list with the new Version
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the confirm button is disabled and says "Obnavljanje …" while the restore runs
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/versions/RestoreVersionButton.tsx:54:11
+-         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
++         if (true) {
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/versions/RestoreVersionButton.tsx:54:11
+-         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
++         if (false) {
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+  and 2 more tests!
+
+
+[Survived] LogicalOperator
+src/features/versions/RestoreVersionButton.tsx:54:11
+-         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
++         if (error instanceof ApiError || error.code === 'contact.changed_by_someone_else') {
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+  and 2 more tests!
+
+
+[Survived] EqualityOperator
+src/features/versions/RestoreVersionButton.tsx:54:40
+-         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
++         if (error instanceof ApiError && error.code !== 'contact.changed_by_someone_else') {
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/versions/RestoreVersionButton.tsx:54:40
+-         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
++         if (error instanceof ApiError && true) {
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/RestoreVersionButton.tsx:54:55
+-         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
++         if (error instanceof ApiError && error.code === "") {
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+  and 2 more tests!
+
+
+[Survived] BlockStatement
+src/features/versions/RestoreVersionButton.tsx:54:90
+-         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {
+-           queryClient.setQueryData(contactKey, error.current as Contact);
+-           await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
+-         }
++         if (error instanceof ApiError && error.code === 'contact.changed_by_someone_else') {}
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the stale refusal with its explanation, and the validation reasons once each, and clears them on the next try
+
+
+[Survived] ObjectLiteral
+src/features/versions/RestoreVersionButton.tsx:56:45
+-           await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++           await queryClient.invalidateQueries({});
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the stale refusal with its explanation, and the validation reasons once each, and clears them on the next try
+
+
+[Survived] ArrayDeclaration
+src/features/versions/RestoreVersionButton.tsx:56:57
+-           await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++           await queryClient.invalidateQueries({ queryKey: [] });
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the stale refusal with its explanation, and the validation reasons once each, and clears them on the next try
+
+
+[Survived] StringLiteral
+src/features/versions/RestoreVersionButton.tsx:56:58
+-           await queryClient.invalidateQueries({ queryKey: ['contacts', groupId] });
++           await queryClient.invalidateQueries({ queryKey: ["", groupId] });
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-05 a stale restore shows "changed by someone else", nothing restored, and the new list
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the stale refusal with its explanation, and the validation reasons once each, and clears them on the next try
+
+
+[NoCoverage] ArrayDeclaration
+src/features/versions/VersionsTab.tsx:98:9
+-         : [];
++         : ["Stryker was here"];
+
+[Survived] ObjectLiteral
+src/features/versions/VersionsTab.tsx:47:42
+-     const [view, setView] = useState<View>({ kind: 'list' });
++     const [view, setView] = useState<View>({});
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 27 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:47:50
+-     const [view, setView] = useState<View>({ kind: 'list' });
++     const [view, setView] = useState<View>({ kind: "" });
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 27 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:50:48
+-       queryKey: ['contacts', groupId, contactId, 'versions'],
++       queryKey: ['contacts', groupId, contactId, ""],
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 27 more tests!
+
+
+[Survived] ObjectLiteral
+src/features/versions/VersionsTab.tsx:61:30
+-     const back = () => setView({ kind: 'list' });
++     const back = () => setView({});
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) goes back from an opened Version to the list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-01 confirming sends the shown version and reloads the list with the new Version
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:61:38
+-     const back = () => setView({ kind: 'list' });
++     const back = () => setView({ kind: "" });
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) goes back from an opened Version to the list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-01 confirming sends the shown version and reloads the list with the new Version
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore
+  and 6 more tests!
+
+
+[Survived] OptionalChaining
+src/features/versions/VersionsTab.tsx:60:19
+-     const current = versions[0]?.number ?? 0;
++     const current = versions[0].number ?? 0;
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 24 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/versions/VersionsTab.tsx:101:8
+-         {reasons.length > 0 ? (
++         {true ? (
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the stale refusal with its explanation, and the validation reasons once each, and clears them on the next try
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/features/versions/VersionsTab.tsx:101:8
+-         {reasons.length > 0 ? (
++         {reasons.length >= 0 ? (
+Tests ran:
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) AC-023-04 a restore that breaks BR-06 shows the reason and nothing is restored
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 the refusal goes away when the user tries again and it works
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) shows the stale refusal with its explanation, and the validation reasons once each, and clears them on the next try
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:129:12
+-         key: 'number',
++         key: "",
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 24 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:141:12
+-         key: 'time',
++         key: "",
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 24 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:145:12
+-       { key: 'user', header: t('versions.user'), cell: (v) => v.userName },
++       { key: "", header: t('versions.user'), cell: (v) => v.userName },
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 24 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:147:12
+-         key: 'actions',
++         key: "",
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 24 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/versions/VersionsTab.tsx:203:15
+-       queryKey: ['contacts', groupId, contactId, 'versions', number],
++       queryKey: [],
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-02 opening v1 shows its fields, Tags and Attributes
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) goes back from an opened Version to the list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:203:16
+-       queryKey: ['contacts', groupId, contactId, 'versions', number],
++       queryKey: ["", groupId, contactId, 'versions', number],
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-02 opening v1 shows its fields, Tags and Attributes
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) goes back from an opened Version to the list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:203:48
+-       queryKey: ['contacts', groupId, contactId, 'versions', number],
++       queryKey: ['contacts', groupId, contactId, "", number],
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-02 opening v1 shows its fields, Tags and Attributes
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) goes back from an opened Version to the list
+    VersionsTab restore WF-07 (R-023-01, R-023-03, R-023-04, AC-023-01, AC-023-04, AC-023-05) R-023-01 an opened Version has "Obnovi to različico" and the list is shown after the restore
+  and 3 more tests!
+
+
+[Survived] ArrowFunction
+src/features/versions/VersionsTab.tsx:176:17
+-           rowKey={(v) => String(v.number)}
++           rowKey={() => undefined}
+Tests ran:
+    ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-01 lists v3, v2, v1 with time in Europe/Ljubljana and user
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) R-022-02 marks the highest Version as the current one and offers no comparison for it
+  and 24 more tests!
+
+
+[Survived] ArrayDeclaration
+src/features/versions/VersionsTab.tsx:243:15
+-       queryKey: ['contacts', groupId, contactId, 'versions', number, 'compare'],
++       queryKey: [],
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) EX-022-01 shows "no differences" when there is none
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:243:16
+-       queryKey: ['contacts', groupId, contactId, 'versions', number, 'compare'],
++       queryKey: ["", groupId, contactId, 'versions', number, 'compare'],
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) EX-022-01 shows "no differences" when there is none
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:243:48
+-       queryKey: ['contacts', groupId, contactId, 'versions', number, 'compare'],
++       queryKey: ['contacts', groupId, contactId, "", number, 'compare'],
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) EX-022-01 shows "no differences" when there is none
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:243:68
+-       queryKey: ['contacts', groupId, contactId, 'versions', number, 'compare'],
++       queryKey: ['contacts', groupId, contactId, 'versions', number, ""],
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) EX-022-01 shows "no differences" when there is none
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/features/versions/VersionsTab.tsx:270:5
+-       d.kind === 'field' && isField(d.name)
++       true && isField(d.name)
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:277:12
+-       { key: 'name', header: t('versions.field'), cell: label },
++       { key: "", header: t('versions.field'), cell: label },
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:279:12
+-         key: 'version',
++         key: "",
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:284:12
+-         key: 'current',
++         key: "",
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+
+
+[Survived] ArrowFunction
+src/features/versions/VersionsTab.tsx:299:15
+-         rowKey={(d) => `${d.kind}:${d.name}`}
++         rowKey={() => undefined}
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+
+
+[Survived] StringLiteral
+src/features/versions/VersionsTab.tsx:299:22
+-         rowKey={(d) => `${d.kind}:${d.name}`}
++         rowKey={(d) => ``}
+Tests ran:
+    VersionsTab WF-07 (R-022-02..04, AC-022-01..04, EX-022-01..02) AC-022-03 and AC-022-04 comparing shows both values, a Tag added or removed and an Attribute
+    VersionsTab: texts, views and refusals (R-022-02..05, R-023-01..04) compares with the current Version: title, headers, labels of fields, Tags and Attributes
+
+
+Ran 9.17 tests per mutant on average.
+---------------------------|------------------|----------|-----------|------------|----------|----------|
+                           | % Mutation score |          |           |            |          |          |
+File                       |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files                  |  83.11 |   83.59 |      881 |         0 |        173 |        6 |        0 |
+ activity                  |  76.25 |   76.83 |      199 |         0 |         60 |        2 |        0 |
+  ActivityPage.tsx         |  76.25 |   76.83 |      199 |         0 |         60 |        2 |        0 |
+ contacts                  |  95.34 |   95.34 |      184 |         0 |          9 |        0 |        0 |
+  ContactTable.tsx         |  94.74 |   94.74 |      144 |         0 |          8 |        0 |        0 |
+  MultiSelect.tsx          |  97.56 |   97.56 |       40 |         0 |          1 |        0 |        0 |
+ invitations               |  87.63 |   87.63 |       85 |         0 |         12 |        0 |        0 |
+  InvitationForm.tsx       |  87.63 |   87.63 |       85 |         0 |         12 |        0 |        0 |
+ tags                      |  79.47 |   80.54 |      120 |         0 |         29 |        2 |        0 |
+  TagListPage.tsx          |  79.47 |   80.54 |      120 |         0 |         29 |        2 |        0 |
+ trash                     |  82.03 |   82.68 |      105 |         0 |         22 |        1 |        0 |
+  TrashPage.tsx            |  82.03 |   82.68 |      105 |         0 |         22 |        1 |        0 |
+ versions                  |  81.74 |   82.10 |      188 |         0 |         41 |        1 |        0 |
+  RestoreVersionButton.tsx |  61.54 |   61.54 |       24 |         0 |         15 |        0 |        0 |
+  VersionsTab.tsx          |  85.86 |   86.32 |      164 |         0 |         26 |        1 |        0 |
+---------------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m04:37:17 (10859) INFO JsonReporter[39m Your report can be found at: file:///Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/coverage/mutation/mutation.json
+[32m04:37:17 (10859) INFO HtmlReporter[39m Your report can be found at: file:///Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/coverage/mutation/mutation.html
+[32m04:37:17 (10859) INFO MutationTestExecutor[39m Done in 9 minutes and 59 seconds.
+finished

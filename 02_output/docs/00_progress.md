@@ -5,13 +5,13 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S14 /design (round 1, with the developer)
+- Session: S6 /quality-gate
 - Result: done
-- Gate: design exit met: final theme applied (commit 2a6906f), every topic decided (D-80), UI checks 79 of 79 in light and dark, unit tests 376 of 376, acceptance 88 passed with the same 7 known failures as before the change, E2E chromium: E2E-02, -04, -05, -06 pass, E2E-01 and E2E-03 fail the same way on the code before the design (`logs/design-e2e-baseline.log`: after creating a Group the page stays on the Group list), firefox does not start in this sandbox, webkit fails the same two
-- Notes for the next session: D-79 (F-14 to Medium) is now in `docs/decisions-log.md`; D-80 records the design. The final theme is switched on in `main.tsx` (`FINAL_THEME`); `ACTIVE_THEME` stays `wireframe` because `theme.test.ts` pins it. Screens: `logs/screens/design-1/{before,after-light,after-dark,variants}`. The dev stack (contact-groups, real Firebase project) was stopped for the screens and is running again; the test stack is removed. The dev frontend image is still the old one: rebuild it (README command) to see the final theme there. Not caused by the design and not yet a finding: E2E-01 and E2E-03 (Chromium, WebKit) fail before and after; `/quality-gate` or `/verify` should judge them. Open and not blocking: F-19..F-25 (F-19 waits for D-68 d), F-06..F-09, F-11, F-12; release notes get F-14's deployment check.
+- Gate: phase 5 gate met in part: backend meets both thresholds (line 97.62 %, mutation 97.37 %); frontend meets the line threshold (97.77 %) and misses the mutation threshold by 7.57 points (82.43 %, three survivor rounds done, D-82, F-38)
+- Notes for the next session: figures and the sets of tests run are in `docs/03_test-strategy.md` ("Test measures", "Quality gate", "Phase 5 notes"). D-81: PIT ran in five runs with disjoint test sets (one `FirebaseApp` per JVM, fixed emulator port) and the results were merged by mutant; frontend nonUnit coverage is not measured. D-82 carries F-38 (Medium, frontend mutation shortfall; 330 more mutants, mainly in ten screens) and F-39 (Low, `TagListPage` asks for Tags before the Role is known); neither is fixed. Known failing frozen tests unchanged: backend `EX-007-05`, `AC-018-15` (fails in Failsafe, passed in PIT), UI acceptance 7, E2E-01 and E2E-03 (not re-run in S6). Test commits of the survivor rounds are over 400 lines (D-82 d). 585 frontend unit tests pass. Reports: `backend/target/pit-reports/`, `frontend/reports/mutation/` (not committed). The dev stack is untouched.
 
 ## Next
-- Command: /quality-gate
+- Command: /verify
 - Waiting for: D-68 d (F-19)
 
 ## Stories

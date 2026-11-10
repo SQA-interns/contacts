@@ -1,0 +1,6 @@
+
+/Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/ui-checks/group-shell-screens.stack.spec.ts
+  42:36  warning  Found non-literal argument to RegExp Constructor  security/detect-non-literal-regexp
+
+✖ 1 problem (0 errors, 1 warning)
+

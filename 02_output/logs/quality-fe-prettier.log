@@ -1,0 +1,20 @@
+src/config.test.ts 48ms
+stryker.config.json 16ms (unchanged)
+src/api/endpoints.test.ts 65ms
+src/features/activity/ActivityPage.details.test.tsx 43ms
+src/features/auth/rules.test.ts 6ms (unchanged)
+src/features/contacts/ContactForm.test.tsx 29ms
+src/features/contacts/ContactListPage.more.test.tsx 31ms
+src/features/contacts/ContactTable.test.tsx 26ms
+src/features/contacts/FilterPanel.test.tsx 15ms
+src/features/contacts/MultiSelect.test.tsx 7ms (unchanged)
+src/features/contacts/filters.test.ts 6ms
+src/features/duplicates/mergeRequest.test.ts 5ms
+src/features/groups/GroupTrashPage.texts.test.tsx 12ms
+src/features/invitations/InvitationForm.test.tsx 11ms
+src/features/invitations/InvitationsPage.texts.test.tsx 11ms
+src/features/members/MembersPage.texts.test.tsx 17ms
+src/features/tags/TagListPage.texts.test.tsx 28ms
+src/features/trash/TrashPage.texts.test.tsx 16ms
+src/features/versions/VersionsTab.texts.test.tsx 19ms
+src/i18n/plurals.test.tsx 5ms (unchanged)

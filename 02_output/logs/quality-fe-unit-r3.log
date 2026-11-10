@@ -1,0 +1,18 @@
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+      Coverage enabled with v8
+
+
+ Test Files  62 passed (62)
+      Tests  585 passed (585)
+   Start at  04:41:38
+   Duration  29.18s (transform 4.36s, setup 16.42s, import 25.16s, tests 145.14s, environment 48.90s)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 97.35% ( 1658/1703 )
+Branches     : 94.78% ( 1163/1227 )
+Functions    : 96.48% ( 658/682 )
+Lines        : 97.77% ( 1451/1484 )
+================================================================================

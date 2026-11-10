@@ -891,3 +891,25 @@
 - Human response: impression "Calm and neutral"; colour "A Indigo #4f46e5"; "Is it right?" "Yes, commit it", 2026-11-09, chat.
 - Resolution: option 1, commit 2a6906f.
 - Overrides: none (the baseline accent is kept; UI-04, UI-21 and UI-02 are applied, not changed)
+
+## D-81: How the backend mutation run was made (PIT in five runs), frontend non-unit coverage not measured
+- Timestamp: 2026-11-10
+- Session: S6 /quality-gate
+- Class: open
+- Type: non-blocking
+- Trigger: `general/testing/measurement.md` ("Mutation score": the component's full suite; if infeasible, record the tests actually run and the reason). (a) PIT runs all tests of one run in one JVM and needs a green baseline. The backend suite cannot: the product registers one named `FirebaseApp` per JVM (D-38e), so the integration tests (`ApplicationContextSupport`) and the acceptance tests, which start different Spring contexts, cannot share a JVM; the two `Us018*OwnContext*` classes need a JVM each; the emulator uses the fixed port 9099. A single PIT run failed all 371 acceptance tests at its baseline. (b) The Playwright tests of the frontend run against the built container images, so a coverage figure for them would need a different build and tool; `nonUnit` coverage of the frontend is not measured and `all` is recorded as the unit figure. (c) PIT needs a green baseline: the one frozen test that fails (`EX-007-05`, D-51) is skipped by PIT only (`skipFailingTests` in `pom.xml`); `AC-018-15` failed in Failsafe and passed inside PIT.
+- Options: 1 (default) run PIT five times with disjoint test sets that together are the full suite (unit; integration; acceptance; the two own-context classes), over the whole scope, and merge the results by mutant: a mutant is killed if any run killed it, survived or not reached otherwise; record the sets in `docs/03_test-strategy.md`. 2 change the product or the frozen acceptance tests so that one JVM can hold both contexts (production code and frozen tests may not be changed here). 3 run only part of the suite.
+- Human response: none
+- Resolution: pending review (option 1). The merged result: 963 of 989 mutants killed, 97.37 %.
+- Overrides: none
+
+## D-82: Frontend mutation score below the threshold after three survivor rounds (shortfall 7.57 points); F-38, F-39
+- Timestamp: 2026-11-10
+- Session: S6 /quality-gate
+- Class: open
+- Type: non-blocking
+- Trigger: `general/testing/measurement.md` ("Shortfall"), `project/02_design/quality-requirements.md` ("Thresholds": mutation score adjusted >= 90 %). (a) First full Stryker run: 66.92 % (2,913 of 4,353 killed, 1,244 survivors, 195 not reached) with 376 unit tests. After three survivor rounds (209 tests added, tests only) the confirming full run gives 82.43 % (3,588 of 4,353; 693 survivors, 71 not reached, 1 run error), so 330 more mutants must be killed. The line coverage of the frontend meets the gate (97.77 %). No survivor is justified as equivalent, so the adjusted score equals the raw score. (b) **F-38 (Medium):** the frontend mutation threshold is not met by 7.57 points; the survivors are in the screens (`ActivityPage`, `ContactPage`, `ContactListPage`, `TagListPage`, `MergeForm`, `MergeTable`, `routes.tsx`, `RegisterPage`, `AccountPage`, `CreateGroupDialog`), mostly texts and class names that no test reads, and conditional rendering that no test distinguishes. Severity: a control weaker than required (`severity-scale.md`); the survivors are not in code that validates, authorises or stores (the server does that); the validation rules of the forms are covered (`rules.ts`, `InvitationForm`, `ContactForm`, `filters.ts`). (c) **F-39 (Low):** `TagListPage` requests the Tags while the Role is still unknown, so a Viewer's browser sends one request the backend refuses (`GET /tags` needs the action MANAGE_TAGS); the page then shows its no-permission notice. Not fixed (production code, S6 may only fix a defect a new test proves with its own `fix:` commit; the defect has no visible effect). (d) The three survivor-round commits are over the 400 lines of `commits.md` (597, 1,670 and 1,340 added lines of test code); history is not rewritten.
+- Options: 1 (default) accept the shortfall and carry F-38 to `/verify` and `/fix`: a fourth round of tests for the ten screens above, then a new full run (about one hour). 2 accept the shortfall for the release and record it in the release notes. 3 lower the threshold (an input change; needs the human).
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
