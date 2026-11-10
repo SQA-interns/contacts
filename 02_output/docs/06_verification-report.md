@@ -658,7 +658,7 @@ The test stack was removed afterwards (`scripts/test-stack.sh down`).
 | F-53 | Low | DoD-R-07, DoD-R-12 | 50 long subjects stay (433 commits) | accepted, history is not rewritten |
 | F-57 | Medium | `group-screens.stack.spec.ts:38`, NFR-08 | WF-05 "created" check | **closed**: passes in chromium light, dark and webkit |
 | F-58 | Medium | `perf/measure.mjs`, NFR-04 | script did not join the invited Users | **closed**: NFR-04 passes with the delivered script, 5 minutes, 0 errors |
-| F-59 | Medium | `.github/workflows/ci.yml`, DoD-R-15 | the `images` job runs `docker compose -f docker-compose.prod.yml config -q` without `GOOGLE_APPLICATION_CREDENTIALS`, which the file requires since `db4fb46`; the job fails on every push | open: `/fix` adds a dummy path to the job's `env` (one line in `ci.yml`) |
+| F-59 | Medium | `.github/workflows/ci.yml`, DoD-R-15 | the `images` job runs `docker compose -f docker-compose.prod.yml config -q` without `GOOGLE_APPLICATION_CREDENTIALS`, which the file requires since `db4fb46`; the job fails on every push | **fixed** in `a629ad6` (S8): the step's `env` sets a dummy `GOOGLE_APPLICATION_CREDENTIALS`; `scripts/check-ci-compose.sh` replays the step and passes (`out/logs/fix-f59-green.log`); not re-verified, no fifth run (D-92) |
 
 Closed in earlier runs and not re-opened: F-40, F-46, F-54, F-55, F-56. Carried: F-08 (Low, `EX-007-05`), F-14 (Medium, D-79), F-19 (Low, waits for the human, D-68 d), F-20..F-25 (Low), F-39 (Low).
 
