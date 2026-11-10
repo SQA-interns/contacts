@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router';
 import { listGroups, type Role } from '@/api/groups';
 import { Button } from '@/components/ui/button';
+import { NotFoundPage } from '@/features/home/NotFoundPage';
 import { GroupOptionsMenu } from './GroupOptionsMenu';
 import {
   DropdownMenu,
@@ -46,6 +47,10 @@ export function GroupShell() {
   const tabs = group ? TABS.filter((tab) => tab.roles.includes(group.role)) : [];
   const isCurrent = (tab: GroupTab) => pathname.startsWith(`${base}/${tab.path}`);
   const current = tabs.find(isCurrent);
+
+  // A Group the User is no Member of looks like a Group that does not exist (BR-01, AC-002-06). Decided only on a
+  // fresh Group list, so a stale list does not hide a Group the User has just joined.
+  if (groups.isSuccess && !groups.isFetching && !group) return <NotFoundPage />;
 
   return (
     <>

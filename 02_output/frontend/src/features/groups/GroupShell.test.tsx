@@ -126,6 +126,15 @@ describe('GroupShell: Group bar and Group navigation (WF-06..WF-13, F-01, F-02)'
     expect(await screen.findByText('group list page')).toBeInTheDocument();
   });
 
+  it('F-56 shows the Not found page, not the screen of the route, for a Group the User is no Member of (BR-01, AC-002-06)', async () => {
+    renderShell('OWNER', '/groups/other/contacts');
+
+    expect(await screen.findByRole('heading', { name: 'Strani ni mogoče najti' })).toBeInTheDocument();
+    expect(screen.queryByText('contacts page')).not.toBeInTheDocument();
+    expect(screen.queryByRole('navigation', { name: 'Navigacija skupine' })).not.toBeInTheDocument();
+    expect(screen.queryByText('Acme')).not.toBeInTheDocument();
+  });
+
   it('R-020-06 offers an Editor and a Viewer no "Možnosti skupine"', async () => {
     renderShell('EDITOR');
     await tabBar();
