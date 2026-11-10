@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Development tools of the repository (contract validation). Not shipped.",
+  "description": "Development tools of the repository (contract validation and export). Not shipped.",
   "license": "UNLICENSED",
   "scripts": {
-    "validate-contracts": "node validate-contracts.mjs"
+    "validate-contracts": "node validate-contracts.mjs",
+    "export-openapi": "node export-openapi.mjs"
   },
   "devDependencies": {
     "@seriousme/openapi-schema-validator": "2.11.0",
