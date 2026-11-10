@@ -1,0 +1,4 @@
+{
+  "command": "sh 02_output/hidden-tests/run.sh",
+  "junit": "02_output/hidden-tests/target/hidden-junit.xml"
+}

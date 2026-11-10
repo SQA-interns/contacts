@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hidden evaluation suite (general/testing/hidden-evaluation.md). Self-contained: it compiles the backend's
+     production sources and resources from ../backend and runs its own tests against the assembled application
+     through the REST interface, with a throwaway PostgreSQL and the Firebase Auth emulator. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>4.0.9</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>si.contactgroups</groupId>
+  <artifactId>contact-groups-hidden-evaluation</artifactId>
+  <version>1.0.0</version>
+
+  <properties>
+    <java.version>21</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <postgresql.version>42.7.14</postgresql.version>
+    <httpclient5.version>5.6.5</httpclient5.version>
+    <httpcore5.version>5.4.4</httpcore5.version>
+    <firebase-admin.version>9.5.0</firebase-admin.version>
+    <google-http-client.version>1.46.3</google-http-client.version>
+    <poi.version>5.4.1</poi.version>
+    <springdoc.version>3.2.0</springdoc.version>
+    <bucket4j.version>8.10.1</bucket4j.version>
+    <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+    <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
+    <maven-failsafe-plugin.version>3.5.4</maven-failsafe-plugin.version>
+    <ownContext>**/*OwnContextHiddenIT.java</ownContext>
+  </properties>
+
+  <dependencies>
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-webmvc</artifactId></dependency>
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-security</artifactId></dependency>
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-validation</artifactId></dependency>
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-jdbc</artifactId></dependency>
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-flyway</artifactId></dependency>
+    <dependency><groupId>org.flywaydb</groupId><artifactId>flyway-database-postgresql</artifactId></dependency>
+    <dependency><groupId>org.postgresql</groupId><artifactId>postgresql</artifactId><scope>runtime</scope></dependency>
+    <dependency>
+      <groupId>com.google.firebase</groupId>
+      <artifactId>firebase-admin</artifactId>
+      <version>${firebase-admin.version}</version>
+      <exclusions>
+        <exclusion><groupId>com.google.cloud</groupId><artifactId>google-cloud-storage</artifactId></exclusion>
+        <exclusion><groupId>com.google.cloud</groupId><artifactId>google-cloud-firestore</artifactId></exclusion>
+      </exclusions>
+    </dependency>
+    <dependency><groupId>com.google.http-client</groupId><artifactId>google-http-client-jackson2</artifactId><version>${google-http-client.version}</version></dependency>
+    <dependency><groupId>org.apache.poi</groupId><artifactId>poi-ooxml</artifactId><version>${poi.version}</version></dependency>
+    <dependency><groupId>org.springdoc</groupId><artifactId>springdoc-openapi-starter-webmvc-api</artifactId><version>${springdoc.version}</version></dependency>
+    <dependency><groupId>com.bucket4j</groupId><artifactId>bucket4j-core</artifactId><version>${bucket4j.version}</version></dependency>
+
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
+    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-testcontainers</artifactId><scope>test</scope></dependency>
+    <dependency><groupId>org.testcontainers</groupId><artifactId>testcontainers-junit-jupiter</artifactId><scope>test</scope></dependency>
+    <dependency><groupId>org.testcontainers</groupId><artifactId>testcontainers-postgresql</artifactId><scope>test</scope></dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>../backend/src/main/java</sourceDirectory>
+    <resources>
+      <resource><directory>../backend/src/main/resources</directory></resource>
+    </resources>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <release>${java.version}</release>
+          <parameters>true</parameters>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+        <configuration><skip>true</skip></configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${maven-failsafe-plugin.version}</version>
+        <configuration>
+          <environmentVariables>
+            <FIREBASE_AUTH_EMULATOR_HOST>localhost:9099</FIREBASE_AUTH_EMULATOR_HOST>
+          </environmentVariables>
+          <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+            <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
+          </statelessTestsetReporter>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+        <executions>
+          <execution>
+            <id>hidden</id>
+            <goals><goal>integration-test</goal></goals>
+            <configuration>
+              <includes><include>**/*HiddenIT.java</include></includes>
+              <excludes><exclude>${ownContext}</exclude></excludes>
+              <summaryFile>${project.build.directory}/failsafe-reports/hidden-summary.xml</summaryFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>hidden-own-context</id>
+            <goals><goal>integration-test</goal></goals>
+            <configuration>
+              <includes><include>${ownContext}</include></includes>
+              <reuseForks>false</reuseForks>
+              <summaryFile>${project.build.directory}/failsafe-reports/hidden-own-context-summary.xml</summaryFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -3,9 +3,6 @@
 .env.*
 !.env.example
 
-# held-out tests (never read, listed or run by the implementer)
-02_output/hidden-tests/
-
 # dependencies and build output (ES-03)
 node_modules/
 target/
