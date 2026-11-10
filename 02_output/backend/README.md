@@ -37,3 +37,15 @@ All values come from environment variables (ES-01); `docs/02_contracts/configura
 - `Failed to validate Maven distribution SHA-256` on macOS: the built-in `sha256sum` does not support `-c`. Put a GNU-compatible `sha256sum` first on `PATH` (for example `brew install coreutils`) or an executable shim `exec shasum -a 256 "$@"`.
 - Integration tests need a running Docker daemon; the emulator test publishes port 9099 on localhost.
 - The Admin SDK is configured without Firestore and Storage (D-12); do not make `FirebaseAuth` a Spring bean and do not call `listUsers` (ADR-04).
+- `./mvnw verify -Pquality` ends with one red test, `EX-007-05` (F-08): the frozen test contradicts rule R-007-03 (D-68 i). It is a known limitation, not a broken checkout; the other 844 tests and every check pass. To see the checks without the tests: `./mvnw -B -Pquality spotless:check checkstyle:check spotbugs:check pmd:check`.
+- The integration tests publish port 9099; stop any local stack that holds it (see the root README).
+
+## Deploy
+
+The backend is delivered as a container image, built from the Dockerfile in this folder (JRE 21, user 10001, health check on `/health`). The image contains no configuration or secret; it starts from the environment variables above, with profile `prod` (`REQUIRE_HTTPS=true`, `FIREBASE_AUTH_EMULATOR_HOST` refused).
+
+```bash
+docker build -t contact-groups-backend:1.0.0 .
+```
+
+Production needs one more file than the other environments: the Firebase service-account key (`GOOGLE_APPLICATION_CREDENTIALS`, role "Firebase Authentication Admin"), mounted read-only into the container by `../docker-compose.prod.yml`; without it the backend refuses to start (D-69). The database schema is created and migrated by Flyway on every start; migrations only move forward, so go back by restoring a backup (`../scripts/restore.sh`). Start, configuration names, backup and update: [`../docs/install-and-backup.md`](../docs/install-and-backup.md).

@@ -38,3 +38,14 @@ npm run e2e           # browser tests (Playwright, 3 browsers, 375/768/1440 px, 
 - The page is blank: open the console; without `VITE_FIREBASE_*` the shell still renders (signed out), so a blank page means a build error.
 - Firefox may fail to start inside restricted sandboxes (seen in the agent sandbox); run `--project=chromium --project=webkit` there.
 - `npm install` fails with `edgesOut`: keep `.npmrc` (D-33).
+- `npm run e2e` is the only command that starts a browser for all three engines; Firefox does not start on every machine (F-48, see the release notes).
+
+## Deploy
+
+The frontend is delivered as a container image (static files behind nginx, user `nginx`, health check `/healthz`) built from the Dockerfile in this folder. The image is the same for every environment: at start the entrypoint writes `/config.js` from the `VITE_*` variables above, so nothing environment-specific is baked in.
+
+```bash
+docker build -t contact-groups-frontend:1.0.0 .
+```
+
+Production starts it together with the backend and PostgreSQL through `../docker-compose.prod.yml` (the page is on `127.0.0.1:8081`, behind the customer's TLS proxy). Configuration names, start and checks: [`../docs/install-and-backup.md`](../docs/install-and-backup.md).
