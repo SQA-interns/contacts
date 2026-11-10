@@ -584,6 +584,8 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 | WF-18 Merge | chromium pass; webkit **fails** at all three widths | tab crash at `page.reload` with a mocked 500 (F-48, unchanged) | none seen before the crash |
 | WF-06 list, desktop, webkit | timed out (30 s) once in the full parallel run, passes alone (`verify4-ui-checks-webkit-wf06-rerun.log`) | load timeout of five parallel WebKit workers, not a defect | none seen |
 
+The UI checks write their screenshots to `out/logs/screens/`; the last run (chromium dark) overwrote the light-mode set, so this commit restores the light-mode screenshots of the previous run as the baseline evidence (the dark-mode run of this session has no kept screenshots).
+
 The Attribute/Tag suggestion list that changed in F-47 was not compared against the wireframe by eye in this run; `AC-005-06`, the axe checks and the keyboard walkthrough pass.
 
 ### NFR
