@@ -1,0 +1,20 @@
+== /health
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+Content-Type: application/json
+{"status":"UP"}
+== frontend
+200
+== plain HTTP to the API (non-TLS, no forwarded proto)
+403
+== users
+10001
+nginx
+== restart policy
+/contact-groups-backend-1 unless-stopped
+/contact-groups-frontend-1 unless-stopped
+== backend log: ERROR lines / stack frames / Flyway
+0
+8
+== log lines
+     149

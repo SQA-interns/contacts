@@ -526,3 +526,151 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 3. Run Firefox, the real Excel check (Q-06) and real Google sign-in on a machine where they work.
 4. Push `main` so CI can run (F-51); I did not push.
 5. Your production stack was stopped for the length of this check and is running again from images built from `HEAD`; please check that your own sign-in still works.
+
+## Run 4
+
+> **Self-check by the agent in a separate session (S12), not an independent review.** Commit under test: `f56ae0e` (`HEAD` when the runner produced the hidden evaluation; `68c90b7` only adds that evaluation). Run 4 was approved by the human as the last round (D-91, option 1). Result: **phase 6 gate not passed**: no Critical or High is open, but `DoD-R-01`, `DoD-R-13`, `DoD-R-14` and `DoD-R-15` are not met (open Medium findings below, accepted as known limitations by D-86 and, for the rest, D-91 and D-92). F-47, F-52, F-57 and F-58 are confirmed fixed; one new Medium finding, F-59 (CI), was found. Logs: `out/logs/verify4-*.log`. Nothing was pushed.
+
+### Procedure result
+
+| Step | Result |
+|---|---|
+| 1 run number | run 4, approved by D-91 (option 1) |
+| 2 manifests | input manifest 77 of 77 and acceptance manifest 59 of 59 hashes match (`verify4-manifests.log`); hidden manifest "ok" in the runner's evaluation (the vault was not read) |
+| 3 suite, checks, hidden evaluation | see "Definition of Done". Hidden evaluation of `f56ae0e` = `HEAD` (run 5 of `06_hidden-evaluation.md`): 214 tests, 209 pass, 5 fail, the same five (F-41..F-45). Backend not changed since run 3, so JaCoCo not re-measured (97.71 % lines in run 3). Frontend changed (`useSuggestions.tsx` new, `AttributeEditor.tsx`, `TagInput.tsx`): coverage re-measured once, 97.71 % lines (1,494 of 1,529), 94.84 % branches (`verify4-frontend-coverage.log`); Stryker once on those three files (`verify4-stryker-changed.log`): `useSuggestions.tsx` 56.67 %, `AttributeEditor.tsx` 89.36 %, `TagInput.tsx` 89.19 %, together 75.36 % (159 killed, 47 survived, 5 not covered) |
+| 4 runtime | test stack (Compose, emulator, empty database, then `seed/` and the 10,000-Contact seed); sign-in as a seed User and the group list checked in the browser pane; production stack started from freshly built images |
+| 5 NFR | measured, see "NFR" |
+| 6 UI | see "UI and accessibility" |
+| 7 security | see "Threats and controls" |
+| 8 logs, errors, secrets | live probes; 104 test-stack and 149 production backend log lines: no stack frame, token, password word or e-mail address; `.env` scan: only the two non-secret values of F-49 (below) |
+| 9 CI, deployment | see "CI and deployment" |
+| 10 traceability | see "Traceability" |
+
+### Definition of Done
+
+| DoD | Result | Evidence |
+|---|---|---|
+| DoD-R-01 full suite passes, hashes match | **Not met** | hashes match. Backend 845 tests (197 unit, 243 + 400 + 5 integration): 844 pass, `EX-007-05` fails (F-08, D-68 i). Frontend unit 597 of 597. UI acceptance **95 of 95** (F-47 fixed). E2E scenarios: chromium 6 of 6, webkit 6 of 6, firefox 0 of 6 (does not start, F-48). `verify4-backend-quality.log`, `verify4-frontend-test.log`, `verify4-ui-acceptance.log`, `verify4-e2e-scenarios.log` |
+| DoD-R-02 format, lint, type check, static analysis | Met | `spotless:check`, Checkstyle 0 violations, SpotBugs 0 bugs, PMD pass (`verify4-static-analysis.log`, run as separate goals because Maven stops `verify -Pquality` at `EX-007-05`); Prettier, ESLint, `tsc -b`, i18n tests pass (`verify4-frontend-check.log`); frontend build passes |
+| DoD-R-03 quality gate | Met with a decision | line coverage of both components above the gate; frontend mutation below 90 % (F-38, D-82); the new `useSuggestions.tsx` (56.67 %) adds survivors, the full figure was not re-measured (about one hour) |
+| DoD-R-04 architecture constraints, no cycles | Met | architecture tests pass in the backend run |
+| DoD-R-05 no open Critical or High | Met after D-86 | none open |
+| DoD-R-06 components run, core flows work | Met | all components start; E2E-01..06 pass in chromium and webkit |
+| DoD-R-07 every AC, EX, R traces to a test and a commit | Met in the main | see "Traceability" |
+| DoD-R-08 final theme, three widths, no Critical/Serious accessibility violation | Partly | chromium light 100 of 100 and dark 100 of 100, webkit light 97 of 100 (WF-18 Merge crashes, F-48); no accessibility violation on any screen that ran; Firefox not run; WF-08, WF-19 and WF-07 main page now have checks (F-52 fixed); the structure against the approved wireframes was not compared again |
+| DoD-R-09 READMEs from a clean checkout | Not yet checked | `/release` |
+| DoD-R-10 release notes | Not yet written | `/release` |
+| DoD-R-11 decisions resolved or pending review; inputs unchanged | Met | 91 decisions; the eight old "pending (blocking)" records (D-03, D-04, D-06, D-07, D-11, D-14, D-15, D-16) are answered by follow-up records, D-88 waits for the human, D-89 and D-82 pending review; input manifest matches; `check-decision-ids.sh`: ids unique |
+| DoD-R-12 commit history | Met in part | 50 subjects over 72 characters of 433 commits, history not rewritten (F-53) |
+| DoD-R-13 hidden suite passes | **Not met**, accepted for five cases (D-86) | 209 of 214 at `HEAD`; the five failing cases are the accepted known limitation |
+| DoD-R-14 every NFR meets its pass value | **Not met** | see "NFR" (NFR-07, NFR-08 Firefox; NFR-10; NFR-13) |
+| DoD-R-15 CI pipeline passes | **Not met** | never ran remotely; locally the `images` job also fails at the production Compose check (F-59); see "CI and deployment" |
+| DoD-R-16 production files build and start; every threat has a checked control | Met | images rebuilt from `HEAD`, production stack healthy 18 s after `up` |
+| DoD-P01 E2E-01, -02, -03, -04, -06 against the Compose stack | Met in chromium and webkit | all pass; Firefox does not start (F-48) |
+| DoD-P02 isolation test on every endpoint | Met | `IsolationIT`, `ContractParityIT`, `EndpointSecurityTest`, `AC-018-04` pass; E2E-03 passes |
+| DoD-P03 NFR-01..05 on the deployed system | Met | NFR-01..04 pass with the scripts as delivered (F-58 fixed), NFR-05 present |
+| DoD-P04 four customer deliverables | Met in the main | as in run 2; content of the guides was not tested by a person |
+| DoD-P05 later features finished, E2E-05 passes | Met | E2E-05 passes in chromium and webkit |
+| DoD-P06 no Critical or High open | Met after D-86 | none open |
+| DoD-P07 restore tested once | Met | run 2 (`verify2-backup-restore.log`); `scripts/` and the backend are unchanged since, so not repeated |
+
+### UI and accessibility
+
+`frontend/ui-checks/` (overflow, axe WCAG 2.2 AA, no Critical or Serious violation; 100 tests now: 79 of run 3, 9 for F-52, 12 for the keyboard walkthrough) at 375, 768 and 1440 px against the test stack. Chromium dark through `colorScheme` in a scratch configuration outside the project. Firefox does not start (F-48).
+
+| Screens | Widths and modes | Baseline result | Accessibility violations |
+|---|---|---|---|
+| all screens with a check file, including WF-05 "created", WF-08, WF-19 and the main page of WF-07, and the keyboard-only walkthrough of the four main flows | 3 widths; chromium light 100 of 100, chromium dark 100 of 100, webkit light 97 of 100 | pass, no overflow | none Critical or Serious |
+| WF-18 Merge | chromium pass; webkit **fails** at all three widths | tab crash at `page.reload` with a mocked 500 (F-48, unchanged) | none seen before the crash |
+| WF-06 list, desktop, webkit | timed out (30 s) once in the full parallel run, passes alone (`verify4-ui-checks-webkit-wf06-rerun.log`) | load timeout of five parallel WebKit workers, not a defect | none seen |
+
+The Attribute/Tag suggestion list that changed in F-47 was not compared against the wireframe by eye in this run; `AC-005-06`, the axe checks and the keyboard walkthrough pass.
+
+### NFR
+
+Measured on the test stack with the 10,000-Contact seed, scripts as delivered (`verify4-nfr-measure.log`).
+
+| NFR | Measured | Pass value | Result |
+|---|---|---|---|
+| NFR-01 list, search, filter | median 12 to 55 ms, p95 17 to 78 ms | median and p95 below 1 s | Met |
+| NFR-02 open a Contact | median 7 ms, p95 14 ms | p95 below 500 ms | Met |
+| NFR-03 export of 1,000 Contacts | 173 to 362 ms | each below 10 s | Met |
+| NFR-04 20 concurrent Users, 5 minutes | 21 Members; 8,986 requests, 0 not 200, 0 times 429, reads median 19 ms, p95 54 ms, max 283 ms | zero errors, zero 429, reads below 1 s | Met (F-58 fixed) |
+| NFR-05 restart and health | `restart: unless-stopped` on both application containers, `HEALTHCHECK` healthy, install guide exists | both present | Met |
+| NFR-06 backup and restore | as run 2, scripts unchanged | counts equal | Met |
+| NFR-07 E2E in three browsers | chromium 6 of 6, webkit 6 of 6, firefox does not start | all pass | Partly (F-48) |
+| NFR-08 three widths, no overflow | chromium light and dark 100 of 100, webkit 97 of 100 (the 3 failures are the WF-18 crash), firefox not run | no horizontal scroll | Partly (F-48) |
+| NFR-09 axe and keyboard walkthrough | axe clean on every screen that ran; keyboard-only walkthrough of the four flows passes at three widths in chromium and webkit | zero violations and walkthrough passes | Met in chromium and webkit (Firefox not run) |
+| NFR-10 actions in E2E-01 | 6 to 7 clicks (reading A) or 17 to 20 actions (reading B); under the conservative reading of D-89 option 2: 17 | at most 12 | Not met under reading B, met under reading A (D-89 pending review) |
+| NFR-11 catalog | i18n tests pass | identical sets | Met |
+| NFR-12 production start | healthy 18 s after `up` from freshly built images | within 2 minutes | Met |
+| NFR-13 licences | npm production tree: MIT 176, Apache-2.0 55, BSD-3-Clause 11, ISC 8, 0BSD 1 (`verify4-licences.log`); Maven report of fix loop 3: five dual or weak-copyleft libraries, D-88 waits for the human | only allowed licences | Partly (D-88) |
+| NFR-14 stale save stores nothing | `ConcurrentSaveIT` and the stale-save tests pass in the backend run | a stale save stores nothing | Met |
+| NFR-15 release checklist files | `docs/openapi.json`, install and backup guide, user guide exist | three files | Met |
+
+### Threats and controls
+
+Unchanged from runs 2 and 3: the backend, the security design and the Compose files did not change; every backend security and isolation test passes again (the only backend failure is `EX-007-05`). Live probes on the test stack (`verify4-error-and-headers.log`): no token 401; garbage token 401 `auth.token_invalid`; a 2.3 MB body gets `request.too_large`; API headers `X-Frame-Options: DENY`, `frame-ancestors 'none'`, `nosniff`, `no-referrer`; frontend CSP and the same headers; a request from a foreign origin gets 403; `/health` answers `application/json` `{"status":"UP"}` (the held-out case F-45 still fails). Scanners: gitleaks 8.28.0 no leaks in 433 commits (`verify4-gitleaks.log`); `npm audit` gate: frontend 4 High all accepted in D-05, tools 0; `jscpd` 63 clones, 1.84 % (limit 3 %); OWASP dependency-check re-run with NVD data updated that day (3,683 records): build success, no CVSS 7.0 or higher (`verify4-dependency-check.log`); licences pass. `.env` scan (`verify4-env-leak.log`): `POSTGRES_DB` (an ordinary 8-character word) matches 370 files (the code, documents and logs use the word) and 16 commit messages, `FIREBASE_PROJECT_ID` (public) matches the same 2 files as before (`docs/04_review-INC-2.md`, `docs/decisions-log.md`); the other four values of 6 or more characters appear nowhere; Low by D-83 (F-49).
+
+| Threat group | Result |
+|---|---|
+| S, T, R, I, D, E rows and data items of run 1 | Controlled as in runs 1 to 3 (tests pass again) |
+| I: personal data in backups kept longer | Controlled as in run 2 (scripts unchanged) |
+| SB-03, SR-09 no secrets | Controlled; F-49 Low (D-83) |
+| SB-08, SB-09 scanners | gitleaks, `npm audit`, SpotBugs with find-sec-bugs, dependency-check: pass |
+| SB-11 non-root | backend 10001, frontend `nginx`, checked in the running production containers |
+
+### CI and deployment
+
+- No runner is pinned and `origin/main` was not pushed, so the pipeline never ran remotely. Every job run locally: backend build and `verify -Pquality` fail only at `EX-007-05`; frontend build, test, check pass; browser tests: Firefox, WebKit Merge fail (F-48); contracts and traceability pass (`verify4-contracts.log`, `verify4-traceability-script.log`); gitleaks, `npm audit` gate, licences, `jscpd`, dependency-check pass; the `images` job: both images build, the development and emulator Compose files validate, but `docker compose -f 02_output/docker-compose.prod.yml config -q` **fails** with the dummy values of `ci.yml` because `GOOGLE_APPLICATION_CREDENTIALS` is required (since the D-69 change `db4fb46`) and the workflow does not set it; with a dummy path it passes (F-59, `verify4-compose-config.log`). Result: not passing.
+- Production: `contact-groups-backend:1.0.0` and `contact-groups-frontend:1.0.0` rebuilt from `HEAD`; `docker compose -p contact-groups -f docker-compose.prod.yml --env-file production.env up -d`: backend healthy 18 s after the start; `/health` `{"status":"UP"}` as `application/json`; frontend 200; plain HTTP to the API 403; backend user 10001, frontend `nginx`; `restart: unless-stopped` on both; no error in the backend log; Flyway ran. The human's production containers were stopped when this session began (they had exited two hours earlier); they were recreated from the new images with the volume untouched and stopped again afterwards, so the state is as found (the TLS proxy was not touched). No sign-in flow was run against production. Logs: `verify4-prod-start.log`, `verify4-prod-checks.log`, `verify4-prod-backend.log`, `verify4-image-*.log`.
+- The backend integration tests publish port 9099, so `mvnw verify` ran first with the test stack down.
+
+### Runtime demonstration
+
+| Component | Environment | Flows exercised | Result |
+|---|---|---|---|
+| backend, frontend, emulator, PostgreSQL | test stack (`scripts/test-stack.sh up`, empty database, throw-away values; then `seed/`, 10,000 Contacts) | UI acceptance (95), E2E-01..06 in three browsers, UI checks (3 widths, light, dark), `perf/measure.mjs`, error and header probes, sign-in as a seed User and the Group list in the browser pane (Acme, Large Co) | UI acceptance 95 of 95; E2E 12 of 18 (all of chromium and webkit); the rest as above |
+| backend, frontend, PostgreSQL | production stack, the human's production configuration, the human's volume | start, `/health`, frontend, plain-HTTP refusal, user and restart checks | Healthy; no sign-in flow run |
+
+The test stack was removed afterwards (`scripts/test-stack.sh down`).
+
+### Traceability
+
+| R / AC / EX | Tests | Commits |
+|---|---|---|
+| 649 defined ids | AC 236 of 236, EX 178 of 178 named in a test; R 177 of 235 named directly (whole-id match in test files, `verify4-traceability.log`: stricter than run 3's 198, close to run 2's 181), the rest through the AC or EX that cites them; `check-traceability.mjs`: all 684 story ids, 7 BR, 13 SR, 14 SB, 15 NFR mapped | loop 3 commits name their F-ids and ids (`ca16728`, `bcbb525`, `1ca570f`, `11ffe4b`, `11d5b6e`, `ce9b26a`, `aaec851`) |
+
+### Findings
+
+| F | Severity | Source | Finding | Resolution |
+|---|---|---|---|---|
+| F-38 | Medium | quality gate | Frontend mutation score below 90 %; the new `useSuggestions.tsx` (extracted in F-47) scores 56.67 % (35 survivors) | open, D-82; known limitation for the release notes |
+| F-41..F-45 | Medium (D-86) | hidden evaluation | `R-003-02`, `R-006-07`, `R-007-03`, `R-017-02`, `R-018-07` fail a held-out case at `HEAD`, as in runs 1 to 4 | accepted as a known limitation, D-86 |
+| F-47 | Medium | UI acceptance | five frozen UI tests | **closed**: UI acceptance 95 of 95 |
+| F-48 | Medium | NFR-07, NFR-08 | Firefox does not start (launch times out after 180 s for every test); WebKit Merge screen crashes on `page.reload` with a mocked 500 | open, needs the human's machine; known limitation for the release notes |
+| F-49 | Low (D-83) | `.env` scan | the same two non-secret values | accepted, D-83 |
+| F-50 | Medium | NFR-09, NFR-10, NFR-13 | NFR-09 keyboard walkthrough passes (closed); NFR-10 counting rule (D-89) and NFR-13 weak-copyleft libraries (D-88) remain | open for NFR-10 and NFR-13; D-88 waits for the human |
+| F-51 | Medium | DoD-R-15 | CI never ran; the human pushes `main` | open, known limitation for the release notes |
+| F-52 | Medium | DoD-R-08 | WF-08, WF-19, WF-07 main page had no UI check | **closed**: checks pass in chromium light, dark and webkit |
+| F-53 | Low | DoD-R-07, DoD-R-12 | 50 long subjects stay (433 commits) | accepted, history is not rewritten |
+| F-57 | Medium | `group-screens.stack.spec.ts:38`, NFR-08 | WF-05 "created" check | **closed**: passes in chromium light, dark and webkit |
+| F-58 | Medium | `perf/measure.mjs`, NFR-04 | script did not join the invited Users | **closed**: NFR-04 passes with the delivered script, 5 minutes, 0 errors |
+| F-59 | Medium | `.github/workflows/ci.yml`, DoD-R-15 | the `images` job runs `docker compose -f docker-compose.prod.yml config -q` without `GOOGLE_APPLICATION_CREDENTIALS`, which the file requires since `db4fb46`; the job fails on every push | open: `/fix` adds a dummy path to the job's `env` (one line in `ci.yml`) |
+
+Closed in earlier runs and not re-opened: F-40, F-46, F-54, F-55, F-56. Carried: F-08 (Low, `EX-007-05`), F-14 (Medium, D-79), F-19 (Low, waits for the human, D-68 d), F-20..F-25 (Low), F-39 (Low).
+
+### Fix loops
+
+| Loop | Findings | Change | Re-verification |
+|---|---|---|---|
+| 1 | F-40..F-46, F-50, F-53, F-54 (D-84) | 10 `fix` commits and 3 `test` commits | run 2: F-46, F-54, `EX-019-03`, NFR-14 and the restore confirmed; F-41..F-45 not; F-57, F-58 new |
+| 2 | F-55, F-56 (S8) | `7394819`, `04b29a9`, `592cbf9` and their documents | run 3: F-55, F-56 and F-40 confirmed; F-41..F-45 not |
+| 3 | F-47, F-50 (NFR-09), F-52, F-57, F-58 (S8) | `ca16728`, `9077b49`, `bcbb525`, `1ca570f`, `11ffe4b`, `11d5b6e`, `ce9b26a`, `aaec851` | run 4: F-47, F-52, F-57, F-58 and NFR-09 confirmed; F-59 new |
+
+### Human to do
+
+1. D-88 (licences of five backend libraries) and D-89 (NFR-10 reading): answer or leave them as known limitations; D-68 d (F-19): the version of a Survivor that changes nothing.
+2. Run Firefox (F-48), the real Excel check (Q-06) and real Google sign-in on a machine where they work.
+3. Push `main` so CI can run (F-51); I did not push. F-59 should be fixed first, otherwise the `images` job fails.
+4. Your production containers were stopped when this session began; I recreated them from the new images (volume untouched) and stopped them again. Start them as usual; please check your own sign-in.

@@ -1,0 +1,3 @@
+compose dev ok
+compose emulator ok
+error while interpolating services.backend.volumes.[]: required variable GOOGLE_APPLICATION_CREDENTIALS is missing a value: set the path of the Firebase service-account file

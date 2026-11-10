@@ -1012,3 +1012,14 @@
 - Human response: 1 (2026-11-10, `/verify D-91: 1`)
 - Resolution: option 1 approved: run 4 is the last verify round; what stays open after it (F-48, F-51 need the human's machine and a push) is accepted as a known limitation and listed in the release notes. Run 4 did not start in this session (S12): step 3 of `/verify` needs a hidden evaluation of `HEAD`, and the latest one (run 4 of `06_hidden-evaluation.md`) is of `12e38c7` while `HEAD` is later with code changes (F-47, F-52, F-57, F-58 fixes). The human runs `node system/run.mjs --hidden-eval`, then `/verify` again; D-88 and D-89 should be answered before that, as option 1 says.
 - Overrides: none
+
+## D-92: Outcome of verify run 4: what stays open, and the new CI finding F-59
+- Timestamp: 2026-11-10
+- Session: S12 /verify (run 4)
+- Class: open
+- Type: non-blocking
+- Trigger: D-91 option 1 (the human's answer "1") made run 4 the last verify round and said that whatever stays open after it is accepted as a known limitation and listed in the release notes. Run 4 (`docs/06_verification-report.md`, `## Run 4`) confirmed F-47, F-52, F-57, F-58 and the NFR-09 part of F-50 as fixed; no Critical or High is open. Still open, all Medium: F-41..F-45 (held-out cases, D-86), F-38 (frontend mutation, D-82; the new file `useSuggestions.tsx` scores 56.67 %), F-48 (Firefox does not start; WebKit Merge crash), F-50 (NFR-10 reading D-89, NFR-13 licences D-88), F-51 (CI never ran). New: F-59 (Medium): the `images` job of `.github/workflows/ci.yml` validates `docker-compose.prod.yml` without `GOOGLE_APPLICATION_CREDENTIALS`, which the file requires since `db4fb46` (D-69), so the job fails on every push; with a dummy path the check passes.
+- Options: 1 (default) apply D-91: accept F-38, F-41..F-45, F-48, F-50 (NFR-10, NFR-13), F-51 as known limitations for the release notes; have `/fix` correct F-59 only (one line in `ci.yml`, no new `/verify` round, then `/release`). 2 ask for a fifth `/verify` round after the F-59 fix (the human decides). 3 leave F-59 open as a known limitation too.
+- Human response: none
+- Resolution: pending review (option 1); the next session is `/fix F-59`.
+- Overrides: none

@@ -1,0 +1,706 @@
+[32m17:37:34 (65886) INFO ProjectReader[39m Found 3 of 370 file(s) to be mutated.
+[32m17:37:34 (65886) INFO Instrumenter[39m Instrumented 3 source file(s) with 212 mutant(s)
+[32m17:37:35 (65886) INFO ConcurrencyTokenProvider[39m Creating 9 test runner process(es).
+[32m17:37:35 (65886) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m17:37:50 (65886) INFO DryRunExecutor[39m Initial test run succeeded. Ran 125 tests in 14 seconds (net 9686.152381999998 ms, overhead 5012.847618000002 ms).
+
+All tests
+  app
+    App.test.tsx
+      ✘ app shell (UI-10, UI-19, US-019) shows the product name, one h1, main and footer landmarks and the skip link (covered 0)
+      ✘ app shell (UI-10, UI-19, US-019) shows the main navigation to a signed-in User with a verified e-mail (covered 0)
+      ✘ app shell (UI-10, UI-19, US-019) switches the whole UI to English and back without reloading (covered 0)
+      ✘ app shell (UI-10, UI-19, US-019) shows the same page for an unknown route (BR-01) (covered 0)
+    Header.test.tsx
+      ✘ Header (US-001) R-001-10 signing out from the user menu ends the session and shows the sign-in page (covered 0)
+      ✘ Header (US-001) R-001-04 an unverified User sees no Group navigation (covered 0)
+      ✘ Header (US-001) US-021 the user menu links to My account for a verified User only (covered 0)
+      ✘ Header (US-001) US-021 an unverified User has no link to My account (covered 0)
+      ✘ Header (US-001) a visitor who is not signed in sees no user menu (covered 0)
+  auth/AuthProvider.test.tsx
+    ✘ AuthProvider and RequireVerified (US-001) R-001-09 a restored Firebase session keeps the User signed in on the Group list (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-001-10 without a session the Group list sends the visitor to the sign-in page (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-001-04 an unverified User is sent to the verify page instead of a Group (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-001-12 a 401 from the server ends the session and returns to the sign-in page (covered 0)
+    ✘ AuthProvider and RequireVerified (US-001) R-018-01 requests carry the ID token of the session (covered 0)
+  features
+    auth
+      RegisterPage.test.tsx
+        ✘ RegisterPage WF-02 (US-001) R-001-01 registering creates the account and asks to verify the e-mail (AC-001-01) (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-01 a password of exactly 8 characters creates the account (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-03 a display name of 100 characters creates the account (covered 0)
+        ✘ RegisterPage WF-02 (US-001) R-001-06 a password of 7 characters creates no account and shows the rule at the field (EX-001-02) (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-04 a display name that is 101 characters creates no account; the message is at the field (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-04 a display name that is empty creates no account; the message is at the field (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-04 a display name that is only spaces creates no account; the message is at the field (covered 0)
+        ✘ RegisterPage WF-02 (US-001) EX-001-06 the e-mail ana@ creates no account; the message is at the field and the values stay (covered 0)
+        ✘ RegisterPage WF-02 (US-001) R-001-07 an address that is registered offers Sign in and Reset password (AC-001-07) (covered 0)
+        ✘ RegisterPage WF-02 (US-001) R-001-07 the Sign in offer opens the sign-in page (covered 0)
+        ✘ RegisterPage WF-02 (US-001) shows the generic error when Firebase cannot be reached (covered 0)
+      ResetPasswordPage.test.tsx
+        ✘ ResetPasswordPage WF-03 (US-001) R-001-08 a reset for nobody@acme.com starts Firebase reset and shows the same confirmation (EX-001-08) (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) R-001-08 a reset for ana@acme.com starts Firebase reset and shows the same confirmation (EX-001-08) (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) an address that is not an e-mail is refused at the field (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) an address Firebase finds invalid is shown at the field (covered 0)
+        ✘ ResetPasswordPage WF-03 (US-001) shows the generic error when Firebase cannot be reached (covered 0)
+      SignInPage.test.tsx
+        ✘ SignInPage WF-01 (US-001) R-001-03 a sign-in Firebase accepts opens the Group list (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-05 a wrong e-mail or password shows the one message and signs nobody in (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-05 an unreachable Firebase shows the generic error, not the credential message (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-02 "Prijava z Googlom" signs in through Google (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-02 a closed Google window shows no error (covered 0)
+        ✘ SignInPage WF-01 (US-001) R-001-12 after a 401 the sign-in page says that the session expired (covered 0)
+        ✘ SignInPage WF-01 (US-001) links to registration and password reset (WF-01) (covered 0)
+      VerifyEmailPage.test.tsx
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-04 an unverified User sees the message and the resend button, and no Group (AC-001-04) (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-04 the resend button sends the verification e-mail again (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-04 a failed resend shows the generic error (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) R-001-10 signing out on the page shows the sign-in page (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) EX-001-09 once the e-mail is verified the page opens the Group list (covered 0)
+        ✘ VerifyEmailPage WF-04 (US-001) a visitor who is not signed in is sent to the sign-in page (covered 0)
+    contacts
+      AttributeEditor.test.tsx
+        ✓ AttributeEditor WF-07 (R-004-02..05) adds a pair with key and value (killed 4)
+        ~ AttributeEditor WF-07 (R-004-02..05) F-55 labels every field `Ključ` and `Vrednost` as in WF-07, the row is named by its group (covered 52)
+        ✓ AttributeEditor WF-07 (R-004-02..05) removes a pair (killed 3)
+        ✓ AttributeEditor WF-07 (R-004-02..05) R-004-05 shows the keys of the Group that match the typed key as visible options (AC-004-04) (killed 5)
+        ~ AttributeEditor WF-07 (R-004-02..05) R-004-05 offers no key that does not match, e.g. `pro` without `projekt` in the Group (AC-004-08) (covered 109)
+        ✓ AttributeEditor WF-07 (R-004-02..05) R-004-05 puts the chosen key into the field and still accepts a new key (killed 5)
+        ✓ AttributeEditor WF-07 (R-004-02..05) R-004-05 chooses a suggestion with the keyboard (killed 6)
+        ✓ AttributeEditor WF-07 (R-004-02..05) R-004-05 closes the options with Escape (killed 2)
+        ~ AttributeEditor WF-07 (R-004-02..05) R-004-03 shows the message next to the pair it belongs to (covered 52)
+        ✓ AttributeEditor WF-07 (R-004-02..05) R-004-04 stops adding at 50 pairs and shows the limit (killed 3)
+      ContactForm.test.tsx
+        ✘ valuesOf turns every field into text: an absent or null field is an empty string (covered 0)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows the eleven fields with their labels, the initial values and the two hints (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) lets Street and Country and Notes use the whole width, and the other fields half (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) offers the countries by name in alphabetical order after "none" (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) hands the typed values, Attributes and Tags to onSubmit when the form is sent (covered 132)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) starts with the Attributes and Tags of the Contact (covered 78)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows the submit label, or the busy label with a disabled button while saving (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) is busy while saving: busy label, disabled buttons, aria-busy (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows Cancel only when it is given, and calls it (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) has no Cancel without onCancel (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows no notice without an error (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows the field errors next to the fields and one notice that asks to correct them (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows the errors of Country and Notes as alerts and marks the fields invalid (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) marks no field invalid without errors (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows Attribute and Tag errors at the Attributes and the Tags (covered 75)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) ignores field errors of a refusal that is not 422 (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows one notice for the refusal 409 contact.in_trash (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows one notice for the refusal 500 server.error (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows one notice for the refusal 404 unknown.code (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) shows no notice for a conflict of versions: the page shows it (covered 55)
+        ~ ContactForm WF-07 / WF-08 (R-003-01..05) asks for Tag suggestions only after a Tag name is typed, and for Attribute keys only with an Attribute (covered 105)
+      ContactPage.test.tsx
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-08 shows all 11 fields, the Tag and the Attribute (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-09 offers a Viewer no way to edit (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) EX-003-13 shows markup in a name as plain text (covered 0)
+        ✘ ContactPage WF-07 (R-003-06..09, R-003-11) EX-003-12 says the Contact is not found when the server does (covered 0)
+        ~ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-06 saves the edited fields with the version the form was opened at (covered 78)
+        ~ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-07 a stale save shows the message and the current Contact; nothing of the form stays (covered 78)
+        ~ ContactPage WF-07 (R-003-06..09, R-003-11) R-003-03 keeps the form open and names the field when the server refuses the edit (covered 78)
+        ~ ContactPage WF-07 (R-003-06..09, R-003-11) cancel leaves the edit form without a request (covered 78)
+        ✘ ContactPage tabs (R-016-03, R-016-04) offers an Owner the tabs Podrobnosti and Zgodovina and opens the History (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-016-04 offers a Viewer no tabs and never asks for the History (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-022-02 offers an Owner the tab Različice and opens the Versions (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-022-06 never asks a Viewer for the Versions (covered 0)
+        ✓ ContactPage tabs (R-016-03, R-016-04) R-004-06 saves a changed value and a removed pair with the version (killed 6)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-004-08 gives a Viewer no control to change an Attribute (covered 0)
+        ✓ ContactPage tabs (R-016-03, R-016-04) R-005-01, R-005-06 saves a Tag put on and a Tag taken off with the version (killed 9)
+        ✘ ContactPage tabs (R-016-03, R-016-04) R-005-10 gives a Viewer no control to change a Tag (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-01 asks for confirmation and sends nothing before it (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) EX-012-03 cancelling sends nothing and keeps the page (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-02 moves the Contact to Trash and returns to the list (covered 0)
+        ✘ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-08 gives a Viewer no Delete button (covered 0)
+        ~ ContactPage tabs (R-016-03, R-016-04) delete (R-012-01, R-012-02, R-012-06, R-012-08) R-012-06 shows that a Contact in Trash cannot be saved (covered 78)
+      NewContactPage.test.tsx
+        ✓ NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields (killed 2)
+        ~ NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact (covered 55)
+        ~ NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed (covered 55)
+        ~ NewContactPage WF-08 (R-003-01..05) AC-003-02 says on each of the four fields that one of them is needed (covered 55)
+        ~ NewContactPage WF-08 (R-003-01..05) R-003-09 tells a Viewer in the language of the user that the role does not allow it (covered 55)
+        ✓ NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact (killed 22)
+        ✓ NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group (killed 10)
+        ✓ NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs (killed 4)
+        ✓ NewContactPage WF-08 (R-003-01..05) R-005-01 sends the typed Tags with the Contact (killed 2)
+        ✓ NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing (killed 1)
+        ✓ NewContactPage WF-08 (R-003-01..05) R-005-02 shows the rule of the server next to the Tags and keeps them (killed 1)
+      TagInput.test.tsx
+        ✓ TagInput WF-07 (R-005-01..07) R-005-01 adds the typed Tag on Enter and clears the field (killed 21)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-01 adds the typed Tag with the Add button (killed 2)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-02 shows the rule and adds nothing for an invalid name (killed 5)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-01/03 accepts a (covered 90)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-01/03 accepts č_š-ž1 (covered 90)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-01/03 accepts bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb (covered 90)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-02/04 refuses "" (covered 72)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-02/04 refuses "a/b" (covered 78)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-02/04 refuses "a.b" (covered 78)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-02/04 refuses "a@b" (covered 78)
+        ~ TagInput WF-07 (R-005-01..07) EX-005-02/04 refuses "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" (covered 78)
+        ✓ TagInput WF-07 (R-005-01..07) EX-005-06 puts the same Tag on once, ignoring case (killed 6)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-03 uses the spelling of a suggested Tag that equals the typed name ignoring case (killed 4)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-06 removes one Tag with its button (killed 8)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-07 reports what is typed and shows the matching suggestions as visible options (killed 7)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-07 puts a suggested Tag on with a click on its option (killed 6)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-07 puts a suggested Tag on with the arrow key and Enter, and closes the list with Escape (killed 12)
+        ✓ TagInput WF-07 (R-005-01..07) R-005-04 refuses a 51st Tag and shows the limit (killed 3)
+        ~ TagInput WF-07 (R-005-01..07) shows the message the server sent next to the field (covered 46)
+
+[NoCoverage] BlockStatement
+src/components/useSuggestions.tsx:45:41
+-       } else if (event.key === 'ArrowUp') {
+-         event.preventDefault();
+-         setActive((active - 1 + matches.length) % matches.length);
+-       } else if (event.key === 'Enter' && matches[active] !== undefined) {
++       } else if (event.key === 'ArrowUp') {} else if (event.key === 'Enter' && matches[active] !== undefined) {
+
+[NoCoverage] ArithmeticOperator
+src/components/useSuggestions.tsx:47:17
+-         setActive((active - 1 + matches.length) % matches.length);
++         setActive((active - 1 + matches.length) * matches.length);
+
+[NoCoverage] ArithmeticOperator
+src/components/useSuggestions.tsx:47:18
+-         setActive((active - 1 + matches.length) % matches.length);
++         setActive((active - 1 - matches.length) % matches.length);
+
+[NoCoverage] ArithmeticOperator
+src/components/useSuggestions.tsx:47:18
+-         setActive((active - 1 + matches.length) % matches.length);
++         setActive((active + 1 + matches.length) % matches.length);
+
+[Survived] MethodExpression
+src/components/useSuggestions.tsx:28:18
+-     const needle = value.trim().toLowerCase();
++     const needle = value.toLowerCase();
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] MethodExpression
+src/components/useSuggestions.tsx:29:19
+-     const matches = suggestions
+-       .filter((item) => item.toLowerCase() !== needle && item.toLowerCase().includes(needle))
+-       .slice(0, MAX_SUGGESTIONS);
++     const matches = suggestions.filter(item => item.toLowerCase() !== needle && item.toLowerCase().includes(needle));
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/useSuggestions.tsx:25:42
+-     const [focused, setFocused] = useState(false);
++     const [focused, setFocused] = useState(true);
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/useSuggestions.tsx:26:46
+-     const [dismissed, setDismissed] = useState(false);
++     const [dismissed, setDismissed] = useState(true);
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] UnaryOperator
+src/components/useSuggestions.tsx:27:40
+-     const [active, setActive] = useState(-1);
++     const [active, setActive] = useState(+1);
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] UnaryOperator
+src/components/useSuggestions.tsx:37:15
+-       setActive(-1);
++       setActive(+1);
+Tests ran:
+    TagInput WF-07 (R-005-01..07) R-005-07 puts a suggested Tag on with a click on its option
+    TagInput WF-07 (R-005-01..07) R-005-07 puts a suggested Tag on with the arrow key and Enter, and closes the list with Escape
+    AttributeEditor WF-07 (R-004-02..05) R-004-05 puts the chosen key into the field and still accepts a new key
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:45:16
+-       } else if (event.key === 'ArrowUp') {
++       } else if (false) {
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    TagInput WF-07 (R-005-01..07) R-005-03 uses the spelling of a suggested Tag that equals the typed name ignoring case
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:45:30
+-       } else if (event.key === 'ArrowUp') {
++       } else if (event.key === "") {
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    TagInput WF-07 (R-005-01..07) R-005-03 uses the spelling of a suggested Tag that equals the typed name ignoring case
+  and 8 more tests!
+
+
+[Survived] LogicalOperator
+src/components/useSuggestions.tsx:48:16
+-       } else if (event.key === 'Enter' && matches[active] !== undefined) {
++       } else if (event.key === 'Enter' || matches[active] !== undefined) {
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    TagInput WF-07 (R-005-01..07) R-005-03 uses the spelling of a suggested Tag that equals the typed name ignoring case
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:48:41
+-       } else if (event.key === 'Enter' && matches[active] !== undefined) {
++       } else if (event.key === 'Enter' && true) {
+Tests ran:
+    TagInput WF-07 (R-005-01..07) R-005-07 puts a suggested Tag on with the arrow key and Enter, and closes the list with Escape
+    AttributeEditor WF-07 (R-004-02..05) R-004-05 chooses a suggestion with the keyboard
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:41:9
+-       if (!open) return;
++       if (false) return;
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+  and 28 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:48:16
+-       } else if (event.key === 'Enter' && matches[active] !== undefined) {
++       } else if (true && matches[active] !== undefined) {
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    TagInput WF-07 (R-005-01..07) R-005-03 uses the spelling of a suggested Tag that equals the typed name ignoring case
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:33:18
+-     const listId = `${id}-options`;
++     const listId = ``;
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:64:15
+-             id={`${listId}-${index}`}
++             id={``}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:67:85
+-             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : ''}`}
++             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? "" : ''}`}
+Tests ran:
+    TagInput WF-07 (R-005-01..07) R-005-07 puts a suggested Tag on with the arrow key and Enter, and closes the list with Escape
+    AttributeEditor WF-07 (R-004-02..05) R-004-05 chooses a suggestion with the keyboard
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:66:26
+-             aria-selected={index === active}
++             aria-selected={true}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:66:26
+-             aria-selected={index === active}
++             aria-selected={false}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] EqualityOperator
+src/components/useSuggestions.tsx:66:26
+-             aria-selected={index === active}
++             aria-selected={index !== active}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:67:22
+-             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : ''}`}
++             className={``}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:67:66
+-             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : ''}`}
++             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${true ? 'bg-surface' : ''}`}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] EqualityOperator
+src/components/useSuggestions.tsx:67:66
+-             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : ''}`}
++             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index !== active ? 'bg-surface' : ''}`}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:67:66
+-             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : ''}`}
++             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${false ? 'bg-surface' : ''}`}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:67:100
+-             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : ''}`}
++             className={`cursor-pointer rounded-[6px] px-3 py-2.5 ${index === active ? 'bg-surface' : "Stryker was here!"}`}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:86:54
+-         'aria-activedescendant': open && active >= 0 ? `${listId}-${active}` : undefined,
++         'aria-activedescendant': open && active >= 0 ? `` : undefined,
+Tests ran:
+    TagInput WF-07 (R-005-01..07) R-005-07 puts a suggested Tag on with the arrow key and Enter, and closes the list with Escape
+    AttributeEditor WF-07 (R-004-02..05) R-004-05 chooses a suggestion with the keyboard
+
+
+[Survived] EqualityOperator
+src/components/useSuggestions.tsx:86:40
+-         'aria-activedescendant': open && active >= 0 ? `${listId}-${active}` : undefined,
++         'aria-activedescendant': open && active > 0 ? `${listId}-${active}` : undefined,
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:86:40
+-         'aria-activedescendant': open && active >= 0 ? `${listId}-${active}` : undefined,
++         'aria-activedescendant': open && true ? `${listId}-${active}` : undefined,
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] EqualityOperator
+src/components/useSuggestions.tsx:86:40
+-         'aria-activedescendant': open && active >= 0 ? `${listId}-${active}` : undefined,
++         'aria-activedescendant': open && active < 0 ? `${listId}-${active}` : undefined,
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-005-07 suggests the Tags of the Group while typing
+  and 10 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/useSuggestions.tsx:89:32
+-         onBlur: () => setFocused(false),
++         onBlur: () => setFocused(true),
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+    NewContactPage WF-08 (R-003-01..05) R-005-01 sends the typed Tags with the Contact
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:86:32
+-         'aria-activedescendant': open && active >= 0 ? `${listId}-${active}` : undefined,
++         'aria-activedescendant': false ? `${listId}-${active}` : undefined,
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/useSuggestions.tsx:86:32
+-         'aria-activedescendant': open && active >= 0 ? `${listId}-${active}` : undefined,
++         'aria-activedescendant': true ? `${listId}-${active}` : undefined,
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] LogicalOperator
+src/components/useSuggestions.tsx:86:32
+-         'aria-activedescendant': open && active >= 0 ? `${listId}-${active}` : undefined,
++         'aria-activedescendant': open || active >= 0 ? `${listId}-${active}` : undefined,
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] BlockStatement
+src/components/useSuggestions.tsx:93:18
+-       typed: () => {
+-         setDismissed(false);
+-         setActive(-1);
+-       },
++       typed: () => {},
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+  and 27 more tests!
+
+
+[Survived] UnaryOperator
+src/components/useSuggestions.tsx:95:17
+-         setActive(-1);
++         setActive(+1);
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+  and 27 more tests!
+
+
+[Survived] StringLiteral
+src/components/useSuggestions.tsx:87:21
+-         autoComplete: 'off',
++         autoComplete: "",
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] ArrowFunction
+src/components/useSuggestions.tsx:89:15
+-         onBlur: () => setFocused(false),
++         onBlur: () => undefined,
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 64 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/AttributeEditor.tsx:34:14
+-       label: t('contacts.attributeSuggestions'),
++       label: t(""),
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/contacts/AttributeEditor.tsx:60:38
+-       onChange(pairs.map((pair, i) => (i === index ? { ...pair, ...change } : pair)));
++       onChange(pairs.map((pair, i) => (true ? { ...pair, ...change } : pair)));
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/AttributeEditor.tsx:64:57
+-         <legend className="mb-1 text-xl font-semibold">{t('contacts.attributes')}</legend>
++         <legend className="mb-1 text-xl font-semibold">{t("")}</legend>
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 45 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/AttributeEditor.tsx:84:27
+-               error={errors[`attributes[${index}].value`]}
++               error={errors[``]}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+  and 21 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/AttributeEditor.tsx:94:16
+-               {t('contacts.remove')}
++               {t("")}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-004-01 sends the Attributes with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-004-05 suggests the keys already used in the Group
+    NewContactPage WF-08 (R-003-01..05) R-004-03 shows the message next to the second pair and keeps the pairs
+  and 21 more tests!
+
+
+[NoCoverage] StringLiteral
+src/features/contacts/TagInput.tsx:44:32
+-       if (full) return setRule(t('api.validation.tag_limit'));
++       if (full) return setRule(t(""));
+
+[Survived] StringLiteral
+src/features/contacts/TagInput.tsx:43:58
+-       if (tags.some((tag) => same(tag, name))) return type('');
++       if (tags.some((tag) => same(tag, name))) return type("Stryker was here!");
+Tests ran:
+    TagInput WF-07 (R-005-01..07) EX-005-06 puts the same Tag on once, ignoring case
+
+
+[Survived] MethodExpression
+src/features/contacts/TagInput.tsx:41:18
+-       const name = typedName.trim();
++       const name = typedName;
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-005-01 sends the typed Tags with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-005-02 shows the rule of the server next to the Tags and keeps them
+    ContactPage tabs (R-016-03, R-016-04) R-005-01, R-005-06 saves a Tag put on and a Tag taken off with the version
+  and 16 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/contacts/TagInput.tsx:44:9
+-       if (full) return setRule(t('api.validation.tag_limit'));
++       if (false) return setRule(t('api.validation.tag_limit'));
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-005-01 sends the typed Tags with the Contact
+    NewContactPage WF-08 (R-003-01..05) R-005-02 shows the rule of the server next to the Tags and keeps them
+    ContactPage tabs (R-016-03, R-016-04) R-005-01, R-005-06 saves a Tag put on and a Tag taken off with the version
+  and 9 more tests!
+
+
+[Survived] BooleanLiteral
+src/features/contacts/TagInput.tsx:94:37
+-               aria-invalid={message ? true : undefined}
++               aria-invalid={message ? false : undefined}
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-005-02 shows the rule of the server next to the Tags and keeps them
+    ContactForm WF-07 / WF-08 (R-003-01..05) shows Attribute and Tag errors at the Attributes and the Tags
+    TagInput WF-07 (R-005-01..07) R-005-02 shows the rule and adds nothing for an invalid name
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/features/contacts/TagInput.tsx:66:57
+-         <legend className="mb-1 text-xl font-semibold">{t('contacts.tags')}</legend>
++         <legend className="mb-1 text-xl font-semibold">{t("")}</legend>
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 54 more tests!
+
+
+[Survived] ConditionalExpression
+src/features/contacts/TagInput.tsx:67:8
+-         {tags.length > 0 ? (
++         {true ? (
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 54 more tests!
+
+
+[Survived] EqualityOperator
+src/features/contacts/TagInput.tsx:67:8
+-         {tags.length > 0 ? (
++         {tags.length >= 0 ? (
+Tests ran:
+    NewContactPage WF-08 (R-003-01..05) R-003-02 offers exactly the 11 predefined fields
+    NewContactPage WF-08 (R-003-01..05) R-003-01 sends the typed fields to the Group and opens the new Contact
+    NewContactPage WF-08 (R-003-01..05) R-003-03 shows each message next to its field and keeps what was typed
+  and 54 more tests!
+
+
+Ran 11.69 tests per mutant on average.
+-----------------------|------------------|----------|-----------|------------|----------|----------|
+                       | % Mutation score |          |           |            |          |          |
+File                   |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files              |  75.36 |   77.18 |      159 |         0 |         47 |        5 |        1 |
+ components            |  56.67 |   59.30 |       51 |         0 |         35 |        4 |        0 |
+  useSuggestions.tsx   |  56.67 |   59.30 |       51 |         0 |         35 |        4 |        0 |
+ features              |  89.26 |   90.00 |      108 |         0 |         12 |        1 |        1 |
+  contacts             |  89.26 |   90.00 |      108 |         0 |         12 |        1 |        1 |
+   AttributeEditor.tsx |  89.36 |   89.36 |       42 |         0 |          5 |        0 |        0 |
+   TagInput.tsx        |  89.19 |   90.41 |       66 |         0 |          7 |        1 |        1 |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m17:39:59 (65886) INFO JsonReporter[39m Your report can be found at: file:///Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/reports/mutation/mutation.json
+[32m17:39:59 (65886) INFO HtmlReporter[39m Your report can be found at: file:///Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend/reports/mutation/mutation.html
+[32m17:39:59 (65886) INFO MutationTestExecutor[39m Done in 2 minutes and 24 seconds.

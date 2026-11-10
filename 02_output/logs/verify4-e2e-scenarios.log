@@ -1,0 +1,149 @@
+
+> contact-groups-frontend@1.0.0 e2e:scenarios
+> playwright test -c playwright.e2e.config.ts
+
+
+Running 18 tests using 1 worker
+
+  ✓   1 [chromium] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (1.2s)
+  ✓   2 [chromium] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (2.0s)
+  ✓   3 [chromium] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (1.7s)
+  ✓   4 [chromium] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (1.6s)
+  ✓   5 [chromium] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (1.4s)
+  ✓   6 [chromium] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (2.0s)
+  ✘   7 [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (1ms)
+  ✘   8 [firefox] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (1ms)
+  ✘   9 [firefox] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (2ms)
+  ✘  10 [firefox] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (2ms)
+  ✘  11 [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (2ms)
+  ✘  12 [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (2ms)
+  ✓  13 [webkit] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno (4.2s)
+  ✓  14 [webkit] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer (4.3s)
+  ✓  15 [webkit] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data (4.1s)
+  ✓  16 [webkit] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list (2.7s)
+  ✓  17 [webkit] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact (2.6s)
+  ✓  18 [webkit] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever (4.3s)
+
+
+  1) [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-WX01iS -juggler-pipe -silent[22m
+    [2m  - <launched> pid=66800[22m
+    [2m  - [pid=66800][err] *** You are running in headless mode.[22m
+    [2m  - [pid=66800][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=66800][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.458333) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-01-first-use-E2E-01-fi-0812c-a-Novak-find-her-by-spletno-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [firefox] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-wAfgi0 -juggler-pipe -silent[22m
+    [2m  - <launched> pid=66995[22m
+    [2m  - [pid=66995][err] *** You are running in headless mode.[22m
+    [2m  - [pid=66995][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=66995][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.333333) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-02-team-work-E2E-02-te-eae33-istory-and-makes-him-Viewer-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-02-team-work-E2E-02-te-eae33-istory-and-makes-him-Viewer-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [firefox] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-SHqj9x -juggler-pipe -silent[22m
+    [2m  - <launched> pid=67071[22m
+    [2m  - [pid=67071][err] *** You are running in headless mode.[22m
+    [2m  - [pid=67071][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=67071][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.625) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-03-isolation-E2E-03-is-678bd--answer-is-404-without-data-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [firefox] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-bVyrSA -juggler-pipe -silent[22m
+    [2m  - <launched> pid=67158[22m
+    [2m  - [pid=67158][err] *** You are running in headless mode.[22m
+    [2m  - [pid=67158][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=67158][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.625) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-04-export-E2E-04-expor-a7efd-see-it-in-the-activity-list-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-04-export-E2E-04-expor-a7efd-see-it-in-the-activity-list-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-V9Fn6C -juggler-pipe -silent[22m
+    [2m  - <launched> pid=67353[22m
+    [2m  - [pid=67353][err] *** You are running in headless mode.[22m
+    [2m  - [pid=67353][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=67353][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.625) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-05-clean-up-E2E-05-cle-c9083-ore-the-merged-away-Contact-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 
+
+    TimeoutError: browserType.launch: Timeout 180000ms exceeded.
+    Call log:
+    [2m  - <launching> /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/y3/l5t3w2r10zvcmdxb97943w500000gn/T/playwright_firefoxdev_profile-DLNEuQ -juggler-pipe -silent[22m
+    [2m  - <launched> pid=67522[22m
+    [2m  - [pid=67522][err] *** You are running in headless mode.[22m
+    [2m  - [pid=67522][err] sandbox_extension_issue_file_to_process failed for /Users/kyuhi/Library/Caches/ms-playwright/firefox-1495/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)[22m
+    [2m  - [pid=67522][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.625) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt[22m
+
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/e2e-06-mistake-recovery-E2-32647-ete-another-Contact-forever-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [firefox] › e2e/e2e-01-first-use.spec.ts:9:1 › E2E-01 first use: register, verify, create Acme, add Ana Novak, find her by spletno 
+    [firefox] › e2e/e2e-02-team-work.spec.ts:18:1 › E2E-02 team work: Ana invites Boris as Editor, he edits, Ana sees the History and makes him Viewer 
+    [firefox] › e2e/e2e-03-isolation.spec.ts:7:1 › E2E-03 isolation: Boris, no Member, sees nothing of Acme and its REST answer is 404 without data 
+    [firefox] › e2e/e2e-04-export.spec.ts:41:1 › E2E-04 export: rename the mistyped Tag, filter, select all N results, export, see it in the activity list 
+    [firefox] › e2e/e2e-05-clean-up.spec.ts:17:1 › E2E-05 clean-up: one certain set, merge field by field, restore the merged-away Contact 
+    [firefox] › e2e/e2e-06-mistake-recovery.spec.ts:16:1 › E2E-06 mistake recovery: delete and restore Ana Novak, then delete another Contact forever 
+  12 passed (18.6m)

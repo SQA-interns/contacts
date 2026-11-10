@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S12 /verify D-91: 1 (run 4, ended at step 3)
-- Result: blocked
-- Gate: phase 6 gate not passed (not run: the hidden evaluation is not of `HEAD`)
-- Notes for the next session: D-91 answered 1 (run 4 approved as the last round). No check was run and `docs/06_verification-report.md` has no Run 4 section: the latest hidden evaluation (run 4 of `06_hidden-evaluation.md`) is of `12e38c7`, `HEAD` is later with code changes. The human runs `node system/run.mjs --hidden-eval` (automatic with `/run`), commits nothing else, then starts `/verify` again, with no argument needed for step 1 (D-91 is resolved). Answer D-88 (licences) and D-89 (NFR-10 counting rule) first if possible. Unchanged: F-47, F-52, F-57, F-58 fixed and unconfirmed; Firefox (F-48) and CI (F-51) need the human; the acceptance manifest was renewed (`78ef42d`). Nothing pushed.
+- Session: S12 /verify D-91: 1 (run 4, done)
+- Result: done
+- Gate: phase 6 gate not passed (DoD-R-01, DoD-R-13, DoD-R-14, DoD-R-15 not met; no Critical or High open)
+- Notes for the next session: run 4 is in `docs/06_verification-report.md` (hidden evaluation of `HEAD`: 209 of 214, the five accepted cases F-41..F-45, D-86). F-47, F-52, F-57, F-58 and the NFR-09 part of F-50 are confirmed fixed. Open Medium: F-38 (frontend mutation, now also `useSuggestions.tsx` 56.67 %), F-48 (Firefox, WebKit Merge crash), F-50 (NFR-10 D-89, NFR-13 D-88), F-51 (CI never ran), new F-59: the `images` job of `.github/workflows/ci.yml` runs `docker compose -f 02_output/docker-compose.prod.yml config -q` without `GOOGLE_APPLICATION_CREDENTIALS` (required since `db4fb46`); fix = a dummy path in that job's `env`. D-92 applies D-91: `/fix F-59` only, no fifth `/verify`, then `/release` with the rest as known limitations. The human's production containers were stopped on arrival; recreated from new images and stopped again (volume untouched). Nothing pushed.
 
 ## Next
-- Command: /verify (after `node system/run.mjs --hidden-eval`)
-- Waiting for: hidden evaluation of HEAD (human runs it), D-88 (licences), D-89 (NFR-10 rule), D-68 d (F-19)
+- Command: /fix F-59 (then /release)
+- Waiting for: D-88 (licences), D-68 d (F-19), D-92 (review), the human's push for CI (F-51) and Firefox (F-48)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |

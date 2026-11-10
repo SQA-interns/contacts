@@ -1,0 +1,13 @@
+
+> contact-groups-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v4.1.12 /Users/kyuhi/Desktop/School/SQA_Project/01_Konkretne_Implementacije_Projektov/00_Vecnajemniski-Sistem-za-Vodenje-Kontaktov/02_output/frontend
+
+
+ Test Files  62 passed (62)
+      Tests  597 passed (597)
+   Start at  17:33:31
+   Duration  15.54s (transform 2.34s, setup 9.51s, import 16.05s, tests 74.47s, environment 29.55s)
+

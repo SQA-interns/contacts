@@ -1,0 +1,104 @@
+Picked up JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=75 -Duser.timezone=UTC
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.9)
+
+2026-11-10T16:40:23.957Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : Starting ContactGroupsApplication v1.0.0 using Java 21.0.8 with PID 1 (/app/app.jar started by app in /app)
+2026-11-10T16:40:23.958Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : The following 1 profile is active: "local"
+2026-11-10T16:40:24.633Z  INFO 1 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-11-10T16:40:24.640Z  INFO 1 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-10T16:40:24.640Z  INFO 1 --- [contact-groups-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-10T16:40:24.649Z  INFO 1 --- [contact-groups-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 662 ms
+2026-11-10T16:40:24.877Z  INFO 1 --- [contact-groups-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://postgres:5432/contactgroups_test (PostgreSQL 17.6)
+2026-11-10T16:40:24.891Z  INFO 1 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-10T16:40:24.892Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.006s)
+2026-11-10T16:40:24.897Z  INFO 1 --- [contact-groups-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-10T16:40:24.917Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-10T16:40:24.919Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create application role"
+2026-11-10T16:40:24.935Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - schema"
+2026-11-10T16:40:24.949Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - contact city norm"
+2026-11-10T16:40:24.954Z  INFO 1 --- [contact-groups-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.015s)
+2026-11-10T16:40:25.136Z  INFO 1 --- [contact-groups-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name noLocalUsers
+2026-11-10T16:40:25.403Z  INFO 1 --- [contact-groups-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path ''
+2026-11-10T16:40:25.425Z  INFO 1 --- [contact-groups-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-11-10T16:40:25.433Z  INFO 1 --- [contact-groups-backend] [           main] s.c.ContactGroupsApplication             : Started ContactGroupsApplication in 1.663 seconds (process running for 1.916)
+2026-11-10T16:40:25.459Z  WARN 1 --- [contact-groups-backend] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api/v1/openapi.json endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-10T16:40:25.654Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-10T16:40:25.654Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-10T16:40:25.655Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-10T16:40:25.688Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-10T16:40:25.698Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1112eb63
+2026-11-10T16:40:25.699Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-10T16:41:14.429Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 403 to PUT /api/v1/groups/1110339f-f9f8-443d-9aa4-1de118fe507f/contacts/5d180ea0-8b65-4a52-bbbe-6a363191cf73
+2026-11-10T16:41:16.284Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/66e80fd1-933e-4e28-a700-b0aae2f9c7f2/facets
+2026-11-10T16:41:16.284Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/66e80fd1-933e-4e28-a700-b0aae2f9c7f2/contacts
+2026-11-10T16:41:16.395Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-10] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/66e80fd1-933e-4e28-a700-b0aae2f9c7f2/contacts
+2026-11-10T16:41:17.951Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups/db118137-b582-42cb-a1b2-67032e79f317/exports
+2026-11-10T16:41:20.059Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f0fd4496-6a70-46c7-a81a-ea84a2d64e9e/contacts/345ea50c-6638-4d4a-b217-b337b36b9c75
+2026-11-10T16:41:21.293Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f0fd4496-6a70-46c7-a81a-ea84a2d64e9e/contacts/d77218e9-02c0-4d0b-9800-5a8cf8288f3a
+2026-11-10T16:41:21.498Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f0fd4496-6a70-46c7-a81a-ea84a2d64e9e/contacts/d77218e9-02c0-4d0b-9800-5a8cf8288f3a
+2026-11-10T16:59:34.086Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-14] s.contactgroups.security.SecurityLogger  : security: answered 403 to PUT /api/v1/groups/13746eb7-37d7-47e7-a61c-96f7489575f2/contacts/037a5f5b-d1bb-423c-ab44-1327da4f3eff
+2026-11-10T16:59:38.375Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/026ff39c-14a7-4fbd-8df1-3719794d147d/facets
+2026-11-10T16:59:38.375Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/026ff39c-14a7-4fbd-8df1-3719794d147d/contacts
+2026-11-10T16:59:38.500Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/026ff39c-14a7-4fbd-8df1-3719794d147d/contacts
+2026-11-10T16:59:45.593Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/79328f73-fbb9-470f-b9ff-efd1bd8af490/contacts/16ee9490-c15b-4838-a14e-11e64d708f16
+2026-11-10T16:59:48.049Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-16] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/79328f73-fbb9-470f-b9ff-efd1bd8af490/contacts/2a128c4b-0c76-47a6-9243-dc828c49d2f1
+2026-11-10T16:59:48.477Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-19] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/79328f73-fbb9-470f-b9ff-efd1bd8af490/contacts/2a128c4b-0c76-47a6-9243-dc828c49d2f1
+2026-11-10T17:00:34.234Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/51ce8c3b-ffaf-46af-a458-9436be7ff8f2/contacts
+2026-11-10T17:00:34.234Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-17] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/51ce8c3b-ffaf-46af-a458-9436be7ff8f2/facets
+2026-11-10T17:00:35.014Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-13] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/d04b2bf1-1a1f-46bd-8ff8-8ef96fe9cd30/contacts/bbd10c47-9e8b-4dd7-861b-382cc02b6447
+2026-11-10T17:00:36.049Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/d04b2bf1-1a1f-46bd-8ff8-8ef96fe9cd30/contacts/bbd10c47-9e8b-4dd7-861b-382cc02b6447
+2026-11-10T17:00:42.674Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-18] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f3d47dd0-8bfc-4544-af28-335fa38763e6/facets
+2026-11-10T17:00:42.687Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-7] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f3d47dd0-8bfc-4544-af28-335fa38763e6/contacts
+2026-11-10T17:00:43.702Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/167ddb45-f633-447c-8c0c-cfd9a40d2c53/contacts/571493c9-b063-4248-8d74-4a9385bfa7a2
+2026-11-10T17:00:44.736Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/167ddb45-f633-447c-8c0c-cfd9a40d2c53/contacts/571493c9-b063-4248-8d74-4a9385bfa7a2
+2026-11-10T17:00:47.641Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/8a8180f8-8dfa-4dbc-afaf-c596c0030b17/facets
+2026-11-10T17:00:47.665Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-15] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/8a8180f8-8dfa-4dbc-afaf-c596c0030b17/contacts
+2026-11-10T17:00:48.821Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/b09bdce9-1db1-41bc-bea9-9b1f4b6e2c94/contacts/1646f50e-fcfb-4c22-9c4a-b2fd09b5f8bb
+2026-11-10T17:00:49.853Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/b09bdce9-1db1-41bc-bea9-9b1f4b6e2c94/contacts/1646f50e-fcfb-4c22-9c4a-b2fd09b5f8bb
+2026-11-10T17:01:18.777Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-14] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups/692f1d4c-43cc-45df-9696-a0c6a0d28562/exports
+2026-11-10T17:01:21.522Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-15] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups/0a0370eb-0e86-4d8f-811c-49f8c648852a/exports
+2026-11-10T17:01:24.915Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-15] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /api/v1/groups/3b9c74a2-eaf7-4a5f-9930-20ed4c23a29d/exports
+2026-11-10T17:01:45.248Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/08cf18d6-b382-46af-9195-c00b199d81ae/contacts/94cd4993-c72e-43a7-a029-c522588356cd
+2026-11-10T17:01:45.366Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/519d597a-8099-43b2-acd6-656574e1b501/contacts/33085110-24d5-4b39-abd7-03f24036345b
+2026-11-10T17:01:48.935Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/6389d844-4302-4ca7-b359-41a3e2f2d4a5/contacts/cbe4fbc8-c942-42b8-8892-90c89cc373e8
+2026-11-10T17:02:47.295Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/2823cfd5-77a2-4d38-9556-455e3b9dec36/facets
+2026-11-10T17:02:47.299Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-19] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/2823cfd5-77a2-4d38-9556-455e3b9dec36/contacts
+2026-11-10T17:02:49.274Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ec1b0d02-1099-4cb2-a6a4-36c50cd083c1/contacts/f70de7d8-20e7-4567-8177-4226dc17fd9c
+2026-11-10T17:02:50.319Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-9] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ec1b0d02-1099-4cb2-a6a4-36c50cd083c1/contacts/f70de7d8-20e7-4567-8177-4226dc17fd9c
+2026-11-10T17:02:59.593Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/e72903be-c989-46f3-a137-9c3b407d1c87/contacts
+2026-11-10T17:02:59.602Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-14] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/e72903be-c989-46f3-a137-9c3b407d1c87/facets
+2026-11-10T17:03:01.391Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-14] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/c07b605b-e8a2-4797-b219-e69d75908559/contacts/e9749159-2124-41ac-bc2f-cfd5f038197c
+2026-11-10T17:03:02.432Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/c07b605b-e8a2-4797-b219-e69d75908559/contacts/e9749159-2124-41ac-bc2f-cfd5f038197c
+2026-11-10T17:03:03.920Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-6] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ac972a2c-a2f1-49e9-acd3-4d385d11a053/facets
+2026-11-10T17:03:03.922Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-19] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ac972a2c-a2f1-49e9-acd3-4d385d11a053/contacts
+2026-11-10T17:03:05.786Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/58c6d028-2596-4847-87df-20e7c3635cdd/contacts/af50dd8e-b087-4321-bc52-b5b62049cb32
+2026-11-10T17:03:06.816Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/58c6d028-2596-4847-87df-20e7c3635cdd/contacts/af50dd8e-b087-4321-bc52-b5b62049cb32
+2026-11-10T17:04:40.645Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/5d95d879-176b-42ad-9f50-5a4079aa6c7b/contacts/1720c5b2-cefa-4b59-ac1e-d1139ed01f2f
+2026-11-10T17:04:40.794Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-15] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f5fdbf1a-fad2-4c12-9a76-2bda978775d8/contacts/33f52111-1501-46f7-a9c6-f6d4f62828c7
+2026-11-10T17:04:46.714Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/7e579eb6-4f58-41cc-8b53-a12706f8a578/contacts/f3ab5df6-39ff-4def-99c3-ef99d93aaf21
+2026-11-10T17:06:29.947Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/6c5c3d12-95ea-40c4-9fcd-eccfd2cd8e9a/contacts
+2026-11-10T17:06:29.947Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-3] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/6c5c3d12-95ea-40c4-9fcd-eccfd2cd8e9a/facets
+2026-11-10T17:06:30.857Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-4] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/080a251c-900c-4e5b-8a98-31fb2eabd394/contacts/c9fd15d5-a268-4eeb-ac5e-7545b33c1712
+2026-11-10T17:06:31.894Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/080a251c-900c-4e5b-8a98-31fb2eabd394/contacts/c9fd15d5-a268-4eeb-ac5e-7545b33c1712
+2026-11-10T17:06:37.098Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-15] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ded2b3bb-bcd9-414d-827a-438ca5200d58/facets
+2026-11-10T17:06:37.104Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/ded2b3bb-bcd9-414d-827a-438ca5200d58/contacts
+2026-11-10T17:06:37.965Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-19] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/0cc47c07-b6ff-470a-b9d7-b828bb4bcd37/contacts/141ae201-96b9-40dc-a2cf-8921574e1d46
+2026-11-10T17:06:38.980Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-1] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/0cc47c07-b6ff-470a-b9d7-b828bb4bcd37/contacts/141ae201-96b9-40dc-a2cf-8921574e1d46
+2026-11-10T17:06:40.728Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-20] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/262c012f-acb9-4679-bbc9-7ef8361787b9/facets
+2026-11-10T17:06:40.733Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/262c012f-acb9-4679-bbc9-7ef8361787b9/contacts
+2026-11-10T17:06:41.747Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-20] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/802b8fa4-413d-4a09-81c9-f1b5f6a93323/contacts/46ba4f7f-ab54-49df-bd44-748bd2eec265
+2026-11-10T17:06:42.763Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-5] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/802b8fa4-413d-4a09-81c9-f1b5f6a93323/contacts/46ba4f7f-ab54-49df-bd44-748bd2eec265
+2026-11-10T17:07:26.486Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-2] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/f5dcf2df-1017-4f86-9c97-0997602f4c5f/contacts/cf016988-ce81-4aee-a161-52212ca66f1d
+2026-11-10T17:07:26.781Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-14] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/273b40ad-2c97-43e3-9a01-a715f41fe344/contacts/a930a0c5-0d85-4610-bdeb-8c253171b7ca
+2026-11-10T17:07:29.382Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-11] s.contactgroups.security.SecurityLogger  : security: answered 404 to GET /api/v1/groups/474d902f-22bd-4fc6-ab2a-16ce33d9deca/contacts/e3273abe-28b3-4149-a066-32d6b863ef5e
+2026-11-10T17:08:27.309Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-13] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /groups
+2026-11-10T17:08:27.324Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-12] s.c.security.FirebaseTokenFilter         : token rejected on GET /groups: FirebaseAuthException <- IllegalArgumentException <- DecodingException
+2026-11-10T17:08:27.325Z  INFO 1 --- [contact-groups-backend] [io-8080-exec-12] s.contactgroups.security.SecurityLogger  : security: answered 401 to GET /groups
+2026-11-10T17:08:27.337Z  INFO 1 --- [contact-groups-backend] [nio-8080-exec-8] s.contactgroups.security.SecurityLogger  : security: answered 403 to GET /groups
