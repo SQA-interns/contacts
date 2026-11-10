@@ -5,14 +5,14 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S8 /fix F-56
-- Result: done
-- Gate: phase 6 gate not passed (open High: F-41..F-45 held-out; F-55, F-56 fixed, wait for /verify; Medium: F-47 (five frozen UI tests), F-48, F-50..F-52, F-57, F-58)
-- Notes for the next session: F-56 fixed in `592cbf9`: `GroupShell` shows the Not found page when the fresh Group list has no Group with the URL's id (all Group screens). Unit tests 593 of 593. E2E-03 not re-run: the test stack needs port 8080 and my attempt to stop the production containers was refused (D-85); the production stack runs as before and still has images from before the F-55 and F-56 fixes. `/verify` must re-run E2E-01 and E2E-03 and needs the human's consent to stop the production stack. Still open for `/fix`: F-57 (WF-05 check waits for the Group card), F-58 (`perf/measure.mjs` joins with `GET /me` instead of `GET /groups`), F-47. Backend tests need port 9099. Nothing pushed.
+- Session: S10 /verify (run 3, stopped at step 3)
+- Result: blocked
+- Gate: phase 6 gate not passed (nothing re-verified; hidden evaluation is of `a7d0a77`, not `HEAD`)
+- Notes for the next session: manifests match (77 of 77, 59 of 59). Run `node system/run.mjs --hidden-eval` on `HEAD` first. Then `/verify` runs E2E-01..06 (F-55, F-56 confirm), UI checks, `perf/measure.mjs` on the test stack, which needs port 8080 held by the human's production stack: stop it with the human's consent and restart it. Backend tests need port 9099, so run them with the test stack down. Open for `/fix`: F-57, F-58, F-47, F-48, F-50..F-52; F-41..F-45 held-out, open in runs 1 and 2: if they still fail in run 3's evaluation, run 4 asks the human. See `docs/06_verification-report.md` "Run 3". Nothing pushed.
 
 ## Next
-- Command: /fix
-- Waiting for: D-68 d (F-19)
+- Command: /verify
+- Waiting for: hidden evaluation of HEAD (`node system/run.mjs --hidden-eval`), D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |

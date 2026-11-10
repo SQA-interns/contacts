@@ -373,3 +373,15 @@ Carried and not re-opened: F-08 (Low, see F-47), F-14 (Medium, D-79), F-19 (Low,
 2. Run Firefox, the real Excel check (Q-06) and real Google sign-in on a machine where they work.
 3. Push `main` so CI can run (F-51); I did not push.
 4. The five held-out failures cannot be seen by `/fix`: if two more loops do not clear them, run 4 asks you (accept as a known limitation, see the failing test, or change the requirement).
+
+## Run 3
+
+> **Self-check by the agent in a separate session (S10), not an independent review.** Stopped at step 3: the latest hidden evaluation in `docs/06_hidden-evaluation.md` is of `a7d0a77`, `HEAD` is `0e7f518`, and the code changed in between (the F-55 and F-56 fixes in `frontend/`). Nothing was re-verified; the findings table of run 2 stands unchanged. Log: `out/logs/verify-run3-manifests.log`.
+
+| Step | Result |
+|---|---|
+| 1 run number | run 3; the held-out failures F-41..F-45 were open in runs 1 and 2, so run 4 must ask the human (accept as a known limitation, show the failing hidden test, change the requirement) unless they pass in this run |
+| 2 manifests | input manifest 77 of 77 and acceptance manifest 59 of 59 hashes match |
+| 3 hidden evaluation | not of `HEAD`: stopped. Run `node system/run.mjs --hidden-eval` (the runner does this itself under `/run`), then start `/verify` again |
+
+Waiting for the runner's evaluation of `HEAD`. When `/verify` starts again it must also: stop the human's production stack (the test stack needs port 8080) with the human's consent and start it again afterwards; re-run E2E-01 and E2E-03 (F-55, F-56 wait for this); run the backend suite only while the test stack is down (port 9099).

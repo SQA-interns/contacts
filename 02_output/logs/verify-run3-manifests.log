@@ -1,0 +1,9 @@
+input manifest:
+0
+OK: 77 of       77
+acceptance manifest (02_output paths):
+0
+OK: 59 of       59
+HEAD: 0e7f518
+latest hidden evaluation commit: a7d0a77
+ 9 files changed, 213 insertions(+), 40 deletions(-)
