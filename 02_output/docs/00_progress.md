@@ -5,10 +5,10 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S9 /verify (run 2)
+- Session: S8 /fix F-55
 - Result: done
-- Gate: phase 6 gate not passed (open High: F-40 as F-55 and F-56, F-41..F-45 held-out; Medium: F-47, F-48, F-50..F-52, F-57, F-58)
-- Notes for the next session: details in `docs/06_verification-report.md` "Run 2". F-55: Attribute fields are labelled `Ključ 1`, `Vrednost 1`; wireframes WF-07/WF-08 and the frozen tests (E2E-01, AC-004-04/08) expect `Ključ`, `Vrednost`. F-56: a non-Member on another Group's contact URL sees a generic error panel, not the Not found page (E2E-03). F-57: the F-40 fix broke the WF-05 UI check `ui-checks/group-screens.stack.spec.ts:38` (not frozen). F-58: `perf/measure.mjs` joins invited Users with `GET /me`, but Invitations are accepted on `GET /groups`. Held-out failures are unchanged (R-003-02, R-006-07, R-007-03, R-017-02, R-018-07). Backend tests need port 9099, so the test stack must be down for `mvnw verify`. Test stack is down; production stack and TLS proxy were started again from images of `HEAD`. Nothing pushed.
+- Gate: phase 6 gate not passed (open High: F-56, F-41..F-45 held-out; F-55 fixed in code, not re-run; Medium: F-47, F-48, F-50..F-52, F-57, F-58)
+- Notes for the next session: F-55 fixed in `7394819` (labels `Ključ`, `Vrednost`; row group `Atribut n`; unit tests 588 of 588). E2E-01, `AC-004-04`, `AC-004-08` were NOT re-run: the test stack needs port 8080, held by the production stack (`contact-groups-*`), and stopping it was denied in this session. Stack is unchanged (production containers still run, from images before `7394819`). Next fix: F-56 (non-Member on another Group's contact URL sees an error panel, not Not found, E2E-03); F-57, F-58 also open. Backend tests need port 9099. Nothing pushed.
 
 ## Next
 - Command: /fix
