@@ -5,10 +5,10 @@
 The handover between sessions. Every session reads it first and updates it last.
 
 ## Last session
-- Session: S8 /fix F-55
+- Session: S8 /fix F-56
 - Result: done
-- Gate: phase 6 gate not passed (open High: F-56, F-41..F-45 held-out; F-55 fixed, waits for /verify; Medium: F-47 (five frozen UI tests), F-48, F-50..F-52, F-57, F-58)
-- Notes for the next session: F-55 fixed in `7394819` (labels `Ključ`, `Vrednost`, row group `Atribut n`) and `04b29a9` (key suggestions as a visible listbox, as WF-08). Checked against a fresh test stack: `AC-004-04`, `AC-004-08`, E2E-01 (chromium, webkit) pass. `AC-003-07` and `AC-005-06` still fail (F-47; `AC-005-06`: `TagInput.tsx` also uses a native datalist, probably the same cause). Test stack is down; the four production containers were stopped and started again, but they still run images from before these fixes. Next fix: F-56 (non-Member on another Group's contact URL sees an error panel, not Not found, E2E-03); F-57, F-58 also open. Backend tests need port 9099. Nothing pushed.
+- Gate: phase 6 gate not passed (open High: F-41..F-45 held-out; F-55, F-56 fixed, wait for /verify; Medium: F-47 (five frozen UI tests), F-48, F-50..F-52, F-57, F-58)
+- Notes for the next session: F-56 fixed in `592cbf9`: `GroupShell` shows the Not found page when the fresh Group list has no Group with the URL's id (all Group screens). Unit tests 593 of 593. E2E-03 not re-run: the test stack needs port 8080 and my attempt to stop the production containers was refused (D-85); the production stack runs as before and still has images from before the F-55 and F-56 fixes. `/verify` must re-run E2E-01 and E2E-03 and needs the human's consent to stop the production stack. Still open for `/fix`: F-57 (WF-05 check waits for the Group card), F-58 (`perf/measure.mjs` joins with `GET /me` instead of `GET /groups`), F-47. Backend tests need port 9099. Nothing pushed.
 
 ## Next
 - Command: /fix

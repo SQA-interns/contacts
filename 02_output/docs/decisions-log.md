@@ -935,3 +935,14 @@
 - Human response: none
 - Resolution: pending review (option 1).
 - Overrides: none
+
+## D-85: F-56 fixed in code; E2E-03 not re-run because the production stack holds port 8080
+- Timestamp: 2026-11-10
+- Session: S8 /fix F-56
+- Class: open
+- Type: non-blocking
+- Trigger: the check that found F-56 (E2E-03) needs the test stack, which binds port 8080; the four production containers hold it. I tried to stop them (as the F-55 fix session did); the permission check refused, so I did not work around it. The half-started test stack was removed (`logs/f56-test-stack-down.log`); the production containers run as before.
+- Options: 1 (default) keep as recorded: the fix is shown by a red then green unit test (`GroupShell` shows Not found for a Group that is not in the User's list); `/verify` re-runs E2E-03 once the human allows stopping the production stack. 2 the human stops the production stack, then the fix session re-runs E2E-03.
+- Human response: none
+- Resolution: pending review (option 1).
+- Overrides: none
