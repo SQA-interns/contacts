@@ -990,3 +990,14 @@
 - Human response: none
 - Resolution: pending review (option 2: the report states "17, not met under reading B, met under reading A"); nothing in the code changes.
 - Overrides: none
+
+## D-90: Follow-up of D-87: the human approved the four frozen-test changes
+- Timestamp: 2026-11-10
+- Session: S8 /fix (loop 3, continued)
+- Class: open
+- Type: approval (a change to a frozen test)
+- Trigger: D-87 option 2.
+- Options: as in D-87.
+- Human response: "Approve changes" (2026-11-10, in chat, option 2).
+- Resolution: option 2. The four locators of `AC-003-07`, `AC-006-04`, `AC-014-03` and `AC-019-06` were changed in the commit `test: fix four frozen locators approved by the human`, nothing else in the frozen tests. UI acceptance passes 95 of 95 on a fresh test stack (`logs/fix3-ui-acceptance2.log`). `docs/03_acceptance-manifest.sha256` was NOT renewed by me: those four files no longer match it, so the human renews it before `/verify` run 4 step 2, otherwise the manifest check fails. F-47 has no failing test left.
+- Overrides: the freeze of the four files, for the locator lines only.

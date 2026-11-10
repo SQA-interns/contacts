@@ -7,12 +7,12 @@ The handover between sessions. Every session reads it first and updates it last.
 ## Last session
 - Session: S8 /fix (loop 3)
 - Result: done
-- Gate: phase 6 gate not passed (no High open; open Medium: F-41..F-45 accepted by D-86, F-47 four frozen tests (D-87), F-48, F-50 (D-88 licences, D-89 NFR-10 rule), F-51)
-- Notes for the next session: fixed and re-checked on a fresh test stack: F-57 `11d5b6e`, F-58 `ce9b26a` (NFR-04 1,792 requests, none failed), F-52 `1ca570f` (three screens, chromium light and dark, webkit), F-50 keyboard walkthrough `11ffe4b` (chromium and webkit), F-47 `AC-005-06` `ca16728`. UI acceptance 91 of 95, E2E-01..06 pass in chromium. The four other F-47 tests are defects of the frozen tests (D-87, one-line locator changes; need the human's approval, no frozen file touched). Maven licence report: five dual or weak-copyleft libraries (D-88, blocking, the human decides); NFR-10 counting rule D-89. Not done: Firefox (F-48), CI (F-51, the human pushes), backend unchanged and not re-run, production stack not touched (it was not running), test stack removed. Unit tests 595 of 595 (+2 new). The next `/verify` is run 4 and must re-run E2E in three browsers, the hidden evaluation (runner) and `perf/measure.mjs` in full. Nothing pushed.
+- Gate: phase 6 gate not passed (no High open; open Medium: F-41..F-45 accepted by D-86, F-48, F-50 (D-88 licences, D-89 NFR-10 rule), F-51)
+- Notes for the next session: fixed and re-checked on a fresh test stack: F-57 `11d5b6e`, F-58 `ce9b26a` (NFR-04 1,792 requests, none failed), F-52 `1ca570f` (three screens, chromium light and dark, webkit), F-50 keyboard walkthrough `11ffe4b` (chromium and webkit), F-47 `AC-005-06` `ca16728`. UI acceptance 95 of 95, E2E-01..06 pass in chromium. The four other F-47 tests were defects of the frozen tests; the human approved the four locator changes (D-87, D-90) and they are committed, so `docs/03_acceptance-manifest.sha256` is out of date and the human must renew it before `/verify` step 2. Maven licence report: five dual or weak-copyleft libraries (D-88, blocking, the human decides); NFR-10 counting rule D-89. Not done: Firefox (F-48), CI (F-51, the human pushes), backend unchanged and not re-run, production stack not touched (it was not running), test stack removed. Unit tests 595 of 595 (+2 new). The next `/verify` is run 4 and must re-run E2E in three browsers, the hidden evaluation (runner) and `perf/measure.mjs` in full. Nothing pushed.
 
 ## Next
 - Command: /verify
-- Waiting for: D-88 (licences), D-87 (approval of four frozen-test changes, optional), D-68 d (F-19)
+- Waiting for: D-88 (licences), the human renewing the acceptance manifest (D-90), D-68 d (F-19)
 
 ## Stories
 | Story | Increment | Status (ready, in progress, done) | DoD-S |
