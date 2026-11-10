@@ -1,0 +1,13 @@
+
+> contact-groups-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v4.1.12 /private/tmp/claude-501/-Users-kyuhi--claude-spares-spare-VPTnUp/94afe125-1fc9-4eb2-a1f6-779fc3b9e126/scratchpad/clean/02_output/frontend
+
+
+ Test Files  62 passed (62)
+      Tests  597 passed (597)
+   Start at  18:28:54
+   Duration  33.39s (transform 4.70s, setup 20.02s, import 32.29s, tests 161.86s, environment 66.13s)
+

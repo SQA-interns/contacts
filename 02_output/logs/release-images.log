@@ -1,0 +1,155 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.04kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21.0.8_9-jdk
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21.0.8_9-jre
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 58B done
+#4 DONE 0.0s
+
+#5 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21.0.8_9-jre@sha256:66bb900643426ad01996d25bada7d56751913f9cec3b827fcb715d2ec9a0fbfc
+#5 resolve docker.io/library/eclipse-temurin:21.0.8_9-jre@sha256:66bb900643426ad01996d25bada7d56751913f9cec3b827fcb715d2ec9a0fbfc done
+#5 DONE 0.0s
+
+#6 [build 1/8] FROM docker.io/library/eclipse-temurin:21.0.8_9-jdk@sha256:7d1d666ddafac14da0ded6b4b076becf76cf88b31f9d7953a76555cc82f86511
+#6 resolve docker.io/library/eclipse-temurin:21.0.8_9-jdk@sha256:7d1d666ddafac14da0ded6b4b076becf76cf88b31f9d7953a76555cc82f86511 done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 959.21kB 0.0s done
+#7 DONE 0.1s
+
+#8 [build 3/8] WORKDIR /build
+#8 CACHED
+
+#9 [build 4/8] COPY .mvn .mvn
+#9 CACHED
+
+#10 [build 5/8] COPY mvnw pom.xml ./
+#10 CACHED
+
+#11 [build 2/8] RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
+#11 CACHED
+
+#12 [build 6/8] RUN ./mvnw -B -q dependency:go-offline
+#12 CACHED
+
+#13 [build 7/8] COPY src src
+#13 DONE 0.1s
+
+#14 [build 8/8] RUN ./mvnw -B -q -DskipTests package
+#14 DONE 9.3s
+
+#15 [stage-1 2/4] RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app --no-create-home app
+#15 CACHED
+
+#16 [stage-1 3/4] WORKDIR /app
+#16 CACHED
+
+#17 [stage-1 4/4] COPY --from=build /build/target/contact-groups-backend.jar /app/app.jar
+#17 DONE 0.1s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 1.8s done
+#18 exporting manifest sha256:13274843240a67d327d260431b030ac1425f772206ca513fdcceb55f64e68acb done
+#18 exporting config sha256:dfb00dd15b6525f6e894d71e0793b0f061114b80b1641d64ff0ad508b4a0466f done
+#18 exporting attestation manifest sha256:f58125ed5f75e25aa86c1551683ba6493924037dfb5ef8baaebfe16a2831a770 done
+#18 exporting manifest list sha256:615f94b21e8fa8aefd10f325189ee5803b92b57c8e9a5d0f32e6620825d1c685 done
+#18 naming to docker.io/library/contact-groups-backend:1.0.0 done
+#18 unpacking to docker.io/library/contact-groups-backend:1.0.0
+#18 unpacking to docker.io/library/contact-groups-backend:1.0.0 0.4s done
+#18 DONE 2.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/o3qjzo7f4s0ux7fk51amw1skx
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 769B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22.20.0-bookworm-slim
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/nginx:1.29.2-alpine
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 104B done
+#4 DONE 0.0s
+
+#5 [build 1/6] FROM docker.io/library/node:22.20.0-bookworm-slim@sha256:b21fe589dfbe5cc39365d0544b9be3f1f33f55f3c86c87a76ff65a02f8f5848e
+#5 resolve docker.io/library/node:22.20.0-bookworm-slim@sha256:b21fe589dfbe5cc39365d0544b9be3f1f33f55f3c86c87a76ff65a02f8f5848e 0.0s done
+#5 DONE 0.0s
+
+#6 [stage-1 1/5] FROM docker.io/library/nginx:1.29.2-alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22
+#6 resolve docker.io/library/nginx:1.29.2-alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22 0.0s done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 1.80MB 0.0s done
+#7 DONE 0.0s
+
+#8 [build 2/6] WORKDIR /build
+#8 CACHED
+
+#9 [build 3/6] COPY package.json package-lock.json .npmrc ./
+#9 CACHED
+
+#10 [build 4/6] RUN npm ci
+#10 CACHED
+
+#11 [build 5/6] COPY . .
+#11 DONE 0.1s
+
+#12 [build 6/6] RUN npm run build
+#12 0.243 
+#12 0.243 > contact-groups-frontend@1.0.0 build
+#12 0.243 > tsc -b && vite build
+#12 0.243 
+#12 8.489 vite v7.3.7 building client environment for production...
+#12 8.559 transforming...
+#12 10.91 ✓ 1934 modules transformed.
+#12 11.23 rendering chunks...
+#12 11.24 computing gzip size...
+#12 11.26 dist/index.html                   0.52 kB │ gzip:   0.31 kB
+#12 11.26 dist/assets/index-B--4e64Z.css   44.81 kB │ gzip:   8.66 kB
+#12 11.26 dist/assets/index-Aow1Im2x.js   787.77 kB │ gzip: 241.97 kB
+#12 11.26 
+#12 11.26 (!) Some chunks are larger than 500 kB after minification. Consider:
+#12 11.26 - Using dynamic import() to code-split the application
+#12 11.26 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#12 11.26 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#12 11.26 ✓ built in 2.74s
+#12 DONE 11.4s
+
+#13 [stage-1 2/5] COPY nginx.conf /etc/nginx/nginx.conf
+#13 CACHED
+
+#14 [stage-1 3/5] COPY docker-entrypoint.sh /docker-entrypoint-app.sh
+#14 CACHED
+
+#15 [stage-1 4/5] COPY --from=build /build/dist /usr/share/nginx/html
+#15 DONE 0.0s
+
+#16 [stage-1 5/5] RUN chmod 0555 /docker-entrypoint-app.sh && chown -R nginx:nginx /usr/share/nginx/html
+#16 DONE 0.1s
+
+#17 exporting to image
+#17 exporting layers 0.1s done
+#17 exporting manifest sha256:7e2805ee926bdec1a22a1cf9b2dcb8f240f0d5627956dec42cb1401d7beabed7 done
+#17 exporting config sha256:af9498a98fc72986669334bd6cf29f34893d5512d004ea60433a9da89824c4e5 done
+#17 exporting attestation manifest sha256:dc47d04bedce77adb6b221c56f798257bffb942626ea8eca2224c1eaee88ee01 done
+#17 exporting manifest list sha256:840eb5ae734f440d8d38eec4f8af0d3d8228f800ad2a125ba9be8695c48dff51 done
+#17 naming to docker.io/library/contact-groups-frontend:1.0.0 done
+#17 unpacking to docker.io/library/contact-groups-frontend:1.0.0 0.0s done
+#17 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/m6qmpatn4lx62rimvf7tmfr8n

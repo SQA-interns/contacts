@@ -1,0 +1,17 @@
+
+added 9 packages, and audited 10 packages in 656ms
+
+3 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+> contact-groups-tools@1.0.0 validate-contracts
+> node validate-contracts.mjs
+
+ok   configuration.schema.json: schema compiles, 1 valid and 2 invalid examples checked
+ok   firebase-id-token.schema.json: schema compiles, 2 valid and 2 invalid examples checked
+ok   openapi.yaml: valid OpenAPI 3.1.0
+ok   openapi.yaml: 37 operations, project rules checked
+ok   xlsx-export.schema.json: schema compiles, 2 valid and 3 invalid examples checked
+contracts: all valid

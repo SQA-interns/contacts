@@ -1,0 +1,15 @@
+
+> contact-groups-frontend@1.0.0 check
+> prettier --check . && eslint . && tsc -b --noEmit && vitest run src/i18n
+
+Checking formatting...
+All matched files use Prettier code style!
+
+ RUN  v4.1.12 /private/tmp/claude-501/-Users-kyuhi--claude-spares-spare-VPTnUp/94afe125-1fc9-4eb2-a1f6-779fc3b9e126/scratchpad/clean/02_output/frontend
+
+
+ Test Files  4 passed (4)
+      Tests  20 passed (20)
+   Start at  18:29:38
+   Duration  721ms (transform 209ms, setup 556ms, import 192ms, tests 98ms, environment 1.46s)
+
