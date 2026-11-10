@@ -5,7 +5,7 @@ import { VIEWPORTS } from './viewports';
 
 /**
  * build-ui checks of the US-002 states of WF-05 (UI-13, UI-15, UI-19, UI-22): the create dialog, its field errors
- * (R-002-02, R-002-03) and the confirmation after creating, at the three widths. Needs the test stack, like
+ * (R-002-02, R-002-03) and the confirmation and the opened new Group after creating, at the three widths. Needs the test stack, like
  * `account-screens.stack.spec.ts`.
  */
 for (const viewport of VIEWPORTS) {
@@ -35,7 +35,9 @@ for (const viewport of VIEWPORTS) {
       await dialog.getByLabel('Ime skupine').fill('Šola ČŽ');
       await dialog.getByRole('button', { name: 'Ustvari', exact: true }).click();
       await expect(page.getByText('Skupina je ustvarjena.')).toBeVisible();
-      await expect(page.getByRole('heading', { level: 2, name: 'Šola ČŽ' })).toBeVisible();
+      // E2E-01 step 4 (F-40): the new Group opens as its Contact list, the Group name is in the shell.
+      await expect(page.getByRole('heading', { level: 1, name: 'Kontakti' })).toBeVisible();
+      await expect(page.getByText('Šola ČŽ', { exact: true }).first()).toBeVisible();
       await check(page, 'WF-05_group-list', 'created', viewport.name);
     });
   });
